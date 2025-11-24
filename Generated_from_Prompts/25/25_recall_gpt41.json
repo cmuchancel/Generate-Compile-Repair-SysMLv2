@@ -1,0 +1,82 @@
+{
+  "model_id": 25,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.3,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'PhotographyWorkflow' {\n\tpart def Scene;\n\tpart def Image;\n\tpart def Picture;\n\taction def Focus { in item scene : Scene; out item image : Image; }\n\taction def Shoot { in item image : Image; out item picture : Picture; }\n\taction def Display { in item picture : Picture; }\n\taction def TakePicture;\n\taction takePicture : TakePicture {\n\t\tfirst start;\n\t\tthen merge continue;\n\t\tthen action trigger {\n\t\t\tout item scene : Scene;\n\t\t}\n\t\tflow from trigger.scene to focus.scene;\n\t\tthen action focus : Focus {\n\t\t\tin item scene;\n\t\t\tout item image;\n\t\t}\n\t\tflow from focus.image to shoot.image;\n\t\tthen action shoot : Shoot {\n\t\t\tin item image ;\n\t\t\tout item picture;\n\t\t}\n\t\tflow from shoot.picture to display.picture;\n\t\tthen action display : Display {\n\t\t\tin item picture;\n\t\t}\n\t\tthen continue;\t\n\t}\n}\n\nGenerated Model:\npackage 'CompletePhotographyWorkflow' {\n\tpart def User;\n\tpart def Scene;\n\tpart def Image;\n\tpart def Photograph;\n\tpart def CompletePhotographySystem {\n\t\tpart focusedImage : Image;\n\t\tpart finalPhotograph : Photograph;\n\t}\n\tuse case def 'Acquire Scene' {\n\t\tsubject system : CompletePhotographySystem;\n\t\tactor user : User;\n\t\tactor scene : Scene;\n\t}\n\tuse case def 'Focus Scene' {\n\t\tsubject system : CompletePhotographySystem;\n\t\tactor scene : Scene;\n\t}\n\tuse case def 'Shoot Photograph' {\n\t\tsubject system : CompletePhotographySystem;\n\t\tactor scene : Scene;\n\t\tactor user : User;\n\t}\n\tuse case def 'Display Photo' {\n\t\tsubject system : CompletePhotographySystem;\n\t\tactor user : User;\n\t\tactor scene : Scene;\n\t}\n\tuse case def 'One Tap Take Photo' {\n\t\tsubject system : CompletePhotographySystem;\n\t\tactor user : User;\n\t\tactor scene : Scene;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "Generated_from_Prompts/25/25_groundtruth.sysml",
+  "generated_path": "Generated_from_Prompts/25/25.sysml",
+  "response": {
+    "id": "resp_056191df1be4915200690f96db270c8190ba658d15f5822417",
+    "created_at": 1762629339.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_056191df1be4915200690f96dba570819097a0f6b6dc727c0e",
+        "content": [
+          {
+            "annotations": [],
+            "text": "**Step 1: List all atomic modeling claims made by the reference system model.**\n\n1. Definition of part: Scene\n2. Definition of part: Image\n3. Definition of part: Picture\n4. Definition of action: Focus (with input item scene: Scene, output item image: Image)\n5. Definition of action: Shoot (with input item image: Image, output item picture: Picture)\n6. Definition of action: Display (with input item picture: Picture)\n7. Definition of action: TakePicture\n8. Definition of action takePicture as a composite action of type TakePicture\n9. Action takePicture starts with \"start\"\n10. Action takePicture then merges to \"continue\"\n11. Action takePicture has a sub-action \"trigger\" with output item scene: Scene\n12. Flow from trigger.scene to focus.scene\n13. Action takePicture has a sub-action \"focus\" of type Focus with input item scene and output item image\n14. Flow from focus.image to shoot.image\n15. Action takePicture has a sub-action \"shoot\" of type Shoot with input item image and output item picture\n16. Flow from shoot.picture to display.picture\n17. Action takePicture has a sub-action \"display\" of type Display with input item picture\n18. Action takePicture then continues\n\n**Step 2: For each atomic claim, determine coverage in the generated model.**\n\n1. **Scene part defined** – **Covered** (Scene is defined)\n2. **Image part defined** – **Covered** (Image is defined)\n3. **Picture part defined** – **Not Covered** (No \"Picture\"; only \"Photograph\")\n4. **Focus action (Scene → Image)** – **Partially Covered** (There is a use case 'Focus Scene' involving Scene, but not explicitly as an action with input/output types)\n5. **Shoot action (Image → Picture)** – **Not Covered** (No explicit action; 'Shoot Photograph' use case exists, but no mapping from Image to Picture/Photograph)\n6. **Display action (Picture input)** – **Not Covered** (No explicit action; 'Display Photo' use case exists, but no mapping from Picture/Photograph to anything)\n7. **TakePicture action defined** – **Not Covered** (No explicit action; 'One Tap Take Photo' use case may correspond, but not as an action)\n8. **Composite action takePicture defined** – **Not Covered** (No composite action; only use cases)\n9. **takePicture starts with start** – **Not Covered**\n10. **takePicture merges to continue** – **Not Covered**\n11. **Sub-action trigger with output scene: Scene** – **Not Covered**\n12. **Flow from trigger.scene to focus.scene** – **Not Covered**\n13. **Sub-action focus: Focus (scene in, image out)** – **Not Covered**\n14. **Flow from focus.image to shoot.image** – **Not Covered**\n15. **Sub-action shoot: Shoot (image in, picture out)** – **Not Covered**\n16. **Flow from shoot.picture to display.picture** – **Not Covered**\n17. **Sub-action display: Display (picture in)** – **Not Covered**\n18. **takePicture then continues** – **Not Covered**\n\n**Step 3: Summarize the results.**\n\n**Score: 2/18**\n\n**Explanation:**  \nOnly the definitions of the parts \"Scene\" and \"Image\" are directly and unambiguously covered by the generated model. The rest of the claims, especially those involving actions, their structure, and flows, are not explicitly or equivalently represented in the generated model. The use cases in the generated model do not provide the same structural or behavioral detail as the actions and flows in the reference model. The part \"Picture\" is not present (the generated model uses \"Photograph\" instead, but without a clear mapping or usage as in the reference), and none of the composite or flow-based behavior is captured.",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.3,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 586,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 828,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1414
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "prompt_cache_retention": null,
+    "store": true,
+    "response_text": "**Step 1: List all atomic modeling claims made by the reference system model.**\n\n1. Definition of part: Scene\n2. Definition of part: Image\n3. Definition of part: Picture\n4. Definition of action: Focus (with input item scene: Scene, output item image: Image)\n5. Definition of action: Shoot (with input item image: Image, output item picture: Picture)\n6. Definition of action: Display (with input item picture: Picture)\n7. Definition of action: TakePicture\n8. Definition of action takePicture as a composite action of type TakePicture\n9. Action takePicture starts with \"start\"\n10. Action takePicture then merges to \"continue\"\n11. Action takePicture has a sub-action \"trigger\" with output item scene: Scene\n12. Flow from trigger.scene to focus.scene\n13. Action takePicture has a sub-action \"focus\" of type Focus with input item scene and output item image\n14. Flow from focus.image to shoot.image\n15. Action takePicture has a sub-action \"shoot\" of type Shoot with input item image and output item picture\n16. Flow from shoot.picture to display.picture\n17. Action takePicture has a sub-action \"display\" of type Display with input item picture\n18. Action takePicture then continues\n\n**Step 2: For each atomic claim, determine coverage in the generated model.**\n\n1. **Scene part defined** – **Covered** (Scene is defined)\n2. **Image part defined** – **Covered** (Image is defined)\n3. **Picture part defined** – **Not Covered** (No \"Picture\"; only \"Photograph\")\n4. **Focus action (Scene → Image)** – **Partially Covered** (There is a use case 'Focus Scene' involving Scene, but not explicitly as an action with input/output types)\n5. **Shoot action (Image → Picture)** – **Not Covered** (No explicit action; 'Shoot Photograph' use case exists, but no mapping from Image to Picture/Photograph)\n6. **Display action (Picture input)** – **Not Covered** (No explicit action; 'Display Photo' use case exists, but no mapping from Picture/Photograph to anything)\n7. **TakePicture action defined** – **Not Covered** (No explicit action; 'One Tap Take Photo' use case may correspond, but not as an action)\n8. **Composite action takePicture defined** – **Not Covered** (No composite action; only use cases)\n9. **takePicture starts with start** – **Not Covered**\n10. **takePicture merges to continue** – **Not Covered**\n11. **Sub-action trigger with output scene: Scene** – **Not Covered**\n12. **Flow from trigger.scene to focus.scene** – **Not Covered**\n13. **Sub-action focus: Focus (scene in, image out)** – **Not Covered**\n14. **Flow from focus.image to shoot.image** – **Not Covered**\n15. **Sub-action shoot: Shoot (image in, picture out)** – **Not Covered**\n16. **Flow from shoot.picture to display.picture** – **Not Covered**\n17. **Sub-action display: Display (picture in)** – **Not Covered**\n18. **takePicture then continues** – **Not Covered**\n\n**Step 3: Summarize the results.**\n\n**Score: 2/18**\n\n**Explanation:**  \nOnly the definitions of the parts \"Scene\" and \"Image\" are directly and unambiguously covered by the generated model. The rest of the claims, especially those involving actions, their structure, and flows, are not explicitly or equivalently represented in the generated model. The use cases in the generated model do not provide the same structural or behavioral detail as the actions and flows in the reference model. The part \"Picture\" is not present (the generated model uses \"Photograph\" instead, but without a clear mapping or usage as in the reference), and none of the composite or flow-based behavior is captured."
+  }
+}

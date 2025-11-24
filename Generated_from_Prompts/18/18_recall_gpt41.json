@@ -1,0 +1,82 @@
+{
+  "model_id": 18,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.3,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'PhotographyWorkflow' {\n\titem def Scene;\n\titem def Image;\n\titem def Picture;\n\taction def Focus { in scene : Scene; out image : Image; }\n\taction def Shoot { in image: Image; out picture : Picture; }\t\n\taction def TakePicture { in scene : Scene; out picture : Picture;\n\t\tbind focus.scene = scene;\n\t\taction focus: Focus { in scene; out image; }\n\t\tflow from focus.image to shoot.image;\n\t\taction shoot: Shoot { in image; out picture; }\n\t\tbind shoot.picture = picture;\n\t}\n}\n\nGenerated Model:\npackage 'ScenePhotoAcquisition' {\n\titem def Scene;\n\titem def IntermediateImage;\n\titem def Photo;\n\tport def SceneSelectionPort {\n\t\tout item selectedScene : Scene;\n\t}\n\tport def FocusPort {\n\t\tin item sourceScene : Scene;\n\t\tout item focusedImage : IntermediateImage;\n\t}\n\tport def CapturePort {\n\t\tin item inputImage : IntermediateImage;\n\t\tout item capturedPhoto : Photo;\n\t}\n\tport def PhotoAccessPort {\n\t\tin item deliveredPhoto : Photo;\n\t}\n\tpart def SceneSelection {\n\t\tport sceneSelection : SceneSelectionPort;\n\t}\n\tpart def Autofocus {\n\t\tport focus : FocusPort;\n\t}\n\tpart def PhotoCapture {\n\t\tport capture : CapturePort;\n\t}\n\tpart def PhotoDelivery {\n\t\tport photoAccess : PhotoAccessPort;\n\t}\n\tflow def SceneFlow {\n\t\tref :>> payload : Scene;\n\t\tend port selector : SceneSelectionPort;\n\t\tend port focus : FocusPort;\n\t}\n\tflow def FocusedImageFlow {\n\t\tref :>> payload : IntermediateImage;\n\t\tend port focus : FocusPort;\n\t\tend port capture : CapturePort;\n\t}\n\tflow def PhotoFlow {\n\t\tref :>> payload : Photo;\n\t\tend port capture : CapturePort;\n\t\tend port delivery : PhotoAccessPort;\n\t}\n\tpart def ScenePhotoAcquisitionSystem {\n\t\tpart selection : SceneSelection;\n\t\tpart focus : Autofocus;\n\t\tpart capture : PhotoCapture;\n\t\tpart delivery : PhotoDelivery;\n\t\tflow : SceneFlow\n\t\t  from selection.sceneSelection.selectedScene\n\t\t\tto focus.focus.sourceScene;\n\t\tflow : FocusedImageFlow\n\t\t  from focus.focus.focusedImage\n\t\t\tto capture.capture.inputImage;\n\t\tflow : PhotoFlow\n\t\t  from capture.capture.capturedPhoto\n\t\t\tto delivery.photoAccess.deliveredPhoto;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "Generated_from_Prompts/18/18_groundtruth.sysml",
+  "generated_path": "Generated_from_Prompts/18/18.sysml",
+  "response": {
+    "id": "resp_0a779923989338e900690f9d4797ec819580eadfed4561c18e",
+    "created_at": 1762630983.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0a779923989338e900690f9d482a488195ba57a4cbe7d45ab0",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step as requested.\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Claims:**\n\n1. Definition of item `Scene`\n2. Definition of item `Image`\n3. Definition of item `Picture`\n4. Definition of action `Focus` with input `scene: Scene` and output `image: Image`\n5. Definition of action `Shoot` with input `image: Image` and output `picture: Picture`\n6. Definition of action `TakePicture` with input `scene: Scene` and output `picture: Picture`\n7. In `TakePicture`, binding `focus.scene = scene`\n8. In `TakePicture`, definition of sub-action `focus: Focus` with input `scene` and output `image`\n9. In `TakePicture`, flow from `focus.image` to `shoot.image`\n10. In `TakePicture`, definition of sub-action `shoot: Shoot` with input `image` and output `picture`\n11. In `TakePicture`, binding `shoot.picture = picture`\n\n---\n\n### 2. For each atomic claim, determine coverage by the generated model\n\n#### 1. Definition of item `Scene`\n- **Covered**: `item def Scene;` exists in generated model.\n\n#### 2. Definition of item `Image`\n- **Partially Covered**: The generated model defines `IntermediateImage`, which is used as the output of focusing and input to capturing, corresponding to `Image` in the reference. The name is different but the role is equivalent.\n- **Covered** (per instruction to ignore naming if semantics match).\n\n#### 3. Definition of item `Picture`\n- **Partially Covered**: The generated model defines `Photo`, which is the output of the capture process and the final output, corresponding to `Picture` in the reference.\n- **Covered** (per instruction to ignore naming if semantics match).\n\n#### 4. Definition of action `Focus` with input `scene: Scene` and output `image: Image`\n- **Covered**: `FocusPort` has `in item sourceScene : Scene; out item focusedImage : IntermediateImage;` and is used in `Autofocus` part, which matches the semantics of the `Focus` action.\n\n#### 5. Definition of action `Shoot` with input `image: Image` and output `picture: Picture`\n- **Covered**: `CapturePort` has `in item inputImage : IntermediateImage; out item capturedPhoto : Photo;` and is used in `PhotoCapture` part, matching the semantics of the `Shoot` action.\n\n#### 6. Definition of action `TakePicture` with input `scene: Scene` and output `picture: Picture`\n- **Covered**: The whole system (`ScenePhotoAcquisitionSystem`) takes a `Scene` (via `SceneSelectionPort`) and produces a `Photo` (via `PhotoAccessPort`), matching the overall process of `TakePicture`.\n\n#### 7. In `TakePicture`, binding `focus.scene = scene`\n- **Covered**: The flow from `SceneSelectionPort.selectedScene` to `FocusPort.sourceScene` in the system matches this binding.\n\n#### 8. In `TakePicture`, definition of sub-action `focus: Focus` with input `scene` and output `image`\n- **Covered**: The `Autofocus` part with `FocusPort` is instantiated in the system, matching this sub-action.\n\n#### 9. In `TakePicture`, flow from `focus.image` to `shoot.image`\n- **Covered**: The flow from `focus.focus.focusedImage` to `capture.capture.inputImage` matches this.\n\n#### 10. In `TakePicture`, definition of sub-action `shoot: Shoot` with input `image` and output `picture`\n- **Covered**: The `PhotoCapture` part with `CapturePort` is instantiated in the system, matching this sub-action.\n\n#### 11. In `TakePicture`, binding `shoot.picture = picture`\n- **Covered**: The flow from `capture.capture.capturedPhoto` to `delivery.photoAccess.deliveredPhoto` matches the final output binding.\n\n---\n\n### 3. Summarize the results\n\n**Score: 11/11**\n\nAll atomic claims from the reference model are covered by the generated model, considering semantic equivalence and ignoring naming differences as instructed.",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.3,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 677,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 905,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1582
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "prompt_cache_retention": null,
+    "store": true,
+    "response_text": "Let's proceed step by step as requested.\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Claims:**\n\n1. Definition of item `Scene`\n2. Definition of item `Image`\n3. Definition of item `Picture`\n4. Definition of action `Focus` with input `scene: Scene` and output `image: Image`\n5. Definition of action `Shoot` with input `image: Image` and output `picture: Picture`\n6. Definition of action `TakePicture` with input `scene: Scene` and output `picture: Picture`\n7. In `TakePicture`, binding `focus.scene = scene`\n8. In `TakePicture`, definition of sub-action `focus: Focus` with input `scene` and output `image`\n9. In `TakePicture`, flow from `focus.image` to `shoot.image`\n10. In `TakePicture`, definition of sub-action `shoot: Shoot` with input `image` and output `picture`\n11. In `TakePicture`, binding `shoot.picture = picture`\n\n---\n\n### 2. For each atomic claim, determine coverage by the generated model\n\n#### 1. Definition of item `Scene`\n- **Covered**: `item def Scene;` exists in generated model.\n\n#### 2. Definition of item `Image`\n- **Partially Covered**: The generated model defines `IntermediateImage`, which is used as the output of focusing and input to capturing, corresponding to `Image` in the reference. The name is different but the role is equivalent.\n- **Covered** (per instruction to ignore naming if semantics match).\n\n#### 3. Definition of item `Picture`\n- **Partially Covered**: The generated model defines `Photo`, which is the output of the capture process and the final output, corresponding to `Picture` in the reference.\n- **Covered** (per instruction to ignore naming if semantics match).\n\n#### 4. Definition of action `Focus` with input `scene: Scene` and output `image: Image`\n- **Covered**: `FocusPort` has `in item sourceScene : Scene; out item focusedImage : IntermediateImage;` and is used in `Autofocus` part, which matches the semantics of the `Focus` action.\n\n#### 5. Definition of action `Shoot` with input `image: Image` and output `picture: Picture`\n- **Covered**: `CapturePort` has `in item inputImage : IntermediateImage; out item capturedPhoto : Photo;` and is used in `PhotoCapture` part, matching the semantics of the `Shoot` action.\n\n#### 6. Definition of action `TakePicture` with input `scene: Scene` and output `picture: Picture`\n- **Covered**: The whole system (`ScenePhotoAcquisitionSystem`) takes a `Scene` (via `SceneSelectionPort`) and produces a `Photo` (via `PhotoAccessPort`), matching the overall process of `TakePicture`.\n\n#### 7. In `TakePicture`, binding `focus.scene = scene`\n- **Covered**: The flow from `SceneSelectionPort.selectedScene` to `FocusPort.sourceScene` in the system matches this binding.\n\n#### 8. In `TakePicture`, definition of sub-action `focus: Focus` with input `scene` and output `image`\n- **Covered**: The `Autofocus` part with `FocusPort` is instantiated in the system, matching this sub-action.\n\n#### 9. In `TakePicture`, flow from `focus.image` to `shoot.image`\n- **Covered**: The flow from `focus.focus.focusedImage` to `capture.capture.inputImage` matches this.\n\n#### 10. In `TakePicture`, definition of sub-action `shoot: Shoot` with input `image` and output `picture`\n- **Covered**: The `PhotoCapture` part with `CapturePort` is instantiated in the system, matching this sub-action.\n\n#### 11. In `TakePicture`, binding `shoot.picture = picture`\n- **Covered**: The flow from `capture.capture.capturedPhoto` to `delivery.photoAccess.deliveredPhoto` matches the final output binding.\n\n---\n\n### 3. Summarize the results\n\n**Score: 11/11**\n\nAll atomic claims from the reference model are covered by the generated model, considering semantic equivalence and ignoring naming differences as instructed."
+  }
+}

@@ -1,0 +1,162 @@
+(.venv) (base) chancelavoie@Chances-MacBook-Pro-694 TextToSysML % python summarize_gpt41_scores.py \
+  --root Generated_from_Prompts \
+  --start-id 1 --end-id 151 \
+  --skip 1 2 3 4 5 7 8 9 10 15 21 24 26 27 30 31 33 37 39 42 43 46 49 64 65 70 74 75 77 83 84 86 87 89 92 96 103 110 113 124 129 131 135 137 139 140 141 144 146
+
+[skip] 1
+[skip] 2
+[skip] 3
+[skip] 4
+[skip] 5
+[ok]   6: precision=0.326 (15.0/46.0), recall=0.750 (12.0/16.0)
+[skip] 7
+[skip] 8
+[skip] 9
+[skip] 10
+[ok]  11: precision=0.739 (17.0/23.0), recall=1.000 (16.0/16.0)
+[ok]  12: precision=0.296 (8.0/27.0), recall=1.000 (14.0/14.0)
+[ok]  13: precision=0.500 (15.0/30.0), recall=0.409 (9.0/22.0)
+[ok]  14: precision=0.586 (17.0/29.0), recall=0.587 (13.5/23.0)
+[skip] 15
+[ok]  16: precision=1.000 (20.0/20.0), recall=0.962 (25.0/26.0)
+[ok]  17: precision=0.913 (21.0/23.0), recall=0.913 (21.0/23.0)
+[ok]  18: precision=0.105 (2.0/19.0), recall=1.000 (11.0/11.0)
+[ok]  19: precision=0.100 (2.0/20.0), recall=0.556 (5.0/9.0)
+[ok]  20: precision=1.000 (23.0/23.0), recall=1.000 (6.0/6.0)
+[skip] 21
+[ok]  22: precision=0.556 (5.0/9.0), recall=0.714 (5.0/7.0)
+[ok]  23: precision=0.542 (13.0/24.0), recall=1.000 (12.0/12.0)
+[skip] 24
+[ok]  25: precision=0.167 (2.0/12.0), recall=0.111 (2.0/18.0)
+[skip] 26
+[skip] 27
+[ok]  28: precision=0.920 (23.0/25.0), recall=0.769 (10.0/13.0)
+[ok]  29: precision=0.714 (15.0/21.0), recall=0.389 (7.0/18.0)
+[skip] 30
+[skip] 31
+[ok]  32: precision=0.500 (5.0/10.0), recall=0.769 (10.0/13.0)
+[skip] 33
+[ok]  34: precision=0.263 (5.0/19.0), recall=0.857 (6.0/7.0)
+[ok]  35: precision=0.667 (10.0/15.0), recall=1.000 (12.0/12.0)
+[ok]  36: precision=0.867 (13.0/15.0), recall=1.000 (12.0/12.0)
+[skip] 37
+[ok]  38: precision=0.267 (4.0/15.0), recall=0.615 (8.0/13.0)
+[skip] 39
+[ok]  40: precision=0.760 (19.0/25.0), recall=0.792 (19.0/24.0)
+[ok]  41: precision=0.625 (15.0/24.0), recall=0.706 (12.0/17.0)
+[skip] 42
+[skip] 43
+[ok]  44: precision=0.172 (5.0/29.0), recall=1.000 (17.0/17.0)
+[ok]  45: precision=0.882 (30.0/34.0), recall=0.962 (25.0/26.0)
+[skip] 46
+[ok]  47: precision=0.409 (9.0/22.0), recall=0.358 (19.0/53.0)
+[ok]  48: precision=0.706 (12.0/17.0), recall=1.000 (51.0/51.0)
+[skip] 49
+[ok]  50: precision=0.579 (11.0/19.0), recall=1.000 (14.0/14.0)
+[ok]  51: precision=0.184 (7.0/38.0), recall=0.636 (14.0/22.0)
+[ok]  52: precision=0.655 (19.0/29.0), recall=0.955 (21.0/22.0)
+[ok]  53: precision=0.611 (22.0/36.0), recall=1.000 (30.0/30.0)
+[ok]  54: precision=0.820 (41.0/50.0), recall=0.957 (22.0/23.0)
+[ok]  55: precision=1.000 (46.0/46.0), recall=0.240 (6.0/25.0)
+[ok]  56: precision=0.417 (10.0/24.0), recall=0.900 (9.0/10.0)
+[ok]  57: precision=1.000 (14.0/14.0), recall=0.727 (8.0/11.0)
+[ok]  58: precision=0.913 (21.0/23.0), recall=0.654 (17.0/26.0)
+[ok]  59: precision=0.667 (4.0/6.0), recall=0.385 (10.0/26.0)
+[ok]  60: precision=0.976 (41.0/42.0), recall=0.920 (23.0/25.0)
+[ok]  61: precision=1.000 (47.0/47.0), recall=0.381 (8.0/21.0)
+[ok]  62: precision=0.571 (8.0/14.0), recall=0.556 (10.0/18.0)
+[ok]  63: precision=0.909 (10.0/11.0), recall=0.286 (6.0/21.0)
+[skip] 64
+[skip] 65
+[ok]  66: precision=1.000 (20.0/20.0), recall=0.760 (19.0/25.0)
+[ok]  67: precision=0.875 (14.0/16.0), recall=0.391 (9.0/23.0)
+[ok]  68: precision=0.208 (5.0/24.0), recall=0.500 (10.0/20.0)
+[ok]  69: precision=0.684 (13.0/19.0), recall=0.250 (10.0/40.0)
+[skip] 70
+[ok]  71: precision=0.526 (10.0/19.0), recall=0.419 (13.0/31.0)
+[ok]  72: precision=1.000 (24.0/24.0), recall=0.476 (20.0/42.0)
+[ok]  73: precision=0.610 (25.0/41.0), recall=0.321 (18.0/56.0)
+[skip] 74
+[skip] 75
+[ok]  76: precision=0.783 (18.0/23.0), recall=0.571 (20.0/35.0)
+[skip] 77
+[ok]  78: precision=1.000 (6.0/6.0), recall=0.162 (6.0/37.0)
+[ok]  79: precision=1.000 (31.0/31.0), recall=0.765 (26.0/34.0)
+[ok]  80: precision=1.000 (14.0/14.0), recall=0.667 (12.0/18.0)
+[ok]  81: precision=1.000 (25.0/25.0), recall=0.661 (18.5/28.0)
+[ok]  82: precision=0.263 (5.0/19.0), recall=0.800 (8.0/10.0)
+[skip] 83
+[skip] 84
+[ok]  85: precision=1.000 (29.0/29.0), recall=0.895 (17.0/19.0)
+[skip] 86
+[skip] 87
+[ok]  88: precision=0.281 (9.0/32.0), recall=0.810 (17.0/21.0)
+[skip] 89
+[ok]  90: precision=0.111 (2.0/18.0), recall=0.346 (9.0/26.0)
+[ok]  91: precision=0.596 (34.0/57.0), recall=0.778 (21.0/27.0)
+[skip] 92
+[ok]  93: precision=0.475 (29.0/61.0), recall=0.620 (31.0/50.0)
+[ok]  94: precision=0.438 (7.0/16.0), recall=0.750 (6.0/8.0)
+[ok]  95: precision=0.133 (4.0/30.0), recall=0.429 (3.0/7.0)
+[skip] 96
+[ok]  97: precision=1.000 (11.0/11.0), recall=1.000 (12.0/12.0)
+[ok]  98: precision=0.300 (6.0/20.0), recall=0.900 (9.0/10.0)
+[ok]  99: precision=0.611 (22.0/36.0), recall=0.939 (31.0/33.0)
+[ok] 100: precision=0.963 (26.0/27.0), recall=0.844 (27.0/32.0)
+[ok] 101: precision=1.000 (15.0/15.0), recall=1.000 (15.0/15.0)
+[ok] 102: precision=0.697 (46.0/66.0), recall=0.394 (18.5/47.0)
+[skip] 103
+[ok] 104: precision=0.650 (13.0/20.0), recall=0.514 (18.0/35.0)
+[ok] 105: precision=0.727 (16.0/22.0), recall=0.457 (16.0/35.0)
+[ok] 106: precision=0.500 (13.0/26.0), recall=0.950 (19.0/20.0)
+[ok] 107: precision=1.000 (32.0/32.0), recall=1.000 (19.0/19.0)
+[ok] 108: precision=0.789 (15.0/19.0), recall=1.000 (18.0/18.0)
+[ok] 109: precision=0.750 (24.0/32.0), recall=1.000 (15.0/15.0)
+[skip] 110
+[ok] 111: precision=0.438 (14.0/32.0), recall=0.889 (24.0/27.0)
+[ok] 112: precision=0.767 (56.0/73.0), recall=0.754 (49.0/65.0)
+[skip] 113
+[ok] 114: precision=0.810 (51.0/63.0), recall=0.883 (68.0/77.0)
+[ok] 115: precision=0.837 (36.0/43.0), recall=0.933 (28.0/30.0)
+[ok] 116: precision=0.766 (36.0/47.0), recall=0.929 (39.0/42.0)
+[ok] 117: precision=0.571 (28.0/49.0), recall=0.476 (30.0/63.0)
+[ok] 118: precision=0.536 (15.0/28.0), recall=0.275 (19.5/71.0)
+[ok] 119: precision=0.632 (48.0/76.0), recall=0.302 (13.0/43.0)
+[ok] 120: precision=0.571 (20.0/35.0), recall=0.567 (8.5/15.0)
+[ok] 121: precision=0.537 (22.0/41.0), recall=0.571 (28.0/49.0)
+[ok] 122: precision=0.439 (18.0/41.0), recall=0.409 (27.0/66.0)
+[ok] 123: precision=0.684 (39.0/57.0), recall=0.680 (34.0/50.0)
+[skip] 124
+[ok] 125: precision=0.846 (22.0/26.0), recall=0.667 (26.0/39.0)
+[ok] 126: precision=0.583 (7.0/12.0), recall=1.000 (10.0/10.0)
+[ok] 127: precision=0.778 (14.0/18.0), recall=0.478 (11.0/23.0)
+[ok] 128: precision=1.000 (17.0/17.0), recall=0.857 (12.0/14.0)
+[skip] 129
+[ok] 130: precision=0.800 (28.0/35.0), recall=0.758 (25.0/33.0)
+[skip] 131
+[ok] 132: precision=0.158 (3.0/19.0), recall=0.273 (3.0/11.0)
+[ok] 133: precision=0.562 (9.0/16.0), recall=0.611 (11.0/18.0)
+[ok] 134: precision=0.188 (6.0/32.0), recall=0.109 (10.0/92.0)
+[skip] 135
+[ok] 136: precision=0.778 (7.0/9.0), recall=0.700 (7.0/10.0)
+[skip] 137
+[ok] 138: precision=0.321 (9.0/28.0), recall=1.000 (14.0/14.0)
+[skip] 139
+[skip] 140
+[skip] 141
+[ok] 142: precision=0.522 (12.0/23.0), recall=0.467 (7.0/15.0)
+[ok] 143: precision=0.525 (31.0/59.0), recall=0.667 (16.0/24.0)
+[skip] 144
+[ok] 145: precision=0.800 (16.0/20.0), recall=0.941 (16.0/17.0)
+[skip] 146
+[ok] 147: precision=0.825 (33.0/40.0), recall=0.500 (18.0/36.0)
+[ok] 148: precision=0.592 (29.0/49.0), recall=0.760 (19.0/25.0)
+[ok] 149: precision=0.688 (22.0/32.0), recall=0.917 (22.0/24.0)
+[ok] 150: precision=0.320 (8.0/25.0), recall=1.000 (25.0/25.0)
+[ok] 151: precision=0.172 (5.0/29.0), recall=0.871 (27.0/31.0)
+
+=== Summary ===
+Models processed: 102
+Average precision: 0.6363
+Average recall:    0.7003
+Average F1:        0.6174

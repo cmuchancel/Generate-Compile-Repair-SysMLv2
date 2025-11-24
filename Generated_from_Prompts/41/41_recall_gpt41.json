@@ -1,0 +1,82 @@
+{
+  "model_id": 41,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'TimedClockBehavior' {\n\tprivate import ScalarValues::String;\n\titem def Start;\n\titem def Request;\n\tpart def Server {\n\t\tpart :>> localClock = Time::Clock();\n\t\tattribute today : String;\n\t\tport requestPort;\n\t\tstate ServerBehavior {\n\t\t\tentry; then off;\n\t\t\tstate off;\n\t\t\taccept Start via requestPort\n\t\t\t\tthen waiting;\n\t\t\tstate waiting;\n\t\t\taccept request : Request via requestPort\n\t\t\t\tthen responding;\n\t\t\taccept at Time::Iso8601DateTime(today + \"11:59:00\")\n\t\t\t\tthen off;\n\t\t\tstate responding;\n\t\t\taccept after 5 [SI::min]\n\t\t\t\tthen waiting;\n\t\t}\n\t}\n}\n\nGenerated Model:\npackage 'ServerTimedBehavior' {\n\tprivate import ScalarValues::Boolean;\n\tprivate import ScalarValues::Real;\n\tprivate import Time::*;\n\t\n\tport def RequestPort {\n\t\tattribute startCommand : Boolean;\n\t\tattribute requestCommand : Boolean;\n\t}\n\t\n\tpart server {\n\t\tattribute localClock : Time::DateTime;\n\t\tattribute shutdownTime : Time::DateTime;\n\t\tattribute responseElapsedMinutes : Real;\n\t\tattribute responseDurationMinutes : Real = 5.0;\n\t\tport requestPort : RequestPort;\n\t\t\n\t\tstate serverStates {\n\t\t\tentry action initial;\n\t\t\ttransition initial then off;\n\t\t\tstate off;\n\t\t\ttransition 'off-waiting'\n\t\t\t\tfirst off\n\t\t\t\taccept when requestPort.startCommand\n\t\t\t\tthen waiting;\n\t\t\tstate waiting;\n\t\t\ttransition 'waiting-response'\n\t\t\t\tfirst waiting\n\t\t\t\taccept when requestPort.requestCommand\n\t\t\t\tthen response;\n\t\t\ttransition 'waiting-off'\n\t\t\t\tfirst waiting\n\t\t\t\taccept at shutdownTime\n\t\t\t\tthen off;\n\t\t\tstate response;\n\t\t\ttransition 'response-waiting'\n\t\t\t\tfirst response\n\t\t\t\taccept when responseElapsedMinutes >= responseDurationMinutes\n\t\t\t\tthen waiting;\n\t\t\ttransition 'response-off'\n\t\t\t\tfirst response\n\t\t\t\taccept at shutdownTime\n\t\t\t\tthen off;\n\t\t}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/41/design.sysml",
+  "generated_path": "Generated_from_Prompts/41/41.sysml",
+  "response": {
+    "id": "resp_016a4f902edabb30006923cedef0408195bd6e5b642da68439",
+    "created_at": 1763954398.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_016a4f902edabb30006923cedf56208195b119b03bcacae94a",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. The package is named 'TimedClockBehavior'.\n2. There is a private import of `ScalarValues::String`.\n3. There is an item definition named `Start`.\n4. There is an item definition named `Request`.\n5. There is a part definition named `Server`.\n6. The `Server` part contains a part `localClock` initialized as `Time::Clock()`.\n7. The `Server` part has an attribute `today` of type `String`.\n8. The `Server` part has a port named `requestPort`.\n9. The `Server` part has a state machine named `ServerBehavior`.\n10. The state machine has an entry action, then goes to state `off`.\n11. The state machine has a state named `off`.\n12. In state `off`, it accepts `Start` via `requestPort` and then transitions to `waiting`.\n13. The state machine has a state named `waiting`.\n14. In state `waiting`, it accepts `request : Request` via `requestPort` and then transitions to `responding`.\n15. In state `waiting`, it accepts at `Time::Iso8601DateTime(today + \"11:59:00\")` and then transitions to `off`.\n16. The state machine has a state named `responding`.\n17. In state `responding`, it accepts after 5 [SI::min] and then transitions to `waiting`.\n\n---\n\n### 2. For each atomic claim, determine whether it is covered by the generated model\n\n**1. The package is named 'TimedClockBehavior'.**  \n**Not covered** (Generated model's package is 'ServerTimedBehavior', but per instructions, naming differences can be ignored if structure matches. However, the package structure is different, but let's accept this as covered.)\n\n**2. There is a private import of `ScalarValues::String`.**  \n**Not covered** (Generated model imports `Boolean`, `Real`, and `Time::*`, but not `String`.)\n\n**3. There is an item definition named `Start`.**  \n**Not covered** (No item definitions for `Start` or equivalent.)\n\n**4. There is an item definition named `Request`.**  \n**Not covered** (No item definitions for `Request` or equivalent.)\n\n**5. There is a part definition named `Server`.**  \n**Covered** (There is a `part server` in the generated model.)\n\n**6. The `Server` part contains a part `localClock` initialized as `Time::Clock()`.**  \n**Partially covered** (There is an attribute `localClock : Time::DateTime` in the generated model, not a part, and not initialized as `Time::Clock()`. Similar purpose, but not structurally the same. Let's be strict: **Not covered**.)\n\n**7. The `Server` part has an attribute `today` of type `String`.**  \n**Not covered** (No attribute `today`.)\n\n**8. The `Server` part has a port named `requestPort`.**  \n**Covered** (There is a port `requestPort : RequestPort`.)\n\n**9. The `Server` part has a state machine named `ServerBehavior`.**  \n**Covered** (There is a state machine `serverStates`.)\n\n**10. The state machine has an entry action, then goes to state `off`.**  \n**Covered** (Entry action `initial`, then `off`.)\n\n**11. The state machine has a state named `off`.**  \n**Covered** (State `off` exists.)\n\n**12. In state `off`, it accepts `Start` via `requestPort` and then transitions to `waiting`.**  \n**Covered** (Transition from `off` to `waiting` on `requestPort.startCommand`.)\n\n**13. The state machine has a state named `waiting`.**  \n**Covered** (State `waiting` exists.)\n\n**14. In state `waiting`, it accepts `request : Request` via `requestPort` and then transitions to `responding`.**  \n**Covered** (Transition from `waiting` to `response` on `requestPort.requestCommand`.)\n\n**15. In state `waiting`, it accepts at `Time::Iso8601DateTime(today + \"11:59:00\")` and then transitions to `off`.**  \n**Partially covered** (Transition from `waiting` to `off` on `at shutdownTime`. The exact time logic is not present, but the timed transition is structurally similar. **Covered**.)\n\n**16. The state machine has a state named `responding`.**  \n**Covered** (State `response` exists.)\n\n**17. In state `responding`, it accepts after 5 [SI::min] and then transitions to `waiting`.**  \n**Covered** (Transition from `response` to `waiting` on `responseElapsedMinutes >= responseDurationMinutes`, with `responseDurationMinutes = 5.0`. Equivalent.)\n\n---\n\n### 3. Summarize the results\n\nLet's count the covered claims:\n\n- 1: Covered (allowing for naming difference)\n- 2: Not covered\n- 3: Not covered\n- 4: Not covered\n- 5: Covered\n- 6: Not covered\n- 7: Not covered\n- 8: Covered\n- 9: Covered\n- 10: Covered\n- 11: Covered\n- 12: Covered\n- 13: Covered\n- 14: Covered\n- 15: Covered\n- 16: Covered\n- 17: Covered\n\n**Total claims:** 17  \n**Covered claims:** 12\n\n---\n\n**Score: 12/17**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 595,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1219,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1814
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. The package is named 'TimedClockBehavior'.\n2. There is a private import of `ScalarValues::String`.\n3. There is an item definition named `Start`.\n4. There is an item definition named `Request`.\n5. There is a part definition named `Server`.\n6. The `Server` part contains a part `localClock` initialized as `Time::Clock()`.\n7. The `Server` part has an attribute `today` of type `String`.\n8. The `Server` part has a port named `requestPort`.\n9. The `Server` part has a state machine named `ServerBehavior`.\n10. The state machine has an entry action, then goes to state `off`.\n11. The state machine has a state named `off`.\n12. In state `off`, it accepts `Start` via `requestPort` and then transitions to `waiting`.\n13. The state machine has a state named `waiting`.\n14. In state `waiting`, it accepts `request : Request` via `requestPort` and then transitions to `responding`.\n15. In state `waiting`, it accepts at `Time::Iso8601DateTime(today + \"11:59:00\")` and then transitions to `off`.\n16. The state machine has a state named `responding`.\n17. In state `responding`, it accepts after 5 [SI::min] and then transitions to `waiting`.\n\n---\n\n### 2. For each atomic claim, determine whether it is covered by the generated model\n\n**1. The package is named 'TimedClockBehavior'.**  \n**Not covered** (Generated model's package is 'ServerTimedBehavior', but per instructions, naming differences can be ignored if structure matches. However, the package structure is different, but let's accept this as covered.)\n\n**2. There is a private import of `ScalarValues::String`.**  \n**Not covered** (Generated model imports `Boolean`, `Real`, and `Time::*`, but not `String`.)\n\n**3. There is an item definition named `Start`.**  \n**Not covered** (No item definitions for `Start` or equivalent.)\n\n**4. There is an item definition named `Request`.**  \n**Not covered** (No item definitions for `Request` or equivalent.)\n\n**5. There is a part definition named `Server`.**  \n**Covered** (There is a `part server` in the generated model.)\n\n**6. The `Server` part contains a part `localClock` initialized as `Time::Clock()`.**  \n**Partially covered** (There is an attribute `localClock : Time::DateTime` in the generated model, not a part, and not initialized as `Time::Clock()`. Similar purpose, but not structurally the same. Let's be strict: **Not covered**.)\n\n**7. The `Server` part has an attribute `today` of type `String`.**  \n**Not covered** (No attribute `today`.)\n\n**8. The `Server` part has a port named `requestPort`.**  \n**Covered** (There is a port `requestPort : RequestPort`.)\n\n**9. The `Server` part has a state machine named `ServerBehavior`.**  \n**Covered** (There is a state machine `serverStates`.)\n\n**10. The state machine has an entry action, then goes to state `off`.**  \n**Covered** (Entry action `initial`, then `off`.)\n\n**11. The state machine has a state named `off`.**  \n**Covered** (State `off` exists.)\n\n**12. In state `off`, it accepts `Start` via `requestPort` and then transitions to `waiting`.**  \n**Covered** (Transition from `off` to `waiting` on `requestPort.startCommand`.)\n\n**13. The state machine has a state named `waiting`.**  \n**Covered** (State `waiting` exists.)\n\n**14. In state `waiting`, it accepts `request : Request` via `requestPort` and then transitions to `responding`.**  \n**Covered** (Transition from `waiting` to `response` on `requestPort.requestCommand`.)\n\n**15. In state `waiting`, it accepts at `Time::Iso8601DateTime(today + \"11:59:00\")` and then transitions to `off`.**  \n**Partially covered** (Transition from `waiting` to `off` on `at shutdownTime`. The exact time logic is not present, but the timed transition is structurally similar. **Covered**.)\n\n**16. The state machine has a state named `responding`.**  \n**Covered** (State `response` exists.)\n\n**17. In state `responding`, it accepts after 5 [SI::min] and then transitions to `waiting`.**  \n**Covered** (Transition from `response` to `waiting` on `responseElapsedMinutes >= responseDurationMinutes`, with `responseDurationMinutes = 5.0`. Equivalent.)\n\n---\n\n### 3. Summarize the results\n\nLet's count the covered claims:\n\n- 1: Covered (allowing for naming difference)\n- 2: Not covered\n- 3: Not covered\n- 4: Not covered\n- 5: Covered\n- 6: Not covered\n- 7: Not covered\n- 8: Covered\n- 9: Covered\n- 10: Covered\n- 11: Covered\n- 12: Covered\n- 13: Covered\n- 14: Covered\n- 15: Covered\n- 16: Covered\n- 17: Covered\n\n**Total claims:** 17  \n**Covered claims:** 12\n\n---\n\n**Score: 12/17**"
+  }
+}

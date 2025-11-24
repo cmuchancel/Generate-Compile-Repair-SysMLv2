@@ -1,0 +1,82 @@
+{
+  "model_id": 142,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'AutomotiveParameterValidation' {\n\tprivate import ISQ::*;\n\tprivate import SI::*;\n\t private import MeasurementReferences::*;\n    private import SI::*;\n    private import RealFunctions::*;\n    package 'Mathematical Constants' {\n\t    doc\n\t    /*\n\t     * Standard mathematical constants\n\t     * \n\t     * Irrational constants cannot be represented exactly with finite precision.\n\t     * However, they can be required to be implemented with a attribute that is accurate\n\t     * to at least a certain precision.\n\t     * \n\t     * (The decimal literals here should be interpreted as being fixed point and exact.)\n\t     */\n        attribute e: Real {\n        \tassert constraint { round(e * 1E20) == 271828182845904523536.0 }\n        }\n        attribute pi: Real {\n        \tassert constraint { round(pi * 1E20) == 314159265358979323846.0 }\n        }\n    }\n\tpart def HeadLightsTiltKnob {\n\t\tattribute headLightsTile : LightBeamTiltAngleValue[1];\n\t}\n\tattribute def LightBeamTiltAngleValue :> PlaneAngleValue {\n\t\tattribute angle: LightBeamTiltAngleValue :>> self {\n\t\t}\n\t\tassert constraint { angle >= 50 ['°'] and angle <= 80 ['°'] }\n\t}\n}\n\nGenerated Model:\npackage 'HeadlampTiltValidation' {\n\tprivate import ScalarValues::*;\n\tprivate import SI::*;\n\tprivate import MeasurementReferences::*;\n\tpackage MathematicalReferences {\n\t\tattribute piConstant : Real = 3.141592653589793;\n\t\tattribute eConstant : Real = 2.718281828459045;\n\t}\n\tprivate import MathematicalReferences::*;\n\tpart def HeadlampTiltAdjustmentKnob {\n\t\tattribute tiltAngleDegrees : Real;\n\t\tattribute tiltAngleRadians : Real;\n\t\tattribute toleranceFactor : Real = 1.0 / eConstant;\n\t\tattribute radianConversionFactor : Real = piConstant / 180.0;\n\t\tattribute siPlaneAngleUnit : DimensionOneValue = 1 [one];\n\t}\n\tpart headlampValidationSuite {\n\t\tpart adjustmentKnob : HeadlampTiltAdjustmentKnob;\n\t\trequirement tiltRangeRequirement : 'Beam Tilt Range Requirement' {\n\t\t\tsubject knob = adjustmentKnob;\n\t\t}\n\t\trequirement precisionRequirement : 'SI Precision Requirement' {\n\t\t\tsubject knob = adjustmentKnob;\n\t\t}\n\t}\n\trequirement def 'Beam Tilt Range Requirement' {\n\t\tsubject knob : HeadlampTiltAdjustmentKnob;\n\t\ttext = \"Headlamp beam tilt angles, measured in degrees, must remain between 50 and 80 degrees to comply with safety and regulatory standards.\";\n\t\trequire constraint { knob.tiltAngleDegrees >= 50.0 and knob.tiltAngleDegrees <= 80.0 }\n\t}\n\trequirement def 'SI Precision Requirement' {\n\t\tsubject knob : HeadlampTiltAdjustmentKnob;\n\t\ttext = \"The verification system shall adopt SI-based calculations and the standard real number constants pi and Euler's number e to ensure scientific, reliable control of the adjustment knob.\";\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/142/design.sysml",
+  "generated_path": "Generated_from_Prompts/142/142.sysml",
+  "response": {
+    "id": "resp_0b1b18f9b62875bd00692464f1d07c81948e5bc96aca482ddc",
+    "created_at": 1763992817.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0b1b18f9b62875bd00692464f274b4819488ccdb3acea5bfbb",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. The model is in a package named 'AutomotiveParameterValidation'.\n2. The package imports ISQ::*.\n3. The package imports SI::*.\n4. The package imports MeasurementReferences::*.\n5. The package imports RealFunctions::*.\n6. There is a subpackage named 'Mathematical Constants'.\n7. In 'Mathematical Constants', there is an attribute `e` of type Real.\n8. The attribute `e` has a constraint: `round(e * 1E20) == 271828182845904523536.0`.\n9. In 'Mathematical Constants', there is an attribute `pi` of type Real.\n10. The attribute `pi` has a constraint: `round(pi * 1E20) == 314159265358979323846.0`.\n11. There is a part definition `HeadLightsTiltKnob`.\n12. `HeadLightsTiltKnob` has an attribute `headLightsTile` of type `LightBeamTiltAngleValue[1]`.\n13. There is an attribute definition `LightBeamTiltAngleValue` that specializes (`:>`) `PlaneAngleValue`.\n14. `LightBeamTiltAngleValue` has an attribute `angle` of type `LightBeamTiltAngleValue`, referencing self.\n15. `LightBeamTiltAngleValue` has a constraint: `angle >= 50 ['°'] and angle <= 80 ['°']`.\n\n---\n\n### 2. For each atomic claim, determine whether it is covered by the generated model\n\n**1. The model is in a package named 'AutomotiveParameterValidation'.**  \n**Not covered.** The generated model uses 'HeadlampTiltValidation'.\n\n**2. The package imports ISQ::*.\n3. The package imports SI::*.\n4. The package imports MeasurementReferences::*.\n5. The package imports RealFunctions::*.**  \n**Partially covered.**  \n- SI::* and MeasurementReferences::* are imported in the generated model.\n- ISQ::* and RealFunctions::* are not imported.\n\n**6. There is a subpackage named 'Mathematical Constants'.**  \n**Covered (with naming difference).** The generated model has a package 'MathematicalReferences' with similar content.\n\n**7. In 'Mathematical Constants', there is an attribute `e` of type Real.**  \n**Covered.** The generated model has `eConstant : Real`.\n\n**8. The attribute `e` has a constraint: `round(e * 1E20) == 271828182845904523536.0`.**  \n**Not covered.** The generated model assigns a value to `eConstant`, but does not specify the precision constraint.\n\n**9. In 'Mathematical Constants', there is an attribute `pi` of type Real.**  \n**Covered.** The generated model has `piConstant : Real`.\n\n**10. The attribute `pi` has a constraint: `round(pi * 1E20) == 314159265358979323846.0`.**  \n**Not covered.** The generated model assigns a value to `piConstant`, but does not specify the precision constraint.\n\n**11. There is a part definition `HeadLightsTiltKnob`.**  \n**Covered (with naming difference).** The generated model has `HeadlampTiltAdjustmentKnob`.\n\n**12. `HeadLightsTiltKnob` has an attribute `headLightsTile` of type `LightBeamTiltAngleValue[1]`.**  \n**Partially covered.** The generated model has attributes for tilt angle, but not of type `LightBeamTiltAngleValue[1]`—they are of type `Real`.\n\n**13. There is an attribute definition `LightBeamTiltAngleValue` that specializes (`:>`) `PlaneAngleValue`.**  \n**Not covered.** No equivalent type definition in the generated model.\n\n**14. `LightBeamTiltAngleValue` has an attribute `angle` of type `LightBeamTiltAngleValue`, referencing self.**  \n**Not covered.** No such attribute or self-reference in the generated model.\n\n**15. `LightBeamTiltAngleValue` has a constraint: `angle >= 50 ['°'] and angle <= 80 ['°']`.**  \n**Covered (semantically).** The generated model has a requirement that tilt angle (in degrees) must be between 50 and 80.\n\n---\n\n### 3. Summarize the results\n\nLet's count the covered claims:\n\n- Claim 1: Not covered\n- Claims 2-5: 2/4 covered (SI::* and MeasurementReferences::*)\n- Claim 6: Covered\n- Claim 7: Covered\n- Claim 8: Not covered\n- Claim 9: Covered\n- Claim 10: Not covered\n- Claim 11: Covered\n- Claim 12: Partially covered (attribute present, but type not matched; let's count as not fully covered)\n- Claim 13: Not covered\n- Claim 14: Not covered\n- Claim 15: Covered\n\n**Fully covered claims:** 2 (imports) + 1 (subpackage) + 1 (e attribute) + 1 (pi attribute) + 1 (part definition) + 1 (constraint on angle) = 7  \n**Total claims:** 15\n\n**Score: 7/15**\n\n---\n\n## Final Output\n\n**Score: 7/15**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 810,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1150,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1960
+    },
+    "user": null,
+    "billing": {
+      "payer": "developer"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. The model is in a package named 'AutomotiveParameterValidation'.\n2. The package imports ISQ::*.\n3. The package imports SI::*.\n4. The package imports MeasurementReferences::*.\n5. The package imports RealFunctions::*.\n6. There is a subpackage named 'Mathematical Constants'.\n7. In 'Mathematical Constants', there is an attribute `e` of type Real.\n8. The attribute `e` has a constraint: `round(e * 1E20) == 271828182845904523536.0`.\n9. In 'Mathematical Constants', there is an attribute `pi` of type Real.\n10. The attribute `pi` has a constraint: `round(pi * 1E20) == 314159265358979323846.0`.\n11. There is a part definition `HeadLightsTiltKnob`.\n12. `HeadLightsTiltKnob` has an attribute `headLightsTile` of type `LightBeamTiltAngleValue[1]`.\n13. There is an attribute definition `LightBeamTiltAngleValue` that specializes (`:>`) `PlaneAngleValue`.\n14. `LightBeamTiltAngleValue` has an attribute `angle` of type `LightBeamTiltAngleValue`, referencing self.\n15. `LightBeamTiltAngleValue` has a constraint: `angle >= 50 ['°'] and angle <= 80 ['°']`.\n\n---\n\n### 2. For each atomic claim, determine whether it is covered by the generated model\n\n**1. The model is in a package named 'AutomotiveParameterValidation'.**  \n**Not covered.** The generated model uses 'HeadlampTiltValidation'.\n\n**2. The package imports ISQ::*.\n3. The package imports SI::*.\n4. The package imports MeasurementReferences::*.\n5. The package imports RealFunctions::*.**  \n**Partially covered.**  \n- SI::* and MeasurementReferences::* are imported in the generated model.\n- ISQ::* and RealFunctions::* are not imported.\n\n**6. There is a subpackage named 'Mathematical Constants'.**  \n**Covered (with naming difference).** The generated model has a package 'MathematicalReferences' with similar content.\n\n**7. In 'Mathematical Constants', there is an attribute `e` of type Real.**  \n**Covered.** The generated model has `eConstant : Real`.\n\n**8. The attribute `e` has a constraint: `round(e * 1E20) == 271828182845904523536.0`.**  \n**Not covered.** The generated model assigns a value to `eConstant`, but does not specify the precision constraint.\n\n**9. In 'Mathematical Constants', there is an attribute `pi` of type Real.**  \n**Covered.** The generated model has `piConstant : Real`.\n\n**10. The attribute `pi` has a constraint: `round(pi * 1E20) == 314159265358979323846.0`.**  \n**Not covered.** The generated model assigns a value to `piConstant`, but does not specify the precision constraint.\n\n**11. There is a part definition `HeadLightsTiltKnob`.**  \n**Covered (with naming difference).** The generated model has `HeadlampTiltAdjustmentKnob`.\n\n**12. `HeadLightsTiltKnob` has an attribute `headLightsTile` of type `LightBeamTiltAngleValue[1]`.**  \n**Partially covered.** The generated model has attributes for tilt angle, but not of type `LightBeamTiltAngleValue[1]`—they are of type `Real`.\n\n**13. There is an attribute definition `LightBeamTiltAngleValue` that specializes (`:>`) `PlaneAngleValue`.**  \n**Not covered.** No equivalent type definition in the generated model.\n\n**14. `LightBeamTiltAngleValue` has an attribute `angle` of type `LightBeamTiltAngleValue`, referencing self.**  \n**Not covered.** No such attribute or self-reference in the generated model.\n\n**15. `LightBeamTiltAngleValue` has a constraint: `angle >= 50 ['°'] and angle <= 80 ['°']`.**  \n**Covered (semantically).** The generated model has a requirement that tilt angle (in degrees) must be between 50 and 80.\n\n---\n\n### 3. Summarize the results\n\nLet's count the covered claims:\n\n- Claim 1: Not covered\n- Claims 2-5: 2/4 covered (SI::* and MeasurementReferences::*)\n- Claim 6: Covered\n- Claim 7: Covered\n- Claim 8: Not covered\n- Claim 9: Covered\n- Claim 10: Not covered\n- Claim 11: Covered\n- Claim 12: Partially covered (attribute present, but type not matched; let's count as not fully covered)\n- Claim 13: Not covered\n- Claim 14: Not covered\n- Claim 15: Covered\n\n**Fully covered claims:** 2 (imports) + 1 (subpackage) + 1 (e attribute) + 1 (pi attribute) + 1 (part definition) + 1 (constraint on angle) = 7  \n**Total claims:** 15\n\n**Score: 7/15**\n\n---\n\n## Final Output\n\n**Score: 7/15**"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "model_id": 107,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleTrailerDynamicCouplingSystem' {\n\tpart def Vehicle;\n\tpart def VehicleFrame;\n\tpart def HitchBall;\n\tpart def TrailerCoupler;\n\tpart def Trailer;\n\tpart def TrailerFrame;\n\tconnection def TrailerHitch {\n\t\tend hitch : HitchBall;\n\t\tend coupler : TrailerCoupler;\n\t}\n\tpart 'vehicle-trailer system' {\n\t\tpart vehicle : Vehicle {\n\t\t\tpart vehicleFrame : VehicleFrame {\n\t\t\t\tpart hitch : HitchBall;\n\t\t\t}\n\t\t}\n\t\tconnection trailerHitch : TrailerHitch[0..1]\n\t\t\tconnect vehicle.vehicleFrame.hitch to trailer.trailerFrame.coupler;\n\t\tpart trailer : Trailer {\n\t\t\tpart trailerFrame : TrailerFrame {\n\t\t\t\tpart coupler : TrailerCoupler;\n\t\t\t}\n\t\t}\n\t\taction {\n\t\t\taction 'connect trailer to vehicle'\n\t\t\t\tassign 'vehicle-trailer system'.trailerHitch := TrailerHitch();\n\t\t\tthen action 'destroy connection of trailer to vehicle' : \n\t\t\t\tOccurrenceFunctions::destroy {\n\t\t\t\tinout occ = 'vehicle-trailer system'.trailerHitch;\n\t\t\t}\n\t\t\tthen action 'disconnect trailer from vehicle'\n\t\t\t\tassign 'vehicle-trailer system'.trailerHitch := null;\n\t\t}\t\n\t}\t\n}\n\nGenerated Model:\npackage 'VehicleTrailerHitching' {\n\tpart def HitchBall;\n\tpart def TrailerCoupler;\npart def VehicleFrame {\n\tpart hitchBall : HitchBall;\n}\npart def TrailerFrame {\n\tpart coupler : TrailerCoupler;\n}\npart def Vehicle {\n\tpart chassisFrame : VehicleFrame;\n}\npart def Trailer {\n\tpart towFrame : TrailerFrame;\n}\n\tconnection def HitchingConnection {\n\t\tend ball : HitchBall[1];\n\t\tend coupler : TrailerCoupler[1];\n\t}\n\taction def ConnectTrailer {\n\t\tin ball : HitchBall;\n\t\tin coupler : TrailerCoupler;\n\t}\n\taction def DisconnectTrailer {\n\t\tin ball : HitchBall;\n\t\tin coupler : TrailerCoupler;\n\t}\n\tpart hitchingSystem {\n\t\tpart vehicle : Vehicle;\n\t\tpart trailer : Trailer;\n\t\tconnection hitchLink : HitchingConnection {\n\t\t\tend ball = vehicle.chassisFrame.hitchBall;\n\t\t\tend coupler = trailer.towFrame.coupler;\n\t\t}\n\t\taction hitchConnect : ConnectTrailer {\n\t\t\tin ball = vehicle.chassisFrame.hitchBall;\n\t\t\tin coupler = trailer.towFrame.coupler;\n\t\t}\n\t\taction hitchDisconnect : DisconnectTrailer {\n\t\t\tin ball = vehicle.chassisFrame.hitchBall;\n\t\t\tin coupler = trailer.towFrame.coupler;\n\t\t}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/107/design.sysml",
+  "generated_path": "Generated_from_Prompts/107/107.sysml",
+  "response": {
+    "id": "resp_0a36ce6525b2c18a006923dfdbca8081978aa52beea395831d",
+    "created_at": 1763958747.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0a36ce6525b2c18a006923dfdce4f881979184021d109a86c1",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. Definition of part `Vehicle`\n2. Definition of part `VehicleFrame`\n3. Definition of part `HitchBall`\n4. Definition of part `TrailerCoupler`\n5. Definition of part `Trailer`\n6. Definition of part `TrailerFrame`\n7. Definition of connection `TrailerHitch` with ends: `hitch : HitchBall`, `coupler : TrailerCoupler`\n8. Definition of part `'vehicle-trailer system'`\n9. `'vehicle-trailer system'` contains part `vehicle : Vehicle`\n10. `vehicle` contains part `vehicleFrame : VehicleFrame`\n11. `vehicleFrame` contains part `hitch : HitchBall`\n12. `'vehicle-trailer system'` contains part `trailer : Trailer`\n13. `trailer` contains part `trailerFrame : TrailerFrame`\n14. `trailerFrame` contains part `coupler : TrailerCoupler`\n15. `'vehicle-trailer system'` contains connection `trailerHitch : TrailerHitch[0..1]` connecting `vehicle.vehicleFrame.hitch` to `trailer.trailerFrame.coupler`\n16. `'vehicle-trailer system'` contains an action block\n17. Action `'connect trailer to vehicle'` assigns `'vehicle-trailer system'.trailerHitch := TrailerHitch()`\n18. Action `'destroy connection of trailer to vehicle'` destroys `'vehicle-trailer system'.trailerHitch`\n19. Action `'disconnect trailer from vehicle'` assigns `'vehicle-trailer system'.trailerHitch := null`\n\n---\n\n### 2. For each atomic claim, determine coverage by the generated model\n\n| # | Reference Claim | Covered in Generated Model? | Notes |\n|---|-----------------|-----------------------------|-------|\n| 1 | Definition of part `Vehicle` | **Yes** | `part def Vehicle` exists |\n| 2 | Definition of part `VehicleFrame` | **Yes** | `part def VehicleFrame` exists |\n| 3 | Definition of part `HitchBall` | **Yes** | `part def HitchBall` exists |\n| 4 | Definition of part `TrailerCoupler` | **Yes** | `part def TrailerCoupler` exists |\n| 5 | Definition of part `Trailer` | **Yes** | `part def Trailer` exists |\n| 6 | Definition of part `TrailerFrame` | **Yes** | `part def TrailerFrame` exists |\n| 7 | Definition of connection `TrailerHitch` with ends: `hitch : HitchBall`, `coupler : TrailerCoupler` | **Yes** | `connection def HitchingConnection` with ends `ball : HitchBall`, `coupler : TrailerCoupler` (naming differs, semantics match) |\n| 8 | Definition of part `'vehicle-trailer system'` | **Yes** | `part hitchingSystem` (naming differs, semantics match) |\n| 9 | `'vehicle-trailer system'` contains part `vehicle : Vehicle` | **Yes** | `part vehicle : Vehicle` in `hitchingSystem` |\n| 10 | `vehicle` contains part `vehicleFrame : VehicleFrame` | **Yes** | `part chassisFrame : VehicleFrame` in `Vehicle` (naming differs, semantics match) |\n| 11 | `vehicleFrame` contains part `hitch : HitchBall` | **Yes** | `part hitchBall : HitchBall` in `VehicleFrame` (naming differs, semantics match) |\n| 12 | `'vehicle-trailer system'` contains part `trailer : Trailer` | **Yes** | `part trailer : Trailer` in `hitchingSystem` |\n| 13 | `trailer` contains part `trailerFrame : TrailerFrame` | **Yes** | `part towFrame : TrailerFrame` in `Trailer` (naming differs, semantics match) |\n| 14 | `trailerFrame` contains part `coupler : TrailerCoupler` | **Yes** | `part coupler : TrailerCoupler` in `TrailerFrame` |\n| 15 | `'vehicle-trailer system'` contains connection `trailerHitch : TrailerHitch[0..1]` connecting `vehicle.vehicleFrame.hitch` to `trailer.trailerFrame.coupler` | **Yes** | `connection hitchLink : HitchingConnection` connects `vehicle.chassisFrame.hitchBall` to `trailer.towFrame.coupler` (naming differs, semantics match) |\n| 16 | `'vehicle-trailer system'` contains an action block | **Yes** | `hitchingSystem` contains actions |\n| 17 | Action `'connect trailer to vehicle'` assigns `'vehicle-trailer system'.trailerHitch := TrailerHitch()` | **Yes** | `action hitchConnect : ConnectTrailer` (semantics match: connects the hitch) |\n| 18 | Action `'destroy connection of trailer to vehicle'` destroys `'vehicle-trailer system'.trailerHitch` | **Yes** | `action hitchDisconnect : DisconnectTrailer` (semantics match: disconnects the hitch) |\n| 19 | Action `'disconnect trailer from vehicle'` assigns `'vehicle-trailer system'.trailerHitch := null` | **Yes** | `action hitchDisconnect : DisconnectTrailer` (semantics match: disconnects the hitch) |\n\n---\n\n### 3. Summarize the results\n\n**Score: 19/19**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 717,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1173,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1890
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. Definition of part `Vehicle`\n2. Definition of part `VehicleFrame`\n3. Definition of part `HitchBall`\n4. Definition of part `TrailerCoupler`\n5. Definition of part `Trailer`\n6. Definition of part `TrailerFrame`\n7. Definition of connection `TrailerHitch` with ends: `hitch : HitchBall`, `coupler : TrailerCoupler`\n8. Definition of part `'vehicle-trailer system'`\n9. `'vehicle-trailer system'` contains part `vehicle : Vehicle`\n10. `vehicle` contains part `vehicleFrame : VehicleFrame`\n11. `vehicleFrame` contains part `hitch : HitchBall`\n12. `'vehicle-trailer system'` contains part `trailer : Trailer`\n13. `trailer` contains part `trailerFrame : TrailerFrame`\n14. `trailerFrame` contains part `coupler : TrailerCoupler`\n15. `'vehicle-trailer system'` contains connection `trailerHitch : TrailerHitch[0..1]` connecting `vehicle.vehicleFrame.hitch` to `trailer.trailerFrame.coupler`\n16. `'vehicle-trailer system'` contains an action block\n17. Action `'connect trailer to vehicle'` assigns `'vehicle-trailer system'.trailerHitch := TrailerHitch()`\n18. Action `'destroy connection of trailer to vehicle'` destroys `'vehicle-trailer system'.trailerHitch`\n19. Action `'disconnect trailer from vehicle'` assigns `'vehicle-trailer system'.trailerHitch := null`\n\n---\n\n### 2. For each atomic claim, determine coverage by the generated model\n\n| # | Reference Claim | Covered in Generated Model? | Notes |\n|---|-----------------|-----------------------------|-------|\n| 1 | Definition of part `Vehicle` | **Yes** | `part def Vehicle` exists |\n| 2 | Definition of part `VehicleFrame` | **Yes** | `part def VehicleFrame` exists |\n| 3 | Definition of part `HitchBall` | **Yes** | `part def HitchBall` exists |\n| 4 | Definition of part `TrailerCoupler` | **Yes** | `part def TrailerCoupler` exists |\n| 5 | Definition of part `Trailer` | **Yes** | `part def Trailer` exists |\n| 6 | Definition of part `TrailerFrame` | **Yes** | `part def TrailerFrame` exists |\n| 7 | Definition of connection `TrailerHitch` with ends: `hitch : HitchBall`, `coupler : TrailerCoupler` | **Yes** | `connection def HitchingConnection` with ends `ball : HitchBall`, `coupler : TrailerCoupler` (naming differs, semantics match) |\n| 8 | Definition of part `'vehicle-trailer system'` | **Yes** | `part hitchingSystem` (naming differs, semantics match) |\n| 9 | `'vehicle-trailer system'` contains part `vehicle : Vehicle` | **Yes** | `part vehicle : Vehicle` in `hitchingSystem` |\n| 10 | `vehicle` contains part `vehicleFrame : VehicleFrame` | **Yes** | `part chassisFrame : VehicleFrame` in `Vehicle` (naming differs, semantics match) |\n| 11 | `vehicleFrame` contains part `hitch : HitchBall` | **Yes** | `part hitchBall : HitchBall` in `VehicleFrame` (naming differs, semantics match) |\n| 12 | `'vehicle-trailer system'` contains part `trailer : Trailer` | **Yes** | `part trailer : Trailer` in `hitchingSystem` |\n| 13 | `trailer` contains part `trailerFrame : TrailerFrame` | **Yes** | `part towFrame : TrailerFrame` in `Trailer` (naming differs, semantics match) |\n| 14 | `trailerFrame` contains part `coupler : TrailerCoupler` | **Yes** | `part coupler : TrailerCoupler` in `TrailerFrame` |\n| 15 | `'vehicle-trailer system'` contains connection `trailerHitch : TrailerHitch[0..1]` connecting `vehicle.vehicleFrame.hitch` to `trailer.trailerFrame.coupler` | **Yes** | `connection hitchLink : HitchingConnection` connects `vehicle.chassisFrame.hitchBall` to `trailer.towFrame.coupler` (naming differs, semantics match) |\n| 16 | `'vehicle-trailer system'` contains an action block | **Yes** | `hitchingSystem` contains actions |\n| 17 | Action `'connect trailer to vehicle'` assigns `'vehicle-trailer system'.trailerHitch := TrailerHitch()` | **Yes** | `action hitchConnect : ConnectTrailer` (semantics match: connects the hitch) |\n| 18 | Action `'destroy connection of trailer to vehicle'` destroys `'vehicle-trailer system'.trailerHitch` | **Yes** | `action hitchDisconnect : DisconnectTrailer` (semantics match: disconnects the hitch) |\n| 19 | Action `'disconnect trailer from vehicle'` assigns `'vehicle-trailer system'.trailerHitch := null` | **Yes** | `action hitchDisconnect : DisconnectTrailer` (semantics match: disconnects the hitch) |\n\n---\n\n### 3. Summarize the results\n\n**Score: 19/19**"
+  }
+}

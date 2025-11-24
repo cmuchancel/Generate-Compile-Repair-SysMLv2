@@ -1,0 +1,82 @@
+{
+  "model_id": 32,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'CameraMessagingSystem' {\n\titem def Scene;\n\titem def Image;\n\titem def Picture;\n\tattribute def Show {\n\t\titem picture : Picture;\n\t}\n\taction def Focus { in item scene : Scene; out item image : Image; }\n\taction def Shoot { in item image : Image; out item picture : Picture; }\n\taction def TakePicture;\n\taction screen;\n\taction takePicture : TakePicture {\n\t\taction trigger accept scene : Scene;\n\t\tthen action focus : Focus {\n\t\t\tin item scene = trigger.scene;\n\t\t\tout item image;\n\t\t}\n\t\tflow from focus.image to shoot.image;\n\t\tthen action shoot : Shoot {\n\t\t\tin item image; \n\t\t\tout item picture;\n\t\t}\n\t\tthen send Show(shoot.picture) to screen;\n\t}\n}\n\nGenerated Model:\npackage 'CameraShootAndDisplay' {\n\titem def Scene;\n\titem def Image;\n\titem def Photo;\n\t\n\taction def FocusScene {\n\t\tin scene : Scene;\n\t\tout image : Image;\n\t}\n\t\n\taction def CapturePhoto {\n\t\tin image : Image;\n\t\tout photo : Photo;\n\t}\n\t\n\taction def DisplayPhoto {\n\t\tin photo : Photo;\n\t\tout shownPhoto : Photo;\n\t}\n\t\n\tpart cameraWorkflow {\n\t\tperform action focusScene : FocusScene;\n\t\tperform action capturePhoto : CapturePhoto {\n\t\t\tin image = focusScene.image;\n\t\t}\n\t\tperform action displayPhoto : DisplayPhoto {\n\t\t\tin photo = capturePhoto.photo;\n\t\t}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/32/design.sysml",
+  "generated_path": "Generated_from_Prompts/32/32.sysml",
+  "response": {
+    "id": "resp_021a8a650457bbcf006923ce21ec28819098a155187c3730c9",
+    "created_at": 1763954209.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_021a8a650457bbcf006923ce22ae148190bc8615e17b418344",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. Definition of item `Scene`.\n2. Definition of item `Image`.\n3. Definition of item `Picture`.\n4. Definition of attribute `Show` with an item `picture` of type `Picture`.\n5. Definition of action `Focus` with input item `scene` of type `Scene` and output item `image` of type `Image`.\n6. Definition of action `Shoot` with input item `image` of type `Image` and output item `picture` of type `Picture`.\n7. Definition of action `TakePicture`.\n8. Definition of action `screen`.\n9. Definition of action `takePicture` of type `TakePicture` with:\n    - 9a. Trigger accepting `scene` of type `Scene`.\n    - 9b. Then action `focus` of type `Focus` with input `scene = trigger.scene` and output `image`.\n    - 9c. Flow from `focus.image` to `shoot.image`.\n    - 9d. Then action `shoot` of type `Shoot` with input `image` and output `picture`.\n    - 9e. Then send `Show(shoot.picture)` to `screen`.\n\n---\n\n### 2. For each atomic claim, determine coverage in the generated model\n\n**1. Definition of item `Scene`.**  \n- **Covered** (as `item def Scene`).\n\n**2. Definition of item `Image`.**  \n- **Covered** (as `item def Image`).\n\n**3. Definition of item `Picture`.**  \n- **Partially covered**: The generated model defines `Photo` instead of `Picture`, but it is used in the same structural role. **Treat as covered** (naming difference only).\n\n**4. Definition of attribute `Show` with an item `picture` of type `Picture`.**  \n- **Not covered**: There is an action `DisplayPhoto` but no attribute or equivalent construct for `Show`.\n\n**5. Definition of action `Focus` with input item `scene` of type `Scene` and output item `image` of type `Image`.**  \n- **Covered**: `action def FocusScene` with `in scene : Scene; out image : Image;` (naming difference only).\n\n**6. Definition of action `Shoot` with input item `image` of type `Image` and output item `picture` of type `Picture`.**  \n- **Covered**: `action def CapturePhoto` with `in image : Image; out photo : Photo;` (naming difference only).\n\n**7. Definition of action `TakePicture`.**  \n- **Not covered**: No equivalent action definition (no `TakePicture` or equivalent).\n\n**8. Definition of action `screen`.**  \n- **Not covered**: No equivalent action or part.\n\n**9. Definition of action `takePicture` of type `TakePicture` with:**\n   - **9a. Trigger accepting `scene` of type `Scene`.**  \n     - **Partially covered**: The workflow starts with `FocusScene` which takes a `Scene`, but there is no explicit trigger or event.\n   - **9b. Then action `focus` of type `Focus` with input `scene = trigger.scene` and output `image`.**  \n     - **Covered**: `perform action focusScene : FocusScene;` in the workflow.\n   - **9c. Flow from `focus.image` to `shoot.image`.**  \n     - **Covered**: `in image = focusScene.image;` in `CapturePhoto`.\n   - **9d. Then action `shoot` of type `Shoot` with input `image` and output `picture`.**  \n     - **Covered**: `perform action capturePhoto : CapturePhoto`.\n   - **9e. Then send `Show(shoot.picture)` to `screen`.**  \n     - **Partially covered**: There is `perform action displayPhoto : DisplayPhoto { in photo = capturePhoto.photo; }`, which displays the photo, but no explicit send or screen.\n\n---\n\n### 3. Summarize the results\n\nLet's count the claims:\n\n- Total atomic claims: 13 (claims 1-8, and 9a-9e = 13)\n- Covered claims: 1, 2, 3, 5, 6, 9b, 9c, 9d, 9e (partial), 9a (partial) = 9 (counting partials as covered for recall)\n- Not covered: 4, 7, 8\n\n**Score: 10/13**\n\n---\n\n**Final Output:**\n\nScore: 10/13",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 485,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1005,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1490
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. Definition of item `Scene`.\n2. Definition of item `Image`.\n3. Definition of item `Picture`.\n4. Definition of attribute `Show` with an item `picture` of type `Picture`.\n5. Definition of action `Focus` with input item `scene` of type `Scene` and output item `image` of type `Image`.\n6. Definition of action `Shoot` with input item `image` of type `Image` and output item `picture` of type `Picture`.\n7. Definition of action `TakePicture`.\n8. Definition of action `screen`.\n9. Definition of action `takePicture` of type `TakePicture` with:\n    - 9a. Trigger accepting `scene` of type `Scene`.\n    - 9b. Then action `focus` of type `Focus` with input `scene = trigger.scene` and output `image`.\n    - 9c. Flow from `focus.image` to `shoot.image`.\n    - 9d. Then action `shoot` of type `Shoot` with input `image` and output `picture`.\n    - 9e. Then send `Show(shoot.picture)` to `screen`.\n\n---\n\n### 2. For each atomic claim, determine coverage in the generated model\n\n**1. Definition of item `Scene`.**  \n- **Covered** (as `item def Scene`).\n\n**2. Definition of item `Image`.**  \n- **Covered** (as `item def Image`).\n\n**3. Definition of item `Picture`.**  \n- **Partially covered**: The generated model defines `Photo` instead of `Picture`, but it is used in the same structural role. **Treat as covered** (naming difference only).\n\n**4. Definition of attribute `Show` with an item `picture` of type `Picture`.**  \n- **Not covered**: There is an action `DisplayPhoto` but no attribute or equivalent construct for `Show`.\n\n**5. Definition of action `Focus` with input item `scene` of type `Scene` and output item `image` of type `Image`.**  \n- **Covered**: `action def FocusScene` with `in scene : Scene; out image : Image;` (naming difference only).\n\n**6. Definition of action `Shoot` with input item `image` of type `Image` and output item `picture` of type `Picture`.**  \n- **Covered**: `action def CapturePhoto` with `in image : Image; out photo : Photo;` (naming difference only).\n\n**7. Definition of action `TakePicture`.**  \n- **Not covered**: No equivalent action definition (no `TakePicture` or equivalent).\n\n**8. Definition of action `screen`.**  \n- **Not covered**: No equivalent action or part.\n\n**9. Definition of action `takePicture` of type `TakePicture` with:**\n   - **9a. Trigger accepting `scene` of type `Scene`.**  \n     - **Partially covered**: The workflow starts with `FocusScene` which takes a `Scene`, but there is no explicit trigger or event.\n   - **9b. Then action `focus` of type `Focus` with input `scene = trigger.scene` and output `image`.**  \n     - **Covered**: `perform action focusScene : FocusScene;` in the workflow.\n   - **9c. Flow from `focus.image` to `shoot.image`.**  \n     - **Covered**: `in image = focusScene.image;` in `CapturePhoto`.\n   - **9d. Then action `shoot` of type `Shoot` with input `image` and output `picture`.**  \n     - **Covered**: `perform action capturePhoto : CapturePhoto`.\n   - **9e. Then send `Show(shoot.picture)` to `screen`.**  \n     - **Partially covered**: There is `perform action displayPhoto : DisplayPhoto { in photo = capturePhoto.photo; }`, which displays the photo, but no explicit send or screen.\n\n---\n\n### 3. Summarize the results\n\nLet's count the claims:\n\n- Total atomic claims: 13 (claims 1-8, and 9a-9e = 13)\n- Covered claims: 1, 2, 3, 5, 6, 9b, 9c, 9d, 9e (partial), 9a (partial) = 9 (counting partials as covered for recall)\n- Not covered: 4, 7, 8\n\n**Score: 10/13**\n\n---\n\n**Final Output:**\n\nScore: 10/13"
+  }
+}

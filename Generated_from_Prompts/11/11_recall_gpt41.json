@@ -1,0 +1,82 @@
+{
+  "model_id": 11,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.3,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleFuelSystem' {\n\tattribute def Temp;\n\tpart def Fuel;\n\tport def FuelOutPort {\n\t\tattribute temperature : Temp;\n\t\tout item fuelSupply : Fuel;\n\t\tin item fuelReturn : Fuel;\n\t}\n\tport def FuelInPort {\n\t\tattribute temperature : Temp;\n\t\tin item fuelSupply : Fuel;\n\t\tout item fuelReturn : Fuel;\n\t}\n\tpart def FuelTankAssembly {\n\t\tport fuelTankPort : FuelOutPort;\n\t}\n\tpart def Engine {\n\t\tport engineFuelPort : FuelInPort;\n\t}\n\tpart def Vehicle;\n\tinterface def FuelInterface {\n\t\tend supplierPort : FuelOutPort;\n\t\tend consumerPort : FuelInPort;\n\t}\n\tpart vehicle : Vehicle {\t\n\t\tpart tankAssy : FuelTankAssembly;\t\t\n\t\tpart eng : Engine;\n\t\tinterface : FuelInterface connect \n\t\t\tsupplierPort ::> tankAssy.fuelTankPort to \n\t\t\tconsumerPort ::> eng.engineFuelPort;\n\t} \n}\n\nGenerated Model:\npackage 'MotorVehicleFuelSystem' {\n\tattribute def FuelMeasurement;\n\tpart def Fuel;\n\tport def FuelTankPort {\n\t\tattribute temperature : FuelMeasurement;\n\t\tout item suppliedFuel : Fuel;\n\t\tin item returnedFuel : Fuel;\n\t}\n\tport def EngineFuelPort {\n\t\tattribute temperature : FuelMeasurement;\n\t\tin item suppliedFuel : Fuel;\n\t\tout item returnedFuel : Fuel;\n\t}\n\tpart def FuelTankAssembly {\n\t\tport fuelPort : FuelTankPort;\n\t}\n\tpart def Engine {\n\t\tport fuelPort : EngineFuelPort;\n\t}\n\tflow def FuelFlow {\n\t\tref :>> payload : Fuel;\n\t\tend port supplyEnd : FuelTankPort;\n\t\tend port receiveEnd : EngineFuelPort;\n\t}\n\tpart def FuelSystem {\n\t\tpart fuelTankAssembly : FuelTankAssembly;\n\t\tpart engine : Engine;\n\t\tflow : FuelFlow\n\t\t  from fuelTankAssembly.fuelPort.suppliedFuel\n\t\t\tto engine.fuelPort.suppliedFuel;\n\t\tflow : FuelFlow\n\t\t  from engine.fuelPort.returnedFuel\n\t\t\tto fuelTankAssembly.fuelPort.returnedFuel;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "Generated_from_Prompts/11/11_groundtruth.sysml",
+  "generated_path": "Generated_from_Prompts/11/11.sysml",
+  "response": {
+    "id": "resp_0bfb5eb659c065e400690f8e9bc8048193964f50626ebf489b",
+    "created_at": 1762627227.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0bfb5eb659c065e400690f8e9d01148193b3035495e3679da3",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model.\n\n**Reference Model Atomic Claims:**\n\n1. Definition of attribute type `Temp`.\n2. Definition of part type `Fuel`.\n3. Definition of port type `FuelOutPort`.\n   - 3a. `FuelOutPort` has attribute `temperature` of type `Temp`.\n   - 3b. `FuelOutPort` has out item `fuelSupply` of type `Fuel`.\n   - 3c. `FuelOutPort` has in item `fuelReturn` of type `Fuel`.\n4. Definition of port type `FuelInPort`.\n   - 4a. `FuelInPort` has attribute `temperature` of type `Temp`.\n   - 4b. `FuelInPort` has in item `fuelSupply` of type `Fuel`.\n   - 4c. `FuelInPort` has out item `fuelReturn` of type `Fuel`.\n5. Definition of part type `FuelTankAssembly`.\n   - 5a. `FuelTankAssembly` has port `fuelTankPort` of type `FuelOutPort`.\n6. Definition of part type `Engine`.\n   - 6a. `Engine` has port `engineFuelPort` of type `FuelInPort`.\n7. Definition of part type `Vehicle`.\n8. Definition of interface type `FuelInterface`.\n   - 8a. `FuelInterface` has end `supplierPort` of type `FuelOutPort`.\n   - 8b. `FuelInterface` has end `consumerPort` of type `FuelInPort`.\n9. Definition of part `vehicle` of type `Vehicle`.\n   - 9a. `vehicle` has part `tankAssy` of type `FuelTankAssembly`.\n   - 9b. `vehicle` has part `eng` of type `Engine`.\n   - 9c. `vehicle` has interface connection of type `FuelInterface` connecting `supplierPort` to `tankAssy.fuelTankPort` and `consumerPort` to `eng.engineFuelPort`.\n\n**Total atomic claims: 16**\n\n---\n\n### 2. For each atomic claim in the reference model, determine whether it is covered by the generated model.\n\n#### 1. Definition of attribute type `Temp`.\n- **Generated model:** Defines `FuelMeasurement` as an attribute type, used in analogous places. **Covered** (naming difference only).\n\n#### 2. Definition of part type `Fuel`.\n- **Generated model:** Defines `Fuel` as a part. **Covered**.\n\n#### 3. Definition of port type `FuelOutPort`.\n- **Generated model:** Defines `FuelTankPort` with same structure. **Covered** (naming difference only).\n  - 3a. Attribute `temperature` of type `FuelMeasurement` in `FuelTankPort`. **Covered**.\n  - 3b. Out item `suppliedFuel` of type `Fuel`. **Covered** (naming difference).\n  - 3c. In item `returnedFuel` of type `Fuel`. **Covered** (naming difference).\n\n#### 4. Definition of port type `FuelInPort`.\n- **Generated model:** Defines `EngineFuelPort` with same structure. **Covered** (naming difference).\n  - 4a. Attribute `temperature` of type `FuelMeasurement` in `EngineFuelPort`. **Covered**.\n  - 4b. In item `suppliedFuel` of type `Fuel`. **Covered** (naming difference).\n  - 4c. Out item `returnedFuel` of type `Fuel`. **Covered** (naming difference).\n\n#### 5. Definition of part type `FuelTankAssembly`.\n- **Generated model:** Defines `FuelTankAssembly`. **Covered**.\n  - 5a. Has port `fuelPort` of type `FuelTankPort`. **Covered** (naming difference).\n\n#### 6. Definition of part type `Engine`.\n- **Generated model:** Defines `Engine`. **Covered**.\n  - 6a. Has port `fuelPort` of type `EngineFuelPort`. **Covered** (naming difference).\n\n#### 7. Definition of part type `Vehicle`.\n- **Generated model:** Defines `FuelSystem` as the top-level part. **Covered** (naming difference).\n\n#### 8. Definition of interface type `FuelInterface`.\n- **Generated model:** Defines `FuelFlow` as a flow with ends for the two ports. **Covered** (different mechanism, but semantically equivalent).\n  - 8a. End `supplyEnd` of type `FuelTankPort` (analogous to `supplierPort`). **Covered**.\n  - 8b. End `receiveEnd` of type `EngineFuelPort` (analogous to `consumerPort`). **Covered**.\n\n#### 9. Definition of part `vehicle` of type `Vehicle`.\n- **Generated model:** Defines `FuelSystem` as the top-level part. **Covered** (naming difference).\n  - 9a. Has part `fuelTankAssembly` of type `FuelTankAssembly`. **Covered**.\n  - 9b. Has part `engine` of type `Engine`. **Covered**.\n  - 9c. Has flow connection from `fuelTankAssembly.fuelPort.suppliedFuel` to `engine.fuelPort.suppliedFuel`, and the reverse for `returnedFuel`. **Covered** (semantically equivalent to interface connection).\n\n---\n\n### 3. Summarize the results\n\n**Score: 16/16**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.3,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 620,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1163,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1783
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "prompt_cache_retention": null,
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model.\n\n**Reference Model Atomic Claims:**\n\n1. Definition of attribute type `Temp`.\n2. Definition of part type `Fuel`.\n3. Definition of port type `FuelOutPort`.\n   - 3a. `FuelOutPort` has attribute `temperature` of type `Temp`.\n   - 3b. `FuelOutPort` has out item `fuelSupply` of type `Fuel`.\n   - 3c. `FuelOutPort` has in item `fuelReturn` of type `Fuel`.\n4. Definition of port type `FuelInPort`.\n   - 4a. `FuelInPort` has attribute `temperature` of type `Temp`.\n   - 4b. `FuelInPort` has in item `fuelSupply` of type `Fuel`.\n   - 4c. `FuelInPort` has out item `fuelReturn` of type `Fuel`.\n5. Definition of part type `FuelTankAssembly`.\n   - 5a. `FuelTankAssembly` has port `fuelTankPort` of type `FuelOutPort`.\n6. Definition of part type `Engine`.\n   - 6a. `Engine` has port `engineFuelPort` of type `FuelInPort`.\n7. Definition of part type `Vehicle`.\n8. Definition of interface type `FuelInterface`.\n   - 8a. `FuelInterface` has end `supplierPort` of type `FuelOutPort`.\n   - 8b. `FuelInterface` has end `consumerPort` of type `FuelInPort`.\n9. Definition of part `vehicle` of type `Vehicle`.\n   - 9a. `vehicle` has part `tankAssy` of type `FuelTankAssembly`.\n   - 9b. `vehicle` has part `eng` of type `Engine`.\n   - 9c. `vehicle` has interface connection of type `FuelInterface` connecting `supplierPort` to `tankAssy.fuelTankPort` and `consumerPort` to `eng.engineFuelPort`.\n\n**Total atomic claims: 16**\n\n---\n\n### 2. For each atomic claim in the reference model, determine whether it is covered by the generated model.\n\n#### 1. Definition of attribute type `Temp`.\n- **Generated model:** Defines `FuelMeasurement` as an attribute type, used in analogous places. **Covered** (naming difference only).\n\n#### 2. Definition of part type `Fuel`.\n- **Generated model:** Defines `Fuel` as a part. **Covered**.\n\n#### 3. Definition of port type `FuelOutPort`.\n- **Generated model:** Defines `FuelTankPort` with same structure. **Covered** (naming difference only).\n  - 3a. Attribute `temperature` of type `FuelMeasurement` in `FuelTankPort`. **Covered**.\n  - 3b. Out item `suppliedFuel` of type `Fuel`. **Covered** (naming difference).\n  - 3c. In item `returnedFuel` of type `Fuel`. **Covered** (naming difference).\n\n#### 4. Definition of port type `FuelInPort`.\n- **Generated model:** Defines `EngineFuelPort` with same structure. **Covered** (naming difference).\n  - 4a. Attribute `temperature` of type `FuelMeasurement` in `EngineFuelPort`. **Covered**.\n  - 4b. In item `suppliedFuel` of type `Fuel`. **Covered** (naming difference).\n  - 4c. Out item `returnedFuel` of type `Fuel`. **Covered** (naming difference).\n\n#### 5. Definition of part type `FuelTankAssembly`.\n- **Generated model:** Defines `FuelTankAssembly`. **Covered**.\n  - 5a. Has port `fuelPort` of type `FuelTankPort`. **Covered** (naming difference).\n\n#### 6. Definition of part type `Engine`.\n- **Generated model:** Defines `Engine`. **Covered**.\n  - 6a. Has port `fuelPort` of type `EngineFuelPort`. **Covered** (naming difference).\n\n#### 7. Definition of part type `Vehicle`.\n- **Generated model:** Defines `FuelSystem` as the top-level part. **Covered** (naming difference).\n\n#### 8. Definition of interface type `FuelInterface`.\n- **Generated model:** Defines `FuelFlow` as a flow with ends for the two ports. **Covered** (different mechanism, but semantically equivalent).\n  - 8a. End `supplyEnd` of type `FuelTankPort` (analogous to `supplierPort`). **Covered**.\n  - 8b. End `receiveEnd` of type `EngineFuelPort` (analogous to `consumerPort`). **Covered**.\n\n#### 9. Definition of part `vehicle` of type `Vehicle`.\n- **Generated model:** Defines `FuelSystem` as the top-level part. **Covered** (naming difference).\n  - 9a. Has part `fuelTankAssembly` of type `FuelTankAssembly`. **Covered**.\n  - 9b. Has part `engine` of type `Engine`. **Covered**.\n  - 9c. Has flow connection from `fuelTankAssembly.fuelPort.suppliedFuel` to `engine.fuelPort.suppliedFuel`, and the reverse for `returnedFuel`. **Covered** (semantically equivalent to interface connection).\n\n---\n\n### 3. Summarize the results\n\n**Score: 16/16**"
+  }
+}

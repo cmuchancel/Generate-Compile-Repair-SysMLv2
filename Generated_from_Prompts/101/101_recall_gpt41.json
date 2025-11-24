@@ -1,0 +1,82 @@
+{
+  "model_id": 101,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleTrailerCouplingSystemModeling' {\n\tpackage Definitions {\n\t\tpart def Vehicle;\n\t\tpart def Trailer;\n\t\tpart def TrailerHitch;\n\t\tpart def HitchBall;\n\t\tpart def TrailerCoupler;\n\t}\n\tpackage Usages {\n\t\tprivate import Definitions::*;\n\t\tpart vehicle_trailer_system {\n\t\t\tpart vehicle1_c1: Vehicle {\n\t\t\t\tref hitchBall : HitchBall {\n\t\t\t\t\t/*\n\t\t\t\t\t * 'vehicle1_c1'::'hitchBall' is a reference property that\n\t\t\t\t\t * references a hitch ball that is not part of this vehicle. \n\t\t\t\t\t * If 'vehicle1_c1' is removed or destroyed, this does not\n\t\t\t\t\t * effect the hitchBall referenced here.\n\t\t\t\t\t */\n\t\t\t\t}\n\t\t\t}\n\t\t\tbind vehicle1_c1.hitchBall = trailerHitch.hitchBall {\n\t\t\t\t/*\n\t\t\t\t * This is a binding connector between the 'hitchBall' in 'vehicle1_c1'\n\t\t\t\t * and the 'hitchBall' in 'trailerHitch'.\n\t\t\t\t */\t\t\t\n\t\t\t}\n\t\t\tpart trailerHitch: TrailerHitch {\t\t\t\t\n\t\t\t\tpart hitchBall: HitchBall;\n\t\t\t\tpart trailerCoupler: TrailerCoupler;\n\t\t\t}\n\t\t\tpart trailer1: Trailer {\n\t\t\t\tref trailerCoupler : TrailerCoupler = trailerHitch.trailerCoupler {\n\t\t\t\t\t/*\n\t\t\t\t\t * This is a shorthand for a binding connector between the\n\t\t\t\t\t * 'trailerCoupler' here and the 'trailerCoupler' in 'trailerHitch'.\n\t\t\t\t\t * The binding connector is now contained within the 'trailer1'\n\t\t\t\t\t * part, though, rather than being at the system level. \n\t\t\t\t\t */\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\n\nGenerated Model:\npackage 'VehicleTrailerCoupling' {\n\tpart def CouplingBall;\n\tpart def HitchConnector;\n\tpart def Hitch {\n\t\tpart ball : CouplingBall;\n\t\tpart connector : HitchConnector;\n\t}\n\tpart def Vehicle {\n\t\tref part couplingBall : CouplingBall;\n\t}\n\tpart def Trailer {\n\t\tref part hitchConnector : HitchConnector;\n\t}\n\tconnection def CouplingInterface {\n\t\tend vehicle : Vehicle[1];\n\t\tend trailer : Trailer[1];\n\t\tend hitch : Hitch[1];\n\t}\n\tpart couplingAssembly {\n\t\tpart vehicle : Vehicle;\n\t\tpart trailer : Trailer;\n\t\tpart hitch : Hitch;\n\t\tconnection couplingLink : CouplingInterface {\n\t\t\tend vehicle = couplingAssembly::vehicle;\n\t\t\tend trailer = couplingAssembly::trailer;\n\t\t\tend hitch = couplingAssembly::hitch;\n\t\t}\n\t\tbind vehicle.couplingBall = hitch.ball;\n\t\tbind trailer.hitchConnector = hitch.connector;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/101/design.sysml",
+  "generated_path": "Generated_from_Prompts/101/101.sysml",
+  "response": {
+    "id": "resp_0c3a83428fe892e1006923df0598548193a8716ba79e2f6dad",
+    "created_at": 1763958533.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0c3a83428fe892e1006923df05eb1881938ed7ecd5419af9df",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step as requested:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n#### **Definitions Package**\n1. There is a part definition `Vehicle`.\n2. There is a part definition `Trailer`.\n3. There is a part definition `TrailerHitch`.\n4. There is a part definition `HitchBall`.\n5. There is a part definition `TrailerCoupler`.\n\n#### **Usages Package**\n6. The `Usages` package imports all definitions from `Definitions`.\n7. There is a part `vehicle_trailer_system`.\n8. Inside `vehicle_trailer_system`, there is a part `vehicle1_c1` of type `Vehicle`.\n9. `vehicle1_c1` has a reference property `hitchBall` of type `HitchBall`.\n10. There is a binding connector: `vehicle1_c1.hitchBall = trailerHitch.hitchBall`.\n11. Inside `vehicle_trailer_system`, there is a part `trailerHitch` of type `TrailerHitch`.\n12. `trailerHitch` has a part `hitchBall` of type `HitchBall`.\n13. `trailerHitch` has a part `trailerCoupler` of type `TrailerCoupler`.\n14. Inside `vehicle_trailer_system`, there is a part `trailer1` of type `Trailer`.\n15. `trailer1` has a reference property `trailerCoupler` of type `TrailerCoupler`, bound to `trailerHitch.trailerCoupler`.\n\n---\n\n### 2. For each atomic claim, determine coverage by the generated model\n\n#### **Definitions Package**\n1. **Vehicle part definition**  \n   - **Covered**: `part def Vehicle` exists in generated model.\n2. **Trailer part definition**  \n   - **Covered**: `part def Trailer` exists in generated model.\n3. **TrailerHitch part definition**  \n   - **Partially covered**: There is a `part def Hitch` in the generated model, which contains a ball and connector, mapping to the reference's `TrailerHitch` (with `HitchBall` and `TrailerCoupler`). **Accept as covered** due to semantic equivalence.\n4. **HitchBall part definition**  \n   - **Covered**: `part def CouplingBall` in generated model; naming difference only.\n5. **TrailerCoupler part definition**  \n   - **Covered**: `part def HitchConnector` in generated model; naming difference only.\n\n#### **Usages Package**\n6. **Import of Definitions**  \n   - **Implicitly covered**: All definitions are used; explicit import not required in generated model.\n7. **Part vehicle_trailer_system**  \n   - **Covered**: `part couplingAssembly` in generated model is the system-level assembly.\n8. **Part vehicle1_c1: Vehicle**  \n   - **Covered**: `part vehicle : Vehicle` in `couplingAssembly`.\n9. **vehicle1_c1 has ref hitchBall : HitchBall**  \n   - **Covered**: `ref part couplingBall : CouplingBall` in `Vehicle` definition.\n10. **Binding: vehicle1_c1.hitchBall = trailerHitch.hitchBall**  \n    - **Covered**: `bind vehicle.couplingBall = hitch.ball` in `couplingAssembly`.\n11. **Part trailerHitch: TrailerHitch**  \n    - **Covered**: `part hitch : Hitch` in `couplingAssembly`.\n12. **trailerHitch has part hitchBall: HitchBall**  \n    - **Covered**: `part ball : CouplingBall` in `Hitch` definition.\n13. **trailerHitch has part trailerCoupler: TrailerCoupler**  \n    - **Covered**: `part connector : HitchConnector` in `Hitch` definition.\n14. **Part trailer1: Trailer**  \n    - **Covered**: `part trailer : Trailer` in `couplingAssembly`.\n15. **trailer1 has ref trailerCoupler : TrailerCoupler = trailerHitch.trailerCoupler**  \n    - **Covered**: `ref part hitchConnector : HitchConnector` in `Trailer` definition, with `bind trailer.hitchConnector = hitch.connector` in `couplingAssembly`.\n\n---\n\n### 3. Summarize the results\n\nAll atomic claims are covered by the generated model, with only naming differences and minor structural variations that do not affect semantics.\n\n**Score: 15/15**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 738,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 944,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1682
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step as requested:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n#### **Definitions Package**\n1. There is a part definition `Vehicle`.\n2. There is a part definition `Trailer`.\n3. There is a part definition `TrailerHitch`.\n4. There is a part definition `HitchBall`.\n5. There is a part definition `TrailerCoupler`.\n\n#### **Usages Package**\n6. The `Usages` package imports all definitions from `Definitions`.\n7. There is a part `vehicle_trailer_system`.\n8. Inside `vehicle_trailer_system`, there is a part `vehicle1_c1` of type `Vehicle`.\n9. `vehicle1_c1` has a reference property `hitchBall` of type `HitchBall`.\n10. There is a binding connector: `vehicle1_c1.hitchBall = trailerHitch.hitchBall`.\n11. Inside `vehicle_trailer_system`, there is a part `trailerHitch` of type `TrailerHitch`.\n12. `trailerHitch` has a part `hitchBall` of type `HitchBall`.\n13. `trailerHitch` has a part `trailerCoupler` of type `TrailerCoupler`.\n14. Inside `vehicle_trailer_system`, there is a part `trailer1` of type `Trailer`.\n15. `trailer1` has a reference property `trailerCoupler` of type `TrailerCoupler`, bound to `trailerHitch.trailerCoupler`.\n\n---\n\n### 2. For each atomic claim, determine coverage by the generated model\n\n#### **Definitions Package**\n1. **Vehicle part definition**  \n   - **Covered**: `part def Vehicle` exists in generated model.\n2. **Trailer part definition**  \n   - **Covered**: `part def Trailer` exists in generated model.\n3. **TrailerHitch part definition**  \n   - **Partially covered**: There is a `part def Hitch` in the generated model, which contains a ball and connector, mapping to the reference's `TrailerHitch` (with `HitchBall` and `TrailerCoupler`). **Accept as covered** due to semantic equivalence.\n4. **HitchBall part definition**  \n   - **Covered**: `part def CouplingBall` in generated model; naming difference only.\n5. **TrailerCoupler part definition**  \n   - **Covered**: `part def HitchConnector` in generated model; naming difference only.\n\n#### **Usages Package**\n6. **Import of Definitions**  \n   - **Implicitly covered**: All definitions are used; explicit import not required in generated model.\n7. **Part vehicle_trailer_system**  \n   - **Covered**: `part couplingAssembly` in generated model is the system-level assembly.\n8. **Part vehicle1_c1: Vehicle**  \n   - **Covered**: `part vehicle : Vehicle` in `couplingAssembly`.\n9. **vehicle1_c1 has ref hitchBall : HitchBall**  \n   - **Covered**: `ref part couplingBall : CouplingBall` in `Vehicle` definition.\n10. **Binding: vehicle1_c1.hitchBall = trailerHitch.hitchBall**  \n    - **Covered**: `bind vehicle.couplingBall = hitch.ball` in `couplingAssembly`.\n11. **Part trailerHitch: TrailerHitch**  \n    - **Covered**: `part hitch : Hitch` in `couplingAssembly`.\n12. **trailerHitch has part hitchBall: HitchBall**  \n    - **Covered**: `part ball : CouplingBall` in `Hitch` definition.\n13. **trailerHitch has part trailerCoupler: TrailerCoupler**  \n    - **Covered**: `part connector : HitchConnector` in `Hitch` definition.\n14. **Part trailer1: Trailer**  \n    - **Covered**: `part trailer : Trailer` in `couplingAssembly`.\n15. **trailer1 has ref trailerCoupler : TrailerCoupler = trailerHitch.trailerCoupler**  \n    - **Covered**: `ref part hitchConnector : HitchConnector` in `Trailer` definition, with `bind trailer.hitchConnector = hitch.connector` in `couplingAssembly`.\n\n---\n\n### 3. Summarize the results\n\nAll atomic claims are covered by the generated model, with only naming differences and minor structural variations that do not affect semantics.\n\n**Score: 15/15**"
+  }
+}

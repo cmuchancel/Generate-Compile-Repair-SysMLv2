@@ -1,0 +1,82 @@
+{
+  "model_id": 16,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.3,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleFuelSystem' {\n\tprivate import 'Port Example'::*;\n\tattribute def Temp;\n\tpart def Fuel;\n\tport def FuelOutPort {\n\t\tattribute temperature : Temp;\n\t\tout item fuelSupply : Fuel;\n\t\tin item fuelReturn : Fuel;\n\t}\n\tport def FuelInPort {\n\t\tattribute temperature : Temp;\n\t\tin item fuelSupply : Fuel;\n\t\tout item fuelReturn : Fuel;\n\t}\n\tpart def FuelTankAssembly {\n\t\tport fuelTankPort : FuelOutPort;\n\t}\n\tpart def Engine {\n\t\tport engineFuelPort : FuelInPort;\n\t}\n\tpart def Vehicle;\n\tinterface def FuelInterface {\n\t\tend supplierPort : FuelOutPort;\n\t\tend consumerPort : FuelInPort;\n\t\tflow supplierPort.fuelSupply to consumerPort.fuelSupply;\t\t\t\n\t\tflow consumerPort.fuelReturn to supplierPort.fuelReturn;\n\t}\n\tpart vehicle : Vehicle {\t\n\t\tpart tankAssy : FuelTankAssembly;\t\t\n\t\tpart eng : Engine;\n\t\tinterface : FuelInterface connect \n\t\t\tsupplierPort ::> tankAssy.fuelTankPort to \n\t\t\tconsumerPort ::> eng.engineFuelPort;\n\t} \n}\n\nGenerated Model:\npackage 'VehicleFuelSupplyAndReturnSystem' {\n\tattribute def FuelTemperature;\n\tpart def Fuel;\n\tport def FuelOutletPort {\n\t\tattribute fuelTemperature : FuelTemperature;\n\t\tout item suppliedFuel : Fuel;\n\t\tin item returnedFuel : Fuel;\n\t}\n\tport def FuelInletPort {\n\t\tattribute fuelTemperature : FuelTemperature;\n\t\tin item suppliedFuel : Fuel;\n\t\tout item returnedFuel : Fuel;\n\t}\n\tpart def FuelTankAssembly {\n\t\tport fuelOutletPort : FuelOutletPort;\n\t}\n\tpart def EngineUnit {\n\t\tport fuelInletPort : FuelInletPort;\n\t}\n\tflow def FuelFlow {\n\t\tref :>> payload : Fuel;\n\t\tend port supplierPort : FuelOutletPort;\n\t\tend port consumerPort : FuelInletPort;\n\t}\n\tpart def FuelCirculationSystem {\n\t\tpart fuelTankAssembly : FuelTankAssembly;\n\t\tpart engineUnit : EngineUnit;\n\t\tflow : FuelFlow\n\t\t  from fuelTankAssembly.fuelOutletPort.suppliedFuel\n\t\t\tto engineUnit.fuelInletPort.suppliedFuel;\n\t\tflow : FuelFlow\n\t\t  from engineUnit.fuelInletPort.returnedFuel\n\t\t\tto fuelTankAssembly.fuelOutletPort.returnedFuel;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "Generated_from_Prompts/16/16_groundtruth.sysml",
+  "generated_path": "Generated_from_Prompts/16/16.sysml",
+  "response": {
+    "id": "resp_0965737db4de63a900690f93590b9c81968cd45db247a8fd68",
+    "created_at": 1762628441.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0965737db4de63a900690f9359c8248196aeec1cb7ecad64a7",
+        "content": [
+          {
+            "annotations": [],
+            "text": "**Step 1: List all atomic modeling claims in the reference system model**\n\n1. The package 'VehicleFuelSystem' is defined.\n2. The model imports 'Port Example'.* privately.\n3. An attribute type 'Temp' is defined.\n4. A part type 'Fuel' is defined.\n5. A port type 'FuelOutPort' is defined.\n6. 'FuelOutPort' has an attribute 'temperature' of type 'Temp'.\n7. 'FuelOutPort' has an out item 'fuelSupply' of type 'Fuel'.\n8. 'FuelOutPort' has an in item 'fuelReturn' of type 'Fuel'.\n9. A port type 'FuelInPort' is defined.\n10. 'FuelInPort' has an attribute 'temperature' of type 'Temp'.\n11. 'FuelInPort' has an in item 'fuelSupply' of type 'Fuel'.\n12. 'FuelInPort' has an out item 'fuelReturn' of type 'Fuel'.\n13. A part type 'FuelTankAssembly' is defined.\n14. 'FuelTankAssembly' has a port 'fuelTankPort' of type 'FuelOutPort'.\n15. A part type 'Engine' is defined.\n16. 'Engine' has a port 'engineFuelPort' of type 'FuelInPort'.\n17. A part type 'Vehicle' is defined.\n18. An interface type 'FuelInterface' is defined.\n19. 'FuelInterface' has an end 'supplierPort' of type 'FuelOutPort'.\n20. 'FuelInterface' has an end 'consumerPort' of type 'FuelInPort'.\n21. 'FuelInterface' defines a flow from 'supplierPort.fuelSupply' to 'consumerPort.fuelSupply'.\n22. 'FuelInterface' defines a flow from 'consumerPort.fuelReturn' to 'supplierPort.fuelReturn'.\n23. A part 'vehicle' of type 'Vehicle' is defined.\n24. 'vehicle' has a part 'tankAssy' of type 'FuelTankAssembly'.\n25. 'vehicle' has a part 'eng' of type 'Engine'.\n26. 'vehicle' has an interface of type 'FuelInterface' connecting 'supplierPort' to 'tankAssy.fuelTankPort' and 'consumerPort' to 'eng.engineFuelPort'.\n\n**Step 2: For each atomic claim, determine coverage in the generated model**\n\n1. **Package defined**: Yes (different name, but equivalent) ✔️\n2. **Import**: No (no import statement in generated model) ❌\n3. **Attribute type 'Temp'**: Equivalent ('FuelTemperature') ✔️\n4. **Part type 'Fuel'**: Yes ✔️\n5. **Port type 'FuelOutPort'**: Equivalent ('FuelOutletPort') ✔️\n6. **'FuelOutPort' attribute 'temperature: Temp'**: Equivalent ('fuelTemperature: FuelTemperature') ✔️\n7. **'FuelOutPort' out item 'fuelSupply: Fuel'**: Equivalent ('suppliedFuel: Fuel') ✔️\n8. **'FuelOutPort' in item 'fuelReturn: Fuel'**: Equivalent ('returnedFuel: Fuel') ✔️\n9. **Port type 'FuelInPort'**: Equivalent ('FuelInletPort') ✔️\n10. **'FuelInPort' attribute 'temperature: Temp'**: Equivalent ('fuelTemperature: FuelTemperature') ✔️\n11. **'FuelInPort' in item 'fuelSupply: Fuel'**: Equivalent ('suppliedFuel: Fuel') ✔️\n12. **'FuelInPort' out item 'fuelReturn: Fuel'**: Equivalent ('returnedFuel: Fuel') ✔️\n13. **Part type 'FuelTankAssembly'**: Yes ✔️\n14. **'FuelTankAssembly' port 'fuelTankPort: FuelOutPort'**: Equivalent ('fuelOutletPort: FuelOutletPort') ✔️\n15. **Part type 'Engine'**: Equivalent ('EngineUnit') ✔️\n16. **'Engine' port 'engineFuelPort: FuelInPort'**: Equivalent ('fuelInletPort: FuelInletPort') ✔️\n17. **Part type 'Vehicle'**: Equivalent ('FuelCirculationSystem') ✔️\n18. **Interface type 'FuelInterface'**: Equivalent functionality via 'FuelFlow' (not a direct interface, but covers the flow) ✔️\n19. **'FuelInterface' end 'supplierPort: FuelOutPort'**: Equivalent (end port in 'FuelFlow') ✔️\n20. **'FuelInterface' end 'consumerPort: FuelInPort'**: Equivalent (end port in 'FuelFlow') ✔️\n21. **Flow from 'supplierPort.fuelSupply' to 'consumerPort.fuelSupply'**: Equivalent (flow from fuelTankAssembly.fuelOutletPort.suppliedFuel to engineUnit.fuelInletPort.suppliedFuel) ✔️\n22. **Flow from 'consumerPort.fuelReturn' to 'supplierPort.fuelReturn'**: Equivalent (flow from engineUnit.fuelInletPort.returnedFuel to fuelTankAssembly.fuelOutletPort.returnedFuel) ✔️\n23. **Part 'vehicle: Vehicle'**: Equivalent ('FuelCirculationSystem') ✔️\n24. **'vehicle' part 'tankAssy: FuelTankAssembly'**: Equivalent ('fuelTankAssembly: FuelTankAssembly') ✔️\n25. **'vehicle' part 'eng: Engine'**: Equivalent ('engineUnit: EngineUnit') ✔️\n26. **'vehicle' interface of type 'FuelInterface' connecting ports**: Equivalent (flows connect the corresponding ports) ✔️\n\n**Step 3: Summarize the results**\n\n- Total claims: 26\n- Covered claims: 25\n\n**Score: 25/26**\n\n**Note:** The only uncovered claim is the private import statement, which is not present in the generated model. All structural and semantic modeling elements are otherwise covered.",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.3,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 681,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1256,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1937
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "prompt_cache_retention": null,
+    "store": true,
+    "response_text": "**Step 1: List all atomic modeling claims in the reference system model**\n\n1. The package 'VehicleFuelSystem' is defined.\n2. The model imports 'Port Example'.* privately.\n3. An attribute type 'Temp' is defined.\n4. A part type 'Fuel' is defined.\n5. A port type 'FuelOutPort' is defined.\n6. 'FuelOutPort' has an attribute 'temperature' of type 'Temp'.\n7. 'FuelOutPort' has an out item 'fuelSupply' of type 'Fuel'.\n8. 'FuelOutPort' has an in item 'fuelReturn' of type 'Fuel'.\n9. A port type 'FuelInPort' is defined.\n10. 'FuelInPort' has an attribute 'temperature' of type 'Temp'.\n11. 'FuelInPort' has an in item 'fuelSupply' of type 'Fuel'.\n12. 'FuelInPort' has an out item 'fuelReturn' of type 'Fuel'.\n13. A part type 'FuelTankAssembly' is defined.\n14. 'FuelTankAssembly' has a port 'fuelTankPort' of type 'FuelOutPort'.\n15. A part type 'Engine' is defined.\n16. 'Engine' has a port 'engineFuelPort' of type 'FuelInPort'.\n17. A part type 'Vehicle' is defined.\n18. An interface type 'FuelInterface' is defined.\n19. 'FuelInterface' has an end 'supplierPort' of type 'FuelOutPort'.\n20. 'FuelInterface' has an end 'consumerPort' of type 'FuelInPort'.\n21. 'FuelInterface' defines a flow from 'supplierPort.fuelSupply' to 'consumerPort.fuelSupply'.\n22. 'FuelInterface' defines a flow from 'consumerPort.fuelReturn' to 'supplierPort.fuelReturn'.\n23. A part 'vehicle' of type 'Vehicle' is defined.\n24. 'vehicle' has a part 'tankAssy' of type 'FuelTankAssembly'.\n25. 'vehicle' has a part 'eng' of type 'Engine'.\n26. 'vehicle' has an interface of type 'FuelInterface' connecting 'supplierPort' to 'tankAssy.fuelTankPort' and 'consumerPort' to 'eng.engineFuelPort'.\n\n**Step 2: For each atomic claim, determine coverage in the generated model**\n\n1. **Package defined**: Yes (different name, but equivalent) ✔️\n2. **Import**: No (no import statement in generated model) ❌\n3. **Attribute type 'Temp'**: Equivalent ('FuelTemperature') ✔️\n4. **Part type 'Fuel'**: Yes ✔️\n5. **Port type 'FuelOutPort'**: Equivalent ('FuelOutletPort') ✔️\n6. **'FuelOutPort' attribute 'temperature: Temp'**: Equivalent ('fuelTemperature: FuelTemperature') ✔️\n7. **'FuelOutPort' out item 'fuelSupply: Fuel'**: Equivalent ('suppliedFuel: Fuel') ✔️\n8. **'FuelOutPort' in item 'fuelReturn: Fuel'**: Equivalent ('returnedFuel: Fuel') ✔️\n9. **Port type 'FuelInPort'**: Equivalent ('FuelInletPort') ✔️\n10. **'FuelInPort' attribute 'temperature: Temp'**: Equivalent ('fuelTemperature: FuelTemperature') ✔️\n11. **'FuelInPort' in item 'fuelSupply: Fuel'**: Equivalent ('suppliedFuel: Fuel') ✔️\n12. **'FuelInPort' out item 'fuelReturn: Fuel'**: Equivalent ('returnedFuel: Fuel') ✔️\n13. **Part type 'FuelTankAssembly'**: Yes ✔️\n14. **'FuelTankAssembly' port 'fuelTankPort: FuelOutPort'**: Equivalent ('fuelOutletPort: FuelOutletPort') ✔️\n15. **Part type 'Engine'**: Equivalent ('EngineUnit') ✔️\n16. **'Engine' port 'engineFuelPort: FuelInPort'**: Equivalent ('fuelInletPort: FuelInletPort') ✔️\n17. **Part type 'Vehicle'**: Equivalent ('FuelCirculationSystem') ✔️\n18. **Interface type 'FuelInterface'**: Equivalent functionality via 'FuelFlow' (not a direct interface, but covers the flow) ✔️\n19. **'FuelInterface' end 'supplierPort: FuelOutPort'**: Equivalent (end port in 'FuelFlow') ✔️\n20. **'FuelInterface' end 'consumerPort: FuelInPort'**: Equivalent (end port in 'FuelFlow') ✔️\n21. **Flow from 'supplierPort.fuelSupply' to 'consumerPort.fuelSupply'**: Equivalent (flow from fuelTankAssembly.fuelOutletPort.suppliedFuel to engineUnit.fuelInletPort.suppliedFuel) ✔️\n22. **Flow from 'consumerPort.fuelReturn' to 'supplierPort.fuelReturn'**: Equivalent (flow from engineUnit.fuelInletPort.returnedFuel to fuelTankAssembly.fuelOutletPort.returnedFuel) ✔️\n23. **Part 'vehicle: Vehicle'**: Equivalent ('FuelCirculationSystem') ✔️\n24. **'vehicle' part 'tankAssy: FuelTankAssembly'**: Equivalent ('fuelTankAssembly: FuelTankAssembly') ✔️\n25. **'vehicle' part 'eng: Engine'**: Equivalent ('engineUnit: EngineUnit') ✔️\n26. **'vehicle' interface of type 'FuelInterface' connecting ports**: Equivalent (flows connect the corresponding ports) ✔️\n\n**Step 3: Summarize the results**\n\n- Total claims: 26\n- Covered claims: 25\n\n**Score: 25/26**\n\n**Note:** The only uncovered claim is the private import statement, which is not present in the generated model. All structural and semantic modeling elements are otherwise covered."
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "model_id": 17,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.3,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleFuelSystem' {\n\tattribute def Temp;\n\tpart def Fuel;\n\tport def FuelOutPort {\n\t\tattribute temperature : Temp;\n\t\tout item fuelSupply : Fuel;\n\t\tin item fuelReturn : Fuel;\n\t}\n\tport def FuelInPort {\n\t\tattribute temperature : Temp;\n\t\tin item fuelSupply : Fuel;\n\t\tout item fuelReturn : Fuel;\n\t}\n\tpart def FuelTankAssembly {\n\t\tport fuelTankPort : FuelOutPort;\n\t}\n\tpart def Engine {\n\t\tport engineFuelPort : FuelInPort;\n\t}\n\tpart def Vehicle;\n\tflow def FuelFlow {\n\t\tref :>> payload : Fuel;\n\t\tend port supplierPort : FuelOutPort;\n\t\tend port consumerPort : FuelInPort;\n\t}\n\tpart vehicle : Vehicle {\n\t\tpart tankAssy : FuelTankAssembly;\n\t\tpart eng : Engine;\n\t\tflow : FuelFlow\n\t\t  from tankAssy.fuelTankPort.fuelSupply\n\t\t\tto eng.engineFuelPort.fuelSupply;\n\t} \n}\n\nGenerated Model:\npackage 'VehicleFuelSystemManagement' {\n\tattribute def FuelTemperature;\n\tpart def Fuel;\n\tport def FuelTankPort {\n\t\tattribute temperature : FuelTemperature;\n\t\tout item fuelSupply : Fuel;\n\t\tin item fuelReturn : Fuel;\n\t}\n\tport def EnginePort {\n\t\tattribute temperature : FuelTemperature;\n\t\tin item fuelSupply : Fuel;\n\t\tout item fuelReturn : Fuel;\n\t}\n\tpart def FuelTankAssembly {\n\t\tport fuelPort : FuelTankPort;\n\t}\n\tpart def Engine {\n\t\tport fuelPort : EnginePort;\n\t}\n\tflow def FuelFlow {\n\t\tref :>> payload : Fuel;\n\t\tend port supplyPort : FuelTankPort;\n\t\tend port receivePort : EnginePort;\n\t}\n\tpart def FuelSystem {\n\t\tpart fuelTankAssembly : FuelTankAssembly;\n\t\tpart engine : Engine;\n\t\tflow : FuelFlow\n\t\t  from fuelTankAssembly.fuelPort.fuelSupply\n\t\t\tto engine.fuelPort.fuelSupply;\n\t\tflow : FuelFlow\n\t\t  from engine.fuelPort.fuelReturn\n\t\t\tto fuelTankAssembly.fuelPort.fuelReturn;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "Generated_from_Prompts/17/17_groundtruth.sysml",
+  "generated_path": "Generated_from_Prompts/17/17.sysml",
+  "response": {
+    "id": "resp_010b1250f897755300690f937211848196b5317113148c21b7",
+    "created_at": 1762628466.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_010b1250f897755300690f9372e508819684befe9b2b03d330",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n### 1. List all atomic modeling claims made by the reference system model\n\n1. There is an attribute type `Temp`.\n2. There is a part type `Fuel`.\n3. There is a port type `FuelOutPort`.\n4. `FuelOutPort` has an attribute `temperature` of type `Temp`.\n5. `FuelOutPort` has an outgoing item `fuelSupply` of type `Fuel`.\n6. `FuelOutPort` has an incoming item `fuelReturn` of type `Fuel`.\n7. There is a port type `FuelInPort`.\n8. `FuelInPort` has an attribute `temperature` of type `Temp`.\n9. `FuelInPort` has an incoming item `fuelSupply` of type `Fuel`.\n10. `FuelInPort` has an outgoing item `fuelReturn` of type `Fuel`.\n11. There is a part type `FuelTankAssembly`.\n12. `FuelTankAssembly` has a port `fuelTankPort` of type `FuelOutPort`.\n13. There is a part type `Engine`.\n14. `Engine` has a port `engineFuelPort` of type `FuelInPort`.\n15. There is a part type `Vehicle`.\n16. There is a flow type `FuelFlow`.\n17. `FuelFlow` references a payload of type `Fuel`.\n18. `FuelFlow` has an endpoint port `supplierPort` of type `FuelOutPort`.\n19. `FuelFlow` has an endpoint port `consumerPort` of type `FuelInPort`.\n20. There is a part `vehicle` of type `Vehicle`.\n21. `vehicle` has a part `tankAssy` of type `FuelTankAssembly`.\n22. `vehicle` has a part `eng` of type `Engine`.\n23. `vehicle` has a flow of type `FuelFlow` from `tankAssy.fuelTankPort.fuelSupply` to `eng.engineFuelPort.fuelSupply`.\n\n**Total atomic claims: 23**\n\n---\n\n### 2. For each atomic claim, determine coverage in the generated model\n\n1. **Attribute type `Temp`**  \n   - **Covered:** There is an attribute type `FuelTemperature` (naming difference, but same structural role).\n2. **Part type `Fuel`**  \n   - **Covered:** Present.\n3. **Port type `FuelOutPort`**  \n   - **Covered:** `FuelTankPort` serves the same role (naming difference).\n4. **`FuelOutPort` has attribute `temperature: Temp`**  \n   - **Covered:** `FuelTankPort` has `temperature: FuelTemperature`.\n5. **`FuelOutPort` has out item `fuelSupply: Fuel`**  \n   - **Covered:** `FuelTankPort` has out item `fuelSupply: Fuel`.\n6. **`FuelOutPort` has in item `fuelReturn: Fuel`**  \n   - **Covered:** `FuelTankPort` has in item `fuelReturn: Fuel`.\n7. **Port type `FuelInPort`**  \n   - **Covered:** `EnginePort` serves the same role.\n8. **`FuelInPort` has attribute `temperature: Temp`**  \n   - **Covered:** `EnginePort` has `temperature: FuelTemperature`.\n9. **`FuelInPort` has in item `fuelSupply: Fuel`**  \n   - **Covered:** `EnginePort` has in item `fuelSupply: Fuel`.\n10. **`FuelInPort` has out item `fuelReturn: Fuel`**  \n    - **Covered:** `EnginePort` has out item `fuelReturn: Fuel`.\n11. **Part type `FuelTankAssembly`**  \n    - **Covered:** Present.\n12. **`FuelTankAssembly` has port `fuelTankPort: FuelOutPort`**  \n    - **Covered:** `FuelTankAssembly` has port `fuelPort: FuelTankPort` (naming difference).\n13. **Part type `Engine`**  \n    - **Covered:** Present.\n14. **`Engine` has port `engineFuelPort: FuelInPort`**  \n    - **Covered:** `Engine` has port `fuelPort: EnginePort`.\n15. **Part type `Vehicle`**  \n    - **Not Covered:** There is no part type `Vehicle` in the generated model; the top-level part is `FuelSystem`.\n16. **Flow type `FuelFlow`**  \n    - **Covered:** Present.\n17. **`FuelFlow` references payload: Fuel**  \n    - **Covered:** Present.\n18. **`FuelFlow` has endpoint port `supplierPort: FuelOutPort`**  \n    - **Covered:** `supplyPort: FuelTankPort` (naming difference).\n19. **`FuelFlow` has endpoint port `consumerPort: FuelInPort`**  \n    - **Covered:** `receivePort: EnginePort` (naming difference).\n20. **Part `vehicle: Vehicle`**  \n    - **Not Covered:** There is no part instance of type `Vehicle`; the generated model has `FuelSystem` as the top-level part.\n21. **`vehicle` has part `tankAssy: FuelTankAssembly`**  \n    - **Covered:** `FuelSystem` has `fuelTankAssembly: FuelTankAssembly`.\n22. **`vehicle` has part `eng: Engine`**  \n    - **Covered:** `FuelSystem` has `engine: Engine`.\n23. **`vehicle` has flow of type `FuelFlow` from `tankAssy.fuelTankPort.fuelSupply` to `eng.engineFuelPort.fuelSupply`**  \n    - **Covered:** `FuelSystem` has a flow from `fuelTankAssembly.fuelPort.fuelSupply` to `engine.fuelPort.fuelSupply`.\n\n---\n\n### 3. Summarize the results\n\n**Uncovered claims:**\n- Claim 15: Part type `Vehicle` is not present.\n- Claim 20: Part instance `vehicle: Vehicle` is not present.\n\n**Score:** 21/23\n\n---\n\n**Final Output:**\n\nScore: 21/23",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.3,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 623,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1280,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1903
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "prompt_cache_retention": null,
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n### 1. List all atomic modeling claims made by the reference system model\n\n1. There is an attribute type `Temp`.\n2. There is a part type `Fuel`.\n3. There is a port type `FuelOutPort`.\n4. `FuelOutPort` has an attribute `temperature` of type `Temp`.\n5. `FuelOutPort` has an outgoing item `fuelSupply` of type `Fuel`.\n6. `FuelOutPort` has an incoming item `fuelReturn` of type `Fuel`.\n7. There is a port type `FuelInPort`.\n8. `FuelInPort` has an attribute `temperature` of type `Temp`.\n9. `FuelInPort` has an incoming item `fuelSupply` of type `Fuel`.\n10. `FuelInPort` has an outgoing item `fuelReturn` of type `Fuel`.\n11. There is a part type `FuelTankAssembly`.\n12. `FuelTankAssembly` has a port `fuelTankPort` of type `FuelOutPort`.\n13. There is a part type `Engine`.\n14. `Engine` has a port `engineFuelPort` of type `FuelInPort`.\n15. There is a part type `Vehicle`.\n16. There is a flow type `FuelFlow`.\n17. `FuelFlow` references a payload of type `Fuel`.\n18. `FuelFlow` has an endpoint port `supplierPort` of type `FuelOutPort`.\n19. `FuelFlow` has an endpoint port `consumerPort` of type `FuelInPort`.\n20. There is a part `vehicle` of type `Vehicle`.\n21. `vehicle` has a part `tankAssy` of type `FuelTankAssembly`.\n22. `vehicle` has a part `eng` of type `Engine`.\n23. `vehicle` has a flow of type `FuelFlow` from `tankAssy.fuelTankPort.fuelSupply` to `eng.engineFuelPort.fuelSupply`.\n\n**Total atomic claims: 23**\n\n---\n\n### 2. For each atomic claim, determine coverage in the generated model\n\n1. **Attribute type `Temp`**  \n   - **Covered:** There is an attribute type `FuelTemperature` (naming difference, but same structural role).\n2. **Part type `Fuel`**  \n   - **Covered:** Present.\n3. **Port type `FuelOutPort`**  \n   - **Covered:** `FuelTankPort` serves the same role (naming difference).\n4. **`FuelOutPort` has attribute `temperature: Temp`**  \n   - **Covered:** `FuelTankPort` has `temperature: FuelTemperature`.\n5. **`FuelOutPort` has out item `fuelSupply: Fuel`**  \n   - **Covered:** `FuelTankPort` has out item `fuelSupply: Fuel`.\n6. **`FuelOutPort` has in item `fuelReturn: Fuel`**  \n   - **Covered:** `FuelTankPort` has in item `fuelReturn: Fuel`.\n7. **Port type `FuelInPort`**  \n   - **Covered:** `EnginePort` serves the same role.\n8. **`FuelInPort` has attribute `temperature: Temp`**  \n   - **Covered:** `EnginePort` has `temperature: FuelTemperature`.\n9. **`FuelInPort` has in item `fuelSupply: Fuel`**  \n   - **Covered:** `EnginePort` has in item `fuelSupply: Fuel`.\n10. **`FuelInPort` has out item `fuelReturn: Fuel`**  \n    - **Covered:** `EnginePort` has out item `fuelReturn: Fuel`.\n11. **Part type `FuelTankAssembly`**  \n    - **Covered:** Present.\n12. **`FuelTankAssembly` has port `fuelTankPort: FuelOutPort`**  \n    - **Covered:** `FuelTankAssembly` has port `fuelPort: FuelTankPort` (naming difference).\n13. **Part type `Engine`**  \n    - **Covered:** Present.\n14. **`Engine` has port `engineFuelPort: FuelInPort`**  \n    - **Covered:** `Engine` has port `fuelPort: EnginePort`.\n15. **Part type `Vehicle`**  \n    - **Not Covered:** There is no part type `Vehicle` in the generated model; the top-level part is `FuelSystem`.\n16. **Flow type `FuelFlow`**  \n    - **Covered:** Present.\n17. **`FuelFlow` references payload: Fuel**  \n    - **Covered:** Present.\n18. **`FuelFlow` has endpoint port `supplierPort: FuelOutPort`**  \n    - **Covered:** `supplyPort: FuelTankPort` (naming difference).\n19. **`FuelFlow` has endpoint port `consumerPort: FuelInPort`**  \n    - **Covered:** `receivePort: EnginePort` (naming difference).\n20. **Part `vehicle: Vehicle`**  \n    - **Not Covered:** There is no part instance of type `Vehicle`; the generated model has `FuelSystem` as the top-level part.\n21. **`vehicle` has part `tankAssy: FuelTankAssembly`**  \n    - **Covered:** `FuelSystem` has `fuelTankAssembly: FuelTankAssembly`.\n22. **`vehicle` has part `eng: Engine`**  \n    - **Covered:** `FuelSystem` has `engine: Engine`.\n23. **`vehicle` has flow of type `FuelFlow` from `tankAssy.fuelTankPort.fuelSupply` to `eng.engineFuelPort.fuelSupply`**  \n    - **Covered:** `FuelSystem` has a flow from `fuelTankAssembly.fuelPort.fuelSupply` to `engine.fuelPort.fuelSupply`.\n\n---\n\n### 3. Summarize the results\n\n**Uncovered claims:**\n- Claim 15: Part type `Vehicle` is not present.\n- Claim 20: Part instance `vehicle: Vehicle` is not present.\n\n**Score:** 21/23\n\n---\n\n**Final Output:**\n\nScore: 21/23"
+  }
+}

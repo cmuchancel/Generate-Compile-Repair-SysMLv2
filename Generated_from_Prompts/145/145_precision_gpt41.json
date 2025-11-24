@@ -1,0 +1,82 @@
+{
+  "model_id": 145,
+  "evaluation": "precision",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-p.txt",
+  "prompt": "Your task is to evaluate the precision of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the generated system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the generated model, determine whether it is supported by the reference model (i.e., the reference model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of supported claims>/<total number of claims in the generated model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'StructuredDataTypes' {\n\tprivate import ScalarValues::*;\n\tprivate import USCustomaryUnits::'in';\n    attribute def PositionVector {\n        attribute x: Real[1];\n        attribute y: Real[1];\n        attribute z: Real[1];\n    }\n    attribute def LengthValue :> Real;\n    attribute def TireInfo {\n    \tattribute manufacturer: String;\n        attribute hubDiameter: LengthValue;\n        attribute width: Integer;\n        attribute placement: PositionVector[0..1];\n    }\n    attribute frenchTireInfo: TireInfo {\n    \tattribute :>> manufacturer = \"Michelin\";\n    \tattribute :>> hubDiameter = 18.0['in'];\n    \tattribute :>> width = 245;\n    }\n}\n\nGenerated Model:\npackage 'TireInformationSystem' {\n\tprivate import ScalarValues::*;\n\tprivate import SI::*;\n\tprivate import USCustomaryUnits::*;\n\titem def PositionVector {\n\t\tattribute x : Real;\n\t\tattribute y : Real;\n\t\tattribute z : Real;\n\t}\n\tpart def Tire {\n\t\tattribute manufacturer : String;\n\t\tattribute rimDiameter : LengthValue;\n\t\tattribute width : Integer;\n\t\tpart installationPosition : PositionVector[0..1];\n\t}\n\tpart def MichelinPerformanceTire :> Tire {\n\t\tattribute redefines manufacturer = \"Michelin\";\n\t\tattribute redefines rimDiameter = 18 ['in'];\n\t\tattribute redefines width = 245;\n\t}\n\tpart def TireCatalog {\n\t\tpart definedTires : Tire[*];\n\t\tpart michelinExample : MichelinPerformanceTire;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/145/design.sysml",
+  "generated_path": "Generated_from_Prompts/145/145.sysml",
+  "response": {
+    "id": "resp_0961cabee05e349b006924653b0cac8194bbcd7168d95f30b2",
+    "created_at": 1763992891.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0961cabee05e349b006924653bbe848194aa554b98bb7114a2",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step as requested.\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**(I will number each claim for reference.)**\n\n#### Package and Imports\n1. The model defines a package.\n2. The model imports `ScalarValues::*`.\n3. The model imports `SI::*`.\n4. The model imports `USCustomaryUnits::*`.\n\n#### Type Definitions\n5. Defines an item/type `PositionVector`.\n6. `PositionVector` has attribute `x` of type `Real`.\n7. `PositionVector` has attribute `y` of type `Real`.\n8. `PositionVector` has attribute `z` of type `Real`.\n\n#### Tire Definition\n9. Defines a part/type `Tire`.\n10. `Tire` has attribute `manufacturer` of type `String`.\n11. `Tire` has attribute `rimDiameter` of type `LengthValue`.\n12. `Tire` has attribute `width` of type `Integer`.\n13. `Tire` has a part/association `installationPosition` of type `PositionVector[0..1]`.\n\n#### Specialized Tire\n14. Defines a part/type `MichelinPerformanceTire` as a specialization of `Tire`.\n15. `MichelinPerformanceTire` redefines attribute `manufacturer` to `\"Michelin\"`.\n16. `MichelinPerformanceTire` redefines attribute `rimDiameter` to `18 ['in']`.\n17. `MichelinPerformanceTire` redefines attribute `width` to `245`.\n\n#### Tire Catalog\n18. Defines a part/type `TireCatalog`.\n19. `TireCatalog` has a part/association `definedTires` of type `Tire[*]`.\n20. `TireCatalog` has a part/association `michelinExample` of type `MichelinPerformanceTire`.\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n#### Package and Imports\n1. **Package defined** — Supported (both models define a package).\n2. **Import ScalarValues** — Supported.\n3. **Import SI** — **Not supported** (not present in reference).\n4. **Import USCustomaryUnits** — Supported (reference imports `'in'` subpackage, but this is equivalent for modeling purposes).\n\n#### Type Definitions\n5. **Defines PositionVector** — Supported (reference defines attribute def PositionVector).\n6. **PositionVector.x: Real** — Supported.\n7. **PositionVector.y: Real** — Supported.\n8. **PositionVector.z: Real** — Supported.\n\n#### Tire Definition\n9. **Defines Tire** — Supported (reference defines attribute def TireInfo).\n10. **Tire.manufacturer: String** — Supported.\n11. **Tire.rimDiameter: LengthValue** — Supported (reference uses `hubDiameter`, but it's a naming difference; both are LengthValue).\n12. **Tire.width: Integer** — Supported.\n13. **Tire.installationPosition: PositionVector[0..1]** — Supported (reference uses `placement`, but it's a naming difference; both are PositionVector[0..1]).\n\n#### Specialized Tire\n14. **Defines MichelinPerformanceTire :> Tire** — Supported (reference defines `frenchTireInfo: TireInfo` with fixed values; this is equivalent).\n15. **Redefines manufacturer = \"Michelin\"** — Supported.\n16. **Redefines rimDiameter = 18 ['in']** — Supported (reference: `hubDiameter = 18.0['in']`).\n17. **Redefines width = 245** — Supported.\n\n#### Tire Catalog\n18. **Defines TireCatalog** — **Not supported** (no equivalent in reference).\n19. **TireCatalog.definedTires: Tire[*]** — **Not supported**.\n20. **TireCatalog.michelinExample: MichelinPerformanceTire** — **Not supported**.\n\n---\n\n### 3. Summarize the results\n\n**Supported claims:**  \n1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17  \n(That is, all except 3, 18, 19, 20)\n\n**Total claims:** 20  \n**Supported claims:** 16\n\n---\n\n**Score: 16/20**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 504,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 930,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1434
+    },
+    "user": null,
+    "billing": {
+      "payer": "developer"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step as requested.\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**(I will number each claim for reference.)**\n\n#### Package and Imports\n1. The model defines a package.\n2. The model imports `ScalarValues::*`.\n3. The model imports `SI::*`.\n4. The model imports `USCustomaryUnits::*`.\n\n#### Type Definitions\n5. Defines an item/type `PositionVector`.\n6. `PositionVector` has attribute `x` of type `Real`.\n7. `PositionVector` has attribute `y` of type `Real`.\n8. `PositionVector` has attribute `z` of type `Real`.\n\n#### Tire Definition\n9. Defines a part/type `Tire`.\n10. `Tire` has attribute `manufacturer` of type `String`.\n11. `Tire` has attribute `rimDiameter` of type `LengthValue`.\n12. `Tire` has attribute `width` of type `Integer`.\n13. `Tire` has a part/association `installationPosition` of type `PositionVector[0..1]`.\n\n#### Specialized Tire\n14. Defines a part/type `MichelinPerformanceTire` as a specialization of `Tire`.\n15. `MichelinPerformanceTire` redefines attribute `manufacturer` to `\"Michelin\"`.\n16. `MichelinPerformanceTire` redefines attribute `rimDiameter` to `18 ['in']`.\n17. `MichelinPerformanceTire` redefines attribute `width` to `245`.\n\n#### Tire Catalog\n18. Defines a part/type `TireCatalog`.\n19. `TireCatalog` has a part/association `definedTires` of type `Tire[*]`.\n20. `TireCatalog` has a part/association `michelinExample` of type `MichelinPerformanceTire`.\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n#### Package and Imports\n1. **Package defined** — Supported (both models define a package).\n2. **Import ScalarValues** — Supported.\n3. **Import SI** — **Not supported** (not present in reference).\n4. **Import USCustomaryUnits** — Supported (reference imports `'in'` subpackage, but this is equivalent for modeling purposes).\n\n#### Type Definitions\n5. **Defines PositionVector** — Supported (reference defines attribute def PositionVector).\n6. **PositionVector.x: Real** — Supported.\n7. **PositionVector.y: Real** — Supported.\n8. **PositionVector.z: Real** — Supported.\n\n#### Tire Definition\n9. **Defines Tire** — Supported (reference defines attribute def TireInfo).\n10. **Tire.manufacturer: String** — Supported.\n11. **Tire.rimDiameter: LengthValue** — Supported (reference uses `hubDiameter`, but it's a naming difference; both are LengthValue).\n12. **Tire.width: Integer** — Supported.\n13. **Tire.installationPosition: PositionVector[0..1]** — Supported (reference uses `placement`, but it's a naming difference; both are PositionVector[0..1]).\n\n#### Specialized Tire\n14. **Defines MichelinPerformanceTire :> Tire** — Supported (reference defines `frenchTireInfo: TireInfo` with fixed values; this is equivalent).\n15. **Redefines manufacturer = \"Michelin\"** — Supported.\n16. **Redefines rimDiameter = 18 ['in']** — Supported (reference: `hubDiameter = 18.0['in']`).\n17. **Redefines width = 245** — Supported.\n\n#### Tire Catalog\n18. **Defines TireCatalog** — **Not supported** (no equivalent in reference).\n19. **TireCatalog.definedTires: Tire[*]** — **Not supported**.\n20. **TireCatalog.michelinExample: MichelinPerformanceTire** — **Not supported**.\n\n---\n\n### 3. Summarize the results\n\n**Supported claims:**  \n1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17  \n(That is, all except 3, 18, 19, 20)\n\n**Total claims:** 20  \n**Supported claims:** 16\n\n---\n\n**Score: 16/20**"
+  }
+}

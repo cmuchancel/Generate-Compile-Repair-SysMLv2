@@ -1,0 +1,82 @@
+{
+  "model_id": 57,
+  "evaluation": "precision",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-p.txt",
+  "prompt": "Your task is to evaluate the precision of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the generated system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the generated model, determine whether it is supported by the reference model (i.e., the reference model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of supported claims>/<total number of claims in the generated model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage MassRollup {\n\tprivate import NumericalFunctions::*;\n\tpart def MassedThing {\n\t\tattribute simpleMass :> ISQ::mass; \n\t\tattribute totalMass :> ISQ::mass default simpleMass;\n\t}\n\tpart compositeThing : MassedThing {\n\t\tpart subcomponents: MassedThing[*];\t\t\n\t\tattribute :>> totalMass default\n\t\t\tsimpleMass + sum(subcomponents.totalMass); \n\t}\n\tpart filteredMassThing :> compositeThing {\n\t\tattribute minMass :> ISQ::mass;\t\t\n\t\tattribute :>> totalMass =\n\t\t\tsimpleMass + sum(subcomponents.totalMass.?{in p:>ISQ::mass; p >= minMass});\n\t}\n}\n\nGenerated Model:\npackage 'MassThresholdAggregation' {\n\tprivate import ScalarValues::*;\n\t\n\tpart def Component {\n\t\tattribute basicMass : Real;\n\t\tattribute totalMass : Real;\n\t\tpart subcomponents : Component[*];\n\t\tattribute filterThreshold : Real;\n\t}\n\t\n\tcalc def FilteredMass {\n\t\tin component : Component;\n\t\treturn total : Real;\n\t}\n\t\n\tpart componentRoot : Component {\n\t\tattribute basicMass = 200.0;\n\t\tattribute filterThreshold = 100.0;\n\t\tpart subcomponents {\n\t\t\tpart majorSubassembly : Component {\n\t\t\t\tattribute basicMass = 150.0;\n\t\t\t\tpart subcomponents {\n\t\t\t\t\tpart minorComponent {\n\t\t\t\t\t\tattribute basicMass = 80.0;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tpart heavyComponent : Component {\n\t\t\t\tattribute basicMass = 180.0;\n\t\t\t}\n\t\t}\n\t\tattribute redefines totalMass = basicMass + subcomponents.heavyComponent.basicMass + subcomponents.majorSubassembly.basicMass;\n\t}\n\t\n\tcalc filteredMass : FilteredMass {\n\t\tin component = componentRoot;\n\t\treturn total;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/57/design.sysml",
+  "generated_path": "Generated_from_Prompts/57/57.sysml",
+  "response": {
+    "id": "resp_024f69b2341970e6006923d0f3b850819081e7d69829a0bef5",
+    "created_at": 1763954931.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_024f69b2341970e6006923d0f40d948190a52f3e11994fcd11",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step as requested.\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**Package and Imports**\n1. The model is contained in a package named 'MassThresholdAggregation'.\n2. The model imports 'ScalarValues::*' privately.\n\n**Part Definitions**\n3. There is a part definition named 'Component'.\n4. 'Component' has an attribute 'basicMass' of type Real.\n5. 'Component' has an attribute 'totalMass' of type Real.\n6. 'Component' has a part 'subcomponents' which is a collection (multiplicity [*]) of 'Component'.\n7. 'Component' has an attribute 'filterThreshold' of type Real.\n\n**Calculation Definitions**\n8. There is a calculation definition 'FilteredMass' with input 'component' of type 'Component' and output 'total' of type Real.\n\n**Part Instances**\n9. There is a part instance 'componentRoot' of type 'Component'.\n10. 'componentRoot' has an attribute 'basicMass' with value 200.0.\n11. 'componentRoot' has an attribute 'filterThreshold' with value 100.0.\n12. 'componentRoot' has a part 'subcomponents' containing:\n    - 12a. A part 'majorSubassembly' of type 'Component'.\n    - 12b. 'majorSubassembly' has an attribute 'basicMass' with value 150.0.\n    - 12c. 'majorSubassembly' has a part 'subcomponents' containing:\n        - 12c1. A part 'minorComponent' with attribute 'basicMass' = 80.0.\n    - 12d. A part 'heavyComponent' of type 'Component'.\n    - 12e. 'heavyComponent' has an attribute 'basicMass' with value 180.0.\n13. 'componentRoot' has an attribute redefinition: 'totalMass' is defined as 'basicMass + subcomponents.heavyComponent.basicMass + subcomponents.majorSubassembly.basicMass'.\n\n**Calculation Instances**\n14. There is a calculation 'filteredMass' of type 'FilteredMass' with input 'component' = 'componentRoot', returning 'total'.\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n#### **Package and Imports**\n1. **Package**: Supported (both models define a package; name difference is ignored).\n2. **Import**: Supported (both import a numerical library; name difference is ignored).\n\n#### **Part Definitions**\n3. **'Component' part definition**: Supported (corresponds to 'MassedThing' in reference).\n4. **'basicMass' attribute**: Supported (corresponds to 'simpleMass').\n5. **'totalMass' attribute**: Supported (same as reference).\n6. **'subcomponents' part**: Supported (same as reference).\n7. **'filterThreshold' attribute**: Supported (corresponds to 'minMass').\n\n#### **Calculation Definitions**\n8. **'FilteredMass' calculation definition**: Supported (reference model has a calculation for filtered mass, though not as a named calc, but as an attribute formula).\n\n#### **Part Instances**\n9. **'componentRoot' instance**: Supported (reference model has 'compositeThing', which is an instance of 'MassedThing').\n10. **'componentRoot.basicMass' = 200.0**: Supported (reference model allows default values for attributes).\n11. **'componentRoot.filterThreshold' = 100.0**: Supported (reference model allows default values for attributes).\n12. **'componentRoot.subcomponents' structure**:\n    - 12a. **'majorSubassembly'**: Supported (reference model allows subcomponents of type 'MassedThing').\n    - 12b. **'majorSubassembly.basicMass' = 150.0**: Supported.\n    - 12c. **'majorSubassembly.subcomponents'**:\n        - 12c1. **'minorComponent.basicMass' = 80.0**: Supported.\n    - 12d. **'heavyComponent'**: Supported.\n    - 12e. **'heavyComponent.basicMass' = 180.0**: Supported.\n13. **'componentRoot.totalMass' redefinition**: Supported (reference model allows attribute redefinition and calculation).\n\n#### **Calculation Instances**\n14. **'filteredMass' calculation instance**: Supported (reference model has a similar calculation for filtered mass).\n\n---\n\n### 3. Summarize the results\n\n**Total number of atomic claims in the generated model:** 14 (with subclaims for 12, but each is an atomic modeling element).\n\n**Number of supported claims:** 14 (all claims are supported by the reference model, considering naming and formatting differences are ignored).\n\n---\n\n**Score: 14/14**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 564,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1017,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1581
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step as requested.\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**Package and Imports**\n1. The model is contained in a package named 'MassThresholdAggregation'.\n2. The model imports 'ScalarValues::*' privately.\n\n**Part Definitions**\n3. There is a part definition named 'Component'.\n4. 'Component' has an attribute 'basicMass' of type Real.\n5. 'Component' has an attribute 'totalMass' of type Real.\n6. 'Component' has a part 'subcomponents' which is a collection (multiplicity [*]) of 'Component'.\n7. 'Component' has an attribute 'filterThreshold' of type Real.\n\n**Calculation Definitions**\n8. There is a calculation definition 'FilteredMass' with input 'component' of type 'Component' and output 'total' of type Real.\n\n**Part Instances**\n9. There is a part instance 'componentRoot' of type 'Component'.\n10. 'componentRoot' has an attribute 'basicMass' with value 200.0.\n11. 'componentRoot' has an attribute 'filterThreshold' with value 100.0.\n12. 'componentRoot' has a part 'subcomponents' containing:\n    - 12a. A part 'majorSubassembly' of type 'Component'.\n    - 12b. 'majorSubassembly' has an attribute 'basicMass' with value 150.0.\n    - 12c. 'majorSubassembly' has a part 'subcomponents' containing:\n        - 12c1. A part 'minorComponent' with attribute 'basicMass' = 80.0.\n    - 12d. A part 'heavyComponent' of type 'Component'.\n    - 12e. 'heavyComponent' has an attribute 'basicMass' with value 180.0.\n13. 'componentRoot' has an attribute redefinition: 'totalMass' is defined as 'basicMass + subcomponents.heavyComponent.basicMass + subcomponents.majorSubassembly.basicMass'.\n\n**Calculation Instances**\n14. There is a calculation 'filteredMass' of type 'FilteredMass' with input 'component' = 'componentRoot', returning 'total'.\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n#### **Package and Imports**\n1. **Package**: Supported (both models define a package; name difference is ignored).\n2. **Import**: Supported (both import a numerical library; name difference is ignored).\n\n#### **Part Definitions**\n3. **'Component' part definition**: Supported (corresponds to 'MassedThing' in reference).\n4. **'basicMass' attribute**: Supported (corresponds to 'simpleMass').\n5. **'totalMass' attribute**: Supported (same as reference).\n6. **'subcomponents' part**: Supported (same as reference).\n7. **'filterThreshold' attribute**: Supported (corresponds to 'minMass').\n\n#### **Calculation Definitions**\n8. **'FilteredMass' calculation definition**: Supported (reference model has a calculation for filtered mass, though not as a named calc, but as an attribute formula).\n\n#### **Part Instances**\n9. **'componentRoot' instance**: Supported (reference model has 'compositeThing', which is an instance of 'MassedThing').\n10. **'componentRoot.basicMass' = 200.0**: Supported (reference model allows default values for attributes).\n11. **'componentRoot.filterThreshold' = 100.0**: Supported (reference model allows default values for attributes).\n12. **'componentRoot.subcomponents' structure**:\n    - 12a. **'majorSubassembly'**: Supported (reference model allows subcomponents of type 'MassedThing').\n    - 12b. **'majorSubassembly.basicMass' = 150.0**: Supported.\n    - 12c. **'majorSubassembly.subcomponents'**:\n        - 12c1. **'minorComponent.basicMass' = 80.0**: Supported.\n    - 12d. **'heavyComponent'**: Supported.\n    - 12e. **'heavyComponent.basicMass' = 180.0**: Supported.\n13. **'componentRoot.totalMass' redefinition**: Supported (reference model allows attribute redefinition and calculation).\n\n#### **Calculation Instances**\n14. **'filteredMass' calculation instance**: Supported (reference model has a similar calculation for filtered mass).\n\n---\n\n### 3. Summarize the results\n\n**Total number of atomic claims in the generated model:** 14 (with subclaims for 12, but each is an atomic modeling element).\n\n**Number of supported claims:** 14 (all claims are supported by the reference model, considering naming and formatting differences are ignored).\n\n---\n\n**Score: 14/14**"
+  }
+}

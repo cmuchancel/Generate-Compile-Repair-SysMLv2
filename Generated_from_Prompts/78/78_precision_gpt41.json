@@ -1,0 +1,82 @@
+{
+  "model_id": 78,
+  "evaluation": "precision",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-p.txt",
+  "prompt": "Your task is to evaluate the precision of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the generated system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the generated model, determine whether it is supported by the reference model (i.e., the reference model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of supported claims>/<total number of claims in the generated model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'CompleteTransportationScenario' {\n\tpart def Vehicle;\n\tpart def Person;\n\tpart def Environment;\n\tpart def 'Fuel Station';\n\tuse case def 'Provide Transportation' {\n\t\tsubject vehicle : Vehicle;\n\t\tactor driver : Person;\n\t\tactor passengers : Person[0..4];\n\t\tactor environment : Environment;\n\t\tobjective {\n\t\t\tdoc \n\t\t\t/* Transport driver and passengers from starting location \n\t\t\t * to ending location.\n\t\t\t */\n\t\t}\t\t\n\t}\n\tuse case def 'Enter Vehicle' {\n\t\tsubject vehicle : Vehicle;\n\t\tactor driver : Person;\n\t\tactor passengers : Person[0..4];\n\t}\n\tuse case def 'Exit Vehicle' {\n\t\tsubject vehicle : Vehicle;\n\t\tactor driver : Person;\n\t\tactor passengers : Person[0..4];\n\t}\n\tpart def 'Fuel Station';\n\tuse case 'provide transportation' : 'Provide Transportation' {\t\t\n\t\tfirst start;\n\t\tthen include use case 'enter vehicle' : 'Enter Vehicle' {\n\t\t\tactor :>> driver = 'provide transportation'::driver;\n\t\t\tactor :>> passengers = 'provide transportation'::passengers;\n\t\t}\n\t\tthen use case 'drive vehicle' {\n\t\t\tactor driver = 'provide transportation'::driver;\n\t\t\tactor environment = 'provide transportation'::environment;\t\n\t\t\tinclude 'add fuel'[0..*] { \n\t\t\t\tactor :>> fueler = driver;\n\t\t\t}\n\t\t}\n\t\tthen include use case 'exit vehicle' : 'Exit Vehicle' {\n\t\t\tactor :>> driver = 'provide transportation'::driver;\n\t\t\tactor :>> passengers = 'provide transportation'::passengers;\n\t\t}\n\t\tthen done;\t\t\n\t}\n\tuse case 'add fuel' {\n\t\tsubject vehicle : Vehicle;\n\t\tactor fueler : Person;\n\t\tactor 'fuel station' : 'Fuel Station';\n\t}\n}\n\nGenerated Model:\npackage 'TransportationUseCase078' {\n\tpart def Vehicle;\n\tpart def Person;\n\t\n\tuse case def 'Provide Transportation' {\n\t\tsubject vehicle : Vehicle;\n\t\tactor driver : Person;\n\t\tactor passengers : Person[0..4];\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/78/design.sysml",
+  "generated_path": "Generated_from_Prompts/78/78.sysml",
+  "response": {
+    "id": "resp_03bacce46ca0ff71006923dba996008195a8b61a4251e0bc52",
+    "created_at": 1763957673.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_03bacce46ca0ff71006923dba9fc488195998d34e6063c454a",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's follow the steps as requested:\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model.\n\n**Atomic Claims:**\n1. Definition of part: Vehicle\n2. Definition of part: Person\n3. Definition of use case: 'Provide Transportation'\n4. Declaration of subject in 'Provide Transportation': vehicle of type Vehicle\n5. Declaration of actor in 'Provide Transportation': driver of type Person\n6. Declaration of actor in 'Provide Transportation': passengers of type Person[0..4]\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model.\n\n**Claim 1:** Definition of part: Vehicle  \n- **Supported** (Reference model defines `part def Vehicle`)\n\n**Claim 2:** Definition of part: Person  \n- **Supported** (Reference model defines `part def Person`)\n\n**Claim 3:** Definition of use case: 'Provide Transportation'  \n- **Supported** (Reference model defines `use case def 'Provide Transportation'`)\n\n**Claim 4:** Declaration of subject in 'Provide Transportation': vehicle of type Vehicle  \n- **Supported** (Reference model: `subject vehicle : Vehicle;` in 'Provide Transportation')\n\n**Claim 5:** Declaration of actor in 'Provide Transportation': driver of type Person  \n- **Supported** (Reference model: `actor driver : Person;` in 'Provide Transportation')\n\n**Claim 6:** Declaration of actor in 'Provide Transportation': passengers of type Person[0..4]  \n- **Supported** (Reference model: `actor passengers : Person[0..4];` in 'Provide Transportation')\n\n---\n\n### 3. Summarize the results\n\n**Score:** 6/6\n\nAll atomic claims in the generated model are supported by the reference model.",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 627,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 365,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 992
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's follow the steps as requested:\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model.\n\n**Atomic Claims:**\n1. Definition of part: Vehicle\n2. Definition of part: Person\n3. Definition of use case: 'Provide Transportation'\n4. Declaration of subject in 'Provide Transportation': vehicle of type Vehicle\n5. Declaration of actor in 'Provide Transportation': driver of type Person\n6. Declaration of actor in 'Provide Transportation': passengers of type Person[0..4]\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model.\n\n**Claim 1:** Definition of part: Vehicle  \n- **Supported** (Reference model defines `part def Vehicle`)\n\n**Claim 2:** Definition of part: Person  \n- **Supported** (Reference model defines `part def Person`)\n\n**Claim 3:** Definition of use case: 'Provide Transportation'  \n- **Supported** (Reference model defines `use case def 'Provide Transportation'`)\n\n**Claim 4:** Declaration of subject in 'Provide Transportation': vehicle of type Vehicle  \n- **Supported** (Reference model: `subject vehicle : Vehicle;` in 'Provide Transportation')\n\n**Claim 5:** Declaration of actor in 'Provide Transportation': driver of type Person  \n- **Supported** (Reference model: `actor driver : Person;` in 'Provide Transportation')\n\n**Claim 6:** Declaration of actor in 'Provide Transportation': passengers of type Person[0..4]  \n- **Supported** (Reference model: `actor passengers : Person[0..4];` in 'Provide Transportation')\n\n---\n\n### 3. Summarize the results\n\n**Score:** 6/6\n\nAll atomic claims in the generated model are supported by the reference model."
+  }
+}

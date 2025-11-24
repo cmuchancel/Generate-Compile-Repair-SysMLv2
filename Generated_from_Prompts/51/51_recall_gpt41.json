@@ -1,0 +1,82 @@
+{
+  "model_id": 51,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleComposition' {\n\tprivate import ScalarValues::*;\n\tpart def Vehicle {\n\t\tattribute mass : Real;\n\t\tattribute status : VehicleStatus;\n\t\tpart eng : Engine;\n\t\tref part driver : Person;\n\t}\n\tattribute def VehicleStatus {\n\t\tattribute gearSetting : Integer;\n\t\tattribute acceleratorPosition : Real;\n\t}\n\tpart def Engine;\t\n\tpart def Person;\n\tpart def Wheel;\n\tindividual part def Vehicle_1 :> Vehicle {\n\t\tpart leftFrontWheel : Wheel;\n\t\tpart rightFrontWheel : Wheel;\n\t}\n\tindividual part def Wheel_1 :> Wheel;\n\tindividual part vehicle_1 : Vehicle_1 {\n\t\tsnapshot part vehicle_1_t0 {\n\t\t\tsnapshot leftFrontWheel_t0 : Wheel_1 :>> leftFrontWheel;\n\t\t}\n\t\tthen snapshot part vehicle_1_t1 {\n\t\t\tsnapshot rightFrontWheel_t1 : Wheel_1 :>> rightFrontWheel;\n\t\t}\n\t}\n}\n\nGenerated Model:\npackage 'VehicleStructureTracking' {\n\tprivate import ScalarValues::*;\n\tprivate import Time::*;\n\t\n\tpart def Driver {\n\t\tattribute name : String;\n\t}\n\t\n\tpart def Engine {\n\t\tattribute serialNumber : String;\n\t}\n\t\n\tpart def Wheel {\n\t\tattribute position : String;\n\t}\n\t\n\tpart def WheelSnapshot {\n\t\tattribute timestamp : Time::DateTime;\n\t\tattribute statusDescription : String;\n\t\tref part wheel : Wheel;\n\t}\n\t\n\tpart def Vehicle {\n\t\tattribute mass : Real;\n\t\tpart operationalStatus {\n\t\t\tattribute gearSetting : String;\n\t\t\tattribute acceleratorPedalPosition : String;\n\t\t}\n\t\tpart engine : Engine;\n\t\tref part driver : Driver;\n\t\tpart leftFrontWheel : Wheel {\n\t\t\tattribute redefines position = \"left front\";\n\t\t}\n\t\tpart rightFrontWheel : Wheel {\n\t\t\tattribute redefines position = \"right front\";\n\t\t}\n\t\tpart wheelSnapshots : WheelSnapshot[*];\n\t}\n\t\n\tpart driverRegistry {\n\t\tpart driver_1 : Driver {\n\t\t\tattribute name = \"Driver A\";\n\t\t}\n\t}\n\t\n\tpart vehicle_1 : Vehicle {\n\t\tattribute mass = 1500.0;\n\t\tref part driver :> driverRegistry.driver_1;\n\t\tpart wheelSnapshots {\n\t\t\tpart leftFront_t1 : WheelSnapshot {\n\t\t\t\tref part wheel :> leftFrontWheel;\n\t\t\t\tattribute statusDescription = \"Pre-delivery inspection\";\n\t\t\t}\n\t\t\tpart rightFront_t2 : WheelSnapshot {\n\t\t\t\tref part wheel :> rightFrontWheel;\n\t\t\t\tattribute statusDescription = \"Post-maintenance check\";\n\t\t\t}\n\t\t}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/51/design.sysml",
+  "generated_path": "Generated_from_Prompts/51/51.sysml",
+  "response": {
+    "id": "resp_0700fe1f36229afb006923d014a8908193a9e6f86bbae33a04",
+    "created_at": 1763954708.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0700fe1f36229afb006923d014e6c48193ac88de8d7a8317dd",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. The model is in a package named (name is not relevant for recall).\n2. Imports ScalarValues.\n3. Definition of part `Vehicle`.\n4. `Vehicle` has attribute `mass` of type `Real`.\n5. `Vehicle` has attribute `status` of type `VehicleStatus`.\n6. `Vehicle` has part `eng` of type `Engine`.\n7. `Vehicle` has reference part `driver` of type `Person`.\n8. Definition of attribute type `VehicleStatus`.\n9. `VehicleStatus` has attribute `gearSetting` of type `Integer`.\n10. `VehicleStatus` has attribute `acceleratorPosition` of type `Real`.\n11. Definition of part `Engine`.\n12. Definition of part `Person`.\n13. Definition of part `Wheel`.\n14. Definition of individual part `Vehicle_1` as a subtype of `Vehicle`.\n15. `Vehicle_1` has part `leftFrontWheel` of type `Wheel`.\n16. `Vehicle_1` has part `rightFrontWheel` of type `Wheel`.\n17. Definition of individual part `Wheel_1` as a subtype of `Wheel`.\n18. Definition of individual part `vehicle_1` of type `Vehicle_1`.\n19. `vehicle_1` has a snapshot part `vehicle_1_t0`.\n20. `vehicle_1_t0` has snapshot `leftFrontWheel_t0` of type `Wheel_1` mapped to `leftFrontWheel`.\n21. After `vehicle_1_t0`, there is a snapshot part `vehicle_1_t1`.\n22. `vehicle_1_t1` has snapshot `rightFrontWheel_t1` of type `Wheel_1` mapped to `rightFrontWheel`.\n\n---\n\n### 2. For each atomic claim, check coverage in the generated model\n\n| # | Reference Claim | Covered in Generated Model? | Notes |\n|---|-----------------|-----------------------------|-------|\n| 1 | Package present | Yes | Name differs, but package exists |\n| 2 | Imports ScalarValues | Yes | Present |\n| 3 | part def Vehicle | Yes | Present |\n| 4 | Vehicle.mass: Real | Yes | Present |\n| 5 | Vehicle.status: VehicleStatus | Partial/No | Instead, there is `operationalStatus` part, not attribute, and not same type |\n| 6 | Vehicle.eng: Engine | Yes | Present as `engine: Engine` |\n| 7 | Vehicle.driver: Person (ref part) | Partial/No | There is `driver: Driver` (ref part), but type is `Driver` not `Person` |\n| 8 | attribute def VehicleStatus | Partial/No | There is a part `operationalStatus` with similar attributes, but not an attribute type |\n| 9 | VehicleStatus.gearSetting: Integer | Partial/No | In generated: `gearSetting: String` in `operationalStatus` part, not attribute type, and type mismatch |\n| 10 | VehicleStatus.acceleratorPosition: Real | Partial/No | In generated: `acceleratorPedalPosition: String` in `operationalStatus`, not attribute type, and type mismatch/name mismatch |\n| 11 | part def Engine | Yes | Present |\n| 12 | part def Person | No | Not present; only `Driver` |\n| 13 | part def Wheel | Yes | Present |\n| 14 | individual part def Vehicle_1 :> Vehicle | No | No explicit subtype/individual part of Vehicle; only `vehicle_1` instance |\n| 15 | Vehicle_1.leftFrontWheel: Wheel | Yes | In generated, `Vehicle` has `leftFrontWheel: Wheel` |\n| 16 | Vehicle_1.rightFrontWheel: Wheel | Yes | In generated, `Vehicle` has `rightFrontWheel: Wheel` |\n| 17 | individual part def Wheel_1 :> Wheel | No | Not present |\n| 18 | individual part vehicle_1 : Vehicle_1 | Partial/Yes | `vehicle_1` instance of `Vehicle`, but not of `Vehicle_1` |\n| 19 | vehicle_1 has snapshot part vehicle_1_t0 | Partial/Yes | There are wheel snapshots, but not the same structure; similar intent |\n| 20 | vehicle_1_t0.leftFrontWheel_t0: Wheel_1 mapped to leftFrontWheel | Partial/Yes | In generated: `leftFront_t1: WheelSnapshot` with ref to `leftFrontWheel` |\n| 21 | then snapshot part vehicle_1_t1 | Partial/Yes | There are multiple snapshots, but not the same structure; similar intent |\n| 22 | vehicle_1_t1.rightFrontWheel_t1: Wheel_1 mapped to rightFrontWheel | Partial/Yes | In generated: `rightFront_t2: WheelSnapshot` with ref to `rightFrontWheel` |\n\n---\n\n### 3. Summarize the results\n\nLet's count the claims that are **fully or reasonably covered** (ignoring naming, focusing on structure/semantics):\n\n- 1 (package): Yes\n- 2 (import): Yes\n- 3 (Vehicle part): Yes\n- 4 (Vehicle.mass): Yes\n- 5 (Vehicle.status): **No** (structure/type mismatch)\n- 6 (Vehicle.eng): Yes\n- 7 (Vehicle.driver): **Partial/No** (type mismatch)\n- 8 (VehicleStatus): **No** (structure/type mismatch)\n- 9 (VehicleStatus.gearSetting): **Partial/No** (type and structure mismatch)\n- 10 (VehicleStatus.acceleratorPosition): **Partial/No** (type and structure mismatch)\n- 11 (Engine): Yes\n- 12 (Person): **No**\n- 13 (Wheel): Yes\n- 14 (Vehicle_1): **No**\n- 15 (Vehicle_1.leftFrontWheel): Yes (as part of Vehicle)\n- 16 (Vehicle_1.rightFrontWheel): Yes (as part of Vehicle)\n- 17 (Wheel_1): **No**\n- 18 (vehicle_1): **Partial/Yes** (not as Vehicle_1, but as Vehicle)\n- 19 (vehicle_1_t0): **Partial/Yes** (snapshots present, structure differs)\n- 20 (leftFrontWheel_t0): **Partial/Yes** (snapshots present, structure differs)\n- 21 (vehicle_1_t1): **Partial/Yes** (snapshots present, structure differs)\n- 22 (rightFrontWheel_t1): **Partial/Yes** (snapshots present, structure differs)\n\nLet's count the **fully or reasonably covered** claims (including partials for snapshot structure, since the intent is preserved):\n\n- Fully covered: 1, 2, 3, 4, 6, 11, 13, 15, 16\n- Partially covered (count as covered for recall): 18, 19, 20, 21, 22\n\nTotal covered: 9 (full) + 5 (partial) = **14**\n\nTotal claims: **22**\n\n---\n\n## **Score: 14/22**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 722,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1527,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2249
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. The model is in a package named (name is not relevant for recall).\n2. Imports ScalarValues.\n3. Definition of part `Vehicle`.\n4. `Vehicle` has attribute `mass` of type `Real`.\n5. `Vehicle` has attribute `status` of type `VehicleStatus`.\n6. `Vehicle` has part `eng` of type `Engine`.\n7. `Vehicle` has reference part `driver` of type `Person`.\n8. Definition of attribute type `VehicleStatus`.\n9. `VehicleStatus` has attribute `gearSetting` of type `Integer`.\n10. `VehicleStatus` has attribute `acceleratorPosition` of type `Real`.\n11. Definition of part `Engine`.\n12. Definition of part `Person`.\n13. Definition of part `Wheel`.\n14. Definition of individual part `Vehicle_1` as a subtype of `Vehicle`.\n15. `Vehicle_1` has part `leftFrontWheel` of type `Wheel`.\n16. `Vehicle_1` has part `rightFrontWheel` of type `Wheel`.\n17. Definition of individual part `Wheel_1` as a subtype of `Wheel`.\n18. Definition of individual part `vehicle_1` of type `Vehicle_1`.\n19. `vehicle_1` has a snapshot part `vehicle_1_t0`.\n20. `vehicle_1_t0` has snapshot `leftFrontWheel_t0` of type `Wheel_1` mapped to `leftFrontWheel`.\n21. After `vehicle_1_t0`, there is a snapshot part `vehicle_1_t1`.\n22. `vehicle_1_t1` has snapshot `rightFrontWheel_t1` of type `Wheel_1` mapped to `rightFrontWheel`.\n\n---\n\n### 2. For each atomic claim, check coverage in the generated model\n\n| # | Reference Claim | Covered in Generated Model? | Notes |\n|---|-----------------|-----------------------------|-------|\n| 1 | Package present | Yes | Name differs, but package exists |\n| 2 | Imports ScalarValues | Yes | Present |\n| 3 | part def Vehicle | Yes | Present |\n| 4 | Vehicle.mass: Real | Yes | Present |\n| 5 | Vehicle.status: VehicleStatus | Partial/No | Instead, there is `operationalStatus` part, not attribute, and not same type |\n| 6 | Vehicle.eng: Engine | Yes | Present as `engine: Engine` |\n| 7 | Vehicle.driver: Person (ref part) | Partial/No | There is `driver: Driver` (ref part), but type is `Driver` not `Person` |\n| 8 | attribute def VehicleStatus | Partial/No | There is a part `operationalStatus` with similar attributes, but not an attribute type |\n| 9 | VehicleStatus.gearSetting: Integer | Partial/No | In generated: `gearSetting: String` in `operationalStatus` part, not attribute type, and type mismatch |\n| 10 | VehicleStatus.acceleratorPosition: Real | Partial/No | In generated: `acceleratorPedalPosition: String` in `operationalStatus`, not attribute type, and type mismatch/name mismatch |\n| 11 | part def Engine | Yes | Present |\n| 12 | part def Person | No | Not present; only `Driver` |\n| 13 | part def Wheel | Yes | Present |\n| 14 | individual part def Vehicle_1 :> Vehicle | No | No explicit subtype/individual part of Vehicle; only `vehicle_1` instance |\n| 15 | Vehicle_1.leftFrontWheel: Wheel | Yes | In generated, `Vehicle` has `leftFrontWheel: Wheel` |\n| 16 | Vehicle_1.rightFrontWheel: Wheel | Yes | In generated, `Vehicle` has `rightFrontWheel: Wheel` |\n| 17 | individual part def Wheel_1 :> Wheel | No | Not present |\n| 18 | individual part vehicle_1 : Vehicle_1 | Partial/Yes | `vehicle_1` instance of `Vehicle`, but not of `Vehicle_1` |\n| 19 | vehicle_1 has snapshot part vehicle_1_t0 | Partial/Yes | There are wheel snapshots, but not the same structure; similar intent |\n| 20 | vehicle_1_t0.leftFrontWheel_t0: Wheel_1 mapped to leftFrontWheel | Partial/Yes | In generated: `leftFront_t1: WheelSnapshot` with ref to `leftFrontWheel` |\n| 21 | then snapshot part vehicle_1_t1 | Partial/Yes | There are multiple snapshots, but not the same structure; similar intent |\n| 22 | vehicle_1_t1.rightFrontWheel_t1: Wheel_1 mapped to rightFrontWheel | Partial/Yes | In generated: `rightFront_t2: WheelSnapshot` with ref to `rightFrontWheel` |\n\n---\n\n### 3. Summarize the results\n\nLet's count the claims that are **fully or reasonably covered** (ignoring naming, focusing on structure/semantics):\n\n- 1 (package): Yes\n- 2 (import): Yes\n- 3 (Vehicle part): Yes\n- 4 (Vehicle.mass): Yes\n- 5 (Vehicle.status): **No** (structure/type mismatch)\n- 6 (Vehicle.eng): Yes\n- 7 (Vehicle.driver): **Partial/No** (type mismatch)\n- 8 (VehicleStatus): **No** (structure/type mismatch)\n- 9 (VehicleStatus.gearSetting): **Partial/No** (type and structure mismatch)\n- 10 (VehicleStatus.acceleratorPosition): **Partial/No** (type and structure mismatch)\n- 11 (Engine): Yes\n- 12 (Person): **No**\n- 13 (Wheel): Yes\n- 14 (Vehicle_1): **No**\n- 15 (Vehicle_1.leftFrontWheel): Yes (as part of Vehicle)\n- 16 (Vehicle_1.rightFrontWheel): Yes (as part of Vehicle)\n- 17 (Wheel_1): **No**\n- 18 (vehicle_1): **Partial/Yes** (not as Vehicle_1, but as Vehicle)\n- 19 (vehicle_1_t0): **Partial/Yes** (snapshots present, structure differs)\n- 20 (leftFrontWheel_t0): **Partial/Yes** (snapshots present, structure differs)\n- 21 (vehicle_1_t1): **Partial/Yes** (snapshots present, structure differs)\n- 22 (rightFrontWheel_t1): **Partial/Yes** (snapshots present, structure differs)\n\nLet's count the **fully or reasonably covered** claims (including partials for snapshot structure, since the intent is preserved):\n\n- Fully covered: 1, 2, 3, 4, 6, 11, 13, 15, 16\n- Partially covered (count as covered for recall): 18, 19, 20, 21, 22\n\nTotal covered: 9 (full) + 5 (partial) = **14**\n\nTotal claims: **22**\n\n---\n\n## **Score: 14/22**"
+  }
+}

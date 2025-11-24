@@ -1,0 +1,82 @@
+{
+  "model_id": 90,
+  "evaluation": "precision",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-p.txt",
+  "prompt": "Your task is to evaluate the precision of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the generated system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the generated model, determine whether it is supported by the reference model (i.e., the reference model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of supported claims>/<total number of claims in the generated model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\nlibrary package 'SemanticRiskMetadata' {\n\tprivate import ScalarValues::Real;\n\tprivate import RiskMetadata::Level;\n\tabstract occurrence def Situation;\n\tabstract occurrence situations : Situation[*] nonunique;\n\tabstract occurrence def Cause {\n\t\tattribute probability : Real;\n\t}\n\tabstract occurrence causes : Cause[*] nonunique :> situations;\n\tabstract occurrence def Failure {\n\t\tattribute severity : Level;\n\t}\n\tabstract occurrence failures : Failure[*] nonunique :> situations;\n\tabstract connection def Causation :> Occurrences::HappensBefore {\n\t\tend cause : Situation[*];\n\t\tend effect : Situation[*];\n\t}\n\tabstract connection causations : Causation[*] nonunique;\n\titem def Scenario {\n\t\toccurrence :>> situations;\n\t\toccurrence :>> causes :> situations;\n\t\toccurrence :>> failures :> situations;\n\t}\n\titem scenarios : Scenario[*] nonunique;\n\tprivate import Metaobjects::SemanticMetadata;\n\tmetadata def situation :> SemanticMetadata {\n\t\t:>> baseType = situations meta SysML::Usage;\n\t}\n\tmetadata def cause :> SemanticMetadata {\n\t\t:>> baseType = causes meta SysML::Usage;\n\t}\n\tmetadata def failure :> SemanticMetadata {\n\t\t:>> baseType = failures meta SysML::Usage;\n\t}\n\tmetadata def causation :> SemanticMetadata {\n\t\t:>> baseType = causations meta SysML::Usage;\n\t}\n\tmetadata def scenario :> SemanticMetadata {\n\t\t:>> baseType = scenarios meta SysML::Usage;\n\t}\n}\n\nGenerated Model:\npackage 'RiskMetadataModel' {\n\tprivate import ScalarValues::*;\n\tpart def Cause {\n\t\tattribute name : String;\n\t\tattribute rationale : String;\n\t}\n\tpart def Failure {\n\t\tattribute name : String;\n\t\tattribute description : String;\n\t}\n\tpart def Scenario {\n\t\tattribute summary : String;\n\t\tpart causes : CauseAssessment[*];\n\t\tpart failures : FailureImpact[*];\n\t}\n\tpart def CauseAssessment {\n\t\tref part cause : Cause;\n\t\tattribute probability : Real;\n\t}\n\tpart def FailureImpact {\n\t\tref part failure : Failure;\n\t\tattribute severityLevel : Integer;\n\t}\n\tconnection def ScenarioCausation {\n\t\tend source : Scenario[1];\n\t\tend consequence : Scenario[1];\n\t}\n\tpart def CompositeRiskScenario {\n\t\tpart scenarios : Scenario[1..*];\n\t\tpart contributingCauses : CauseAssessment[*];\n\t\tpart resultingFailures : FailureImpact[*];\n\t\tpart propagationChain : ScenarioCausation[*];\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/90/design.sysml",
+  "generated_path": "Generated_from_Prompts/90/090.sysml",
+  "response": {
+    "id": "resp_0fe524bb53b7aea6006923dca4d3bc8195bd7be1cfc5f3e327",
+    "created_at": 1763957925.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0fe524bb53b7aea6006923dca5e3e48195bfbd8ca352ab7aec",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**A. Imports**\n1. Import of ScalarValues::*.\n\n**B. Part/Class Definitions**\n2. Definition of part `Cause` with attributes:\n   - `name : String`\n   - `rationale : String`\n3. Definition of part `Failure` with attributes:\n   - `name : String`\n   - `description : String`\n4. Definition of part `Scenario` with attribute:\n   - `summary : String`\n   - `causes : CauseAssessment[*]` (as part)\n   - `failures : FailureImpact[*]` (as part)\n5. Definition of part `CauseAssessment` with:\n   - `cause : Cause` (as reference part)\n   - `probability : Real` (attribute)\n6. Definition of part `FailureImpact` with:\n   - `failure : Failure` (as reference part)\n   - `severityLevel : Integer` (attribute)\n7. Definition of connection `ScenarioCausation` with:\n   - `source : Scenario[1]` (end)\n   - `consequence : Scenario[1]` (end)\n8. Definition of part `CompositeRiskScenario` with:\n   - `scenarios : Scenario[1..*]` (part)\n   - `contributingCauses : CauseAssessment[*]` (part)\n   - `resultingFailures : FailureImpact[*]` (part)\n   - `propagationChain : ScenarioCausation[*]` (part)\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n#### 1. Import of ScalarValues::*\n- **Supported**: Reference model imports ScalarValues::Real (subset).\n\n#### 2. Definition of part `Cause` with attributes:\n- `name : String`\n  - **Not Supported**: Reference model does not define a `name` attribute for `Cause`.\n- `rationale : String`\n  - **Not Supported**: Reference model does not define a `rationale` attribute for `Cause`.\n\n#### 3. Definition of part `Failure` with attributes:\n- `name : String`\n  - **Not Supported**: Reference model does not define a `name` attribute for `Failure`.\n- `description : String`\n  - **Not Supported**: Reference model does not define a `description` attribute for `Failure`.\n\n#### 4. Definition of part `Scenario` with:\n- `summary : String`\n  - **Not Supported**: Reference model does not define a `summary` attribute for `Scenario`.\n- `causes : CauseAssessment[*]` (as part)\n  - **Not Supported**: Reference model does not define a `causes` part of type `CauseAssessment` in `Scenario`.\n- `failures : FailureImpact[*]` (as part)\n  - **Not Supported**: Reference model does not define a `failures` part of type `FailureImpact` in `Scenario`.\n\n#### 5. Definition of part `CauseAssessment` with:\n- `cause : Cause` (as reference part)\n  - **Supported**: Reference model has `Cause` and associates it with `probability`, but does not have a separate `CauseAssessment` part. **Not Supported** as a separate part.\n- `probability : Real` (attribute)\n  - **Supported**: Reference model defines `probability : Real` in `Cause`.\n\n#### 6. Definition of part `FailureImpact` with:\n- `failure : Failure` (as reference part)\n  - **Supported**: Reference model has `Failure` and associates it with `severity`, but does not have a separate `FailureImpact` part. **Not Supported** as a separate part.\n- `severityLevel : Integer` (attribute)\n  - **Not Supported**: Reference model defines `severity : Level` in `Failure`, not `severityLevel : Integer` in `FailureImpact`.\n\n#### 7. Definition of connection `ScenarioCausation` with:\n- `source : Scenario[1]`\n  - **Not Supported**: Reference model defines `Causation` between `Situation` elements, not between `Scenario`.\n- `consequence : Scenario[1]`\n  - **Not Supported**: Same as above.\n\n#### 8. Definition of part `CompositeRiskScenario` with:\n- `scenarios : Scenario[1..*]`\n  - **Not Supported**: Reference model defines `scenarios : Scenario[*]` but not as a part of `CompositeRiskScenario`.\n- `contributingCauses : CauseAssessment[*]`\n  - **Not Supported**: No such structure in reference model.\n- `resultingFailures : FailureImpact[*]`\n  - **Not Supported**: No such structure in reference model.\n- `propagationChain : ScenarioCausation[*]`\n  - **Not Supported**: No such structure in reference model.\n\n### 3. Summarize the results\n\nLet's count the claims and supported claims:\n\n#### Claims:\n1. Import ScalarValues::*.\n2. Cause: name\n3. Cause: rationale\n4. Failure: name\n5. Failure: description\n6. Scenario: summary\n7. Scenario: causes (CauseAssessment[*])\n8. Scenario: failures (FailureImpact[*])\n9. CauseAssessment: cause (ref to Cause)\n10. CauseAssessment: probability\n11. FailureImpact: failure (ref to Failure)\n12. FailureImpact: severityLevel\n13. ScenarioCausation: source (Scenario[1])\n14. ScenarioCausation: consequence (Scenario[1])\n15. CompositeRiskScenario: scenarios (Scenario[1..*])\n16. CompositeRiskScenario: contributingCauses (CauseAssessment[*])\n17. CompositeRiskScenario: resultingFailures (FailureImpact[*])\n18. CompositeRiskScenario: propagationChain (ScenarioCausation[*])\n\n**Total claims: 18**\n\n#### Supported claims:\n1. Import ScalarValues::* (partial, but acceptable)\n2. CauseAssessment: probability (matches `probability : Real` in `Cause`)\n\n**Total supported claims: 2**\n\n---\n\n**Score: 2/18**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 707,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1288,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1995
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**A. Imports**\n1. Import of ScalarValues::*.\n\n**B. Part/Class Definitions**\n2. Definition of part `Cause` with attributes:\n   - `name : String`\n   - `rationale : String`\n3. Definition of part `Failure` with attributes:\n   - `name : String`\n   - `description : String`\n4. Definition of part `Scenario` with attribute:\n   - `summary : String`\n   - `causes : CauseAssessment[*]` (as part)\n   - `failures : FailureImpact[*]` (as part)\n5. Definition of part `CauseAssessment` with:\n   - `cause : Cause` (as reference part)\n   - `probability : Real` (attribute)\n6. Definition of part `FailureImpact` with:\n   - `failure : Failure` (as reference part)\n   - `severityLevel : Integer` (attribute)\n7. Definition of connection `ScenarioCausation` with:\n   - `source : Scenario[1]` (end)\n   - `consequence : Scenario[1]` (end)\n8. Definition of part `CompositeRiskScenario` with:\n   - `scenarios : Scenario[1..*]` (part)\n   - `contributingCauses : CauseAssessment[*]` (part)\n   - `resultingFailures : FailureImpact[*]` (part)\n   - `propagationChain : ScenarioCausation[*]` (part)\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n#### 1. Import of ScalarValues::*\n- **Supported**: Reference model imports ScalarValues::Real (subset).\n\n#### 2. Definition of part `Cause` with attributes:\n- `name : String`\n  - **Not Supported**: Reference model does not define a `name` attribute for `Cause`.\n- `rationale : String`\n  - **Not Supported**: Reference model does not define a `rationale` attribute for `Cause`.\n\n#### 3. Definition of part `Failure` with attributes:\n- `name : String`\n  - **Not Supported**: Reference model does not define a `name` attribute for `Failure`.\n- `description : String`\n  - **Not Supported**: Reference model does not define a `description` attribute for `Failure`.\n\n#### 4. Definition of part `Scenario` with:\n- `summary : String`\n  - **Not Supported**: Reference model does not define a `summary` attribute for `Scenario`.\n- `causes : CauseAssessment[*]` (as part)\n  - **Not Supported**: Reference model does not define a `causes` part of type `CauseAssessment` in `Scenario`.\n- `failures : FailureImpact[*]` (as part)\n  - **Not Supported**: Reference model does not define a `failures` part of type `FailureImpact` in `Scenario`.\n\n#### 5. Definition of part `CauseAssessment` with:\n- `cause : Cause` (as reference part)\n  - **Supported**: Reference model has `Cause` and associates it with `probability`, but does not have a separate `CauseAssessment` part. **Not Supported** as a separate part.\n- `probability : Real` (attribute)\n  - **Supported**: Reference model defines `probability : Real` in `Cause`.\n\n#### 6. Definition of part `FailureImpact` with:\n- `failure : Failure` (as reference part)\n  - **Supported**: Reference model has `Failure` and associates it with `severity`, but does not have a separate `FailureImpact` part. **Not Supported** as a separate part.\n- `severityLevel : Integer` (attribute)\n  - **Not Supported**: Reference model defines `severity : Level` in `Failure`, not `severityLevel : Integer` in `FailureImpact`.\n\n#### 7. Definition of connection `ScenarioCausation` with:\n- `source : Scenario[1]`\n  - **Not Supported**: Reference model defines `Causation` between `Situation` elements, not between `Scenario`.\n- `consequence : Scenario[1]`\n  - **Not Supported**: Same as above.\n\n#### 8. Definition of part `CompositeRiskScenario` with:\n- `scenarios : Scenario[1..*]`\n  - **Not Supported**: Reference model defines `scenarios : Scenario[*]` but not as a part of `CompositeRiskScenario`.\n- `contributingCauses : CauseAssessment[*]`\n  - **Not Supported**: No such structure in reference model.\n- `resultingFailures : FailureImpact[*]`\n  - **Not Supported**: No such structure in reference model.\n- `propagationChain : ScenarioCausation[*]`\n  - **Not Supported**: No such structure in reference model.\n\n### 3. Summarize the results\n\nLet's count the claims and supported claims:\n\n#### Claims:\n1. Import ScalarValues::*.\n2. Cause: name\n3. Cause: rationale\n4. Failure: name\n5. Failure: description\n6. Scenario: summary\n7. Scenario: causes (CauseAssessment[*])\n8. Scenario: failures (FailureImpact[*])\n9. CauseAssessment: cause (ref to Cause)\n10. CauseAssessment: probability\n11. FailureImpact: failure (ref to Failure)\n12. FailureImpact: severityLevel\n13. ScenarioCausation: source (Scenario[1])\n14. ScenarioCausation: consequence (Scenario[1])\n15. CompositeRiskScenario: scenarios (Scenario[1..*])\n16. CompositeRiskScenario: contributingCauses (CauseAssessment[*])\n17. CompositeRiskScenario: resultingFailures (FailureImpact[*])\n18. CompositeRiskScenario: propagationChain (ScenarioCausation[*])\n\n**Total claims: 18**\n\n#### Supported claims:\n1. Import ScalarValues::* (partial, but acceptable)\n2. CauseAssessment: probability (matches `probability : Real` in `Cause`)\n\n**Total supported claims: 2**\n\n---\n\n**Score: 2/18**"
+  }
+}

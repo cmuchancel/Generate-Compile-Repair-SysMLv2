@@ -1,0 +1,82 @@
+{
+  "model_id": 12,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.3,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'WaterDelivery' {\n\tport def SpigotBank;\n\tport def Spigot;\n\tport def Faucet;\n\tport def FaucetInlet;\n\tinterface def WaterDelivery {\n\t\tend suppliedBy : SpigotBank[1] {\n\t\t\tport hot : Spigot;\n\t\t\tport cold : Spigot;\n\t\t}\n\t\tend deliveredTo : Faucet[1..*] {\n\t\t\tport hot : FaucetInlet;\n\t\t\tport cold : FaucetInlet;\n\t\t}\n\t\tconnect suppliedBy.hot to deliveredTo.hot;\n\t\tconnect suppliedBy.cold to deliveredTo.cold;\n\t}\n}\n\nGenerated Model:\npackage 'HotColdWaterSupplyNetwork' {\n\tattribute def WaterTemperature;\n\tpart def Water;\n\tport def Spigot {\n\t\tattribute temperature : WaterTemperature;\n\t\tout item hotWater : Water;\n\t\tout item coldWater : Water;\n\t}\n\tport def FaucetInlet {\n\t\tin item hotWater : Water;\n\t\tin item coldWater : Water;\n\t}\n\tpart def SpigotBank {\n\t\tport spigot[*] : Spigot;\n\t}\n\tpart def Faucet {\n\t\tport inlet : FaucetInlet;\n\t}\n\tflow def HotWaterFlow {\n\t\tref :>> payload : Water;\n\t\tend port supplier : Spigot;\n\t\tend port consumer : FaucetInlet;\n\t}\n\tflow def ColdWaterFlow {\n\t\tref :>> payload : Water;\n\t\tend port supplier : Spigot;\n\t\tend port consumer : FaucetInlet;\n\t}\n\tpart def WaterSupplyNetwork {\n\t\tpart spigotBank : SpigotBank;\n\t\tpart faucet[*] : Faucet;\n\t\tflow : HotWaterFlow\n\t\t  from spigotBank.spigot.hotWater\n\t\t\tto faucet.inlet.hotWater;\n\t\tflow : ColdWaterFlow\n\t\t  from spigotBank.spigot.coldWater\n\t\t\tto faucet.inlet.coldWater;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "Generated_from_Prompts/12/12_groundtruth.sysml",
+  "generated_path": "Generated_from_Prompts/12/12.sysml",
+  "response": {
+    "id": "resp_0fd1b5ef08b08a6800690f8ec7da8481909a51b42a4532af04",
+    "created_at": 1762627271.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0fd1b5ef08b08a6800690f8ec84d5081909df4b503ac17e473",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step as requested.\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Claims:**\n\n1. There is a package named (the name is not semantically important).\n2. There is a port type defined: SpigotBank.\n3. There is a port type defined: Spigot.\n4. There is a port type defined: Faucet.\n5. There is a port type defined: FaucetInlet.\n6. There is an interface (or component) defined: WaterDelivery.\n7. WaterDelivery has an endpoint `suppliedBy` of type SpigotBank, multiplicity [1].\n8. `suppliedBy` has a port `hot` of type Spigot.\n9. `suppliedBy` has a port `cold` of type Spigot.\n10. WaterDelivery has an endpoint `deliveredTo` of type Faucet, multiplicity [1..*].\n11. `deliveredTo` has a port `hot` of type FaucetInlet.\n12. `deliveredTo` has a port `cold` of type FaucetInlet.\n13. There is a connection from `suppliedBy.hot` to `deliveredTo.hot`.\n14. There is a connection from `suppliedBy.cold` to `deliveredTo.cold`.\n\n---\n\n### 2. For each atomic claim, determine coverage in the generated model\n\n**Claim 1:** There is a package.  \n- **Covered** (the generated model is also in a package).\n\n**Claim 2:** Port type SpigotBank.  \n- **Covered** (`part def SpigotBank` in generated model; used as a structural part, which is equivalent).\n\n**Claim 3:** Port type Spigot.  \n- **Covered** (`port def Spigot` in generated model).\n\n**Claim 4:** Port type Faucet.  \n- **Covered** (`part def Faucet` in generated model; used as a structural part, which is equivalent).\n\n**Claim 5:** Port type FaucetInlet.  \n- **Covered** (`port def FaucetInlet` in generated model).\n\n**Claim 6:** Interface/component WaterDelivery.  \n- **Covered** (`part def WaterSupplyNetwork` in generated model; serves the same purpose as the top-level system).\n\n**Claim 7:** WaterDelivery has endpoint `suppliedBy` of type SpigotBank [1].  \n- **Covered** (`part spigotBank : SpigotBank` in WaterSupplyNetwork).\n\n**Claim 8:** `suppliedBy` has port `hot` of type Spigot.  \n- **Covered** (`port spigot[*] : Spigot` in SpigotBank; the bank contains spigots, which matches the structure).\n\n**Claim 9:** `suppliedBy` has port `cold` of type Spigot.  \n- **Covered** (same as above; both hot and cold are represented as separate items in the Spigot port).\n\n**Claim 10:** WaterDelivery has endpoint `deliveredTo` of type Faucet [1..*].  \n- **Covered** (`part faucet[*] : Faucet` in WaterSupplyNetwork).\n\n**Claim 11:** `deliveredTo` has port `hot` of type FaucetInlet.  \n- **Covered** (`port inlet : FaucetInlet` in Faucet; the inlet can receive both hot and cold, matching the reference).\n\n**Claim 12:** `deliveredTo` has port `cold` of type FaucetInlet.  \n- **Covered** (same as above).\n\n**Claim 13:** Connection from `suppliedBy.hot` to `deliveredTo.hot`.  \n- **Covered** (`flow : HotWaterFlow from spigotBank.spigot.hotWater to faucet.inlet.hotWater`).\n\n**Claim 14:** Connection from `suppliedBy.cold` to `deliveredTo.cold`.  \n- **Covered** (`flow : ColdWaterFlow from spigotBank.spigot.coldWater to faucet.inlet.coldWater`).\n\n---\n\n### 3. Summarize the results\n\n**Score: 14/14**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.3,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 559,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 851,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1410
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "prompt_cache_retention": null,
+    "store": true,
+    "response_text": "Let's proceed step by step as requested.\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Claims:**\n\n1. There is a package named (the name is not semantically important).\n2. There is a port type defined: SpigotBank.\n3. There is a port type defined: Spigot.\n4. There is a port type defined: Faucet.\n5. There is a port type defined: FaucetInlet.\n6. There is an interface (or component) defined: WaterDelivery.\n7. WaterDelivery has an endpoint `suppliedBy` of type SpigotBank, multiplicity [1].\n8. `suppliedBy` has a port `hot` of type Spigot.\n9. `suppliedBy` has a port `cold` of type Spigot.\n10. WaterDelivery has an endpoint `deliveredTo` of type Faucet, multiplicity [1..*].\n11. `deliveredTo` has a port `hot` of type FaucetInlet.\n12. `deliveredTo` has a port `cold` of type FaucetInlet.\n13. There is a connection from `suppliedBy.hot` to `deliveredTo.hot`.\n14. There is a connection from `suppliedBy.cold` to `deliveredTo.cold`.\n\n---\n\n### 2. For each atomic claim, determine coverage in the generated model\n\n**Claim 1:** There is a package.  \n- **Covered** (the generated model is also in a package).\n\n**Claim 2:** Port type SpigotBank.  \n- **Covered** (`part def SpigotBank` in generated model; used as a structural part, which is equivalent).\n\n**Claim 3:** Port type Spigot.  \n- **Covered** (`port def Spigot` in generated model).\n\n**Claim 4:** Port type Faucet.  \n- **Covered** (`part def Faucet` in generated model; used as a structural part, which is equivalent).\n\n**Claim 5:** Port type FaucetInlet.  \n- **Covered** (`port def FaucetInlet` in generated model).\n\n**Claim 6:** Interface/component WaterDelivery.  \n- **Covered** (`part def WaterSupplyNetwork` in generated model; serves the same purpose as the top-level system).\n\n**Claim 7:** WaterDelivery has endpoint `suppliedBy` of type SpigotBank [1].  \n- **Covered** (`part spigotBank : SpigotBank` in WaterSupplyNetwork).\n\n**Claim 8:** `suppliedBy` has port `hot` of type Spigot.  \n- **Covered** (`port spigot[*] : Spigot` in SpigotBank; the bank contains spigots, which matches the structure).\n\n**Claim 9:** `suppliedBy` has port `cold` of type Spigot.  \n- **Covered** (same as above; both hot and cold are represented as separate items in the Spigot port).\n\n**Claim 10:** WaterDelivery has endpoint `deliveredTo` of type Faucet [1..*].  \n- **Covered** (`part faucet[*] : Faucet` in WaterSupplyNetwork).\n\n**Claim 11:** `deliveredTo` has port `hot` of type FaucetInlet.  \n- **Covered** (`port inlet : FaucetInlet` in Faucet; the inlet can receive both hot and cold, matching the reference).\n\n**Claim 12:** `deliveredTo` has port `cold` of type FaucetInlet.  \n- **Covered** (same as above).\n\n**Claim 13:** Connection from `suppliedBy.hot` to `deliveredTo.hot`.  \n- **Covered** (`flow : HotWaterFlow from spigotBank.spigot.hotWater to faucet.inlet.hotWater`).\n\n**Claim 14:** Connection from `suppliedBy.cold` to `deliveredTo.cold`.  \n- **Covered** (`flow : ColdWaterFlow from spigotBank.spigot.coldWater to faucet.inlet.coldWater`).\n\n---\n\n### 3. Summarize the results\n\n**Score: 14/14**"
+  }
+}

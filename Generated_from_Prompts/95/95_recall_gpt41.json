@@ -1,0 +1,82 @@
+{
+  "model_id": 95,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'AutomotiveDocumentation' {\n\tdoc /* This is documentation of the owning \n\t     * package.\n\t     */\n\tpart def Automobile {\n\t\tdoc Document1 /* This documentation of Automobile. */\n\t}\n\talias Car for Automobile {\n\t\tdoc /* This is documentation of the alias. */\n\t}\n\talias Torque for ISQ::TorqueValue;\n}\n\nGenerated Model:\npackage 'AutomobileDocumentPlatform' {\n\tprivate import ScalarValues::*;\n\tpublic import ISQ::TorqueValue;\n\tpart def Automobile;\n\tpublic alias Car for Automobile;\n\tattribute def DocumentRecord {\n\t\tattribute subjectLabel : String;\n\t\tattribute explanatoryText : String;\n\t}\n\taction def EnterAutomobileInfo {\n\t\tin automobile : Automobile;\n\t\tin detail : String;\n\t}\n\taction def QueryAutomobileRecords {\n\t\tin automobile : Automobile;\n\t\tout summary : String;\n\t}\n\taction def ArchiveAutomobileDocument {\n\t\tin automobile : Automobile;\n\t\tin document : DocumentRecord;\n\t}\n\tpart documentPlatform {\n\t\tpart managedAutomobile : Automobile;\n\t\tattribute torqueReference : TorqueValue;\n\t\taction enterInfo : EnterAutomobileInfo {\n\t\t\tin automobile = managedAutomobile;\n\t\t}\n\t\taction queryRecords : QueryAutomobileRecords {\n\t\t\tin automobile = managedAutomobile;\n\t\t}\n\t\taction archiveRecord : ArchiveAutomobileDocument {\n\t\t\tin automobile = managedAutomobile;\n\t\t}\n\t\tattribute automobileDocumentation : DocumentRecord {\n\t\t\tattribute redefines subjectLabel = \"Automobile\";\n\t\t}\n\t\tattribute carAliasDocumentation : DocumentRecord {\n\t\t\tattribute redefines subjectLabel = \"Car\";\n\t\t}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/95/design.sysml",
+  "generated_path": "Generated_from_Prompts/95/095.sysml",
+  "response": {
+    "id": "resp_0894f68755659a83006923dd4d04bc81979fc0f9018e4aa58b",
+    "created_at": 1763958093.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0894f68755659a83006923dd4d9c0c8197a7fd217cb9ccf97b",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model:**\n```plaintext\npackage 'AutomotiveDocumentation' {\n\tdoc /* This is documentation of the owning \n\t     * package.\n\t     */\n\tpart def Automobile {\n\t\tdoc Document1 /* This documentation of Automobile. */\n\t}\n\talias Car for Automobile {\n\t\tdoc /* This is documentation of the alias. */\n\t}\n\talias Torque for ISQ::TorqueValue;\n}\n```\n\n#### Atomic Claims:\n\n1. There is a package (named 'AutomotiveDocumentation').\n2. The package has documentation.\n3. There is a part definition named 'Automobile'.\n4. The part 'Automobile' has documentation (Document1).\n5. There is an alias 'Car' for 'Automobile'.\n6. The alias 'Car' has documentation.\n7. There is an alias 'Torque' for 'ISQ::TorqueValue'.\n\n---\n\n### 2. For each atomic claim, determine coverage in the generated model\n\n#### 1. There is a package (named 'AutomotiveDocumentation').\n- **Generated model:** Has a package, but named 'AutomobileDocumentPlatform'.\n- **Coverage:** YES (naming differences are ignored).\n\n#### 2. The package has documentation.\n- **Generated model:** No documentation on the package.\n- **Coverage:** NO.\n\n#### 3. There is a part definition named 'Automobile'.\n- **Generated model:** `part def Automobile;`\n- **Coverage:** YES.\n\n#### 4. The part 'Automobile' has documentation (Document1).\n- **Generated model:** No documentation on 'Automobile'.\n- **Coverage:** NO.\n\n#### 5. There is an alias 'Car' for 'Automobile'.\n- **Generated model:** `public alias Car for Automobile;`\n- **Coverage:** YES.\n\n#### 6. The alias 'Car' has documentation.\n- **Generated model:** No documentation on the alias.\n- **Coverage:** NO.\n\n#### 7. There is an alias 'Torque' for 'ISQ::TorqueValue'.\n- **Generated model:** `public import ISQ::TorqueValue;` (but no alias 'Torque' for it).\n- **Coverage:** NO.\n\n---\n\n### 3. Summarize the results\n\n**Score:** 3/7\n\n**Covered claims:**\n- Package exists (ignoring name)\n- Part 'Automobile' exists\n- Alias 'Car' for 'Automobile' exists\n\n**Not covered:**\n- Package documentation\n- 'Automobile' documentation\n- Alias 'Car' documentation\n- Alias 'Torque' for 'ISQ::TorqueValue'\n\n---\n\n**Final Output:**\n\n**Score: 3/7**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 510,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 562,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1072
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model:**\n```plaintext\npackage 'AutomotiveDocumentation' {\n\tdoc /* This is documentation of the owning \n\t     * package.\n\t     */\n\tpart def Automobile {\n\t\tdoc Document1 /* This documentation of Automobile. */\n\t}\n\talias Car for Automobile {\n\t\tdoc /* This is documentation of the alias. */\n\t}\n\talias Torque for ISQ::TorqueValue;\n}\n```\n\n#### Atomic Claims:\n\n1. There is a package (named 'AutomotiveDocumentation').\n2. The package has documentation.\n3. There is a part definition named 'Automobile'.\n4. The part 'Automobile' has documentation (Document1).\n5. There is an alias 'Car' for 'Automobile'.\n6. The alias 'Car' has documentation.\n7. There is an alias 'Torque' for 'ISQ::TorqueValue'.\n\n---\n\n### 2. For each atomic claim, determine coverage in the generated model\n\n#### 1. There is a package (named 'AutomotiveDocumentation').\n- **Generated model:** Has a package, but named 'AutomobileDocumentPlatform'.\n- **Coverage:** YES (naming differences are ignored).\n\n#### 2. The package has documentation.\n- **Generated model:** No documentation on the package.\n- **Coverage:** NO.\n\n#### 3. There is a part definition named 'Automobile'.\n- **Generated model:** `part def Automobile;`\n- **Coverage:** YES.\n\n#### 4. The part 'Automobile' has documentation (Document1).\n- **Generated model:** No documentation on 'Automobile'.\n- **Coverage:** NO.\n\n#### 5. There is an alias 'Car' for 'Automobile'.\n- **Generated model:** `public alias Car for Automobile;`\n- **Coverage:** YES.\n\n#### 6. The alias 'Car' has documentation.\n- **Generated model:** No documentation on the alias.\n- **Coverage:** NO.\n\n#### 7. There is an alias 'Torque' for 'ISQ::TorqueValue'.\n- **Generated model:** `public import ISQ::TorqueValue;` (but no alias 'Torque' for it).\n- **Coverage:** NO.\n\n---\n\n### 3. Summarize the results\n\n**Score:** 3/7\n\n**Covered claims:**\n- Package exists (ignoring name)\n- Part 'Automobile' exists\n- Alias 'Car' for 'Automobile' exists\n\n**Not covered:**\n- Package documentation\n- 'Automobile' documentation\n- Alias 'Car' documentation\n- Alias 'Torque' for 'ISQ::TorqueValue'\n\n---\n\n**Final Output:**\n\n**Score: 3/7**"
+  }
+}

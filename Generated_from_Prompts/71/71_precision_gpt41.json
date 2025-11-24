@@ -1,0 +1,82 @@
+{
+  "model_id": 71,
+  "evaluation": "precision",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-p.txt",
+  "prompt": "Your task is to evaluate the precision of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the generated system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the generated model, determine whether it is supported by the reference model (i.e., the reference model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of supported claims>/<total number of claims in the generated model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleRequirementsSpecialization' {\n\tprivate import ISQ::*;\n\tprivate import SI::*;\n\trequirement def MassLimitationRequirement {\n\t\tdoc /* The actual mass shall be less than or equal to the required mass. */\n\t\tattribute massActual: MassValue;\n\t\tattribute massReqd: MassValue;\n\t\trequire constraint { massActual <= massReqd }\n\t}\n\tpart def Vehicle {\n\t\tattribute dryMass: MassValue;\n\t\tattribute fuelMass: MassValue;\n\t\tattribute fuelFullMass: MassValue;\n\t}\n\trequirement def <'1'> VehicleMassLimitationRequirement :> MassLimitationRequirement {\n\t\tdoc /* The total mass of a vehicle shall be less than or equal to the required mass. */\n\t\tsubject vehicle : Vehicle;\n\t\tattribute redefines massActual = vehicle.dryMass + vehicle.fuelMass;\n\t\tassume constraint { vehicle.fuelMass > 0[kg] }\n\t}\n\tport def ClutchPort;\n\taction def GenerateTorque;\n\trequirement def <'2'> DrivePowerInterface {\n\t\tdoc /* The engine shall transfer its generated torque to the transmission via the clutch interface. */\n\t\tsubject clutchPort: ClutchPort;\n\t}\t\n\trequirement def <'3'> TorqueGeneration {\n\t\tdoc /* The engine shall generate torque as a function of RPM as shown in Table 1. */\n\t\tsubject generateTorque: GenerateTorque;\n\t}\n\trequirement <'1.1'> fullVehicleMassLimit : VehicleMassLimitationRequirement {\n\t\tsubject vehicle : Vehicle;\n\t\tattribute :>> massReqd = 2000[kg];\n\t\tassume constraint {\n\t\t\tdoc /* Full tank is full. */\n\t\t\tvehicle.fuelMass == vehicle.fuelFullMass\n\t\t}\n\t}\n\trequirement <'1.2'> emptyVehicleMassLimit : VehicleMassLimitationRequirement {\n\t\tsubject vehicle : Vehicle;\n\t\tattribute :>> massReqd = 1500[kg];\t\n\t\tassume constraint {\n\t\t\tdoc /* Full tank is empty. */\n\t\t\tvehicle.fuelMass == 0[kg]\n\t\t}\n\t}\n}\n\nGenerated Model:\npackage 'VehicleMassPower071' {\n\tprivate import ScalarValues::*;\n\t\n\tpart vehicle {\n\t\tattribute curbMass : Real;\n\t\tattribute fuelMass : Real;\n\t\tattribute fuelFullMass : Real;\n\t\tattribute totalMass : Real = curbMass + fuelMass;\n\t\tconstraint fullTankLimit {\n\t\t\tconstraint { curbMass + fuelFullMass <= 2000.0 }\n\t\t}\n\t\tconstraint emptyTankLimit {\n\t\t\tconstraint { curbMass <= 1500.0 }\n\t\t}\n\t}\n\t\n\tport def ClutchPort;\n\t\n\taction def GenerateTorque {\n\t\tin speed : Real;\n\t\tout torque : Real;\n\t}\n\t\n\tpart engine {\n\t\tport clutchPort : ClutchPort;\n\t\tperform action generateTorque : GenerateTorque;\n\t}\n\t\n\tpart gearbox {\n\t\tport clutchPort : ClutchPort;\n\t}\n\t\n\tconnect engine.clutchPort to gearbox.clutchPort;\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/71/design.sysml",
+  "generated_path": "Generated_from_Prompts/71/71.sysml",
+  "response": {
+    "id": "resp_0af9bf71846bc20a006923d3088e688195bd3f750ac3137e8e",
+    "created_at": 1763955464.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0af9bf71846bc20a006923d308e76481958b23dfcce602a5f9",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step as requested.\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**A. Package and Imports**\n1. The model is defined in a package named 'VehicleMassPower071'.\n2. The model imports 'ScalarValues::*'.\n\n**B. Part: vehicle**\n3. There is a part named 'vehicle'.\n4. 'vehicle' has an attribute 'curbMass' of type Real.\n5. 'vehicle' has an attribute 'fuelMass' of type Real.\n6. 'vehicle' has an attribute 'fuelFullMass' of type Real.\n7. 'vehicle' has an attribute 'totalMass' of type Real, defined as 'curbMass + fuelMass'.\n8. 'vehicle' has a constraint 'fullTankLimit' defined as 'curbMass + fuelFullMass <= 2000.0'.\n9. 'vehicle' has a constraint 'emptyTankLimit' defined as 'curbMass <= 1500.0'.\n\n**C. Port**\n10. There is a port definition 'ClutchPort'.\n\n**D. Action**\n11. There is an action definition 'GenerateTorque'.\n12. 'GenerateTorque' has an input 'speed' of type Real.\n13. 'GenerateTorque' has an output 'torque' of type Real.\n\n**E. Part: engine**\n14. There is a part named 'engine'.\n15. 'engine' has a port 'clutchPort' of type 'ClutchPort'.\n16. 'engine' performs an action 'generateTorque' of type 'GenerateTorque'.\n\n**F. Part: gearbox**\n17. There is a part named 'gearbox'.\n18. 'gearbox' has a port 'clutchPort' of type 'ClutchPort'.\n\n**G. Connection**\n19. There is a connection from 'engine.clutchPort' to 'gearbox.clutchPort'.\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n**A. Package and Imports**\n1. **Supported** (Package exists, naming differences ignored)\n2. **Not Supported** (Import is different; reference uses ISQ and SI, not ScalarValues)\n\n**B. Part: vehicle**\n3. **Supported** (Reference has 'Vehicle' part)\n4. **Supported** (Reference has 'dryMass', which is equivalent to 'curbMass' in this context)\n5. **Supported** (Reference has 'fuelMass')\n6. **Supported** (Reference has 'fuelFullMass')\n7. **Supported** (Reference uses 'dryMass + fuelMass' as 'massActual'; equivalent to 'totalMass')\n8. **Supported** (Reference has a requirement for 'vehicle.dryMass + vehicle.fuelFullMass <= 2000[kg]')\n9. **Supported** (Reference has a requirement for 'vehicle.dryMass <= 1500[kg]')\n\n**C. Port**\n10. **Supported** (Reference defines 'ClutchPort')\n\n**D. Action**\n11. **Supported** (Reference defines 'GenerateTorque')\n12. **Not Supported** (Reference does not specify 'speed' as an input to 'GenerateTorque')\n13. **Not Supported** (Reference does not specify 'torque' as an output of 'GenerateTorque')\n\n**E. Part: engine**\n14. **Not Supported** (Reference does not define an 'engine' part)\n15. **Not Supported** (Reference does not define a port 'clutchPort' on 'engine')\n16. **Not Supported** (Reference does not define 'engine' performing 'GenerateTorque')\n\n**F. Part: gearbox**\n17. **Not Supported** (Reference does not define a 'gearbox' part)\n18. **Not Supported** (Reference does not define a port 'clutchPort' on 'gearbox')\n\n**G. Connection**\n19. **Not Supported** (Reference does not define a connection between 'engine.clutchPort' and 'gearbox.clutchPort')\n\n---\n\n### 3. Summarize the results\n\n**Supported claims:** 1, 3, 4, 5, 6, 7, 8, 9, 10, 11  \n**Total supported:** 10\n\n**Total claims:** 19\n\n---\n\n**Score: 10/19**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 810,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 899,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1709
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step as requested.\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**A. Package and Imports**\n1. The model is defined in a package named 'VehicleMassPower071'.\n2. The model imports 'ScalarValues::*'.\n\n**B. Part: vehicle**\n3. There is a part named 'vehicle'.\n4. 'vehicle' has an attribute 'curbMass' of type Real.\n5. 'vehicle' has an attribute 'fuelMass' of type Real.\n6. 'vehicle' has an attribute 'fuelFullMass' of type Real.\n7. 'vehicle' has an attribute 'totalMass' of type Real, defined as 'curbMass + fuelMass'.\n8. 'vehicle' has a constraint 'fullTankLimit' defined as 'curbMass + fuelFullMass <= 2000.0'.\n9. 'vehicle' has a constraint 'emptyTankLimit' defined as 'curbMass <= 1500.0'.\n\n**C. Port**\n10. There is a port definition 'ClutchPort'.\n\n**D. Action**\n11. There is an action definition 'GenerateTorque'.\n12. 'GenerateTorque' has an input 'speed' of type Real.\n13. 'GenerateTorque' has an output 'torque' of type Real.\n\n**E. Part: engine**\n14. There is a part named 'engine'.\n15. 'engine' has a port 'clutchPort' of type 'ClutchPort'.\n16. 'engine' performs an action 'generateTorque' of type 'GenerateTorque'.\n\n**F. Part: gearbox**\n17. There is a part named 'gearbox'.\n18. 'gearbox' has a port 'clutchPort' of type 'ClutchPort'.\n\n**G. Connection**\n19. There is a connection from 'engine.clutchPort' to 'gearbox.clutchPort'.\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n**A. Package and Imports**\n1. **Supported** (Package exists, naming differences ignored)\n2. **Not Supported** (Import is different; reference uses ISQ and SI, not ScalarValues)\n\n**B. Part: vehicle**\n3. **Supported** (Reference has 'Vehicle' part)\n4. **Supported** (Reference has 'dryMass', which is equivalent to 'curbMass' in this context)\n5. **Supported** (Reference has 'fuelMass')\n6. **Supported** (Reference has 'fuelFullMass')\n7. **Supported** (Reference uses 'dryMass + fuelMass' as 'massActual'; equivalent to 'totalMass')\n8. **Supported** (Reference has a requirement for 'vehicle.dryMass + vehicle.fuelFullMass <= 2000[kg]')\n9. **Supported** (Reference has a requirement for 'vehicle.dryMass <= 1500[kg]')\n\n**C. Port**\n10. **Supported** (Reference defines 'ClutchPort')\n\n**D. Action**\n11. **Supported** (Reference defines 'GenerateTorque')\n12. **Not Supported** (Reference does not specify 'speed' as an input to 'GenerateTorque')\n13. **Not Supported** (Reference does not specify 'torque' as an output of 'GenerateTorque')\n\n**E. Part: engine**\n14. **Not Supported** (Reference does not define an 'engine' part)\n15. **Not Supported** (Reference does not define a port 'clutchPort' on 'engine')\n16. **Not Supported** (Reference does not define 'engine' performing 'GenerateTorque')\n\n**F. Part: gearbox**\n17. **Not Supported** (Reference does not define a 'gearbox' part)\n18. **Not Supported** (Reference does not define a port 'clutchPort' on 'gearbox')\n\n**G. Connection**\n19. **Not Supported** (Reference does not define a connection between 'engine.clutchPort' and 'gearbox.clutchPort')\n\n---\n\n### 3. Summarize the results\n\n**Supported claims:** 1, 3, 4, 5, 6, 7, 8, 9, 10, 11  \n**Total supported:** 10\n\n**Total claims:** 19\n\n---\n\n**Score: 10/19**"
+  }
+}

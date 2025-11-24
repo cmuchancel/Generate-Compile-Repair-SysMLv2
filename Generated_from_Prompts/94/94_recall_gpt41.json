@@ -1,0 +1,82 @@
+{
+  "model_id": 94,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'Automotive Domain Annotations' {\n\t/* This is a comment, which is a part of the model, \n\t * annotating (by default) it's owning namespace. */\n\tcomment Comment1 /* This is a named comment. */\n\tcomment about Automobile\n\t/* This is an unnamed comment, annotating an \n\t * explicitly specified element. \n\t */\n\tpart def Automobile;\n\talias Car for Automobile {\n\t\t/*\n\t\t * This is a comment annotating its owning\n\t\t * element.\n\t\t */\n\t}\t                         \n\t// This is a note. It is in the text, but not part \n\t// of the model.\n\talias Torque for ISQ::TorqueValue;\n}\n\nGenerated Model:\nlibrary package 'AutomotiveGlossary' {\n\tprivate import ScalarValues::*;\n\tpublic import ISQ::TorqueValue;\n\tdoc\n\t/*\n\t * This glossary provides canonical system elements for the automotive\n\t * domain, creating a shared vocabulary for downstream models.\n\t */\n\tpart def '汽车' {\n\t\tdoc\n\t\t/*\n\t\t * Core automotive system element representing a complete vehicle.\n\t\t * It provides the anchor for integrating functional and safety\n\t\t * subsystems across product lines.\n\t\t */\n\t}\n\tpublic alias '汽车 (Car)' for '汽车' {\n\t\tdoc\n\t\t/*\n\t\t * Public alias that pairs the Chinese term with the English\n\t\t * translation to simplify communication among mixed-language teams.\n\t\t */\n\t}\n\tpublic alias Car for '汽车';\n\tpublic alias Automobile for '汽车';\n\tpublic alias '扭矩 (Torque)' for TorqueValue {\n\t\tdoc\n\t\t/*\n\t\t * TorqueValue from the ISQ library is aliased to the bilingual\n\t\t * label used by calibration and controls engineers.\n\t\t */\n\t}\n\tmetadata def DomainNote {\n\t\tattribute meaning : String;\n\t\tattribute usageContext : String;\n\t}\n\tpart conceptLibrary {\n\t\tpart vehicle : '汽车' {@DomainNote{meaning = \"Complete automobile platform\"; usageContext = \"All vehicle-level discussions\";}}\n\t\tattribute ratedTorque : TorqueValue {@DomainNote{meaning = \"Nominal drivetrain torque\"; usageContext = \"Powertrain sizing\";}}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/94/design.sysml",
+  "generated_path": "Generated_from_Prompts/94/094.sysml",
+  "response": {
+    "id": "resp_05c1d988ae04437b006923dd29b0748193b71e35acb1d7dff4",
+    "created_at": 1763958057.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_05c1d988ae04437b006923dd2a17808193b265819a7ad2bbdd",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. **List all atomic modeling claims made by the reference system model**\n\n**Reference Model:**\n```plaintext\npackage 'Automotive Domain Annotations' {\n\t/* This is a comment, which is a part of the model, \n\t * annotating (by default) it's owning namespace. */\n\tcomment Comment1 /* This is a named comment. */\n\tcomment about Automobile\n\t/* This is an unnamed comment, annotating an \n\t * explicitly specified element. \n\t */\n\tpart def Automobile;\n\talias Car for Automobile {\n\t\t/*\n\t\t * This is a comment annotating its owning\n\t\t * element.\n\t\t */\n\t}\t                         \n\t// This is a note. It is in the text, but not part \n\t// of the model.\n\talias Torque for ISQ::TorqueValue;\n}\n```\n\n#### **Atomic Claims:**\n\n1. The existence of a package (namespace) named 'Automotive Domain Annotations'.\n2. A comment annotating the package (namespace) (unnamed, general comment).\n3. A named comment `Comment1`.\n4. A comment annotating the element `Automobile`.\n5. A part definition: `Automobile`.\n6. An alias: `Car` for `Automobile`.\n7. A comment annotating the alias `Car`.\n8. An alias: `Torque` for `ISQ::TorqueValue`.\n\n---\n\n### 2. **For each atomic claim, determine whether it is covered by the generated model**\n\n#### **Claim 1: The existence of a package (namespace) named 'Automotive Domain Annotations'.**\n- **Generated Model:** The top-level is `library package 'AutomotiveGlossary'`.\n- **Coverage:** **Not covered** (different package name, not equivalent).\n\n#### **Claim 2: A comment annotating the package (namespace) (unnamed, general comment).**\n- **Generated Model:** There is a doc comment at the package level.\n- **Coverage:** **Covered** (the presence of a doc comment at the package level is equivalent).\n\n#### **Claim 3: A named comment `Comment1`.**\n- **Generated Model:** No named comment or equivalent metadata.\n- **Coverage:** **Not covered**.\n\n#### **Claim 4: A comment annotating the element `Automobile`.**\n- **Generated Model:** The part `'汽车'` (Chinese for \"Automobile\") has a doc comment.\n- **Coverage:** **Covered** (the comment on the main vehicle part is equivalent).\n\n#### **Claim 5: A part definition: `Automobile`.**\n- **Generated Model:** There is a part `'汽车'`, which is the semantic equivalent of `Automobile`.\n- **Coverage:** **Covered**.\n\n#### **Claim 6: An alias: `Car` for `Automobile`.**\n- **Generated Model:** There are aliases: `'汽车 (Car)'` for `'汽车'`, `Car` for `'汽车'`, and `Automobile` for `'汽车'`.\n- **Coverage:** **Covered** (the alias `Car` for `Automobile` is present, even if via `'汽车'`).\n\n#### **Claim 7: A comment annotating the alias `Car`.**\n- **Generated Model:** The alias `'汽车 (Car)'` for `'汽车'` has a doc comment.\n- **Coverage:** **Covered** (the alias has a doc comment).\n\n#### **Claim 8: An alias: `Torque` for `ISQ::TorqueValue`.**\n- **Generated Model:** There is an alias `'扭矩 (Torque)'` for `TorqueValue`.\n- **Coverage:** **Covered** (the alias is present, even if the name is bilingual).\n\n---\n\n### 3. **Summarize the results**\n\n| Claim # | Description                                      | Covered? |\n|---------|--------------------------------------------------|----------|\n| 1       | Package named 'Automotive Domain Annotations'     | No       |\n| 2       | Comment annotating the package                    | Yes      |\n| 3       | Named comment `Comment1`                          | No       |\n| 4       | Comment annotating `Automobile`                   | Yes      |\n| 5       | Part definition: `Automobile`                     | Yes      |\n| 6       | Alias: `Car` for `Automobile`                     | Yes      |\n| 7       | Comment annotating alias `Car`                    | Yes      |\n| 8       | Alias: `Torque` for `ISQ::TorqueValue`            | Yes      |\n\n**Score: 6/8**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 624,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 951,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1575
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. **List all atomic modeling claims made by the reference system model**\n\n**Reference Model:**\n```plaintext\npackage 'Automotive Domain Annotations' {\n\t/* This is a comment, which is a part of the model, \n\t * annotating (by default) it's owning namespace. */\n\tcomment Comment1 /* This is a named comment. */\n\tcomment about Automobile\n\t/* This is an unnamed comment, annotating an \n\t * explicitly specified element. \n\t */\n\tpart def Automobile;\n\talias Car for Automobile {\n\t\t/*\n\t\t * This is a comment annotating its owning\n\t\t * element.\n\t\t */\n\t}\t                         \n\t// This is a note. It is in the text, but not part \n\t// of the model.\n\talias Torque for ISQ::TorqueValue;\n}\n```\n\n#### **Atomic Claims:**\n\n1. The existence of a package (namespace) named 'Automotive Domain Annotations'.\n2. A comment annotating the package (namespace) (unnamed, general comment).\n3. A named comment `Comment1`.\n4. A comment annotating the element `Automobile`.\n5. A part definition: `Automobile`.\n6. An alias: `Car` for `Automobile`.\n7. A comment annotating the alias `Car`.\n8. An alias: `Torque` for `ISQ::TorqueValue`.\n\n---\n\n### 2. **For each atomic claim, determine whether it is covered by the generated model**\n\n#### **Claim 1: The existence of a package (namespace) named 'Automotive Domain Annotations'.**\n- **Generated Model:** The top-level is `library package 'AutomotiveGlossary'`.\n- **Coverage:** **Not covered** (different package name, not equivalent).\n\n#### **Claim 2: A comment annotating the package (namespace) (unnamed, general comment).**\n- **Generated Model:** There is a doc comment at the package level.\n- **Coverage:** **Covered** (the presence of a doc comment at the package level is equivalent).\n\n#### **Claim 3: A named comment `Comment1`.**\n- **Generated Model:** No named comment or equivalent metadata.\n- **Coverage:** **Not covered**.\n\n#### **Claim 4: A comment annotating the element `Automobile`.**\n- **Generated Model:** The part `'汽车'` (Chinese for \"Automobile\") has a doc comment.\n- **Coverage:** **Covered** (the comment on the main vehicle part is equivalent).\n\n#### **Claim 5: A part definition: `Automobile`.**\n- **Generated Model:** There is a part `'汽车'`, which is the semantic equivalent of `Automobile`.\n- **Coverage:** **Covered**.\n\n#### **Claim 6: An alias: `Car` for `Automobile`.**\n- **Generated Model:** There are aliases: `'汽车 (Car)'` for `'汽车'`, `Car` for `'汽车'`, and `Automobile` for `'汽车'`.\n- **Coverage:** **Covered** (the alias `Car` for `Automobile` is present, even if via `'汽车'`).\n\n#### **Claim 7: A comment annotating the alias `Car`.**\n- **Generated Model:** The alias `'汽车 (Car)'` for `'汽车'` has a doc comment.\n- **Coverage:** **Covered** (the alias has a doc comment).\n\n#### **Claim 8: An alias: `Torque` for `ISQ::TorqueValue`.**\n- **Generated Model:** There is an alias `'扭矩 (Torque)'` for `TorqueValue`.\n- **Coverage:** **Covered** (the alias is present, even if the name is bilingual).\n\n---\n\n### 3. **Summarize the results**\n\n| Claim # | Description                                      | Covered? |\n|---------|--------------------------------------------------|----------|\n| 1       | Package named 'Automotive Domain Annotations'     | No       |\n| 2       | Comment annotating the package                    | Yes      |\n| 3       | Named comment `Comment1`                          | No       |\n| 4       | Comment annotating `Automobile`                   | Yes      |\n| 5       | Part definition: `Automobile`                     | Yes      |\n| 6       | Alias: `Car` for `Automobile`                     | Yes      |\n| 7       | Comment annotating alias `Car`                    | Yes      |\n| 8       | Alias: `Torque` for `ISQ::TorqueValue`            | Yes      |\n\n**Score: 6/8**"
+  }
+}

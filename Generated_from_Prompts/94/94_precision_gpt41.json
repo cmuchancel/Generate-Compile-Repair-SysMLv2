@@ -1,0 +1,82 @@
+{
+  "model_id": 94,
+  "evaluation": "precision",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-p.txt",
+  "prompt": "Your task is to evaluate the precision of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the generated system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the generated model, determine whether it is supported by the reference model (i.e., the reference model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of supported claims>/<total number of claims in the generated model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'Automotive Domain Annotations' {\n\t/* This is a comment, which is a part of the model, \n\t * annotating (by default) it's owning namespace. */\n\tcomment Comment1 /* This is a named comment. */\n\tcomment about Automobile\n\t/* This is an unnamed comment, annotating an \n\t * explicitly specified element. \n\t */\n\tpart def Automobile;\n\talias Car for Automobile {\n\t\t/*\n\t\t * This is a comment annotating its owning\n\t\t * element.\n\t\t */\n\t}\t                         \n\t// This is a note. It is in the text, but not part \n\t// of the model.\n\talias Torque for ISQ::TorqueValue;\n}\n\nGenerated Model:\nlibrary package 'AutomotiveGlossary' {\n\tprivate import ScalarValues::*;\n\tpublic import ISQ::TorqueValue;\n\tdoc\n\t/*\n\t * This glossary provides canonical system elements for the automotive\n\t * domain, creating a shared vocabulary for downstream models.\n\t */\n\tpart def '汽车' {\n\t\tdoc\n\t\t/*\n\t\t * Core automotive system element representing a complete vehicle.\n\t\t * It provides the anchor for integrating functional and safety\n\t\t * subsystems across product lines.\n\t\t */\n\t}\n\tpublic alias '汽车 (Car)' for '汽车' {\n\t\tdoc\n\t\t/*\n\t\t * Public alias that pairs the Chinese term with the English\n\t\t * translation to simplify communication among mixed-language teams.\n\t\t */\n\t}\n\tpublic alias Car for '汽车';\n\tpublic alias Automobile for '汽车';\n\tpublic alias '扭矩 (Torque)' for TorqueValue {\n\t\tdoc\n\t\t/*\n\t\t * TorqueValue from the ISQ library is aliased to the bilingual\n\t\t * label used by calibration and controls engineers.\n\t\t */\n\t}\n\tmetadata def DomainNote {\n\t\tattribute meaning : String;\n\t\tattribute usageContext : String;\n\t}\n\tpart conceptLibrary {\n\t\tpart vehicle : '汽车' {@DomainNote{meaning = \"Complete automobile platform\"; usageContext = \"All vehicle-level discussions\";}}\n\t\tattribute ratedTorque : TorqueValue {@DomainNote{meaning = \"Nominal drivetrain torque\"; usageContext = \"Powertrain sizing\";}}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/94/design.sysml",
+  "generated_path": "Generated_from_Prompts/94/094.sysml",
+  "response": {
+    "id": "resp_07dff9a8b3de07c3006923dd16aba481939ed9698daf45a13c",
+    "created_at": 1763958038.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_07dff9a8b3de07c3006923dd1791a48193b0d320a73f37380b",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**(Note: Each claim is a minimal, meaningful modeling element.)**\n\n1. The model is a library package named 'AutomotiveGlossary'.\n2. The model privately imports ScalarValues::*.\n3. The model publicly imports ISQ::TorqueValue.\n4. The model contains a documentation comment for the package.\n5. The model defines a part named '汽车'.\n6. The part '汽车' has a documentation comment.\n7. The model defines a public alias '汽车 (Car)' for '汽车', with a documentation comment.\n8. The model defines a public alias Car for '汽车'.\n9. The model defines a public alias Automobile for '汽车'.\n10. The model defines a public alias '扭矩 (Torque)' for TorqueValue, with a documentation comment.\n11. The model defines a metadata type DomainNote.\n12. The metadata DomainNote has an attribute meaning of type String.\n13. The metadata DomainNote has an attribute usageContext of type String.\n14. The model defines a part conceptLibrary.\n15. The part conceptLibrary contains a part vehicle of type '汽车', annotated with @DomainNote{meaning = \"...\", usageContext = \"...\"}.\n16. The part conceptLibrary contains an attribute ratedTorque of type TorqueValue, annotated with @DomainNote{meaning = \"...\", usageContext = \"...\"}.\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n1. **Library package 'AutomotiveGlossary'**  \n   - **Not supported** (Reference model uses a package named 'Automotive Domain Annotations', not 'AutomotiveGlossary'.)\n2. **Private import ScalarValues::*.**  \n   - **Not supported** (No such import in the reference model.)\n3. **Public import ISQ::TorqueValue.**  \n   - **Partially supported** (Reference model uses ISQ::TorqueValue in an alias, but does not explicitly import it.)\n4. **Documentation comment for the package.**  \n   - **Supported** (Reference model contains a package-level comment.)\n5. **Part named '汽车'.**  \n   - **Supported** (Reference model defines part Automobile; '汽车' is the Chinese equivalent, and the generated model uses '汽车' as the core vehicle part, which is equivalent.)\n6. **Documentation comment for part '汽车'.**  \n   - **Supported** (Reference model has a comment annotating Automobile.)\n7. **Public alias '汽车 (Car)' for '汽车', with documentation.**  \n   - **Supported** (Reference model defines alias Car for Automobile, and the generated model provides a bilingual alias; the intent is equivalent.)\n8. **Public alias Car for '汽车'.**  \n   - **Supported** (Reference model: alias Car for Automobile.)\n9. **Public alias Automobile for '汽车'.**  \n   - **Supported** (Reference model: part Automobile, and alias Car for Automobile; the generated model provides the reverse alias, which is equivalent.)\n10. **Public alias '扭矩 (Torque)' for TorqueValue, with documentation.**  \n    - **Supported** (Reference model: alias Torque for ISQ::TorqueValue.)\n11. **Metadata type DomainNote.**  \n    - **Not supported** (No such metadata type in the reference model.)\n12. **DomainNote has attribute meaning : String.**  \n    - **Not supported** (No such attribute in the reference model.)\n13. **DomainNote has attribute usageContext : String.**  \n    - **Not supported** (No such attribute in the reference model.)\n14. **Part conceptLibrary.**  \n    - **Not supported** (No such part in the reference model.)\n15. **conceptLibrary contains part vehicle : '汽车', annotated with @DomainNote.**  \n    - **Not supported** (No such structure or annotation in the reference model.)\n16. **conceptLibrary contains attribute ratedTorque : TorqueValue, annotated with @DomainNote.**  \n    - **Not supported** (No such structure or annotation in the reference model.)\n\n---\n\n### 3. Summarize the results\n\nLet's count the supported claims:\n\n- 4. Documentation comment for the package.\n- 5. Part named '汽车'.\n- 6. Documentation comment for part '汽车'.\n- 7. Public alias '汽车 (Car)' for '汽车', with documentation.\n- 8. Public alias Car for '汽车'.\n- 9. Public alias Automobile for '汽车'.\n- 10. Public alias '扭矩 (Torque)' for TorqueValue, with documentation.\n\nThat's **7** supported claims.\n\nTotal claims: **16**\n\n---\n\n**Score: 7/16**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 621,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 988,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1609
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**(Note: Each claim is a minimal, meaningful modeling element.)**\n\n1. The model is a library package named 'AutomotiveGlossary'.\n2. The model privately imports ScalarValues::*.\n3. The model publicly imports ISQ::TorqueValue.\n4. The model contains a documentation comment for the package.\n5. The model defines a part named '汽车'.\n6. The part '汽车' has a documentation comment.\n7. The model defines a public alias '汽车 (Car)' for '汽车', with a documentation comment.\n8. The model defines a public alias Car for '汽车'.\n9. The model defines a public alias Automobile for '汽车'.\n10. The model defines a public alias '扭矩 (Torque)' for TorqueValue, with a documentation comment.\n11. The model defines a metadata type DomainNote.\n12. The metadata DomainNote has an attribute meaning of type String.\n13. The metadata DomainNote has an attribute usageContext of type String.\n14. The model defines a part conceptLibrary.\n15. The part conceptLibrary contains a part vehicle of type '汽车', annotated with @DomainNote{meaning = \"...\", usageContext = \"...\"}.\n16. The part conceptLibrary contains an attribute ratedTorque of type TorqueValue, annotated with @DomainNote{meaning = \"...\", usageContext = \"...\"}.\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n1. **Library package 'AutomotiveGlossary'**  \n   - **Not supported** (Reference model uses a package named 'Automotive Domain Annotations', not 'AutomotiveGlossary'.)\n2. **Private import ScalarValues::*.**  \n   - **Not supported** (No such import in the reference model.)\n3. **Public import ISQ::TorqueValue.**  \n   - **Partially supported** (Reference model uses ISQ::TorqueValue in an alias, but does not explicitly import it.)\n4. **Documentation comment for the package.**  \n   - **Supported** (Reference model contains a package-level comment.)\n5. **Part named '汽车'.**  \n   - **Supported** (Reference model defines part Automobile; '汽车' is the Chinese equivalent, and the generated model uses '汽车' as the core vehicle part, which is equivalent.)\n6. **Documentation comment for part '汽车'.**  \n   - **Supported** (Reference model has a comment annotating Automobile.)\n7. **Public alias '汽车 (Car)' for '汽车', with documentation.**  \n   - **Supported** (Reference model defines alias Car for Automobile, and the generated model provides a bilingual alias; the intent is equivalent.)\n8. **Public alias Car for '汽车'.**  \n   - **Supported** (Reference model: alias Car for Automobile.)\n9. **Public alias Automobile for '汽车'.**  \n   - **Supported** (Reference model: part Automobile, and alias Car for Automobile; the generated model provides the reverse alias, which is equivalent.)\n10. **Public alias '扭矩 (Torque)' for TorqueValue, with documentation.**  \n    - **Supported** (Reference model: alias Torque for ISQ::TorqueValue.)\n11. **Metadata type DomainNote.**  \n    - **Not supported** (No such metadata type in the reference model.)\n12. **DomainNote has attribute meaning : String.**  \n    - **Not supported** (No such attribute in the reference model.)\n13. **DomainNote has attribute usageContext : String.**  \n    - **Not supported** (No such attribute in the reference model.)\n14. **Part conceptLibrary.**  \n    - **Not supported** (No such part in the reference model.)\n15. **conceptLibrary contains part vehicle : '汽车', annotated with @DomainNote.**  \n    - **Not supported** (No such structure or annotation in the reference model.)\n16. **conceptLibrary contains attribute ratedTorque : TorqueValue, annotated with @DomainNote.**  \n    - **Not supported** (No such structure or annotation in the reference model.)\n\n---\n\n### 3. Summarize the results\n\nLet's count the supported claims:\n\n- 4. Documentation comment for the package.\n- 5. Part named '汽车'.\n- 6. Documentation comment for part '汽车'.\n- 7. Public alias '汽车 (Car)' for '汽车', with documentation.\n- 8. Public alias Car for '汽车'.\n- 9. Public alias Automobile for '汽车'.\n- 10. Public alias '扭矩 (Torque)' for TorqueValue, with documentation.\n\nThat's **7** supported claims.\n\nTotal claims: **16**\n\n---\n\n**Score: 7/16**"
+  }
+}

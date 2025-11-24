@@ -1,0 +1,82 @@
+{
+  "model_id": 36,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleStateManagement' {\n\tattribute def VehicleStartSignal;\n\tattribute def VehicleOnSignal;\n\tattribute def VehicleOffSignal;\n\tstate def VehicleStates {\n\t\tentry; then off;\n\t\tstate off;\n\t\taccept VehicleStartSignal \n\t\t\tthen starting;\n\t\tstate starting;\n\t\taccept VehicleOnSignal\n\t\t\tthen on;\n\t\tstate on;\n\t\taccept VehicleOffSignal\n\t\t\tthen off;\n\t}\n}\n\nGenerated Model:\npackage 'VehicleOperationalStateManagement' {\n\tattribute def VehicleStartSignal;\n\tattribute def VehicleOnSignal;\n\tattribute def VehicleOffSignal;\n\t\n\tstate def VehicleStates;\n\t\n\tpart vehicleController {\n\t\tstate vehicleStates : VehicleStates {\n\t\t\tentry action initial;\n\t\t\ttransition initial then off;\n\t\t\tstate off;\n\t\t\ttransition 'off-starting'\n\t\t\t\tfirst off\n\t\t\t\taccept VehicleStartSignal\n\t\t\t\tthen starting;\n\t\t\tstate starting;\n\t\t\ttransition 'starting-on'\n\t\t\t\tfirst starting\n\t\t\t\taccept VehicleOnSignal\n\t\t\t\tthen on;\n\t\t\tstate on;\n\t\t\ttransition 'on-off'\n\t\t\t\tfirst on\n\t\t\t\taccept VehicleOffSignal\n\t\t\t\tthen off;\n\t\t}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/36/design.sysml",
+  "generated_path": "Generated_from_Prompts/36/36.sysml",
+  "response": {
+    "id": "resp_0ca561b0937a65b7006923ce6c226881939f328c2578411db8",
+    "created_at": 1763954284.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0ca561b0937a65b7006923ce6d099c8193ad1613e98c0fa0c9",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. There is a package (named 'VehicleStateManagement').\n2. There is an attribute definition: VehicleStartSignal.\n3. There is an attribute definition: VehicleOnSignal.\n4. There is an attribute definition: VehicleOffSignal.\n5. There is a state definition: VehicleStates.\n6. VehicleStates has an entry action, then goes to state 'off'.\n7. VehicleStates contains a state: off.\n8. In state 'off', accepting VehicleStartSignal transitions to 'starting'.\n9. VehicleStates contains a state: starting.\n10. In state 'starting', accepting VehicleOnSignal transitions to 'on'.\n11. VehicleStates contains a state: on.\n12. In state 'on', accepting VehicleOffSignal transitions to 'off'.\n\n---\n\n### 2. For each atomic claim, determine coverage in the generated model\n\n1. **Package exists**: Yes, package exists (name differs, but ignore naming).\n2. **Attribute VehicleStartSignal**: Yes, present.\n3. **Attribute VehicleOnSignal**: Yes, present.\n4. **Attribute VehicleOffSignal**: Yes, present.\n5. **State definition VehicleStates**: Yes, present.\n6. **VehicleStates has entry action, then off**: Yes, \"entry action initial; transition initial then off;\" (naming of entry state as 'initial', but semantics match).\n7. **VehicleStates contains state 'off'**: Yes, present.\n8. **In 'off', accepting VehicleStartSignal transitions to 'starting'**: Yes, \"transition 'off-starting' first off accept VehicleStartSignal then starting;\".\n9. **VehicleStates contains state 'starting'**: Yes, present.\n10. **In 'starting', accepting VehicleOnSignal transitions to 'on'**: Yes, \"transition 'starting-on' first starting accept VehicleOnSignal then on;\".\n11. **VehicleStates contains state 'on'**: Yes, present.\n12. **In 'on', accepting VehicleOffSignal transitions to 'off'**: Yes, \"transition 'on-off' first on accept VehicleOffSignal then off;\".\n\n---\n\n### 3. Summarize the results\n\n**Score: 12/12**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 419,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 487,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 906
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. There is a package (named 'VehicleStateManagement').\n2. There is an attribute definition: VehicleStartSignal.\n3. There is an attribute definition: VehicleOnSignal.\n4. There is an attribute definition: VehicleOffSignal.\n5. There is a state definition: VehicleStates.\n6. VehicleStates has an entry action, then goes to state 'off'.\n7. VehicleStates contains a state: off.\n8. In state 'off', accepting VehicleStartSignal transitions to 'starting'.\n9. VehicleStates contains a state: starting.\n10. In state 'starting', accepting VehicleOnSignal transitions to 'on'.\n11. VehicleStates contains a state: on.\n12. In state 'on', accepting VehicleOffSignal transitions to 'off'.\n\n---\n\n### 2. For each atomic claim, determine coverage in the generated model\n\n1. **Package exists**: Yes, package exists (name differs, but ignore naming).\n2. **Attribute VehicleStartSignal**: Yes, present.\n3. **Attribute VehicleOnSignal**: Yes, present.\n4. **Attribute VehicleOffSignal**: Yes, present.\n5. **State definition VehicleStates**: Yes, present.\n6. **VehicleStates has entry action, then off**: Yes, \"entry action initial; transition initial then off;\" (naming of entry state as 'initial', but semantics match).\n7. **VehicleStates contains state 'off'**: Yes, present.\n8. **In 'off', accepting VehicleStartSignal transitions to 'starting'**: Yes, \"transition 'off-starting' first off accept VehicleStartSignal then starting;\".\n9. **VehicleStates contains state 'starting'**: Yes, present.\n10. **In 'starting', accepting VehicleOnSignal transitions to 'on'**: Yes, \"transition 'starting-on' first starting accept VehicleOnSignal then on;\".\n11. **VehicleStates contains state 'on'**: Yes, present.\n12. **In 'on', accepting VehicleOffSignal transitions to 'off'**: Yes, \"transition 'on-off' first on accept VehicleOffSignal then off;\".\n\n---\n\n### 3. Summarize the results\n\n**Score: 12/12**"
+  }
+}

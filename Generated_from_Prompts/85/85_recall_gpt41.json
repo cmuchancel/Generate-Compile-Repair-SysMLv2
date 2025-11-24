@@ -1,0 +1,82 @@
+{
+  "model_id": 85,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'AutomotiveFeatureTaggingSystem' {\n\tmetadata def SafetyFeature;\n\tmetadata def SecurityFeature {\n\t\t:> annotatedElement : SysML::PartDefinition;\n\t\t:> annotatedElement : SysML::PartUsage;\n\t}\n\tmetadata SafetyFeature about \n\t\tvehicle::interior::seatBelt,\n\t\tvehicle::interior::driverAirBag,\n\t\tvehicle::bodyAssy::bumper;\n\tmetadata SecurityFeature about\n\t\tvehicle::interior::alarm,\n\t\tvehicle::bodyAssy::keylessEntry;\n\tpart vehicle {\n\t\tpart interior {\n\t\t\tpart alarm;\n\t\t\tpart seatBelt[2];\n\t\t\tpart frontSeat[2];\n\t\t\tpart driverAirBag;\n\t\t}\n\t\tpart bodyAssy {\n\t\t\tpart body;\n\t\t\tpart bumper;\n\t\t\tpart keylessEntry;\n\t\t}\n\t}\n}\n\nGenerated Model:\npackage 'VehicleFeatureAnnotationSystem' {\n\tpackage AnnotationDefinitions {\n\t\tmetadata def Safety;\n\t\tmetadata def Security;\n\t}\n\tpackage VehicleStructure {\n\t\tprivate import AnnotationDefinitions::*;\n\t\tpart vehicle {\n\t\t\tpart interior {\n\t\t\t\tpart seatBelt[2] {@Safety;}\n\t\t\t\tpart frontSeat[2];\n\t\t\t\tpart driverAirBag {@Safety;}\n\t\t\t\tpart alarmSystem {@Security;}\n\t\t\t}\n\t\t\tpart bodyAssembly {\n\t\t\t\tpart bodyShell;\n\t\t\t\tpart bumper {@Safety;}\n\t\t\t\tpart keylessEntry {@Security;}\n\t\t\t}\n\t\t}\n\t}\n\tpackage 'Safety Features' {\n\t\tprivate import AnnotationDefinitions::*;\n\t\tprivate import VehicleStructure::vehicle::**;\n\t\tfilter @Safety;\n\t}\n\tpackage 'Security Features' {\n\t\tprivate import AnnotationDefinitions::*;\n\t\tprivate import VehicleStructure::vehicle::**;\n\t\tfilter @Security;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/85/design.sysml",
+  "generated_path": "Generated_from_Prompts/85/085.sysml",
+  "response": {
+    "id": "resp_0eb6f40ceb8bfd6d006923dc681d3c8193bcdc331bf4c27037",
+    "created_at": 1763957864.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0eb6f40ceb8bfd6d006923dc687a408193ade2e120892d7492",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model.\n\n#### **A. Metadata Definitions**\n1. There is a metadata definition named `SafetyFeature`.\n2. There is a metadata definition named `SecurityFeature`.\n3. `SecurityFeature` metadata can annotate `SysML::PartDefinition`.\n4. `SecurityFeature` metadata can annotate `SysML::PartUsage`.\n\n#### **B. Metadata Applications**\n5. `SafetyFeature` is applied to `vehicle::interior::seatBelt`.\n6. `SafetyFeature` is applied to `vehicle::interior::driverAirBag`.\n7. `SafetyFeature` is applied to `vehicle::bodyAssy::bumper`.\n8. `SecurityFeature` is applied to `vehicle::interior::alarm`.\n9. `SecurityFeature` is applied to `vehicle::bodyAssy::keylessEntry`.\n\n#### **C. Structural Model (Parts)**\n10. There is a part named `vehicle`.\n11. `vehicle` contains a part named `interior`.\n12. `vehicle` contains a part named `bodyAssy`.\n13. `interior` contains a part named `alarm`.\n14. `interior` contains a part named `seatBelt` with multiplicity 2.\n15. `interior` contains a part named `frontSeat` with multiplicity 2.\n16. `interior` contains a part named `driverAirBag`.\n17. `bodyAssy` contains a part named `body`.\n18. `bodyAssy` contains a part named `bumper`.\n19. `bodyAssy` contains a part named `keylessEntry`.\n\n---\n\n### 2. For each atomic claim in the reference model, determine whether it is covered by the generated model.\n\n#### **A. Metadata Definitions**\n1. **SafetyFeature metadata definition**  \n   - **Covered** (as `Safety` in `AnnotationDefinitions`)\n2. **SecurityFeature metadata definition**  \n   - **Covered** (as `Security` in `AnnotationDefinitions`)\n3. **SecurityFeature can annotate PartDefinition**  \n   - **Not explicitly covered** (no annotation target constraints shown in generated model)\n4. **SecurityFeature can annotate PartUsage**  \n   - **Not explicitly covered** (no annotation target constraints shown in generated model)\n\n#### **B. Metadata Applications**\n5. **SafetyFeature applied to seatBelt**  \n   - **Covered** (`seatBelt[2] {@Safety;}`)\n6. **SafetyFeature applied to driverAirBag**  \n   - **Covered** (`driverAirBag {@Safety;}`)\n7. **SafetyFeature applied to bumper**  \n   - **Covered** (`bumper {@Safety;}`)\n8. **SecurityFeature applied to alarm**  \n   - **Covered** (`alarmSystem {@Security;}`; assuming `alarmSystem` is equivalent to `alarm`)\n9. **SecurityFeature applied to keylessEntry**  \n   - **Covered** (`keylessEntry {@Security;}`)\n\n#### **C. Structural Model (Parts)**\n10. **Part vehicle**  \n    - **Covered**\n11. **vehicle contains interior**  \n    - **Covered**\n12. **vehicle contains bodyAssy**  \n    - **Covered** (as `bodyAssembly`)\n13. **interior contains alarm**  \n    - **Covered** (as `alarmSystem`)\n14. **interior contains seatBelt[2]**  \n    - **Covered**\n15. **interior contains frontSeat[2]**  \n    - **Covered**\n16. **interior contains driverAirBag**  \n    - **Covered**\n17. **bodyAssy contains body**  \n    - **Covered** (as `bodyShell`)\n18. **bodyAssy contains bumper**  \n    - **Covered**\n19. **bodyAssy contains keylessEntry**  \n    - **Covered**\n\n---\n\n### 3. Summarize the results\n\n#### **Covered Claims**\n- All claims except for the two about annotation target constraints (claims 3 and 4) are covered.\n- Total claims: 19\n- Covered claims: 17\n\n---\n\n**Score: 17/19**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 539,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 869,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1408
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model.\n\n#### **A. Metadata Definitions**\n1. There is a metadata definition named `SafetyFeature`.\n2. There is a metadata definition named `SecurityFeature`.\n3. `SecurityFeature` metadata can annotate `SysML::PartDefinition`.\n4. `SecurityFeature` metadata can annotate `SysML::PartUsage`.\n\n#### **B. Metadata Applications**\n5. `SafetyFeature` is applied to `vehicle::interior::seatBelt`.\n6. `SafetyFeature` is applied to `vehicle::interior::driverAirBag`.\n7. `SafetyFeature` is applied to `vehicle::bodyAssy::bumper`.\n8. `SecurityFeature` is applied to `vehicle::interior::alarm`.\n9. `SecurityFeature` is applied to `vehicle::bodyAssy::keylessEntry`.\n\n#### **C. Structural Model (Parts)**\n10. There is a part named `vehicle`.\n11. `vehicle` contains a part named `interior`.\n12. `vehicle` contains a part named `bodyAssy`.\n13. `interior` contains a part named `alarm`.\n14. `interior` contains a part named `seatBelt` with multiplicity 2.\n15. `interior` contains a part named `frontSeat` with multiplicity 2.\n16. `interior` contains a part named `driverAirBag`.\n17. `bodyAssy` contains a part named `body`.\n18. `bodyAssy` contains a part named `bumper`.\n19. `bodyAssy` contains a part named `keylessEntry`.\n\n---\n\n### 2. For each atomic claim in the reference model, determine whether it is covered by the generated model.\n\n#### **A. Metadata Definitions**\n1. **SafetyFeature metadata definition**  \n   - **Covered** (as `Safety` in `AnnotationDefinitions`)\n2. **SecurityFeature metadata definition**  \n   - **Covered** (as `Security` in `AnnotationDefinitions`)\n3. **SecurityFeature can annotate PartDefinition**  \n   - **Not explicitly covered** (no annotation target constraints shown in generated model)\n4. **SecurityFeature can annotate PartUsage**  \n   - **Not explicitly covered** (no annotation target constraints shown in generated model)\n\n#### **B. Metadata Applications**\n5. **SafetyFeature applied to seatBelt**  \n   - **Covered** (`seatBelt[2] {@Safety;}`)\n6. **SafetyFeature applied to driverAirBag**  \n   - **Covered** (`driverAirBag {@Safety;}`)\n7. **SafetyFeature applied to bumper**  \n   - **Covered** (`bumper {@Safety;}`)\n8. **SecurityFeature applied to alarm**  \n   - **Covered** (`alarmSystem {@Security;}`; assuming `alarmSystem` is equivalent to `alarm`)\n9. **SecurityFeature applied to keylessEntry**  \n   - **Covered** (`keylessEntry {@Security;}`)\n\n#### **C. Structural Model (Parts)**\n10. **Part vehicle**  \n    - **Covered**\n11. **vehicle contains interior**  \n    - **Covered**\n12. **vehicle contains bodyAssy**  \n    - **Covered** (as `bodyAssembly`)\n13. **interior contains alarm**  \n    - **Covered** (as `alarmSystem`)\n14. **interior contains seatBelt[2]**  \n    - **Covered**\n15. **interior contains frontSeat[2]**  \n    - **Covered**\n16. **interior contains driverAirBag**  \n    - **Covered**\n17. **bodyAssy contains body**  \n    - **Covered** (as `bodyShell`)\n18. **bodyAssy contains bumper**  \n    - **Covered**\n19. **bodyAssy contains keylessEntry**  \n    - **Covered**\n\n---\n\n### 3. Summarize the results\n\n#### **Covered Claims**\n- All claims except for the two about annotation target constraints (claims 3 and 4) are covered.\n- Total claims: 19\n- Covered claims: 17\n\n---\n\n**Score: 17/19**"
+  }
+}

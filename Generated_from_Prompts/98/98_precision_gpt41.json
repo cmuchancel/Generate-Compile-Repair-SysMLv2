@@ -1,0 +1,82 @@
+{
+  "model_id": 98,
+  "evaluation": "precision",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-p.txt",
+  "prompt": "Your task is to evaluate the precision of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the generated system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the generated model, determine whether it is supported by the reference model (i.e., the reference model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of supported claims>/<total number of claims in the generated model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'FuelFlowManagement' {\n\tattribute def Temp;\n\tpart def Fuel;\n\tport def FuelPort {\n\t\tattribute temperature : Temp;\n\t\tout item fuelSupply : Fuel;\n\t\tin item fuelReturn : Fuel;\n\t}\n\tpart def FuelTank {\n\t\tport fuelTankPort : FuelPort;\n\t}\n\tpart def Engine {\n\t\tport engineFuelPort : ~FuelPort;\n\t}\n}\n\nGenerated Model:\npackage 'FuelInterfaceManagement' {\n\tprivate import ScalarValues::*;\n\tpart def Fuel;\n\tport def FuelSupplyInterface {\n\t\tattribute temperature : Real;\n\t\tout item fuelSupply : Fuel;\n\t\tin item fuelReturn : Fuel;\n\t}\n\tport def FuelReceiveInterface {\n\t\tattribute temperature : Real;\n\t\tin item fuelSupply : Fuel;\n\t\tout item fuelReturn : Fuel;\n\t}\n\tpart def FuelTank {\n\t\tport supplyPort : FuelSupplyInterface;\n\t}\n\tpart def Engine {\n\t\tport receivePort : FuelReceiveInterface;\n\t}\n\tpart fuelFlowSystem {\n\t\tpart tank : FuelTank;\n\t\tpart engine : Engine;\n\t\tflow of Fuel from tank.supplyPort.fuelSupply to engine.receivePort.fuelSupply;\n\t\tflow of Fuel from engine.receivePort.fuelReturn to tank.supplyPort.fuelReturn;\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/98/design.sysml",
+  "generated_path": "Generated_from_Prompts/98/098.sysml",
+  "response": {
+    "id": "resp_0331fdb0a8856e8a006923dd77b1c88194b767225b610f7c85",
+    "created_at": 1763958135.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0331fdb0a8856e8a006923dd7847108194a155415a1996e07a",
+        "content": [
+          {
+            "annotations": [],
+            "text": "**Step 1: List all atomic modeling claims made by the generated system model.**\n\n1. The package 'FuelInterfaceManagement' is defined.\n2. There is a private import of ScalarValues::*.\n3. A part named 'Fuel' is defined.\n4. A port named 'FuelSupplyInterface' is defined.\n5. 'FuelSupplyInterface' port has an attribute 'temperature' of type Real.\n6. 'FuelSupplyInterface' port has an out item 'fuelSupply' of type Fuel.\n7. 'FuelSupplyInterface' port has an in item 'fuelReturn' of type Fuel.\n8. A port named 'FuelReceiveInterface' is defined.\n9. 'FuelReceiveInterface' port has an attribute 'temperature' of type Real.\n10. 'FuelReceiveInterface' port has an in item 'fuelSupply' of type Fuel.\n11. 'FuelReceiveInterface' port has an out item 'fuelReturn' of type Fuel.\n12. A part named 'FuelTank' is defined.\n13. 'FuelTank' has a port 'supplyPort' of type FuelSupplyInterface.\n14. A part named 'Engine' is defined.\n15. 'Engine' has a port 'receivePort' of type FuelReceiveInterface.\n16. A part named 'fuelFlowSystem' is defined.\n17. 'fuelFlowSystem' contains a part 'tank' of type FuelTank.\n18. 'fuelFlowSystem' contains a part 'engine' of type Engine.\n19. There is a flow of Fuel from tank.supplyPort.fuelSupply to engine.receivePort.fuelSupply.\n20. There is a flow of Fuel from engine.receivePort.fuelReturn to tank.supplyPort.fuelReturn.\n\n**Step 2: For each atomic claim, determine whether it is supported by the reference model.**\n\n1. **Package defined:** Not supported (different package name).\n2. **Private import:** Not supported (not present in reference).\n3. **Part 'Fuel' defined:** Supported (reference defines part Fuel).\n4. **Port 'FuelSupplyInterface' defined:** Not supported (reference defines 'FuelPort', not 'FuelSupplyInterface').\n5. **'FuelSupplyInterface' has attribute 'temperature: Real':** Partially supported (reference has 'temperature: Temp' in 'FuelPort'; type differs, but attribute and intent match).\n6. **'FuelSupplyInterface' has out item 'fuelSupply: Fuel':** Supported (reference has out item fuelSupply: Fuel in FuelPort).\n7. **'FuelSupplyInterface' has in item 'fuelReturn: Fuel':** Supported (reference has in item fuelReturn: Fuel in FuelPort).\n8. **Port 'FuelReceiveInterface' defined:** Not supported (no such port in reference).\n9. **'FuelReceiveInterface' has attribute 'temperature: Real':** Not supported (no such port in reference).\n10. **'FuelReceiveInterface' has in item 'fuelSupply: Fuel':** Not supported (no such port in reference).\n11. **'FuelReceiveInterface' has out item 'fuelReturn: Fuel':** Not supported (no such port in reference).\n12. **Part 'FuelTank' defined:** Supported (reference defines part FuelTank).\n13. **'FuelTank' has port 'supplyPort: FuelSupplyInterface':** Not supported (reference has port fuelTankPort: FuelPort).\n14. **Part 'Engine' defined:** Supported (reference defines part Engine).\n15. **'Engine' has port 'receivePort: FuelReceiveInterface':** Not supported (reference has engineFuelPort: ~FuelPort).\n16. **Part 'fuelFlowSystem' defined:** Not supported (not present in reference).\n17. **'fuelFlowSystem' contains part 'tank: FuelTank':** Not supported (not present in reference).\n18. **'fuelFlowSystem' contains part 'engine: Engine':** Not supported (not present in reference).\n19. **Flow of Fuel from tank.supplyPort.fuelSupply to engine.receivePort.fuelSupply:** Not supported (no such flow in reference).\n20. **Flow of Fuel from engine.receivePort.fuelReturn to tank.supplyPort.fuelReturn:** Not supported (no such flow in reference).\n\n**Step 3: Summarize the results.**\n\n**Supported claims:**\n- 3. Part 'Fuel' defined.\n- 5. 'FuelSupplyInterface' has attribute 'temperature' (partial support due to type difference).\n- 6. 'FuelSupplyInterface' has out item 'fuelSupply: Fuel'.\n- 7. 'FuelSupplyInterface' has in item 'fuelReturn: Fuel'.\n- 12. Part 'FuelTank' defined.\n- 14. Part 'Engine' defined.\n\n**Total supported claims:** 6 (counting partial support for claim 5 as supported).\n\n**Total claims:** 20\n\n---\n\n**Score: 6/20**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 435,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1014,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1449
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "**Step 1: List all atomic modeling claims made by the generated system model.**\n\n1. The package 'FuelInterfaceManagement' is defined.\n2. There is a private import of ScalarValues::*.\n3. A part named 'Fuel' is defined.\n4. A port named 'FuelSupplyInterface' is defined.\n5. 'FuelSupplyInterface' port has an attribute 'temperature' of type Real.\n6. 'FuelSupplyInterface' port has an out item 'fuelSupply' of type Fuel.\n7. 'FuelSupplyInterface' port has an in item 'fuelReturn' of type Fuel.\n8. A port named 'FuelReceiveInterface' is defined.\n9. 'FuelReceiveInterface' port has an attribute 'temperature' of type Real.\n10. 'FuelReceiveInterface' port has an in item 'fuelSupply' of type Fuel.\n11. 'FuelReceiveInterface' port has an out item 'fuelReturn' of type Fuel.\n12. A part named 'FuelTank' is defined.\n13. 'FuelTank' has a port 'supplyPort' of type FuelSupplyInterface.\n14. A part named 'Engine' is defined.\n15. 'Engine' has a port 'receivePort' of type FuelReceiveInterface.\n16. A part named 'fuelFlowSystem' is defined.\n17. 'fuelFlowSystem' contains a part 'tank' of type FuelTank.\n18. 'fuelFlowSystem' contains a part 'engine' of type Engine.\n19. There is a flow of Fuel from tank.supplyPort.fuelSupply to engine.receivePort.fuelSupply.\n20. There is a flow of Fuel from engine.receivePort.fuelReturn to tank.supplyPort.fuelReturn.\n\n**Step 2: For each atomic claim, determine whether it is supported by the reference model.**\n\n1. **Package defined:** Not supported (different package name).\n2. **Private import:** Not supported (not present in reference).\n3. **Part 'Fuel' defined:** Supported (reference defines part Fuel).\n4. **Port 'FuelSupplyInterface' defined:** Not supported (reference defines 'FuelPort', not 'FuelSupplyInterface').\n5. **'FuelSupplyInterface' has attribute 'temperature: Real':** Partially supported (reference has 'temperature: Temp' in 'FuelPort'; type differs, but attribute and intent match).\n6. **'FuelSupplyInterface' has out item 'fuelSupply: Fuel':** Supported (reference has out item fuelSupply: Fuel in FuelPort).\n7. **'FuelSupplyInterface' has in item 'fuelReturn: Fuel':** Supported (reference has in item fuelReturn: Fuel in FuelPort).\n8. **Port 'FuelReceiveInterface' defined:** Not supported (no such port in reference).\n9. **'FuelReceiveInterface' has attribute 'temperature: Real':** Not supported (no such port in reference).\n10. **'FuelReceiveInterface' has in item 'fuelSupply: Fuel':** Not supported (no such port in reference).\n11. **'FuelReceiveInterface' has out item 'fuelReturn: Fuel':** Not supported (no such port in reference).\n12. **Part 'FuelTank' defined:** Supported (reference defines part FuelTank).\n13. **'FuelTank' has port 'supplyPort: FuelSupplyInterface':** Not supported (reference has port fuelTankPort: FuelPort).\n14. **Part 'Engine' defined:** Supported (reference defines part Engine).\n15. **'Engine' has port 'receivePort: FuelReceiveInterface':** Not supported (reference has engineFuelPort: ~FuelPort).\n16. **Part 'fuelFlowSystem' defined:** Not supported (not present in reference).\n17. **'fuelFlowSystem' contains part 'tank: FuelTank':** Not supported (not present in reference).\n18. **'fuelFlowSystem' contains part 'engine: Engine':** Not supported (not present in reference).\n19. **Flow of Fuel from tank.supplyPort.fuelSupply to engine.receivePort.fuelSupply:** Not supported (no such flow in reference).\n20. **Flow of Fuel from engine.receivePort.fuelReturn to tank.supplyPort.fuelReturn:** Not supported (no such flow in reference).\n\n**Step 3: Summarize the results.**\n\n**Supported claims:**\n- 3. Part 'Fuel' defined.\n- 5. 'FuelSupplyInterface' has attribute 'temperature' (partial support due to type difference).\n- 6. 'FuelSupplyInterface' has out item 'fuelSupply: Fuel'.\n- 7. 'FuelSupplyInterface' has in item 'fuelReturn: Fuel'.\n- 12. Part 'FuelTank' defined.\n- 14. Part 'Engine' defined.\n\n**Total supported claims:** 6 (counting partial support for claim 5 as supported).\n\n**Total claims:** 20\n\n---\n\n**Score: 6/20**"
+  }
+}

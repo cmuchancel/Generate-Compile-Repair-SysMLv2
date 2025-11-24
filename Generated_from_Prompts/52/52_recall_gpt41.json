@@ -1,0 +1,82 @@
+{
+  "model_id": 52,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleComposition' {\n\tprivate import ScalarValues::*;\n\tpart def Vehicle {\n\t\tattribute mass : Real;\n\t\tattribute status : VehicleStatus;\n\t\tpart eng : Engine;\n\t\tref part driver : Person;\n\t}\n\tattribute def VehicleStatus {\n\t\tattribute gearSetting : Integer;\n\t\tattribute acceleratorPosition : Real;\n\t}\n\tpart def Engine;\t\n\tpart def Person;\n\tindividual part def Vehicle_1 :> Vehicle {\n\t\tsnapshot part vehicle_1_t0 {\n\t\t\t:>> mass = 2000.0;\n\t\t\t:>> status {\n\t\t\t\t:>> gearSetting = 0;\n\t\t\t\t:>> acceleratorPosition = 0.0;\n\t\t\t}\n\t\t}\n\t\tsnapshot part vehicle_1_t1 {\n\t\t\t:>> mass = 1500.0;\n\t\t\t:>> status {\n\t\t\t\t:>> gearSetting = 2;\n\t\t\t\t:>> acceleratorPosition = 0.5;\n\t\t\t}\n\t\t}\n\t\tfirst vehicle_1_t0 then vehicle_1_t1;\n\t}\n}\n\nGenerated Model:\npackage 'VehicleStateEvolution' {\n\tprivate import ScalarValues::*;\n\t\n\tpart def Driver {\n\t\tattribute name : String;\n\t}\n\t\n\tpart def Engine {\n\t\tattribute identifier : String;\n\t}\n\t\n\tpart def VehicleState {\n\t\tattribute mass : Real;\n\t\tattribute gearSetting : Integer;\n\t\tattribute acceleratorPedalPosition : Real;\n\t}\n\t\n\tpart def Vehicle {\n\t\tattribute mass : Real;\n\t\tpart operationalState {\n\t\t\tattribute gearSetting : Integer;\n\t\t\tattribute acceleratorPedalPosition : Real;\n\t\t}\n\t\tpart engine : Engine;\n\t\tref part driver : Driver;\n\t\tpart states : VehicleState[*];\n\t}\n\t\n\tpart driver_1 : Driver {\n\t\tattribute name = \"Driver One\";\n\t}\n\t\npart vehicle_1 : Vehicle {\n\t\tpart engine : Engine {\n\t\t\tattribute identifier = \"Engine-A\";\n\t\t}\n\t\tref part driver :> driver_1;\n\t\tpart states {\n\t\t\tpart initialState : VehicleState {\n\t\t\t\tattribute mass = 2000.0;\n\t\t\t\tattribute gearSetting = 0;\n\t\t\t\tattribute acceleratorPedalPosition = 0.0;\n\t\t\t}\n\t\t\tpart nextState : VehicleState {\n\t\t\t\tattribute mass = 1500.0;\n\t\t\t\tattribute gearSetting = 2;\n\t\t\t\tattribute acceleratorPedalPosition = 0.5;\n\t\t\t}\n\t\t}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/52/design.sysml",
+  "generated_path": "Generated_from_Prompts/52/52.sysml",
+  "response": {
+    "id": "resp_0b7b98efb3e365a7006923d045096c81968ae0c20674626963",
+    "created_at": 1763954757.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0b7b98efb3e365a7006923d0454e7481969bff0a556814c1ac",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. The model is in a package (VehicleComposition).\n2. The model imports ScalarValues.\n3. There is a part definition: Vehicle.\n4. Vehicle has an attribute: mass of type Real.\n5. Vehicle has an attribute: status of type VehicleStatus.\n6. Vehicle has a part: eng of type Engine.\n7. Vehicle has a reference part: driver of type Person.\n8. There is an attribute definition: VehicleStatus.\n9. VehicleStatus has an attribute: gearSetting of type Integer.\n10. VehicleStatus has an attribute: acceleratorPosition of type Real.\n11. There is a part definition: Engine.\n12. There is a part definition: Person.\n13. There is an individual part definition: Vehicle_1 of type Vehicle.\n14. Vehicle_1 has a snapshot: vehicle_1_t0.\n15. In vehicle_1_t0, mass = 2000.0.\n16. In vehicle_1_t0, status.gearSetting = 0.\n17. In vehicle_1_t0, status.acceleratorPosition = 0.0.\n18. Vehicle_1 has a snapshot: vehicle_1_t1.\n19. In vehicle_1_t1, mass = 1500.0.\n20. In vehicle_1_t1, status.gearSetting = 2.\n21. In vehicle_1_t1, status.acceleratorPosition = 0.5.\n22. The snapshots are ordered: first vehicle_1_t0 then vehicle_1_t1.\n\n---\n\n### 2. For each atomic claim, determine whether it is covered by the generated model\n\n| # | Atomic Claim | Covered? | Notes |\n|---|--------------|----------|-------|\n| 1 | Package exists | Yes | Different name, but structure present |\n| 2 | Imports ScalarValues | Yes | Present |\n| 3 | part def Vehicle | Yes | Present |\n| 4 | Vehicle.mass: Real | Yes | Present |\n| 5 | Vehicle.status: VehicleStatus | Partial | Vehicle has \"operationalState\" part and \"states\" part, both with similar attributes, but not a direct \"status\" attribute of type VehicleStatus. |\n| 6 | Vehicle.eng: Engine | Yes | Present as \"engine\" part |\n| 7 | Vehicle.driver: Person (reference) | Partial | Present as \"driver\" reference, but type is \"Driver\" instead of \"Person\" |\n| 8 | attribute def VehicleStatus | Partial | No explicit VehicleStatus type, but attributes are present in \"operationalState\" and \"VehicleState\" |\n| 9 | VehicleStatus.gearSetting: Integer | Yes | Present as \"gearSetting\" in \"operationalState\" and \"VehicleState\" |\n| 10 | VehicleStatus.acceleratorPosition: Real | Partial | Present as \"acceleratorPedalPosition\" (different name) in \"operationalState\" and \"VehicleState\" |\n| 11 | part def Engine | Yes | Present |\n| 12 | part def Person | No | Only \"Driver\" is defined, not \"Person\" |\n| 13 | individual part def Vehicle_1: Vehicle | Yes | Present as \"vehicle_1\" |\n| 14 | Vehicle_1 snapshot: vehicle_1_t0 | Yes | Present as \"initialState\" in \"states\" part |\n| 15 | vehicle_1_t0.mass = 2000.0 | Yes | Present in \"initialState\" |\n| 16 | vehicle_1_t0.status.gearSetting = 0 | Yes | Present as \"gearSetting\" in \"initialState\" |\n| 17 | vehicle_1_t0.status.acceleratorPosition = 0.0 | Partial | Present as \"acceleratorPedalPosition\" (different name) in \"initialState\" |\n| 18 | Vehicle_1 snapshot: vehicle_1_t1 | Yes | Present as \"nextState\" in \"states\" part |\n| 19 | vehicle_1_t1.mass = 1500.0 | Yes | Present in \"nextState\" |\n| 20 | vehicle_1_t1.status.gearSetting = 2 | Yes | Present as \"gearSetting\" in \"nextState\" |\n| 21 | vehicle_1_t1.status.acceleratorPosition = 0.5 | Partial | Present as \"acceleratorPedalPosition\" (different name) in \"nextState\" |\n| 22 | Snapshots ordered: t0 then t1 | Yes | \"initialState\" then \"nextState\" implies order |\n\n---\n\n#### Notes on Partial Coverage:\n- For claims 5, 7, 8, 10, 12, 17, 21:  \n  - **5:** No explicit \"status\" attribute, but equivalent structure via \"operationalState\" and \"states\".\n  - **7:** \"Driver\" instead of \"Person\", but functionally equivalent.\n  - **8:** No explicit VehicleStatus type, but attributes are present.\n  - **10, 17, 21:** Attribute name is \"acceleratorPedalPosition\" instead of \"acceleratorPosition\", but semantics match.\n  - **12:** \"Person\" is not defined, only \"Driver\".\n\nFor the purpose of recall, if the semantics are present (even with naming/type differences), we count as covered.\n\n---\n\n### 3. Summarize the results\n\nLet's count the covered claims:\n\n- All claims except claim 12 (\"part def Person\") are covered (with some naming/type differences, but semantics match).\n\n**Score: 21/22**\n\n---\n\n**Final Output:**\n\nScore: 21/22",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 692,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1201,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1893
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Reference Model Atomic Claims:**\n\n1. The model is in a package (VehicleComposition).\n2. The model imports ScalarValues.\n3. There is a part definition: Vehicle.\n4. Vehicle has an attribute: mass of type Real.\n5. Vehicle has an attribute: status of type VehicleStatus.\n6. Vehicle has a part: eng of type Engine.\n7. Vehicle has a reference part: driver of type Person.\n8. There is an attribute definition: VehicleStatus.\n9. VehicleStatus has an attribute: gearSetting of type Integer.\n10. VehicleStatus has an attribute: acceleratorPosition of type Real.\n11. There is a part definition: Engine.\n12. There is a part definition: Person.\n13. There is an individual part definition: Vehicle_1 of type Vehicle.\n14. Vehicle_1 has a snapshot: vehicle_1_t0.\n15. In vehicle_1_t0, mass = 2000.0.\n16. In vehicle_1_t0, status.gearSetting = 0.\n17. In vehicle_1_t0, status.acceleratorPosition = 0.0.\n18. Vehicle_1 has a snapshot: vehicle_1_t1.\n19. In vehicle_1_t1, mass = 1500.0.\n20. In vehicle_1_t1, status.gearSetting = 2.\n21. In vehicle_1_t1, status.acceleratorPosition = 0.5.\n22. The snapshots are ordered: first vehicle_1_t0 then vehicle_1_t1.\n\n---\n\n### 2. For each atomic claim, determine whether it is covered by the generated model\n\n| # | Atomic Claim | Covered? | Notes |\n|---|--------------|----------|-------|\n| 1 | Package exists | Yes | Different name, but structure present |\n| 2 | Imports ScalarValues | Yes | Present |\n| 3 | part def Vehicle | Yes | Present |\n| 4 | Vehicle.mass: Real | Yes | Present |\n| 5 | Vehicle.status: VehicleStatus | Partial | Vehicle has \"operationalState\" part and \"states\" part, both with similar attributes, but not a direct \"status\" attribute of type VehicleStatus. |\n| 6 | Vehicle.eng: Engine | Yes | Present as \"engine\" part |\n| 7 | Vehicle.driver: Person (reference) | Partial | Present as \"driver\" reference, but type is \"Driver\" instead of \"Person\" |\n| 8 | attribute def VehicleStatus | Partial | No explicit VehicleStatus type, but attributes are present in \"operationalState\" and \"VehicleState\" |\n| 9 | VehicleStatus.gearSetting: Integer | Yes | Present as \"gearSetting\" in \"operationalState\" and \"VehicleState\" |\n| 10 | VehicleStatus.acceleratorPosition: Real | Partial | Present as \"acceleratorPedalPosition\" (different name) in \"operationalState\" and \"VehicleState\" |\n| 11 | part def Engine | Yes | Present |\n| 12 | part def Person | No | Only \"Driver\" is defined, not \"Person\" |\n| 13 | individual part def Vehicle_1: Vehicle | Yes | Present as \"vehicle_1\" |\n| 14 | Vehicle_1 snapshot: vehicle_1_t0 | Yes | Present as \"initialState\" in \"states\" part |\n| 15 | vehicle_1_t0.mass = 2000.0 | Yes | Present in \"initialState\" |\n| 16 | vehicle_1_t0.status.gearSetting = 0 | Yes | Present as \"gearSetting\" in \"initialState\" |\n| 17 | vehicle_1_t0.status.acceleratorPosition = 0.0 | Partial | Present as \"acceleratorPedalPosition\" (different name) in \"initialState\" |\n| 18 | Vehicle_1 snapshot: vehicle_1_t1 | Yes | Present as \"nextState\" in \"states\" part |\n| 19 | vehicle_1_t1.mass = 1500.0 | Yes | Present in \"nextState\" |\n| 20 | vehicle_1_t1.status.gearSetting = 2 | Yes | Present as \"gearSetting\" in \"nextState\" |\n| 21 | vehicle_1_t1.status.acceleratorPosition = 0.5 | Partial | Present as \"acceleratorPedalPosition\" (different name) in \"nextState\" |\n| 22 | Snapshots ordered: t0 then t1 | Yes | \"initialState\" then \"nextState\" implies order |\n\n---\n\n#### Notes on Partial Coverage:\n- For claims 5, 7, 8, 10, 12, 17, 21:  \n  - **5:** No explicit \"status\" attribute, but equivalent structure via \"operationalState\" and \"states\".\n  - **7:** \"Driver\" instead of \"Person\", but functionally equivalent.\n  - **8:** No explicit VehicleStatus type, but attributes are present.\n  - **10, 17, 21:** Attribute name is \"acceleratorPedalPosition\" instead of \"acceleratorPosition\", but semantics match.\n  - **12:** \"Person\" is not defined, only \"Driver\".\n\nFor the purpose of recall, if the semantics are present (even with naming/type differences), we count as covered.\n\n---\n\n### 3. Summarize the results\n\nLet's count the covered claims:\n\n- All claims except claim 12 (\"part def Person\") are covered (with some naming/type differences, but semantics match).\n\n**Score: 21/22**\n\n---\n\n**Final Output:**\n\nScore: 21/22"
+  }
+}

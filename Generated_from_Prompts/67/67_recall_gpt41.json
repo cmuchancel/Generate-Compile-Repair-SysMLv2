@@ -1,0 +1,82 @@
+{
+  "model_id": 67,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleMaintenanceTimingConstraints' {\n\tprivate import ISQ::TemperatureValue;\n\tprivate import ISQ::DurationValue;\n\tprivate import Time::TimeInstantValue;\n\tprivate import Time::TimeOf;\n\tprivate import Time::DurationOf;\n\tprivate import SI::h;\n\tprivate import SI::s;\n\tattribute def MaintenanceDone;\n\tpart def Vehicle {\n\t\tattribute maintenanceTime : TimeInstantValue;\n\t\tattribute maintenanceInterval : DurationValue;\n\t\tattribute maxTemperature : TemperatureValue;\n\t}\n\tstate healthStates {\n\t\tin vehicle : Vehicle;\n\t\tentry; then normal;\n\t\tstate normal;\n\t\taccept at vehicle.maintenanceTime\n\t\t\tthen maintenance;\n\t\tstate maintenance {\n\t\t\tassert constraint { TimeOf(maintenance) > vehicle.maintenanceTime }\n\t\t\tassert constraint { TimeOf(maintenance) - TimeOf(normal.done) < 2 [s] }\n\t\t\tentry assign vehicle.maintenanceTime := vehicle.maintenanceTime + vehicle.maintenanceInterval;\n\t\t}\n\t\taccept MaintenanceDone\n\t\t\tthen normal;\n\t\tconstraint { DurationOf(maintenance) <= 48 [h] }\n\t}\n}\n\nGenerated Model:\npackage 'VehicleMaintenanceScheduling' {\n\tprivate import ScalarValues::*;\n\t\n\tpart vehicleMaintenance {\n\t\tattribute maxAllowedTemperature : Real;\n\t\tattribute nextMaintenanceTime : Real;\n\t\tattribute maintenanceInterval : Real;\n\t\tattribute currentTime : Real;\n\t\tattribute maintenanceStartTime : Real;\n\t\tattribute healthyStateEndTime : Real;\n\t\tattribute maintenanceDurationHours : Real;\n\t\tattribute nextMaintenanceTimeAfterMaintenance : Real = maintenanceStartTime + maintenanceInterval;\n\t\tattribute readyForMaintenance : Boolean = currentTime >= nextMaintenanceTime;\n\t\tattribute underMaintenance : Boolean = readyForMaintenance;\n\t\tconstraint startAfterScheduled {\n\t\t\tconstraint { maintenanceStartTime > nextMaintenanceTime }\n\t\t}\n\t\tconstraint startWithinTwoSeconds {\n\t\t\tconstraint { maintenanceStartTime - healthyStateEndTime <= 2.0 }\n\t\t}\n\t\tconstraint durationLimit {\n\t\t\tconstraint { maintenanceDurationHours <= 48.0 }\n\t\t}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/67/design.sysml",
+  "generated_path": "Generated_from_Prompts/67/67.sysml",
+  "response": {
+    "id": "resp_037f1d1da2d4610c006923d2990e088194964b39ff092d0cba",
+    "created_at": 1763955353.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_037f1d1da2d4610c006923d299d7ac81949023926e4087b389",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Imports (types and units):**\n1. Import of ISQ::TemperatureValue\n2. Import of ISQ::DurationValue\n3. Import of Time::TimeInstantValue\n4. Import of Time::TimeOf\n5. Import of Time::DurationOf\n6. Import of SI::h\n7. Import of SI::s\n\n**Attributes and Parts:**\n8. Attribute definition: MaintenanceDone\n9. Part definition: Vehicle\n\n**Vehicle part attributes:**\n10. Vehicle has attribute maintenanceTime : TimeInstantValue\n11. Vehicle has attribute maintenanceInterval : DurationValue\n12. Vehicle has attribute maxTemperature : TemperatureValue\n\n**State machine (healthStates):**\n13. State machine healthStates exists\n14. healthStates references a vehicle : Vehicle\n15. healthStates has entry action, then normal\n16. healthStates has state: normal\n17. healthStates transitions to maintenance on vehicle.maintenanceTime\n18. healthStates has state: maintenance\n\n**Constraints and actions in maintenance state:**\n19. In maintenance: constraint TimeOf(maintenance) > vehicle.maintenanceTime\n20. In maintenance: constraint TimeOf(maintenance) - TimeOf(normal.done) < 2 [s]\n21. In maintenance: entry action assigns vehicle.maintenanceTime := vehicle.maintenanceTime + vehicle.maintenanceInterval\n\n**Transitions and constraints:**\n22. Transition from maintenance to normal on MaintenanceDone\n23. Constraint: DurationOf(maintenance) <= 48 [h]\n\n---\n\n### 2. For each atomic claim, determine whether it is covered by the generated model\n\n#### Imports (types and units)\n1. **Import of ISQ::TemperatureValue**  \n   - **Not covered** (only generic Real type is used)\n2. **Import of ISQ::DurationValue**  \n   - **Not covered** (only generic Real type is used)\n3. **Import of Time::TimeInstantValue**  \n   - **Not covered** (only generic Real type is used)\n4. **Import of Time::TimeOf**  \n   - **Not covered** (no explicit function or equivalent)\n5. **Import of Time::DurationOf**  \n   - **Not covered** (no explicit function or equivalent)\n6. **Import of SI::h**  \n   - **Not covered** (unit is implicit in attribute names/values)\n7. **Import of SI::s**  \n   - **Not covered** (unit is implicit in attribute names/values)\n\n#### Attributes and Parts\n8. **Attribute definition: MaintenanceDone**  \n   - **Not covered** (no equivalent attribute/event)\n\n9. **Part definition: Vehicle**  \n   - **Covered** (as part vehicleMaintenance; naming difference ignored)\n\n#### Vehicle part attributes\n10. **Vehicle has attribute maintenanceTime : TimeInstantValue**  \n    - **Covered** (as nextMaintenanceTime : Real)\n\n11. **Vehicle has attribute maintenanceInterval : DurationValue**  \n    - **Covered** (as maintenanceInterval : Real)\n\n12. **Vehicle has attribute maxTemperature : TemperatureValue**  \n    - **Covered** (as maxAllowedTemperature : Real)\n\n#### State machine (healthStates)\n13. **State machine healthStates exists**  \n    - **Not covered** (no explicit state machine)\n\n14. **healthStates references a vehicle : Vehicle**  \n    - **Not covered** (no explicit reference)\n\n15. **healthStates has entry action, then normal**  \n    - **Not covered** (no explicit state or entry action)\n\n16. **healthStates has state: normal**  \n    - **Not covered** (no explicit state)\n\n17. **healthStates transitions to maintenance on vehicle.maintenanceTime**  \n    - **Partially covered** (readyForMaintenance : Boolean = currentTime >= nextMaintenanceTime; but no explicit transition/state)\n\n18. **healthStates has state: maintenance**  \n    - **Not covered** (no explicit state)\n\n#### Constraints and actions in maintenance state\n19. **In maintenance: constraint TimeOf(maintenance) > vehicle.maintenanceTime**  \n    - **Covered** (constraint { maintenanceStartTime > nextMaintenanceTime })\n\n20. **In maintenance: constraint TimeOf(maintenance) - TimeOf(normal.done) < 2 [s]**  \n    - **Covered** (constraint { maintenanceStartTime - healthyStateEndTime <= 2.0 })\n\n21. **In maintenance: entry action assigns vehicle.maintenanceTime := vehicle.maintenanceTime + vehicle.maintenanceInterval**  \n    - **Covered** (attribute nextMaintenanceTimeAfterMaintenance = maintenanceStartTime + maintenanceInterval)\n\n#### Transitions and constraints\n22. **Transition from maintenance to normal on MaintenanceDone**  \n    - **Not covered** (no explicit event or transition)\n\n23. **Constraint: DurationOf(maintenance) <= 48 [h]**  \n    - **Covered** (constraint { maintenanceDurationHours <= 48.0 })\n\n---\n\n### 3. Summarize the results\n\n**Covered claims:**\n- 9 (Vehicle part)\n- 10 (maintenanceTime)\n- 11 (maintenanceInterval)\n- 12 (maxTemperature)\n- 17 (partially, via readyForMaintenance)\n- 19 (maintenance start after scheduled)\n- 20 (start within two seconds)\n- 21 (update next maintenance time)\n- 23 (duration limit)\n\n**Total covered:** 9  \n**Total claims:** 23\n\n---\n\n**Score: 9/23**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 610,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1149,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1759
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the reference system model\n\n**Imports (types and units):**\n1. Import of ISQ::TemperatureValue\n2. Import of ISQ::DurationValue\n3. Import of Time::TimeInstantValue\n4. Import of Time::TimeOf\n5. Import of Time::DurationOf\n6. Import of SI::h\n7. Import of SI::s\n\n**Attributes and Parts:**\n8. Attribute definition: MaintenanceDone\n9. Part definition: Vehicle\n\n**Vehicle part attributes:**\n10. Vehicle has attribute maintenanceTime : TimeInstantValue\n11. Vehicle has attribute maintenanceInterval : DurationValue\n12. Vehicle has attribute maxTemperature : TemperatureValue\n\n**State machine (healthStates):**\n13. State machine healthStates exists\n14. healthStates references a vehicle : Vehicle\n15. healthStates has entry action, then normal\n16. healthStates has state: normal\n17. healthStates transitions to maintenance on vehicle.maintenanceTime\n18. healthStates has state: maintenance\n\n**Constraints and actions in maintenance state:**\n19. In maintenance: constraint TimeOf(maintenance) > vehicle.maintenanceTime\n20. In maintenance: constraint TimeOf(maintenance) - TimeOf(normal.done) < 2 [s]\n21. In maintenance: entry action assigns vehicle.maintenanceTime := vehicle.maintenanceTime + vehicle.maintenanceInterval\n\n**Transitions and constraints:**\n22. Transition from maintenance to normal on MaintenanceDone\n23. Constraint: DurationOf(maintenance) <= 48 [h]\n\n---\n\n### 2. For each atomic claim, determine whether it is covered by the generated model\n\n#### Imports (types and units)\n1. **Import of ISQ::TemperatureValue**  \n   - **Not covered** (only generic Real type is used)\n2. **Import of ISQ::DurationValue**  \n   - **Not covered** (only generic Real type is used)\n3. **Import of Time::TimeInstantValue**  \n   - **Not covered** (only generic Real type is used)\n4. **Import of Time::TimeOf**  \n   - **Not covered** (no explicit function or equivalent)\n5. **Import of Time::DurationOf**  \n   - **Not covered** (no explicit function or equivalent)\n6. **Import of SI::h**  \n   - **Not covered** (unit is implicit in attribute names/values)\n7. **Import of SI::s**  \n   - **Not covered** (unit is implicit in attribute names/values)\n\n#### Attributes and Parts\n8. **Attribute definition: MaintenanceDone**  \n   - **Not covered** (no equivalent attribute/event)\n\n9. **Part definition: Vehicle**  \n   - **Covered** (as part vehicleMaintenance; naming difference ignored)\n\n#### Vehicle part attributes\n10. **Vehicle has attribute maintenanceTime : TimeInstantValue**  \n    - **Covered** (as nextMaintenanceTime : Real)\n\n11. **Vehicle has attribute maintenanceInterval : DurationValue**  \n    - **Covered** (as maintenanceInterval : Real)\n\n12. **Vehicle has attribute maxTemperature : TemperatureValue**  \n    - **Covered** (as maxAllowedTemperature : Real)\n\n#### State machine (healthStates)\n13. **State machine healthStates exists**  \n    - **Not covered** (no explicit state machine)\n\n14. **healthStates references a vehicle : Vehicle**  \n    - **Not covered** (no explicit reference)\n\n15. **healthStates has entry action, then normal**  \n    - **Not covered** (no explicit state or entry action)\n\n16. **healthStates has state: normal**  \n    - **Not covered** (no explicit state)\n\n17. **healthStates transitions to maintenance on vehicle.maintenanceTime**  \n    - **Partially covered** (readyForMaintenance : Boolean = currentTime >= nextMaintenanceTime; but no explicit transition/state)\n\n18. **healthStates has state: maintenance**  \n    - **Not covered** (no explicit state)\n\n#### Constraints and actions in maintenance state\n19. **In maintenance: constraint TimeOf(maintenance) > vehicle.maintenanceTime**  \n    - **Covered** (constraint { maintenanceStartTime > nextMaintenanceTime })\n\n20. **In maintenance: constraint TimeOf(maintenance) - TimeOf(normal.done) < 2 [s]**  \n    - **Covered** (constraint { maintenanceStartTime - healthyStateEndTime <= 2.0 })\n\n21. **In maintenance: entry action assigns vehicle.maintenanceTime := vehicle.maintenanceTime + vehicle.maintenanceInterval**  \n    - **Covered** (attribute nextMaintenanceTimeAfterMaintenance = maintenanceStartTime + maintenanceInterval)\n\n#### Transitions and constraints\n22. **Transition from maintenance to normal on MaintenanceDone**  \n    - **Not covered** (no explicit event or transition)\n\n23. **Constraint: DurationOf(maintenance) <= 48 [h]**  \n    - **Covered** (constraint { maintenanceDurationHours <= 48.0 })\n\n---\n\n### 3. Summarize the results\n\n**Covered claims:**\n- 9 (Vehicle part)\n- 10 (maintenanceTime)\n- 11 (maintenanceInterval)\n- 12 (maxTemperature)\n- 17 (partially, via readyForMaintenance)\n- 19 (maintenance start after scheduled)\n- 20 (start within two seconds)\n- 21 (update next maintenance time)\n- 23 (duration limit)\n\n**Total covered:** 9  \n**Total claims:** 23\n\n---\n\n**Score: 9/23**"
+  }
+}

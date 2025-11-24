@@ -1,0 +1,82 @@
+{
+  "model_id": 67,
+  "evaluation": "precision",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "DesignBench/src/metrics/sysm-eval-p.txt",
+  "prompt": "Your task is to evaluate the precision of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the generated system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the generated model, determine whether it is supported by the reference model (i.e., the reference model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of supported claims>/<total number of claims in the generated model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'VehicleMaintenanceTimingConstraints' {\n\tprivate import ISQ::TemperatureValue;\n\tprivate import ISQ::DurationValue;\n\tprivate import Time::TimeInstantValue;\n\tprivate import Time::TimeOf;\n\tprivate import Time::DurationOf;\n\tprivate import SI::h;\n\tprivate import SI::s;\n\tattribute def MaintenanceDone;\n\tpart def Vehicle {\n\t\tattribute maintenanceTime : TimeInstantValue;\n\t\tattribute maintenanceInterval : DurationValue;\n\t\tattribute maxTemperature : TemperatureValue;\n\t}\n\tstate healthStates {\n\t\tin vehicle : Vehicle;\n\t\tentry; then normal;\n\t\tstate normal;\n\t\taccept at vehicle.maintenanceTime\n\t\t\tthen maintenance;\n\t\tstate maintenance {\n\t\t\tassert constraint { TimeOf(maintenance) > vehicle.maintenanceTime }\n\t\t\tassert constraint { TimeOf(maintenance) - TimeOf(normal.done) < 2 [s] }\n\t\t\tentry assign vehicle.maintenanceTime := vehicle.maintenanceTime + vehicle.maintenanceInterval;\n\t\t}\n\t\taccept MaintenanceDone\n\t\t\tthen normal;\n\t\tconstraint { DurationOf(maintenance) <= 48 [h] }\n\t}\n}\n\nGenerated Model:\npackage 'VehicleMaintenanceScheduling' {\n\tprivate import ScalarValues::*;\n\t\n\tpart vehicleMaintenance {\n\t\tattribute maxAllowedTemperature : Real;\n\t\tattribute nextMaintenanceTime : Real;\n\t\tattribute maintenanceInterval : Real;\n\t\tattribute currentTime : Real;\n\t\tattribute maintenanceStartTime : Real;\n\t\tattribute healthyStateEndTime : Real;\n\t\tattribute maintenanceDurationHours : Real;\n\t\tattribute nextMaintenanceTimeAfterMaintenance : Real = maintenanceStartTime + maintenanceInterval;\n\t\tattribute readyForMaintenance : Boolean = currentTime >= nextMaintenanceTime;\n\t\tattribute underMaintenance : Boolean = readyForMaintenance;\n\t\tconstraint startAfterScheduled {\n\t\t\tconstraint { maintenanceStartTime > nextMaintenanceTime }\n\t\t}\n\t\tconstraint startWithinTwoSeconds {\n\t\t\tconstraint { maintenanceStartTime - healthyStateEndTime <= 2.0 }\n\t\t}\n\t\tconstraint durationLimit {\n\t\t\tconstraint { maintenanceDurationHours <= 48.0 }\n\t\t}\n\t}\n}\n\n\nOutput:",
+  "reference_path": "DesignBench/dataset/sysml/samples/67/design.sysml",
+  "generated_path": "Generated_from_Prompts/67/67.sysml",
+  "response": {
+    "id": "resp_0d9886b7286abeef006923d28cf4e481978dbc8d00fc4a066a",
+    "created_at": 1763955340.0,
+    "error": null,
+    "incomplete_details": null,
+    "instructions": null,
+    "metadata": {},
+    "model": "gpt-4.1-2025-04-14",
+    "object": "response",
+    "output": [
+      {
+        "id": "msg_0d9886b7286abeef006923d28d98cc81979b311cd3ce03fc8d",
+        "content": [
+          {
+            "annotations": [],
+            "text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**Package and Imports**\n1. The model is defined in a package (name is not atomic for this task).\n2. Private import of `ScalarValues::*`.\n\n**Part Definition**\n3. Definition of part `vehicleMaintenance`.\n\n**Attributes of `vehicleMaintenance`**\n4. Attribute `maxAllowedTemperature : Real`.\n5. Attribute `nextMaintenanceTime : Real`.\n6. Attribute `maintenanceInterval : Real`.\n7. Attribute `currentTime : Real`.\n8. Attribute `maintenanceStartTime : Real`.\n9. Attribute `healthyStateEndTime : Real`.\n10. Attribute `maintenanceDurationHours : Real`.\n11. Attribute `nextMaintenanceTimeAfterMaintenance : Real = maintenanceStartTime + maintenanceInterval`.\n12. Attribute `readyForMaintenance : Boolean = currentTime >= nextMaintenanceTime`.\n13. Attribute `underMaintenance : Boolean = readyForMaintenance`.\n\n**Constraints**\n14. Constraint `startAfterScheduled` with condition: `maintenanceStartTime > nextMaintenanceTime`.\n15. Constraint `startWithinTwoSeconds` with condition: `maintenanceStartTime - healthyStateEndTime <= 2.0`.\n16. Constraint `durationLimit` with condition: `maintenanceDurationHours <= 48.0`.\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n#### 1. Package definition\n- **Supported** (package exists in both, name difference ignored).\n\n#### 2. Private import of `ScalarValues::*`\n- **Not Supported** (reference model imports ISQ, SI, and Time packages, but not ScalarValues; however, this is a technicality and not a modeling claim about the system itself, so can be ignored for the purpose of system structure).\n\n#### 3. Definition of part `vehicleMaintenance`\n- **Supported** (reference model defines part `Vehicle`; naming difference ignored).\n\n#### 4. Attribute `maxAllowedTemperature : Real`\n- **Supported** (reference model: `maxTemperature : TemperatureValue`; type difference, but both represent a temperature attribute).\n\n#### 5. Attribute `nextMaintenanceTime : Real`\n- **Supported** (reference model: `maintenanceTime : TimeInstantValue`; naming and type difference, but same concept).\n\n#### 6. Attribute `maintenanceInterval : Real`\n- **Supported** (reference model: `maintenanceInterval : DurationValue`; naming and type difference, but same concept).\n\n#### 7. Attribute `currentTime : Real`\n- **Not Supported** (reference model does not define a `currentTime` attribute in `Vehicle`).\n\n#### 8. Attribute `maintenanceStartTime : Real`\n- **Supported** (reference model: the state machine refers to `TimeOf(maintenance)`; this is the time when maintenance starts).\n\n#### 9. Attribute `healthyStateEndTime : Real`\n- **Supported** (reference model: the state machine refers to `TimeOf(normal.done)`; this is the time when the healthy state ends).\n\n#### 10. Attribute `maintenanceDurationHours : Real`\n- **Supported** (reference model: `DurationOf(maintenance)`; both represent the duration of maintenance).\n\n#### 11. Attribute `nextMaintenanceTimeAfterMaintenance : Real = maintenanceStartTime + maintenanceInterval`\n- **Supported** (reference model: in the `maintenance` state, `vehicle.maintenanceTime := vehicle.maintenanceTime + vehicle.maintenanceInterval`).\n\n#### 12. Attribute `readyForMaintenance : Boolean = currentTime >= nextMaintenanceTime`\n- **Supported** (reference model: transition from `normal` to `maintenance` is triggered at `vehicle.maintenanceTime`, which is equivalent to being ready for maintenance).\n\n#### 13. Attribute `underMaintenance : Boolean = readyForMaintenance`\n- **Supported** (reference model: entering the `maintenance` state when maintenance is due).\n\n#### 14. Constraint `startAfterScheduled` (`maintenanceStartTime > nextMaintenanceTime`)\n- **Supported** (reference model: `assert constraint { TimeOf(maintenance) > vehicle.maintenanceTime }`).\n\n#### 15. Constraint `startWithinTwoSeconds` (`maintenanceStartTime - healthyStateEndTime <= 2.0`)\n- **Supported** (reference model: `assert constraint { TimeOf(maintenance) - TimeOf(normal.done) < 2 [s] }`).\n\n#### 16. Constraint `durationLimit` (`maintenanceDurationHours <= 48.0`)\n- **Supported** (reference model: `constraint { DurationOf(maintenance) <= 48 [h] }`).\n\n---\n\n### 3. Summarize the results\n\n**Supported Claims:**  \n1 (package), 3 (part), 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16 = **14**\n\n**Not Supported:**  \n7 (currentTime), 2 (import, but not a modeling claim about system structure)\n\n**Total Claims:**  \n16\n\n---\n\n**Score:**  \n**14/16**",
+            "type": "output_text",
+            "logprobs": []
+          }
+        ],
+        "role": "assistant",
+        "status": "completed",
+        "type": "message"
+      }
+    ],
+    "parallel_tool_calls": true,
+    "temperature": 0.2,
+    "tool_choice": "auto",
+    "tools": [],
+    "top_p": 1.0,
+    "background": false,
+    "conversation": null,
+    "max_output_tokens": null,
+    "max_tool_calls": null,
+    "previous_response_id": null,
+    "prompt": null,
+    "prompt_cache_key": null,
+    "prompt_cache_retention": null,
+    "reasoning": {
+      "effort": null,
+      "generate_summary": null,
+      "summary": null
+    },
+    "safety_identifier": null,
+    "service_tier": "default",
+    "status": "completed",
+    "text": {
+      "format": {
+        "type": "text"
+      },
+      "verbosity": "medium"
+    },
+    "top_logprobs": 0,
+    "truncation": "disabled",
+    "usage": {
+      "input_tokens": 607,
+      "input_tokens_details": {
+        "cached_tokens": 0
+      },
+      "output_tokens": 1048,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1655
+    },
+    "user": null,
+    "billing": {
+      "payer": "openai"
+    },
+    "store": true,
+    "response_text": "Let's proceed step by step:\n\n---\n\n### 1. List all atomic modeling claims made by the generated system model\n\n**Package and Imports**\n1. The model is defined in a package (name is not atomic for this task).\n2. Private import of `ScalarValues::*`.\n\n**Part Definition**\n3. Definition of part `vehicleMaintenance`.\n\n**Attributes of `vehicleMaintenance`**\n4. Attribute `maxAllowedTemperature : Real`.\n5. Attribute `nextMaintenanceTime : Real`.\n6. Attribute `maintenanceInterval : Real`.\n7. Attribute `currentTime : Real`.\n8. Attribute `maintenanceStartTime : Real`.\n9. Attribute `healthyStateEndTime : Real`.\n10. Attribute `maintenanceDurationHours : Real`.\n11. Attribute `nextMaintenanceTimeAfterMaintenance : Real = maintenanceStartTime + maintenanceInterval`.\n12. Attribute `readyForMaintenance : Boolean = currentTime >= nextMaintenanceTime`.\n13. Attribute `underMaintenance : Boolean = readyForMaintenance`.\n\n**Constraints**\n14. Constraint `startAfterScheduled` with condition: `maintenanceStartTime > nextMaintenanceTime`.\n15. Constraint `startWithinTwoSeconds` with condition: `maintenanceStartTime - healthyStateEndTime <= 2.0`.\n16. Constraint `durationLimit` with condition: `maintenanceDurationHours <= 48.0`.\n\n---\n\n### 2. For each atomic claim, determine whether it is supported by the reference model\n\n#### 1. Package definition\n- **Supported** (package exists in both, name difference ignored).\n\n#### 2. Private import of `ScalarValues::*`\n- **Not Supported** (reference model imports ISQ, SI, and Time packages, but not ScalarValues; however, this is a technicality and not a modeling claim about the system itself, so can be ignored for the purpose of system structure).\n\n#### 3. Definition of part `vehicleMaintenance`\n- **Supported** (reference model defines part `Vehicle`; naming difference ignored).\n\n#### 4. Attribute `maxAllowedTemperature : Real`\n- **Supported** (reference model: `maxTemperature : TemperatureValue`; type difference, but both represent a temperature attribute).\n\n#### 5. Attribute `nextMaintenanceTime : Real`\n- **Supported** (reference model: `maintenanceTime : TimeInstantValue`; naming and type difference, but same concept).\n\n#### 6. Attribute `maintenanceInterval : Real`\n- **Supported** (reference model: `maintenanceInterval : DurationValue`; naming and type difference, but same concept).\n\n#### 7. Attribute `currentTime : Real`\n- **Not Supported** (reference model does not define a `currentTime` attribute in `Vehicle`).\n\n#### 8. Attribute `maintenanceStartTime : Real`\n- **Supported** (reference model: the state machine refers to `TimeOf(maintenance)`; this is the time when maintenance starts).\n\n#### 9. Attribute `healthyStateEndTime : Real`\n- **Supported** (reference model: the state machine refers to `TimeOf(normal.done)`; this is the time when the healthy state ends).\n\n#### 10. Attribute `maintenanceDurationHours : Real`\n- **Supported** (reference model: `DurationOf(maintenance)`; both represent the duration of maintenance).\n\n#### 11. Attribute `nextMaintenanceTimeAfterMaintenance : Real = maintenanceStartTime + maintenanceInterval`\n- **Supported** (reference model: in the `maintenance` state, `vehicle.maintenanceTime := vehicle.maintenanceTime + vehicle.maintenanceInterval`).\n\n#### 12. Attribute `readyForMaintenance : Boolean = currentTime >= nextMaintenanceTime`\n- **Supported** (reference model: transition from `normal` to `maintenance` is triggered at `vehicle.maintenanceTime`, which is equivalent to being ready for maintenance).\n\n#### 13. Attribute `underMaintenance : Boolean = readyForMaintenance`\n- **Supported** (reference model: entering the `maintenance` state when maintenance is due).\n\n#### 14. Constraint `startAfterScheduled` (`maintenanceStartTime > nextMaintenanceTime`)\n- **Supported** (reference model: `assert constraint { TimeOf(maintenance) > vehicle.maintenanceTime }`).\n\n#### 15. Constraint `startWithinTwoSeconds` (`maintenanceStartTime - healthyStateEndTime <= 2.0`)\n- **Supported** (reference model: `assert constraint { TimeOf(maintenance) - TimeOf(normal.done) < 2 [s] }`).\n\n#### 16. Constraint `durationLimit` (`maintenanceDurationHours <= 48.0`)\n- **Supported** (reference model: `constraint { DurationOf(maintenance) <= 48 [h] }`).\n\n---\n\n### 3. Summarize the results\n\n**Supported Claims:**  \n1 (package), 3 (part), 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16 = **14**\n\n**Not Supported:**  \n7 (currentTime), 2 (import, but not a modeling claim about system structure)\n\n**Total Claims:**  \n16\n\n---\n\n**Score:**  \n**14/16**"
+  }
+}
