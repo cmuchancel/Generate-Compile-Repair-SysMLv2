@@ -1,0 +1,29 @@
+{
+  "id": "msg_018A4UoeHFwNw1o6gsQSstE4",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomobileSystem {\n    private import ScalarValues::*;\n\n    part def Automobile;\n    part def Car :> Automobile;\n\n    attribute def TorqueValue;\n    attribute def Torque :> TorqueValue;\n\n    part myCar : Car {\n        attribute torque : TorqueValue;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 558,
+    "output_tokens": 84,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

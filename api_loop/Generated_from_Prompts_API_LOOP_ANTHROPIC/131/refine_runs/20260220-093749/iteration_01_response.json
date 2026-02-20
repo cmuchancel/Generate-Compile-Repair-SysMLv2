@@ -1,0 +1,29 @@
+{
+  "id": "msg_01262rQdvWv5R5JWK6XQf8qJ",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSafetySecuritySystem {\n    private import ScalarValues::*;\n\n    enum def SystemCategory {\n        enum Safety;\n        enum Security;\n    }\n\n    part def AlarmSystem {\n        attribute category : SystemCategory = SystemCategory::Security;\n        attribute isInstalled : Boolean = true;\n    }\n\n    part def SeatBelt {\n        attribute category : SystemCategory = SystemCategory::Safety;\n        attribute isInstalled : Boolean = true;\n    }\n\n    part def FrontRowSeat {\n        attribute category : SystemCategory = SystemCategory::Safety;\n        attribute quantity : Integer = 2;\n    }\n\n    part def DriverAirbag {\n        attribute category : SystemCategory = SystemCategory::Safety;\n        attribute isInstalled : Boolean = true;\n    }\n\n    part def Interior {\n        part alarm : AlarmSystem;\n        part seatBelt : SeatBelt;\n        part frontSeat : FrontRowSeat;\n        part airbag : DriverAirbag;\n    }\n\n    part def VehicleBody {\n        attribute material : String = \"Steel\";\n    }\n\n    part def Bumper {\n        attribute category : SystemCategory = SystemCategory::Safety;\n        attribute isInstalled : Boolean = true;\n    }\n\n    part def KeylessEntrySystem {\n        attribute category : SystemCategory = SystemCategory::Security;\n        attribute isInstalled : Boolean = true;\n    }\n\n    part def BodyAssembly {\n        part body : VehicleBody;\n        part bumper : Bumper;\n        part keylessEntry : KeylessEntrySystem;\n    }\n\n    part def VehicleSafetySecurityComponent {\n        part interior : Interior;\n        part bodyAssembly : BodyAssembly;\n\n        attribute hasSafetyFeatures : Boolean = true;\n        attribute hasSecurityFeatures : Boolean = true;\n    }\n\n    part vehicleSystem : VehicleSafetySecurityComponent {\n        part interior : Interior {\n            part alarm : AlarmSystem;\n            part seatBelt : SeatBelt;\n            part frontSeat : FrontRowSeat;\n            part airbag : DriverAirbag;\n        }\n        part bodyAssembly : BodyAssembly {\n            part body : VehicleBody;\n            part bumper : Bumper;\n            part keylessEntry : KeylessEntrySystem;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 415,
+    "output_tokens": 587,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

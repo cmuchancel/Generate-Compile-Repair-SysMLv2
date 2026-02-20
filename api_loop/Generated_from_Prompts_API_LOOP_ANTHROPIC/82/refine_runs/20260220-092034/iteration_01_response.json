@@ -1,0 +1,29 @@
+{
+  "id": "msg_012hbMFFFqSmirZ6Lia8yNje",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package SystemAssembly {\n    private import ScalarValues::*;\n\n    enum def MessageFormatType {\n        enum JSON;\n        enum XML;\n        enum Binary;\n    }\n\n    enum def DataFormatType {\n        enum Structured;\n        enum Unstructured;\n        enum SemiStructured;\n    }\n\n    enum def StorageAccessMode {\n        enum ReadOnly;\n        enum WriteOnly;\n        enum ReadWrite;\n    }\n\n    item def MessageFormat {\n        attribute formatType : MessageFormatType;\n        attribute version : String;\n        attribute encoding : String;\n    }\n\n    item def DataFormat {\n        attribute dataType : DataFormatType;\n        attribute schema : String;\n        attribute compression : String;\n    }\n\n    port def DataPort {\n        attribute transferRate : Real;\n        attribute protocol : String;\n    }\n\n    port def StoragePort {\n        attribute accessMode : StorageAccessMode;\n        attribute capacity : Real;\n    }\n\n    port def SoftwareInterfacePort {\n        attribute apiVersion : String;\n        attribute supported : String;\n    }\n\n    part def SoftwareDesign {\n        attribute designVersion : String;\n        attribute messageFormat : MessageFormatType;\n        attribute dataFormat : DataFormatType;\n\n        part messageFormatSpec : MessageFormat;\n        part dataFormatSpec : DataFormat;\n\n        port softwareInterface : SoftwareInterfacePort;\n    }\n\n    part def ComputerSubsystem {\n        attribute processorSpeed : Real;\n        attribute memorySize : Real;\n        attribute supportedMessageFormat : MessageFormatType;\n        attribute supportedDataFormat : DataFormatType;\n        attribute integratesSoftwareFunctions : Boolean;\n\n        port dataOut : DataPort;\n        port softwareLink : SoftwareInterfacePort;\n    }\n\n    part def StorageSubsystem {\n        attribute storageCapacity : Real;\n        attribute compatibleMessageFormat : MessageFormatType;\n        attribute compatibleDataFormat : DataFormatType;\n        attribute accessMode : StorageAccessMode;\n\n        port storageAccess : StoragePort;\n        port softwareLink : SoftwareInterfacePort;\n    }\n\n    part def SystemRoot {\n        attribute systemName : String;\n        attribute systemVersion : String;\n        attribute reliable : Boolean;\n        attribute efficient : Boolean;\n        attribute compliant : Boolean;\n\n        part software : SoftwareDesign;\n        part computer : ComputerSubsystem;\n        part storage : StorageSubsystem;\n\n        connect computer.dataOut to storage.storageAccess;\n        connect computer.softwareLink to software.softwareInterface;\n        connect storage.softwareLink to software.softwareInterface;\n    }\n\n    part system : SystemRoot {\n        attribute systemName = \"IntegratedSystem\";\n        attribute systemVersion = \"1.0\";\n        attribute reliable = true;\n        attribute efficient = true;\n        attribute compliant = true;\n\n        part software : SoftwareDesign {\n            attribute designVersion = \"1.0\";\n            attribute messageFormat = MessageFormatType::JSON;\n            attribute dataFormat = DataFormatType::Structured;\n        }\n\n        part computer : ComputerSubsystem {\n            attribute processorSpeed = 3.5;\n            attribute memorySize = 16.0;\n            attribute supportedMessageFormat = MessageFormatType::JSON;\n            attribute supportedDataFormat = DataFormatType::Structured;\n            attribute integratesSoftwareFunctions = true;\n        }\n\n        part storage : StorageSubsystem {\n            attribute storageCapacity = 1000.0;\n            attribute compatibleMessageFormat = MessageFormatType::JSON;\n            attribute compatibleDataFormat = DataFormatType::Structured;\n            attribute accessMode = StorageAccessMode::ReadWrite;\n        }\n\n        connect computer.dataOut to storage.storageAccess;\n        connect computer.softwareLink to software.softwareInterface;\n        connect storage.softwareLink to software.softwareInterface;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 391,
+    "output_tokens": 966,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

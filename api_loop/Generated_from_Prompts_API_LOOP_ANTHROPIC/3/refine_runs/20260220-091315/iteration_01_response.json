@@ -1,0 +1,29 @@
+{
+  "id": "msg_01MeeAJPNypjARSWQeHvTM6d",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleStructure {\n    private import ScalarValues::*;\n\n    enum def ComponentType {\n        enum ENGINE;\n        enum TRANSMISSION;\n        enum WHEEL;\n    }\n\n    part def VehicleComponent {\n        attribute componentId : String;\n        attribute componentName : String;\n    }\n\n    part def Engine :> VehicleComponent {\n        attribute displacement : Real;\n        attribute horsepower : Real;\n    }\n\n    part def Transmission :> VehicleComponent {\n        attribute gearCount : Integer;\n        attribute transmissionType : String;\n    }\n\n    part def Wheel :> VehicleComponent {\n        attribute diameter : Real;\n        attribute width : Real;\n    }\n\n    part def Vehicle {\n        attribute vehicleId : String;\n        attribute vehicleName : String;\n        attribute vehicleModel : String;\n\n        part engine : Engine[1];\n        part transmission : Transmission[1];\n        part wheels : Wheel[4];\n    }\n\n    part def StandardVehicle :> Vehicle {\n        attribute manufacturer : String;\n        attribute year : Integer;\n    }\n\n    part def ElectricVehicle :> Vehicle {\n        attribute batteryCapacity : Real;\n        attribute range : Real;\n    }\n\n    part def PerformanceEngine :> Engine {\n        attribute turboCharged : Boolean;\n        attribute maxRPM : Integer;\n    }\n\n    part def AutomaticTransmission :> Transmission {\n        attribute hasPaddleShifters : Boolean;\n    }\n\n    part def ManualTransmission :> Transmission {\n        attribute clutchType : String;\n    }\n\n    part def AlloyWheel :> Wheel {\n        attribute material : String;\n        attribute finish : String;\n    }\n\n    part myVehicle : StandardVehicle {\n        attribute vehicleId = \"V001\";\n        attribute vehicleName = \"Sedan\";\n        attribute vehicleModel = \"Model-X\";\n        attribute manufacturer = \"AutoCorp\";\n        attribute year = 2024;\n\n        part engine : PerformanceEngine[1] {\n            attribute componentId = \"E001\";\n            attribute componentName = \"V8 Engine\";\n            attribute displacement = 5.0;\n            attribute horsepower = 450.0;\n            attribute turboCharged = true;\n            attribute maxRPM = 7000;\n        }\n\n        part transmission : AutomaticTransmission[1] {\n            attribute componentId = \"T001\";\n            attribute componentName = \"8-Speed Auto\";\n            attribute gearCount = 8;\n            attribute transmissionType = \"Automatic\";\n            attribute hasPaddleShifters = true;\n        }\n\n        part wheels : AlloyWheel[4] {\n            attribute componentId = \"W001\";\n            attribute componentName = \"Sport Alloy\";\n            attribute diameter = 19.0;\n            attribute width = 8.5;\n            attribute material = \"Aluminum\";\n            attribute finish = \"Gloss Black\";\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 392,
+    "output_tokens": 727,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

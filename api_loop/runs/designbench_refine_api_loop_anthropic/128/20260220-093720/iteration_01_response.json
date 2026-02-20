@@ -1,0 +1,29 @@
+{
+  "id": "msg_01Weey3mVJZBegmA3f8XoQdR",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package PowerSystem {\n    private import ScalarValues::*;\n\n    port def PowerPort;\n    port def TorquePort;\n\n    part def TorqueGenerator {\n        port torqueOut : TorquePort;\n        port powerIn : PowerPort;\n    }\n\n    part def Engine {\n        port torqueOut : TorquePort;\n        port powerIn : PowerPort;\n    }\n\n    part def Powertrain {\n        part engine : Engine {\n            port torqueOut : TorquePort;\n            port powerIn : PowerPort;\n        }\n        port torqueOut : TorquePort;\n        port powerIn : PowerPort;\n        connect engine.torqueOut to torqueOut;\n    }\n\n    part def PowerSystem {\n        part torqueGenerator : TorqueGenerator {\n            port torqueOut : TorquePort;\n            port powerIn : PowerPort;\n        }\n        part powertrain : Powertrain {\n            part engine : Engine {\n                port torqueOut : TorquePort;\n                port powerIn : PowerPort;\n            }\n            port torqueOut : TorquePort;\n            port powerIn : PowerPort;\n        }\n        port powerOut : PowerPort;\n        port torqueOut : TorquePort;\n        connect torqueGenerator.torqueOut to powertrain.torqueOut;\n        connect torqueGenerator.torqueOut to torqueOut;\n        connect powertrain.engine.torqueOut to torqueGenerator.torqueOut;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 377,
+    "output_tokens": 364,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

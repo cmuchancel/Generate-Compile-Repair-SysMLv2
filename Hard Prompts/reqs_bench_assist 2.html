@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pretend MBSE Requirements — Self-Spotting Bench Press Safety Assist</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121b33;
+      --text:#eaf0ff;
+      --muted:#b8c2e6;
+      --border:#25345e;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1100px 700px at 20% 0%, #162048 0%, var(--bg) 62%);
+      color:var(--text);
+      line-height:1.55;
+    }
+    header{
+      border-bottom:1px solid var(--border);
+      padding:26px 16px 14px;
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:0 16px 44px;}
+    h1{margin:0 0 6px;font-size:1.55rem;letter-spacing:.2px}
+    .subtitle{margin:0;color:var(--muted);font-size:.98rem}
+    section{
+      background: rgba(18,27,51,.78);
+      border:1px solid var(--border);
+      border-radius:14px;
+      margin:14px 0;
+      padding:16px 16px 10px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.25);
+    }
+    h2{margin:0 0 10px;font-size:1.15rem;color:#f4f7ff}
+    .req{
+      padding:10px 12px;
+      margin:10px 0;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: rgba(11,16,32,.55);
+    }
+    .req strong{display:block;margin-bottom:4px;color:#fff}
+    .req p{margin:0;color:var(--text)}
+    .note{margin:6px 0 0;color:var(--muted);font-size:.92rem}
+    ul,ol{margin:10px 0 6px 18px}
+    li{margin:6px 0}
+    hr{border:0;border-top:1px solid var(--border);margin:12px 0 0}
+    footer{margin-top:16px;color:var(--muted);font-size:.9rem;padding: 6px 2px 0}
+    code{background:rgba(255,255,255,.06);padding:1px 6px;border-radius:7px}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Pretend MBSE Requirements — Self-Spotting Bench Press Safety Assist</h1>
+      <p class="subtitle">
+        Solution-agnostic requirements and constraints for a system that improves safety and independence during barbell bench-press
+        exercise while preserving free-weight benefits (e.g., natural range of motion and stabilizer engagement).
+        <span class="note">Source: attached report :contentReference[oaicite:0]{index=0}</span>
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="mission">
+      <h2>1) Mission and scope requirements</h2>
+
+      <div class="req">
+        <strong>R-MSN-001 (Primary purpose)</strong>
+        <p>The system shall improve user safety during barbell bench-press exercise by providing an on-demand self-spotting capability when a user cannot complete a repetition. :contentReference[oaicite:1]{index=1}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-002 (Maintain free-weight benefits)</strong>
+        <p>The system shall preserve free-weight training characteristics, including natural range of motion and engagement of stabilizing muscles, while adding safety assistance. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-003 (Target users)</strong>
+        <p>The system shall support a broad user range from beginners to experienced lifters and shall be usable without a dedicated human spotter. :contentReference[oaicite:4]{index=4} :contentReference[oaicite:5]{index=5}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-004 (Deployment context)</strong>
+        <p>The system shall be suitable for typical gym and weight-room environments and compatible with common barbell bench-press setups. :contentReference[oaicite:6]{index=6}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-005 (Independence objective)</strong>
+        <p>The system shall increase user independence and confidence by reducing reliance on external assistance during bench pressing. :contentReference[oaicite:7]{index=7}</p>
+      </div>
+    </section>
+
+    <section id="functional">
+      <h2>2) Top-level functional requirements</h2>
+
+      <div class="req">
+        <strong>R-FUNC-001 (Normal exercise mode)</strong>
+        <p>The system shall allow the user to perform normal bench-press repetitions with minimal interference during intended motion.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-002 (User-initiated safety engagement)</strong>
+        <p>The system shall provide a user-initiated means to engage a safety function during a lift without requiring assistance from another person. :contentReference[oaicite:8]{index=8}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-003 (Load arrest / support)</strong>
+        <p>When the safety function is engaged, the system shall stop and support the barbell load to prevent harm to the user if the lift cannot be completed. :contentReference[oaicite:9]{index=9}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-004 (Safe recovery path)</strong>
+        <p>After safety engagement, the system shall provide a defined recovery outcome that enables the user to exit the unsafe condition without uncontrolled load movement.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-005 (Reset for subsequent use)</strong>
+        <p>The system shall return to a ready state after a safety event or after exercise completion, enabling repeated use without complex reconfiguration.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-006 (Retrofit capability)</strong>
+        <p>The system shall be addable/adaptable to existing free-weight equipment with limited modifications to the base equipment. :contentReference[oaicite:10]{index=10}</p>
+      </div>
+    </section>
+
+    <section id="performance">
+      <h2>3) Performance requirements (measurable targets)</h2>
+
+      <div class="req">
+        <strong>R-PERF-001 (Load capacity)</strong>
+        <p>The system shall support a combined barbell + plate load of at least <b>640 lb</b> total under static load during a safety event (representative target derived from component-level capacity analysis). :contentReference[oaicite:11]{index=11}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-002 (Range-of-motion preservation)</strong>
+        <p>The system shall not constrain the user to a strict single-plane motion and shall preserve a free-weight-like range of motion for bench pressing. :contentReference[oaicite:12]{index=12} :contentReference[oaicite:13]{index=13}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-003 (Low added resistance)</strong>
+        <p>During normal lifting motion, the system shall add negligible resistance such that users perceive the lift as substantially similar to unassisted free weights. :contentReference[oaicite:14]{index=14}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-004 (Engagement response)</strong>
+        <p>Upon user safety engagement, the system shall arrest motion within a short travel interval sufficient to prevent injury, consistent with discrete engagement behavior described in the analysis assumptions. :contentReference[oaicite:15]{index=15}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-005 (High-cycle operation)</strong>
+        <p>The system shall withstand repeated training use (multiple users and many repetitions) without functional degradation that prevents reliable safety engagement. :contentReference[oaicite:16]{index=16}</p>
+      </div>
+    </section>
+
+    <section id="constraints">
+      <h2>4) Key constraints</h2>
+
+      <div class="req">
+        <strong>R-CNST-001 (Ease of use)</strong>
+        <p>The system shall be simple and intuitive to operate such that users would be willing to use it in routine workouts. :contentReference[oaicite:17]{index=17} :contentReference[oaicite:18]{index=18}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-002 (Reliability emphasis)</strong>
+        <p>The system shall prioritize reliability as a safety-critical feature, with consistent behavior across users and sessions. :contentReference[oaicite:19]{index=19}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-003 (Cost sensitivity)</strong>
+        <p>The system shall be designed to be cost-competitive relative to large guided lifting machines by minimizing part count and leveraging commercially available components where practical. :contentReference[oaicite:20]{index=20} :contentReference[oaicite:21]{index=21}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-004 (Installation constraints)</strong>
+        <p>The system shall be installable with common tools and minimal specialized labor, enabling deployment in typical gyms and campus facilities. :contentReference[oaicite:22]{index=22} :contentReference[oaicite:23]{index=23}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-005 (Maintainability)</strong>
+        <p>The system shall be maintainable with accessible components and minimal service burden over its lifetime, aligned with the desire to minimize maintenance costs. :contentReference[oaicite:24]{index=24}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-006 (Packaging and footprint)</strong>
+        <p>The system shall fit within typical bench-press station spatial constraints and shall not obstruct user setup, spotting zones, or normal gym traffic.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-007 (User comfort)</strong>
+        <p>The system shall maintain user comfort during operation and shall not introduce uncomfortable or distracting interactions that degrade the workout experience. :contentReference[oaicite:25]{index=25} :contentReference[oaicite:26]{index=26}</p>
+      </div>
+    </section>
+
+    <section id="safety">
+      <h2>5) Safety and assurance requirements</h2>
+
+      <div class="req">
+        <strong>R-SAFE-001 (Fail-safe behavior)</strong>
+        <p>In the event of malfunction or loss of intended control, the system shall transition to a safe state that does not create uncontrolled bar movement or increased user hazard.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-002 (No new pinch/entrapment hazards)</strong>
+        <p>The system shall not introduce pinch points or entrapment hazards in user-accessible areas during normal use or during safety engagement.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-003 (Structural integrity)</strong>
+        <p>Load-bearing elements shall be designed with an explicit margin of safety appropriate for a safety device, considering the system’s role in preventing catastrophic injury. :contentReference[oaicite:27]{index=27}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-004 (Safe interaction with failure scenarios)</strong>
+        <p>The system shall explicitly address the hazardous scenario where the user fails mid-repetition and cannot lift the bar off the chest region, providing a defined protective behavior. :contentReference[oaicite:28]{index=28}</p>
+      </div>
+    </section>
+
+    <section id="verification">
+      <h2>6) Verification-oriented requirements (MBSE-friendly)</h2>
+
+      <div class="req">
+        <strong>R-VER-001 (Capacity verification)</strong>
+        <p>The load capacity requirement shall be verifiable by static load testing to the specified minimum total load with defined acceptance criteria (e.g., no permanent deformation, no loss of function).</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-002 (Interference verification)</strong>
+        <p>Minimal interference shall be verifiable by comparing user-perceived resistance and measured added force/drag during repetitions with and without the system. :contentReference[oaicite:29]{index=29}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-003 (Safety engagement verification)</strong>
+        <p>Safety engagement response shall be verifiable by repeatable tests that initiate safety engagement under representative loads and positions, confirming arrest and support behavior. :contentReference[oaicite:30]{index=30}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-004 (Retrofit verification)</strong>
+        <p>Retrofit capability shall be verifiable by demonstrating installation and functional operation on a representative set of common bench-press station configurations with limited base-equipment modification. :contentReference[oaicite:31]{index=31}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-005 (Usability verification)</strong>
+        <p>Ease of use shall be verifiable by user trials showing that users can correctly operate the system after minimal instruction, and that they report willingness to use it during workouts. :contentReference[oaicite:32]{index=32}</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-006 (Durability verification)</strong>
+        <p>High-cycle durability shall be verifiable by endurance testing over repeated repetitions/engagement events representative of gym usage, with pass/fail criteria for wear-induced malfunction. :contentReference[oaicite:33]{index=33}</p>
+      </div>
+    </section>
+
+    <section id="logical-breakdown">
+      <h2>Logical system breakdown (requirements-oriented functional “boxes”)</h2>
+
+      <ol>
+        <li><b>Exercise Interaction Subsystem</b>
+          <ul>
+            <li>Allow normal bench-press repetitions with minimal interference</li>
+            <li>Preserve free-weight-like range of motion and stabilizer engagement</li>
+          </ul>
+        </li>
+
+        <li><b>Safety Engagement Subsystem</b>
+          <ul>
+            <li>Accept user-initiated engagement during a lift</li>
+            <li>Arrest and support barbell load under defined failure scenarios</li>
+            <li>Provide a defined recovery outcome for user exit</li>
+          </ul>
+        </li>
+
+        <li><b>Load Path & Structural Subsystem</b>
+          <ul>
+            <li>Carry and transfer loads safely to supporting structures</li>
+            <li>Meet minimum load capacity and safety margin requirements</li>
+          </ul>
+        </li>
+
+        <li><b>Integration & Retrofit Subsystem</b>
+          <ul>
+            <li>Attach/adapt to existing bench-press stations with limited modification</li>
+            <li>Fit within typical station footprint without obstructing user setup</li>
+          </ul>
+        </li>
+
+        <li><b>User Interface & Human Factors Subsystem</b>
+          <ul>
+            <li>Provide simple, intuitive operation (including safety engagement and reset)</li>
+            <li>Maintain comfort and avoid distracting interactions</li>
+          </ul>
+        </li>
+
+        <li><b>Reliability, Maintenance & Lifecycle Subsystem</b>
+          <ul>
+            <li>Support high-cycle operation in gym environments</li>
+            <li>Enable inspection/maintenance with common tools and minimal downtime</li>
+          </ul>
+        </li>
+
+        <li><b>Assurance & Verification Subsystem</b>
+          <ul>
+            <li>Define testable acceptance criteria for capacity, usability, interference, and durability</li>
+            <li>Define safe-state behaviors for faults and abnormal conditions</li>
+          </ul>
+        </li>
+      </ol>
+
+      <hr />
+      <p class="note">End of requirements set. (Intentionally solution-agnostic; no concept solutions included.)</p>
+    </section>
+
+    <footer>
+      <p>Generated as a pretend MBSE requirements artifact to drive functional decomposition and concept exploration; not a final product specification.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T14:22:14.987440Z",
+    "iteration_end": "2026-02-20T14:22:56.094002Z",
+    "iteration_duration_seconds": 41.106444792007096,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/96/20260220-092214/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/96/20260220-092214/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/96/20260220-092214/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:7:31: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    7 |     attribute def TorqueValue : Real;",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 390,
+      "output_tokens": 85,
+      "total_tokens": 475
+    },
+    "tokens_used_total": 475,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T14:22:56.094059Z",
+    "iteration_end": "2026-02-20T14:22:57.988153Z",
+    "iteration_duration_seconds": 1.8941163340059575,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/96/20260220-092214/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/96/20260220-092214/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/96/20260220-092214/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 558,
+      "output_tokens": 84,
+      "total_tokens": 642
+    },
+    "tokens_used_total": 1117,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  }
+]

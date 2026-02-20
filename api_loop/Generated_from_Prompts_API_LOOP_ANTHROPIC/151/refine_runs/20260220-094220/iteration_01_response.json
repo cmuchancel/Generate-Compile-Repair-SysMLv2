@@ -1,0 +1,29 @@
+{
+  "id": "msg_01AaAEcPKwoSLnx28fNsFCFm",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package TransportationSystem {\n    private import ScalarValues::*;\n\n    enum def FuelStatus {\n        enum FULL;\n        enum ADEQUATE;\n        enum LOW;\n        enum EMPTY;\n    }\n\n    enum def OccupantRole {\n        enum DRIVER;\n        enum PASSENGER;\n    }\n\n    enum def TravelPhase {\n        enum BOARDING;\n        enum TRAVELING;\n        enum REFUELING;\n        enum ALIGHTING;\n        enum COMPLETED;\n    }\n\n    item def Fuel {\n        attribute amount : Real;\n    }\n\n    item def Person {\n        attribute role : OccupantRole;\n        attribute name : String;\n    }\n\n    part def GasStation {\n        attribute stationName : String;\n        attribute fuelAvailable : Real;\n        port fuelDispensePort : FuelPort;\n    }\n\n    part def FuelTank {\n        attribute maxCapacity : Real;\n        attribute currentLevel : Real;\n        attribute lowFuelThreshold : Real;\n        attribute fuelStatus : FuelStatus;\n        port tankFillPort : FuelPort;\n    }\n\n    part def Engine {\n        attribute isRunning : Boolean;\n        attribute fuelConsumptionRate : Real;\n    }\n\n    part def PassengerCompartment {\n        attribute maxPassengers : Integer;\n        attribute currentPassengerCount : Integer;\n        port boardingPort : OccupantPort;\n        port alightingPort : OccupantPort;\n    }\n\n    part def DriverSeat {\n        attribute isOccupied : Boolean;\n        port driverBoardPort : OccupantPort;\n        port driverAlightPort : OccupantPort;\n    }\n\n    part def EnvironmentSensor {\n        attribute temperature : Real;\n        attribute weatherCondition : String;\n        attribute roadCondition : String;\n    }\n\n    part def NavigationSystem {\n        attribute currentLocation : String;\n        attribute destination : String;\n        attribute routeDistance : Real;\n    }\n\n    port def FuelPort {\n        attribute flowRate : Real;\n    }\n\n    port def OccupantPort {\n        attribute capacity : Integer;\n    }\n\n    part def Vehicle {\n        attribute vehicleId : String;\n        attribute maxOccupants : Integer = 5;\n        attribute currentPhase : TravelPhase;\n        attribute isOperational : Boolean;\n\n        part fuelTank : FuelTank;\n        part engine : Engine;\n        part compartment : PassengerCompartment;\n        part driverSeat : DriverSeat;\n        part envSensor : EnvironmentSensor;\n        part navSystem : NavigationSystem;\n\n        port vehicleFuelPort : FuelPort;\n        port passengerBoardPort : OccupantPort;\n        port passengerAlightPort : OccupantPort;\n        port driverBoardPortVehicle : OccupantPort;\n        port driverAlightPortVehicle : OccupantPort;\n\n        connect vehicleFuelPort to fuelTank.tankFillPort;\n        connect passengerBoardPort to compartment.boardingPort;\n        connect passengerAlightPort to compartment.alightingPort;\n        connect driverBoardPortVehicle to driverSeat.driverBoardPort;\n        connect driverAlightPortVehicle to driverSeat.driverAlightPort;\n    }\n\n    part def TransportationService {\n        attribute serviceId : String;\n        attribute totalDistance : Real;\n        attribute fuelLowThresholdPercent : Real = 10.0;\n        attribute maxPassengerCount : Integer = 4;\n        attribute driverCount : Integer = 1;\n        attribute refuelingRequired : Boolean;\n        attribute tripCompleted : Boolean;\n\n        part vehicle : Vehicle;\n        part station : GasStation;\n\n        connect vehicle.vehicleFuelPort to station.fuelDispensePort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 411,
+    "output_tokens": 963,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

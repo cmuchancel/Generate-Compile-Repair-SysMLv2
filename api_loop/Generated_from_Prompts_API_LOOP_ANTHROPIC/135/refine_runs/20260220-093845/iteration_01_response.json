@@ -1,0 +1,29 @@
+{
+  "id": "msg_017r43xYuThjXrbka2SzDRKa",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package ScientificConstants {\n    private import ScalarValues::*;\n\n    part def MathematicalConstants {\n        attribute euler_number : Real = 2.71828182845904523536;\n        attribute pi : Real = 3.14159265358979323846;\n    }\n\n    part def PhysicalConstants {\n        attribute speed_of_light_m_per_s : Real = 299792458.0;\n        attribute fine_structure_constant : Real = 0.0072973525693;\n        attribute electron_to_proton_mass_ratio : Real = 0.000544617021487;\n    }\n\n    part def ContextConstants {\n        attribute standard_gravity_m_per_s2 : Real = 9.80665;\n        attribute model_x_amplifier_gain : Real = 42.0;\n    }\n\n    part def ScientificComputingSystem {\n        part mathConsts : MathematicalConstants;\n        part physConsts : PhysicalConstants;\n        part ctxConsts : ContextConstants;\n    }\n\n    part system : ScientificComputingSystem {\n        part mathConsts : MathematicalConstants {\n            attribute euler_number : Real = 2.71828182845904523536;\n            attribute pi : Real = 3.14159265358979323846;\n        }\n        part physConsts : PhysicalConstants {\n            attribute speed_of_light_m_per_s : Real = 299792458.0;\n            attribute fine_structure_constant : Real = 0.0072973525693;\n            attribute electron_to_proton_mass_ratio : Real = 0.000544617021487;\n        }\n        part ctxConsts : ContextConstants {\n            attribute standard_gravity_m_per_s2 : Real = 9.80665;\n            attribute model_x_amplifier_gain : Real = 42.0;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 443,
+    "output_tokens": 469,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

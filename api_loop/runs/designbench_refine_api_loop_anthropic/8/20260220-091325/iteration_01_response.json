@@ -1,0 +1,29 @@
+{
+  "id": "msg_01DgoQWekfnmMTeyKbm9NRB2",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def FuelType {\n        enum Gasoline;\n        enum Diesel;\n        enum Electric;\n    }\n\n    item def Fuel {\n        attribute fuelType : FuelType;\n        attribute quantity : Real;\n    }\n\n    item def Person {\n        attribute firstName : String;\n        attribute lastName : String;\n        attribute age : Integer;\n    }\n\n    part def FuelTank {\n        attribute capacity : Real;\n        attribute storedFuelType : FuelType;\n        part containedFuel : Fuel;\n    }\n\n    part def Driver {\n        attribute driverInfo : Person;\n        attribute licenseNumber : String;\n    }\n\n    part def Vehicle {\n        attribute make : String;\n        attribute model : String;\n        attribute year : Integer;\n        attribute mass : Real;\n        attribute maxSpeed : Real;\n        part vehicleDriver : Driver;\n        part vehicleFuelTank : FuelTank;\n    }\n\n    part systemRoot {\n        part car : Vehicle {\n            attribute make = \"Toyota\";\n            attribute model = \"Camry\";\n            attribute year = 2023;\n            attribute mass = 1500.0;\n            attribute maxSpeed = 200.0;\n            part vehicleDriver : Driver {\n                attribute licenseNumber = \"DL-12345\";\n                attribute driverInfo : Person {\n                    attribute firstName = \"John\";\n                    attribute lastName = \"Doe\";\n                    attribute age = 35;\n                }\n            }\n            part vehicleFuelTank : FuelTank {\n                attribute capacity = 60.0;\n                attribute storedFuelType = FuelType::Gasoline;\n                part containedFuel : Fuel {\n                    attribute fuelType = FuelType::Gasoline;\n                    attribute quantity = 45.0;\n                }\n            }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 366,
+    "output_tokens": 467,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "msg_01RsHSwpDWs235BSTbey29cj",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package LayeredSystem {\n    private import ScalarValues::*;\n\n    port def DataPort {\n        attribute transferId : String;\n    }\n\n    port def ServicePort {\n        attribute requestId : String;\n    }\n\n    part def DataLayer {\n        attribute dataStore : String;\n        port dataPort : DataPort;\n    }\n\n    part def ServiceLayer {\n        attribute serviceState : String;\n        port dataConsumerPort : DataPort;\n        port servicePort : ServicePort;\n    }\n\n    part def ApplicationLayer {\n        attribute appState : String;\n        port serviceConsumerPort : ServicePort;\n    }\n\n    part def LayeredSystemRoot {\n        attribute x : Real;\n        attribute y : Real;\n        attribute z : Real;\n\n        part dataLayer : DataLayer;\n        part serviceLayer : ServiceLayer;\n        part applicationLayer : ApplicationLayer;\n\n        connect dataLayer.dataPort to serviceLayer.dataConsumerPort;\n        connect serviceLayer.servicePort to applicationLayer.serviceConsumerPort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 845,
+    "output_tokens": 244,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

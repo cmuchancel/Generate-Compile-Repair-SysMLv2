@@ -1,0 +1,29 @@
+{
+  "id": "msg_01KS8oqhzpYsyv6uu5eNzqDn",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package FuelSystem {\n    private import ScalarValues::*;\n\n    enum def FuelFlowDirection {\n        enum Supply;\n        enum Return;\n    }\n\n    item def Fuel;\n\n    item def FuelWithTemperature {\n        attribute temperature : Real;\n        attribute flowDirection : FuelFlowDirection;\n    }\n\n    port def FuelSupplyPort {\n        attribute flowRate : Real;\n        attribute pressure : Real;\n    }\n\n    port def FuelReturnPort {\n        attribute flowRate : Real;\n        attribute pressure : Real;\n    }\n\n    port def MonitorPort {\n        attribute temperature : Real;\n        attribute pressure : Real;\n    }\n\n    part def FuelTankAssembly {\n        attribute capacity : Real;\n        attribute currentFuelLevel : Real;\n        attribute fuelTemperature : Real;\n\n        port supplyOut : FuelSupplyPort;\n        port returnIn : FuelReturnPort;\n        port monitorOut : MonitorPort;\n    }\n\n    part def Engine {\n        attribute fuelConsumptionRate : Real;\n        attribute operatingTemperature : Real;\n\n        port supplyIn : FuelSupplyPort;\n        port returnOut : FuelReturnPort;\n        port monitorIn : MonitorPort;\n    }\n\n    part def FuelLine {\n        attribute length : Real;\n        attribute diameter : Real;\n        attribute maxPressure : Real;\n\n        port lineIn : FuelSupplyPort;\n        port lineOut : FuelSupplyPort;\n    }\n\n    part def ReturnLine {\n        attribute length : Real;\n        attribute diameter : Real;\n        attribute maxPressure : Real;\n\n        port returnLineIn : FuelReturnPort;\n        port returnLineOut : FuelReturnPort;\n    }\n\n    part def TemperatureSensor {\n        attribute measuredTemperature : Real;\n        attribute minOperatingTemp : Real;\n        attribute maxOperatingTemp : Real;\n\n        port sensorMonitor : MonitorPort;\n    }\n\n    part def FuelPump {\n        attribute pumpPressure : Real;\n        attribute pumpFlowRate : Real;\n        attribute isOperational : Boolean;\n\n        port pumpIn : FuelSupplyPort;\n        port pumpOut : FuelSupplyPort;\n    }\n\n    part def VehicleFuelSystem {\n        attribute vehicleId : String;\n        attribute systemOperational : Boolean;\n\n        part tank : FuelTankAssembly {\n            attribute capacity = 60.0;\n            attribute currentFuelLevel = 45.0;\n            attribute fuelTemperature = 25.0;\n        }\n\n        part engine : Engine {\n            attribute fuelConsumptionRate = 8.5;\n            attribute operatingTemperature = 90.0;\n        }\n\n        part supplyLine : FuelLine {\n            attribute length = 2.5;\n            attribute diameter = 0.012;\n            attribute maxPressure = 500.0;\n        }\n\n        part returnLine : ReturnLine {\n            attribute length = 2.5;\n            attribute diameter = 0.010;\n            attribute maxPressure = 300.0;\n        }\n\n        part tempSensor : TemperatureSensor {\n            attribute measuredTemperature = 25.0;\n            attribute minOperatingTemp = -40.0;\n            attribute maxOperatingTemp = 120.0;\n        }\n\n        part pump : FuelPump {\n            attribute pumpPressure = 400.0;\n            attribute pumpFlowRate = 150.0;\n            attribute isOperational = true;\n        }\n\n        connect tank.supplyOut to pump.pumpIn;\n        connect pump.pumpOut to supplyLine.lineIn;\n        connect supplyLine.lineOut to engine.supplyIn;\n        connect engine.returnOut to returnLine.returnLineIn;\n        connect returnLine.returnLineOut to tank.returnIn;\n        connect tank.monitorOut to tempSensor.sensorMonitor;\n        connect tempSensor.sensorMonitor to engine.monitorIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 401,
+    "output_tokens": 996,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

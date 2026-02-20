@@ -1,0 +1,29 @@
+{
+  "id": "msg_01LcSSYtg3bBVQJ1PSTrbryh",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AlloyManagement {\n    private import ScalarValues::*;\n\n    enum def PhysicalState {\n        enum Solid;\n        enum Liquid;\n        enum Gas;\n    }\n\n    part def Substance {\n        attribute substanceName : String;\n        attribute atomicMass : Real;\n        attribute physicalState : PhysicalState;\n    }\n\n    part def Metal {\n        attribute metalName : String;\n        attribute atomicMass : Real;\n        attribute physicalState : PhysicalState;\n        attribute symbol : String;\n    }\n\n    part def MassComponent {\n        attribute materialName : String;\n        attribute massFraction : Real;\n    }\n\n    part def MechanicalProperties {\n        attribute tensileStrength : Real;\n        attribute tensileStrengthUnit : String;\n    }\n\n    part def Alloy {\n        attribute alloyName : String;\n        attribute tensileStrength : Real;\n        attribute tensileStrengthUnit : String;\n        part component1 : MassComponent;\n        part component2 : MassComponent;\n        part component3 : MassComponent;\n        part mechanicalProps : MechanicalProperties;\n    }\n\n    part iron : Metal {\n        attribute redefines metalName = \"Iron\";\n        attribute redefines atomicMass = 55.845;\n        attribute redefines symbol = \"Fe\";\n    }\n\n    part carbon : Metal {\n        attribute redefines metalName = \"Carbon\";\n        attribute redefines atomicMass = 12.011;\n        attribute redefines symbol = \"C\";\n    }\n\n    part manganese : Metal {\n        attribute redefines metalName = \"Manganese\";\n        attribute redefines atomicMass = 54.938;\n        attribute redefines symbol = \"Mn\";\n    }\n\n    part steel980 : Alloy {\n        attribute redefines alloyName = \"Steel 980\";\n        attribute redefines tensileStrength = 980.0;\n        attribute redefines tensileStrengthUnit = \"N/mm2\";\n        part redefines component1 : MassComponent {\n            attribute redefines materialName = \"Iron\";\n            attribute redefines massFraction = 0.972;\n        }\n        part redefines component2 : MassComponent {\n            attribute redefines materialName = \"Carbon\";\n            attribute redefines massFraction = 0.018;\n        }\n        part redefines component3 : MassComponent {\n            attribute redefines materialName = \"Manganese\";\n            attribute redefines massFraction = 0.010;\n        }\n        part redefines mechanicalProps : MechanicalProperties {\n            attribute redefines tensileStrength = 980.0;\n            attribute redefines tensileStrengthUnit = \"N/mm2\";\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2624,
+    "output_tokens": 691,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

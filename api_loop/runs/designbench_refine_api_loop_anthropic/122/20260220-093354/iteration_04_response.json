@@ -1,0 +1,29 @@
+{
+  "id": "msg_013iNAMRB5EV2hxLHRKv23fz",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package FuelEconomySystem {\n    private import ScalarValues::*;\n\n    enum def DrivingCondition {\n        enum Urban;\n        enum Highway;\n    }\n\n    item def Fuel {\n        attribute volumePerGallon : Real = 231.0;\n    }\n\n    part def Powertrain {\n        attribute engineDisplacement : Real;\n        attribute horsepower : Real;\n    }\n\n    part def Vehicle {\n        attribute curb_weight : Real;\n        attribute test_load : Real = 1000.0;\n        attribute total_test_weight : Real;\n        attribute urban_fuel_economy : Real;\n        attribute highway_fuel_economy : Real;\n        attribute min_urban_mpg : Real = 25.0;\n        attribute min_highway_mpg : Real = 30.0;\n        attribute urban_meets_requirement : Boolean;\n        attribute highway_meets_requirement : Boolean;\n        part powertrain : Powertrain;\n    }\n\n    part def FuelEconomyTest {\n        attribute measured_mpg : Real;\n        attribute additional_load : Real = 1000.0;\n        attribute gallon_cubic_inches : Real = 231.0;\n        attribute passed : Boolean;\n    }\n\n    part def UrbanTest :> FuelEconomyTest {\n        attribute minimum_required_mpg : Real = 25.0;\n    }\n\n    part def HighwayTest :> FuelEconomyTest {\n        attribute minimum_required_mpg : Real = 30.0;\n    }\n\n    part def FuelEconomySystemDef {\n        part vehicle : Vehicle;\n        part urbanTest : UrbanTest;\n        part highwayTest : HighwayTest;\n    }\n\n    part fuelEconomySystem : FuelEconomySystemDef {\n        part vehicle : Vehicle {\n            attribute redefines curb_weight = 3500.0;\n            attribute redefines total_test_weight = 4500.0;\n            attribute redefines urban_fuel_economy = 27.0;\n            attribute redefines highway_fuel_economy = 32.0;\n            attribute redefines urban_meets_requirement = true;\n            attribute redefines highway_meets_requirement = true;\n\n            part powertrain : Powertrain {\n                attribute redefines engineDisplacement = 2.0;\n                attribute redefines horsepower = 150.0;\n            }\n        }\n\n        part urbanTest : UrbanTest {\n            attribute redefines measured_mpg = 27.0;\n            attribute redefines passed = true;\n        }\n\n        part highwayTest : HighwayTest {\n            attribute redefines measured_mpg = 32.0;\n            attribute redefines passed = true;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1354,
+    "output_tokens": 683,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "msg_01T4hB7b8QhV11BsAScffMN7",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package FuelDeliverySystem {\n    private import ScalarValues::*;\n\n    item def Fuel;\n\n    port def FuelOutPort {\n        out item fuelOut : Fuel;\n    }\n\n    port def FuelInPort {\n        in item fuelIn : Fuel;\n    }\n\n    part def StorageTank {\n        attribute capacity : Real;\n        attribute currentLevel : Real;\n        port supplyPort : FuelOutPort;\n    }\n\n    part def FuelPump {\n        port pumpInPort : FuelInPort;\n        port pumpOutPort : FuelOutPort;\n    }\n\n    part def VehicleFuelTank {\n        attribute maxCapacity : Real;\n        attribute currentFuelLevel : Real;\n        port receivePort : FuelInPort;\n    }\n\n    part def Vehicle {\n        part vehicleFuelTank : VehicleFuelTank;\n    }\n\n    part def FuelDeliveryServiceSystem {\n        part storageTank : StorageTank {\n            attribute capacity = 10000.0;\n            attribute currentLevel = 8000.0;\n        }\n        part fuelPump : FuelPump;\n        part vehicle : Vehicle {\n            part vehicleFuelTank : VehicleFuelTank {\n                attribute maxCapacity = 60.0;\n                attribute currentFuelLevel = 10.0;\n            }\n        }\n\n        connect storageTank.supplyPort to fuelPump.pumpInPort;\n        connect fuelPump.pumpOutPort to vehicle.vehicleFuelTank.receivePort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 435,
+    "output_tokens": 397,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

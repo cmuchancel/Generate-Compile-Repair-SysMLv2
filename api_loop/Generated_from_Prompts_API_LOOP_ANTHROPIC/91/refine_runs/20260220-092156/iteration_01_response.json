@@ -1,0 +1,29 @@
+{
+  "id": "msg_01Ak86xnthMe51FNeCDEPPfF",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package BatteryRiskAnalysis {\n    private import ScalarValues::*;\n\n    enum def SeverityLevel {\n        enum LOW;\n        enum MEDIUM;\n        enum HIGH;\n        enum CRITICAL;\n    }\n\n    enum def BatteryState {\n        enum NORMAL;\n        enum LOW_BATTERY;\n        enum SHUTDOWN;\n    }\n\n    enum def RiskState {\n        enum NO_RISK;\n        enum AGING_DETECTED;\n        enum FAILURE_PROBABLE;\n    }\n\n    part def Battery {\n        attribute batteryLevel : Real;\n        attribute minimumThreshold : Real;\n        attribute agingFactor : Real;\n        attribute currentState : BatteryState;\n        attribute failureProbability : Real;\n    }\n\n    part def RiskMonitor {\n        attribute monitoringActive : Boolean;\n        attribute detectedRisk : RiskState;\n        attribute riskDescription : String;\n        attribute severityLevel : SeverityLevel;\n    }\n\n    part def FailureScenario {\n        attribute scenarioName : String;\n        attribute cause : String;\n        attribute consequence : String;\n        attribute severityLevel : SeverityLevel;\n        attribute probabilityThreshold : Real;\n    }\n\n    part def DeviceShutdownEvent {\n        attribute isShutdown : Boolean;\n        attribute shutdownCause : String;\n        attribute durationBelowThreshold : Real;\n        attribute shutdownTriggerDuration : Real;\n    }\n\n    part def AlertSystem {\n        attribute alertActive : Boolean;\n        attribute alertMessage : String;\n        attribute alertSeverity : SeverityLevel;\n        attribute notifyUser : Boolean;\n        attribute notifyMaintenance : Boolean;\n    }\n\n    port def BatteryDataPort {\n        attribute level : Real;\n        attribute state : BatteryState;\n    }\n\n    port def RiskDataPort {\n        attribute risk : RiskState;\n        attribute severity : SeverityLevel;\n    }\n\n    part def Equipment {\n        attribute equipmentId : String;\n        attribute operationalStatus : Boolean;\n\n        part battery : Battery {\n            attribute batteryLevel : Real = 100.0;\n            attribute minimumThreshold : Real = 20.0;\n            attribute agingFactor : Real = 0.0;\n            attribute currentState : BatteryState = BatteryState::NORMAL;\n            attribute failureProbability : Real = 0.0;\n        }\n\n        part riskMonitor : RiskMonitor {\n            attribute monitoringActive : Boolean = true;\n            attribute detectedRisk : RiskState = RiskState::NO_RISK;\n            attribute riskDescription : String = \"No risk detected\";\n            attribute severityLevel : SeverityLevel = SeverityLevel::LOW;\n        }\n\n        part batteryAgingScenario : FailureScenario {\n            attribute scenarioName : String = \"Battery Aging Failure\";\n            attribute cause : String = \"Battery aging increases failure probability\";\n            attribute consequence : String = \"Low battery level\";\n            attribute severityLevel : SeverityLevel = SeverityLevel::HIGH;\n            attribute probabilityThreshold : Real = 0.7;\n        }\n\n        part lowBatteryScenario : FailureScenario {\n            attribute scenarioName : String = \"Low Battery State\";\n            attribute cause : String = \"Battery level below minimum threshold\";\n            attribute consequence : String = \"Device shutdown\";\n            attribute severityLevel : SeverityLevel = SeverityLevel::CRITICAL;\n            attribute probabilityThreshold : Real = 0.9;\n        }\n\n        part shutdownEvent : DeviceShutdownEvent {\n            attribute isShutdown : Boolean = false;\n            attribute shutdownCause : String = \"Prolonged low battery state\";\n            attribute durationBelowThreshold : Real = 0.0;\n            attribute shutdownTriggerDuration : Real = 300.0;\n        }\n\n        part alertSystem : AlertSystem {\n            attribute alertActive : Boolean = false;\n            attribute alertMessage : String = \"Battery risk detected\";\n            attribute alertSeverity : SeverityLevel = SeverityLevel::HIGH;\n            attribute notifyUser : Boolean = true;\n            attribute notifyMaintenance : Boolean = true;\n        }\n\n        port batteryOut : BatteryDataPort;\n        port riskOut : RiskDataPort;\n    }\n\n    part equipment : Equipment {\n        attribute equipmentId : String = \"DEVICE-001\";\n        attribute operationalStatus : Boolean = true;\n    }\n\n    connect equipment.batteryOut to equipment.riskOut;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 470,
+    "output_tokens": 1109,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

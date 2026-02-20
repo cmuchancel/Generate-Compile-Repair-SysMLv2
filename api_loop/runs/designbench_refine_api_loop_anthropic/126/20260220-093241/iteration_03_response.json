@@ -1,0 +1,29 @@
+{
+  "id": "msg_01XUyV2WwTMREV7n3ppMRDn6",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package LayeredSystem {\n    private import ScalarValues::*;\n\n    enum def LayerRole {\n        enum APPLICATION;\n        enum SERVICE;\n        enum DATA;\n    }\n\n    port def DataLayerPort {\n        attribute connected : Boolean;\n    }\n\n    port def ServiceLayerPort {\n        attribute connected : Boolean;\n    }\n\n    part def DataLayer {\n        attribute storageCapacity : Real;\n        port dataPort : DataLayerPort;\n    }\n\n    part def ServiceLayer {\n        attribute serviceCount : Integer;\n        port dataPort : DataLayerPort;\n        port servicePort : ServiceLayerPort;\n    }\n\n    part def ApplicationLayer {\n        attribute userCount : Integer;\n        port servicePort : ServiceLayerPort;\n    }\n\n    part def System {\n        attribute x : Real;\n        attribute y : Real;\n        attribute z : Real;\n\n        part appLayer : ApplicationLayer;\n        part svcLayer : ServiceLayer;\n        part dataLayer : DataLayer;\n\n        connect appLayer.servicePort to svcLayer.servicePort;\n        connect svcLayer.dataPort to dataLayer.dataPort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 875,
+    "output_tokens": 274,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

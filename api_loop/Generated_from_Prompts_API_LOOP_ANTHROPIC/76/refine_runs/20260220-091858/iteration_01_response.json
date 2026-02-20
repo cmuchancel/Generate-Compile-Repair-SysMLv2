@@ -1,0 +1,29 @@
+{
+  "id": "msg_01T7ao4bSfTgTz2Dc1iD4rVr",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleMassVerificationSystem {\n    private import ScalarValues::*;\n\n    enum def InspectionResult {\n        enum Qualified;\n        enum Unqualified;\n    }\n\n    item def MassData {\n        attribute measuredMass : Real;\n    }\n\n    part def Vehicle {\n        attribute actualMass : Real;\n    }\n\n    part def WeighingEquipment {\n        attribute maxCapacity : Real = 5000.0;\n        port dataOut : MassDataPort;\n    }\n\n    part def MassVerificationUnit {\n        attribute massLimit : Real = 2500.0;\n        attribute result : InspectionResult;\n        port dataIn : MassDataPort;\n    }\n\n    port def MassDataPort {\n        attribute massValue : Real;\n    }\n\n    part def VehicleMassVerificationSystem {\n        attribute systemName : String = \"VehicleMassVerificationSystem\";\n\n        part vehicleUnderTest : Vehicle {\n            attribute actualMass : Real;\n        }\n\n        part weighingEquipment : WeighingEquipment {\n            attribute maxCapacity : Real = 5000.0;\n            port dataOut : MassDataPort;\n        }\n\n        part massVerificationUnit : MassVerificationUnit {\n            attribute massLimit : Real = 2500.0;\n            attribute result : InspectionResult;\n            port dataIn : MassDataPort;\n        }\n\n        connect weighingEquipment.dataOut to massVerificationUnit.dataIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 434,
+    "output_tokens": 372,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

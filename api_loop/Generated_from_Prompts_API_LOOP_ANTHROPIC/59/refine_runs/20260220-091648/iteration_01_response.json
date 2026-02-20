@@ -1,0 +1,29 @@
+{
+  "id": "msg_01AK2G6yeKTsDZAZBfpZFPe5",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleDynamics {\n    private import ScalarValues::*;\n\n    enum def DrivingMode {\n        enum STRAIGHT_LINE;\n        enum CRUISE;\n        enum ACCELERATION;\n    }\n\n    part def VehicleParameters {\n        attribute totalMass : Real;\n        attribute aeroDragCoefficient : Real;\n        attribute rollingResistanceCoefficient : Real;\n        attribute frontalArea : Real;\n        attribute airDensity : Real;\n    }\n\n    part def InitialConditions {\n        attribute initialSpeed : Real;\n        attribute initialPosition : Real;\n        attribute timeStep : Real;\n    }\n\n    part def PowerInput {\n        attribute wheelEndOutputPower : Real;\n    }\n\n    part def DragForceCalculator {\n        attribute currentSpeed : Real;\n        attribute aeroDragCoefficient : Real;\n        attribute frontalArea : Real;\n        attribute airDensity : Real;\n        attribute aeroDragForce : Real;\n    }\n\n    part def RollingResistanceCalculator {\n        attribute totalMass : Real;\n        attribute rollingResistanceCoefficient : Real;\n        attribute gravitationalAcceleration : Real = 9.81;\n        attribute rollingResistanceForce : Real;\n    }\n\n    part def AvailablePowerCalculator {\n        attribute wheelEndOutputPower : Real;\n        attribute aeroDragForce : Real;\n        attribute rollingResistanceForce : Real;\n        attribute currentSpeed : Real;\n        attribute powerLostToDrag : Real;\n        attribute powerLostToRolling : Real;\n        attribute availableDrivingPower : Real;\n    }\n\n    part def AccelerationCalculator {\n        attribute availableDrivingPower : Real;\n        attribute currentSpeed : Real;\n        attribute totalMass : Real;\n        attribute netForce : Real;\n        attribute acceleration : Real;\n    }\n\n    part def VehicleStateUpdater {\n        attribute currentSpeed : Real;\n        attribute currentPosition : Real;\n        attribute acceleration : Real;\n        attribute timeStep : Real;\n        attribute newSpeed : Real;\n        attribute newPosition : Real;\n    }\n\n    port def PowerPort {\n        attribute power : Real;\n    }\n\n    port def ForcePort {\n        attribute force : Real;\n    }\n\n    port def StatePort {\n        attribute speed : Real;\n        attribute position : Real;\n        attribute acceleration : Real;\n    }\n\n    part def VehicleDynamicsSystem {\n        attribute totalMass : Real;\n        attribute aeroDragCoefficient : Real;\n        attribute rollingResistanceCoefficient : Real;\n        attribute frontalArea : Real;\n        attribute airDensity : Real = 1.225;\n        attribute gravitationalAcceleration : Real = 9.81;\n        attribute wheelEndOutputPower : Real;\n        attribute initialSpeed : Real;\n        attribute initialPosition : Real;\n        attribute timeStep : Real;\n        attribute currentSpeed : Real;\n        attribute currentPosition : Real;\n        attribute aeroDragForce : Real;\n        attribute rollingResistanceForce : Real;\n        attribute powerLostToDrag : Real;\n        attribute powerLostToRolling : Real;\n        attribute availableDrivingPower : Real;\n        attribute netForce : Real;\n        attribute acceleration : Real;\n        attribute newSpeed : Real;\n        attribute newPosition : Real;\n        attribute drivingMode : DrivingMode;\n\n        part vehicleParams : VehicleParameters;\n        part initialConds : InitialConditions;\n        part powerInput : PowerInput;\n        part dragCalc : DragForceCalculator;\n        part rollingCalc : RollingResistanceCalculator;\n        part powerCalc : AvailablePowerCalculator;\n        part accelCalc : AccelerationCalculator;\n        part stateUpdater : VehicleStateUpdater;\n\n        port powerIn : PowerPort;\n        port stateOut : StatePort;\n    }\n\n    part vehicleDynamicsInstance : VehicleDynamicsSystem {\n        attribute totalMass = 1500.0;\n        attribute aeroDragCoefficient = 0.3;\n        attribute rollingResistanceCoefficient = 0.015;\n        attribute frontalArea = 2.2;\n        attribute airDensity = 1.225;\n        attribute gravitationalAcceleration = 9.81;\n        attribute wheelEndOutputPower = 50000.0;\n        attribute initialSpeed = 0.0;\n        attribute initialPosition = 0.0;\n        attribute timeStep = 0.1;\n        attribute currentSpeed = 0.0;\n        attribute currentPosition = 0.0;\n        attribute drivingMode = DrivingMode::STRAIGHT_LINE;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 444,
+    "output_tokens": 1162,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,144 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to implement the functional architecture of an automotive powertrain, including the input of fuel commands, engine start-stop control, and support for power transmission and distribution. Users can control the system’s power output through fuel commands. Once the engine is ignited and started, the system generates engine torque according to the fuel command. The torque is then sequentially amplified from the engine to the transmission, transmitted to the driveshaft, and finally distributed to the left and right wheels, thus enabling control of the vehicle’s driving force. Additionally, users can shut down the engine via a command, triggering the cessation of the system’s powertrain. During engine shutdown, generation and transmission of driving force will likewise be suspended, ensuring safe and intelligent operation of the system.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package AutomotivePowertrain {
+    private import ScalarValues::*;
+
+    enum def EngineState {
+        enum OFF;
+        enum RUNNING;
+    }
+
+    enum def TransmissionState {
+        enum IDLE;
+        enum ENGAGED;
+    }
+
+    item def FuelCommand {
+        attribute level : Real;
+    }
+
+    item def ShutdownCommand {
+        attribute requested : Boolean;
+    }
+
+    item def Torque {
+        attribute value : Real;
+    }
+
+    item def Power {
+        attribute value : Real;
+    }
+
+    port def FuelCommandPort {
+        attribute level : Real;
+    }
+
+    port def ShutdownPort {
+        attribute requested : Boolean;
+    }
+
+    port def TorquePort {
+        attribute value : Real;
+    }
+
+    port def PowerPort {
+        attribute value : Real;
+    }
+
+    part def UserInterface {
+        port fuelOut : FuelCommandPort;
+        port shutdownOut : ShutdownPort;
+    }
+
+    part def Engine {
+        attribute state : EngineState;
+        attribute engineTorque : Real;
+        attribute fuelLevel : Real;
+
+        port fuelIn : FuelCommandPort;
+        port shutdownIn : ShutdownPort;
+        port torqueOut : TorquePort;
+    }
+
+    part def Transmission {
+        attribute state : TransmissionState;
+        attribute amplifiedTorque : Real;
+        attribute gearRatio : Real;
+
+        port torqueIn : TorquePort;
+        port torqueOut : TorquePort;
+    }
+
+    part def Driveshaft {
+        attribute transmittedPower : Real;
+
+        port torqueIn : TorquePort;
+        port powerOut : PowerPort;
+    }
+
+    part def WheelLeft {
+        attribute drivingForce : Real;
+
+        port powerIn : PowerPort;
+    }
+
+    part def WheelRight {
+        attribute drivingForce : Real;
+
+        port powerIn : PowerPort;
+    }
+
+    part def Differential {
+        attribute inputPower : Real;
+        attribute leftPower : Real;
+        attribute rightPower : Real;
+
+        port powerIn : PowerPort;
+        port leftOut : PowerPort;
+        port rightOut : PowerPort;
+    }
+
+    part def PowertrainSystem {
+        part ui : UserInterface;
+        part engine : Engine;
+        part transmission : Transmission;
+        part driveshaft : Driveshaft;
+        part differential : Differential;
+        part wheelLeft : WheelLeft;
+        part wheelRight : WheelRight;
+
+        connect ui.fuelOut to engine.fuelIn;
+        connect ui.shutdownOut to engine.shutdownIn;
+        connect engine.torqueOut to transmission.torqueIn;
+        connect transmission.torqueOut to driveshaft.torqueIn;
+        connect driveshaft.powerOut to differential.powerIn;
+        connect differential.leftOut to wheelLeft.powerIn;
+        connect differential.rightOut to wheelRight.powerIn;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:52:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    52 |         attribute state : EngineState;
+       |                   ^^^^^
+iteration_01.sysml:62:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    62 |         attribute state : TransmissionState;
+       |                   ^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

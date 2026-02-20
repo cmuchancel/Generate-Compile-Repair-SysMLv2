@@ -1,0 +1,29 @@
+{
+  "id": "msg_01Ka3wsn2MUyySxd8oS4WKat",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package PhotographyWorkflow {\n    private import ScalarValues::*;\n\n    item def Scene;\n    item def Image;\n    item def Picture;\n\n    port def ScenePort {\n        attribute sceneData : String;\n    }\n\n    port def ImagePort {\n        attribute imageData : String;\n    }\n\n    port def PicturePort {\n        attribute pictureData : String;\n    }\n\n    part def Focus {\n        port sceneIn : ScenePort;\n        port imageOut : ImagePort;\n    }\n\n    part def Shoot {\n        port imageIn : ImagePort;\n        port pictureOut : PicturePort;\n    }\n\n    part def PhotographyWorkflowSystem {\n        port sceneInput : ScenePort;\n        port pictureOutput : PicturePort;\n\n        part focus : Focus;\n        part shoot : Shoot;\n\n        connect sceneInput to focus::sceneIn;\n        connect focus::imageOut to shoot::imageIn;\n        connect shoot::pictureOut to pictureOutput;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 394,
+    "output_tokens": 253,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "msg_015b5RYkx1PmPsLZGpAgEWfF",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "```sysml\npackage CameraSystem {\n    private import ScalarValues::*;\n\n    item def Image;\n    item def Picture;\n\n    port def ViewPort;\n    port def DisplayPort;\n\n    part def Scene;\n\n    part def Viewfinder {\n        port viewPort : ViewPort;\n    }\n\n    part def FocusUnit {\n        attribute focused : Boolean = false;\n        item focusedImage : Image;\n    }\n\n    part def CaptureUnit {\n        item capturedPicture : Picture;\n    }\n\n    part def DisplayUnit {\n        port displayPort : DisplayPort;\n    }\n\n    part def Camera {\n        part viewfinder : Viewfinder;\n        part focusUnit : FocusUnit;\n        part captureUnit : CaptureUnit;\n        part displayUnit : DisplayUnit;\n\n        port viewPort : ViewPort;\n        port displayPort : DisplayPort;\n\n        connect viewPort to viewfinder.viewPort;\n        connect displayUnit.displayPort to displayPort;\n    }\n\n    part def User {\n        port userViewPort : ViewPort;\n        port userDisplayPort : DisplayPort;\n    }\n\n    part def CameraSystem {\n        part camera : Camera;\n        part user : User;\n\n        connect user.userViewPort to camera.viewPort;\n        connect camera.displayPort to user.userDisplayPort;\n    }\n}\n```",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 383,
+    "output_tokens": 332,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

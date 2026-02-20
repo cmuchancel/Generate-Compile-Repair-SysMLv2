@@ -1,0 +1,29 @@
+{
+  "id": "msg_016cXNzkJrvpxFMpoDMJAvqR",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package PhotographyWorkflow {\n    private import ScalarValues::*;\n\n    enum def FocusStatus {\n        enum Clear;\n        enum Unclear;\n    }\n\n    enum def ProcessStatus {\n        enum Pending;\n        enum InProgress;\n        enum Completed;\n    }\n\n    item def Scene;\n    item def Image;\n\n    port def SceneInputPort {\n        attribute sceneReady : Boolean;\n    }\n\n    port def ImageOutputPort {\n        attribute imageReady : Boolean;\n    }\n\n    port def FocusPort {\n        attribute focusStatus : FocusStatus;\n    }\n\n    part def Camera {\n        port sceneIn : SceneInputPort;\n        port imageOut : ImageOutputPort;\n        port focusPort : FocusPort;\n        attribute cameraStatus : ProcessStatus;\n    }\n\n    part def FocusSystem {\n        port sceneIn : SceneInputPort;\n        port focusOut : FocusPort;\n        attribute focusResult : FocusStatus;\n        attribute focusAchieved : Boolean;\n    }\n\n    part def ShootingSystem {\n        port focusIn : FocusPort;\n        port imageOut : ImageOutputPort;\n        attribute shootingStatus : ProcessStatus;\n        attribute imageGenerated : Boolean;\n    }\n\n    part def UserInterface {\n        port sceneOut : SceneInputPort;\n        attribute selectedScene : Boolean;\n        attribute oneShotMode : Boolean;\n    }\n\n    part def PhotographySystem {\n        part ui : UserInterface;\n        part camera : Camera;\n        part focusSystem : FocusSystem;\n        part shootingSystem : ShootingSystem;\n\n        attribute workflowStatus : ProcessStatus;\n        attribute finalImageReady : Boolean;\n\n        connect ui.sceneOut to camera.sceneIn;\n        connect camera.sceneIn to focusSystem.sceneIn;\n        connect focusSystem.focusOut to camera.focusPort;\n        connect camera.focusPort to shootingSystem.focusIn;\n        connect shootingSystem.imageOut to camera.imageOut;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 363,
+    "output_tokens": 512,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "msg_01EoKB7b7rbczo3UuTnyPBDT",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The error is that `part def` bodies cannot contain `part` members directly in this context \u2014 `VehicleState` is a `part def` but used as a nested `part` inside another `part def`. The fix is to make `VehicleState` an `attribute`-based structure or use `item def` instead, or restructure so nested parts are only inside `part` (not `part def`) bodies. The simplest fix: change `VehicleState` from `part def` to `part def` but reference it as an `attribute` with typed attributes inlined, avoiding nested `part` inside `part def`.\n\nActually the core issue: in SysML v2, `part def` can contain `part` \u2014 but the parser error suggests syside doesn't support it. Let me flatten the structure instead.\n\npackage VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def GearSetting {\n        enum GEAR_0;\n        enum GEAR_1;\n        enum GEAR_2;\n        enum GEAR_3;\n        enum GEAR_4;\n        enum GEAR_5;\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        attribute gear : GearSetting;\n        attribute acceleratorPosition : Real;\n    }\n\n    part def Engine;\n\n    part def Driver;\n\n    part def CompositeSystem {\n        attribute vehicleMass : Real;\n        attribute vehicleGear : GearSetting;\n        attribute vehicleAcceleratorPosition : Real;\n    }\n\n    part Vehicle_1_t0 : Vehicle {\n        attribute redefines mass = 2000.0;\n        attribute redefines gear = GearSetting::GEAR_0;\n        attribute redefines acceleratorPosition = 0.0;\n    }\n\n    part Vehicle_1_t1 : Vehicle {\n        attribute redefines mass = 1500.0;\n        attribute redefines gear = GearSetting::GEAR_2;\n        attribute redefines acceleratorPosition = 0.5;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1442,
+    "output_tokens": 482,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

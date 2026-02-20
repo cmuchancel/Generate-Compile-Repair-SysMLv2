@@ -1,0 +1,29 @@
+{
+  "id": "msg_01FK2k6dgeECyVNF1YShPaEX",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    attribute def MassValue;\n    attribute def TorqueValue;\n    attribute def SpeedValue;\n\n    enum def FuelState {\n        enum Full;\n        enum Empty;\n    }\n\n    part def FuelTank {\n        attribute fuelMass : Real;\n        attribute fuelState : FuelState;\n    }\n\n    part def Engine {\n        attribute generatedTorque : Real;\n        attribute operatingSpeed : Real;\n    }\n\n    part def Clutch {\n        attribute transmittedTorque : Real;\n    }\n\n    part def Gearbox {\n        attribute receivedTorque : Real;\n    }\n\n    part def Vehicle {\n        attribute curbMass : Real;\n        attribute totalMassFullTank : Real;\n        attribute totalMassEmptyTank : Real;\n        attribute massLimitFullTank : Real = 2000.0;\n        attribute massLimitEmptyTank : Real = 1500.0;\n\n        part fuelTank : FuelTank;\n        part engine : Engine;\n        part clutch : Clutch;\n        part gearbox : Gearbox;\n    }\n\n    port def TorquePort {\n        attribute torque : Real;\n    }\n\n    part def PowerTrainSystem {\n        attribute engineTorque : Real;\n        attribute clutchTorque : Real;\n        attribute gearboxTorque : Real;\n\n        part trainEngine : Engine;\n        part trainClutch : Clutch;\n        part trainGearbox : Gearbox;\n\n        port engineOut : TorquePort;\n        port clutchIn : TorquePort;\n        port clutchOut : TorquePort;\n        port gearboxIn : TorquePort;\n\n        connect engineOut to clutchIn;\n        connect clutchOut to gearboxIn;\n    }\n\n    part def MassConstraintFullTank {\n        attribute curbMass : Real;\n        attribute fuelMass : Real;\n        attribute totalMass : Real;\n        attribute massLimit : Real = 2000.0;\n    }\n\n    part def MassConstraintEmptyTank {\n        attribute curbMass : Real;\n        attribute fuelMass : Real = 0.0;\n        attribute totalMass : Real;\n        attribute massLimit : Real = 1500.0;\n    }\n\n    part vehicleInstance : Vehicle {\n        attribute :>> curbMass = 1200.0;\n        attribute :>> totalMassFullTank = 1800.0;\n        attribute :>> totalMassEmptyTank = 1200.0;\n    }\n\n    part fullTankCheck : MassConstraintFullTank {\n        attribute :>> curbMass = 1200.0;\n        attribute :>> fuelMass = 600.0;\n        attribute :>> totalMass = 1800.0;\n    }\n\n    part emptyTankCheck : MassConstraintEmptyTank {\n        attribute :>> curbMass = 1200.0;\n        attribute :>> totalMass = 1200.0;\n    }\n\n    part powerTrain : PowerTrainSystem {\n        attribute :>> engineTorque = 350.0;\n        attribute :>> clutchTorque = 350.0;\n        attribute :>> gearboxTorque = 350.0;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 422,
+    "output_tokens": 833,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

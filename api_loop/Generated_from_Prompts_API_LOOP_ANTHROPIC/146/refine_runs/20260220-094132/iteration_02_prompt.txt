@@ -1,0 +1,204 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system is required to sample and record the trajectory of the spacecraft during the ascent phase. The system should use the mission liftoff time as the reference time zero, measured in seconds, and be able to take the UTC liftoff time of the mission (for example, 22:42:32.924534 on August 23, 2020) as the reference time. The system should collect key parameters including the position and velocity of the spacecraft at different time points. Each set of sampled data must associate a specific time point with the corresponding position and velocity data. Both the three-dimensional position and velocity should be described in a Cartesian coordinate system, with units of meters and meters per second, respectively. The system should record multiple sampling points during the ascent phase, with each sampling point containing explicit information on time, position, and velocity, in order to provide accurate data support for subsequent trajectory analysis and performance evaluation.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package TrajectoryRecordingSystem {
+    private import ScalarValues::*;
+
+    attribute def TimeReference {
+        attribute missionElapsedSeconds : Real;
+        attribute utcYear : Integer;
+        attribute utcMonth : Integer;
+        attribute utcDay : Integer;
+        attribute utcHour : Integer;
+        attribute utcMinute : Integer;
+        attribute utcSecond : Real;
+    }
+
+    attribute def CartesianPosition {
+        attribute x : Real;
+        attribute y : Real;
+        attribute z : Real;
+    }
+
+    attribute def CartesianVelocity {
+        attribute vx : Real;
+        attribute vy : Real;
+        attribute vz : Real;
+    }
+
+    attribute def Trajectorysample {
+        attribute timePoint : Real;
+        attribute position : CartesianPosition;
+        attribute velocity : CartesianVelocity;
+    }
+
+    part def LiftoffTimeReference {
+        attribute utcHour : Integer = 22;
+        attribute utcMinute : Integer = 42;
+        attribute utcSecond : Real = 32.924534;
+        attribute utcYear : Integer = 2020;
+        attribute utcMonth : Integer = 8;
+        attribute utcDay : Integer = 23;
+        attribute referenceTimeZero : Real = 0.0;
+    }
+
+    part def AscentTrajectoryRecorder {
+        attribute missionName : String;
+
+        attribute sample0 : Trajectorysample;
+        attribute sample1 : Trajectorysample;
+        attribute sample2 : Trajectorysample;
+        attribute sample3 : Trajectorysample;
+        attribute sample4 : Trajectorysample;
+        attribute sample5 : Trajectorysample;
+        attribute sample6 : Trajectorysample;
+        attribute sample7 : Trajectoryample;
+        attribute sample8 : Trajectoryample;
+        attribute sample9 : Trajectoryample;
+
+        part liftoffRef : LiftoffTimeReference;
+    }
+
+    part def SpacecraftAscentSystem {
+        part recorder : AscentTrajectoryRecorder;
+    }
+
+    part ascentSystem : SpacecraftAscentSystem {
+        part recorder : AscentTrajectoryRecorder {
+            attribute missionName : String = "AscentMission_20200823";
+
+            attribute sample0 : Trajectoryample = {
+                timePoint = 0.0;
+                position = { x = 0.0; y = 0.0; z = 0.0; };
+                velocity = { vx = 0.0; vy = 0.0; vz = 0.0; };
+            };
+
+            attribute sample1 : Trajectoryample = {
+                timePoint = 10.0;
+                position = { x = 0.0; y = 0.0; z = 50.0; };
+                velocity = { vx = 0.0; vy = 0.0; vz = 10.0; };
+            };
+
+            attribute sample2 : Trajectoryample = {
+                timePoint = 20.0;
+                position = { x = 0.0; y = 0.0; z = 200.0; };
+                velocity = { vx = 0.0; vy = 0.0; vz = 30.0; };
+            };
+
+            attribute sample3 : Trajectoryample = {
+                timePoint = 30.0;
+                position = { x = 10.0; y = 5.0; z = 500.0; };
+                velocity = { vx = 1.0; vy = 0.5; vz = 60.0; };
+            };
+
+            attribute sample4 : Trajectoryample = {
+                timePoint = 60.0;
+                position = { x = 50.0; y = 25.0; z = 2000.0; };
+                velocity = { vx = 5.0; vy = 2.5; vz = 150.0; };
+            };
+
+            attribute sample5 : Trajectoryample = {
+                timePoint = 120.0;
+                position = { x = 200.0; y = 100.0; z = 8000.0; };
+                velocity = { vx = 20.0; vy = 10.0; vz = 400.0; };
+            };
+
+            attribute sample6 : Trajectoryample = {
+                timePoint = 180.0;
+                position = { x = 500.0; y = 250.0; z = 20000.0; };
+                velocity = { vx = 50.0; vy = 25.0; vz = 900.0; };
+            };
+
+            attribute sample7 : Trajectoryample = {
+                timePoint = 240.0;
+                position = { x = 1000.0; y = 500.0; z = 40000.0; };
+                velocity = { vx = 100.0; vy = 50.0; vz = 1500.0; };
+            };
+
+            attribute sample8 : Trajectoryample = {
+                timePoint = 300.0;
+                position = { x = 2000.0; y = 1000.0; z = 70000.0; };
+                velocity = { vx = 200.0; vy = 100.0; vz = 2200.0; };
+            };
+
+            attribute sample9 : Trajectoryample = {
+                timePoint = 360.0;
+                position = { x = 3500.0; y = 1750.0; z = 110000.0; };
+                velocity = { vx = 350.0; vy = 175.0; vz = 3000.0; };
+            };
+
+            part liftoffRef : LiftoffTimeReference;
+        }
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:64:14: warning (namespace-distinguishability): Member name 'recorder' shadows TrajectoryRecordingSystem::SpacecraftAscentSystem::recorder
+│   64 |         part recorder : AscentTrajectoryRecorder {
+│      |              ^^^^^^^^
+└── iteration_01.sysml:60:14: note: Inherited from here
+    └── iteration_01.sysml:63:25: note: Because TrajectoryRecordingSystem::SpacecraftAscentSystem is specialized through FeatureTyping
+iteration_01.sysml:65:23: warning (namespace-distinguishability): Member name 'missionName' shadows TrajectoryRecordingSystem::AscentTrajectoryRecorder::missionName
+│   65 |             attribute missionName : String = "AscentMission_20200823";
+│      |                       ^^^^^^^^^^^
+└── iteration_01.sysml:43:19: note: Inherited from here
+    └── iteration_01.sysml:64:25: note: Because TrajectoryRecordingSystem::AscentTrajectoryRecorder is specialized through FeatureTyping
+iteration_01.sysml:67:23: warning (namespace-distinguishability): Member name 'sample0' shadows TrajectoryRecordingSystem::AscentTrajectoryRecorder::sample0
+│   67 |             attribute sample0 : Trajectoryample = {
+│      |                       ^^^^^^^
+└── iteration_01.sysml:45:19: note: Inherited from here
+    └── iteration_01.sysml:64:25: note: Because TrajectoryRecordingSystem::AscentTrajectoryRecorder is specialized through FeatureTyping
+iteration_01.sysml:67:51: error (type-error): TrajectoryRecordingSystem::ascentSystem::recorder::sample0::(anonymous FeatureReferenceExpression)::(anonymous Expression) does not conform to Base::DataValue
+    67 |             attribute sample0 : Trajectoryample = {
+       |                                                   ^
+    68 |                 timePoint = 0.0;
+       |                 ^^^^^^^^^^^^^^^^
+    69 |                 position = { x = 0.0; y = 0.0; z = 0.0; };
+       |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    70 |                 velocity = { vx = 0.0; vy = 0.0; vz = 0.0; };
+       |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    71 |             };
+       |             ^
+iteration_01.sysml:73:23: warning (namespace-distinguishability): Member name 'sample1' shadows TrajectoryRecordingSystem::AscentTrajectoryRecorder::sample1
+│   73 |             attribute sample1 : Trajectoryample = {
+│      |                       ^^^^^^^
+└── iteration_01.sysml:46:19: note: Inherited from here
+    └── iteration_01.sysml:64:25: note: Because TrajectoryRecordingSystem::AscentTrajectoryRecorder is specialized through FeatureTyping
+iteration_01.sysml:73:51: error (type-error): TrajectoryRecordingSystem::ascentSystem::recorder::sample1::(anonymous FeatureReferenceExpression)::(anonymous Expression) does not conform to Base::DataValue
+    73 |             attribute sample1 : Trajectoryample = {
+       |                                                   ^
+    74 |                 timePoint = 10.0;
+       |                 ^^^^^^^^^^^^^^^^^
+    75 |                 position = { x = 0.0; y = 0.0; z = 50.0; };
+       |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    76 |                 velocity = { vx = 0.0; vy = 0.0; vz = 10.0; };
+       |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+... (truncated compiler output) ...
+    └── iteration_01.sysml:64:25: note: Because TrajectoryRecordingSystem::AscentTrajectoryRecorder is specialized through FeatureTyping
+iteration_01.sysml:52:29: error (reference-error): No Type named 'Trajectoryample' found.
+    52 |         attribute sample7 : Trajectoryample;
+       |                             ^^^^^^^^^^^^^^^
+iteration_01.sysml:53:29: error (reference-error): No Type named 'Trajectoryample' found.
+    53 |         attribute sample8 : Trajectoryample;
+       |                             ^^^^^^^^^^^^^^^
+iteration_01.sysml:54:29: error (reference-error): No Type named 'Trajectoryample' found.
+    54 |         attribute sample9 : Trajectoryample;
+       |                             ^
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

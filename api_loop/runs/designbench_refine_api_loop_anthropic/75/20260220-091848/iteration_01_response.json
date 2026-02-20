@@ -1,0 +1,29 @@
+{
+  "id": "msg_01BwHEVSLWVGtBwVX8PeYmXu",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleWeightCheck {\n    private import ScalarValues::*;\n\n    enum def EvaluationResult {\n        enum Qualified;\n        enum Unqualified;\n    }\n\n    item def WeightData {\n        attribute rawWeight : Real;\n    }\n\n    item def ProcessedData {\n        attribute processedWeight : Real;\n    }\n\n    part def DataCollectionStep {\n        attribute collectedWeight : Real;\n        port dataOut : DataOutPort;\n    }\n\n    part def DataProcessingStep {\n        attribute processedWeight : Real;\n        port dataIn : DataInPort;\n        port dataOut : DataOutPort;\n    }\n\n    part def EvaluationStep {\n        attribute maxCurbWeight : Real = 2500.0;\n        attribute evaluatedWeight : Real;\n        attribute result : EvaluationResult;\n        port dataIn : DataInPort;\n    }\n\n    port def DataOutPort {\n        attribute value : Real;\n    }\n\n    port def DataInPort {\n        attribute value : Real;\n    }\n\n    part def Vehicle {\n        attribute curbWeight : Real;\n        attribute maxAllowedWeight : Real = 2500.0;\n    }\n\n    part def WeightCheckProcess {\n        part collection : DataCollectionStep;\n        part processing : DataProcessingStep;\n        part evaluation : EvaluationStep;\n\n        connect collection.dataOut to processing.dataIn;\n        connect processing.dataOut to evaluation.dataIn;\n    }\n\n    part vehicleWeightCheckSystem {\n        part vehicle : Vehicle {\n            attribute :>> curbWeight = 2200.0;\n        }\n        part checkProcess : WeightCheckProcess;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 386,
+    "output_tokens": 409,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

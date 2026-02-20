@@ -1,0 +1,29 @@
+{
+  "id": "msg_01PrfzzaGQ5FCo7GuL6xE9nY",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package PhotographyWorkflow {\n    private import ScalarValues::*;\n\n    enum def WorkflowStatus {\n        enum PENDING;\n        enum FOCUSING;\n        enum FOCUSED;\n        enum SHOOTING;\n        enum COMPLETE;\n    }\n\n    item def Scene;\n    item def Image;\n    item def Photograph;\n\n    port def SceneInputPort {\n        attribute sceneReady : Boolean;\n    }\n\n    port def ImageOutputPort {\n        attribute imageReady : Boolean;\n    }\n\n    port def PhotographOutputPort {\n        attribute photographReady : Boolean;\n    }\n\n    part def UserInterface {\n        attribute selectedScene : String;\n        port sceneOut : SceneInputPort;\n    }\n\n    part def FocusingUnit {\n        attribute status : WorkflowStatus;\n        attribute focusAchieved : Boolean;\n        port sceneIn : SceneInputPort;\n        port imageOut : ImageOutputPort;\n    }\n\n    part def ShootingUnit {\n        attribute status : WorkflowStatus;\n        attribute photographProduced : Boolean;\n        port imageIn : ImageOutputPort;\n        port photographOut : PhotographOutputPort;\n    }\n\n    part def PhotographySystem {\n        attribute workflowStatus : WorkflowStatus;\n        attribute autoWorkflowEnabled : Boolean = true;\n\n        part ui : UserInterface;\n        part focusingUnit : FocusingUnit;\n        part shootingUnit : ShootingUnit;\n\n        connect ui.sceneOut to focusingUnit.sceneIn;\n        connect focusingUnit.imageOut to shootingUnit.imageIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 368,
+    "output_tokens": 397,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

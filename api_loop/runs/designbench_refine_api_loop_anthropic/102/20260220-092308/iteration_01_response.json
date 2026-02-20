@@ -1,0 +1,29 @@
+{
+  "id": "msg_01KJj9FE6R331BL3NuPeDMFm",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehiclePowerTransmission {\n    private import ScalarValues::*;\n\n    enum def GearPosition {\n        enum NEUTRAL;\n        enum FIRST;\n        enum SECOND;\n        enum THIRD;\n        enum FOURTH;\n        enum FIFTH;\n        enum REVERSE;\n    }\n\n    enum def DriveState {\n        enum ENGAGED;\n        enum DISENGAGED;\n        enum SLIPPING;\n    }\n\n    item def PowerSignal;\n    item def FuelCommand;\n    item def TorqueSignal;\n    item def ControlSignal;\n\n    port def FuelCommandPort {\n        attribute flowRate : Real;\n    }\n\n    port def PowerPort {\n        attribute torque : Real;\n        attribute speed : Real;\n    }\n\n    port def ClutchPort {\n        attribute state : DriveState;\n        attribute torque : Real;\n    }\n\n    port def DriveShaftPort {\n        attribute torque : Real;\n        attribute angularVelocity : Real;\n    }\n\n    port def AxlePort {\n        attribute torque : Real;\n        attribute speed : Real;\n    }\n\n    port def WheelPort {\n        attribute torque : Real;\n        attribute speed : Real;\n    }\n\n    port def RoadPort {\n        attribute tractionForce : Real;\n        attribute slipRatio : Real;\n    }\n\n    port def HalfShaftPort {\n        attribute torque : Real;\n        attribute speed : Real;\n    }\n\n    part def Engine {\n        attribute displacement : Real;\n        attribute maxTorque : Real;\n        attribute maxPower : Real;\n        attribute idleSpeed : Real;\n        attribute currentSpeed : Real;\n        attribute currentTorque : Real;\n\n        port fuelIn : FuelCommandPort;\n        port powerOut : PowerPort;\n        port clutchFace : ClutchPort;\n    }\n\n    part def Clutch {\n        attribute maxTorqueCapacity : Real;\n        attribute currentState : DriveState;\n        attribute engagementRatio : Real;\n\n        port engineSide : ClutchPort;\n        port transmissionSide : ClutchPort;\n    }\n\n    part def Transmission {\n        attribute currentGear : GearPosition;\n        attribute gearRatio : Real;\n        attribute efficiency : Real;\n\n        port clutchIn : ClutchPort;\n        port driveShaftOut : DriveShaftPort;\n        port controlIn : FuelCommandPort;\n    }\n\n    part def DriveShaft {\n        attribute length : Real;\n        attribute stiffness : Real;\n        attribute dampingCoefficient : Real;\n\n        port frontEnd : DriveShaftPort;\n        port rearEnd : DriveShaftPort;\n    }\n\n    part def Differential {\n        attribute gearRatio : Real;\n        attribute efficiency : Real;\n        attribute lockingTorque : Real;\n\n        port driveIn : DriveShaftPort;\n        port leftOut : HalfShaftPort;\n        port rightOut : HalfShaftPort;\n    }\n\n    part def HalfShaft {\n        attribute length : Real;\n        attribute stiffness : Real;\n\n        port differentialEnd : HalfShaftPort;\n        port wheelEnd : AxlePort;\n    }\n\n    part def RearWheel {\n        attribute radius : Real;\n        attribute width : Real;\n        attribute mass : Real;\n        attribute momentOfInertia : Real;\n\n        port axleIn : AxlePort;\n        port roadContact : RoadPort;\n    }\n\n    part def RearAxleAssembly {\n        attribute trackWidth : Real;\n        attribute axleRatio : Real;\n\n        port driveShaftIn : DriveShaftPort;\n        port leftWheelOut : WheelPort;\n        port rightWheelOut : WheelPort;\n\n        part differential : Differential;\n        part leftHalfShaft : HalfShaft;\n        part rightHalfShaft : HalfShaft;\n\n        connect differential.driveIn to driveShaftIn;\n        connect differential.leftOut to leftHalfShaft.differentialEnd;\n        connect differential.rightOut to rightHalfShaft.differentialEnd;\n        connect leftHalfShaft.wheelEnd to leftWheelOut;\n        connect rightHalfShaft.wheelEnd to rightWheelOut;\n    }\n\n    part def RoadSurface {\n        attribute frictionCoefficient : Real;\n        attribute surfaceType : String;\n\n        port leftContact : RoadPort;\n        port rightContact : RoadPort;\n    }\n\n    part def VehiclePowerSystem {\n        attribute vehicleMass : Real;\n        attribute wheelbase : Real;\n\n        part engine : Engine;\n        part clutch : Clutch;\n        part transmission : Transmission;\n        part driveShaft : DriveShaft;\n        part rearAxle : RearAxleAssembly;\n        part leftRearWheel : RearWheel;\n        part rightRearWheel : RearWheel;\n        part road : RoadSurface;\n\n        connect engine.clutchFace to clutch.engineSide;\n        connect clutch.transmissionSide to transmission.clutchIn;\n        connect transmission.driveShaftOut to driveShaft.frontEnd;\n        connect driveShaft.rearEnd to rearAxle.driveShaftIn;\n        connect rearAxle.leftWheelOut to leftRearWheel.axleIn;\n        connect rearAxle.rightWheelOut to rightRearWheel.axleIn;\n        connect leftRearWheel.roadContact to road.leftContact;\n        connect rightRearWheel.roadContact to road.rightContact;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 548,
+    "output_tokens": 1411,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

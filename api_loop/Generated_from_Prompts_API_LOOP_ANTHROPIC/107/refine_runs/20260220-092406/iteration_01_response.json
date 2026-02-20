@@ -1,0 +1,29 @@
+{
+  "id": "msg_01SJRhL2Diynweix62FZDega",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleTrailerHitchSystem {\n    private import ScalarValues::*;\n\n    enum def ConnectionState {\n        enum CONNECTED;\n        enum DISCONNECTED;\n    }\n\n    item def PowerSignal;\n\n    port def VehiclePowerPort {\n        out item power : PowerSignal;\n    }\n\n    port def TrailerPowerPort {\n        in item power : PowerSignal;\n    }\n\n    part def VehicleFrame {\n        attribute frameId : String;\n    }\n\n    part def TrailerFrame {\n        attribute frameId : String;\n    }\n\n    part def HitchBall {\n        attribute diameter : Real;\n        attribute material : String;\n    }\n\n    part def TrailerCoupler {\n        attribute diameter : Real;\n        attribute material : String;\n    }\n\n    part def HitchMechanism {\n        attribute state : ConnectionState;\n        port vehicleSide : VehiclePowerPort;\n        port trailerSide : TrailerPowerPort;\n        part hitchBall : HitchBall {\n            attribute diameter : Real = 1.875;\n            attribute material : String = \"Steel\";\n        }\n        part trailerCoupler : TrailerCoupler {\n            attribute diameter : Real = 1.875;\n            attribute material : String = \"Steel\";\n        }\n    }\n\n    part def Vehicle {\n        attribute vehicleId : String;\n        part frame : VehicleFrame {\n            attribute frameId : String = \"VF-001\";\n        }\n        part hitch : HitchMechanism;\n        port powerOut : VehiclePowerPort;\n    }\n\n    part def Trailer {\n        attribute trailerId : String;\n        part frame : TrailerFrame {\n            attribute frameId : String = \"TF-001\";\n        }\n        port powerIn : TrailerPowerPort;\n    }\n\n    part def HitchSystem {\n        attribute systemName : String = \"VehicleTrailerHitchSystem\";\n        attribute connectionStatus : ConnectionState;\n\n        part vehicle : Vehicle {\n            attribute vehicleId : String = \"V-001\";\n        }\n\n        part trailer : Trailer {\n            attribute trailerId : String = \"T-001\";\n        }\n\n        connect vehicle.powerOut to trailer.powerIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 389,
+    "output_tokens": 556,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

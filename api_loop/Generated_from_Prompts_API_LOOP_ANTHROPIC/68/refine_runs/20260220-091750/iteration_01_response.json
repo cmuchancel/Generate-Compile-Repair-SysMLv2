@@ -1,0 +1,29 @@
+{
+  "id": "msg_01Nh3n7NWfKJ22kKwMFSHmnz",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehiclePowerSystem {\n    private import ScalarValues::*;\n\n    enum def GearState {\n        enum NEUTRAL;\n        enum FIRST;\n        enum SECOND;\n        enum THIRD;\n        enum FOURTH;\n        enum FIFTH;\n    }\n\n    enum def ClutchState {\n        enum ENGAGED;\n        enum DISENGAGED;\n        enum SLIPPING;\n    }\n\n    item def FuelItem {\n        attribute fuelMass : Real;\n    }\n\n    item def TorqueSignal {\n        attribute torqueValue : Real;\n        attribute speedValue : Real;\n    }\n\n    port def FuelPort {\n        attribute massFlow : Real;\n    }\n\n    port def TorquePort {\n        attribute torque : Real;\n        attribute angularSpeed : Real;\n    }\n\n    port def PowerPort {\n        attribute power : Real;\n        attribute speed : Real;\n    }\n\n    part def FuelTank {\n        attribute fuelMass : Real = 50.0;\n        attribute maxFuelMass : Real = 80.0;\n        attribute minFuelMass : Real = 0.1;\n        port fuelOut : FuelPort;\n    }\n\n    part def Engine {\n        attribute idleSpeed : Real = 800.0;\n        attribute maxSpeed : Real = 6500.0;\n        attribute peakTorque : Real = 350.0;\n        attribute peakTorqueSpeed : Real = 3500.0;\n        attribute currentSpeed : Real = 1000.0;\n        attribute currentTorque : Real = 200.0;\n        attribute torqueAtLowSpeed : Real = 150.0;\n        attribute torqueAtMidSpeed : Real = 350.0;\n        attribute torqueAtHighSpeed : Real = 180.0;\n        port fuelIn : FuelPort;\n        port torqueOut : TorquePort;\n    }\n\n    part def Clutch {\n        attribute state : ClutchState = ClutchState::ENGAGED;\n        attribute maxTransmittableTorque : Real = 400.0;\n        attribute inputTorque : Real = 200.0;\n        attribute outputTorque : Real = 200.0;\n        attribute engagementRatio : Real = 1.0;\n        port torqueIn : TorquePort;\n        port torqueOut : TorquePort;\n    }\n\n    part def Transmission {\n        attribute currentGear : GearState = GearState::FIRST;\n        attribute gearRatio1 : Real = 3.5;\n        attribute gearRatio2 : Real = 2.1;\n        attribute gearRatio3 : Real = 1.4;\n        attribute gearRatio4 : Real = 1.0;\n        attribute gearRatio5 : Real = 0.8;\n        attribute inputTorque : Real = 200.0;\n        attribute outputTorque : Real = 700.0;\n        attribute efficiency : Real = 0.95;\n        port torqueIn : TorquePort;\n        port powerOut : PowerPort;\n    }\n\n    part def DriveShaft {\n        attribute inputPower : Real;\n        attribute outputPower : Real;\n        attribute efficiency : Real = 0.98;\n        port powerIn : PowerPort;\n        port powerOut : PowerPort;\n    }\n\n    part def Wheel {\n        attribute radius : Real = 0.32;\n        attribute inputPower : Real;\n        attribute tractionForce : Real;\n        port powerIn : PowerPort;\n    }\n\n    part def Vehicle {\n        attribute curbWeight : Real = 1500.0;\n        attribute fuelMass : Real = 50.0;\n        attribute maxMassLimit : Real = 1650.0;\n        attribute totalMass : Real = 1550.0;\n        attribute massConstraintSatisfied : Boolean = true;\n        attribute fuelMassPositive : Boolean = true;\n\n        part tank : FuelTank;\n        part engine : Engine;\n        part clutch : Clutch;\n        part transmission : Transmission;\n        part driveShaft : DriveShaft;\n        part frontLeftWheel : Wheel;\n        part frontRightWheel : Wheel;\n\n        connect tank.fuelOut to engine.fuelIn;\n        connect engine.torqueOut to clutch.torqueIn;\n        connect clutch.torqueOut to transmission.torqueIn;\n        connect transmission.powerOut to driveShaft.powerIn;\n        connect driveShaft.powerOut to frontLeftWheel.powerIn;\n        connect driveShaft.powerOut to frontRightWheel.powerIn;\n    }\n\n    part vehicleSystem : Vehicle;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 357,
+    "output_tokens": 1153,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MBSE Pretend Requirements — River-to-Farm Irrigation Lift</title>
+  <style>
+    :root{
+      --bg:#0b0f17;
+      --card:#111827;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#60a5fa;
+      --border:#1f2937;
+      --code:#0f172a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: linear-gradient(180deg, var(--bg), #070a10);
+      color:var(--text);
+      line-height:1.5;
+    }
+    header{
+      padding:28px 18px 12px;
+      border-bottom:1px solid var(--border);
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 18px 48px;
+    }
+    h1{
+      font-size: 1.6rem;
+      margin: 0 0 6px;
+      letter-spacing: .2px;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size: .98rem;
+    }
+    main{padding-top:18px;}
+    section{
+      background: rgba(17,24,39,.72);
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:16px 16px 10px;
+      margin: 14px 0;
+      box-shadow: 0 10px 24px rgba(0,0,0,.22);
+    }
+    h2{
+      font-size: 1.2rem;
+      margin: 0 0 10px;
+      color: #f3f4f6;
+    }
+    .req{
+      display:block;
+      padding:10px 12px;
+      margin:10px 0;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: rgba(15,23,42,.55);
+    }
+    .req strong{
+      color:#fff;
+      display:inline-block;
+      margin-bottom:4px;
+    }
+    .req p{
+      margin:0;
+      color:var(--text);
+    }
+    .note{
+      color:var(--muted);
+      font-size:.92rem;
+      margin: 6px 0 0;
+    }
+    ul{margin:10px 0 6px 18px;}
+    li{margin:6px 0;}
+    .tag{
+      display:inline-block;
+      font-size:.8rem;
+      color:#c7d2fe;
+      border:1px solid rgba(96,165,250,.35);
+      background: rgba(96,165,250,.12);
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-left:8px;
+      vertical-align:middle;
+    }
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:.9rem;
+      padding: 10px 2px 0;
+    }
+    hr{
+      border:0;
+      border-top:1px solid var(--border);
+      margin: 10px 0 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>MBSE Pretend Requirements — River-to-Farm Irrigation Lift</h1>
+      <p class="subtitle">
+        Pretend-but-plausible requirements set for an MBSE effort to move river water up 30 ft to irrigate farmland at ≥ 20 GPM in a rural installation, deliverable within ~6 months, using simple controls.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="mission">
+      <h2>1) Mission and scope requirements</h2>
+
+      <div class="req">
+        <strong>R-MSN-001 (Purpose)</strong>
+        <p>The system shall lift and deliver river water to the farm’s irrigation inlet for routine agricultural irrigation use.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-002 (Operating environment)</strong>
+        <p>The system shall be deployable and operable in a rural outdoor environment with exposure to rain, dust, mud, insects, and seasonal temperature swings.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-003 (Schedule constraint)</strong>
+        <p>The system shall be designed, procured, installed, and commissioned within 6 months from project start.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-004 (User profile)</strong>
+        <p>The system shall be operable and maintainable by farm personnel with basic mechanical/electrical skills and common hand tools.</p>
+      </div>
+    </section>
+
+    <section id="performance">
+      <h2>2) Performance requirements</h2>
+
+      <div class="req">
+        <strong>R-PERF-001 (Static lift / head)</strong>
+        <p>The system shall lift water from the river water surface to the farm delivery point with a minimum static elevation gain of <b>30 ft</b>.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-002 (Flow rate)</strong>
+        <p>The system shall deliver a minimum steady-state flow of <b>20 gallons per minute (GPM)</b> at the farm delivery point.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-003 (Continuous operation)</strong>
+        <p>The system shall support continuous operation for at least <b>8 hours/day</b> during irrigation season without mandatory cool-down periods.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-004 (Flow control simplicity)</strong>
+        <p>The system shall provide a means to start/stop flow and to adjust flow in a coarse manner (e.g., on/off plus one adjustable valve), without requiring advanced automation.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-005 (Prime and restart)</strong>
+        <p>The system shall be capable of restarting after an intentional shutdown without requiring specialized priming equipment beyond built-in valves/check valves or a simple manual prime.</p>
+      </div>
+    </section>
+
+    <section id="interfaces">
+      <h2>3) Interfaces and boundary requirements</h2>
+
+      <div class="req">
+        <strong>R-INT-001 (Water source interface)</strong>
+        <p>The system shall intake water from the river without requiring permanent alteration of the riverbank beyond small-scale civil works (e.g., an anchored intake, riprap, small pad).</p>
+      </div>
+
+      <div class="req">
+        <strong>R-INT-002 (Water delivery interface)</strong>
+        <p>The system shall output water through a standard farm-compatible connection (e.g., a pipe outlet or hose coupling) suitable for connection to irrigation piping or a holding tank.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-INT-003 (Electrical power availability)</strong>
+        <p>The system shall operate from available electrical power; no constraint is placed on power availability (“unlimited power” assumption), but the design shall include standard electrical protection and disconnect.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-INT-004 (Civil works allowance)</strong>
+        <p>The design may include concrete foundations, pads, or protective structures as required for stability, mounting, and erosion control.</p>
+      </div>
+    </section>
+
+    <section id="control">
+      <h2>4) Control and autonomy constraints (explicitly “not sophisticated”)</h2>
+
+      <div class="req">
+        <strong>R-CTRL-001 (Control technology limitation)</strong>
+        <p>The system shall not rely on advanced control and actuation technologies (e.g., complex PLC automation, robotic actuators, multi-sensor closed-loop control).</p>
+        <p class="note">Acceptable control mechanisms include manual switches, basic starters, simple float switch cutoff, basic pressure switch, and manual valves.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CTRL-002 (Local control)</strong>
+        <p>The system shall include local controls at the pump/power unit for start/stop and emergency stop.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CTRL-003 (Status indication)</strong>
+        <p>The system shall provide simple status indication (e.g., power on, pump running, fault/trip) using basic indicator lights or a single meter.</p>
+      </div>
+    </section>
+
+    <section id="ram">
+      <h2>5) Reliability, availability, and maintainability</h2>
+
+      <div class="req">
+        <strong>R-RAM-001 (Availability goal)</strong>
+        <p>During irrigation season, the system shall achieve <b>≥ 95% availability</b> during planned operating hours (excluding scheduled maintenance).</p>
+      </div>
+
+      <div class="req">
+        <strong>R-RAM-002 (Maintainability)</strong>
+        <p>Routine maintenance tasks (filter/strainer cleaning, visual inspection, lubrication if needed) shall be accomplishable in <b>≤ 30 minutes</b> per occurrence.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-RAM-003 (Spare parts strategy)</strong>
+        <p>Wear items (seals, strainer screens, common valves, fuses/breakers) shall be commercially available and replaceable without specialty tooling.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-RAM-004 (Clog tolerance)</strong>
+        <p>The system shall include intake protection (e.g., screened intake/strainer) and shall be tolerant of typical river debris (leaves, small sticks, sediment) without catastrophic damage.</p>
+      </div>
+    </section>
+
+    <section id="safety">
+      <h2>6) Safety requirements</h2>
+
+      <div class="req">
+        <strong>R-SAFE-001 (Electrical safety)</strong>
+        <p>The system shall include a lockable disconnect and overcurrent protection consistent with rural outdoor installation practices (e.g., NEMA-rated enclosure, GFCI where appropriate).</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-002 (Mechanical safety)</strong>
+        <p>Rotating components (couplings, belts if used) shall be guarded to prevent inadvertent contact during operation.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-003 (Overpressure protection)</strong>
+        <p>The system shall prevent damaging overpressure events in the discharge line via at least one protective measure (e.g., relief valve, pressure switch trip, or designed pressure rating margin).</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-004 (Dry-run protection)</strong>
+        <p>The system shall include a simple means to avoid pump damage from dry running (e.g., low-water cutoff float switch at intake or a basic pressure/flow interlock).</p>
+      </div>
+    </section>
+
+    <section id="environmental">
+      <h2>7) Environmental and regulatory considerations (generic, MBSE-friendly)</h2>
+
+      <div class="req">
+        <strong>R-ENV-001 (Spill/leak containment)</strong>
+        <p>If lubricants or fuels are used (only if a generator concept is considered), the system shall include provisions to minimize environmental release (drip pans/secondary containment).</p>
+        <p class="note">If grid power is guaranteed, you can drop this requirement.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-ENV-002 (Erosion control)</strong>
+        <p>Any riverbank installation shall include erosion mitigation appropriate to expected seasonal flows (e.g., anchored intake, riprap, stable pad).</p>
+      </div>
+
+      <div class="req">
+        <strong>R-ENV-003 (Noise)</strong>
+        <p>The system shall not exceed a reasonable rural nuisance threshold at the farmstead boundary (define locally if needed), and shall include muffling/isolators if applicable.</p>
+      </div>
+    </section>
+
+    <section id="verification">
+      <h2>8) Verification-oriented requirements (good for MBSE)</h2>
+
+      <div class="req">
+        <strong>R-VER-001 (Flow verification)</strong>
+        <p>The delivered flow rate shall be verifiable with a simple field test (e.g., timed fill of a known-volume container or an inline mechanical flow meter).</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-002 (Head verification)</strong>
+        <p>The elevation gain shall be verifiable by survey/measurement of intake and delivery elevation, plus pressure measurement at delivery (if used).</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-003 (Acceptance test)</strong>
+        <p>The system shall pass an acceptance test demonstrating ≥ 20 GPM delivery at 30 ft lift for a continuous <b>2-hour</b> run under typical conditions.</p>
+      </div>
+    </section>
+
+    <section id="logical-breakdown">
+      <h2>Logical system breakdown (MBSE-friendly “boxes”)</h2>
+
+      <ol>
+        <li><b>Water Source Subsystem</b>
+          <ul>
+            <li>Intake structure (screen/strainer, foot valve/check valve)</li>
+            <li>Intake anchoring &amp; riverbank protection</li>
+          </ul>
+        </li>
+
+        <li><b>Pumping / Energy Conversion Subsystem</b>
+          <ul>
+            <li>Pump (centrifugal, jet, or submersible options)</li>
+            <li>Motor/drive coupling</li>
+            <li>Mounting base / alignment features</li>
+          </ul>
+        </li>
+
+        <li><b>Conveyance Subsystem</b>
+          <ul>
+            <li>Suction line (if applicable) and discharge line</li>
+            <li>Valves (isolation, check, drain, throttling)</li>
+            <li>Air release / priming provisions</li>
+            <li>Pressure relief or equivalent protection</li>
+          </ul>
+        </li>
+
+        <li><b>Power Subsystem</b>
+          <ul>
+            <li>Power feed, disconnect, breaker/fuse</li>
+            <li>Motor starter (simple)</li>
+            <li>Grounding/lightning considerations (rural)</li>
+          </ul>
+        </li>
+
+        <li><b>Controls &amp; Indication Subsystem</b>
+          <ul>
+            <li>Start/stop, emergency stop</li>
+            <li>Simple fault indication (trip light)</li>
+            <li>Optional: basic low-water cutoff (float switch)</li>
+          </ul>
+        </li>
+
+        <li><b>Civil/Structural Subsystem</b>
+          <ul>
+            <li>Concrete pad/foundation</li>
+            <li>Protective housing or fencing</li>
+            <li>Access path / maintenance clearance</li>
+          </ul>
+        </li>
+
+        <li><b>Operations &amp; Maintenance Support</b>
+          <ul>
+            <li>Procedures, labeling</li>
+            <li>Minimal spares kit list</li>
+            <li>Inspection/maintenance schedule</li>
+          </ul>
+        </li>
+      </ol>
+
+      <hr />
+      <p class="note">End of requested content (up to logical breakdown).</p>
+    </section>
+
+    <footer>
+      <p>Document generated for concept exploration and MBSE-style decomposition; not a final engineering specification.</p>
+    </footer>
+  </main>
+</body>
+</html>

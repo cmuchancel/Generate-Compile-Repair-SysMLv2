@@ -1,0 +1,29 @@
+{
+  "id": "msg_01N9pfQuCrtcqUAD6RTq2BLV",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package ISQPhysicalQuantities {\n    private import ScalarValues::*;\n\n    enum def PhysicalQuantityKind {\n        enum length;\n        enum mass;\n        enum time;\n        enum electricCurrent;\n        enum temperature;\n        enum amountOfSubstance;\n        enum luminousIntensity;\n    }\n\n    part def PhysicalQuantity {\n        attribute quantityKind : PhysicalQuantityKind;\n        attribute magnitude : Real;\n        attribute unitSymbol : String;\n        attribute unitName : String;\n    }\n\n    part def LengthQuantity :> PhysicalQuantity {\n        attribute redefines quantityKind = PhysicalQuantityKind::length;\n        attribute redefines unitSymbol = \"m\";\n        attribute redefines unitName = \"metre\";\n    }\n\n    part def MassQuantity :> PhysicalQuantity {\n        attribute redefines quantityKind = PhysicalQuantityKind::mass;\n        attribute redefines unitSymbol = \"kg\";\n        attribute redefines unitName = \"kilogram\";\n    }\n\n    part def TimeQuantity :> PhysicalQuantity {\n        attribute redefines quantityKind = PhysicalQuantityKind::time;\n        attribute redefines unitSymbol = \"s\";\n        attribute redefines unitName = \"second\";\n    }\n\n    part def ElectricCurrentQuantity :> PhysicalQuantity {\n        attribute redefines quantityKind = PhysicalQuantityKind::electricCurrent;\n        attribute redefines unitSymbol = \"A\";\n        attribute redefines unitName = \"ampere\";\n    }\n\n    part def TemperatureQuantity :> PhysicalQuantity {\n        attribute redefines quantityKind = PhysicalQuantityKind::temperature;\n        attribute redefines unitSymbol = \"K\";\n        attribute redefines unitName = \"kelvin\";\n    }\n\n    part def AmountOfSubstanceQuantity :> PhysicalQuantity {\n        attribute redefines quantityKind = PhysicalQuantityKind::amountOfSubstance;\n        attribute redefines unitSymbol = \"mol\";\n        attribute redefines unitName = \"mole\";\n    }\n\n    part def LuminousIntensityQuantity :> PhysicalQuantity {\n        attribute redefines quantityKind = PhysicalQuantityKind::luminousIntensity;\n        attribute redefines unitSymbol = \"cd\";\n        attribute redefines unitName = \"candela\";\n    }\n\n    part def ISQSystem {\n        part lengthDim : LengthQuantity;\n        part massDim : MassQuantity;\n        part timeDim : TimeQuantity;\n        part electricCurrentDim : ElectricCurrentQuantity;\n        part temperatureDim : TemperatureQuantity;\n        part amountOfSubstanceDim : AmountOfSubstanceQuantity;\n        part luminousIntensityDim : LuminousIntensityQuantity;\n    }\n\n    part def UnitConversionRecord {\n        attribute fromUnit : String;\n        attribute toUnit : String;\n        attribute conversionFactor : Real;\n        attribute offset : Real;\n    }\n\n    part def LengthConversionRecord :> UnitConversionRecord {\n        attribute redefines fromUnit = \"m\";\n        attribute redefines toUnit = \"cm\";\n        attribute redefines conversionFactor = 100.0;\n        attribute redefines offset = 0.0;\n    }\n\n    part def MassConversionRecord :> UnitConversionRecord {\n        attribute redefines fromUnit = \"kg\";\n        attribute redefines toUnit = \"g\";\n        attribute redefines conversionFactor = 1000.0;\n        attribute redefines offset = 0.0;\n    }\n\n    part def TemperatureConversionRecord :> UnitConversionRecord {\n        attribute redefines fromUnit = \"K\";\n        attribute redefines toUnit = \"C\";\n        attribute redefines conversionFactor = 1.0;\n        attribute redefines offset = -273.15;\n    }\n\n    part def ISQDataManager {\n        part isqSystem : ISQSystem;\n        part lengthConversion : LengthConversionRecord;\n        part massConversion : MassConversionRecord;\n        part temperatureConversion : TemperatureConversionRecord;\n        attribute systemName : String;\n        attribute systemVersion : String;\n    }\n\n    part isqInstance : ISQDataManager {\n        attribute systemName = \"ISQ Physical Quantity System\";\n        attribute systemVersion = \"1.0\";\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 380,
+    "output_tokens": 1142,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

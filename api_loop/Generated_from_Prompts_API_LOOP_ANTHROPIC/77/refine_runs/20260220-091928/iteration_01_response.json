@@ -1,0 +1,29 @@
+{
+  "id": "msg_01DZc55RTbXE8ySSHG9hi5bP",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package TransportationSystem {\n    private import ScalarValues::*;\n\n    enum def OccupantRole {\n        enum DRIVER;\n        enum PASSENGER;\n    }\n\n    enum def DoorState {\n        enum OPEN;\n        enum CLOSED;\n    }\n\n    enum def JourneyStatus {\n        enum NOT_STARTED;\n        enum IN_PROGRESS;\n        enum COMPLETED;\n    }\n\n    enum def FuelLevel {\n        enum FULL;\n        enum ADEQUATE;\n        enum LOW;\n        enum EMPTY;\n    }\n\n    enum def SafetyStatus {\n        enum SAFE;\n        enum UNSAFE;\n    }\n\n    enum def EnvironmentCondition {\n        enum CLEAR;\n        enum RAINY;\n        enum FOGGY;\n        enum SNOWY;\n    }\n\n    part def Person {\n        attribute name : String;\n        attribute role : OccupantRole;\n    }\n\n    part def Driver {\n        attribute name : String;\n        attribute role : OccupantRole;\n        attribute licenseValid : Boolean;\n    }\n\n    part def Passenger {\n        attribute name : String;\n        attribute role : OccupantRole;\n        attribute isSeated : Boolean;\n    }\n\n    part def Door {\n        attribute state : DoorState;\n        attribute isLocked : Boolean;\n    }\n\n    part def Seat {\n        attribute isOccupied : Boolean;\n        attribute isComfortable : Boolean;\n    }\n\n    part def FuelTank {\n        attribute capacity : Real;\n        attribute currentLevel : FuelLevel;\n    }\n\n    part def Engine {\n        attribute isRunning : Boolean;\n        attribute powerOutput : Real;\n    }\n\n    part def SafetySystem {\n        attribute status : SafetyStatus;\n        attribute seatbeltsFastened : Boolean;\n        attribute airbagsFunctional : Boolean;\n        attribute brakesOperational : Boolean;\n    }\n\n    part def NavigationSystem {\n        attribute startPoint : String;\n        attribute destination : String;\n        attribute routeCalculated : Boolean;\n    }\n\n    part def ComfortSystem {\n        attribute climateControlActive : Boolean;\n        attribute temperature : Real;\n        attribute audioSystemActive : Boolean;\n    }\n\n    part def EnvironmentSensor {\n        attribute condition : EnvironmentCondition;\n        attribute visibility : Real;\n        attribute roadConditionSafe : Boolean;\n    }\n\n    part def GasStation {\n        attribute location : String;\n        attribute fuelAvailable : Boolean;\n    }\n\n    part def Infrastructure {\n        attribute roadNetworkAvailable : Boolean;\n        attribute gasStationNearby : Boolean;\n    }\n\n    port def OccupantPort {\n        attribute canEnter : Boolean;\n        attribute canExit : Boolean;\n    }\n\n    port def FuelPort {\n        attribute fuelFlowing : Boolean;\n    }\n\n    port def DataPort {\n        attribute dataTransmitting : Boolean;\n    }\n\n    item def FuelItem {\n        attribute amount : Real;\n    }\n\n    item def OccupantItem {\n        attribute role : OccupantRole;\n    }\n\n    item def NavigationData {\n        attribute routeInfo : String;\n    }\n\n    item def EnvironmentData {\n        attribute conditionInfo : String;\n    }\n\n    part def Vehicle {\n        attribute journeyStatus : JourneyStatus;\n        attribute maxPassengers : Integer;\n        attribute currentSpeed : Real;\n        attribute isAccessible : Boolean;\n\n        part driver : Driver;\n\n        part passengers : Passenger[0..4];\n\n        part frontLeftDoor : Door;\n        part frontRightDoor : Door;\n        part rearLeftDoor : Door;\n        part rearRightDoor : Door;\n\n        part driverSeat : Seat;\n        part passengerSeat1 : Seat;\n        part passengerSeat2 : Seat;\n        part passengerSeat3 : Seat;\n        part passengerSeat4 : Seat;\n\n        part engine : Engine;\n        part fuelTank : FuelTank;\n        part safetySystem : SafetySystem;\n        part navigationSystem : NavigationSystem;\n        part comfortSystem : ComfortSystem;\n        part environmentSensor : EnvironmentSensor;\n\n        port occupantEntry : OccupantPort;\n        port fuelInlet : FuelPort;\n        port navDataPort : DataPort;\n        port envDataPort : DataPort;\n    }\n\n    part def TransportationScenario {\n        attribute scenarioName : String;\n        attribute journeyCompleted : Boolean;\n        attribute safetyEnsured : Boolean;\n        attribute sustainabilityConsidered : Boolean;\n\n        part vehicle : Vehicle;\n        part environment : Infrastructure;\n        part refuelStation : GasStation;\n\n        port scenarioOccupantPort : OccupantPort;\n        port scenarioFuelPort : FuelPort;\n        port scenarioNavPort : DataPort;\n        port scenarioEnvPort : DataPort;\n\n        connect vehicle.occupantEntry to scenarioOccupantPort;\n        connect vehicle.fuelInlet to scenarioFuelPort;\n        connect vehicle.navDataPort to scenarioNavPort;\n        connect vehicle.envDataPort to scenarioEnvPort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 411,
+    "output_tokens": 1287,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

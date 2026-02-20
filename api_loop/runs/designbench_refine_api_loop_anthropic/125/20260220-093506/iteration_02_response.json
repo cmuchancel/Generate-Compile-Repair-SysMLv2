@@ -1,0 +1,29 @@
+{
+  "id": "msg_01EoRrAdyey5xFyCne2c5ZKk",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSafetySecurityManagement {\n    private import ScalarValues::*;\n\n    enum def SafetyCategory {\n        enum Mandatory;\n        enum Optional;\n    }\n\n    enum def FeatureType {\n        enum Safety;\n        enum Security;\n    }\n\n    enum def DisplayFormat {\n        enum TreeStructure;\n        enum Table;\n    }\n\n    part def SeatBelt {\n        attribute featureName : String = \"SeatBelt\";\n        attribute category : SafetyCategory = SafetyCategory::Mandatory;\n        attribute featureType : FeatureType = FeatureType::Safety;\n        attribute isMandatory : Boolean = true;\n    }\n\n    part def Bumper {\n        attribute featureName : String = \"Bumper\";\n        attribute category : SafetyCategory = SafetyCategory::Mandatory;\n        attribute featureType : FeatureType = FeatureType::Safety;\n        attribute isMandatory : Boolean = true;\n    }\n\n    part def Airbag {\n        attribute featureName : String = \"Airbag\";\n        attribute category : SafetyCategory = SafetyCategory::Optional;\n        attribute featureType : FeatureType = FeatureType::Safety;\n        attribute isMandatory : Boolean = false;\n    }\n\n    part def AntiLockBrakingSystem {\n        attribute featureName : String = \"AntiLockBrakingSystem\";\n        attribute category : SafetyCategory = SafetyCategory::Optional;\n        attribute featureType : FeatureType = FeatureType::Safety;\n        attribute isMandatory : Boolean = false;\n    }\n\n    part def AlarmDevice {\n        attribute featureName : String = \"AlarmDevice\";\n        attribute featureType : FeatureType = FeatureType::Security;\n        attribute isActive : Boolean = true;\n    }\n\n    part def KeylessEntrySystem {\n        attribute featureName : String = \"KeylessEntrySystem\";\n        attribute featureType : FeatureType = FeatureType::Security;\n        attribute isActive : Boolean = true;\n    }\n\n    part def SafetySecurityManager {\n        attribute managerName : String = \"SafetySecurityManager\";\n        attribute filterBySafety : Boolean;\n        attribute filterBySecurity : Boolean;\n    }\n\n    port def SafetyDataPort {\n        attribute portName : String;\n    }\n\n    port def SecurityDataPort {\n        attribute portName : String;\n    }\n\n    part def DisplaySystem {\n        attribute systemName : String = \"DisplaySystem\";\n        attribute currentFormat : DisplayFormat;\n        port safetyInput : SafetyDataPort;\n        port securityInput : SecurityDataPort;\n    }\n\n    part def MandatorySafetyGroup {\n        attribute groupName : String = \"MandatorySafetyFeatures\";\n        attribute groupCategory : SafetyCategory = SafetyCategory::Mandatory;\n        part seatBelt : SeatBelt;\n        part bumper : Bumper;\n    }\n\n    part def OptionalSafetyGroup {\n        attribute groupName : String = \"OptionalSafetyFeatures\";\n        attribute groupCategory : SafetyCategory = SafetyCategory::Optional;\n        part airbag : Airbag;\n        part antiLockBrakingSystem : AntiLockBrakingSystem;\n    }\n\n    part def SecurityGroup {\n        attribute groupName : String = \"SecurityFeatures\";\n        attribute groupFeatureType : FeatureType = FeatureType::Security;\n        part alarmDevice : AlarmDevice;\n        part keylessEntry : KeylessEntrySystem;\n    }\n\n    part def Vehicle {\n        attribute vehicleName : String;\n        part seatBelt : SeatBelt;\n        part bumper : Bumper;\n        part airbag : Airbag;\n        part antiLockBrakingSystem : AntiLockBrakingSystem;\n        part alarmDevice : AlarmDevice;\n        part keylessEntry : KeylessEntrySystem;\n        part safetySecurityManager : SafetySecurityManager;\n    }\n\n    part def VehicleSystem {\n        attribute systemName : String = \"VehicleSystem\";\n        part vehicle : Vehicle;\n        part display : DisplaySystem;\n        part mandatorySafetyGroup : MandatorySafetyGroup;\n        part optionalSafetyGroup : OptionalSafetyGroup;\n        part securityGroup : SecurityGroup;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1886,
+    "output_tokens": 1094,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

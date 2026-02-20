@@ -1,0 +1,107 @@
+Pretend MBSE Requirements — Automatic Door Opening Assist (Retrofit)
+Solution-agnostic requirements and constraints intended to drive MBSE functional decomposition and concept exploration
+        for a retrofit system that enables automatic opening of existing interior doors to improve accessibility.
+1) Mission and scope requirements
+R-MSN-001 (Primary function)
+The system shall enable an interior hinged door to open automatically for an accessibility user when requested.
+R-MSN-002 (Retrofit scope)
+The system shall be designed as an add-on for existing doors that already use traditional door-closer hardware.
+R-MSN-003 (Deployment context)
+The system shall be suitable for installation on a large number of doors in an institutional campus setting (e.g., classroom doors), not just exterior entrances.
+R-MSN-004 (Independence objective)
+The system shall improve user independence by reducing reliance on assistance from other people for routine door access.
+2) Top-level functional requirements
+R-FUNC-001 (Initiate automatic opening)
+The system shall provide a user-initiated means to request automatic opening without requiring the user to manipulate a door knob.
+R-FUNC-002 (Preferred initiation modality)
+The primary initiation interface shall be compatible with push-button actuation appropriate for accessibility users.
+R-FUNC-003 (Door opening against existing resistance)
+The system shall open the door against the resistance of the existing door closer and typical hinge/friction loads.
+R-FUNC-004 (Hold-ready state)
+The system shall support a “ready” state in which it is prepared to perform an opening upon request, without unintended actuation.
+R-FUNC-005 (Non-interference during closing)
+The system shall not impede or materially increase resistance during normal door closing under the door closer.
+R-FUNC-006 (Directionality)
+The system shall ensure that the automatic opening motion occurs in the intended opening direction and does not reverse the door’s expected behavior.
+R-FUNC-007 (Reset/return to standby)
+After completing an opening cycle (or after a cancellation), the system shall return to a defined standby state suitable for subsequent use.
+3) Performance requirements (measurable targets)
+R-PERF-001 (Opening capability baseline)
+The system shall be capable of opening doors with an opening force requirement up to at least
+11.375 lbf
+(representative campus door measurement).
+R-PERF-002 (Full-open completion)
+The system shall open the door to a usable open position sufficient for wheelchair passage under normal operating conditions.
+R-PERF-003 (Cycle response)
+Upon user request, the system shall begin the opening action within a short, user-acceptable delay and proceed with controlled motion.
+R-PERF-004 (Repeatability)
+The system shall provide repeatable opening performance across repeated cycles without requiring re-adjustment between typical uses.
+4) Key constraints
+R-CNST-001 (Cost constraint)
+The system shall be designed to be lower-cost than typical electrically-driven automatic door operators, suitable for scaling across many doors.
+R-CNST-002 (Installation burden)
+The system shall be installable without requiring specialized high-skill labor for each door installation, supporting scalable deployment.
+R-CNST-003 (Door hardware compatibility)
+The system shall be compatible with common door closer interface geometries and shall tolerate variation in existing door hardware across buildings.
+R-CNST-004 (Operational simplicity)
+The system shall be simple and intuitive for both accessibility users and general building occupants, minimizing the need for training.
+R-CNST-005 (Packaging/enclosure)
+The system shall fit within a practical on-door or near-door packaging envelope and shall include an enclosure appropriate for building environments.
+5) Safety and assurance requirements
+R-SAFE-001 (Controlled motion)
+The system shall provide controlled door motion such that the opening action does not create unsafe rapid movement for nearby pedestrians.
+R-SAFE-002 (User protection)
+The system shall prevent user contact with hazardous moving elements during normal operation and typical interaction.
+R-SAFE-003 (Fail-safe behavior)
+In the presence of a fault, jam, or abnormal operating condition, the system shall transition to a safe state that avoids uncontrolled door motion.
+R-SAFE-004 (Pinch/entrapment mitigation)
+The system shall minimize pinch points and entrapment hazards introduced by the add-on mechanism.
+6) Reliability, maintainability, and durability requirements
+R-RAM-001 (High-cycle use)
+The system shall withstand frequent daily use in a public building environment without loss of function.
+R-RAM-002 (Hold/standby durability)
+The system shall maintain its readiness/standby condition for extended periods without unintended actuation or loss of ability to operate when requested.
+R-RAM-003 (Serviceability)
+The system shall allow inspection and maintenance using common tools, and replaceable wear items shall be accessible.
+R-RAM-004 (Environmental robustness)
+The system shall operate reliably under typical indoor building conditions including dust, incidental impacts, and temperature variation within conditioned spaces.
+7) Verification-oriented requirements
+R-VER-001 (Opening-force verification)
+The opening capability shall be verifiable by test on representative doors spanning measured opening force requirements up to the specified baseline.
+R-VER-002 (Non-interference verification)
+Non-interference during door closing shall be verifiable by comparing closing behavior (time/effort) with and without the installed system.
+R-VER-003 (Repeatability verification)
+Repeatability shall be verifiable by conducting a multi-cycle endurance test demonstrating consistent operation across repeated open/close cycles.
+R-VER-004 (Safety verification)
+Safe-state behavior shall be verifiable by induced fault/jam scenarios demonstrating controlled stop and absence of hazardous motion.
+Logical system breakdown (requirements-oriented functional “boxes”)
+User Request & Interface Subsystem
+Accept user request to open (accessible initiation)
+Provide simple status feedback (ready / active / fault)
+Provide a safe cancel/stop interaction
+Door Interaction Subsystem
+Couple to the existing door/closer interface without permanent door replacement
+Transmit required action to open the door to a usable open position
+Avoid impeding normal door closing behavior
+Readiness / Holding Subsystem
+Maintain a defined standby state between openings
+Prevent unintended actuation while in standby
+Support reset/return to standby after a cycle
+Motion Management Subsystem
+Manage opening motion to be controlled and predictable
+Limit motion to the intended operating range
+Detect and handle jams/abnormal conditions
+Mounting, Enclosure & Integration Subsystem
+Provide mounting features compatible with common door installations
+Provide an enclosure suitable for indoor public-building environments
+Support scalable installation across many doors
+Safety & Assurance Subsystem
+Prevent user contact with hazardous elements
+Provide fail-safe behavior under fault conditions
+Mitigate pinch/entrapment hazards introduced by the system
+Maintenance & Lifecycle Support Subsystem
+Enable routine inspection and service with common tools
+Support replacement of wear components
+Support durability for frequent public-building use
+End of requirements set. (Intentionally solution-agnostic; no concept solutions included.)
+Generated as a pretend MBSE requirements artifact to drive functional decomposition and concept exploration; not a final product specification.

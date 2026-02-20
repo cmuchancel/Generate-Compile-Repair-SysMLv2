@@ -1,0 +1,83 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is used to manage the start-up and shutdown states of a vehicle. The vehicle is initially in the off state. Upon receiving a "vehicle start signal," the vehicle switches to the "starting" state. Subsequently, when a "vehicle power-on signal" is received, the vehicle transitions to the "on" state. At any time, if a "vehicle shutdown signal" is received, the vehicle state switches back to the "off" state. The system must, according to the above logic, reliably ensure that the vehicle state responds appropriately to the corresponding control signals, and safely and sequentially transitions between each state.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleStateManagement {
+    private import ScalarValues::*;
+
+    enum def VehicleState {
+        enum OFF;
+        enum STARTING;
+        enum ON;
+    }
+
+    enum def ControlSignal {
+        enum VEHICLE_START_SIGNAL;
+        enum VEHICLE_POWER_ON_SIGNAL;
+        enum VEHICLE_SHUTDOWN_SIGNAL;
+    }
+
+    part def VehicleController {
+        attribute currentState : VehicleState = VehicleState::OFF;
+        attribute receivedSignal : ControlSignal;
+        attribute initialState : VehicleState = VehicleState::OFF;
+        attribute offState : VehicleState = VehicleState::OFF;
+        attribute startingState : VehicleState = VehicleState::STARTING;
+        attribute onState : VehicleState = VehicleState::ON;
+    }
+
+    part def SignalSource {
+        attribute startSignal : ControlSignal = ControlSignal::VEHICLE_START_SIGNAL;
+        attribute powerOnSignal : ControlSignal = ControlSignal::VEHICLE_POWER_ON_SIGNAL;
+        attribute shutdownSignal : ControlSignal = ControlSignal::VEHICLE_SHUTDOWN_SIGNAL;
+    }
+
+    port def VehicleControlPort {
+        attribute signal : ControlSignal;
+    }
+
+    port def VehicleStatePort {
+        attribute state : VehicleState;
+    }
+
+    part def Vehicle {
+        attribute vehicleState : VehicleState = VehicleState::OFF;
+        port controlInput : VehicleControlPort;
+        port stateOutput : VehicleStatePort;
+    }
+
+    part def VehicleSystem {
+        part vehicle : Vehicle;
+        part controller : VehicleController;
+        part signalSource : SignalSource;
+
+        port systemControlPort : VehicleControlPort;
+        port systemStatePort : VehicleStatePort;
+
+        connect systemControlPort to vehicle::controlInput;
+        connect vehicle::stateOutput to systemStatePort;
+    }
+
+    part vehicleSystem : VehicleSystem;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_01.sysml:36:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+36 |         attribute state : VehicleState;
+   |                   ^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

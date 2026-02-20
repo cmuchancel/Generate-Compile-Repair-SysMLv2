@@ -1,0 +1,29 @@
+{
+  "id": "msg_013a5RChL3uqbgZdmYmrmZ2T",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    part def Cylinder;\n\n    part def Engine {\n        part cylinders : Cylinder[4..6];\n    }\n\n    part def SmallVehicleEngine {\n        part cylinders : Cylinder[4];\n    }\n\n    part def LargeVehicleEngine {\n        part cylinders : Cylinder[6];\n    }\n\n    part def SmallVehicle {\n        part engine : SmallVehicleEngine[1];\n    }\n\n    part def LargeVehicle {\n        part engine : LargeVehicleEngine[1];\n    }\n\n    part smallVehicle : SmallVehicle {\n        part redefines engine : SmallVehicleEngine {\n            part redefines cylinders : Cylinder[4];\n        }\n    }\n\n    part largeVehicle : LargeVehicle {\n        part redefines engine : LargeVehicleEngine {\n            part redefines cylinders : Cylinder[6];\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 377,
+    "output_tokens": 258,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

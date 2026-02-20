@@ -1,0 +1,29 @@
+{
+  "id": "msg_01CvdmeiyeppBGigpVHNhi1h",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package DataManagementSystem {\n    private import ScalarValues::*;\n\n    enum def StatusColor {\n        enum red;\n        enum yellow;\n        enum green;\n    }\n\n    enum def SeverityLevel {\n        enum critical;\n        enum warning;\n        enum normal;\n    }\n\n    enum def DiameterOption {\n        enum Small;\n        enum Medium;\n        enum Large;\n    }\n\n    part def UnsignedIntegerType {\n        attribute value : Integer;\n        attribute isNonNegative : Boolean = true;\n    }\n\n    part def UnsignedFloatType {\n        attribute value : Real;\n        attribute isNonNegative : Boolean = true;\n    }\n\n    part def DateTimeType {\n        attribute dateTimeValue : String;\n    }\n\n    part def StringType {\n        attribute stringValue : String;\n    }\n\n    part def BooleanType {\n        attribute booleanValue : Boolean;\n    }\n\n    part def StatusCondition {\n        attribute severity : SeverityLevel;\n        attribute color : StatusColor;\n        attribute criticalColor : StatusColor = StatusColor::red;\n        attribute warningColor : StatusColor = StatusColor::yellow;\n        attribute normalColor : StatusColor = StatusColor::green;\n    }\n\n    part def PhysicalDimension {\n        attribute diameterOption : DiameterOption = DiameterOption::Small;\n        attribute smallDiameter : Real = 60.0;\n        attribute mediumDiameter : Real = 70.0;\n        attribute largeDiameter : Real = 80.0;\n        attribute diameterUnit : String = \"mm\";\n    }\n\n    part def DataManagementCore {\n        part uintData : UnsignedIntegerType;\n        part ufloatData : UnsignedFloatType;\n        part dateTimeData : DateTimeType;\n        part stringData : StringType;\n        part boolData : BooleanType;\n        part statusData : StatusCondition;\n        part dimensionData : PhysicalDimension;\n    }\n\n    part system : DataManagementCore {\n        part uintData : UnsignedIntegerType {\n            attribute value : Integer = 0;\n            attribute isNonNegative : Boolean = true;\n        }\n        part ufloatData : UnsignedFloatType {\n            attribute value : Real = 0.0;\n            attribute isNonNegative : Boolean = true;\n        }\n        part dateTimeData : DateTimeType {\n            attribute dateTimeValue : String = \"1970-01-01T00:00:00Z\";\n        }\n        part stringData : StringType {\n            attribute stringValue : String = \"\";\n        }\n        part boolData : BooleanType {\n            attribute booleanValue : Boolean = false;\n        }\n        part statusData : StatusCondition {\n            attribute severity : SeverityLevel = SeverityLevel::normal;\n            attribute color : StatusColor = StatusColor::green;\n        }\n        part dimensionData : PhysicalDimension {\n            attribute diameterOption : DiameterOption = DiameterOption::Small;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 466,
+    "output_tokens": 765,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "msg_01R4w3yZ22jZRvETbfH2meJ3",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package TrafficLightClassification {\n    private import ScalarValues::*;\n\n    enum def ClassificationLevel {\n        enum UNCLASSIFIED;\n        enum CONFIDENTIAL;\n        enum SECRET;\n    }\n\n    enum def GradeLevel {\n        enum A;\n        enum B;\n        enum C;\n        enum D;\n        enum F;\n    }\n\n    part def ClassificationEntry {\n        attribute level : ClassificationLevel;\n        attribute code : String;\n        attribute color : String;\n    }\n\n    part def GradeEntry {\n        attribute grade : GradeLevel;\n        attribute points : Real;\n    }\n\n    part def ClassificationSystem {\n        attribute unclassifiedCode : String = \"uncl\";\n        attribute unclassifiedColor : String = \"green\";\n\n        attribute confidentialCode : String = \"conf\";\n        attribute confidentialColor : String = \"yellow\";\n\n        attribute secretCode : String = \"secr\";\n        attribute secretColor : String = \"red\";\n\n        attribute gradeAPoints : Real = 4.0;\n        attribute gradeBPoints : Real = 3.0;\n        attribute gradeCPoints : Real = 2.0;\n        attribute gradeDPoints : Real = 1.0;\n        attribute gradeFPoints : Real = 0.0;\n\n        part unclassifiedEntry : ClassificationEntry {\n            attribute level : ClassificationLevel = ClassificationLevel::UNCLASSIFIED;\n            attribute code : String = \"uncl\";\n            attribute color : String = \"green\";\n        }\n\n        part confidentialEntry : ClassificationEntry {\n            attribute level : ClassificationLevel = ClassificationLevel::CONFIDENTIAL;\n            attribute code : String = \"conf\";\n            attribute color : String = \"yellow\";\n        }\n\n        part secretEntry : ClassificationEntry {\n            attribute level : ClassificationLevel = ClassificationLevel::SECRET;\n            attribute code : String = \"secr\";\n            attribute color : String = \"red\";\n        }\n\n        part gradeA : GradeEntry {\n            attribute grade : GradeLevel = GradeLevel::A;\n            attribute points : Real = 4.0;\n        }\n\n        part gradeB : GradeEntry {\n            attribute grade : GradeLevel = GradeLevel::B;\n            attribute points : Real = 3.0;\n        }\n\n        part gradeC : GradeEntry {\n            attribute grade : GradeLevel = GradeLevel::C;\n            attribute points : Real = 2.0;\n        }\n\n        part gradeD : GradeEntry {\n            attribute grade : GradeLevel = GradeLevel::D;\n            attribute points : Real = 1.0;\n        }\n\n        part gradeF : GradeEntry {\n            attribute grade : GradeLevel = GradeLevel::F;\n            attribute points : Real = 0.0;\n        }\n    }\n\n    part system : ClassificationSystem;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 466,
+    "output_tokens": 698,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "msg_01TZ4SRFVPmFRVR4xf7gfiw7",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package EngineSystem {\n    private import ScalarValues::*;\n\n    enum def CylinderCount {\n        enum FOUR;\n        enum SIX;\n    }\n\n    enum def CylinderDiameter {\n        enum SMALL;\n        enum LARGE;\n    }\n\n    part def Cylinder {\n        attribute diameter : Real;\n    }\n\n    part def Engine {\n        attribute cylinderCount : Integer;\n        attribute cylinderDiameter : Real;\n    }\n\n    part def FourCylinderEngine {\n        attribute cylinderCount : Integer = 4;\n        attribute cylinderDiameter : Real;\n        part cyl1 : Cylinder;\n        part cyl2 : Cylinder;\n        part cyl3 : Cylinder;\n        part cyl4 : Cylinder;\n    }\n\n    part def SixCylinderEngine {\n        attribute cylinderCount : Integer = 6;\n        attribute cylinderDiameter : Real;\n        part cyl1 : Cylinder;\n        part cyl2 : Cylinder;\n        part cyl3 : Cylinder;\n        part cyl4 : Cylinder;\n        part cyl5 : Cylinder;\n        part cyl6 : Cylinder;\n    }\n\n    part engineVariant70mm : FourCylinderEngine {\n        attribute redefines cylinderDiameter = 70.0;\n    }\n\n    part engineVariant100mm : FourCylinderEngine {\n        attribute redefines cylinderDiameter = 100.0;\n    }\n\n    part sixCylEngine70mm : SixCylinderEngine {\n        attribute redefines cylinderDiameter = 70.0;\n    }\n\n    part sixCylEngine100mm : SixCylinderEngine {\n        attribute redefines cylinderDiameter = 100.0;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 385,
+    "output_tokens": 456,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,182 @@
+package VehiclePowerTransmission {
+    private import ScalarValues::*;
+
+    enum def GearPosition {
+        enum NEUTRAL;
+        enum FIRST;
+        enum SECOND;
+        enum THIRD;
+        enum FOURTH;
+        enum FIFTH;
+        enum REVERSE;
+    }
+
+    enum def DriveState {
+        enum ENGAGED;
+        enum DISENGAGED;
+        enum SLIPPING;
+    }
+
+    item def PowerSignal;
+    item def FuelCommand;
+    item def TorqueSignal;
+    item def ControlSignal;
+
+    port def FuelCommandPort {
+        attribute flowRate : Real;
+    }
+
+    port def PowerPort {
+        attribute torque : Real;
+        attribute speed : Real;
+    }
+
+    port def ClutchPort {
+        attribute driveState : DriveState;
+        attribute torque : Real;
+    }
+
+    port def DriveShaftPort {
+        attribute torque : Real;
+        attribute angularVelocity : Real;
+    }
+
+    port def AxlePort {
+        attribute torque : Real;
+        attribute speed : Real;
+    }
+
+    port def WheelPort {
+        attribute torque : Real;
+        attribute speed : Real;
+    }
+
+    port def RoadPort {
+        attribute tractionForce : Real;
+        attribute slipRatio : Real;
+    }
+
+    port def HalfShaftPort {
+        attribute torque : Real;
+        attribute speed : Real;
+    }
+
+    part def Engine {
+        attribute displacement : Real;
+        attribute maxTorque : Real;
+        attribute maxPower : Real;
+        attribute idleSpeed : Real;
+        attribute currentSpeed : Real;
+        attribute currentTorque : Real;
+
+        port fuelIn : FuelCommandPort;
+        port powerOut : PowerPort;
+        port clutchFace : ClutchPort;
+    }
+
+    part def Clutch {
+        attribute maxTorqueCapacity : Real;
+        attribute currentDriveState : DriveState;
+        attribute engagementRatio : Real;
+
+        port engineSide : ClutchPort;
+        port transmissionSide : ClutchPort;
+    }
+
+    part def Transmission {
+        attribute currentGear : GearPosition;
+        attribute gearRatio : Real;
+        attribute efficiency : Real;
+
+        port clutchIn : ClutchPort;
+        port driveShaftOut : DriveShaftPort;
+        port controlIn : FuelCommandPort;
+    }
+
+    part def DriveShaft {
+        attribute length : Real;
+        attribute stiffness : Real;
+        attribute dampingCoefficient : Real;
+
+        port frontEnd : DriveShaftPort;
+        port rearEnd : DriveShaftPort;
+    }
+
+    part def Differential {
+        attribute gearRatio : Real;
+        attribute efficiency : Real;
+        attribute lockingTorque : Real;
+
+        port driveIn : DriveShaftPort;
+        port leftOut : HalfShaftPort;
+        port rightOut : HalfShaftPort;
+    }
+
+    part def HalfShaft {
+        attribute length : Real;
+        attribute stiffness : Real;
+
+        port differentialEnd : HalfShaftPort;
+        port wheelEnd : AxlePort;
+    }
+
+    part def RearWheel {
+        attribute radius : Real;
+        attribute width : Real;
+        attribute mass : Real;
+        attribute momentOfInertia : Real;
+
+        port axleIn : AxlePort;
+        port roadContact : RoadPort;
+    }
+
+    part def RearAxleAssembly {
+        attribute trackWidth : Real;
+        attribute axleRatio : Real;
+
+        port driveShaftIn : DriveShaftPort;
+        port leftWheelOut : WheelPort;
+        port rightWheelOut : WheelPort;
+
+        part differential : Differential;
+        part leftHalfShaft : HalfShaft;
+        part rightHalfShaft : HalfShaft;
+
+        connect differential.driveIn to driveShaftIn;
+        connect differential.leftOut to leftHalfShaft.differentialEnd;
+        connect differential.rightOut to rightHalfShaft.differentialEnd;
+        connect leftHalfShaft.wheelEnd to leftWheelOut;
+        connect rightHalfShaft.wheelEnd to rightWheelOut;
+    }
+
+    part def RoadSurface {
+        attribute frictionCoefficient : Real;
+        attribute surfaceType : String;
+
+        port leftContact : RoadPort;
+        port rightContact : RoadPort;
+    }
+
+    part def VehiclePowerSystem {
+        attribute vehicleMass : Real;
+        attribute wheelbase : Real;
+
+        part engine : Engine;
+        part clutch : Clutch;
+        part transmission : Transmission;
+        part driveShaft : DriveShaft;
+        part rearAxle : RearAxleAssembly;
+        part leftRearWheel : RearWheel;
+        part rightRearWheel : RearWheel;
+        part road : RoadSurface;
+
+        connect engine.clutchFace to clutch.engineSide;
+        connect clutch.transmissionSide to transmission.clutchIn;
+        connect transmission.driveShaftOut to driveShaft.frontEnd;
+        connect driveShaft.rearEnd to rearAxle.driveShaftIn;
+        connect rearAxle.leftWheelOut to leftRearWheel.axleIn;
+        connect rearAxle.rightWheelOut to rightRearWheel.axleIn;
+        connect leftRearWheel.roadContact to road.leftContact;
+        connect rightRearWheel.roadContact to road.rightContact;
+    }
+}

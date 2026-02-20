@@ -1,0 +1,29 @@
+{
+  "id": "msg_01MCtSuBq69dq571paoFm2Dp",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def VehicleSize {\n        enum small;\n        enum large;\n    }\n\n    part def Cylinder;\n\n    part def Engine {\n        part cylinders : Cylinder[4..6];\n    }\n\n    part def SmallEngine {\n        part cylinders : Cylinder[4];\n    }\n\n    part def LargeEngine {\n        part cylinders : Cylinder[6];\n    }\n\n    part def Vehicle {\n        attribute size : VehicleSize;\n        part engine : Engine[1];\n    }\n\n    part def SmallVehicle {\n        attribute size : VehicleSize = VehicleSize::small;\n        part engine : SmallEngine[1];\n    }\n\n    part def LargeVehicle {\n        attribute size : VehicleSize = VehicleSize::large;\n        part engine : LargeEngine[1];\n    }\n\n    part smallVehicleInstance : SmallVehicle {\n        attribute size : VehicleSize = VehicleSize::small;\n        part engine : SmallEngine[1] {\n            part cylinders : Cylinder[4];\n        }\n    }\n\n    part largeVehicleInstance : LargeVehicle {\n        attribute size : VehicleSize = VehicleSize::large;\n        part engine : LargeEngine[1] {\n            part cylinders : Cylinder[6];\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 369,
+    "output_tokens": 354,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

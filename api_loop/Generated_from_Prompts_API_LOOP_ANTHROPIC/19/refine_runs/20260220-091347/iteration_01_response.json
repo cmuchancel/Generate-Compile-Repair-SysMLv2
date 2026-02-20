@@ -1,0 +1,29 @@
+{
+  "id": "msg_01RyyDBCmuLpxgPeZqU6ZYui",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package PhotographyWorkflow {\n    private import ScalarValues::*;\n\n    enum def WorkflowStep {\n        enum Focusing;\n        enum Shooting;\n    }\n\n    enum def ImageState {\n        enum Unfocused;\n        enum Focused;\n        enum Final;\n    }\n\n    item def Scene;\n    item def IntermediateImage;\n    item def FinalPhoto;\n\n    port def ScenePort;\n    port def ImagePort;\n    port def PhotoPort;\n\n    part def User {\n        port sceneOut : ScenePort;\n    }\n\n    part def FocusingUnit {\n        port sceneIn : ScenePort;\n        port imageOut : ImagePort;\n        attribute currentStep : WorkflowStep = WorkflowStep::Focusing;\n        attribute outputState : ImageState = ImageState::Focused;\n    }\n\n    part def ShootingUnit {\n        port imageIn : ImagePort;\n        port photoOut : PhotoPort;\n        attribute currentStep : WorkflowStep = WorkflowStep::Shooting;\n        attribute outputState : ImageState = ImageState::Final;\n    }\n\n    part def Camera {\n        port sceneIn : ScenePort;\n        port photoOut : PhotoPort;\n\n        part user : User;\n        part focusingUnit : FocusingUnit;\n        part shootingUnit : ShootingUnit;\n\n        connect user.sceneOut to focusingUnit.sceneIn;\n        connect focusingUnit.imageOut to shootingUnit.imageIn;\n        connect shootingUnit.photoOut to photoOut;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 402,
+    "output_tokens": 383,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

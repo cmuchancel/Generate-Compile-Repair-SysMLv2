@@ -1,0 +1,29 @@
+{
+  "id": "msg_012UcD5yuKcHPmuZ87aDTYj3",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleMassCompliance {\n    private import ScalarValues::*;\n\n    enum def ComplianceStatus {\n        enum Compliant;\n        enum NonCompliant;\n    }\n\n    item def Vehicle {\n        attribute vehicleId : String;\n        attribute actualMass : Real;\n    }\n\n    item def MassReading {\n        attribute measuredMass : Real;\n        attribute vehicleId : String;\n    }\n\n    item def ComplianceResult {\n        attribute vehicleId : String;\n        attribute measuredMass : Real;\n        attribute maximumPermissibleMass : Real;\n        attribute status : ComplianceStatus;\n    }\n\n    part def WeighingEquipment {\n        attribute calibrated : Boolean;\n        port measurementPort : MeasurementPort;\n    }\n\n    part def TestOperator {\n        attribute operatorId : String;\n        port operatorOutputPort : OperatorPort;\n    }\n\n    part def ComplianceChecker {\n        attribute maximumPermissibleMass : Real = 2500.0;\n        port checkerInputPort : CheckerInputPort;\n        port checkerOutputPort : CheckerOutputPort;\n    }\n\n    part def ComplianceRecord {\n        attribute totalVehiclesTested : Integer;\n        attribute compliantCount : Integer;\n        attribute nonCompliantCount : Integer;\n    }\n\n    part def VehicleMassComplianceSystem {\n        attribute systemId : String;\n        attribute maximumPermissibleMass : Real = 2500.0;\n\n        part weighingEquipment : WeighingEquipment {\n            attribute calibrated : Boolean = true;\n        }\n\n        part testOperator : TestOperator {\n            attribute operatorId : String = \"OP-001\";\n        }\n\n        part complianceChecker : ComplianceChecker {\n            attribute maximumPermissibleMass : Real = 2500.0;\n        }\n\n        part complianceRecord : ComplianceRecord {\n            attribute totalVehiclesTested : Integer = 0;\n            attribute compliantCount : Integer = 0;\n            attribute nonCompliantCount : Integer = 0;\n        }\n\n        part vehicle1 : Vehicle {\n            attribute vehicleId : String = \"V-001\";\n            attribute actualMass : Real = 2200.0;\n        }\n\n        part vehicle2 : Vehicle {\n            attribute vehicleId : String = \"V-002\";\n            attribute actualMass : Real = 2500.0;\n        }\n\n        part vehicle3 : Vehicle {\n            attribute vehicleId : String = \"V-003\";\n            attribute actualMass : Real = 2750.0;\n        }\n\n        part result1 : ComplianceResult {\n            attribute vehicleId : String = \"V-001\";\n            attribute measuredMass : Real = 2200.0;\n            attribute maximumPermissibleMass : Real = 2500.0;\n            attribute status : ComplianceStatus = ComplianceStatus::Compliant;\n        }\n\n        part result2 : ComplianceResult {\n            attribute vehicleId : String = \"V-002\";\n            attribute measuredMass : Real = 2500.0;\n            attribute maximumPermissibleMass : Real = 2500.0;\n            attribute status : ComplianceStatus = ComplianceStatus::Compliant;\n        }\n\n        part result3 : ComplianceResult {\n            attribute vehicleId : String = \"V-003\";\n            attribute measuredMass : Real = 2750.0;\n            attribute maximumPermissibleMass : Real = 2500.0;\n            attribute status : ComplianceStatus = ComplianceStatus::NonCompliant;\n        }\n\n        connect testOperator.operatorOutputPort to weighingEquipment.measurementPort;\n        connect weighingEquipment.measurementPort to complianceChecker.checkerInputPort;\n        connect complianceChecker.checkerOutputPort to complianceRecord;\n    }\n\n    port def MeasurementPort {\n        attribute massValue : Real;\n    }\n\n    port def OperatorPort {\n        attribute operatorAction : String;\n    }\n\n    port def CheckerInputPort {\n        attribute incomingMass : Real;\n    }\n\n    port def CheckerOutputPort {\n        attribute complianceDecision : ComplianceStatus;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 412,
+    "output_tokens": 1054,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

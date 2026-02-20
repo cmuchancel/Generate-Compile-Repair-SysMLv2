@@ -1,0 +1,29 @@
+{
+  "id": "msg_01AGkurUaRPt6eSRUC7JsUBM",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package SparePartsManagement {\n    private import ScalarValues::*;\n\n    part def SparePart {\n        attribute partId : String;\n        attribute partName : String;\n        attribute quantity : Integer;\n    }\n\n    part def Person {\n        attribute personId : String;\n        attribute personName : String;\n        attribute role : String;\n    }\n\n    part def SparePartBag {\n        attribute bagSize : Integer;\n        part element1 : SparePart;\n        part element2 : SparePart;\n        part element3 : SparePart;\n        part element4 : SparePart;\n        part element5 : SparePart;\n    }\n\n    part def IntegerList {\n        attribute listSize : Integer;\n        attribute item1 : Integer;\n        attribute item2 : Integer;\n        attribute item3 : Integer;\n        attribute item4 : Integer;\n        attribute item5 : Integer;\n    }\n\n    part def StringSet {\n        attribute setSize : Integer;\n        attribute value1 : String;\n        attribute value2 : String;\n        attribute value3 : String;\n        attribute value4 : String;\n    }\n\n    part def PersonOrderedSet {\n        attribute setSize : Integer;\n        part person1 : Person;\n        part person2 : Person;\n        part person3 : Person;\n        part person4 : Person;\n    }\n\n    part def PersonSetEntry {\n        attribute entryLabel : String;\n        part member1 : Person;\n        part member2 : Person;\n        part member3 : Person;\n    }\n\n    part def ListOfPersonSets {\n        attribute listSize : Integer;\n        part set1 : PersonSetEntry;\n        part set2 : PersonSetEntry;\n        part set3 : PersonSetEntry;\n    }\n\n    part def RealArray {\n        attribute length : Integer = 4;\n        attribute value1 : Real;\n        attribute value2 : Real;\n        attribute value3 : Real;\n        attribute value4 : Real;\n    }\n\n    part def CollectionManager {\n        attribute managerId : String;\n        attribute managerName : String;\n        part sparePartsBag : SparePartBag;\n        part integerList : IntegerList;\n        part stringSet : StringSet;\n        part personnelSet : PersonOrderedSet;\n        part nestedPersonSets : ListOfPersonSets;\n        part realArray : RealArray;\n    }\n\n    part def BusinessSystem {\n        attribute systemId : String;\n        attribute systemName : String;\n        part collectionManager : CollectionManager;\n        part archiveSpareParts : SparePartBag;\n        part managedPersonnel : PersonOrderedSet;\n        part processingArray : RealArray;\n    }\n\n    port def CollectionPort {\n        attribute portId : String;\n    }\n\n    port def BusinessPort {\n        attribute portId : String;\n    }\n\n    part def IntegrationSystem {\n        attribute integrationId : String;\n        port collectionAccess : CollectionPort;\n        port businessAccess : BusinessPort;\n        part mainSystem : BusinessSystem;\n        part backupBag : SparePartBag;\n        part backupPersonnel : PersonOrderedSet;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 452,
+    "output_tokens": 796,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

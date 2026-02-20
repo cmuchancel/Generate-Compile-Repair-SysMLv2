@@ -1,0 +1,29 @@
+{
+  "id": "msg_01NzWzUuTDmZgub2DXK2rtV5",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def OperationalStatus {\n        enum ACTIVE;\n        enum INACTIVE;\n    }\n\n    enum def GearSetting {\n        enum PARK;\n        enum REVERSE;\n        enum NEUTRAL;\n        enum DRIVE;\n    }\n\n    part def Wheel {\n        attribute wheelId : String;\n        attribute diameter : Real;\n    }\n\n    part def Engine {\n        attribute horsepower : Real;\n        attribute engineId : String;\n    }\n\n    part def Driver {\n        attribute driverId : String;\n        attribute name : String;\n    }\n\n    part def VehicleStatus {\n        attribute gearSetting : GearSetting;\n        attribute acceleratorPedalPosition : Real;\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        attribute status : OperationalStatus;\n\n        part vehicleStatus : VehicleStatus;\n        part engine : Engine;\n        part driver : Driver;\n        part leftFrontWheel : Wheel;\n        part rightFrontWheel : Wheel;\n    }\n\n    part def WheelSnapshot {\n        attribute snapshotTime : String;\n        attribute wheelId : String;\n        attribute diameter : Real;\n        attribute notes : String;\n    }\n\n    part def VehicleSnapshot {\n        attribute snapshotTime : String;\n        attribute mass : Real;\n        attribute status : OperationalStatus;\n        part leftFrontWheelSnap : WheelSnapshot;\n        part rightFrontWheelSnap : WheelSnapshot;\n    }\n\n    part vehicle_1 : Vehicle {\n        attribute redefines mass = 1500.0;\n        attribute redefines status = OperationalStatus::ACTIVE;\n\n        part redefines vehicleStatus : VehicleStatus {\n            attribute redefines gearSetting = GearSetting::DRIVE;\n            attribute redefines acceleratorPedalPosition = 0.35;\n        }\n\n        part redefines engine : Engine {\n            attribute redefines horsepower = 200.0;\n            attribute redefines engineId = \"ENG-001\";\n        }\n\n        part redefines driver : Driver {\n            attribute redefines driverId = \"DRV-001\";\n            attribute redefines name = \"John Doe\";\n        }\n\n        part redefines leftFrontWheel : Wheel {\n            attribute redefines wheelId = \"WHL-LF-001\";\n            attribute redefines diameter = 18.0;\n        }\n\n        part redefines rightFrontWheel : Wheel {\n            attribute redefines wheelId = \"WHL-RF-001\";\n            attribute redefines diameter = 18.0;\n        }\n    }\n\n    part snapshot_t1 : VehicleSnapshot {\n        attribute redefines snapshotTime = \"T1\";\n        attribute redefines mass = 1500.0;\n        attribute redefines status = OperationalStatus::ACTIVE;\n\n        part redefines leftFrontWheelSnap : WheelSnapshot {\n            attribute redefines snapshotTime = \"T1\";\n            attribute redefines wheelId = \"WHL-LF-001\";\n            attribute redefines diameter = 18.0;\n            attribute redefines notes = \"Normal condition at T1\";\n        }\n\n        part redefines rightFrontWheelSnap : WheelSnapshot {\n            attribute redefines snapshotTime = \"T1\";\n            attribute redefines wheelId = \"WHL-RF-001\";\n            attribute redefines diameter = 18.0;\n            attribute redefines notes = \"Normal condition at T1\";\n        }\n    }\n\n    part snapshot_t2 : VehicleSnapshot {\n        attribute redefines snapshotTime = \"T2\";\n        attribute redefines mass = 1480.0;\n        attribute redefines status = OperationalStatus::ACTIVE;\n\n        part redefines leftFrontWheelSnap : WheelSnapshot {\n            attribute redefines snapshotTime = \"T2\";\n            attribute redefines wheelId = \"WHL-LF-001\";\n            attribute redefines diameter = 17.8;\n            attribute redefines notes = \"Slight wear at T2\";\n        }\n\n        part redefines rightFrontWheelSnap : WheelSnapshot {\n            attribute redefines snapshotTime = \"T2\";\n            attribute redefines wheelId = \"WHL-RF-001\";\n            attribute redefines diameter = 17.9;\n            attribute redefines notes = \"Minimal wear at T2\";\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 418,
+    "output_tokens": 1128,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

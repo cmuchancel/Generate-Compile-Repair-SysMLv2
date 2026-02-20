@@ -1,0 +1,29 @@
+{
+  "id": "msg_01NbrmWqY5uPd4wm5Pp6i9Fe",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package PowerTransmissionSystem {\n    private import ScalarValues::*;\n\n    part def PowerTransmissionSystem {\n        attribute providePower : Boolean;\n        attribute generateTorque : Boolean;\n    }\n\n    part def LogicalLayer {\n        attribute deliverPower : Boolean;\n        attribute torqueGenerationCapability : Boolean;\n    }\n\n    part def TorqueGenerator {\n        attribute generatingTorque : Boolean;\n    }\n\n    part def PhysicalLayer {\n        part powertrain : Powertrain;\n    }\n\n    part def Powertrain {\n        part engine : Engine;\n    }\n\n    part def Engine {\n        attribute generatingTorque : Boolean;\n    }\n\n    part powerTransmission : PowerTransmissionSystem {\n        attribute providePower : Boolean = true;\n        attribute generateTorque : Boolean = true;\n    }\n\n    part logicalLayer : LogicalLayer {\n        attribute deliverPower : Boolean = true;\n        attribute torqueGenerationCapability : Boolean = true;\n        part torqueGenerator : TorqueGenerator {\n            attribute generatingTorque : Boolean = true;\n        }\n    }\n\n    part physicalLayer : PhysicalLayer {\n        part powertrain : Powertrain {\n            part engine : Engine {\n                attribute generatingTorque : Boolean = true;\n            }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 437,
+    "output_tokens": 334,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "msg_01DGig9MJ2WVWUuCfYnhYV23",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomotiveDomain {\n    private import ScalarValues::*;\n\n    // \u6c7d\u8f66\u9886\u57df\u6807\u51c6\u5316\u5b9a\u4e49\u5305\n    // \u672c\u6a21\u578b\u65e8\u5728\u4e3a\u6c7d\u8f66\u9886\u57df\u7684\u57fa\u672c\u6982\u5ff5\u548c\u5143\u7d20\u63d0\u4f9b\u6807\u51c6\u5316\u5b9a\u4e49\u548c\u6ce8\u91ca\n    // \u4fbf\u4e8e\u5f00\u53d1\u8005\u548c\u7528\u6237\u7406\u89e3\u6bcf\u4e2a\u5143\u7d20\u7684\u542b\u4e49\u548c\u5e94\u7528\u573a\u666f\n\n    // \u626d\u77e9\u7269\u7406\u91cf\u5b9a\u4e49 (Torque physical quantity definition)\n    // \u7528\u4e8e\u6807\u51c6\u5316\u8868\u8fbe\u6c7d\u8f66\u7279\u6027\u4e2d\u7684\u626d\u77e9\u76f8\u5173\u53c2\u6570\n    part def Torque {\n        // \u626d\u77e9\u6570\u503c (Torque value)\n        attribute value : Real;\n        // \u5355\u4f4d\u8bf4\u660e\uff1a\u725b\u987f\u00b7\u7c73 (Unit: Newton-meter)\n        attribute unit : String;\n    }\n\n    // \u6c7d\u8f66\u6838\u5fc3\u90e8\u4ef6\u5b9a\u4e49 (Automobile core component definition)\n    // \u522b\u540d\uff1a\u6c7d\u8f66 (Car)\n    // \u4f5c\u4e3a\u7cfb\u7edf\u6a21\u578b\u7684\u6838\u5fc3\u7ec4\u4ef6\uff0c\u6db5\u76d6\u6c7d\u8f66\u7684\u57fa\u672c\u5c5e\u6027\u548c\u7279\u6027\n    part def Automobile {\n        // \u6c7d\u8f66\u540d\u79f0\u5c5e\u6027 (Automobile name attribute)\n        attribute name : String;\n        // \u6c7d\u8f66\u578b\u53f7 (Automobile model)\n        attribute model : String;\n        // \u6c7d\u8f66\u54c1\u724c (Automobile brand)\n        attribute brand : String;\n        // \u6700\u5927\u901f\u5ea6 (Maximum speed) \u5355\u4f4d: km/h\n        attribute maxSpeed : Real;\n        // \u53d1\u52a8\u673a\u529f\u7387 (Engine power) \u5355\u4f4d: kW\n        attribute enginePower : Real;\n        // \u5173\u8054\u626d\u77e9\u90e8\u4ef6 (Associated torque component)\n        // \u786e\u4fdd\u6c7d\u8f66\u7279\u6027\u7684\u6807\u51c6\u5316\u548c\u4e00\u81f4\u6027\u8868\u8fbe\n        part torque : Torque;\n    }\n\n    // \u6c7d\u8f66\u5b9e\u4f8b\u5b9a\u4e49 (Automobile instance definition)\n    // \u6c7d\u8f66 (Car) - \u6838\u5fc3\u7ec4\u4ef6\u5b9e\u4f8b\n    // \u4e3a\u5404\u79cd\u5e94\u7528\u573a\u666f\u4e2d\u7684\u901a\u4fe1\u548c\u4f7f\u7528\u63d0\u4f9b\u4fbf\u5229\n    part Car : Automobile {\n        // \u9ed8\u8ba4\u540d\u79f0\u8bbe\u7f6e (Default name setting)\n        attribute :>> name = \"\u6c7d\u8f66\";\n        // \u9ed8\u8ba4\u578b\u53f7 (Default model)\n        attribute :>> model = \"\u6807\u51c6\u578b\";\n        // \u9ed8\u8ba4\u54c1\u724c (Default brand)\n        attribute :>> brand = \"\u901a\u7528\";\n        // \u9ed8\u8ba4\u6700\u5927\u901f\u5ea6 (Default maximum speed)\n        attribute :>> maxSpeed = 200.0;\n        // \u9ed8\u8ba4\u53d1\u52a8\u673a\u529f\u7387 (Default engine power)\n        attribute :>> enginePower = 150.0;\n    }\n\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1171,
+    "output_tokens": 672,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

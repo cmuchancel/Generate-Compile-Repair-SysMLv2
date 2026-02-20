@@ -1,0 +1,16 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to implement the functional architecture of an automotive powertrain, including the input of fuel commands, engine start-stop control, and support for power transmission and distribution. Users can control the system’s power output through fuel commands. Once the engine is ignited and started, the system generates engine torque according to the fuel command. The torque is then sequentially amplified from the engine to the transmission, transmitted to the driveshaft, and finally distributed to the left and right wheels, thus enabling control of the vehicle’s driving force. Additionally, users can shut down the engine via a command, triggering the cessation of the system’s powertrain. During engine shutdown, generation and transmission of driving force will likewise be suspended, ensuring safe and intelligent operation of the system.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,29 @@
+{
+  "id": "msg_0141My94bz6inxMxe3ioS6PT",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package CameraSystem {\n    private import ScalarValues::*;\n\n    enum def FocusState {\n        enum Unfocused;\n        enum Focusing;\n        enum Focused;\n    }\n\n    enum def CaptureState {\n        enum Idle;\n        enum Capturing;\n        enum Captured;\n    }\n\n    enum def DisplayState {\n        enum Off;\n        enum Displaying;\n    }\n\n    item def Scene;\n    item def Image;\n    item def Photo;\n\n    port def SceneInputPort {\n        attribute sceneReady : Boolean;\n    }\n\n    port def ImagePort {\n        attribute imageAvailable : Boolean;\n    }\n\n    port def PhotoPort {\n        attribute photoReady : Boolean;\n    }\n\n    port def DisplayPort {\n        attribute displayActive : Boolean;\n    }\n\n    part def User {\n        port sceneOut : SceneInputPort;\n    }\n\n    part def FocusUnit {\n        attribute focusState : FocusState;\n        port sceneIn : SceneInputPort;\n        port imageOut : ImagePort;\n    }\n\n    part def CaptureUnit {\n        attribute captureState : CaptureState;\n        port imageIn : ImagePort;\n        port photoOut : PhotoPort;\n    }\n\n    part def DisplayUnit {\n        attribute displayState : DisplayState;\n        port photoIn : PhotoPort;\n        port displayOut : DisplayPort;\n    }\n\n    part def Screen {\n        attribute active : Boolean;\n        port displayIn : DisplayPort;\n    }\n\n    part def Camera {\n        attribute cameraId : String;\n\n        part user : User;\n        part focusUnit : FocusUnit;\n        part captureUnit : CaptureUnit;\n        part displayUnit : DisplayUnit;\n        part screen : Screen;\n\n        connect user.sceneOut to focusUnit.sceneIn;\n        connect focusUnit.imageOut to captureUnit.imageIn;\n        connect captureUnit.photoOut to displayUnit.photoIn;\n        connect displayUnit.displayOut to screen.displayIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 387,
+    "output_tokens": 498,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

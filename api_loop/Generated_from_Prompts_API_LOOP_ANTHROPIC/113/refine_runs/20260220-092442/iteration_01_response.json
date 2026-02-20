@@ -1,0 +1,29 @@
+{
+  "id": "msg_01TaqyoXuXdqUE5rdM4MsSFa",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def VehicleStatus {\n        enum SHUTDOWN;\n        enum STARTUP;\n        enum NORMAL;\n        enum DEGRADED;\n    }\n\n    enum def FuelType {\n        enum GASOLINE;\n        enum DIESEL;\n        enum ELECTRIC;\n        enum HYBRID;\n    }\n\n    item def StartSignal;\n    item def BrakePedalSignal;\n    item def OverheatWarning;\n    item def ShutdownSignal;\n    item def HealthStatusSignal;\n    item def MaintenanceSignal;\n    item def FaultRecoverySignal;\n    item def ControlSignal;\n\n    port def VehicleOutputPort {\n        out attribute statusOut : VehicleStatus;\n        out attribute overheatWarningOut : Boolean;\n        out attribute healthStatusOut : Boolean;\n        out attribute maintenanceRequestOut : Boolean;\n        out attribute faultRecoveryOut : Boolean;\n        out attribute currentTemperatureOut : Real;\n    }\n\n    port def VehicleInputPort {\n        in attribute startSignalIn : Boolean;\n        in attribute brakePedalIn : Boolean;\n        in attribute shutdownSignalIn : Boolean;\n        in attribute controlSignalIn : Boolean;\n    }\n\n    port def ControllerOutputPort {\n        out attribute startSignalOut : Boolean;\n        out attribute shutdownSignalOut : Boolean;\n        out attribute controlSignalOut : Boolean;\n    }\n\n    port def ControllerInputPort {\n        in attribute statusIn : VehicleStatus;\n        in attribute overheatWarningIn : Boolean;\n        in attribute healthStatusIn : Boolean;\n        in attribute maintenanceRequestIn : Boolean;\n        in attribute faultRecoveryIn : Boolean;\n        in attribute currentTemperatureIn : Real;\n    }\n\n    part def Vehicle {\n        attribute vehicleId : String;\n        attribute fuelType : FuelType;\n        attribute maintenanceIntervalKm : Real;\n        attribute temperatureThreshold : Real;\n        attribute currentTemperature : Real;\n        attribute status : VehicleStatus;\n        attribute brakePedalPressed : Boolean;\n        attribute startSignalReceived : Boolean;\n        attribute shutdownSignalReceived : Boolean;\n        attribute overheatDetected : Boolean;\n        attribute selfInspectionPassed : Boolean;\n        attribute powerSupplyReady : Boolean;\n        attribute maintenanceDue : Boolean;\n        attribute faultDetected : Boolean;\n        attribute faultRecovered : Boolean;\n        attribute kmSinceLastMaintenance : Real;\n        attribute healthStatus : Boolean;\n\n        port vehicleOut : VehicleOutputPort;\n        port vehicleIn : VehicleInputPort;\n    }\n\n    part def VehicleController {\n        attribute controllerId : String;\n        attribute autoStartEnabled : Boolean;\n        attribute autoShutdownEnabled : Boolean;\n        attribute receivedStatus : VehicleStatus;\n        attribute receivedOverheatWarning : Boolean;\n        attribute receivedHealthStatus : Boolean;\n        attribute receivedMaintenanceRequest : Boolean;\n        attribute receivedFaultRecovery : Boolean;\n        attribute receivedTemperature : Real;\n        attribute startCommandIssued : Boolean;\n        attribute shutdownCommandIssued : Boolean;\n\n        port controllerOut : ControllerOutputPort;\n        port controllerIn : ControllerInputPort;\n    }\n\n    part def VehicleSystem {\n        attribute systemName : String;\n        attribute systemVersion : String;\n        attribute fuelConfiguration : FuelType;\n        attribute globalMaintenanceInterval : Real;\n        attribute globalTemperatureThreshold : Real;\n\n        part vehicle : Vehicle {\n            attribute vehicleId = \"V-001\";\n            attribute fuelType = FuelType::GASOLINE;\n            attribute maintenanceIntervalKm = 10000.0;\n            attribute temperatureThreshold = 95.0;\n            attribute currentTemperature = 20.0;\n            attribute status = VehicleStatus::SHUTDOWN;\n            attribute brakePedalPressed = false;\n            attribute startSignalReceived = false;\n            attribute shutdownSignalReceived = false;\n            attribute overheatDetected = false;\n            attribute selfInspectionPassed = false;\n            attribute powerSupplyReady = false;\n            attribute maintenanceDue = false;\n            attribute faultDetected = false;\n            attribute faultRecovered = false;\n            attribute kmSinceLastMaintenance = 0.0;\n            attribute healthStatus = true;\n        }\n\n        part controller : VehicleController {\n            attribute controllerId = \"VC-001\";\n            attribute autoStartEnabled = true;\n            attribute autoShutdownEnabled = true;\n            attribute receivedOverheatWarning = false;\n            attribute receivedHealthStatus = true;\n            attribute receivedMaintenanceRequest = false;\n            attribute receivedFaultRecovery = false;\n            attribute receivedTemperature = 20.0;\n            attribute startCommandIssued = false;\n            attribute shutdownCommandIssued = false;\n        }\n\n        connect vehicle.vehicleOut to controller.controllerIn;\n        connect controller.controllerOut to vehicle.vehicleIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 479,
+    "output_tokens": 1273,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

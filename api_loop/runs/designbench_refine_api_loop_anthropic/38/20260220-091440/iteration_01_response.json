@@ -1,0 +1,29 @@
+{
+  "id": "msg_012XkkH998RU7aVxrLurHs4L",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleManagement {\n    private import ScalarValues::*;\n\n    enum def VehicleStatus {\n        enum shutdown;\n        enum startingUp;\n        enum running;\n    }\n\n    enum def SignalType {\n        enum startSignal;\n        enum startedSignal;\n        enum shutdownSignal;\n    }\n\n    item def VehicleSignal {\n        attribute signalType : SignalType;\n    }\n\n    port def UserControlPort {\n        attribute inputSignal : SignalType;\n    }\n\n    port def StatusPort {\n        attribute currentStatus : VehicleStatus;\n    }\n\n    part def VehicleController {\n        attribute vehicleStatus : VehicleStatus = VehicleStatus::shutdown;\n        attribute lastSignalReceived : SignalType;\n        port controlInput : UserControlPort;\n        port statusOutput : StatusPort;\n    }\n\n    part def UserInterface {\n        attribute userSignal : SignalType;\n        port controlOutput : UserControlPort;\n    }\n\n    part def StatusMonitor {\n        attribute monitoredStatus : VehicleStatus;\n        port statusInput : StatusPort;\n    }\n\n    part def VehicleSystem {\n        part controller : VehicleController;\n        part userInterface : UserInterface;\n        part statusMonitor : StatusMonitor;\n\n        connect userInterface.controlOutput to controller.controlInput;\n        connect controller.statusOutput to statusMonitor.statusInput;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 395,
+    "output_tokens": 350,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

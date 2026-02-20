@@ -1,0 +1,123 @@
+Pretend MBSE Requirements — Assistive Sit-to-Stand Wheelchair Add-on
+Requirements and constraints for a device that assists a wheelchair user in transferring from sitting to standing,
+        emphasizing independence, stability, simplicity of operation, and practical manufacturability.
+1) Mission and scope requirements
+R-MSN-001 (Primary function)
+The system shall assist a wheelchair user in transferring from a seated position to a standing position.
+R-MSN-002 (Use contexts)
+The system shall support use in home and care-facility environments, enabling frequent transfers throughout a typical day.
+R-MSN-003 (Independence objective)
+The system shall support independent use by the intended user without requiring a high-strength assistant for normal operation.
+R-MSN-004 (Integration objective)
+The system shall be compatible with a standard manual wheelchair form factor and shall not prevent normal wheelchair mobility when not transferring.
+R-MSN-005 (Portability objective)
+The system shall remain usable by a wheelchair-bound person without requiring external setup equipment beyond what is integrated on the chair.
+2) Functional performance requirements
+R-PERF-001 (Transfer motion)
+The system shall create a controlled transfer motion that supports moving the user’s center of mass toward a stable standing posture.
+R-PERF-002 (Assistive action at seat)
+The system shall apply an assistive action to the seat region to provide a helping effect during transfer, reducing required user effort.
+R-PERF-003 (Minimum transfer angle)
+The system shall enable a seat/transfer interface rotation of at least
+45 degrees
+from horizontal during the assist phase.
+R-PERF-004 (Assistive force capability)
+The system shall be capable of providing an assistive force during motion sufficient to materially reduce the user’s required standing effort.
+R-PERF-005 (Speed of use)
+The system shall complete the assistive transfer motion within a time duration that is practical for routine daily use and competitive with existing approaches.
+R-PERF-006 (Repeatability)
+The system shall provide repeatable transfer behavior across repeated cycles without requiring recalibration between normal uses.
+3) Key constraints
+R-CNST-001 (Load capacity)
+The system shall support a minimum user load of
+185 lb
+during transfer operations.
+R-CNST-002 (Added push burden)
+The system shall add no more than
+40 N
+of additional push effort compared to the baseline wheelchair during typical rolling movement.
+R-CNST-003 (Packaging envelope)
+The system shall fit within an available wheelchair integration envelope with maximum added dimensions not exceeding
+18 inches
+in any single direction beyond allowable integration boundaries.
+R-CNST-004 (Standing-moment contribution)
+The system shall provide more than
+50%
+of the standing moment required during the transfer, relative to an unassisted transfer.
+R-CNST-005 (Cost constraint)
+The system shall be designed with low cost as a primary constraint, suitable for broad accessibility across individual users and facilities.
+R-CNST-006 (Simplicity constraint)
+The system shall be simple and easy to use, avoiding complex setup steps and minimizing required user training.
+4) Interfaces and compatibility requirements
+R-INT-001 (Wheelchair structural interface)
+The system shall attach to or integrate with the wheelchair structure without compromising the wheelchair’s structural integrity during normal mobility and during transfer.
+R-INT-002 (User interface)
+The system shall include an intuitive user control interface that can be operated by low-strength users while seated.
+R-INT-003 (Power interface)
+The system shall include a defined power interface suitable for the intended deployment environment(s) and shall ensure safe electrical connections and protection.
+R-INT-004 (Mobility compatibility)
+The system shall not obstruct wheels, hand rims, brakes, footrests, or other essential mobility and access features of the wheelchair.
+5) Safety and assurance requirements
+R-SAFE-001 (Stability and confidence)
+The system shall maintain user stability throughout the assist cycle and shall not introduce tipping or unsafe oscillation under expected use conditions.
+R-SAFE-002 (Structural factor of safety)
+Load-bearing structural elements shall meet a minimum factor of safety of
+4.5
+under specified worst-case operating loads.
+R-SAFE-003 (Controlled motion)
+The system shall provide controlled motion during transfer, including the ability to stop the motion safely if needed.
+R-SAFE-004 (Fail-safe behavior)
+In the event of loss of power or a detected fault, the system shall transition to a safe state that prevents uncontrolled motion and maintains user safety.
+R-SAFE-005 (Pinch/entrapment protection)
+The system shall minimize pinch points and entrapment hazards for the user and nearby caregivers during operation.
+6) Reliability, maintainability, and lifecycle requirements
+R-RAM-001 (Durability)
+The system shall withstand repeated daily transfer cycles over its intended service life without loss of function.
+R-RAM-002 (Maintainability)
+The system shall allow routine inspection and maintenance with commonly available tools and without specialized equipment.
+R-RAM-003 (Serviceability)
+Replaceable wear components (if any) shall be replaceable without requiring disassembly of major wheelchair elements.
+R-RAM-004 (Cleanability)
+Surfaces in user contact areas shall be cleanable, and soft goods (if present) shall be removable or otherwise maintainable for hygiene.
+7) Verification and validation requirements
+R-VER-001 (Functional demonstration)
+The system shall be verifiable by demonstrating a complete assisted transfer from seated to standing for the minimum user load.
+R-VER-002 (Angle verification)
+The system shall be verifiable by measuring that the transfer interface achieves at least 45 degrees during operation.
+R-VER-003 (Stability verification)
+The system shall be verifiable by testing that stability is maintained throughout the transfer under expected user motions and operating conditions.
+R-VER-004 (Structural verification)
+The system shall be verifiable through analysis and/or test that the minimum factor of safety requirement is met for load-bearing components.
+R-VER-005 (Usability validation)
+The system shall be validated via user trials demonstrating that intended users can understand and operate the controls after minimal instruction.
+Logical system breakdown (requirements-oriented functional “boxes”)
+Transfer Assistance Subsystem
+Generate the assistive transfer motion
+Apply assistive action to the seat/interface region
+Limit motion to the intended range
+User Interface & Controls Subsystem
+Provide user-initiated start/stop control
+Provide clear status indication (e.g., ready/in-motion/fault)
+Provide safe stop capability during operation
+Wheelchair Integration Subsystem
+Provide mechanical attachment and alignment features
+Preserve wheelchair mobility functions and access features
+Maintain overall structural integrity of the wheelchair
+Load Path & Structural Support Subsystem
+Support user load during seating and transfer
+Meet minimum factor of safety requirements
+Maintain stability against tipping and excessive deflection
+Power & Protection Subsystem
+Provide required operational power
+Provide electrical protection and safe connection/disconnection
+Support safe behavior under power loss or fault conditions
+Safety & Assurance Subsystem
+Prevent uncontrolled motion
+Reduce pinch/entrapment hazards
+Support user confidence through predictable behavior
+Maintenance & Lifecycle Support Subsystem
+Enable inspection/maintenance with common tools
+Support cleaning/hygiene requirements
+Support replacement of wear components (if any)
+This breakdown is intentionally solution-agnostic and structured to support MBSE functional decomposition and concept exploration.
+Note: This is a pretend requirements set intended for MBSE exercises (requirements, constraints, verification hooks, and logical decomposition), not a final product specification.

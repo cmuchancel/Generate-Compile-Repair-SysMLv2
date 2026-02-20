@@ -1,0 +1,29 @@
+{
+  "id": "msg_01EZ7FQTYwFgoVBzyifWGDn6",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package CruiseControl {\n    private import ScalarValues::*;\n\n    enum def SpeedCommandType {\n        enum SET;\n        enum CANCEL;\n        enum RESUME;\n    }\n\n    item def SetSpeedItem {\n        attribute targetSpeed : Real;\n        attribute command : SpeedCommandType;\n    }\n\n    item def ActualSpeedItem {\n        attribute actualSpeed : Real;\n    }\n\n    item def FuelControlItem {\n        attribute fuelAdjustment : Real;\n    }\n\n    port def DriverInputPort {\n        out item setSpeedSignal : SetSpeedItem;\n    }\n\n    port def DriverInputReceivePort {\n        in item setSpeedSignal : SetSpeedItem;\n    }\n\n    port def SpeedSensorOutputPort {\n        out item speedReading : ActualSpeedItem;\n    }\n\n    port def SpeedSensorReceivePort {\n        in item speedReading : ActualSpeedItem;\n    }\n\n    port def FuelControlOutputPort {\n        out item fuelCommand : FuelControlItem;\n    }\n\n    port def FuelControlReceivePort {\n        in item fuelCommand : FuelControlItem;\n    }\n\n    part def CruiseControlInterface {\n        attribute driverSetSpeed : Real;\n        attribute commandType : SpeedCommandType;\n        port driverOut : DriverInputPort;\n    }\n\n    part def SpeedSensor {\n        attribute measuredSpeed : Real;\n        port sensorOut : SpeedSensorOutputPort;\n    }\n\n    part def CruiseController {\n        attribute targetSpeed : Real;\n        attribute currentSpeed : Real;\n        attribute speedError : Real;\n        port controllerDriverIn : DriverInputReceivePort;\n        port controllerSensorIn : SpeedSensorReceivePort;\n        port controllerFuelOut : FuelControlOutputPort;\n    }\n\n    part def Engine {\n        attribute fuelLevel : Real;\n        attribute powerOutput : Real;\n        port engineFuelIn : FuelControlReceivePort;\n    }\n\n    part def CruiseControlSystem {\n        part cruiseInterface : CruiseControlInterface;\n        part sensor : SpeedSensor;\n        part controller : CruiseController;\n        part engine : Engine;\n\n        connect cruiseInterface.driverOut to controller.controllerDriverIn;\n        connect sensor.sensorOut to controller.controllerSensorIn;\n        connect controller.controllerFuelOut to engine.engineFuelIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2290,
+    "output_tokens": 602,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

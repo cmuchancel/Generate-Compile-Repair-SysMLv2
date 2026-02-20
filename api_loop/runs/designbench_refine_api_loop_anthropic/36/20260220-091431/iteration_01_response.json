@@ -1,0 +1,29 @@
+{
+  "id": "msg_01JYpJ1Vu73vuZtF5LW2AxUu",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleStateManagement {\n    private import ScalarValues::*;\n\n    enum def VehicleState {\n        enum off;\n        enum starting;\n        enum on;\n    }\n\n    enum def ControlSignal {\n        enum VehicleStartSignal;\n        enum VehicleOnSignal;\n        enum VehicleOffSignal;\n    }\n\n    part def VehicleController {\n        attribute currentState : VehicleState = VehicleState::off;\n        attribute lastSignal : ControlSignal;\n    }\n\n    part def VehicleSystem {\n        attribute vehicleId : String;\n        attribute initialState : VehicleState = VehicleState::off;\n        attribute activeState : VehicleState = VehicleState::off;\n        attribute currentSignal : ControlSignal;\n\n        part controller : VehicleController;\n    }\n\n    part def StateTransitionRecord {\n        attribute fromState : VehicleState;\n        attribute toState : VehicleState;\n        attribute triggerSignal : ControlSignal;\n    }\n\n    part def OffState {\n        attribute stateId : VehicleState = VehicleState::off;\n        attribute description : String = \"Vehicle is powered off\";\n        attribute transitionSignal : ControlSignal = ControlSignal::VehicleStartSignal;\n    }\n\n    part def StartingState {\n        attribute stateId : VehicleState = VehicleState::starting;\n        attribute description : String = \"Vehicle is in starting process\";\n        attribute transitionSignal : ControlSignal = ControlSignal::VehicleOnSignal;\n    }\n\n    part def OnState {\n        attribute stateId : VehicleState = VehicleState::on;\n        attribute description : String = \"Vehicle is running\";\n        attribute transitionSignal : ControlSignal = ControlSignal::VehicleOffSignal;\n    }\n\n    port def SignalInputPort {\n        attribute signalType : ControlSignal;\n    }\n\n    port def StateOutputPort {\n        attribute stateValue : VehicleState;\n    }\n\n    part def SignalProcessor {\n        attribute processorId : String;\n        attribute incomingSignal : ControlSignal;\n        attribute outgoingState : VehicleState;\n\n        port signalIn : SignalInputPort;\n        port stateOut : StateOutputPort;\n    }\n\n    part vehicleSystem : VehicleSystem {\n        part offStateHandler : OffState;\n        part startingStateHandler : StartingState;\n        part onStateHandler : OnState;\n        part transitionRecord : StateTransitionRecord;\n        part signalProcessor : SignalProcessor;\n    }\n\n    part def VehicleMonitor {\n        attribute monitorId : String;\n        attribute observedState : VehicleState;\n        attribute observedSignal : ControlSignal;\n\n        port monitorStatePort : StateOutputPort;\n    }\n\n    part vehicleMonitor : VehicleMonitor;\n\n    connect vehicleSystem.signalProcessor.stateOut to vehicleMonitor.monitorStatePort;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 431,
+    "output_tokens": 749,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

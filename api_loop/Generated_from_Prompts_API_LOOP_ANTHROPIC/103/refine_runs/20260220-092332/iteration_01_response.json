@@ -1,0 +1,29 @@
+{
+  "id": "msg_01AQHmxMV6uQsMUe59YdDbPE",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package MultiArchSystem {\n    private import ScalarValues::*;\n\n    port def SignalPort;\n\n    part def C1 {\n        port pb : SignalPort;\n    }\n\n    part def C2 {\n        port pc : SignalPort;\n    }\n\n    part def C3 {\n        port pd : SignalPort;\n    }\n\n    part def C4 {\n        port pe_internal : SignalPort;\n    }\n\n    port def InterfacePE;\n    port def InterfacePF;\n\n    part def A11 {\n        part c1 : C1;\n        part c2 : C2;\n        part c3 : C3;\n        part c4 : C4;\n    }\n\n    part def B11 {\n        part c1 : C1;\n        part c2 : C2;\n        port pe : InterfacePE;\n        connect c1.pb to c2.pc;\n    }\n\n    part def B12 {\n        part c3 : C3;\n        part c4 : C4;\n        port pf : InterfacePF;\n    }\n\n    part def System1 {\n        part b11 : B11;\n        part b12 : B12;\n        connect b11.pe to b12.pf;\n    }\n\n    part def B21 {\n        part c1 : C1;\n        part c2 : C2;\n    }\n\n    part def B22 {\n        part c3 : C3;\n        part c4 : C4;\n    }\n\n    part def System2 {\n        part b21 : B21;\n        part b22 : B22;\n        connect b21.c1.pb to b21.c2.pc;\n    }\n\n    part topSystem : System1;\n    part topSystem2 : System2;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 555,
+    "output_tokens": 456,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

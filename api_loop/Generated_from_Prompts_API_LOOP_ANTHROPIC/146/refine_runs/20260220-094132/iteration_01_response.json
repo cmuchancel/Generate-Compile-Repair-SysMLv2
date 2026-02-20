@@ -1,0 +1,29 @@
+{
+  "id": "msg_01KcrrhCMtP3xzsEAE9VN6cx",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package TrajectoryRecordingSystem {\n    private import ScalarValues::*;\n\n    attribute def TimeReference {\n        attribute missionElapsedSeconds : Real;\n        attribute utcYear : Integer;\n        attribute utcMonth : Integer;\n        attribute utcDay : Integer;\n        attribute utcHour : Integer;\n        attribute utcMinute : Integer;\n        attribute utcSecond : Real;\n    }\n\n    attribute def CartesianPosition {\n        attribute x : Real;\n        attribute y : Real;\n        attribute z : Real;\n    }\n\n    attribute def CartesianVelocity {\n        attribute vx : Real;\n        attribute vy : Real;\n        attribute vz : Real;\n    }\n\n    attribute def Trajectorysample {\n        attribute timePoint : Real;\n        attribute position : CartesianPosition;\n        attribute velocity : CartesianVelocity;\n    }\n\n    part def LiftoffTimeReference {\n        attribute utcHour : Integer = 22;\n        attribute utcMinute : Integer = 42;\n        attribute utcSecond : Real = 32.924534;\n        attribute utcYear : Integer = 2020;\n        attribute utcMonth : Integer = 8;\n        attribute utcDay : Integer = 23;\n        attribute referenceTimeZero : Real = 0.0;\n    }\n\n    part def AscentTrajectoryRecorder {\n        attribute missionName : String;\n\n        attribute sample0 : Trajectorysample;\n        attribute sample1 : Trajectorysample;\n        attribute sample2 : Trajectorysample;\n        attribute sample3 : Trajectorysample;\n        attribute sample4 : Trajectorysample;\n        attribute sample5 : Trajectorysample;\n        attribute sample6 : Trajectorysample;\n        attribute sample7 : Trajectoryample;\n        attribute sample8 : Trajectoryample;\n        attribute sample9 : Trajectoryample;\n\n        part liftoffRef : LiftoffTimeReference;\n    }\n\n    part def SpacecraftAscentSystem {\n        part recorder : AscentTrajectoryRecorder;\n    }\n\n    part ascentSystem : SpacecraftAscentSystem {\n        part recorder : AscentTrajectoryRecorder {\n            attribute missionName : String = \"AscentMission_20200823\";\n\n            attribute sample0 : Trajectoryample = {\n                timePoint = 0.0;\n                position = { x = 0.0; y = 0.0; z = 0.0; };\n                velocity = { vx = 0.0; vy = 0.0; vz = 0.0; };\n            };\n\n            attribute sample1 : Trajectoryample = {\n                timePoint = 10.0;\n                position = { x = 0.0; y = 0.0; z = 50.0; };\n                velocity = { vx = 0.0; vy = 0.0; vz = 10.0; };\n            };\n\n            attribute sample2 : Trajectoryample = {\n                timePoint = 20.0;\n                position = { x = 0.0; y = 0.0; z = 200.0; };\n                velocity = { vx = 0.0; vy = 0.0; vz = 30.0; };\n            };\n\n            attribute sample3 : Trajectoryample = {\n                timePoint = 30.0;\n                position = { x = 10.0; y = 5.0; z = 500.0; };\n                velocity = { vx = 1.0; vy = 0.5; vz = 60.0; };\n            };\n\n            attribute sample4 : Trajectoryample = {\n                timePoint = 60.0;\n                position = { x = 50.0; y = 25.0; z = 2000.0; };\n                velocity = { vx = 5.0; vy = 2.5; vz = 150.0; };\n            };\n\n            attribute sample5 : Trajectoryample = {\n                timePoint = 120.0;\n                position = { x = 200.0; y = 100.0; z = 8000.0; };\n                velocity = { vx = 20.0; vy = 10.0; vz = 400.0; };\n            };\n\n            attribute sample6 : Trajectoryample = {\n                timePoint = 180.0;\n                position = { x = 500.0; y = 250.0; z = 20000.0; };\n                velocity = { vx = 50.0; vy = 25.0; vz = 900.0; };\n            };\n\n            attribute sample7 : Trajectoryample = {\n                timePoint = 240.0;\n                position = { x = 1000.0; y = 500.0; z = 40000.0; };\n                velocity = { vx = 100.0; vy = 50.0; vz = 1500.0; };\n            };\n\n            attribute sample8 : Trajectoryample = {\n                timePoint = 300.0;\n                position = { x = 2000.0; y = 1000.0; z = 70000.0; };\n                velocity = { vx = 200.0; vy = 100.0; vz = 2200.0; };\n            };\n\n            attribute sample9 : Trajectoryample = {\n                timePoint = 360.0;\n                position = { x = 3500.0; y = 1750.0; z = 110000.0; };\n                velocity = { vx = 350.0; vy = 175.0; vz = 3000.0; };\n            };\n\n            part liftoffRef : LiftoffTimeReference;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 458,
+    "output_tokens": 1423,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

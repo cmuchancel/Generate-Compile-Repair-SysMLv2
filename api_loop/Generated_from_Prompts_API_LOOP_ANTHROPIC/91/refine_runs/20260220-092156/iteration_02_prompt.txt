@@ -1,0 +1,198 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to identify and analyze potential risks and failure scenarios that may occur in the equipment. The equipment includes key components such as batteries, and it is required to continuously monitor the battery level during operation. When the probability of battery failure increases due to aging or other factors, the system must be able to detect such situations and identify the risk that “battery aging” may lead to “low battery level.” When the battery level falls below the set minimum threshold, the system should determine that the equipment is in a “low battery” state and further analyze the situation. If this state persists for a prolonged period without recovery, the device may automatically shut down, resulting in the failure consequence of “device shutdown.” For high-level failures that may cause the interruption of critical device functions, the system should assign an appropriate severity level in order to alert users and maintenance personnel, allowing timely intervention to mitigate potential risks and thus ensure the reliable operation of the equipment and the normal usage needs of the user.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package BatteryRiskAnalysis {
+    private import ScalarValues::*;
+
+    enum def SeverityLevel {
+        enum LOW;
+        enum MEDIUM;
+        enum HIGH;
+        enum CRITICAL;
+    }
+
+    enum def BatteryState {
+        enum NORMAL;
+        enum LOW_BATTERY;
+        enum SHUTDOWN;
+    }
+
+    enum def RiskState {
+        enum NO_RISK;
+        enum AGING_DETECTED;
+        enum FAILURE_PROBABLE;
+    }
+
+    part def Battery {
+        attribute batteryLevel : Real;
+        attribute minimumThreshold : Real;
+        attribute agingFactor : Real;
+        attribute currentState : BatteryState;
+        attribute failureProbability : Real;
+    }
+
+    part def RiskMonitor {
+        attribute monitoringActive : Boolean;
+        attribute detectedRisk : RiskState;
+        attribute riskDescription : String;
+        attribute severityLevel : SeverityLevel;
+    }
+
+    part def FailureScenario {
+        attribute scenarioName : String;
+        attribute cause : String;
+        attribute consequence : String;
+        attribute severityLevel : SeverityLevel;
+        attribute probabilityThreshold : Real;
+    }
+
+    part def DeviceShutdownEvent {
+        attribute isShutdown : Boolean;
+        attribute shutdownCause : String;
+        attribute durationBelowThreshold : Real;
+        attribute shutdownTriggerDuration : Real;
+    }
+
+    part def AlertSystem {
+        attribute alertActive : Boolean;
+        attribute alertMessage : String;
+        attribute alertSeverity : SeverityLevel;
+        attribute notifyUser : Boolean;
+        attribute notifyMaintenance : Boolean;
+    }
+
+    port def BatteryDataPort {
+        attribute level : Real;
+        attribute state : BatteryState;
+    }
+
+    port def RiskDataPort {
+        attribute risk : RiskState;
+        attribute severity : SeverityLevel;
+    }
+
+    part def Equipment {
+        attribute equipmentId : String;
+        attribute operationalStatus : Boolean;
+
+        part battery : Battery {
+            attribute batteryLevel : Real = 100.0;
+            attribute minimumThreshold : Real = 20.0;
+            attribute agingFactor : Real = 0.0;
+            attribute currentState : BatteryState = BatteryState::NORMAL;
+            attribute failureProbability : Real = 0.0;
+        }
+
+        part riskMonitor : RiskMonitor {
+            attribute monitoringActive : Boolean = true;
+            attribute detectedRisk : RiskState = RiskState::NO_RISK;
+            attribute riskDescription : String = "No risk detected";
+            attribute severityLevel : SeverityLevel = SeverityLevel::LOW;
+        }
+
+        part batteryAgingScenario : FailureScenario {
+            attribute scenarioName : String = "Battery Aging Failure";
+            attribute cause : String = "Battery aging increases failure probability";
+            attribute consequence : String = "Low battery level";
+            attribute severityLevel : SeverityLevel = SeverityLevel::HIGH;
+            attribute probabilityThreshold : Real = 0.7;
+        }
+
+        part lowBatteryScenario : FailureScenario {
+            attribute scenarioName : String = "Low Battery State";
+            attribute cause : String = "Battery level below minimum threshold";
+            attribute consequence : String = "Device shutdown";
+            attribute severityLevel : SeverityLevel = SeverityLevel::CRITICAL;
+            attribute probabilityThreshold : Real = 0.9;
+        }
+
+        part shutdownEvent : DeviceShutdownEvent {
+            attribute isShutdown : Boolean = false;
+            attribute shutdownCause : String = "Prolonged low battery state";
+            attribute durationBelowThreshold : Real = 0.0;
+            attribute shutdownTriggerDuration : Real = 300.0;
+        }
+
+        part alertSystem : AlertSystem {
+            attribute alertActive : Boolean = false;
+            attribute alertMessage : String = "Battery risk detected";
+            attribute alertSeverity : SeverityLevel = SeverityLevel::HIGH;
+            attribute notifyUser : Boolean = true;
+            attribute notifyMaintenance : Boolean = true;
+        }
+
+        port batteryOut : BatteryDataPort;
+        port riskOut : RiskDataPort;
+    }
+
+    part equipment : Equipment {
+        attribute equipmentId : String = "DEVICE-001";
+        attribute operationalStatus : Boolean = true;
+    }
+
+    connect equipment.batteryOut to equipment.riskOut;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:63:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    63 |         attribute state : BatteryState;
+       |                   ^^^^^
+iteration_01.sysml:76:23: warning (namespace-distinguishability): Member name 'batteryLevel' shadows BatteryRiskAnalysis::Battery::batteryLevel
+│   76 |             attribute batteryLevel : Real = 100.0;
+│      |                       ^^^^^^^^^^^^
+└── iteration_01.sysml:24:19: note: Inherited from here
+    └── iteration_01.sysml:75:24: note: Because BatteryRiskAnalysis::Battery is specialized through FeatureTyping
+iteration_01.sysml:77:23: warning (namespace-distinguishability): Member name 'minimumThreshold' shadows BatteryRiskAnalysis::Battery::minimumThreshold
+│   77 |             attribute minimumThreshold : Real = 20.0;
+│      |                       ^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:25:19: note: Inherited from here
+    └── iteration_01.sysml:75:24: note: Because BatteryRiskAnalysis::Battery is specialized through FeatureTyping
+iteration_01.sysml:78:23: warning (namespace-distinguishability): Member name 'agingFactor' shadows BatteryRiskAnalysis::Battery::agingFactor
+│   78 |             attribute agingFactor : Real = 0.0;
+│      |                       ^^^^^^^^^^^
+└── iteration_01.sysml:26:19: note: Inherited from here
+    └── iteration_01.sysml:75:24: note: Because BatteryRiskAnalysis::Battery is specialized through FeatureTyping
+iteration_01.sysml:79:23: warning (namespace-distinguishability): Member name 'currentState' shadows BatteryRiskAnalysis::Battery::currentState
+│   79 |             attribute currentState : BatteryState = BatteryState::NORMAL;
+│      |                       ^^^^^^^^^^^^
+└── iteration_01.sysml:27:19: note: Inherited from here
+    └── iteration_01.sysml:75:24: note: Because BatteryRiskAnalysis::Battery is specialized through FeatureTyping
+iteration_01.sysml:80:23: warning (namespace-distinguishability): Member name 'failureProbability' shadows BatteryRiskAnalysis::Battery::failureProbability
+│   80 |             attribute failureProbability : Real = 0.0;
+│      |                       ^^^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:28:19: note: Inherited from here
+    └── iteration_01.sysml:75:24: note: Because BatteryRiskAnalysis::Battery is specialized through FeatureTyping
+iteration_01.sysml:84:23: warning (namespace-distinguishability): Member name 'monitoringActive' shadows BatteryRiskAnalysis::RiskMonitor::monitoringActive
+│   84 |             attribute monitoringActive : Boolean = true;
+│      |                       ^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:32:19: note: Inherited from here
+    └── iteration_01.sysml:83:28: note: Because BatteryRiskAnalysis::RiskMonitor is specialized through FeatureTyping
+iteration_01.sysml:85:23: warning (namespace-distinguishability): Member name 'detectedRisk' shadows BatteryRiskAnalysis::RiskMonitor::detectedRisk
+│   85 |             attribute detectedRisk : RiskState = RiskState::NO_RISK;
+│      |                       ^^^^^^^^^^^^
+└── iteration_01.sysml:33:19: note: Inherited from here
+    └── iteration_01.sysml:83:28: note: Because BatteryRiskAnalysis::RiskMonitor is specialized through FeatureTyping
+iteration_01.sysml:86:23: warning (namespace-distinguishability): Member name 'riskDescription' shadows BatteryRiskAnalysis::RiskMonitor::riskDescription
+│   86 |             attribute riskDescription : String = "No risk detected";
+... (truncated compiler output) ...
+iteration_01.sysml:110:23: warning (namespace-distinguishability): Member name 'shutdownTriggerDuration' shadows BatteryRiskAnalysis::DeviceShutdownEvent::shutdownTriggerDuration
+│   110 |             attribute shutdownTriggerDuration : Real = 300.0;
+│       |
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

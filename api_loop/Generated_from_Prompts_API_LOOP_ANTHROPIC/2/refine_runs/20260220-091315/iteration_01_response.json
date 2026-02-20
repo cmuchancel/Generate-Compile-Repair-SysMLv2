@@ -1,0 +1,29 @@
+{
+  "id": "msg_017dTmHNqNTk1JVLP2bAQkKo",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    part def Personnel;\n    part def Engine;\n\n    part def Vehicle;\n\n    part def ManuallyOperatedVehicle :> Vehicle {\n        part driver : Personnel[1];\n    }\n\n    part def PoweredVehicle :> Vehicle {\n        part engine : Engine[1];\n    }\n\n    part def ManuallyOperatedPoweredVehicle :> ManuallyOperatedVehicle, PoweredVehicle;\n\n    part manuallyOperatedVehicle : ManuallyOperatedVehicle {\n        part driver : Personnel[1];\n    }\n\n    part poweredVehicle : PoweredVehicle {\n        part engine : Engine[1];\n    }\n\n    part manuallyOperatedPoweredVehicle : ManuallyOperatedPoweredVehicle {\n        part driver : Personnel[1];\n        part engine : Engine[1];\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 394,
+    "output_tokens": 232,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,106 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to budget and constrain the mass of a vehicle, ensuring that the total mass of the complete vehicle—including major components such as the chassis, engine, and transmission—does not exceed 2,500 kilograms. The system requires the actual mass of each component to be entered and uniformly measured using the international unit of kilograms. It will automatically calculate the sum of the component masses and compare the result with the specified mass limit; if the total mass exceeds the limit, the design requirements are not met. Furthermore, as critical components of the vehicle, the masses of the engine and the transmission must be separately recorded and managed. This ensures that, during the preliminary design stage, vehicle curb weight can be effectively controlled through these constraints, providing a fundamental basis for subsequent performance design and energy consumption optimization.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleMassBudget {
+    private import ScalarValues::*;
+
+    attribute def MassValue;
+
+    part def Chassis {
+        attribute actualMass : Real;
+    }
+
+    part def Engine {
+        attribute actualMass : Real;
+    }
+
+    part def Transmission {
+        attribute actualMass : Real;
+    }
+
+    part def Vehicle {
+        attribute massLimit : Real = 2500.0;
+        attribute totalMass : Real;
+        attribute massWithinLimit : Boolean;
+
+        part chassis : Chassis {
+            attribute actualMass : Real = 800.0;
+        }
+
+        part engine : Engine {
+            attribute actualMass : Real = 450.0;
+        }
+
+        part transmission : Transmission {
+            attribute actualMass : Real = 120.0;
+        }
+    }
+
+    part vehicle : Vehicle {
+        attribute redefines massLimit = 2500.0;
+        attribute redefines totalMass = 1370.0;
+        attribute redefines massWithinLimit = true;
+
+        part redefines chassis {
+            attribute redefines actualMass = 800.0;
+        }
+
+        part redefines engine {
+            attribute redefines actualMass = 450.0;
+        }
+
+        part redefines transmission {
+            attribute redefines actualMass = 120.0;
+        }
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:24:23: warning (namespace-distinguishability): Member name 'actualMass' shadows VehicleMassBudget::Chassis::actualMass
+│   24 |             attribute actualMass : Real = 800.0;
+│      |                       ^^^^^^^^^^
+└── iteration_01.sysml:7:19: note: Inherited from here
+    └── iteration_01.sysml:23:24: note: Because VehicleMassBudget::Chassis is specialized through FeatureTyping
+iteration_01.sysml:28:23: warning (namespace-distinguishability): Member name 'actualMass' shadows VehicleMassBudget::Engine::actualMass
+│   28 |             attribute actualMass : Real = 450.0;
+│      |                       ^^^^^^^^^^
+└── iteration_01.sysml:11:19: note: Inherited from here
+    └── iteration_01.sysml:27:23: note: Because VehicleMassBudget::Engine is specialized through FeatureTyping
+iteration_01.sysml:32:23: warning (namespace-distinguishability): Member name 'actualMass' shadows VehicleMassBudget::Transmission::actualMass
+│   32 |             attribute actualMass : Real = 120.0;
+│      |                       ^^^^^^^^^^
+└── iteration_01.sysml:15:19: note: Inherited from here
+    └── iteration_01.sysml:31:29: note: Because VehicleMassBudget::Transmission is specialized through FeatureTyping
+iteration_01.sysml:37:39: error (feature-value-overriding): Cannot override a binding feature value
+│   37 |         attribute redefines massLimit = 2500.0;
+│      |                                       ^^^^^^^^
+└── iteration_01.sysml:19:36: note: Redefined binding feature value here
+iteration_01.sysml:42:44: error (feature-value-overriding): Cannot override a binding feature value
+│   42 |             attribute redefines actualMass = 800.0;
+│      |                                            ^^^^^^^
+└── iteration_01.sysml:24:41: note: Redefined binding feature value here
+iteration_01.sysml:46:44: error (feature-value-overriding): Cannot override a binding feature value
+│   46 |             attribute redefines actualMass = 450.0;
+│      |                                            ^^^^^^^
+└── iteration_01.sysml:28:41: note: Redefined binding feature value here
+iteration_01.sysml:50:44: error (feature-value-overriding): Cannot override a binding feature value
+│   50 |             attribute redefines actualMass = 120.0;
+│      |                                            ^^^^^^^
+└── iteration_01.sysml:32:41: note: Redefined binding feature value here
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

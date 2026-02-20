@@ -1,0 +1,29 @@
+{
+  "id": "msg_019Ut64KCwNULGjKTf1uQGcz",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomotiveConfig {\n    private import ScalarValues::*;\n\n    enum def CylinderDiameter {\n        enum d70;\n        enum d100;\n    }\n\n    enum def TransmissionType {\n        enum Manual;\n        enum Automatic;\n    }\n\n    enum def EngineType {\n        enum FourCylinder;\n        enum SixCylinder;\n    }\n\n    part def Cylinder {\n        attribute diameter : CylinderDiameter;\n    }\n\n    part def Engine {\n        attribute engineType : EngineType;\n    }\n\n    part def FourCylinderEngine :> Engine {\n        attribute redefines engineType = EngineType::FourCylinder;\n        part cylinder1 : Cylinder;\n        part cylinder2 : Cylinder;\n        part cylinder3 : Cylinder;\n        part cylinder4 : Cylinder;\n    }\n\n    part def SixCylinderEngine :> Engine {\n        attribute redefines engineType = EngineType::SixCylinder;\n        part cylinder1 : Cylinder;\n        part cylinder2 : Cylinder;\n        part cylinder3 : Cylinder;\n        part cylinder4 : Cylinder;\n        part cylinder5 : Cylinder;\n        part cylinder6 : Cylinder;\n    }\n\n    part def Transmission {\n        attribute transmissionType : TransmissionType;\n    }\n\n    part def ManualTransmission :> Transmission {\n        attribute redefines transmissionType = TransmissionType::Manual;\n    }\n\n    part def AutomaticTransmission :> Transmission {\n        attribute redefines transmissionType = TransmissionType::Automatic;\n    }\n\n    part def Vehicle {\n        part engine : Engine[1];\n        part transmission : Transmission[1];\n    }\n\n    part def VehicleWith4CylManual :> Vehicle {\n        part redefines engine : FourCylinderEngine[1];\n        part redefines transmission : ManualTransmission[1];\n    }\n\n    part def VehicleWith6CylAutomatic :> Vehicle {\n        part redefines engine : SixCylinderEngine[1];\n        part redefines transmission : AutomaticTransmission[1];\n    }\n\n    part vehicle4CylManual70 : VehicleWith4CylManual {\n        part redefines engine : FourCylinderEngine {\n            part redefines cylinder1 : Cylinder { attribute redefines diameter = CylinderDiameter::d70; }\n            part redefines cylinder2 : Cylinder { attribute redefines diameter = CylinderDiameter::d70; }\n            part redefines cylinder3 : Cylinder { attribute redefines diameter = CylinderDiameter::d70; }\n            part redefines cylinder4 : Cylinder { attribute redefines diameter = CylinderDiameter::d70; }\n        }\n    }\n\n    part vehicle4CylManual100 : VehicleWith4CylManual {\n        part redefines engine : FourCylinderEngine {\n            part redefines cylinder1 : Cylinder { attribute redefines diameter = CylinderDiameter::d100; }\n            part redefines cylinder2 : Cylinder { attribute redefines diameter = CylinderDiameter::d100; }\n            part redefines cylinder3 : Cylinder { attribute redefines diameter = CylinderDiameter::d100; }\n            part redefines cylinder4 : Cylinder { attribute redefines diameter = CylinderDiameter::d100; }\n        }\n    }\n\n    part vehicle6CylAuto70 : VehicleWith6CylAutomatic {\n        part redefines engine : SixCylinderEngine {\n            part redefines cylinder1 : Cylinder { attribute redefines diameter = CylinderDiameter::d70; }\n            part redefines cylinder2 : Cylinder { attribute redefines diameter = CylinderDiameter::d70; }\n            part redefines cylinder3 : Cylinder { attribute redefines diameter = CylinderDiameter::d70; }\n            part redefines cylinder4 : Cylinder { attribute redefines diameter = CylinderDiameter::d70; }\n            part redefines cylinder5 : Cylinder { attribute redefines diameter = CylinderDiameter::d70; }\n            part redefines cylinder6 : Cylinder { attribute redefines diameter = CylinderDiameter::d70; }\n        }\n    }\n\n    part vehicle6CylAuto100 : VehicleWith6CylAutomatic {\n        part redefines engine : SixCylinderEngine {\n            part redefines cylinder1 : Cylinder { attribute redefines diameter = CylinderDiameter::d100; }\n            part redefines cylinder2 : Cylinder { attribute redefines diameter = CylinderDiameter::d100; }\n            part redefines cylinder3 : Cylinder { attribute redefines diameter = CylinderDiameter::d100; }\n            part redefines cylinder4 : Cylinder { attribute redefines diameter = CylinderDiameter::d100; }\n            part redefines cylinder5 : Cylinder { attribute redefines diameter = CylinderDiameter::d100; }\n            part redefines cylinder6 : Cylinder { attribute redefines diameter = CylinderDiameter::d100; }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 440,
+    "output_tokens": 1346,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

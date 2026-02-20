@@ -1,0 +1,29 @@
+{
+  "id": "msg_01KF3RbnjK3eWfPsGXPiM3Lw",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleTrailerHitchSystem {\n    private import ScalarValues::*;\n\n    enum def ConnectionState {\n        enum Connected;\n        enum Disconnected;\n    }\n\n    item def HitchSignal;\n    item def ReleaseSignal;\n\n    port def TowBallPort {\n        attribute state : ConnectionState;\n    }\n\n    port def CouplerPort {\n        attribute state : ConnectionState;\n    }\n\n    part def TowBallDevice {\n        attribute ballDiameter : Real;\n        attribute maxTowLoad : Real;\n        port towBallInterface : TowBallPort;\n    }\n\n    part def Chassis {\n        attribute chassisLength : Real;\n        attribute chassisWidth : Real;\n        part towBall : TowBallDevice;\n    }\n\n    part def CouplerMechanism {\n        attribute isLatched : Boolean;\n        attribute couplerDiameter : Real;\n        port couplerInterface : CouplerPort;\n    }\n\n    part def TrailerChassis {\n        attribute trailerLength : Real;\n        attribute trailerWidth : Real;\n        part coupler : CouplerMechanism;\n    }\n\n    part def Vehicle {\n        part vehicleChassis : Chassis;\n    }\n\n    part def Trailer {\n        part trailerBody : TrailerChassis;\n    }\n\n    part def HitchSystem {\n        attribute connectionStatus : ConnectionState;\n        attribute isHitched : Boolean;\n\n        part vehicle : Vehicle;\n        part trailer : Trailer;\n\n        connect vehicle.vehicleChassis.towBall.towBallInterface\n            to trailer.trailerBody.coupler.couplerInterface;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 407,
+    "output_tokens": 415,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

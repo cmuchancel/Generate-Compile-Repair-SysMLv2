@@ -1,0 +1,29 @@
+{
+  "id": "msg_019f1G28t3nxptzptVjAyH1W",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleStartStop {\n    private import ScalarValues::*;\n\n    enum def VehicleState {\n        enum OFF;\n        enum STARTING;\n        enum OPERATING;\n        enum STOPPING;\n    }\n\n    enum def BrakeState {\n        enum RELEASED;\n        enum DEPRESSED;\n    }\n\n    enum def ParkingBrakeState {\n        enum APPLIED;\n        enum RELEASED;\n    }\n\n    enum def SignalState {\n        enum INACTIVE;\n        enum ACTIVE;\n    }\n\n    item def StartSignal {\n        attribute active : Boolean;\n    }\n\n    item def StopSignal {\n        attribute active : Boolean;\n    }\n\n    item def PowerOnSignal {\n        attribute active : Boolean;\n    }\n\n    item def ControllerStartSignal {\n        attribute active : Boolean;\n    }\n\n    item def SelfCheckResult {\n        attribute passed : Boolean;\n    }\n\n    port def VehicleInputPort {\n        attribute startSignalReceived : Boolean;\n        attribute stopSignalReceived : Boolean;\n        attribute powerOnSignalReceived : Boolean;\n        attribute brakePedalState : BrakeState;\n    }\n\n    port def VehicleOutputPort {\n        attribute currentState : VehicleState;\n        attribute parkingBrakeState : ParkingBrakeState;\n        attribute controllerStartSignalSent : Boolean;\n        attribute powerSupplyActive : Boolean;\n        attribute selfCheckPassed : Boolean;\n    }\n\n    port def ControllerPort {\n        attribute startCommandReceived : Boolean;\n        attribute vehicleState : VehicleState;\n    }\n\n    part def BrakePedalSensor {\n        attribute pedalDepressed : Boolean;\n        attribute brakeState : BrakeState;\n        port sensorOutput : VehicleInputPort;\n    }\n\n    part def ParkingBrakeActuator {\n        attribute brakeApplied : Boolean;\n        attribute parkingBrakeState : ParkingBrakeState;\n        port actuatorInput : VehicleInputPort;\n    }\n\n    part def PowerSupply {\n        attribute supplyActive : Boolean;\n        attribute supplyVoltage : Real;\n        port powerOutput : VehicleOutputPort;\n    }\n\n    part def SelfCheckModule {\n        attribute checkComplete : Boolean;\n        attribute checkPassed : Boolean;\n        port checkOutput : VehicleOutputPort;\n    }\n\n    part def Controller {\n        attribute startCommandReceived : Boolean;\n        attribute vehicleOperating : Boolean;\n        port controllerPort : ControllerPort;\n    }\n\n    part def StartStopControlUnit {\n        attribute currentState : VehicleState = VehicleState::OFF;\n        attribute brakePedalDepressed : Boolean = false;\n        attribute startSignalReceived : Boolean = false;\n        attribute stopSignalReceived : Boolean = false;\n        attribute powerOnSignalReceived : Boolean = false;\n        attribute controllerStartSignalSent : Boolean = false;\n        attribute powerSupplyActive : Boolean = false;\n        attribute selfCheckPassed : Boolean = false;\n        attribute parkingBrakeApplied : Boolean = false;\n\n        port inputPort : VehicleInputPort;\n        port outputPort : VehicleOutputPort;\n        port toController : ControllerPort;\n\n        part brakeSensor : BrakePedalSensor;\n        part parkingBrake : ParkingBrakeActuator;\n        part powerSupply : PowerSupply;\n        part selfCheck : SelfCheckModule;\n        part controller : Controller;\n\n        connect inputPort to brakeSensor.sensorOutput;\n        connect inputPort to parkingBrake.actuatorInput;\n        connect powerSupply.powerOutput to outputPort;\n        connect selfCheck.checkOutput to outputPort;\n        connect toController to controller.controllerPort;\n    }\n\n    part def VehicleStartStopSystem {\n        attribute systemName : String = \"VehicleStartStopSystem\";\n        attribute safetyEnabled : Boolean = true;\n        attribute reliabilityEnabled : Boolean = true;\n\n        part controlUnit : StartStopControlUnit;\n\n        port systemInput : VehicleInputPort;\n        port systemOutput : VehicleOutputPort;\n        port controllerInterface : ControllerPort;\n\n        connect systemInput to controlUnit.inputPort;\n        connect controlUnit.outputPort to systemOutput;\n        connect controlUnit.toController to controllerInterface;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 431,
+    "output_tokens": 1082,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

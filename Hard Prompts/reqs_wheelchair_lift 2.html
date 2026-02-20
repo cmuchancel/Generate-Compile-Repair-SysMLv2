@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pretend MBSE Requirements — Assistive Sit-to-Stand Wheelchair Add-on</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#111a33;
+      --text:#e9eefc;
+      --muted:#b9c3e6;
+      --border:#23305a;
+      --accent:#7aa7ff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 20% 0%, #111a33 0%, var(--bg) 60%);
+      color:var(--text);
+      line-height:1.55;
+    }
+    header{
+      border-bottom:1px solid var(--border);
+      padding:26px 16px 14px;
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 16px 44px;
+    }
+    h1{
+      margin:0 0 6px;
+      font-size:1.55rem;
+      letter-spacing:.2px;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:.98rem;
+    }
+    section{
+      background: rgba(17,26,51,.78);
+      border:1px solid var(--border);
+      border-radius:14px;
+      margin:14px 0;
+      padding:16px 16px 10px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.25);
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:1.15rem;
+      color:#f4f7ff;
+    }
+    .req{
+      padding:10px 12px;
+      margin:10px 0;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: rgba(11,16,32,.55);
+    }
+    .req strong{
+      display:block;
+      margin-bottom:4px;
+      color:#ffffff;
+    }
+    .req p{margin:0;color:var(--text)}
+    .note{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:.92rem;
+    }
+    ul,ol{margin:10px 0 6px 18px}
+    li{margin:6px 0}
+    .tag{
+      display:inline-block;
+      margin-left:8px;
+      padding:2px 8px;
+      border-radius:999px;
+      border:1px solid rgba(122,167,255,.35);
+      background: rgba(122,167,255,.12);
+      color:#dbe7ff;
+      font-size:.8rem;
+      vertical-align:middle;
+    }
+    footer{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:.9rem;
+      padding: 6px 2px 0;
+    }
+    hr{
+      border:0;
+      border-top:1px solid var(--border);
+      margin:12px 0 0;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Pretend MBSE Requirements — Assistive Sit-to-Stand Wheelchair Add-on</h1>
+      <p class="subtitle">
+        Requirements and constraints for a device that assists a wheelchair user in transferring from sitting to standing,
+        emphasizing independence, stability, simplicity of operation, and practical manufacturability.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="scope">
+      <h2>1) Mission and scope requirements</h2>
+
+      <div class="req">
+        <strong>R-MSN-001 (Primary function)</strong>
+        <p>The system shall assist a wheelchair user in transferring from a seated position to a standing position.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-002 (Use contexts)</strong>
+        <p>The system shall support use in home and care-facility environments, enabling frequent transfers throughout a typical day.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-003 (Independence objective)</strong>
+        <p>The system shall support independent use by the intended user without requiring a high-strength assistant for normal operation.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-004 (Integration objective)</strong>
+        <p>The system shall be compatible with a standard manual wheelchair form factor and shall not prevent normal wheelchair mobility when not transferring.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-005 (Portability objective)</strong>
+        <p>The system shall remain usable by a wheelchair-bound person without requiring external setup equipment beyond what is integrated on the chair.</p>
+      </div>
+    </section>
+
+    <section id="performance">
+      <h2>2) Functional performance requirements</h2>
+
+      <div class="req">
+        <strong>R-PERF-001 (Transfer motion)</strong>
+        <p>The system shall create a controlled transfer motion that supports moving the user’s center of mass toward a stable standing posture.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-002 (Assistive action at seat)</strong>
+        <p>The system shall apply an assistive action to the seat region to provide a helping effect during transfer, reducing required user effort.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-003 (Minimum transfer angle)</strong>
+        <p>The system shall enable a seat/transfer interface rotation of at least <b>45 degrees</b> from horizontal during the assist phase.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-004 (Assistive force capability)</strong>
+        <p>The system shall be capable of providing an assistive force during motion sufficient to materially reduce the user’s required standing effort.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-005 (Speed of use)</strong>
+        <p>The system shall complete the assistive transfer motion within a time duration that is practical for routine daily use and competitive with existing approaches.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-006 (Repeatability)</strong>
+        <p>The system shall provide repeatable transfer behavior across repeated cycles without requiring recalibration between normal uses.</p>
+      </div>
+    </section>
+
+    <section id="constraints">
+      <h2>3) Key constraints</h2>
+
+      <div class="req">
+        <strong>R-CNST-001 (Load capacity)</strong>
+        <p>The system shall support a minimum user load of <b>185 lb</b> during transfer operations.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-002 (Added push burden)</strong>
+        <p>The system shall add no more than <b>40 N</b> of additional push effort compared to the baseline wheelchair during typical rolling movement.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-003 (Packaging envelope)</strong>
+        <p>The system shall fit within an available wheelchair integration envelope with maximum added dimensions not exceeding <b>18 inches</b> in any single direction beyond allowable integration boundaries.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-004 (Standing-moment contribution)</strong>
+        <p>The system shall provide more than <b>50%</b> of the standing moment required during the transfer, relative to an unassisted transfer.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-005 (Cost constraint)</strong>
+        <p>The system shall be designed with low cost as a primary constraint, suitable for broad accessibility across individual users and facilities.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-006 (Simplicity constraint)</strong>
+        <p>The system shall be simple and easy to use, avoiding complex setup steps and minimizing required user training.</p>
+      </div>
+    </section>
+
+    <section id="interfaces">
+      <h2>4) Interfaces and compatibility requirements</h2>
+
+      <div class="req">
+        <strong>R-INT-001 (Wheelchair structural interface)</strong>
+        <p>The system shall attach to or integrate with the wheelchair structure without compromising the wheelchair’s structural integrity during normal mobility and during transfer.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-INT-002 (User interface)</strong>
+        <p>The system shall include an intuitive user control interface that can be operated by low-strength users while seated.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-INT-003 (Power interface)</strong>
+        <p>The system shall include a defined power interface suitable for the intended deployment environment(s) and shall ensure safe electrical connections and protection.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-INT-004 (Mobility compatibility)</strong>
+        <p>The system shall not obstruct wheels, hand rims, brakes, footrests, or other essential mobility and access features of the wheelchair.</p>
+      </div>
+    </section>
+
+    <section id="safety">
+      <h2>5) Safety and assurance requirements</h2>
+
+      <div class="req">
+        <strong>R-SAFE-001 (Stability and confidence)</strong>
+        <p>The system shall maintain user stability throughout the assist cycle and shall not introduce tipping or unsafe oscillation under expected use conditions.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-002 (Structural factor of safety)</strong>
+        <p>Load-bearing structural elements shall meet a minimum factor of safety of <b>4.5</b> under specified worst-case operating loads.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-003 (Controlled motion)</strong>
+        <p>The system shall provide controlled motion during transfer, including the ability to stop the motion safely if needed.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-004 (Fail-safe behavior)</strong>
+        <p>In the event of loss of power or a detected fault, the system shall transition to a safe state that prevents uncontrolled motion and maintains user safety.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-005 (Pinch/entrapment protection)</strong>
+        <p>The system shall minimize pinch points and entrapment hazards for the user and nearby caregivers during operation.</p>
+      </div>
+    </section>
+
+    <section id="reliability">
+      <h2>6) Reliability, maintainability, and lifecycle requirements</h2>
+
+      <div class="req">
+        <strong>R-RAM-001 (Durability)</strong>
+        <p>The system shall withstand repeated daily transfer cycles over its intended service life without loss of function.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-RAM-002 (Maintainability)</strong>
+        <p>The system shall allow routine inspection and maintenance with commonly available tools and without specialized equipment.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-RAM-003 (Serviceability)</strong>
+        <p>Replaceable wear components (if any) shall be replaceable without requiring disassembly of major wheelchair elements.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-RAM-004 (Cleanability)</strong>
+        <p>Surfaces in user contact areas shall be cleanable, and soft goods (if present) shall be removable or otherwise maintainable for hygiene.</p>
+      </div>
+    </section>
+
+    <section id="verification">
+      <h2>7) Verification and validation requirements</h2>
+
+      <div class="req">
+        <strong>R-VER-001 (Functional demonstration)</strong>
+        <p>The system shall be verifiable by demonstrating a complete assisted transfer from seated to standing for the minimum user load.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-002 (Angle verification)</strong>
+        <p>The system shall be verifiable by measuring that the transfer interface achieves at least 45 degrees during operation.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-003 (Stability verification)</strong>
+        <p>The system shall be verifiable by testing that stability is maintained throughout the transfer under expected user motions and operating conditions.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-004 (Structural verification)</strong>
+        <p>The system shall be verifiable through analysis and/or test that the minimum factor of safety requirement is met for load-bearing components.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-005 (Usability validation)</strong>
+        <p>The system shall be validated via user trials demonstrating that intended users can understand and operate the controls after minimal instruction.</p>
+      </div>
+    </section>
+
+    <section id="logical-breakdown">
+      <h2>Logical system breakdown (requirements-oriented functional “boxes”)</h2>
+
+      <ol>
+        <li><b>Transfer Assistance Subsystem</b>
+          <ul>
+            <li>Generate the assistive transfer motion</li>
+            <li>Apply assistive action to the seat/interface region</li>
+            <li>Limit motion to the intended range</li>
+          </ul>
+        </li>
+
+        <li><b>User Interface & Controls Subsystem</b>
+          <ul>
+            <li>Provide user-initiated start/stop control</li>
+            <li>Provide clear status indication (e.g., ready/in-motion/fault)</li>
+            <li>Provide safe stop capability during operation</li>
+          </ul>
+        </li>
+
+        <li><b>Wheelchair Integration Subsystem</b>
+          <ul>
+            <li>Provide mechanical attachment and alignment features</li>
+            <li>Preserve wheelchair mobility functions and access features</li>
+            <li>Maintain overall structural integrity of the wheelchair</li>
+          </ul>
+        </li>
+
+        <li><b>Load Path & Structural Support Subsystem</b>
+          <ul>
+            <li>Support user load during seating and transfer</li>
+            <li>Meet minimum factor of safety requirements</li>
+            <li>Maintain stability against tipping and excessive deflection</li>
+          </ul>
+        </li>
+
+        <li><b>Power & Protection Subsystem</b>
+          <ul>
+            <li>Provide required operational power</li>
+            <li>Provide electrical protection and safe connection/disconnection</li>
+            <li>Support safe behavior under power loss or fault conditions</li>
+          </ul>
+        </li>
+
+        <li><b>Safety & Assurance Subsystem</b>
+          <ul>
+            <li>Prevent uncontrolled motion</li>
+            <li>Reduce pinch/entrapment hazards</li>
+            <li>Support user confidence through predictable behavior</li>
+          </ul>
+        </li>
+
+        <li><b>Maintenance & Lifecycle Support Subsystem</b>
+          <ul>
+            <li>Enable inspection/maintenance with common tools</li>
+            <li>Support cleaning/hygiene requirements</li>
+            <li>Support replacement of wear components (if any)</li>
+          </ul>
+        </li>
+      </ol>
+
+      <hr />
+      <p class="note">This breakdown is intentionally solution-agnostic and structured to support MBSE functional decomposition and concept exploration.</p>
+    </section>
+
+    <footer>
+      <p>Note: This is a pretend requirements set intended for MBSE exercises (requirements, constraints, verification hooks, and logical decomposition), not a final product specification.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

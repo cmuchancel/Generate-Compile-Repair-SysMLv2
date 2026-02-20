@@ -1,0 +1,29 @@
+{
+  "id": "msg_019frs2uBncztMTjwvgeexoY",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package FuelEconomySystem {\n    private import ScalarValues::*;\n\n    enum def DrivingCondition {\n        enum Urban;\n        enum Highway;\n    }\n\n    item def Fuel {\n        attribute volumeGallons : Real;\n    }\n\n    item def Load {\n        attribute weightPounds : Real;\n    }\n\n    part def Powertrain {\n        attribute engineDisplacementCubicInches : Real;\n        attribute nominalHorsePower : Real;\n    }\n\n    part def FuelTank {\n        attribute capacityGallons : Real;\n        attribute gallonsPerUSGallon : Real = 231.0;\n    }\n\n    part def Vehicle {\n        attribute baseWeightPounds : Real;\n        attribute testLoadPounds : Real = 1000.0;\n        attribute totalTestWeightPounds : Real;\n\n        attribute urbanMilesPerGallon : Real;\n        attribute highwayMilesPerGallon : Real;\n\n        attribute minUrbanMilesPerGallon : Real = 25.0;\n        attribute minHighwayMilesPerGallon : Real = 30.0;\n\n        attribute urbanRequirementMet : Boolean;\n        attribute highwayRequirementMet : Boolean;\n\n        attribute drivingCondition : DrivingCondition;\n\n        part powertrain : Powertrain;\n        part tank : FuelTank;\n    }\n\n    part def FuelEconomyTest {\n        attribute testLoadPounds : Real = 1000.0;\n        attribute gallon_cubic_inches : Real = 231.0;\n\n        attribute urbanMPGMeasured : Real;\n        attribute highwayMPGMeasured : Real;\n\n        attribute urbanMinRequired : Real = 25.0;\n        attribute highwayMinRequired : Real = 30.0;\n\n        attribute urbanPassFail : Boolean;\n        attribute highwayPassFail : Boolean;\n\n        part testVehicle : Vehicle;\n    }\n\n    part def FuelEconomySystem {\n        part urbanTest : FuelEconomyTest;\n        part highwayTest : FuelEconomyTest;\n    }\n\n    part fuelEconomySystem : FuelEconomySystem {\n        part urbanTest : FuelEconomyTest {\n            attribute :>> testLoadPounds = 1000.0;\n            attribute :>> gallon_cubic_inches = 231.0;\n            attribute :>> urbanMinRequired = 25.0;\n            attribute :>> highwayMinRequired = 30.0;\n            attribute :>> urbanMPGMeasured = 27.5;\n            attribute :>> highwayMPGMeasured = 32.0;\n            attribute :>> urbanPassFail = true;\n            attribute :>> highwayPassFail = true;\n\n            part testVehicle : Vehicle {\n                attribute :>> baseWeightPounds = 3500.0;\n                attribute :>> testLoadPounds = 1000.0;\n                attribute :>> totalTestWeightPounds = 4500.0;\n                attribute :>> urbanMilesPerGallon = 27.5;\n                attribute :>> highwayMilesPerGallon = 32.0;\n                attribute :>> urbanRequirementMet = true;\n                attribute :>> highwayRequirementMet = true;\n                attribute :>> drivingCondition = DrivingCondition::Urban;\n\n                part powertrain : Powertrain {\n                    attribute :>> engineDisplacementCubicInches = 183.0;\n                    attribute :>> nominalHorsePower = 150.0;\n                }\n\n                part tank : FuelTank {\n                    attribute :>> capacityGallons = 15.0;\n                    attribute :>> gallonsPerUSGallon = 231.0;\n                }\n            }\n        }\n\n        part highwayTest : FuelEconomyTest {\n            attribute :>> testLoadPounds = 1000.0;\n            attribute :>> gallon_cubic_inches = 231.0;\n            attribute :>> urbanMinRequired = 25.0;\n            attribute :>> highwayMinRequired = 30.0;\n            attribute :>> urbanMPGMeasured = 27.5;\n            attribute :>> highwayMPGMeasured = 32.0;\n            attribute :>> urbanPassFail = true;\n            attribute :>> highwayPassFail = true;\n\n            part testVehicle : Vehicle {\n                attribute :>> baseWeightPounds = 3500.0;\n                attribute :>> testLoadPounds = 1000.0;\n                attribute :>> totalTestWeightPounds = 4500.0;\n                attribute :>> urbanMilesPerGallon = 27.5;\n                attribute :>> highwayMilesPerGallon = 32.0;\n                attribute :>> urbanRequirementMet = true;\n                attribute :>> highwayRequirementMet = true;\n                attribute :>> drivingCondition = DrivingCondition::Highway;\n\n                part powertrain : Powertrain {\n                    attribute :>> engineDisplacementCubicInches = 183.0;\n                    attribute :>> nominalHorsePower = 150.0;\n                }\n\n                part tank : FuelTank {\n                    attribute :>> capacityGallons = 15.0;\n                    attribute :>> gallonsPerUSGallon = 231.0;\n                }\n            }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 435,
+    "output_tokens": 1348,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

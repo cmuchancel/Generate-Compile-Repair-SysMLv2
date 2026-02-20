@@ -1,0 +1,29 @@
+{
+  "id": "msg_01Qq3SpUEvauGJNrduaZtxdv",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package PublishSubscribeSystem {\n    private import ScalarValues::*;\n\n    enum def MessageStatus {\n        enum PENDING;\n        enum DELIVERED;\n        enum FAILED;\n    }\n\n    enum def SubscriptionStatus {\n        enum ACTIVE;\n        enum INACTIVE;\n    }\n\n    item def Topic {\n        attribute topicName : String;\n        attribute topicId : String;\n    }\n\n    item def Message {\n        attribute content : String;\n        attribute messageId : String;\n        attribute status : MessageStatus;\n    }\n\n    item def SubscriptionRequest {\n        attribute subscriberId : String;\n        attribute topicName : String;\n        attribute status : SubscriptionStatus;\n    }\n\n    item def PublishRequest {\n        attribute producerId : String;\n        attribute topicName : String;\n        attribute messageContent : String;\n    }\n\n    item def DeliveryNotification {\n        attribute consumerId : String;\n        attribute messageId : String;\n        attribute delivered : Boolean;\n    }\n\n    port def ProducerOutputPort {\n        out item publishRequest : PublishRequest;\n    }\n\n    port def ServerProducerInputPort {\n        in item publishRequest : PublishRequest;\n    }\n\n    port def ConsumerSubscribePort {\n        out item subscriptionRequest : SubscriptionRequest;\n        in item deliveryNotification : DeliveryNotification;\n    }\n\n    port def ServerConsumerPort {\n        in item subscriptionRequest : SubscriptionRequest;\n        out item deliveryNotification : DeliveryNotification;\n    }\n\n    part def Producer {\n        attribute producerId : String;\n        attribute producerName : String;\n        port publishPort : ProducerOutputPort;\n    }\n\n    part def Consumer {\n        attribute consumerId : String;\n        attribute consumerName : String;\n        attribute subscribedTopic : String;\n        port subscribePort : ConsumerSubscribePort;\n    }\n\n    part def Server {\n        attribute serverId : String;\n        attribute serverName : String;\n        attribute maxTopics : Integer;\n        port serverInputPort : ServerProducerInputPort;\n        port serverConsumerPort1 : ServerConsumerPort;\n        port serverConsumerPort2 : ServerConsumerPort;\n        port serverConsumerPort3 : ServerConsumerPort;\n    }\n\n    part def PublishSubscribeSystem {\n        part producer1 : Producer {\n            attribute producerId = \"P001\";\n            attribute producerName = \"ProducerOne\";\n        }\n\n        part producer2 : Producer {\n            attribute producerId = \"P002\";\n            attribute producerName = \"ProducerTwo\";\n        }\n\n        part consumer1 : Consumer {\n            attribute consumerId = \"C001\";\n            attribute consumerName = \"ConsumerOne\";\n            attribute subscribedTopic = \"TopicA\";\n        }\n\n        part consumer2 : Consumer {\n            attribute consumerId = \"C002\";\n            attribute consumerName = \"ConsumerTwo\";\n            attribute subscribedTopic = \"TopicA\";\n        }\n\n        part consumer3 : Consumer {\n            attribute consumerId = \"C003\";\n            attribute consumerName = \"ConsumerThree\";\n            attribute subscribedTopic = \"TopicB\";\n        }\n\n        part server : Server {\n            attribute serverId = \"S001\";\n            attribute serverName = \"MessageBroker\";\n            attribute maxTopics = 100;\n        }\n\n        connect producer1.publishPort to server.serverInputPort;\n        connect producer2.publishPort to server.serverInputPort;\n        connect consumer1.subscribePort to server.serverConsumerPort1;\n        connect consumer2.subscribePort to server.serverConsumerPort2;\n        connect consumer3.subscribePort to server.serverConsumerPort3;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 401,
+    "output_tokens": 905,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

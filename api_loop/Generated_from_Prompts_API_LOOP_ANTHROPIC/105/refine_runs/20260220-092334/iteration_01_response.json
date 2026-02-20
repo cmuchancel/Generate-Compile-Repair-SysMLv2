@@ -1,0 +1,29 @@
+{
+  "id": "msg_01Q6uE19LoPZTReMmLtCHLnS",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomotivePowertrain {\n    private import ScalarValues::*;\n\n    enum def EngineState {\n        enum STOPPED;\n        enum STARTING;\n        enum RUNNING;\n        enum STALLED;\n    }\n\n    enum def TransmissionState {\n        enum IDLE;\n        enum TRANSMITTING;\n        enum HALTED;\n    }\n\n    enum def PowerFlowState {\n        enum INACTIVE;\n        enum ACTIVE;\n        enum DISTRIBUTED;\n    }\n\n    item def FuelControlCommand {\n        attribute commandId : Integer;\n        attribute fuelLevel : Real;\n    }\n\n    item def StallSignal {\n        attribute signalId : Integer;\n        attribute detected : Boolean;\n    }\n\n    item def TorqueSignal {\n        attribute torqueValue : Real;\n    }\n\n    item def PowerSignal {\n        attribute powerValue : Real;\n    }\n\n    port def FuelCommandPort {\n        attribute commandReceived : Boolean;\n    }\n\n    port def StallSignalPort {\n        attribute stallDetected : Boolean;\n    }\n\n    port def TorqueOutputPort {\n        attribute torque : Real;\n    }\n\n    port def PowerOutputPort {\n        attribute power : Real;\n    }\n\n    port def WheelOutputPort {\n        attribute wheelTorque : Real;\n    }\n\n    part def EngineController {\n        attribute engineState : EngineState;\n        attribute currentTorque : Real;\n        attribute engineRunning : Boolean;\n\n        port fuelIn : FuelCommandPort;\n        port stallIn : StallSignalPort;\n        port torqueOut : TorqueOutputPort;\n    }\n\n    part def TransmissionSystem {\n        attribute transmissionState : TransmissionState;\n        attribute amplificationFactor : Real;\n        attribute amplifiedTorque : Real;\n\n        port torqueIn : TorqueOutputPort;\n        port powerOut : PowerOutputPort;\n    }\n\n    part def DriveShaft {\n        attribute powerFlowState : PowerFlowState;\n        attribute transmittedPower : Real;\n\n        port powerIn : PowerOutputPort;\n        port torqueTransmitted : TorqueOutputPort;\n    }\n\n    part def DifferentialUnit {\n        attribute distributionRatio : Real;\n        attribute leftWheelTorque : Real;\n        attribute rightWheelTorque : Real;\n\n        port torqueIn : TorqueOutputPort;\n        port leftWheelOut : WheelOutputPort;\n        port rightWheelOut : WheelOutputPort;\n    }\n\n    part def DriveWheel {\n        attribute wheelId : Integer;\n        attribute outputTorque : Real;\n        attribute wheelActive : Boolean;\n\n        port wheelIn : WheelOutputPort;\n    }\n\n    part def StallMonitor {\n        attribute monitoring : Boolean;\n        attribute stallEventCount : Integer;\n\n        port stallOut : StallSignalPort;\n    }\n\n    part def PowertrainControlUnit {\n        attribute systemActive : Boolean;\n        attribute fuelCommandReceived : Boolean;\n        attribute powerDeliveryEfficiency : Real;\n\n        port fuelCommandIn : FuelCommandPort;\n        port stallSignalIn : StallSignalPort;\n        port mainTorqueOut : TorqueOutputPort;\n        port mainPowerOut : PowerOutputPort;\n        port finalWheelOut : WheelOutputPort;\n    }\n\n    part def AutomotivePowertrainSystem {\n        attribute systemId : Integer;\n        attribute overallState : EngineState;\n        attribute totalOutputTorque : Real;\n        attribute systemEnabled : Boolean;\n\n        part controlUnit : PowertrainControlUnit;\n        part engine : EngineController;\n        part transmission : TransmissionSystem;\n        part driveShaft : DriveShaft;\n        part differential : DifferentialUnit;\n        part leftWheel : DriveWheel;\n        part rightWheel : DriveWheel;\n        part stallMonitor : StallMonitor;\n\n        connect controlUnit.fuelCommandIn to engine.fuelIn;\n        connect stallMonitor.stallOut to engine.stallIn;\n        connect stallMonitor.stallOut to controlUnit.stallSignalIn;\n        connect engine.torqueOut to transmission.torqueIn;\n        connect transmission.powerOut to driveShaft.powerIn;\n        connect driveShaft.torqueTransmitted to differential.torqueIn;\n        connect differential.leftWheelOut to leftWheel.wheelIn;\n        connect differential.rightWheelOut to rightWheel.wheelIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 410,
+    "output_tokens": 1113,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

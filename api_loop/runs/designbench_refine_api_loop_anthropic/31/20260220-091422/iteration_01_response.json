@@ -1,0 +1,29 @@
+{
+  "id": "msg_01Nde7FTFcutac8Ko4rzAmhf",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSimulation {\n    private import ScalarValues::*;\n\n    enum def SimulationStatus {\n        enum Running;\n        enum Completed;\n        enum Error;\n    }\n\n    item def PowerInput {\n        attribute timeStep : Real;\n        attribute powerValue : Real;\n    }\n\n    item def SimulationStep {\n        attribute stepIndex : Real;\n        attribute time : Real;\n        attribute velocity : Real;\n        attribute position : Real;\n        attribute appliedPower : Real;\n    }\n\n    part def VehicleParameters {\n        attribute mass : Real;\n        attribute initialPosition : Real;\n        attribute initialVelocity : Real;\n        attribute timeInterval : Real;\n    }\n\n    part def PowerSequence {\n        attribute totalSteps : Real;\n        part powerInputs : PowerInput;\n    }\n\n    part def MotionCalculator {\n        attribute currentTime : Real;\n        attribute currentVelocity : Real;\n        attribute currentPosition : Real;\n        attribute currentForce : Real;\n        attribute currentAcceleration : Real;\n        attribute deltaVelocity : Real;\n        attribute deltaPosition : Real;\n    }\n\n    part def TrajectoryOutput {\n        attribute totalSteps : Real;\n        attribute finalPosition : Real;\n        attribute finalVelocity : Real;\n        attribute finalTime : Real;\n        part steps : SimulationStep;\n    }\n\n    port def SimulationInputPort {\n        attribute mass : Real;\n        attribute initialPosition : Real;\n        attribute initialVelocity : Real;\n        attribute timeInterval : Real;\n        attribute totalSteps : Real;\n    }\n\n    port def SimulationOutputPort {\n        attribute finalPosition : Real;\n        attribute finalVelocity : Real;\n        attribute finalTime : Real;\n        attribute status : Real;\n    }\n\n    port def PowerDataPort {\n        attribute stepIndex : Real;\n        attribute powerValue : Real;\n    }\n\n    part def VehicleSimulator {\n        attribute simulatorId : String;\n        attribute status : SimulationStatus;\n\n        port inputPort : SimulationInputPort;\n        port outputPort : SimulationOutputPort;\n        port powerPort : PowerDataPort;\n\n        part vehicleParams : VehicleParameters;\n        part powerSequence : PowerSequence;\n        part motionCalc : MotionCalculator;\n        part trajectory : TrajectoryOutput;\n    }\n\n    part def SimulationSystem {\n        attribute systemName : String;\n        attribute systemVersion : String;\n\n        part simulator : VehicleSimulator;\n        part parameters : VehicleParameters;\n        part power : PowerSequence;\n        part output : TrajectoryOutput;\n    }\n\n    part simulationSystem : SimulationSystem {\n        attribute systemName = \"VehicleMotionSimulator\";\n        attribute systemVersion = \"1.0\";\n\n        part simulator : VehicleSimulator {\n            attribute simulatorId = \"SIM-001\";\n            attribute status = SimulationStatus::Running;\n\n            part vehicleParams : VehicleParameters {\n                attribute mass = 1000.0;\n                attribute initialPosition = 0.0;\n                attribute initialVelocity = 0.0;\n                attribute timeInterval = 0.1;\n            }\n\n            part powerSequence : PowerSequence {\n                attribute totalSteps = 10.0;\n            }\n\n            part motionCalc : MotionCalculator {\n                attribute currentTime = 0.0;\n                attribute currentVelocity = 0.0;\n                attribute currentPosition = 0.0;\n                attribute currentForce = 0.0;\n                attribute currentAcceleration = 0.0;\n                attribute deltaVelocity = 0.0;\n                attribute deltaPosition = 0.0;\n            }\n\n            part trajectory : TrajectoryOutput {\n                attribute totalSteps = 10.0;\n                attribute finalPosition = 0.0;\n                attribute finalVelocity = 0.0;\n                attribute finalTime = 1.0;\n            }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 387,
+    "output_tokens": 982,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

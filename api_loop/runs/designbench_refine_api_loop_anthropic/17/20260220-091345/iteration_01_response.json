@@ -1,0 +1,29 @@
+{
+  "id": "msg_0163J3x8SHUzwgYkE2zjuLWj",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package FuelSystemManagement {\n    private import ScalarValues::*;\n\n    enum def FlowDirection {\n        enum SUPPLY;\n        enum RETURN;\n    }\n\n    item def FuelItem {\n        attribute temperature : Real;\n        attribute flowDirection : FlowDirection;\n    }\n\n    port def FuelPort {\n        attribute temperature : Real;\n        out item fuelOut : FuelItem;\n        in item fuelIn : FuelItem;\n    }\n\n    part def FuelTankAssembly {\n        attribute tankTemperature : Real;\n        attribute fuelLevel : Real;\n        port supplyPort : FuelPort;\n        port returnPort : FuelPort;\n    }\n\n    part def Engine {\n        attribute engineTemperature : Real;\n        attribute fuelConsumptionRate : Real;\n        port fuelSupplyPort : FuelPort;\n        port fuelReturnPort : FuelPort;\n    }\n\n    part def VehicleFuelSystem {\n        attribute systemStatus : String;\n\n        part fuelTank : FuelTankAssembly {\n            attribute tankTemperature : Real = 25.0;\n            attribute fuelLevel : Real = 100.0;\n            port supplyPort : FuelPort {\n                attribute temperature : Real = 25.0;\n            }\n            port returnPort : FuelPort {\n                attribute temperature : Real = 25.0;\n            }\n        }\n\n        part engine : Engine {\n            attribute engineTemperature : Real = 90.0;\n            attribute fuelConsumptionRate : Real = 10.0;\n            port fuelSupplyPort : FuelPort {\n                attribute temperature : Real = 25.0;\n            }\n            port fuelReturnPort : FuelPort {\n                attribute temperature : Real = 60.0;\n            }\n        }\n\n        connect fuelTank.supplyPort to engine.fuelSupplyPort;\n        connect engine.fuelReturnPort to fuelTank.returnPort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 388,
+    "output_tokens": 487,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

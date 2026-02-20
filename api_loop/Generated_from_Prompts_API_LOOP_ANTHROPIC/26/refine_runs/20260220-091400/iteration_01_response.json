@@ -1,0 +1,29 @@
+{
+  "id": "msg_01WCsf6LxYfTNszARVaxRSE9",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomaticBrakingControlSystem {\n    private import ScalarValues::*;\n\n    enum def SystemStatus {\n        enum INACTIVE;\n        enum ACTIVE;\n        enum MONITORING;\n        enum REGULATING;\n    }\n\n    enum def BrakingMode {\n        enum NORMAL;\n        enum ABS_ACTIVE;\n        enum TRACTION_CONTROL;\n    }\n\n    enum def RoadCondition {\n        enum DRY;\n        enum WET;\n        enum ICY;\n        enum LOOSE;\n    }\n\n    item def BrakePressureSignal {\n        attribute pressureValue : Real;\n        attribute timestamp : Real;\n    }\n\n    item def TractionSignal {\n        attribute adhesionCoefficient : Real;\n        attribute roadCondition : RoadCondition;\n        attribute timestamp : Real;\n    }\n\n    item def BrakeCommand {\n        attribute targetPressure : Real;\n        attribute modulationFrequency : Real;\n        attribute mode : BrakingMode;\n    }\n\n    port def KeyInputPort {\n        attribute keyPosition : Boolean;\n    }\n\n    port def BrakePedalPort {\n        attribute pedalDepressed : Boolean;\n        attribute pedalPressure : Real;\n    }\n\n    port def TractionSensorPort {\n        attribute adhesionCoefficient : Real;\n        attribute roadCondition : RoadCondition;\n    }\n\n    port def BrakeActuatorPort {\n        attribute commandedPressure : Real;\n        attribute modulationFrequency : Real;\n    }\n\n    port def SystemStatusPort {\n        attribute currentStatus : SystemStatus;\n        attribute currentMode : BrakingMode;\n    }\n\n    part def IgnitionMonitor {\n        attribute systemActive : Boolean = false;\n        attribute keyEngaged : Boolean = false;\n\n        port keyIn : KeyInputPort;\n        port statusOut : SystemStatusPort;\n    }\n\n    part def BrakePedalSensor {\n        attribute detectedPressure : Real = 0.0;\n        attribute pedalEngaged : Boolean = false;\n        attribute sensorOperational : Boolean = true;\n\n        port pedalIn : BrakePedalPort;\n        port pressureOut : BrakePedalPort;\n    }\n\n    part def TractionMonitor {\n        attribute currentAdhesion : Real = 1.0;\n        attribute currentRoadCondition : RoadCondition;\n        attribute tractionVariation : Real = 0.0;\n        attribute monitoringActive : Boolean = false;\n\n        port tractionIn : TractionSensorPort;\n        port tractionDataOut : TractionSensorPort;\n    }\n\n    part def BrakePressureController {\n        attribute targetPressure : Real = 0.0;\n        attribute currentPressure : Real = 0.0;\n        attribute modulationFrequency : Real = 0.0;\n        attribute controllerActive : Boolean = false;\n        attribute currentMode : BrakingMode;\n\n        port pedalDataIn : BrakePedalPort;\n        port tractionDataIn : TractionSensorPort;\n        port brakeCommandOut : BrakeActuatorPort;\n        port statusIn : SystemStatusPort;\n    }\n\n    part def BrakeActuator {\n        attribute appliedPressure : Real = 0.0;\n        attribute modulationFrequency : Real = 0.0;\n        attribute actuatorOperational : Boolean = true;\n        attribute brakeEngaged : Boolean = false;\n\n        port commandIn : BrakeActuatorPort;\n        port actuatorStatus : BrakeActuatorPort;\n    }\n\n    part def SafetyMonitor {\n        attribute safetyCheckActive : Boolean = false;\n        attribute systemHealthy : Boolean = true;\n        attribute interventionRequired : Boolean = false;\n\n        port statusIn : SystemStatusPort;\n        port brakeStatusIn : BrakeActuatorPort;\n        port safetyCommandOut : BrakeActuatorPort;\n    }\n\n    part def AutomaticBrakingSystem {\n        attribute systemStatus : SystemStatus;\n        attribute brakingMode : BrakingMode;\n        attribute continuousMonitoring : Boolean = true;\n        attribute userInterventionRequired : Boolean = false;\n        attribute optimalBrakingMaintained : Boolean = true;\n\n        part ignitionMonitor : IgnitionMonitor;\n        part brakePedalSensor : BrakePedalSensor;\n        part tractionMonitor : TractionMonitor;\n        part pressureController : BrakePressureController;\n        part brakeActuator : BrakeActuator;\n        part safetyMonitor : SafetyMonitor;\n\n        connect ignitionMonitor.statusOut to pressureController.statusIn;\n        connect brakePedalSensor.pressureOut to pressureController.pedalDataIn;\n        connect tractionMonitor.tractionDataOut to pressureController.tractionDataIn;\n        connect pressureController.brakeCommandOut to brakeActuator.commandIn;\n        connect brakeActuator.actuatorStatus to safetyMonitor.brakeStatusIn;\n        connect ignitionMonitor.statusOut to safetyMonitor.statusIn;\n        connect safetyMonitor.safetyCommandOut to brakeActuator.commandIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 417,
+    "output_tokens": 1298,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

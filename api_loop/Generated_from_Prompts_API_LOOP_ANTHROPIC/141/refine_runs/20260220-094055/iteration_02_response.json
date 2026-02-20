@@ -1,0 +1,29 @@
+{
+  "id": "msg_011Q72PN77mmnjwcXL9g96Dg",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package UnitSystemLibrary {\nprivate import ScalarValues::*;\n\nenum def QuantityKind {\n    enum Length;\n    enum Mass;\n    enum Time;\n    enum Temperature;\n    enum ElectricCurrent;\n    enum AmountOfSubstance;\n    enum LuminousIntensity;\n    enum Area;\n    enum Volume;\n    enum Velocity;\n    enum Acceleration;\n    enum Force;\n    enum Pressure;\n    enum Energy;\n    enum Power;\n}\n\nenum def UnitSystem {\n    enum ISQ;\n    enum USCustomary;\n}\n\npart def Unit {\n    attribute unitName : String;\n    attribute unitSymbol : String;\n    attribute system : UnitSystem;\n    attribute quantityKind : QuantityKind;\n    attribute conversionFactorToSI : Real;\n    attribute conversionOffsetToSI : Real;\n}\n\npart def ConversionRecord {\n    attribute fromUnitName : String;\n    attribute toUnitName : String;\n    attribute factor : Real;\n    attribute offset : Real;\n}\n\npart def ISQUnits {\n    part metre : Unit;\n    part kilogram : Unit;\n    part second : Unit;\n    part kelvin : Unit;\n    part ampere : Unit;\n    part mole : Unit;\n    part candela : Unit;\n    part squareMetre : Unit;\n    part cubicMetre : Unit;\n    part metrePerSecond : Unit;\n    part metrePerSecondSquared : Unit;\n    part newton : Unit;\n    part pascal : Unit;\n    part joule : Unit;\n    part watt : Unit;\n}\n\npart def USCustomaryUnits {\n    part foot : Unit;\n    part inch : Unit;\n    part yard : Unit;\n    part mile : Unit;\n    part poundMass : Unit;\n    part ounce : Unit;\n    part fahrenheit : Unit;\n    part rankine : Unit;\n    part squareFoot : Unit;\n    part squareInch : Unit;\n    part cubicFoot : Unit;\n    part cubicInch : Unit;\n    part footPerSecond : Unit;\n    part milePerHour : Unit;\n    part footPerSecondSquared : Unit;\n    part poundForce : Unit;\n    part poundPerSquareInch : Unit;\n    part footPound : Unit;\n    part horsepower : Unit;\n}\n\npart def UnitRegistry {\n    part isqUnits : ISQUnits;\n    part usCustomaryUnits : USCustomaryUnits;\n}\n\npart def ConversionTable {\n    part lengthFtToM : ConversionRecord;\n    part lengthInToM : ConversionRecord;\n    part lengthYdToM : ConversionRecord;\n    part lengthMiToM : ConversionRecord;\n    part massPoundToKg : ConversionRecord;\n    part massOunceToKg : ConversionRecord;\n    part tempFToK : ConversionRecord;\n    part tempRToK : ConversionRecord;\n    part areaFt2ToM2 : ConversionRecord;\n    part areaIn2ToM2 : ConversionRecord;\n    part volumeFt3ToM3 : ConversionRecord;\n    part volumeIn3ToM3 : ConversionRecord;\n    part velocityFpsToMps : ConversionRecord;\n    part velocityMphToMps : ConversionRecord;\n    part accelFps2ToMps2 : ConversionRecord;\n    part forceLbfToN : ConversionRecord;\n    part pressurePsiToPa : ConversionRecord;\n    part energyFtLbToJ : ConversionRecord;\n    part powerHpToW : ConversionRecord;\n}\n\npart def MeasurementContext {\n    attribute contextName : String;\n    attribute defaultSystem : UnitSystem;\n    part registry : UnitRegistry;\n    part conversions : ConversionTable;\n}\n\npart engineeringContext : MeasurementContext;\npart scienceContext : MeasurementContext;\npart dailyLifeContext : MeasurementContext;\n\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 4632,
+    "output_tokens": 1022,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

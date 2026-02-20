@@ -1,0 +1,29 @@
+{
+  "id": "msg_016V9eU3fX2wNqjr87RQDcTR",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleMassModel {\n    private import ScalarValues::*;\n\n    part def Component {\n        attribute partNumber : String;\n        attribute mass : Real;\n    }\n\n    part def Engine {\n        attribute partNumber : String;\n        attribute mass : Real;\n    }\n\n    part def Transmission {\n        attribute partNumber : String;\n        attribute mass : Real;\n    }\n\n    part def Body {\n        attribute partNumber : String;\n        attribute mass : Real;\n    }\n\n    part def Vehicle {\n        attribute partNumber : String;\n        attribute mass : Real;\n        attribute totalMass : Real;\n\n        part engine : Engine;\n        part transmission : Transmission;\n        part body : Body;\n    }\n\n    part myVehicle : Vehicle {\n        attribute partNumber = \"VH-001\";\n        attribute mass = 500.0;\n        attribute totalMass = 1500.0;\n\n        part engine : Engine {\n            attribute partNumber = \"ENG-001\";\n            attribute mass = 600.0;\n        }\n\n        part transmission : Transmission {\n            attribute partNumber = \"TRN-001\";\n            attribute mass = 200.0;\n        }\n\n        part body : Body {\n            attribute partNumber = \"BDY-001\";\n            attribute mass = 200.0;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 452,
+    "output_tokens": 322,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

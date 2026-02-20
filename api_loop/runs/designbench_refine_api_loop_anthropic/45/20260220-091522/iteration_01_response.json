@@ -1,0 +1,29 @@
+{
+  "id": "msg_01D6q7BWNKCZdPhd8HqyzXT3",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package CruiseControlSystem {\n    private import ScalarValues::*;\n\n    enum def SpeedCommandStatus {\n        enum SET;\n        enum CLEAR;\n    }\n\n    enum def ControlState {\n        enum ACTIVE;\n        enum INACTIVE;\n    }\n\n    item def SpeedCommand {\n        attribute targetSpeed : Real;\n        attribute status : SpeedCommandStatus;\n    }\n\n    item def SpeedReading {\n        attribute currentSpeed : Real;\n    }\n\n    item def ThrottleCommand {\n        attribute throttleLevel : Real;\n        attribute speedError : Real;\n    }\n\n    port def DriverCommandPort {\n        attribute targetSpeed : Real;\n        attribute commandStatus : SpeedCommandStatus;\n    }\n\n    port def SpeedSensorPort {\n        attribute measuredSpeed : Real;\n    }\n\n    port def ThrottleControlPort {\n        attribute throttleLevel : Real;\n        attribute speedError : Real;\n    }\n\n    part def Driver {\n        attribute desiredSpeed : Real;\n        attribute commandStatus : SpeedCommandStatus;\n        port commandOut : DriverCommandPort;\n    }\n\n    part def Speedometer {\n        attribute vehicleSpeed : Real;\n        port speedOut : SpeedSensorPort;\n    }\n\n    part def CruiseController {\n        attribute setSpeed : Real;\n        attribute actualSpeed : Real;\n        attribute speedError : Real;\n        attribute throttleOutput : Real;\n        attribute controlState : ControlState;\n        port commandIn : DriverCommandPort;\n        port speedIn : SpeedSensorPort;\n        port throttleOut : ThrottleControlPort;\n    }\n\n    part def EngineSystem {\n        attribute powerOutput : Real;\n        attribute throttleInput : Real;\n        port throttleIn : ThrottleControlPort;\n    }\n\n    part def Vehicle {\n        attribute currentSpeed : Real;\n\n        part driver : Driver;\n        part speedometer : Speedometer;\n        part cruiseController : CruiseController;\n        part engineSystem : EngineSystem;\n\n        connect driver.commandOut to cruiseController.commandIn;\n        connect speedometer.speedOut to cruiseController.speedIn;\n        connect cruiseController.throttleOut to engineSystem.throttleIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 386,
+    "output_tokens": 540,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

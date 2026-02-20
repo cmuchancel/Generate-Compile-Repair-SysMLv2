@@ -1,0 +1,29 @@
+{
+  "id": "msg_01N85DiBu6FzLQSGXg2mtoXt",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package TrajectoryRecordingSystem {\n    private import ScalarValues::*;\n\n    attribute def CartesianPosition {\n        attribute x : Real;\n        attribute y : Real;\n        attribute z : Real;\n    }\n\n    attribute def CartesianVelocity {\n        attribute vx : Real;\n        attribute vy : Real;\n        attribute vz : Real;\n    }\n\n    attribute def TrajectorySample {\n        attribute timePoint : Real;\n        attribute position : CartesianPosition;\n        attribute velocity : CartesianVelocity;\n    }\n\n    part def LiftoffTimeReference {\n        attribute utcYear : Integer = 2020;\n        attribute utcMonth : Integer = 8;\n        attribute utcDay : Integer = 23;\n        attribute utcHour : Integer = 22;\n        attribute utcMinute : Integer = 42;\n        attribute utcSecond : Real = 32.924534;\n        attribute referenceTimeZero : Real = 0.0;\n    }\n\n    part def AscentTrajectoryRecorder {\n        attribute missionName : String;\n        attribute sample0 : TrajectorySample;\n        attribute sample1 : TrajectorySample;\n        attribute sample2 : TrajectorySample;\n        attribute sample3 : TrajectorySample;\n        attribute sample4 : TrajectorySample;\n        attribute sample5 : TrajectorySample;\n        attribute sample6 : TrajectorySample;\n        attribute sample7 : TrajectorySample;\n        attribute sample8 : TrajectorySample;\n        attribute sample9 : TrajectorySample;\n        part liftoffRef : LiftoffTimeReference;\n    }\n\n    part def SpacecraftAscentSystem {\n        part recorder : AscentTrajectoryRecorder;\n    }\n\n    part ascentSystem : SpacecraftAscentSystem;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 3109,
+    "output_tokens": 459,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

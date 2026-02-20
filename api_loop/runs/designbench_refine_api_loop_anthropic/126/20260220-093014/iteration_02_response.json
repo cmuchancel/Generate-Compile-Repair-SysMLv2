@@ -1,0 +1,29 @@
+{
+  "id": "msg_018mSMVX3kAqT3gj6M6LC1xz",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package LayeredArchitectureSystem {\n    private import ScalarValues::*;\n\n    enum def LayerType {\n        enum Application;\n        enum Service;\n        enum Data;\n    }\n\n    part def DataLayer {\n        attribute layerName : String = \"DataLayer\";\n        attribute x : Real;\n        attribute y : Real;\n    }\n\n    part def ServiceLayer {\n        attribute layerName : String = \"ServiceLayer\";\n        attribute x : Real;\n        attribute y : Real;\n        attribute z : Real;\n        port dataPort : DataAccessPort;\n    }\n\n    part def ApplicationLayer {\n        attribute layerName : String = \"ApplicationLayer\";\n        port servicePort : ServiceAccessPort;\n    }\n\n    port def DataAccessPort {\n        attribute connected : Boolean;\n    }\n\n    port def ServiceAccessPort {\n        attribute connected : Boolean;\n    }\n\n    part system {\n        attribute x : Real;\n        attribute y : Real;\n        attribute z : Real;\n\n        part appLayer : ApplicationLayer {\n            port servicePort : ServiceAccessPort;\n        }\n\n        part svcLayer : ServiceLayer {\n            attribute x : Real;\n            attribute y : Real;\n            attribute z : Real;\n            port dataPort : DataAccessPort;\n            port servicePort : ServiceAccessPort;\n        }\n\n        part dataLayer : DataLayer {\n            attribute x : Real;\n            attribute y : Real;\n        }\n\n        connect appLayer.servicePort to svcLayer.servicePort;\n        connect svcLayer.dataPort to dataLayer;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 999,
+    "output_tokens": 369,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

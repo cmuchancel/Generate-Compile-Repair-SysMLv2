@@ -1,0 +1,29 @@
+{
+  "id": "msg_011QZonWtqdEZ2e7j6GDjcjg",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleStructure {\n    private import ScalarValues::*;\n\n    part def Wheel {\n        attribute wheelName : String;\n    }\n\n    part def Axle {\n        part wheel1 : Wheel;\n        part wheel2 : Wheel;\n    }\n\n    part def SteeringAxle :> Axle {\n        attribute steeringAngle : Real;\n    }\n\n    part def AxleAssembly {\n        part axle : Axle;\n        part wheel1 : Wheel;\n        part wheel2 : Wheel;\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        part frontAxleAssembly : AxleAssembly;\n        part rearAxleAssembly : AxleAssembly;\n    }\n\n    part vehicle1 : Vehicle {\n        attribute redefines mass = 1750;\n        part redefines frontAxleAssembly : AxleAssembly {\n            part redefines axle : SteeringAxle {\n                attribute redefines steeringAngle = 0.0;\n                part redefines wheel1 : Wheel {\n                    attribute redefines wheelName = \"FrontLeft\";\n                }\n                part redefines wheel2 : Wheel {\n                    attribute redefines wheelName = \"FrontRight\";\n                }\n            }\n            part redefines wheel1 : Wheel {\n                attribute redefines wheelName = \"FrontLeft\";\n            }\n            part redefines wheel2 : Wheel {\n                attribute redefines wheelName = \"FrontRight\";\n            }\n        }\n        part redefines rearAxleAssembly : AxleAssembly {\n            part redefines axle : Axle {\n                part redefines wheel1 : Wheel {\n                    attribute redefines wheelName = \"RearLeft\";\n                }\n                part redefines wheel2 : Wheel {\n                    attribute redefines wheelName = \"RearRight\";\n                }\n            }\n            part redefines wheel1 : Wheel {\n                attribute redefines wheelName = \"RearLeft\";\n            }\n            part redefines wheel2 : Wheel {\n                attribute redefines wheelName = \"RearRight\";\n            }\n        }\n    }\n\n    part vehicle2 : Vehicle {\n        attribute redefines mass = 2000;\n        part redefines frontAxleAssembly : AxleAssembly {\n            part redefines axle : SteeringAxle {\n                attribute redefines steeringAngle = 0.0;\n            }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 456,
+    "output_tokens": 643,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

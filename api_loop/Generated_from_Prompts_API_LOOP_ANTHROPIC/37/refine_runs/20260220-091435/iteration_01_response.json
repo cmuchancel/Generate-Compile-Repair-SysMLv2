@@ -1,0 +1,29 @@
+{
+  "id": "msg_01QVE3FXYcaCECQgxXRfVu3E",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehiclePowerManagement {\n    private import ScalarValues::*;\n\n    enum def PowerState {\n        enum OFF;\n        enum STARTING;\n        enum POWERED_ON;\n    }\n\n    enum def DiagnosticState {\n        enum IDLE;\n        enum RUNNING;\n        enum COMPLETE;\n    }\n\n    enum def BrakeState {\n        enum RELEASED;\n        enum ENGAGED;\n    }\n\n    enum def CommandType {\n        enum START_COMMAND;\n        enum STOP_COMMAND;\n        enum VEHICLE_STARTED_SIGNAL;\n    }\n\n    part def ControlSignal {\n        attribute command : CommandType;\n        attribute isActive : Boolean;\n    }\n\n    part def PowerSupply {\n        attribute isOn : Boolean;\n        attribute voltageLevel : Real;\n    }\n\n    part def SelfDiagnostics {\n        attribute diagnosticState : DiagnosticState;\n        attribute diagnosticResult : Boolean;\n    }\n\n    part def ParkingBrake {\n        attribute brakeState : BrakeState;\n        attribute isEngaged : Boolean;\n    }\n\n    part def FunctionalUnit {\n        attribute unitName : String;\n        attribute isPowered : Boolean;\n        attribute isOperational : Boolean;\n    }\n\n    part def PowerStateController {\n        attribute currentState : PowerState;\n        attribute previousState : PowerState;\n        attribute stateChangeAllowed : Boolean;\n    }\n\n    port def ControlPort {\n        attribute commandReceived : CommandType;\n        attribute signalActive : Boolean;\n    }\n\n    port def PowerPort {\n        attribute powerAvailable : Boolean;\n        attribute voltage : Real;\n    }\n\n    port def StatusPort {\n        attribute statusValue : Boolean;\n        attribute stateInfo : String;\n    }\n\n    part def VehicleStartModule {\n        attribute startInitiated : Boolean;\n        attribute startConfirmed : Boolean;\n        attribute startPhaseActive : Boolean;\n        port startControlPort : ControlPort;\n        port startPowerPort : PowerPort;\n        port startStatusPort : StatusPort;\n    }\n\n    part def VehicleShutdownModule {\n        attribute shutdownInitiated : Boolean;\n        attribute shutdownComplete : Boolean;\n        attribute safetyOperationsComplete : Boolean;\n        port shutdownControlPort : ControlPort;\n        port shutdownStatusPort : StatusPort;\n    }\n\n    part def VehiclePowerSystem {\n        attribute systemName : String;\n        attribute overallPowerState : PowerState;\n        attribute selfDiagnosticsEnabled : Boolean;\n        attribute safeShutdownEnabled : Boolean;\n\n        part powerStateController : PowerStateController;\n        part powerSupply : PowerSupply;\n        part selfDiagnostics : SelfDiagnostics;\n        part parkingBrake : ParkingBrake;\n        part startModule : VehicleStartModule;\n        part shutdownModule : VehicleShutdownModule;\n\n        part engineUnit : FunctionalUnit;\n        part transmissionUnit : FunctionalUnit;\n        part electricalUnit : FunctionalUnit;\n        part safetyUnit : FunctionalUnit;\n\n        part userControlSignal : ControlSignal;\n        part vehicleStartedSignal : ControlSignal;\n\n        port vehicleControlPort : ControlPort;\n        port vehiclePowerPort : PowerPort;\n        port vehicleStatusPort : StatusPort;\n\n        connect vehicleControlPort to startModule.startControlPort;\n        connect vehicleControlPort to shutdownModule.shutdownControlPort;\n        connect startModule.startPowerPort to vehiclePowerPort;\n        connect startModule.startStatusPort to vehicleStatusPort;\n        connect shutdownModule.shutdownStatusPort to vehicleStatusPort;\n    }\n\n    item def PowerStatusReport {\n        attribute reportId : String;\n        attribute currentPowerState : PowerState;\n        attribute diagnosticState : DiagnosticState;\n        attribute brakeState : BrakeState;\n        attribute allUnitsOperational : Boolean;\n        attribute safetyConfirmed : Boolean;\n    }\n\n    item def StartCommandItem {\n        attribute commandId : String;\n        attribute commandType : CommandType;\n        attribute timestamp : String;\n        attribute userInitiated : Boolean;\n    }\n\n    item def ShutdownCommandItem {\n        attribute commandId : String;\n        attribute commandType : CommandType;\n        attribute timestamp : String;\n        attribute safetyCheckRequired : Boolean;\n    }\n\n    part vehiclePowerSystem : VehiclePowerSystem {\n        attribute systemName = \"VehiclePowerManagementSystem\";\n        attribute overallPowerState = PowerState::OFF;\n        attribute selfDiagnosticsEnabled = true;\n        attribute safeShutdownEnabled = true;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 424,
+    "output_tokens": 1158,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

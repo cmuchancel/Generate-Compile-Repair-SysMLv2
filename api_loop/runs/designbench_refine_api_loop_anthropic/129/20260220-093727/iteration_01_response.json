@@ -1,0 +1,29 @@
+{
+  "id": "msg_015MoeQicGe111m9WfFyU4Qr",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSafetyAntiTheftCatalogue {\n    private import ScalarValues::*;\n\n    enum def ComponentCategory {\n        enum SAFETY;\n        enum ANTI_THEFT;\n        enum SAFETY_AND_ANTI_THEFT;\n    }\n\n    enum def MandatoryStatus {\n        enum MANDATORY;\n        enum OPTIONAL;\n    }\n\n    part def SafetyComponent {\n        attribute componentName : String;\n        attribute category : ComponentCategory;\n        attribute mandatoryStatus : MandatoryStatus;\n        attribute affectsSafety : Boolean;\n        attribute affectsAntiTheft : Boolean;\n    }\n\n    part def AntiTheftComponent {\n        attribute componentName : String;\n        attribute category : ComponentCategory;\n        attribute mandatoryStatus : MandatoryStatus;\n        attribute affectsSafety : Boolean;\n        attribute affectsAntiTheft : Boolean;\n    }\n\n    part def DualPurposeComponent {\n        attribute componentName : String;\n        attribute category : ComponentCategory;\n        attribute mandatoryStatus : MandatoryStatus;\n        attribute affectsSafety : Boolean;\n        attribute affectsAntiTheft : Boolean;\n    }\n\n    part def BodyInterior {\n        attribute sectionName : String;\n\n        part frontSeatBelt : SafetyComponent {\n            attribute componentName : String = \"Front Seat Belt\";\n            attribute category : ComponentCategory = ComponentCategory::SAFETY;\n            attribute mandatoryStatus : MandatoryStatus = MandatoryStatus::MANDATORY;\n            attribute affectsSafety : Boolean = true;\n            attribute affectsAntiTheft : Boolean = false;\n        }\n\n        part bumper : SafetyComponent {\n            attribute componentName : String = \"Bumper\";\n            attribute category : ComponentCategory = ComponentCategory::SAFETY;\n            attribute mandatoryStatus : MandatoryStatus = MandatoryStatus::MANDATORY;\n            attribute affectsSafety : Boolean = true;\n            attribute affectsAntiTheft : Boolean = false;\n        }\n\n        part driverAirbag : SafetyComponent {\n            attribute componentName : String = \"Driver Airbag\";\n            attribute category : ComponentCategory = ComponentCategory::SAFETY;\n            attribute mandatoryStatus : MandatoryStatus = MandatoryStatus::OPTIONAL;\n            attribute affectsSafety : Boolean = true;\n            attribute affectsAntiTheft : Boolean = false;\n        }\n\n        part antiLockBrakingSystem : SafetyComponent {\n            attribute componentName : String = \"Anti-Lock Braking System\";\n            attribute category : ComponentCategory = ComponentCategory::SAFETY;\n            attribute mandatoryStatus : MandatoryStatus = MandatoryStatus::OPTIONAL;\n            attribute affectsSafety : Boolean = true;\n            attribute affectsAntiTheft : Boolean = false;\n        }\n\n        part alarmSystem : AntiTheftComponent {\n            attribute componentName : String = \"Alarm System\";\n            attribute category : ComponentCategory = ComponentCategory::ANTI_THEFT;\n            attribute mandatoryStatus : MandatoryStatus = MandatoryStatus::MANDATORY;\n            attribute affectsSafety : Boolean = false;\n            attribute affectsAntiTheft : Boolean = true;\n        }\n\n        part keylessEntrySystem : AntiTheftComponent {\n            attribute componentName : String = \"Keyless Entry System\";\n            attribute category : ComponentCategory = ComponentCategory::ANTI_THEFT;\n            attribute mandatoryStatus : MandatoryStatus = MandatoryStatus::MANDATORY;\n            attribute affectsSafety : Boolean = false;\n            attribute affectsAntiTheft : Boolean = true;\n        }\n    }\n\n    part def VehicleSafetyCatalogue {\n        attribute catalogueName : String = \"Vehicle Safety and Anti-Theft Function Catalogue\";\n        attribute version : String = \"1.0\";\n\n        part bodyInterior : BodyInterior {\n            attribute sectionName : String = \"Body and Interior\";\n        }\n    }\n\n    part vehicleCatalogue : VehicleSafetyCatalogue;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 479,
+    "output_tokens": 1001,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

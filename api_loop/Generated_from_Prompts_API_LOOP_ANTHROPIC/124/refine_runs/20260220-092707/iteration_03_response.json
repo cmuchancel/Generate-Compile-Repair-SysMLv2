@@ -1,0 +1,29 @@
+{
+  "id": "msg_01TAnTvXhqw82WxbeBn8M1S2",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    part def Wheel {\n        attribute mass : Real;\n    }\n\n    part def FrontAxle {\n        attribute mass : Real;\n        attribute steeringAngle : Real;\n    }\n\n    part def RearAxle {\n        attribute mass : Real;\n    }\n\n    part def FrontAxleAssembly {\n        attribute mass : Real = 150.0;\n        part frontAxle : FrontAxle;\n        part frontWheel1 : Wheel;\n        part frontWheel2 : Wheel;\n    }\n\n    part def RearAxleAssembly {\n        attribute mass : Real = 250.0;\n        part rearAxle : RearAxle;\n        part rearWheel1 : Wheel;\n        part rearWheel2 : Wheel;\n    }\n\n    part def Car {\n        attribute mass : Real = 2500.0;\n        part frontAxleAssembly : FrontAxleAssembly;\n        part rearAxleAssembly : RearAxleAssembly;\n    }\n\n    part car : Car {\n        part redefines frontAxleAssembly {\n            part redefines frontAxle {\n                attribute redefines mass = 50.0;\n                attribute redefines steeringAngle = 0.0;\n            }\n            part redefines frontWheel1 {\n                attribute redefines mass = 20.0;\n            }\n            part redefines frontWheel2 {\n                attribute redefines mass = 20.0;\n            }\n        }\n        part redefines rearAxleAssembly {\n            part redefines rearAxle {\n                attribute redefines mass = 80.0;\n            }\n            part redefines rearWheel1 {\n                attribute redefines mass = 20.0;\n            }\n            part redefines rearWheel2 {\n                attribute redefines mass = 20.0;\n            }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1012,
+    "output_tokens": 502,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

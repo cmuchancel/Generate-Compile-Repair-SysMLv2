@@ -1,0 +1,29 @@
+{
+  "id": "msg_01GV69AJr7EpAaxnr5UJaCN5",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package BatteryChargingControlSystem {\n    private import ScalarValues::*;\n\n    enum def ChargingStatus {\n        enum CHARGING;\n        enum NOT_CHARGING;\n        enum TERMINATED;\n    }\n\n    item def BatteryLevel {\n        attribute level : Real;\n    }\n\n    item def ChargingCommand {\n        attribute command : ChargingStatus;\n    }\n\n    port def BatteryMonitorPort {\n        attribute currentLevel : Real;\n    }\n\n    port def ChargingControlPort {\n        attribute status : ChargingStatus;\n    }\n\n    part def BatteryMonitor {\n        port monitorOut : BatteryMonitorPort;\n        attribute batteryLevel : Real;\n        attribute isCharging : Boolean;\n        attribute isTerminated : Boolean;\n    }\n\n    part def ChargingController {\n        port controlIn : BatteryMonitorPort;\n        port controlOut : ChargingControlPort;\n        attribute targetLevel : Real = 100.0;\n        attribute currentStatus : ChargingStatus;\n        attribute autoCharge : Boolean;\n        attribute safeCharge : Boolean;\n    }\n\n    part def BatteryUnit {\n        port batteryPort : BatteryMonitorPort;\n        attribute capacity : Real;\n        attribute currentCharge : Real;\n        attribute chargeRate : Real;\n        attribute isHealthy : Boolean;\n    }\n\n    part def ChargingTerminator {\n        port terminatorIn : BatteryMonitorPort;\n        port terminatorOut : ChargingControlPort;\n        attribute threshold : Real = 100.0;\n        attribute terminationTriggered : Boolean;\n    }\n\n    part def BatteryChargingSystem {\n        part monitor : BatteryMonitor;\n        part controller : ChargingController;\n        part battery : BatteryUnit;\n        part terminator : ChargingTerminator;\n\n        connect monitor.monitorOut to controller.controlIn;\n        connect battery.batteryPort to monitor.monitorOut;\n        connect terminator.terminatorIn to controller.controlOut;\n        connect controller.controlOut to terminator.terminatorIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 380,
+    "output_tokens": 517,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

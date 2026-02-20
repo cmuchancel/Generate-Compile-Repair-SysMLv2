@@ -1,0 +1,29 @@
+{
+  "id": "msg_013pYZTfuBsUL3Vey9aDr9DK",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package CameraSystem {\n    private import ScalarValues::*;\n\n    enum def FocusStatus {\n        enum Unfocused;\n        enum Focused;\n    }\n\n    enum def CaptureStatus {\n        enum Idle;\n        enum Capturing;\n        enum Done;\n    }\n\n    item def Scene;\n    item def IntermediateImage;\n    item def Photo;\n\n    port def SceneInputPort {\n        attribute sceneData : String;\n    }\n\n    port def ImageOutputPort {\n        attribute imageData : String;\n    }\n\n    port def PhotoOutputPort {\n        attribute photoData : String;\n    }\n\n    part def User {\n        port sceneOut : SceneInputPort;\n        port photoIn : PhotoOutputPort;\n    }\n\n    part def FocusModule {\n        attribute focusStatus : FocusStatus;\n        port sceneIn : SceneInputPort;\n        port imageOut : ImageOutputPort;\n    }\n\n    part def CaptureModule {\n        attribute captureStatus : CaptureStatus;\n        port imageIn : ImageOutputPort;\n        port photoOut : PhotoOutputPort;\n    }\n\n    part def CameraSystem {\n        attribute systemName : String = \"CameraSystem\";\n\n        port userSceneIn : SceneInputPort;\n        port userPhotoOut : PhotoOutputPort;\n\n        part focusModule : FocusModule;\n        part captureModule : CaptureModule;\n\n        connect userSceneIn to focusModule.sceneIn;\n        connect focusModule.imageOut to captureModule.imageIn;\n        connect captureModule.photoOut to userPhotoOut;\n    }\n\n    part user : User;\n    part camera : CameraSystem;\n\n    connect user.sceneOut to camera.userSceneIn;\n    connect camera.userPhotoOut to user.photoIn;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 369,
+    "output_tokens": 445,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

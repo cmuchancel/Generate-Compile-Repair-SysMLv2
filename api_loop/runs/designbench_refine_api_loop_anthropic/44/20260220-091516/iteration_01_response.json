@@ -1,0 +1,29 @@
+{
+  "id": "msg_01CEMLGiXguVyqc6fjUEZ4GB",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package CruiseControlSystem {\n    private import ScalarValues::*;\n\n    enum def SpeedCommandType {\n        enum SET_SPEED;\n        enum CANCEL;\n    }\n\n    enum def EngineCommandType {\n        enum INCREASE_FUEL;\n        enum DECREASE_FUEL;\n        enum MAINTAIN_FUEL;\n    }\n\n    item def SpeedCommand {\n        attribute commandType : SpeedCommandType;\n        attribute desiredSpeed : Real;\n    }\n\n    item def SpeedInfo {\n        attribute actualSpeed : Real;\n    }\n\n    item def FuelCommand {\n        attribute commandType : EngineCommandType;\n        attribute fuelLevel : Real;\n    }\n\n    port def DriverOutputPort {\n        out item speedCommand : SpeedCommand;\n    }\n\n    port def ControllerInputPort {\n        in item speedCommand : SpeedCommand;\n    }\n\n    port def SpeedometerOutputPort {\n        out item speedInfo : SpeedInfo;\n    }\n\n    port def ControllerSpeedInputPort {\n        in item speedInfo : SpeedInfo;\n    }\n\n    port def ControllerFuelOutputPort {\n        out item fuelCommand : FuelCommand;\n    }\n\n    port def EngineInputPort {\n        in item fuelCommand : FuelCommand;\n    }\n\n    port def VehicleSpeedOutputPort {\n        out item speedInfo : SpeedInfo;\n    }\n\n    port def SpeedometerVehicleInputPort {\n        in item speedInfo : SpeedInfo;\n    }\n\n    part def Driver {\n        port driverOut : DriverOutputPort;\n        attribute name : String;\n    }\n\n    part def CruiseController {\n        port commandIn : ControllerInputPort;\n        port speedIn : ControllerSpeedInputPort;\n        port fuelOut : ControllerFuelOutputPort;\n        attribute targetSpeed : Real;\n    }\n\n    part def Speedometer {\n        port vehicleSpeedIn : SpeedometerVehicleInputPort;\n        port speedOut : SpeedometerOutputPort;\n        attribute measuredSpeed : Real;\n    }\n\n    part def Engine {\n        port engineIn : EngineInputPort;\n        attribute fuelLevel : Real;\n    }\n\n    part def Vehicle {\n        port vehicleSpeedOut : VehicleSpeedOutputPort;\n        attribute currentSpeed : Real;\n\n        part controller : CruiseController;\n        part speedometer : Speedometer;\n        part engine : Engine;\n\n        connect speedometer.vehicleSpeedIn to vehicleSpeedOut;\n        connect speedometer.speedOut to controller.speedIn;\n        connect controller.fuelOut to engine.engineIn;\n    }\n\n    part cruiseControlSystem {\n        part driver : Driver;\n        part vehicle : Vehicle;\n\n        connect driver.driverOut to vehicle.controller.commandIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 424,
+    "output_tokens": 693,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

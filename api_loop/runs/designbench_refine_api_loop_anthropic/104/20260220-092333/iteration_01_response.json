@@ -1,0 +1,29 @@
+{
+  "id": "msg_01TqxfrJZhRpQ5Qw6vdCyPeV",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomotivePowertrain {\n    private import ScalarValues::*;\n\n    enum def EngineState {\n        enum OFF;\n        enum RUNNING;\n    }\n\n    enum def TransmissionState {\n        enum IDLE;\n        enum ENGAGED;\n    }\n\n    item def FuelCommand {\n        attribute level : Real;\n    }\n\n    item def ShutdownCommand {\n        attribute requested : Boolean;\n    }\n\n    item def Torque {\n        attribute value : Real;\n    }\n\n    item def Power {\n        attribute value : Real;\n    }\n\n    port def FuelCommandPort {\n        attribute level : Real;\n    }\n\n    port def ShutdownPort {\n        attribute requested : Boolean;\n    }\n\n    port def TorquePort {\n        attribute value : Real;\n    }\n\n    port def PowerPort {\n        attribute value : Real;\n    }\n\n    part def UserInterface {\n        port fuelOut : FuelCommandPort;\n        port shutdownOut : ShutdownPort;\n    }\n\n    part def Engine {\n        attribute state : EngineState;\n        attribute engineTorque : Real;\n        attribute fuelLevel : Real;\n\n        port fuelIn : FuelCommandPort;\n        port shutdownIn : ShutdownPort;\n        port torqueOut : TorquePort;\n    }\n\n    part def Transmission {\n        attribute state : TransmissionState;\n        attribute amplifiedTorque : Real;\n        attribute gearRatio : Real;\n\n        port torqueIn : TorquePort;\n        port torqueOut : TorquePort;\n    }\n\n    part def Driveshaft {\n        attribute transmittedPower : Real;\n\n        port torqueIn : TorquePort;\n        port powerOut : PowerPort;\n    }\n\n    part def WheelLeft {\n        attribute drivingForce : Real;\n\n        port powerIn : PowerPort;\n    }\n\n    part def WheelRight {\n        attribute drivingForce : Real;\n\n        port powerIn : PowerPort;\n    }\n\n    part def Differential {\n        attribute inputPower : Real;\n        attribute leftPower : Real;\n        attribute rightPower : Real;\n\n        port powerIn : PowerPort;\n        port leftOut : PowerPort;\n        port rightOut : PowerPort;\n    }\n\n    part def PowertrainSystem {\n        part ui : UserInterface;\n        part engine : Engine;\n        part transmission : Transmission;\n        part driveshaft : Driveshaft;\n        part differential : Differential;\n        part wheelLeft : WheelLeft;\n        part wheelRight : WheelRight;\n\n        connect ui.fuelOut to engine.fuelIn;\n        connect ui.shutdownOut to engine.shutdownIn;\n        connect engine.torqueOut to transmission.torqueIn;\n        connect transmission.torqueOut to driveshaft.torqueIn;\n        connect driveshaft.powerOut to differential.powerIn;\n        connect differential.leftOut to wheelLeft.powerIn;\n        connect differential.rightOut to wheelRight.powerIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 428,
+    "output_tokens": 749,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

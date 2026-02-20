@@ -1,0 +1,29 @@
+{
+  "id": "msg_01YZDcyhzzGjrzaJJxGNN9wN",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package TireInformationSystem {\n    private import ScalarValues::*;\n\n    enum def Manufacturer {\n        enum Michelin;\n        enum Bridgestone;\n        enum Goodyear;\n        enum Continental;\n        enum Pirelli;\n    }\n\n    part def CoordinateVector {\n        attribute x : Real;\n        attribute y : Real;\n        attribute z : Real;\n    }\n\n    part def InstallationPosition {\n        part location : CoordinateVector;\n    }\n\n    part def Tire {\n        attribute manufacturerName : Manufacturer;\n        attribute rimDiameterInches : Real;\n        attribute tireWidth : Real;\n        part installationPosition : InstallationPosition;\n    }\n\n    part def TireCollection {\n        part michelinTire18x245 : Tire {\n            attribute manufacturerName : Manufacturer = Manufacturer::Michelin;\n            attribute rimDiameterInches : Real = 18.0;\n            attribute tireWidth : Real = 245.0;\n            part installationPosition : InstallationPosition {\n                part location : CoordinateVector {\n                    attribute x : Real = 0.0;\n                    attribute y : Real = 0.0;\n                    attribute z : Real = 0.0;\n                }\n            }\n        }\n\n        part bridgestoneTire17x225 : Tire {\n            attribute manufacturerName : Manufacturer = Manufacturer::Bridgestone;\n            attribute rimDiameterInches : Real = 17.0;\n            attribute tireWidth : Real = 225.0;\n            part installationPosition : InstallationPosition {\n                part location : CoordinateVector {\n                    attribute x : Real = 1.5;\n                    attribute y : Real = 0.0;\n                    attribute z : Real = 0.0;\n                }\n            }\n        }\n\n        part continentalTire19x255 : Tire {\n            attribute manufacturerName : Manufacturer = Manufacturer::Continental;\n            attribute rimDiameterInches : Real = 19.0;\n            attribute tireWidth : Real = 255.0;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 415,
+    "output_tokens": 525,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

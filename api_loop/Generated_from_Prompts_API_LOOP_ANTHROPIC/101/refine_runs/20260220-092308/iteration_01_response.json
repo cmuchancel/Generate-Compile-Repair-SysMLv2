@@ -1,0 +1,29 @@
+{
+  "id": "msg_01Gvs2TJT2mPGbmwJdFdfinT",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleTrailerCouplingSystem {\n    private import ScalarValues::*;\n\n    enum def ConnectionStatus {\n        enum Connected;\n        enum Disconnected;\n    }\n\n    part def CouplingBall {\n        attribute diameter : Real;\n        attribute material : String;\n    }\n\n    part def TrailerConnector {\n        attribute socketSize : Real;\n        attribute material : String;\n    }\n\n    part def TowHitch {\n        part ball : CouplingBall;\n        part connector : TrailerConnector;\n        attribute status : ConnectionStatus;\n    }\n\n    part def Vehicle {\n        attribute make : String;\n        attribute model : String;\n        attribute year : Integer;\n        port hitchPort : HitchPort;\n    }\n\n    part def Trailer {\n        attribute make : String;\n        attribute model : String;\n        attribute loadCapacity : Real;\n        port trailerPort : TrailerPort;\n    }\n\n    port def HitchPort {\n        attribute compatibility : String;\n    }\n\n    port def TrailerPort {\n        attribute compatibility : String;\n    }\n\n    part def CouplingSystem {\n        part vehicle : Vehicle;\n        part trailer : Trailer;\n        part hitch : TowHitch;\n\n        attribute systemName : String = \"VehicleTrailerCouplingSystem\";\n\n        connect vehicle.hitchPort to trailer.trailerPort;\n    }\n\n    part couplingSystemInstance : CouplingSystem {\n        part vehicle : Vehicle {\n            attribute make : String = \"Toyota\";\n            attribute model : String = \"Tundra\";\n            attribute year : Integer = 2023;\n        }\n\n        part trailer : Trailer {\n            attribute make : String = \"Airstream\";\n            attribute model : String = \"Classic\";\n            attribute loadCapacity : Real = 5000.0;\n        }\n\n        part hitch : TowHitch {\n            part ball : CouplingBall {\n                attribute diameter : Real = 2.0;\n                attribute material : String = \"Steel\";\n            }\n            part connector : TrailerConnector {\n                attribute socketSize : Real = 2.0;\n                attribute material : String = \"Steel\";\n            }\n            attribute status : ConnectionStatus = ConnectionStatus::Connected;\n        }\n\n        connect vehicle.hitchPort to trailer.trailerPort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 448,
+    "output_tokens": 558,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

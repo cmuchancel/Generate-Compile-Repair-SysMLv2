@@ -1,0 +1,29 @@
+{
+  "id": "msg_017CoHL6XQG3GJuBR8Soc2NU",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def FuelState {\n        enum FullTank;\n        enum EmptyTank;\n    }\n\n    item def Fuel;\n\n    port def ClutchPort;\n    port def TransmissionPort;\n\n    part def Engine {\n        port clutchOut : ClutchPort;\n        attribute generatedTorque : Real;\n        attribute ratedSpeed : Real;\n    }\n\n    part def Clutch {\n        port clutchIn : ClutchPort;\n        port transmissionOut : TransmissionPort;\n        attribute transmittedTorque : Real;\n    }\n\n    part def Transmission {\n        port transmissionIn : TransmissionPort;\n        attribute inputTorque : Real;\n    }\n\n    part def FuelTank {\n        attribute fuelMass : Real;\n        attribute maxFuelMass : Real = 500.0;\n    }\n\n    part def Vehicle {\n        attribute dryMass : Real = 1200.0;\n        attribute fuelMass : Real;\n        attribute totalMass : Real;\n        attribute maxMassFullTank : Real = 2000.0;\n        attribute maxMassEmptyTank : Real = 1500.0;\n\n        part engine : Engine {\n            attribute generatedTorque : Real = 300.0;\n            attribute ratedSpeed : Real = 3000.0;\n            port clutchOut : ClutchPort;\n        }\n\n        part clutch : Clutch {\n            attribute transmittedTorque : Real = 300.0;\n            port clutchIn : ClutchPort;\n            port transmissionOut : TransmissionPort;\n        }\n\n        part transmission : Transmission {\n            attribute inputTorque : Real = 300.0;\n            port transmissionIn : TransmissionPort;\n        }\n\n        part fuelTank : FuelTank {\n            attribute fuelMass : Real = 400.0;\n            attribute maxFuelMass : Real = 500.0;\n        }\n\n        connect engine.clutchOut to clutch.clutchIn;\n        connect clutch.transmissionOut to transmission.transmissionIn;\n    }\n\n    part def SpeedTorquePoint {\n        attribute speedRpm : Real;\n        attribute torqueNm : Real;\n    }\n\n    part speedTorqueCurve1 : SpeedTorquePoint {\n        attribute speedRpm : Real = 1000.0;\n        attribute torqueNm : Real = 250.0;\n    }\n\n    part speedTorqueCurve2 : SpeedTorquePoint {\n        attribute speedRpm : Real = 2000.0;\n        attribute torqueNm : Real = 300.0;\n    }\n\n    part speedTorqueCurve3 : SpeedTorquePoint {\n        attribute speedRpm : Real = 3000.0;\n        attribute torqueNm : Real = 280.0;\n    }\n\n    part speedTorqueCurve4 : SpeedTorquePoint {\n        attribute speedRpm : Real = 4000.0;\n        attribute torqueNm : Real = 240.0;\n    }\n\n    part speedTorqueCurve5 : SpeedTorquePoint {\n        attribute speedRpm : Real = 5000.0;\n        attribute torqueNm : Real = 200.0;\n    }\n\n    part vehicleFullTank : Vehicle {\n        attribute dryMass : Real = 1200.0;\n        attribute fuelMass : Real = 500.0;\n        attribute totalMass : Real = 1700.0;\n        attribute maxMassFullTank : Real = 2000.0;\n        attribute maxMassEmptyTank : Real = 1500.0;\n    }\n\n    part vehicleEmptyTank : Vehicle {\n        attribute dryMass : Real = 1200.0;\n        attribute fuelMass : Real = 0.0;\n        attribute totalMass : Real = 1200.0;\n        attribute maxMassFullTank : Real = 2000.0;\n        attribute maxMassEmptyTank : Real = 1500.0;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 430,
+    "output_tokens": 1029,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

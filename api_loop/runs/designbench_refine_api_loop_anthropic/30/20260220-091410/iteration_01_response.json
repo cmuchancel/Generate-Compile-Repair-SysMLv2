@@ -1,0 +1,29 @@
+{
+  "id": "msg_01RCv4uFFVLnmUMERSetoT8C",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package DigitalCameraShootingProcess {\n    private import ScalarValues::*;\n\n    enum def ShootingStatus {\n        enum IDLE;\n        enum VIEWFINDING;\n        enum FOCUSING;\n        enum IMAGING;\n        enum COMPLETE;\n    }\n\n    enum def FocusStatus {\n        enum UNFOCUSED;\n        enum FOCUSING;\n        enum FOCUSED;\n    }\n\n    enum def ImageQuality {\n        enum LOW;\n        enum MEDIUM;\n        enum HIGH;\n    }\n\n    item def Scene {\n        attribute sceneName : String;\n        attribute sceneDescription : String;\n    }\n\n    item def FocusData {\n        attribute focusDistance : Real;\n        attribute focusAccuracy : Real;\n        attribute status : FocusStatus;\n    }\n\n    item def ImageData {\n        attribute width : Integer;\n        attribute height : Integer;\n        attribute quality : ImageQuality;\n        attribute isCapture : Boolean;\n    }\n\n    item def Photo {\n        attribute width : Integer;\n        attribute height : Integer;\n        attribute quality : ImageQuality;\n        attribute fileName : String;\n    }\n\n    port def SceneInputPort {\n        attribute sceneReceived : Boolean;\n    }\n\n    port def FocusDataPort {\n        attribute focusReady : Boolean;\n    }\n\n    port def ImageDataPort {\n        attribute imageReady : Boolean;\n    }\n\n    port def PhotoOutputPort {\n        attribute photoProduced : Boolean;\n    }\n\n    part def ViewfindingModule {\n        attribute isActive : Boolean;\n        attribute currentStatus : ShootingStatus;\n        attribute selectedScene : String;\n\n        port sceneInput : SceneInputPort;\n        port focusDataOut : FocusDataPort;\n    }\n\n    part def FocusingModule {\n        attribute isActive : Boolean;\n        attribute focusStatus : FocusStatus;\n        attribute autoFocusEnabled : Boolean;\n        attribute focusDistance : Real;\n\n        port focusDataIn : FocusDataPort;\n        port imageDataOut : ImageDataPort;\n    }\n\n    part def ImagingModule {\n        attribute isActive : Boolean;\n        attribute captureInitiated : Boolean;\n        attribute autoCapture : Boolean;\n        attribute imageQuality : ImageQuality;\n\n        port imageDataIn : ImageDataPort;\n        port photoOut : PhotoOutputPort;\n    }\n\n    part def UserInterface {\n        attribute userActionRequired : Boolean;\n        attribute sceneSelected : Boolean;\n        attribute selectedScene : String;\n\n        port sceneOut : SceneInputPort;\n    }\n\n    part def PhotoStorage {\n        attribute storageAvailable : Boolean;\n        attribute photosStored : Integer;\n\n        port photoIn : PhotoOutputPort;\n    }\n\n    part def DigitalCamera {\n        attribute cameraName : String;\n        attribute isFullyAutomated : Boolean;\n        attribute shootingStatus : ShootingStatus;\n\n        part userInterface : UserInterface;\n        part viewfindingModule : ViewfindingModule;\n        part focusingModule : FocusingModule;\n        part imagingModule : ImagingModule;\n        part photoStorage : PhotoStorage;\n\n        connect userInterface.sceneOut to viewfindingModule.sceneInput;\n        connect viewfindingModule.focusDataOut to focusingModule.focusDataIn;\n        connect focusingModule.imageDataOut to imagingModule.imageDataIn;\n        connect imagingModule.photoOut to photoStorage.photoIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 394,
+    "output_tokens": 849,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

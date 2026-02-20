@@ -1,0 +1,29 @@
+{
+  "id": "msg_018DfdJzYdHySiybvBa3ZGDg",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomobileConfigurationManagement {\n    private import ScalarValues::*;\n\n    enum def SubsystemAConfig {\n        enum CONFIG_A1;\n        enum CONFIG_A2;\n    }\n\n    enum def SubsystemBConfig {\n        enum CONFIG_B1;\n        enum CONFIG_B2;\n    }\n\n    part def Component1;\n    part def Component2;\n    part def Component3;\n    part def Component4;\n    part def Component5;\n    part def Component6;\n\n    part def SubsystemAOption1 {\n        part comp1 : Component1;\n        part comp2 : Component2;\n    }\n\n    part def SubsystemAOption2 {\n        part comp2 : Component2;\n        part comp3 : Component3;\n    }\n\n    part def SubsystemBOption1 {\n        part comp4 : Component4;\n        part comp5 : Component5;\n    }\n\n    part def SubsystemBOption2 {\n        part comp5 : Component5;\n        part comp6 : Component6;\n    }\n\n    part def SubsystemA {\n        attribute selectedConfig : SubsystemAConfig;\n        part optionA1 : SubsystemAOption1;\n        part optionA2 : SubsystemAOption2;\n    }\n\n    part def SubsystemB {\n        attribute selectedConfig : SubsystemBConfig;\n        part optionB1 : SubsystemBOption1;\n        part optionB2 : SubsystemBOption2;\n    }\n\n    part def Automobile {\n        attribute subsystemASelection : SubsystemAConfig;\n        attribute subsystemBSelection : SubsystemBConfig;\n        part subsystemA : SubsystemA;\n        part subsystemB : SubsystemB;\n    }\n\n    part def ConfigurationA {\n        attribute subsystemASelection : SubsystemAConfig = SubsystemAConfig::CONFIG_A1;\n        attribute subsystemBSelection : SubsystemBConfig = SubsystemBConfig::CONFIG_B1;\n        part subsystemA : SubsystemAOption1;\n        part subsystemB : SubsystemBOption1;\n    }\n\n    part def ConfigurationB {\n        attribute subsystemASelection : SubsystemAConfig = SubsystemAConfig::CONFIG_A2;\n        attribute subsystemBSelection : SubsystemBConfig = SubsystemBConfig::CONFIG_B1;\n        part subsystemA : SubsystemAOption2;\n        part subsystemB : SubsystemBOption1;\n    }\n\n    part vehicleConfigA : ConfigurationA;\n    part vehicleConfigB : ConfigurationB;\n\n    part automobile : Automobile {\n        attribute subsystemASelection : SubsystemAConfig = SubsystemAConfig::CONFIG_A1;\n        attribute subsystemBSelection : SubsystemBConfig = SubsystemBConfig::CONFIG_B1;\n        part subsystemA : SubsystemA;\n        part subsystemB : SubsystemB;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 581,
+    "output_tokens": 725,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

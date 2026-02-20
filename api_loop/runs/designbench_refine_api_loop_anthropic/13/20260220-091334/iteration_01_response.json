@@ -1,0 +1,29 @@
+{
+  "id": "msg_01XtRXf1Ma1spaBWGKt4WpEc",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "```sysml\npackage FuelSupplySystem {\n    private import ScalarValues::*;\n\n    enum def FuelFlowState {\n        enum Flowing;\n        enum Idle;\n        enum Returning;\n    }\n\n    item def FuelItem;\n    item def FuelDataItem;\n\n    port def FuelOutPort {\n        out item fuel : FuelItem;\n    }\n\n    port def FuelInPort {\n        in item fuel : FuelItem;\n    }\n\n    port def FuelReturnOutPort {\n        out item returnFuel : FuelItem;\n    }\n\n    port def FuelReturnInPort {\n        in item returnFuel : FuelItem;\n    }\n\n    port def TempDataOutPort {\n        out item tempData : FuelDataItem;\n    }\n\n    port def TempDataInPort {\n        in item tempData : FuelDataItem;\n    }\n\n    part def FuelTank {\n        attribute capacity : Real;\n        attribute currentFuelLevel : Real;\n        attribute fuelTemperature : Real;\n\n        port tankSupplyOut : FuelOutPort;\n        port tankReturnIn : FuelReturnInPort;\n        port tankTempOut : TempDataOutPort;\n    }\n\n    part def FuelPump {\n        attribute pressure : Real;\n        attribute flowRate : Real;\n        attribute flowState : FuelFlowState;\n\n        port pumpFuelIn : FuelInPort;\n        port pumpFuelOut : FuelOutPort;\n        port pumpReturnOut : FuelReturnOutPort;\n        port pumpTempIn : TempDataInPort;\n        port pumpTempOut : TempDataOutPort;\n    }\n\n    part def FuelTankAssembly {\n        attribute assemblyId : String;\n\n        part tank : FuelTank;\n        part pump : FuelPump;\n\n        port assemblySupplyOut : FuelOutPort;\n        port assemblyReturnIn : FuelReturnInPort;\n        port assemblyTempOut : TempDataOutPort;\n\n        connect tank.tankSupplyOut to pump.pumpFuelIn;\n        connect pump.pumpReturnOut to tank.tankReturnIn;\n        connect tank.tankTempOut to pump.pumpTempIn;\n        connect pump.pumpFuelOut to assemblySupplyOut;\n        connect assemblyReturnIn to tank.tankReturnIn;\n        connect pump.pumpTempOut to assemblyTempOut;\n    }\n\n    part def FuelConsumingUnit {\n        attribute unitId : String;\n        attribute fuelConsumptionRate : Real;\n\n        port unitFuelIn : FuelInPort;\n        port unitReturnOut : FuelReturnOutPort;\n        port unitTempIn : TempDataInPort;\n    }\n\n    part def VehicleFuelSystem {\n        attribute vehicleId : String;\n        attribute systemStatus : FuelFlowState;\n\n        part fuelAssembly : FuelTankAssembly;\n        part engineUnit : FuelConsumingUnit;\n        part auxiliaryUnit : FuelConsumingUnit;\n\n        connect fuelAssembly.assemblySupplyOut to engineUnit.unitFuelIn;\n        connect fuelAssembly.assemblySupplyOut to auxiliaryUnit.unitFuelIn;\n        connect engineUnit.unitReturnOut to fuelAssembly.assemblyReturnIn;\n        connect auxiliaryUnit.unitReturnOut to fuelAssembly.assemblyReturnIn;\n        connect fuelAssembly.assemblyTempOut to engineUnit.unitTempIn;\n        connect fuelAssembly.assemblyTempOut to auxiliaryUnit.unitTempIn;\n    }\n}\n```",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 409,
+    "output_tokens": 908,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

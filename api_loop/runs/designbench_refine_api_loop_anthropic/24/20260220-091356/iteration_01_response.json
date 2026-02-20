@@ -1,0 +1,29 @@
+{
+  "id": "msg_01AW4EmjTjyQTnrs83A9uamv",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package CameraWorkflow {\n    private import ScalarValues::*;\n\n    enum def FocusStatus {\n        enum WellFocused;\n        enum PoorFocus;\n    }\n\n    enum def ShootingStatus {\n        enum Ready;\n        enum NotReady;\n    }\n\n    item def Scene;\n    item def FocusedImage;\n    item def Photograph;\n\n    port def SceneInputPort {\n        attribute sceneData : String;\n    }\n\n    port def FocusedImagePort {\n        attribute focusQuality : FocusStatus;\n    }\n\n    port def PhotoOutputPort {\n        attribute photoReady : ShootingStatus;\n    }\n\n    part def SceneSelector {\n        port sceneOut : SceneInputPort;\n        attribute selectedScene : String;\n    }\n\n    part def FocusEngine {\n        port sceneIn : SceneInputPort;\n        port focusOut : FocusedImagePort;\n        attribute focusResult : FocusStatus;\n        attribute focusAchieved : Boolean;\n    }\n\n    part def FocusEvaluator {\n        port focusIn : FocusedImagePort;\n        port evaluationOut : FocusedImagePort;\n        attribute evaluationResult : FocusStatus;\n        attribute isWellFocused : Boolean;\n    }\n\n    part def ShootingEngine {\n        port focusCheckIn : FocusedImagePort;\n        port photoOut : PhotoOutputPort;\n        attribute shootingEnabled : Boolean;\n        attribute shootingStatus : ShootingStatus;\n    }\n\n    part def PhotoOutput {\n        port photoIn : PhotoOutputPort;\n        attribute finalPhoto : String;\n        attribute photoDelivered : Boolean;\n    }\n\n    part def CameraSystem {\n        part selector : SceneSelector;\n        part focusEngine : FocusEngine;\n        part evaluator : FocusEvaluator;\n        part shooter : ShootingEngine;\n        part output : PhotoOutput;\n\n        connect selector.sceneOut to focusEngine.sceneIn;\n        connect focusEngine.focusOut to evaluator.focusIn;\n        connect evaluator.evaluationOut to shooter.focusCheckIn;\n        connect shooter.photoOut to output.photoIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 384,
+    "output_tokens": 553,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

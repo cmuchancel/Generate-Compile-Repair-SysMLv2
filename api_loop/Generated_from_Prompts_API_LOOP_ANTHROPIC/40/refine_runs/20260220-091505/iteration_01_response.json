@@ -1,0 +1,29 @@
+{
+  "id": "msg_01S3XfU2h1kbQQHY24FqXSfk",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleHealthMonitoring {\n    private import ScalarValues::*;\n\n    enum def VehicleHealthStatus {\n        enum NORMAL;\n        enum DEGRADED;\n        enum MAINTENANCE;\n    }\n\n    enum def WarningType {\n        enum OVER_TEMPERATURE;\n        enum NONE;\n    }\n\n    item def TemperatureReading {\n        attribute value : Real;\n        attribute unit : String;\n    }\n\n    item def MaintenanceRecord {\n        attribute lastMaintenanceTime : Real;\n        attribute nextMaintenanceTime : Real;\n        attribute maintenanceDuration : Real;\n    }\n\n    item def WarningMessage {\n        attribute warningType : WarningType;\n        attribute timestamp : Real;\n        attribute description : String;\n    }\n\n    port def TemperatureSensorPort {\n        attribute currentTemperature : Real;\n    }\n\n    port def ControllerPort {\n        attribute warningReceived : WarningType;\n        attribute statusUpdate : VehicleHealthStatus;\n    }\n\n    port def MaintenancePort {\n        attribute maintenanceScheduled : Boolean;\n        attribute maintenanceComplete : Boolean;\n    }\n\n    part def TemperatureSensor {\n        attribute sensorId : String;\n        attribute measuredTemperature : Real;\n        attribute samplingInterval : Real;\n        port sensorOut : TemperatureSensorPort;\n    }\n\n    part def TemperatureMonitor {\n        attribute maxAllowableTemperature : Real;\n        attribute currentTemperature : Real;\n        attribute isOverTemperature : Boolean;\n        port monitorSensorIn : TemperatureSensorPort;\n        port monitorControllerOut : ControllerPort;\n    }\n\n    part def MaintenanceScheduler {\n        attribute maintenanceIntervalHours : Real;\n        attribute lastMaintenanceTimeHours : Real;\n        attribute nextMaintenanceTimeHours : Real;\n        attribute maintenanceDurationHours : Real;\n        attribute maxMaintenanceDurationHours : Real = 48.0;\n        attribute maintenanceActive : Boolean;\n        port schedulerPort : MaintenancePort;\n    }\n\n    part def VehicleController {\n        attribute vehicleId : String;\n        attribute currentStatus : VehicleHealthStatus;\n        attribute activeWarning : WarningType;\n        attribute operatingTimeHours : Real;\n        port controllerIn : ControllerPort;\n        port maintenanceIn : MaintenancePort;\n    }\n\n    part def VehicleHealthManagementSystem {\n        attribute systemId : String;\n        attribute systemName : String = \"VehicleHealthMonitoringSystem\";\n\n        part sensor : TemperatureSensor {\n            attribute sensorId : String = \"TEMP_SENSOR_01\";\n            attribute samplingInterval : Real = 1.0;\n        }\n\n        part temperatureMonitor : TemperatureMonitor {\n            attribute maxAllowableTemperature : Real = 100.0;\n            attribute isOverTemperature : Boolean = false;\n        }\n\n        part maintenanceScheduler : MaintenanceScheduler {\n            attribute maintenanceIntervalHours : Real = 500.0;\n            attribute maxMaintenanceDurationHours : Real = 48.0;\n            attribute maintenanceActive : Boolean = false;\n        }\n\n        part vehicleController : VehicleController {\n            attribute vehicleId : String = \"VEHICLE_01\";\n            attribute currentStatus : VehicleHealthStatus = VehicleHealthStatus::NORMAL;\n            attribute activeWarning : WarningType = WarningType::NONE;\n        }\n\n        connect sensor.sensorOut to temperatureMonitor.monitorSensorIn;\n        connect temperatureMonitor.monitorControllerOut to vehicleController.controllerIn;\n        connect maintenanceScheduler.schedulerPort to vehicleController.maintenanceIn;\n    }\n\n    part vehicleSystem : VehicleHealthManagementSystem {\n        attribute systemId : String = \"VHMS_001\";\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 463,
+    "output_tokens": 988,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

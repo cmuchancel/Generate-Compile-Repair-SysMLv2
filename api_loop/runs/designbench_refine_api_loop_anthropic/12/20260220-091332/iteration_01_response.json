@@ -1,0 +1,29 @@
+{
+  "id": "msg_01CwjWsRUNaHor6YS2zARhyG",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package WaterSupplyNetwork {\n    private import ScalarValues::*;\n\n    enum def WaterType {\n        enum Hot;\n        enum Cold;\n    }\n\n    port def Spigot {\n        attribute waterType : WaterType;\n    }\n\n    port def FaucetInlet {\n        attribute waterType : WaterType;\n    }\n\n    part def SpigotBank {\n        port hotOutlet : Spigot;\n        port coldOutlet : Spigot;\n        attribute hotWaterType : WaterType = WaterType::Hot;\n        attribute coldWaterType : WaterType = WaterType::Cold;\n    }\n\n    part def Faucet {\n        port hotInlet : FaucetInlet;\n        port coldInlet : FaucetInlet;\n        attribute hotWaterType : WaterType = WaterType::Hot;\n        attribute coldWaterType : WaterType = WaterType::Cold;\n    }\n\n    part def WaterSupplySystem {\n        part mainSupply : SpigotBank;\n        part faucet1 : Faucet;\n        part faucet2 : Faucet;\n\n        connect mainSupply.hotOutlet to faucet1.hotInlet;\n        connect mainSupply.coldOutlet to faucet1.coldInlet;\n        connect mainSupply.hotOutlet to faucet2.hotInlet;\n        connect mainSupply.coldOutlet to faucet2.coldInlet;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 413,
+    "output_tokens": 367,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

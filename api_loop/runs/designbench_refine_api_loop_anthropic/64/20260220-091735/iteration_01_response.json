@@ -1,0 +1,29 @@
+{
+  "id": "msg_019xJoDj6avmt2LHGyVZaxh2",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleMassManagement {\n    private import ScalarValues::*;\n\n    enum def ComplianceStatus {\n        enum COMPLIANT;\n        enum NON_COMPLIANT;\n    }\n\n    part def Chassis {\n        attribute mass : Real;\n    }\n\n    part def Engine {\n        attribute mass : Real;\n    }\n\n    part def Transmission {\n        attribute mass : Real;\n    }\n\n    part def Vehicle {\n        attribute massLimit : Real = 2500.0;\n        attribute totalMass : Real;\n\n        part chassis : Chassis {\n            attribute mass : Real = 800.0;\n        }\n\n        part engine : Engine {\n            attribute mass : Real = 600.0;\n        }\n\n        part transmission : Transmission {\n            attribute mass : Real = 200.0;\n        }\n\n        attribute complianceStatus : ComplianceStatus;\n    }\n\n    part def VehicleMassComplianceSystem {\n        part vehicle : Vehicle;\n\n        attribute chassisMass : Real = 800.0;\n        attribute engineMass : Real = 600.0;\n        attribute transmissionMass : Real = 200.0;\n        attribute totalMass : Real = 1600.0;\n        attribute massLimit : Real = 2500.0;\n        attribute isCompliant : Boolean = true;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 418,
+    "output_tokens": 324,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

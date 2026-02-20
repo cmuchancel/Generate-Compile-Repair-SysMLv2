@@ -1,0 +1,29 @@
+{
+  "id": "msg_01GN42TfsfwxcFHMaiLajGux",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleMassBudget {\n    private import ScalarValues::*;\n\n    part def Chassis {\n        attribute actualMass : Real = 800.0;\n    }\n\n    part def Engine {\n        attribute actualMass : Real = 450.0;\n    }\n\n    part def Transmission {\n        attribute actualMass : Real = 120.0;\n    }\n\n    part def Vehicle {\n        attribute massLimit : Real = 2500.0;\n        attribute totalMass : Real = 1370.0;\n        attribute massWithinLimit : Boolean = true;\n\n        part chassis : Chassis;\n        part engine : Engine;\n        part transmission : Transmission;\n    }\n\n    part vehicle : Vehicle;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1533,
+    "output_tokens": 176,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

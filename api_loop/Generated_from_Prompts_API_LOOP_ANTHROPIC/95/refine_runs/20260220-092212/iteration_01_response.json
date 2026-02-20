@@ -1,0 +1,29 @@
+{
+  "id": "msg_013Yj3CmTK6D4MKS76ZhMavZ",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomobileDocumentManagement {\n    private import ScalarValues::*;\n\n    part def Automobile {\n        attribute documentId : String;\n        attribute make : String;\n        attribute model : String;\n        attribute year : String;\n        attribute description : String;\n    }\n\n    part def Car {\n        attribute documentId : String;\n        attribute make : String;\n        attribute model : String;\n        attribute year : String;\n        attribute description : String;\n    }\n\n    enum def DocumentStatus {\n        enum Active;\n        enum Archived;\n        enum Pending;\n    }\n\n    part def TorqueValue {\n        attribute magnitude : Real;\n        attribute unit : String;\n        attribute standard : String;\n    }\n\n    part def DocumentRecord {\n        attribute recordId : String;\n        attribute title : String;\n        attribute content : String;\n        attribute status : DocumentStatus;\n        attribute annotation : String;\n    }\n\n    part def PhysicalQuantityReference {\n        attribute quantityName : String;\n        attribute isqStandard : String;\n        attribute description : String;\n    }\n\n    part def AutomobileDocument {\n        part vehicle : Automobile;\n        part torqueSpec : TorqueValue;\n        part record : DocumentRecord;\n        part quantityRef : PhysicalQuantityReference;\n    }\n\n    part def CarDocument {\n        part vehicle : Car;\n        part torqueSpec : TorqueValue;\n        part record : DocumentRecord;\n        part quantityRef : PhysicalQuantityReference;\n    }\n\n    part def DocumentManagementPlatform {\n        part automobileDoc : AutomobileDocument;\n        part carDoc : CarDocument;\n        attribute platformName : String;\n        attribute platformDescription : String;\n    }\n\n    part platform : DocumentManagementPlatform {\n        attribute platformName : String = \"Automobile Document Management Platform\";\n        attribute platformDescription : String = \"A platform for managing automobile documentation with ISQ physical quantity support\";\n\n        part automobileDoc : AutomobileDocument {\n            part vehicle : Automobile {\n                attribute documentId : String = \"AUTO-001\";\n                attribute make : String = \"Generic\";\n                attribute model : String = \"Model\";\n                attribute year : String = \"2024\";\n                attribute description : String = \"Standard automobile record\";\n            }\n            part torqueSpec : TorqueValue {\n                attribute magnitude : Real = 250.0;\n                attribute unit : String = \"N\u00b7m\";\n                attribute standard : String = \"ISQ\";\n            }\n            part record : DocumentRecord {\n                attribute recordId : String = \"REC-001\";\n                attribute title : String = \"Automobile Technical Document\";\n                attribute content : String = \"Technical specifications and documentation\";\n                attribute status : DocumentStatus = DocumentStatus::Active;\n                attribute annotation : String = \"ISQ compliant torque values referenced\";\n            }\n            part quantityRef : PhysicalQuantityReference {\n                attribute quantityName : String = \"TorqueValue\";\n                attribute isqStandard : String = \"ISQ\";\n                attribute description : String = \"Torque quantity as defined under ISQ standard\";\n            }\n        }\n\n        part carDoc : CarDocument {\n            part vehicle : Car {\n                attribute documentId : String = \"CAR-001\";\n                attribute make : String = \"Generic\";\n                attribute model : String = \"Model\";\n                attribute year : String = \"2024\";\n                attribute description : String = \"Car alias record for automobile\";\n            }\n            part torqueSpec : TorqueValue {\n                attribute magnitude : Real = 250.0;\n                attribute unit : String = \"N\u00b7m\";\n                attribute standard : String = \"ISQ\";\n            }\n            part record : DocumentRecord {\n                attribute recordId : String = \"REC-002\";\n                attribute title : String = \"Car Technical Document\";\n                attribute content : String = \"Technical specifications using Car alias\";\n                attribute status : DocumentStatus = DocumentStatus::Active;\n                attribute annotation : String = \"Car is an alias for Automobile in this platform\";\n            }\n            part quantityRef : PhysicalQuantityReference {\n                attribute quantityName : String = \"TorqueValue\";\n                attribute isqStandard : String = \"ISQ\";\n                attribute description : String = \"Torque quantity as defined under ISQ standard\";\n            }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 451,
+    "output_tokens": 1032,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

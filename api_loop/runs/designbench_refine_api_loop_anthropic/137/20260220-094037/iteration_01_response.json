@@ -1,0 +1,29 @@
+{
+  "id": "msg_013jmo18d9kgHmry37hEE29E",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomotiveComponentModel {\n    private import ScalarValues::*;\n\n    enum def LengthUnit {\n        enum SI;\n        enum Imperial;\n    }\n\n    part def Tire {\n        attribute tireHeight : Real;\n    }\n\n    part def Wheel {\n        attribute hubDiameter_in : Real = 18.0;\n        attribute width_mm : Real = 245.0;\n        attribute hubDiameter_mm : Real = 457.2;\n        attribute outerDiameter_mm : Real;\n        part tire : Tire;\n    }\n\n    part def FrontAxle {\n        part leftWheel : Wheel;\n        part rightWheel : Wheel;\n    }\n\n    part def Vehicle {\n        attribute mass_kg : Real = 1200.0;\n        attribute length_m : Real = 4.82;\n        attribute mass_lb : Real = 2645.55;\n        attribute length_ft : Real = 15.81;\n        part frontAxle : FrontAxle;\n    }\n\n    part vehicle : Vehicle {\n        attribute redefines mass_kg = 1200.0;\n        attribute redefines length_m = 4.82;\n        attribute redefines mass_lb = 2645.55;\n        attribute redefines length_ft = 15.81;\n\n        part redefines frontAxle : FrontAxle {\n            part redefines leftWheel : Wheel {\n                attribute redefines hubDiameter_in = 18.0;\n                attribute redefines width_mm = 245.0;\n                attribute redefines hubDiameter_mm = 457.2;\n                attribute redefines outerDiameter_mm = 457.2 + 2.0 * 85.0;\n                part redefines tire : Tire {\n                    attribute redefines tireHeight = 85.0;\n                }\n            }\n            part redefines rightWheel : Wheel {\n                attribute redefines hubDiameter_in = 18.0;\n                attribute redefines width_mm = 245.0;\n                attribute redefines hubDiameter_mm = 457.2;\n                attribute redefines outerDiameter_mm = 457.2 + 2.0 * 85.0;\n                part redefines tire : Tire {\n                    attribute redefines tireHeight = 85.0;\n                }\n            }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 424,
+    "output_tokens": 600,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

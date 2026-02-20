@@ -1,0 +1,29 @@
+{
+  "id": "msg_01SRgd3qfbDuQMeqAqJVo3H7",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomotiveECU {\n    private import ScalarValues::*;\n\n    enum def NetworkStatus {\n        enum ACTIVE;\n        enum INACTIVE;\n        enum ERROR;\n    }\n\n    enum def ControlMode {\n        enum NORMAL;\n        enum DIAGNOSTIC;\n        enum SAFE;\n    }\n\n    item def CANMessage {\n        attribute messageId : Integer;\n        attribute payload : Real;\n        attribute timestamp : Real;\n    }\n\n    item def SensorData {\n        attribute sensorId : Integer;\n        attribute value : Real;\n        attribute unit : String;\n    }\n\n    port def CANPort {\n        attribute busSpeed : Integer;\n        attribute nodeId : Integer;\n    }\n\n    port def SensorPort {\n        attribute channelId : Integer;\n        attribute sampleRate : Real;\n    }\n\n    part def BusInterface {\n        attribute interfaceId : Integer;\n        attribute busAddress : Integer;\n        attribute status : NetworkStatus;\n        port canConnection : CANPort;\n        port sensorConnection : SensorPort;\n    }\n\n    part def CANBus {\n        attribute busId : Integer;\n        attribute baudRate : Integer;\n        attribute networkStatus : NetworkStatus;\n        attribute maxNodes : Integer;\n        port vcuBusPort : CANPort;\n        port ecuBusPort : CANPort;\n    }\n\n    part def VehicleControlUnit {\n        attribute vcuId : Integer;\n        attribute firmwareVersion : String;\n        attribute controlMode : ControlMode;\n        attribute vehicleSpeed : Real;\n        attribute batteryVoltage : Real;\n        attribute operationalStatus : NetworkStatus;\n        port vcuCANPort : CANPort;\n        port vcuSensorPort : SensorPort;\n        part vcuBusIF : BusInterface;\n    }\n\n    part def EngineControlUnit {\n        attribute ecuId : Integer;\n        attribute firmwareVersion : String;\n        attribute controlMode : ControlMode;\n        attribute engineRPM : Real;\n        attribute engineTemp : Real;\n        attribute throttlePosition : Real;\n        attribute operationalStatus : NetworkStatus;\n        port ecuCANPort : CANPort;\n        port ecuSensorPort : SensorPort;\n        part ecuBusIF : BusInterface;\n    }\n\n    part def AutomotiveSystem {\n        attribute systemId : Integer;\n        attribute systemName : String;\n\n        part vcu : VehicleControlUnit;\n        part ecu : EngineControlUnit;\n        part canBus : CANBus;\n\n        connect vcu.vcuCANPort to canBus.vcuBusPort;\n        connect ecu.ecuCANPort to canBus.ecuBusPort;\n        connect vcu.vcuBusIF.canConnection to vcu.vcuCANPort;\n        connect ecu.ecuBusIF.canConnection to ecu.ecuCANPort;\n        connect vcu.vcuSensorPort to ecu.ecuSensorPort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 424,
+    "output_tokens": 726,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

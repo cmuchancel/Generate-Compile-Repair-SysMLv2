@@ -1,0 +1,103 @@
+Pretend MBSE Requirements — Self-Spotting Bench Press Safety Assist
+Solution-agnostic requirements and constraints for a system that improves safety and independence during barbell bench-press
+        exercise while preserving free-weight benefits (e.g., natural range of motion and stabilizer engagement).
+Source: attached report :contentReference[oaicite:0]{index=0}
+1) Mission and scope requirements
+R-MSN-001 (Primary purpose)
+The system shall improve user safety during barbell bench-press exercise by providing an on-demand self-spotting capability when a user cannot complete a repetition. :contentReference[oaicite:1]{index=1}
+R-MSN-002 (Maintain free-weight benefits)
+The system shall preserve free-weight training characteristics, including natural range of motion and engagement of stabilizing muscles, while adding safety assistance. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
+R-MSN-003 (Target users)
+The system shall support a broad user range from beginners to experienced lifters and shall be usable without a dedicated human spotter. :contentReference[oaicite:4]{index=4} :contentReference[oaicite:5]{index=5}
+R-MSN-004 (Deployment context)
+The system shall be suitable for typical gym and weight-room environments and compatible with common barbell bench-press setups. :contentReference[oaicite:6]{index=6}
+R-MSN-005 (Independence objective)
+The system shall increase user independence and confidence by reducing reliance on external assistance during bench pressing. :contentReference[oaicite:7]{index=7}
+2) Top-level functional requirements
+R-FUNC-001 (Normal exercise mode)
+The system shall allow the user to perform normal bench-press repetitions with minimal interference during intended motion.
+R-FUNC-002 (User-initiated safety engagement)
+The system shall provide a user-initiated means to engage a safety function during a lift without requiring assistance from another person. :contentReference[oaicite:8]{index=8}
+R-FUNC-003 (Load arrest / support)
+When the safety function is engaged, the system shall stop and support the barbell load to prevent harm to the user if the lift cannot be completed. :contentReference[oaicite:9]{index=9}
+R-FUNC-004 (Safe recovery path)
+After safety engagement, the system shall provide a defined recovery outcome that enables the user to exit the unsafe condition without uncontrolled load movement.
+R-FUNC-005 (Reset for subsequent use)
+The system shall return to a ready state after a safety event or after exercise completion, enabling repeated use without complex reconfiguration.
+R-FUNC-006 (Retrofit capability)
+The system shall be addable/adaptable to existing free-weight equipment with limited modifications to the base equipment. :contentReference[oaicite:10]{index=10}
+3) Performance requirements (measurable targets)
+R-PERF-001 (Load capacity)
+The system shall support a combined barbell + plate load of at least
+640 lb
+total under static load during a safety event (representative target derived from component-level capacity analysis). :contentReference[oaicite:11]{index=11}
+R-PERF-002 (Range-of-motion preservation)
+The system shall not constrain the user to a strict single-plane motion and shall preserve a free-weight-like range of motion for bench pressing. :contentReference[oaicite:12]{index=12} :contentReference[oaicite:13]{index=13}
+R-PERF-003 (Low added resistance)
+During normal lifting motion, the system shall add negligible resistance such that users perceive the lift as substantially similar to unassisted free weights. :contentReference[oaicite:14]{index=14}
+R-PERF-004 (Engagement response)
+Upon user safety engagement, the system shall arrest motion within a short travel interval sufficient to prevent injury, consistent with discrete engagement behavior described in the analysis assumptions. :contentReference[oaicite:15]{index=15}
+R-PERF-005 (High-cycle operation)
+The system shall withstand repeated training use (multiple users and many repetitions) without functional degradation that prevents reliable safety engagement. :contentReference[oaicite:16]{index=16}
+4) Key constraints
+R-CNST-001 (Ease of use)
+The system shall be simple and intuitive to operate such that users would be willing to use it in routine workouts. :contentReference[oaicite:17]{index=17} :contentReference[oaicite:18]{index=18}
+R-CNST-002 (Reliability emphasis)
+The system shall prioritize reliability as a safety-critical feature, with consistent behavior across users and sessions. :contentReference[oaicite:19]{index=19}
+R-CNST-003 (Cost sensitivity)
+The system shall be designed to be cost-competitive relative to large guided lifting machines by minimizing part count and leveraging commercially available components where practical. :contentReference[oaicite:20]{index=20} :contentReference[oaicite:21]{index=21}
+R-CNST-004 (Installation constraints)
+The system shall be installable with common tools and minimal specialized labor, enabling deployment in typical gyms and campus facilities. :contentReference[oaicite:22]{index=22} :contentReference[oaicite:23]{index=23}
+R-CNST-005 (Maintainability)
+The system shall be maintainable with accessible components and minimal service burden over its lifetime, aligned with the desire to minimize maintenance costs. :contentReference[oaicite:24]{index=24}
+R-CNST-006 (Packaging and footprint)
+The system shall fit within typical bench-press station spatial constraints and shall not obstruct user setup, spotting zones, or normal gym traffic.
+R-CNST-007 (User comfort)
+The system shall maintain user comfort during operation and shall not introduce uncomfortable or distracting interactions that degrade the workout experience. :contentReference[oaicite:25]{index=25} :contentReference[oaicite:26]{index=26}
+5) Safety and assurance requirements
+R-SAFE-001 (Fail-safe behavior)
+In the event of malfunction or loss of intended control, the system shall transition to a safe state that does not create uncontrolled bar movement or increased user hazard.
+R-SAFE-002 (No new pinch/entrapment hazards)
+The system shall not introduce pinch points or entrapment hazards in user-accessible areas during normal use or during safety engagement.
+R-SAFE-003 (Structural integrity)
+Load-bearing elements shall be designed with an explicit margin of safety appropriate for a safety device, considering the system’s role in preventing catastrophic injury. :contentReference[oaicite:27]{index=27}
+R-SAFE-004 (Safe interaction with failure scenarios)
+The system shall explicitly address the hazardous scenario where the user fails mid-repetition and cannot lift the bar off the chest region, providing a defined protective behavior. :contentReference[oaicite:28]{index=28}
+6) Verification-oriented requirements (MBSE-friendly)
+R-VER-001 (Capacity verification)
+The load capacity requirement shall be verifiable by static load testing to the specified minimum total load with defined acceptance criteria (e.g., no permanent deformation, no loss of function).
+R-VER-002 (Interference verification)
+Minimal interference shall be verifiable by comparing user-perceived resistance and measured added force/drag during repetitions with and without the system. :contentReference[oaicite:29]{index=29}
+R-VER-003 (Safety engagement verification)
+Safety engagement response shall be verifiable by repeatable tests that initiate safety engagement under representative loads and positions, confirming arrest and support behavior. :contentReference[oaicite:30]{index=30}
+R-VER-004 (Retrofit verification)
+Retrofit capability shall be verifiable by demonstrating installation and functional operation on a representative set of common bench-press station configurations with limited base-equipment modification. :contentReference[oaicite:31]{index=31}
+R-VER-005 (Usability verification)
+Ease of use shall be verifiable by user trials showing that users can correctly operate the system after minimal instruction, and that they report willingness to use it during workouts. :contentReference[oaicite:32]{index=32}
+R-VER-006 (Durability verification)
+High-cycle durability shall be verifiable by endurance testing over repeated repetitions/engagement events representative of gym usage, with pass/fail criteria for wear-induced malfunction. :contentReference[oaicite:33]{index=33}
+Logical system breakdown (requirements-oriented functional “boxes”)
+Exercise Interaction Subsystem
+Allow normal bench-press repetitions with minimal interference
+Preserve free-weight-like range of motion and stabilizer engagement
+Safety Engagement Subsystem
+Accept user-initiated engagement during a lift
+Arrest and support barbell load under defined failure scenarios
+Provide a defined recovery outcome for user exit
+Load Path & Structural Subsystem
+Carry and transfer loads safely to supporting structures
+Meet minimum load capacity and safety margin requirements
+Integration & Retrofit Subsystem
+Attach/adapt to existing bench-press stations with limited modification
+Fit within typical station footprint without obstructing user setup
+User Interface & Human Factors Subsystem
+Provide simple, intuitive operation (including safety engagement and reset)
+Maintain comfort and avoid distracting interactions
+Reliability, Maintenance & Lifecycle Subsystem
+Support high-cycle operation in gym environments
+Enable inspection/maintenance with common tools and minimal downtime
+Assurance & Verification Subsystem
+Define testable acceptance criteria for capacity, usability, interference, and durability
+Define safe-state behaviors for faults and abnormal conditions
+End of requirements set. (Intentionally solution-agnostic; no concept solutions included.)
+Generated as a pretend MBSE requirements artifact to drive functional decomposition and concept exploration; not a final product specification.

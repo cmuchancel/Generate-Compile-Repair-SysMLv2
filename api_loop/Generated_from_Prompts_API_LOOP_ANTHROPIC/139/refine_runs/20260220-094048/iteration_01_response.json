@@ -1,0 +1,29 @@
+{
+  "id": "msg_01UEdnDXBv2V2DfJD24f8K6R",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomotiveSystem {\n    private import ScalarValues::*;\n\n    part def Rim {\n        attribute diameter_in : Real = 18.0;\n    }\n\n    part def Tire {\n        attribute width_mm : Real = 245.0;\n        attribute height_mm : Real = 45.0;\n        attribute tread_depth_mm : Real = 6.0;\n        attribute min_tread_depth_mm : Real = 3.5;\n    }\n\n    part def Wheel {\n        attribute rim_diameter_in : Real = 18.0;\n        attribute tire_width_mm : Real = 245.0;\n        attribute tire_height_mm : Real = 45.0;\n        attribute rim_diameter_mm : Real = 457.2;\n        attribute outer_diameter_mm : Real = 547.2;\n\n        part rim : Rim;\n        part tire : Tire;\n    }\n\n    part def BrakeDisc {\n        attribute radius_mm : Real = 95.0;\n        attribute diameter_mm : Real = 190.0;\n    }\n\n    part def WheelAssembly {\n        attribute wheel_outer_diameter_mm : Real = 547.2;\n        attribute brake_disc_diameter_mm : Real = 190.0;\n        attribute fitment_ok : Boolean = true;\n\n        part wheel : Wheel;\n        part brakeDisc : BrakeDisc;\n    }\n\n    part def Vehicle {\n        attribute total_mass_kg : Real = 1200.0;\n        attribute length_m : Real = 4.82;\n\n        part frontLeft : WheelAssembly;\n        part frontRight : WheelAssembly;\n        part rearLeft : WheelAssembly;\n        part rearRight : WheelAssembly;\n    }\n\n    part vehicle : Vehicle;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 529,
+    "output_tokens": 452,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

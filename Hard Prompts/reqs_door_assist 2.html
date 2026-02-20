@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pretend MBSE Requirements — Automatic Door Opening Assist (Retrofit)</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121b33;
+      --text:#eaf0ff;
+      --muted:#b8c2e6;
+      --border:#25345e;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1100px 700px at 20% 0%, #162048 0%, var(--bg) 62%);
+      color:var(--text);
+      line-height:1.55;
+    }
+    header{
+      border-bottom:1px solid var(--border);
+      padding:26px 16px 14px;
+    }
+    .wrap{max-width:980px;margin:0 auto;padding:0 16px 44px;}
+    h1{margin:0 0 6px;font-size:1.55rem;letter-spacing:.2px}
+    .subtitle{margin:0;color:var(--muted);font-size:.98rem}
+    section{
+      background: rgba(18,27,51,.78);
+      border:1px solid var(--border);
+      border-radius:14px;
+      margin:14px 0;
+      padding:16px 16px 10px;
+      box-shadow: 0 14px 30px rgba(0,0,0,.25);
+    }
+    h2{margin:0 0 10px;font-size:1.15rem;color:#f4f7ff}
+    .req{
+      padding:10px 12px;
+      margin:10px 0;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: rgba(11,16,32,.55);
+    }
+    .req strong{display:block;margin-bottom:4px;color:#fff}
+    .req p{margin:0;color:var(--text)}
+    .note{margin:6px 0 0;color:var(--muted);font-size:.92rem}
+    ul,ol{margin:10px 0 6px 18px}
+    li{margin:6px 0}
+    hr{border:0;border-top:1px solid var(--border);margin:12px 0 0}
+    footer{margin-top:16px;color:var(--muted);font-size:.9rem;padding: 6px 2px 0}
+    code{background:rgba(255,255,255,.06);padding:1px 6px;border-radius:7px}
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <h1>Pretend MBSE Requirements — Automatic Door Opening Assist (Retrofit)</h1>
+      <p class="subtitle">
+        Solution-agnostic requirements and constraints intended to drive MBSE functional decomposition and concept exploration
+        for a retrofit system that enables automatic opening of existing interior doors to improve accessibility.
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="mission">
+      <h2>1) Mission and scope requirements</h2>
+
+      <div class="req">
+        <strong>R-MSN-001 (Primary function)</strong>
+        <p>The system shall enable an interior hinged door to open automatically for an accessibility user when requested.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-002 (Retrofit scope)</strong>
+        <p>The system shall be designed as an add-on for existing doors that already use traditional door-closer hardware.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-003 (Deployment context)</strong>
+        <p>The system shall be suitable for installation on a large number of doors in an institutional campus setting (e.g., classroom doors), not just exterior entrances.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-MSN-004 (Independence objective)</strong>
+        <p>The system shall improve user independence by reducing reliance on assistance from other people for routine door access.</p>
+      </div>
+    </section>
+
+    <section id="functional">
+      <h2>2) Top-level functional requirements</h2>
+
+      <div class="req">
+        <strong>R-FUNC-001 (Initiate automatic opening)</strong>
+        <p>The system shall provide a user-initiated means to request automatic opening without requiring the user to manipulate a door knob.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-002 (Preferred initiation modality)</strong>
+        <p>The primary initiation interface shall be compatible with push-button actuation appropriate for accessibility users.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-003 (Door opening against existing resistance)</strong>
+        <p>The system shall open the door against the resistance of the existing door closer and typical hinge/friction loads.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-004 (Hold-ready state)</strong>
+        <p>The system shall support a “ready” state in which it is prepared to perform an opening upon request, without unintended actuation.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-005 (Non-interference during closing)</strong>
+        <p>The system shall not impede or materially increase resistance during normal door closing under the door closer.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-006 (Directionality)</strong>
+        <p>The system shall ensure that the automatic opening motion occurs in the intended opening direction and does not reverse the door’s expected behavior.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-FUNC-007 (Reset/return to standby)</strong>
+        <p>After completing an opening cycle (or after a cancellation), the system shall return to a defined standby state suitable for subsequent use.</p>
+      </div>
+    </section>
+
+    <section id="performance">
+      <h2>3) Performance requirements (measurable targets)</h2>
+
+      <div class="req">
+        <strong>R-PERF-001 (Opening capability baseline)</strong>
+        <p>The system shall be capable of opening doors with an opening force requirement up to at least <b>11.375 lbf</b> (representative campus door measurement).</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-002 (Full-open completion)</strong>
+        <p>The system shall open the door to a usable open position sufficient for wheelchair passage under normal operating conditions.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-003 (Cycle response)</strong>
+        <p>Upon user request, the system shall begin the opening action within a short, user-acceptable delay and proceed with controlled motion.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-PERF-004 (Repeatability)</strong>
+        <p>The system shall provide repeatable opening performance across repeated cycles without requiring re-adjustment between typical uses.</p>
+      </div>
+    </section>
+
+    <section id="constraints">
+      <h2>4) Key constraints</h2>
+
+      <div class="req">
+        <strong>R-CNST-001 (Cost constraint)</strong>
+        <p>The system shall be designed to be lower-cost than typical electrically-driven automatic door operators, suitable for scaling across many doors.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-002 (Installation burden)</strong>
+        <p>The system shall be installable without requiring specialized high-skill labor for each door installation, supporting scalable deployment.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-003 (Door hardware compatibility)</strong>
+        <p>The system shall be compatible with common door closer interface geometries and shall tolerate variation in existing door hardware across buildings.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-004 (Operational simplicity)</strong>
+        <p>The system shall be simple and intuitive for both accessibility users and general building occupants, minimizing the need for training.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-CNST-005 (Packaging/enclosure)</strong>
+        <p>The system shall fit within a practical on-door or near-door packaging envelope and shall include an enclosure appropriate for building environments.</p>
+      </div>
+    </section>
+
+    <section id="safety">
+      <h2>5) Safety and assurance requirements</h2>
+
+      <div class="req">
+        <strong>R-SAFE-001 (Controlled motion)</strong>
+        <p>The system shall provide controlled door motion such that the opening action does not create unsafe rapid movement for nearby pedestrians.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-002 (User protection)</strong>
+        <p>The system shall prevent user contact with hazardous moving elements during normal operation and typical interaction.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-003 (Fail-safe behavior)</strong>
+        <p>In the presence of a fault, jam, or abnormal operating condition, the system shall transition to a safe state that avoids uncontrolled door motion.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-SAFE-004 (Pinch/entrapment mitigation)</strong>
+        <p>The system shall minimize pinch points and entrapment hazards introduced by the add-on mechanism.</p>
+      </div>
+    </section>
+
+    <section id="ram">
+      <h2>6) Reliability, maintainability, and durability requirements</h2>
+
+      <div class="req">
+        <strong>R-RAM-001 (High-cycle use)</strong>
+        <p>The system shall withstand frequent daily use in a public building environment without loss of function.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-RAM-002 (Hold/standby durability)</strong>
+        <p>The system shall maintain its readiness/standby condition for extended periods without unintended actuation or loss of ability to operate when requested.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-RAM-003 (Serviceability)</strong>
+        <p>The system shall allow inspection and maintenance using common tools, and replaceable wear items shall be accessible.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-RAM-004 (Environmental robustness)</strong>
+        <p>The system shall operate reliably under typical indoor building conditions including dust, incidental impacts, and temperature variation within conditioned spaces.</p>
+      </div>
+    </section>
+
+    <section id="verification">
+      <h2>7) Verification-oriented requirements</h2>
+
+      <div class="req">
+        <strong>R-VER-001 (Opening-force verification)</strong>
+        <p>The opening capability shall be verifiable by test on representative doors spanning measured opening force requirements up to the specified baseline.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-002 (Non-interference verification)</strong>
+        <p>Non-interference during door closing shall be verifiable by comparing closing behavior (time/effort) with and without the installed system.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-003 (Repeatability verification)</strong>
+        <p>Repeatability shall be verifiable by conducting a multi-cycle endurance test demonstrating consistent operation across repeated open/close cycles.</p>
+      </div>
+
+      <div class="req">
+        <strong>R-VER-004 (Safety verification)</strong>
+        <p>Safe-state behavior shall be verifiable by induced fault/jam scenarios demonstrating controlled stop and absence of hazardous motion.</p>
+      </div>
+    </section>
+
+    <section id="logical-breakdown">
+      <h2>Logical system breakdown (requirements-oriented functional “boxes”)</h2>
+
+      <ol>
+        <li><b>User Request & Interface Subsystem</b>
+          <ul>
+            <li>Accept user request to open (accessible initiation)</li>
+            <li>Provide simple status feedback (ready / active / fault)</li>
+            <li>Provide a safe cancel/stop interaction</li>
+          </ul>
+        </li>
+
+        <li><b>Door Interaction Subsystem</b>
+          <ul>
+            <li>Couple to the existing door/closer interface without permanent door replacement</li>
+            <li>Transmit required action to open the door to a usable open position</li>
+            <li>Avoid impeding normal door closing behavior</li>
+          </ul>
+        </li>
+
+        <li><b>Readiness / Holding Subsystem</b>
+          <ul>
+            <li>Maintain a defined standby state between openings</li>
+            <li>Prevent unintended actuation while in standby</li>
+            <li>Support reset/return to standby after a cycle</li>
+          </ul>
+        </li>
+
+        <li><b>Motion Management Subsystem</b>
+          <ul>
+            <li>Manage opening motion to be controlled and predictable</li>
+            <li>Limit motion to the intended operating range</li>
+            <li>Detect and handle jams/abnormal conditions</li>
+          </ul>
+        </li>
+
+        <li><b>Mounting, Enclosure & Integration Subsystem</b>
+          <ul>
+            <li>Provide mounting features compatible with common door installations</li>
+            <li>Provide an enclosure suitable for indoor public-building environments</li>
+            <li>Support scalable installation across many doors</li>
+          </ul>
+        </li>
+
+        <li><b>Safety & Assurance Subsystem</b>
+          <ul>
+            <li>Prevent user contact with hazardous elements</li>
+            <li>Provide fail-safe behavior under fault conditions</li>
+            <li>Mitigate pinch/entrapment hazards introduced by the system</li>
+          </ul>
+        </li>
+
+        <li><b>Maintenance & Lifecycle Support Subsystem</b>
+          <ul>
+            <li>Enable routine inspection and service with common tools</li>
+            <li>Support replacement of wear components</li>
+            <li>Support durability for frequent public-building use</li>
+          </ul>
+        </li>
+      </ol>
+
+      <hr />
+      <p class="note">End of requirements set. (Intentionally solution-agnostic; no concept solutions included.)</p>
+    </section>
+
+    <footer>
+      <p>Generated as a pretend MBSE requirements artifact to drive functional decomposition and concept exploration; not a final product specification.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

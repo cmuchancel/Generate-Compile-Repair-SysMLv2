@@ -1,0 +1,29 @@
+{
+  "id": "msg_0138LTqqQFNcvxkrFuTz5BhC",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleTrailerSystem {\n    private import ScalarValues::*;\n\n    enum def ConnectionStatus {\n        enum Connected;\n        enum Disconnected;\n    }\n\n    part def TowBall {\n        attribute status : ConnectionStatus;\n    }\n\n    part def Coupler {\n        attribute status : ConnectionStatus;\n    }\n\n    part def Chassis {\n        part towBall : TowBall;\n    }\n\n    part def TrailerFrame {\n        part coupler : Coupler;\n    }\n\n    part def Vehicle {\n        part chassis : Chassis;\n    }\n\n    part def Trailer {\n        part trailerFrame : TrailerFrame;\n    }\n\n    part def HitchSystem {\n        part vehicle : Vehicle;\n        part trailer : Trailer;\n        attribute hitchStatus : ConnectionStatus;\n    }\n\n    part hitchSystem : HitchSystem {\n        part vehicle : Vehicle {\n            part chassis : Chassis {\n                part towBall : TowBall {\n                    attribute status : ConnectionStatus = ConnectionStatus::Disconnected;\n                }\n            }\n        }\n        part trailer : Trailer {\n            part trailerFrame : TrailerFrame {\n                part coupler : Coupler {\n                    attribute status : ConnectionStatus = ConnectionStatus::Disconnected;\n                }\n            }\n        }\n        attribute hitchStatus : ConnectionStatus = ConnectionStatus::Disconnected;\n\n        connect vehicle.chassis.towBall to trailer.trailerFrame.coupler;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 423,
+    "output_tokens": 357,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

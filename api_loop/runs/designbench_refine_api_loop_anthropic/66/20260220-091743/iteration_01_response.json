@@ -1,0 +1,29 @@
+{
+  "id": "msg_011uCGGjiw6zpQjq8prBv1sH",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    part def Chassis {\n        attribute mass : Real;\n    }\n\n    part def Engine {\n        attribute mass : Real;\n    }\n\n    part def Transmission {\n        attribute mass : Real;\n    }\n\n    part def Vehicle {\n        part chassis : Chassis {\n            attribute :>> mass = 800.0;\n        }\n        part engine : Engine {\n            attribute :>> mass = 500.0;\n        }\n        part transmission : Transmission {\n            attribute :>> mass = 200.0;\n        }\n        attribute totalMass : Real = 800.0 + 500.0 + 200.0;\n        attribute maxMass : Real = 2500.0;\n        attribute massConstraintSatisfied : Boolean = (1500.0 <= 2500.0);\n    }\n\n    part def VehicleDynamics {\n        attribute initialVelocity : Real;\n        attribute finalVelocity : Real;\n        attribute mass : Real;\n        attribute force : Real;\n        attribute time : Real;\n        attribute deltaVelocity : Real = 10.0;\n        attribute massPositive : Boolean = (1500.0 > 0.0);\n        attribute impulse : Real = 500.0 * 3.0;\n        attribute momentumChange : Real = 1500.0 * 10.0;\n        attribute dynamicConstraintSatisfied : Boolean = (1500.0 > 0.0);\n    }\n\n    part vehicle : Vehicle;\n\n    part dynamics : VehicleDynamics {\n        attribute :>> initialVelocity = 0.0;\n        attribute :>> finalVelocity = 10.0;\n        attribute :>> mass = 1500.0;\n        attribute :>> force = 500.0;\n        attribute :>> time = 30.0;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 424,
+    "output_tokens": 464,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

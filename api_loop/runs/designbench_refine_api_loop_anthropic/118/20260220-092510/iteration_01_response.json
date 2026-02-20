@@ -1,0 +1,29 @@
+{
+  "id": "msg_01KZ82Ui44t6oJS16WLcKFhi",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleManagementSystem {\n    private import ScalarValues::*;\n\n    enum def MassGrade {\n        enum GRADE_2000;\n        enum GRADE_2500;\n    }\n\n    enum def FuelStatus {\n        enum FULL;\n        enum EMPTY;\n    }\n\n    enum def ReliabilityStatus {\n        enum TRACKED;\n        enum FULFILLED;\n    }\n\n    part def Engine {\n        attribute torqueOutput : Real;\n        attribute isConnected : Boolean;\n        port drivePort : DriveInterface;\n    }\n\n    part def Transmission {\n        attribute gearRatio : Real;\n        port drivePort : DriveInterface;\n    }\n\n    port def DriveInterface {\n        attribute transferRate : Real;\n    }\n\n    part def Vehicle {\n        attribute actualMass : Real;\n        attribute maxMass : Real;\n        attribute massGrade : MassGrade;\n        attribute fuelStatus : FuelStatus;\n        attribute reliability : ReliabilityStatus;\n        attribute isMassCompliant : Boolean;\n        attribute isPowerDeliveryEnabled : Boolean;\n\n        part engine : Engine;\n        part transmission : Transmission;\n\n        connect engine.drivePort to transmission.drivePort;\n    }\n\n    part vehicleA : Vehicle {\n        attribute redefines actualMass = 2000.0;\n        attribute redefines maxMass = 2000.0;\n        attribute redefines massGrade = MassGrade::GRADE_2000;\n        attribute redefines fuelStatus = FuelStatus::FULL;\n        attribute redefines isMassCompliant = true;\n        attribute redefines isPowerDeliveryEnabled = true;\n        attribute redefines reliability = ReliabilityStatus::TRACKED;\n\n        part redefines engine : Engine {\n            attribute redefines torqueOutput = 300.0;\n            attribute redefines isConnected = true;\n        }\n\n        part redefines transmission : Transmission {\n            attribute redefines gearRatio = 3.5;\n        }\n    }\n\n    part vehicleB : Vehicle {\n        attribute redefines actualMass = 2500.0;\n        attribute redefines maxMass = 2500.0;\n        attribute redefines massGrade = MassGrade::GRADE_2500;\n        attribute redefines fuelStatus = FuelStatus::EMPTY;\n        attribute redefines isMassCompliant = true;\n        attribute redefines isPowerDeliveryEnabled = true;\n        attribute redefines reliability = ReliabilityStatus::FULFILLED;\n\n        part redefines engine : Engine {\n            attribute redefines torqueOutput = 450.0;\n            attribute redefines isConnected = true;\n        }\n\n        part redefines transmission : Transmission {\n            attribute redefines gearRatio = 4.0;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 511,
+    "output_tokens": 700,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

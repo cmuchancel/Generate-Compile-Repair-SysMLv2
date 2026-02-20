@@ -1,0 +1,29 @@
+{
+  "id": "msg_017qP1JuEUjhXcVWmLeHeFpG",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def GearSetting {\n        enum GEAR_0;\n        enum GEAR_1;\n        enum GEAR_2;\n        enum GEAR_3;\n        enum GEAR_4;\n        enum GEAR_5;\n    }\n\n    part def VehicleState {\n        attribute gear : GearSetting;\n        attribute acceleratorPosition : Real;\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        part state : VehicleState;\n    }\n\n    part def Engine;\n\n    part def Driver;\n\n    part def CompositeSystem {\n        part vehicle : Vehicle;\n        part engine : Engine;\n        part driver : Driver;\n    }\n\n    part def VehicleSnapshot {\n        attribute mass : Real;\n        attribute gear : GearSetting;\n        attribute acceleratorPosition : Real;\n    }\n\n    part Vehicle_1_t0 : VehicleSnapshot {\n        attribute redefines mass = 2000.0;\n        attribute redefines gear = GearSetting::GEAR_0;\n        attribute redefines acceleratorPosition = 0.0;\n    }\n\n    part Vehicle_1_t1 : VehicleSnapshot {\n        attribute redefines mass = 1500.0;\n        attribute redefines gear = GearSetting::GEAR_2;\n        attribute redefines acceleratorPosition = 0.5;\n    }\n\n    part def Vehicle1System {\n        part initialState : VehicleSnapshot {\n            attribute redefines mass = 2000.0;\n            attribute redefines gear = GearSetting::GEAR_0;\n            attribute redefines acceleratorPosition = 0.0;\n        }\n        part nextState : VehicleSnapshot {\n            attribute redefines mass = 1500.0;\n            attribute redefines gear = GearSetting::GEAR_2;\n            attribute redefines acceleratorPosition = 0.5;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 438,
+    "output_tokens": 486,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "msg_01EDNe5QGxdRifX2GYyAjkY3",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleConfiguration {\n    private import ScalarValues::*;\n\n    part def Tire {\n        attribute mass : Real;\n    }\n\n    part def Axle {\n        attribute mass : Real;\n        part tires : Tire[2] ordered;\n    }\n\n    part def FrontAxle :> Axle {\n        attribute steeringAngle : Real;\n    }\n\n    part def RearAxle :> Axle {\n    }\n\n    part def Vehicle {\n        attribute mass : Real = 1750;\n        part frontAxle : Axle[1];\n        part rearAxle : Axle[1];\n    }\n\n    part vehicle1 : Vehicle {\n        attribute :>> mass = 1750;\n\n        part :>> frontAxle : FrontAxle {\n            attribute :>> mass = 100;\n            part :>> tires : Tire[2] ordered {\n                attribute :>> mass = 10;\n            }\n        }\n\n        part :>> rearAxle : RearAxle {\n            attribute :>> mass = 120;\n            part :>> tires : Tire[2] ordered {\n                attribute :>> mass = 10;\n            }\n        }\n    }\n\n    part vehicle1_c1 : Vehicle {\n        attribute :>> mass = 2000;\n\n        part frontAxle_c1 : FrontAxle {\n            attribute :>> mass = 110;\n            attribute :>> steeringAngle = 30.0;\n            part tires_front : Tire[2] ordered {\n                attribute :>> mass = 12;\n            }\n        }\n\n        part rearAxle_c1 : RearAxle {\n            attribute :>> mass = 130;\n            part tires_rear : Tire[2] ordered {\n                attribute :>> mass = 12;\n            }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 483,
+    "output_tokens": 452,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

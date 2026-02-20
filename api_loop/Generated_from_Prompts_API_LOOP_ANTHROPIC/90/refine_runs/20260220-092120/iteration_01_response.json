@@ -1,0 +1,29 @@
+{
+  "id": "msg_016R1JaPMZV4ZAMUsxFJNM7u",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package RiskMetadataModel {\n    private import ScalarValues::*;\n\n    enum def SeverityLevel {\n        enum LOW;\n        enum MEDIUM;\n        enum HIGH;\n        enum CRITICAL;\n    }\n\n    enum def ProbabilityLevel {\n        enum RARE;\n        enum UNLIKELY;\n        enum POSSIBLE;\n        enum LIKELY;\n        enum ALMOST_CERTAIN;\n    }\n\n    enum def FailureType {\n        enum FUNCTIONAL;\n        enum PERFORMANCE;\n        enum SAFETY;\n        enum SECURITY;\n        enum AVAILABILITY;\n    }\n\n    part def Cause {\n        attribute causeId : String;\n        attribute causeDescription : String;\n        attribute probability : ProbabilityLevel;\n        attribute probabilityValue : Real;\n    }\n\n    part def Failure {\n        attribute failureId : String;\n        attribute failureDescription : String;\n        attribute failureType : FailureType;\n        attribute severity : SeverityLevel;\n        attribute severityScore : Integer;\n    }\n\n    part def Scenario {\n        attribute scenarioId : String;\n        attribute scenarioName : String;\n        attribute scenarioDescription : String;\n        attribute likelihood : ProbabilityLevel;\n        part scenarioCauses : Cause[0..*];\n        part scenarioFailures : Failure[0..*];\n    }\n\n    part def CausalRelationship {\n        attribute relationshipId : String;\n        attribute relationshipDescription : String;\n        attribute propagationStrength : Real;\n        part sourceScenario : Scenario[1];\n        part targetScenario : Scenario[1];\n    }\n\n    part def RiskScenario {\n        attribute riskScenarioId : String;\n        attribute riskScenarioName : String;\n        attribute riskScenarioDescription : String;\n        attribute overallSeverity : SeverityLevel;\n        attribute overallProbability : ProbabilityLevel;\n        attribute riskScore : Real;\n        attribute analysisNotes : String;\n        attribute decisionSupport : String;\n        part composedScenarios : Scenario[1..*];\n        part composedCauses : Cause[0..*];\n        part composedFailures : Failure[0..*];\n        part causalChain : CausalRelationship[0..*];\n    }\n\n    part def RiskMetadataRepository {\n        attribute repositoryId : String;\n        attribute repositoryName : String;\n        attribute modelingLanguageCompatibility : String;\n        attribute version : String;\n        attribute createdDate : String;\n        attribute lastModifiedDate : String;\n        part allScenarios : Scenario[0..*];\n        part allCauses : Cause[0..*];\n        part allFailures : Failure[0..*];\n        part allCausalRelationships : CausalRelationship[0..*];\n        part allRiskScenarios : RiskScenario[0..*];\n    }\n\n    port def RiskDataPort {\n        attribute portId : String;\n        attribute dataFormat : String;\n    }\n\n    part def ExternalSystemInterface {\n        attribute interfaceId : String;\n        attribute interfaceName : String;\n        attribute protocolVersion : String;\n        port riskDataOut : RiskDataPort;\n        port riskDataIn : RiskDataPort;\n    }\n\n    part def RiskManagementSystem {\n        attribute systemId : String;\n        attribute systemName : String;\n        attribute systemDescription : String;\n        part repository : RiskMetadataRepository[1];\n        part externalInterface : ExternalSystemInterface[1];\n        port systemRiskDataOut : RiskDataPort;\n        port systemRiskDataIn : RiskDataPort;\n    }\n\n    part riskSystem : RiskManagementSystem {\n        attribute systemId = \"RMS-001\";\n        attribute systemName = \"Risk Metadata Management System\";\n        attribute systemDescription = \"Systematic risk metadata modeling and management system\";\n\n        part repository : RiskMetadataRepository {\n            attribute repositoryId = \"REPO-001\";\n            attribute repositoryName = \"Central Risk Repository\";\n            attribute modelingLanguageCompatibility = \"SysML v2\";\n            attribute version = \"1.0.0\";\n\n            part allScenarios : Scenario[0..*];\n            part allCauses : Cause[0..*];\n            part allFailures : Failure[0..*];\n            part allCausalRelationships : CausalRelationship[0..*];\n            part allRiskScenarios : RiskScenario[0..*];\n        }\n\n        part externalInterface : ExternalSystemInterface {\n            attribute interfaceId = \"EXT-001\";\n            attribute interfaceName = \"Systems Engineering Integration Interface\";\n            attribute protocolVersion = \"2.0\";\n            port riskDataOut : RiskDataPort;\n            port riskDataIn : RiskDataPort;\n        }\n\n        port systemRiskDataOut : RiskDataPort;\n        port systemRiskDataIn : RiskDataPort;\n    }\n\n    connect riskSystem.systemRiskDataOut to riskSystem.externalInterface.riskDataIn;\n    connect riskSystem.externalInterface.riskDataOut to riskSystem.systemRiskDataIn;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 425,
+    "output_tokens": 1287,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

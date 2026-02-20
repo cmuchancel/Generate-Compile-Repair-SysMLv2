@@ -1,0 +1,29 @@
+{
+  "id": "msg_01QeqRyuocVF24qMcrzqskg4",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package FuelEconomySystem {\n    private import ScalarValues::*;\n\n    enum def DrivingCondition {\n        enum Urban;\n        enum Highway;\n    }\n\n    part def Powertrain {\n        attribute engineDisplacementCubicInches : Real;\n        attribute nominalHorsePower : Real;\n    }\n\n    part def Load {\n        attribute testLoadPounds : Real;\n    }\n\n    part def FuelMeasurement {\n        attribute gallonCubicInches : Real;\n    }\n\n    part def UrbanTest {\n        attribute condition : DrivingCondition;\n        attribute testLoadPounds : Real;\n        attribute measuredMilesPerGallon : Real;\n        attribute minimumRequiredMilesPerGallon : Real;\n        attribute meetsRequirement : Boolean;\n    }\n\n    part def HighwayTest {\n        attribute condition : DrivingCondition;\n        attribute testLoadPounds : Real;\n        attribute measuredMilesPerGallon : Real;\n        attribute minimumRequiredMilesPerGallon : Real;\n        attribute meetsRequirement : Boolean;\n    }\n\n    part def FuelEconomySystem {\n        attribute systemName : String;\n    }\n\n    part fuelEconomySystem : FuelEconomySystem {\n        attribute systemName : String = \"Vehicle Fuel Economy Compliance System\";\n\n        part powertrain : Powertrain {\n            attribute engineDisplacementCubicInches : Real = 183.0;\n            attribute nominalHorsePower : Real = 150.0;\n        }\n\n        part testLoad : Load {\n            attribute testLoadPounds : Real = 1000.0;\n        }\n\n        part fuelStandard : FuelMeasurement {\n            attribute gallonCubicInches : Real = 231.0;\n        }\n\n        part urbanTest : UrbanTest {\n            attribute condition : DrivingCondition = DrivingCondition::Urban;\n            attribute testLoadPounds : Real = 1000.0;\n            attribute measuredMilesPerGallon : Real = 27.5;\n            attribute minimumRequiredMilesPerGallon : Real = 25.0;\n            attribute meetsRequirement : Boolean = true;\n        }\n\n        part highwayTest : HighwayTest {\n            attribute condition : DrivingCondition = DrivingCondition::Highway;\n            attribute testLoadPounds : Real = 1000.0;\n            attribute measuredMilesPerGallon : Real = 32.0;\n            attribute minimumRequiredMilesPerGallon : Real = 30.0;\n            attribute meetsRequirement : Boolean = true;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 435,
+    "output_tokens": 664,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

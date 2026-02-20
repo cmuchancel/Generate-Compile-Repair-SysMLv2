@@ -1,0 +1,353 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system aims to provide optimal solutions for vehicle powertrain configuration, focusing primarily on the trade-off analysis of engine types to select the engine configuration that performs best across multiple key performance indicators, including power, mass, efficiency, reliability, and cost. The system supports modeling of various engine structures (such as four-cylinder engines, six-cylinder engines, etc.), and is capable of automatically assembling related components, including cylinders, pistons, connecting rods, and crankshafts. A multi-attribute trade-off analysis method is used, and, through a pre-defined evaluation model, the system comprehensively assesses the performance data of different engine schemes. Based on the evaluation results, it automatically recommends the optimal engine solution, ensuring the best balance between vehicle performance and economy. At the same time, it allows users to view explanations on the rationality of the engine selection, ensuring decision transparency and traceability.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 3):
+                package VehiclePowertrainConfiguration {
+private import ScalarValues::*;
+
+enum def EngineType {
+    enum FourCylinder;
+    enum SixCylinder;
+    enum EightCylinder;
+    enum Hybrid;
+    enum Electric;
+}
+
+enum def EvaluationRating {
+    enum Poor;
+    enum Fair;
+    enum Good;
+    enum Excellent;
+}
+
+enum def RecommendationStatus {
+    enum NotEvaluated;
+    enum Recommended;
+    enum NotRecommended;
+}
+
+part def Cylinder {
+    attribute cylinderID : String;
+    attribute bore : Real;
+    attribute stroke : Real;
+    attribute displacement : Real;
+    attribute compressionRatio : Real;
+}
+
+part def Piston {
+    attribute pistonID : String;
+    attribute mass : Real;
+    attribute diameter : Real;
+    attribute material : String;
+}
+
+part def ConnectingRod {
+    attribute rodID : String;
+    attribute length : Real;
+    attribute mass : Real;
+    attribute material : String;
+}
+
+part def Crankshaft {
+    attribute crankshaftID : String;
+    attribute length : Real;
+    attribute mass : Real;
+    attribute material : String;
+    attribute numberOfJournals : Integer;
+}
+
+part def CylinderAssembly {
+    attribute assemblyID : String;
+    part cylinder : Cylinder;
+    part piston : Piston;
+    part connectingRod : ConnectingRod;
+}
+
+part def EngineAssembly {
+    attribute engineID : String;
+    attribute engineName : String;
+    attribute engineType : EngineType;
+    attribute numberOfCylinders : Integer;
+    part crankshaft : Crankshaft;
+    part cylinderAssemblies : CylinderAssembly[1..*];
+}
+
+part def PerformanceData {
+    attribute peakPower : Real;
+    attribute peakTorque : Real;
+    attribute redlineRPM : Real;
+    attribute idleRPM : Real;
+    attribute fuelConsumption : Real;
+    attribute thermalEfficiency : Real;
+    attribute emissionsCO2 : Real;
+}
+
+part def MassData {
+    attribute engineMass : Real;
+    attribute dryWeight : Real;
+    attribute wetWeight : Real;
+}
+
+part def ReliabilityData {
+    attribute meanTimeBetweenFailures : Real;
+    attribute expectedLifespan : Real;
+    attribute maintenanceIntervalKm : Real;
+    attribute warrantyYears : Real;
+}
+
+part def CostData {
+    attribute manufacturingCost : Real;
+    attribute maintenanceCostPerYear : Real;
+    attribute fuelCostPerKm : Real;
+    attribute totalCostOfOwnership : Real;
+}
+
+part def EngineScheme {
+    attribute schemeID : String;
+    attribute schemeName : String;
+    attribute engineType : EngineType;
+    part engineAssembly : EngineAssembly;
+    part performanceData : PerformanceData;
+    part massData : MassData;
+    part reliabilityData : ReliabilityData;
+    part costData : CostData;
+}
+
+part def TradeoffWeights {
+    attribute powerWeight : Real;
+    attribute massWeight : Real;
+    attribute efficiencyWeight : Real;
+    attribute reliabilityWeight : Real;
+    attribute costWeight : Real;
+}
+
+part def NormalizedScores {
+    attribute powerScore : Real;
+    attribute massScore : Real;
+    attribute efficiencyScore : Real;
+    attribute reliabilityScore : Real;
+    attribute costScore : Real;
+    attribute compositeScore : Real;
+}
+
+part def EvaluationResult {
+    attribute resultID : String;
+    attribute schemeID : String;
+    attribute schemeName : String;
+    attribute engineType : EngineType;
+    attribute powerRating : EvaluationRating;
+    attribute massRating : EvaluationRating;
+    attribute efficiencyRating : EvaluationRating;
+    attribute reliabilityRating : EvaluationRating;
+    attribute costRating : EvaluationRating;
+    attribute overallRating : EvaluationRating;
+    part scores : NormalizedScores;
+    attribute recommendationStatus : RecommendationStatus;
+    attribute rationaleExplanation : String;
+}
+
+part def EvaluationModel {
+    attribute modelID : String;
+    attribute modelName : String;
+    attribute modelVersion : String;
+    part weights : TradeoffWeights;
+}
+
+part def OptimalRecommendation {
+    attribute recommendationID : String;
+    attribute recommendedSchemeID : String;
+    attribute recommendedSchemeName : String;
+    attribute recommendedEngineType : EngineType;
+    attribute compositeScore : Real;
+    attribute selectionRationale : String;
+    attribute decisionTransparencyNote : String;
+    attribute traceabilityReference : String;
+}
+
+port def DataInputPort {
+    attribute dataSource : String;
+}
+
+port def EvaluationOutputPort {
+    attribute outputTarget : String;
+}
+
+port def RecommendationOutputPort {
+    attribute outputTarget : String;
+}
+
+part def PowertrainConfigurationSystem {
+    attribute systemID : String;
+    attribute systemName : String;
+    attribute systemVersion : String;
+
+    port dataInput : DataInputPort;
+    port evaluationOutput : EvaluationOutputPort;
+    port recommendationOutput : RecommendationOutputPort;
+
+    part evaluationModel : EvaluationModel;
+    part optimalRecommendation : OptimalRecommendation;
+
+    part fourCylinderScheme : EngineScheme;
+    part sixCylinderScheme : EngineScheme;
+    part eightCylinderScheme : EngineScheme;
+    part hybridScheme : EngineScheme;
+    part electricScheme : EngineScheme;
+
+    part fourCylinderResult : EvaluationResult;
+    part sixCylinderResult : EvaluationResult;
+    part eightCylinderResult : EvaluationResult;
+    part hybridResult : EvaluationResult;
+    part electricResult : EvaluationResult;
+}
+
+part def FourCylinderCrankshaft :> Crankshaft {
+    attribute :>> crankshaftID = "CRANK-4CYL";
+    attribute :>> length = 0.45;
+    attribute :>> mass = 12.5;
+    attribute :>> material = "ForgedSteel";
+    attribute :>> numberOfJournals = 5;
+}
+
+part def FourCylinder1 :> Cylinder {
+    attribute :>> cylinderID = "CYL-1";
+    attribute :>> bore = 86.0;
+    attribute :>> stroke = 86.0;
+    attribute :>> displacement = 499.7;
+    attribute :>> compressionRatio = 10.5;
+}
+
+part def FourPiston1 :> Piston {
+    attribute :>> pistonID = "PST-1";
+    attribute :>> mass = 0.32;
+    attribute :>> diameter = 85.8;
+    attribute :>> material = "AluminumAlloy";
+}
+
+part def FourRod1 :> ConnectingRod {
+    attribute :>> rodID = "ROD-1";
+    attribute :>> length = 0.145;
+    attribute :>> mass = 0.52;
+    attribute :>> material = "ForgedSteel";
+}
+
+part def FourCylinderAssembly1 :> CylinderAssembly {
+    attribute :>> assemblyID = "CYL-ASM-1";
+    part :>> cylinder : FourCylinder1;
+    part :>> piston : FourPiston1;
+    part :>> connectingRod : FourRod1;
+}
+
+part def FourCylinder2 :> Cylinder {
+    attribute :>> cylinderID = "CYL-2";
+    attribute :>> bore = 86.0;
+    attribute :>> stroke = 86.0;
+    attribute :>> displacement = 499.7;
+    attribute :>> compressionRatio = 10.5;
+}
+
+part def FourPiston2 :> Piston {
+    attribute :>> pistonID = "PST-2";
+    attribute :>> mass = 0.32;
+    attribute :>> diameter = 85.8;
+    attribute :>> material = "AluminumAlloy";
+}
+
+part def FourRod2 :> ConnectingRod {
+    attribute :>> rodID = "ROD-2";
+    attribute :>> length = 0.145;
+    attribute :>> mass = 0.52;
+    attribute :>> material = "ForgedSteel";
+}
+
+part def FourCylinderAssembly2 :> CylinderAssembly {
+    attribute :>> assemblyID = "CYL-ASM-2";
+    part :>> cylinder : FourCylinder2;
+    part :>> piston : FourPiston2;
+    part :>> connectingRod : FourRod2;
+}
+
+part def FourCylinder3 :> Cylinder {
+    attribute :>> cylinderID = "CYL-3";
+    attribute :>> bore = 86.0;
+    attribute :>> stroke = 86.0;
+    attribute :>> displacement = 499.7;
+    attribute :>> compressionRatio = 10.5;
+}
+
+part def FourPiston3 :> Piston {
+    attribute :>> pistonID = "PST-3";
+    attribute :>> mass = 0.32;
+    attribute :>> diameter = 85.8;
+    attribute :>> material = "AluminumAlloy";
+}
+
+part def FourRod3 :> ConnectingRod {
+    attribute :>> rodID = "ROD-3";
+    attribute :>> length = 0.145;
+    attribute :>> mass = 0.52;
+    attribute :>> material = "ForgedSteel";
+}
+
+part def FourCylinderAssembly3 :> CylinderAssembly {
+    attribute :>> assemblyID = "CYL-ASM-3";
+    part :>> cylinder : FourCylinder3;
+    part :>> piston : FourPiston3;
+    part :>> connectingRod : FourRod3;
+}
+
+part def FourCylinder4 :> Cylinder {
+    attribute :>> cylinderID = "CYL-4";
+    attribute :>> bore = 86.0;
+    attribute :>> stroke = 86.0;
+    attribute :>> displacement = 499.7;
+    attribute :>> compressionRatio = 10.5;
+}
+
+part def FourPiston4 :> Piston {
+    attribute :>> pistonID = "PST-4";
+    attribute :>> mass = 0.32;
+    attribute :>> diameter = 85.8;
+    attribute :>> material = "AluminumAlloy";
+}
+
+part def FourRod4 :> ConnectingRod {
+    attribute :>> rodID = "ROD-4";
+    attribute :>> length = 0.145;
+    attribute :>> mass = 0.52;
+    attribute :>> material = "ForgedSteel";
+}
+
+part def FourCylinderAssembly4 :> CylinderAssembly {
+    attribute :>> assemblyID = "CYL-ASM-4";
+    part :>> cylinder : FourCylinder4;
+    part :>> piston : FourPiston4;
+    part :>> connectingRod : FourRod4;
+}
+
+part def FourCylinderEngine :> EngineAssembly {
+    attribute :>> engineID = "ENG-4CYL-001";
+    attribute :>> engineName = "FourCylinderEngine";
+    attribute :>> engineType = EngineType::FourCylinder;
+    attribute :>> numberOfCylinders = 4;
+    part :>> crankshaft : FourCylinderCrankshaft;
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_03.sysml:329:50: error (parsing-error): Expected a token. Did you forget '}'? (no source underlining available since segment is out of bounds)
+iteration_03.sysml:329:50: error (parsing-error): Expected a token. Did you forget '}'? (no source underlining available since segment is out of bounds)
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

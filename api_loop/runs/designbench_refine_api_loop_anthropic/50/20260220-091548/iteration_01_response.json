@@ -1,0 +1,29 @@
+{
+  "id": "msg_01UpprGvGR1QkUKYM2ZzAiWw",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleLifecycleManagement {\n    private import ScalarValues::*;\n\n    enum def LifecycleStage {\n        enum Assembly;\n        enum Delivery;\n        enum InUse;\n        enum Scrapped;\n    }\n\n    enum def OwnershipStatus {\n        enum Active;\n        enum Transferred;\n        enum Terminated;\n    }\n\n    part def Vehicle {\n        attribute vehicleId : String;\n        attribute make : String;\n        attribute model : String;\n        attribute year : Integer;\n        attribute currentStage : LifecycleStage;\n    }\n\n    part def AssemblyRecord {\n        attribute assemblyId : String;\n        attribute assemblyDate : String;\n        attribute assemblyLocation : String;\n        attribute assemblyNotes : String;\n    }\n\n    part def DeliveryRecord {\n        attribute deliveryId : String;\n        attribute deliveryDate : String;\n        attribute deliveryLocation : String;\n        attribute recipientName : String;\n    }\n\n    part def Owner {\n        attribute ownerId : String;\n        attribute ownerName : String;\n        attribute ownerContact : String;\n        attribute ownerAddress : String;\n    }\n\n    part def OwnershipRecord {\n        attribute ownershipId : String;\n        attribute ownershipStartDate : String;\n        attribute ownershipEndDate : String;\n        attribute ownershipStatus : OwnershipStatus;\n        part owner : Owner;\n    }\n\n    part def Driver {\n        attribute driverId : String;\n        attribute driverName : String;\n        attribute licenseNumber : String;\n        attribute driverContact : String;\n    }\n\n    part def DrivingRecord {\n        attribute drivingRecordId : String;\n        attribute drivingDate : String;\n        attribute startLocation : String;\n        attribute endLocation : String;\n        attribute distanceDriven : Real;\n        part actualDriver : Driver;\n    }\n\n    part def ScrapRecord {\n        attribute scrapId : String;\n        attribute scrapDate : String;\n        attribute scrapReason : String;\n        attribute scrapLocation : String;\n        attribute deregistrationNumber : String;\n    }\n\n    part def OwnershipPeriod {\n        attribute periodId : String;\n        part ownershipRecord : OwnershipRecord;\n        part drivingRecords : DrivingRecord[0..*];\n    }\n\n    part def VehicleLifecycle {\n        attribute lifecycleId : String;\n        part vehicle : Vehicle;\n        part assemblyRecord : AssemblyRecord;\n        part deliveryRecord : DeliveryRecord;\n        part ownershipPeriods : OwnershipPeriod[0..*];\n        part scrapRecord : ScrapRecord[0..1];\n    }\n\n    port def VehicleInfoPort {\n        attribute vehicleId : String;\n        attribute stage : LifecycleStage;\n    }\n\n    port def OwnershipPort {\n        attribute ownershipId : String;\n        attribute ownerId : String;\n    }\n\n    port def DrivingPort {\n        attribute drivingRecordId : String;\n        attribute driverId : String;\n    }\n\n    part def LifecycleTracker {\n        attribute trackerId : String;\n        port vehicleInfo : VehicleInfoPort;\n        port ownershipInfo : OwnershipPort;\n        port drivingInfo : DrivingPort;\n        part managedLifecycles : VehicleLifecycle[1..*];\n    }\n\n    part def LifecycleManagementSystem {\n        attribute systemId : String;\n        attribute systemName : String;\n        part tracker : LifecycleTracker;\n    }\n\n    part lifecycleSystem : LifecycleManagementSystem {\n        attribute systemId = \"SYS-001\";\n        attribute systemName = \"Vehicle Lifecycle Management System\";\n        part tracker : LifecycleTracker {\n            attribute trackerId = \"TRACKER-001\";\n            part managedLifecycles : VehicleLifecycle[1..*];\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 440,
+    "output_tokens": 1001,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

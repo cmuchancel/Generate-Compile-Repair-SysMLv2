@@ -1,0 +1,85 @@
+package AlloyManagement {
+    private import ScalarValues::*;
+
+    enum def PhysicalState {
+        enum Solid;
+        enum Liquid;
+        enum Gas;
+    }
+
+    part def Substance {
+        attribute name : String;
+        attribute atomicMass : Real;
+        attribute state : PhysicalState;
+    }
+
+    part def Metal {
+        attribute name : String;
+        attribute atomicMass : Real;
+        attribute state : PhysicalState;
+        attribute symbol : String;
+    }
+
+    part def MassComponent {
+        attribute materialName : String;
+        attribute massFraction : Real;
+    }
+
+    part def MechanicalProperties {
+        attribute tensileStrength : Real;
+        attribute tensileStrengthUnit : String;
+    }
+
+    part def Alloy {
+        attribute name : String;
+        attribute tensileStrength : Real;
+        attribute tensileStrengthUnit : String;
+        part component1 : MassComponent;
+        part component2 : MassComponent;
+        part component3 : MassComponent;
+        part mechanicalProps : MechanicalProperties;
+    }
+
+    part iron : Metal {
+        attribute redefines name = "Iron";
+        attribute redefines atomicMass = 55.845;
+        attribute redefines state = PhysicalState::Solid;
+        attribute redefines symbol = "Fe";
+    }
+
+    part carbon : Metal {
+        attribute redefines name = "Carbon";
+        attribute redefines atomicMass = 12.011;
+        attribute redefines state = PhysicalState::Solid;
+        attribute redefines symbol = "C";
+    }
+
+    part manganese : Metal {
+        attribute redefines name = "Manganese";
+        attribute redefines atomicMass = 54.938;
+        attribute redefines state = PhysicalState::Solid;
+        attribute redefines symbol = "Mn";
+    }
+
+    part steel980 : Alloy {
+        attribute redefines name = "Steel 980";
+        attribute redefines tensileStrength = 980.0;
+        attribute redefines tensileStrengthUnit = "N/mm2";
+        part redefines component1 : MassComponent {
+            attribute redefines materialName = "Iron";
+            attribute redefines massFraction = 0.972;
+        }
+        part redefines component2 : MassComponent {
+            attribute redefines materialName = "Carbon";
+            attribute redefines massFraction = 0.018;
+        }
+        part redefines component3 : MassComponent {
+            attribute redefines materialName = "Manganese";
+            attribute redefines massFraction = 0.010;
+        }
+        part redefines mechanicalProps : MechanicalProperties {
+            attribute redefines tensileStrength = 980.0;
+            attribute redefines tensileStrengthUnit = "N/mm2";
+        }
+    }
+}

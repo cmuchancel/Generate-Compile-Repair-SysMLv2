@@ -1,0 +1,29 @@
+{
+  "id": "msg_01L4Cco1uYqhegMDNW4cx7My",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleLongitudinalDynamics {\n    private import ScalarValues::*;\n\n    enum def MotionState {\n        enum Accelerating;\n        enum Constant;\n        enum Decelerating;\n    }\n\n    part def VehicleInputs {\n        attribute initialPosition : Real;\n        attribute initialVelocity : Real;\n        attribute vehicleMass : Real;\n        attribute wheelEndPower : Real;\n        attribute timeInterval : Real;\n    }\n\n    part def EnvironmentParameters {\n        attribute dragCoefficient : Real;\n        attribute frictionCoefficient : Real;\n        attribute airDensity : Real;\n        attribute frontalArea : Real;\n        attribute gravitationalAcceleration : Real;\n    }\n\n    part def DynamicsCalculator {\n        attribute driveForce : Real;\n        attribute airResistanceForce : Real;\n        attribute frictionResistanceForce : Real;\n        attribute netForce : Real;\n        attribute acceleration : Real;\n        attribute finalVelocity : Real;\n        attribute finalPosition : Real;\n        attribute currentMotionState : MotionState;\n    }\n\n    part def VehicleDynamicsSystem {\n        part inputs : VehicleInputs;\n        part environment : EnvironmentParameters;\n        part calculator : DynamicsCalculator;\n    }\n\n    port def PowerInputPort {\n        attribute power : Real;\n        attribute velocity : Real;\n    }\n\n    port def ForceOutputPort {\n        attribute force : Real;\n    }\n\n    port def MotionStatePort {\n        attribute position : Real;\n        attribute velocity : Real;\n        attribute acceleration : Real;\n    }\n\n    part def PowerToForceConverter {\n        attribute inputPower : Real;\n        attribute inputVelocity : Real;\n        attribute outputForce : Real;\n        port powerIn : PowerInputPort;\n        port forceOut : ForceOutputPort;\n    }\n\n    part def ResistanceForceCalculator {\n        attribute mass : Real;\n        attribute velocity : Real;\n        attribute dragCoeff : Real;\n        attribute frictionCoeff : Real;\n        attribute airDensity : Real;\n        attribute frontalArea : Real;\n        attribute gravity : Real;\n        attribute airDrag : Real;\n        attribute rollingFriction : Real;\n        attribute totalResistance : Real;\n        port motionIn : MotionStatePort;\n        port forceOut : ForceOutputPort;\n    }\n\n    part def AccelerationSolver {\n        attribute netForce : Real;\n        attribute mass : Real;\n        attribute computedAcceleration : Real;\n        port forceIn : ForceOutputPort;\n        port motionOut : MotionStatePort;\n    }\n\n    part def VelocityPositionIntegrator {\n        attribute initialVelocity : Real;\n        attribute initialPosition : Real;\n        attribute acceleration : Real;\n        attribute timeStep : Real;\n        attribute finalVelocity : Real;\n        attribute finalPosition : Real;\n        attribute deltaVelocity : Real;\n        attribute deltaPosition : Real;\n        port stateIn : MotionStatePort;\n        port stateOut : MotionStatePort;\n    }\n\n    part def SimulationEngine {\n        part powerConverter : PowerToForceConverter;\n        part resistanceCalc : ResistanceForceCalculator;\n        part accelerationSolver : AccelerationSolver;\n        part integrator : VelocityPositionIntegrator;\n\n        connect powerConverter.forceOut to accelerationSolver.forceIn;\n        connect resistanceCalc.forceOut to accelerationSolver.forceIn;\n        connect accelerationSolver.motionOut to integrator.stateIn;\n    }\n\n    part def PhysicsConstraints {\n        attribute massPositiveCheck : Real;\n        attribute timePositiveCheck : Real;\n        attribute powerNonNegativeCheck : Real;\n        attribute velocityNonNegativeCheck : Real;\n        attribute dragCoefficientRangeCheck : Real;\n        attribute frictionCoefficientRangeCheck : Real;\n    }\n\n    part def MotionEquationSet {\n        attribute driveForceEquation : Real;\n        attribute airResistanceEquation : Real;\n        attribute frictionResistanceEquation : Real;\n        attribute newtonSecondLaw : Real;\n        attribute kinematicVelocity : Real;\n        attribute kinematicPosition : Real;\n    }\n\n    part vehicleDynamicsSystem : VehicleDynamicsSystem;\n    part simulationEngine : SimulationEngine;\n    part physicsConstraints : PhysicsConstraints;\n    part motionEquations : MotionEquationSet;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 445,
+    "output_tokens": 1142,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

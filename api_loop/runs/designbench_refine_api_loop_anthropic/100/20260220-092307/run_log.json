@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T14:23:07.336751Z",
+    "iteration_end": "2026-02-20T14:23:28.445512Z",
+    "iteration_duration_seconds": 21.108718958988902,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/100/20260220-092307/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/100/20260220-092307/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/100/20260220-092307/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:27:28: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   27 |         attribute :>> mass = 1750;\n\u2502      |                            \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:21:31: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:45:28: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   45 |         attribute :>> mass = 2000;\n\u2502      |                            \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:21:31: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 483,
+      "output_tokens": 452,
+      "total_tokens": 935
+    },
+    "tokens_used_total": 935,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T14:23:28.445576Z",
+    "iteration_end": "2026-02-20T14:23:32.766963Z",
+    "iteration_duration_seconds": 4.321429292001994,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/100/20260220-092307/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/100/20260220-092307/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/100/20260220-092307/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1128,
+      "output_tokens": 448,
+      "total_tokens": 1576
+    },
+    "tokens_used_total": 2511,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  }
+]

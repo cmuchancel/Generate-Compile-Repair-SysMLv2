@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T14:24:07.120655Z",
+    "iteration_end": "2026-02-20T14:24:39.209576Z",
+    "iteration_duration_seconds": 32.08882962500502,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/107/20260220-092406/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/107/20260220-092406/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/107/20260220-092406/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:38:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    38 |         attribute state : ConnectionState;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:53:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    53 |         part frame : VehicleFrame {\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:62:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    62 |         part frame : TrailerFrame {\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:42:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'diameter' shadows VehicleTrailerHitchSystem::HitchBall::diameter\n\u2502   42 |             attribute diameter : Real = 1.875;\n\u2502      |                       \u001b[38;2;204;204;057m^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:28:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:41:26: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleTrailerHitchSystem::HitchBall is specialized through FeatureTyping\n\niteration_01.sysml:43:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'material' shadows VehicleTrailerHitchSystem::HitchBall::material\n\u2502   43 |             attribute material : String = \"Steel\";\n\u2502      |                       \u001b[38;2;204;204;057m^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:29:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:41:26: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleTrailerHitchSystem::HitchBall is specialized through FeatureTyping\n\niteration_01.sysml:46:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'diameter' shadows VehicleTrailerHitchSystem::TrailerCoupler::diameter\n\u2502   46 |             attribute diameter : Real = 1.875;\n\u2502      |                       \u001b[38;2;204;204;057m^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:33:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:45:31: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleTrailerHitchSystem::TrailerCoupler is specialized through FeatureTyping\n\niteration_01.sysml:47:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'material' shadows VehicleTrailerHitchSystem::TrailerCoupler::material\n\u2502   47 |             attribute material : String = \"Steel\";\n\u2502      |                       \u001b[38;2;204;204;057m^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:34:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:45:31: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleTrailerHitchSystem::TrailerCoupler is specialized through FeatureTyping\n\niteration_01.sysml:54:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'frameId' shadows VehicleTrailerHitchSystem::VehicleFrame::frameId\n\u2502   54 |             attribute frameId : String = \"VF-001\";\n\u2502      |                       \u001b[38;2;204;204;057m^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:20:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:53:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleTrailerHitchSystem::VehicleFrame is specialized through FeatureTyping\n\niteration_01.sysml:63:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'frameId' shadows VehicleTrailerHitchSystem::TrailerFrame::frameId\n\u2502   63 |             attribute frameId : String = \"TF-001\";\n\u2502      |                       \u001b[38;2;204;204;057m^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:24:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:62:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleTrailerHitchSystem::TrailerFrame is specialized through FeatureTyping\n\niteration_01.sysml:73:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'vehicleId' shadows VehicleTrailerHitchSystem::Vehicle::vehicleId\n\u2502   73 |             attribute vehicleId : String = \"V-001\";\n\u2502      |                       \u001b[38;2;204;204;057m^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:52:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:72:24: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleTrailerHitchSystem::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:77:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'trailerId' shadows VehicleTrailerHitchSystem::Trailer::trailerId\n\u2502   77 |             attribute trailerId : String = \"T-001\";\n\u2502      |                       \u001b[38;2;204;204;057m^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:61:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:76:24: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleTrailerHitchSystem::Trailer is specialized through FeatureTyping",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 389,
+      "output_tokens": 556,
+      "total_tokens": 945
+    },
+    "tokens_used_total": 945,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T14:24:39.209628Z",
+    "iteration_end": "2026-02-20T14:24:58.720997Z",
+    "iteration_duration_seconds": 19.511343542006216,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/107/20260220-092406/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/107/20260220-092406/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/107/20260220-092406/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 2288,
+      "output_tokens": 432,
+      "total_tokens": 2720
+    },
+    "tokens_used_total": 3665,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  }
+]

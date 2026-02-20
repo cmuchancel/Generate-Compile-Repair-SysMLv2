@@ -1,0 +1,29 @@
+{
+  "id": "msg_01CoqoqvjwGKeCUMr9kS68qa",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleStateManagement {\n    private import ScalarValues::*;\n\n    enum def VehicleState {\n        enum OFF;\n        enum STARTING;\n        enum ON;\n    }\n\n    enum def ControlSignal {\n        enum VEHICLE_START_SIGNAL;\n        enum VEHICLE_POWER_ON_SIGNAL;\n        enum VEHICLE_SHUTDOWN_SIGNAL;\n    }\n\n    part def VehicleController {\n        attribute currentState : VehicleState = VehicleState::OFF;\n        attribute receivedSignal : ControlSignal;\n        attribute initialState : VehicleState = VehicleState::OFF;\n        attribute offState : VehicleState = VehicleState::OFF;\n        attribute startingState : VehicleState = VehicleState::STARTING;\n        attribute onState : VehicleState = VehicleState::ON;\n    }\n\n    part def SignalSource {\n        attribute startSignal : ControlSignal = ControlSignal::VEHICLE_START_SIGNAL;\n        attribute powerOnSignal : ControlSignal = ControlSignal::VEHICLE_POWER_ON_SIGNAL;\n        attribute shutdownSignal : ControlSignal = ControlSignal::VEHICLE_SHUTDOWN_SIGNAL;\n    }\n\n    port def VehicleControlPort {\n        attribute signalValue : ControlSignal;\n    }\n\n    port def VehicleStatePort {\n        attribute stateValue : VehicleState;\n    }\n\n    part def Vehicle {\n        attribute vehicleState : VehicleState = VehicleState::OFF;\n        port controlInput : VehicleControlPort;\n        port stateOutput : VehicleStatePort;\n    }\n\n    part def VehicleSystem {\n        part vehicle : Vehicle;\n        part controller : VehicleController;\n        part signalSource : SignalSource;\n\n        port systemControlPort : VehicleControlPort;\n        port systemStatePort : VehicleStatePort;\n\n        connect systemControlPort to vehicle::controlInput;\n        connect vehicle::stateOutput to systemStatePort;\n    }\n\n    part vehicleSystem : VehicleSystem;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1095,
+    "output_tokens": 515,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

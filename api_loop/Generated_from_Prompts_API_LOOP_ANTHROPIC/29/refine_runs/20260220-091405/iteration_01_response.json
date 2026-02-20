@@ -1,0 +1,29 @@
+{
+  "id": "msg_01KRihHFpdUWFN3wAyCzWXSd",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package CameraSystem {\n    private import ScalarValues::*;\n\n    enum def FocusStatus {\n        enum Focusing;\n        enum Focused;\n        enum Failed;\n    }\n\n    enum def ImageStatus {\n        enum Capturing;\n        enum Captured;\n        enum Saved;\n    }\n\n    item def Scene {\n        attribute sceneName : String;\n        attribute sceneDescription : String;\n    }\n\n    item def Photo {\n        attribute photoId : String;\n        attribute resolution : String;\n        attribute isSaved : Boolean;\n    }\n\n    item def FocusResult {\n        attribute status : FocusStatus;\n        attribute focusDistance : Real;\n        attribute isClear : Boolean;\n    }\n\n    item def ImageData {\n        attribute status : ImageStatus;\n        attribute quality : String;\n        attribute isRealistic : Boolean;\n    }\n\n    port def SceneInputPort {\n        attribute selectedScene : String;\n    }\n\n    port def PhotoOutputPort {\n        attribute capturedPhoto : String;\n        attribute photoSaved : Boolean;\n    }\n\n    port def FocusPort {\n        attribute focusStatus : String;\n        attribute focusComplete : Boolean;\n    }\n\n    port def ImagingPort {\n        attribute imagingStatus : String;\n        attribute imageReady : Boolean;\n    }\n\n    part def AutofocusSubsystem {\n        attribute currentFocusStatus : FocusStatus;\n        attribute focusDistance : Real;\n        attribute isObjectDetected : Boolean;\n        attribute isClearImageObtained : Boolean;\n\n        port focusInputPort : SceneInputPort;\n        port focusOutputPort : FocusPort;\n    }\n\n    part def ImagingSubsystem {\n        attribute currentImageStatus : ImageStatus;\n        attribute imageQuality : String;\n        attribute isCapturing : Boolean;\n\n        port imagingInputPort : FocusPort;\n        port imagingOutputPort : ImagingPort;\n    }\n\n    part def PhotoStorage {\n        attribute totalPhotoCount : Integer;\n        attribute storageCapacity : Integer;\n        attribute storageUsed : Real;\n        attribute allPhotosSaved : Boolean;\n\n        port storageInputPort : ImagingPort;\n        port storageOutputPort : PhotoOutputPort;\n    }\n\n    part def UserInterface {\n        attribute isSceneSelected : Boolean;\n        attribute selectedSceneName : String;\n        attribute isPhotoConfirmed : Boolean;\n\n        port userSceneOutputPort : SceneInputPort;\n        port userPhotoInputPort : PhotoOutputPort;\n    }\n\n    part def Camera {\n        attribute cameraModel : String;\n        attribute isOperational : Boolean;\n        attribute currentPhotoCount : Integer;\n\n        port cameraSceneInput : SceneInputPort;\n        port cameraPhotoOutput : PhotoOutputPort;\n\n        part userInterface : UserInterface;\n        part autofocusSubsystem : AutofocusSubsystem;\n        part imagingSubsystem : ImagingSubsystem;\n        part photoStorage : PhotoStorage;\n\n        connect userInterface.userSceneOutputPort to autofocusSubsystem.focusInputPort;\n        connect autofocusSubsystem.focusOutputPort to imagingSubsystem.imagingInputPort;\n        connect imagingSubsystem.imagingOutputPort to photoStorage.storageInputPort;\n        connect photoStorage.storageOutputPort to userInterface.userPhotoInputPort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 396,
+    "output_tokens": 830,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

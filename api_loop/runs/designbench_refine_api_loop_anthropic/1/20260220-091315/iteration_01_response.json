@@ -1,0 +1,29 @@
+{
+  "id": "msg_017JSS299WA8NABx4pve9vbn",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleManagementSystem {\n    private import ScalarValues::*;\n\n    enum def GearSetting {\n        enum PARK;\n        enum REVERSE;\n        enum NEUTRAL;\n        enum DRIVE;\n        enum LOW;\n    }\n\n    part def VehicleStatus {\n        attribute gearSetting : GearSetting;\n        attribute acceleratorPedalPosition : Real;\n    }\n\n    part def Engine {\n        attribute displacement : Real;\n        attribute horsepower : Real;\n        attribute engineType : String;\n    }\n\n    part def Person {\n        attribute firstName : String;\n        attribute lastName : String;\n        attribute licenseNumber : String;\n    }\n\n    part def Driver {\n        part personInfo : Person;\n        attribute experienceYears : Integer;\n    }\n\n    part def Vehicle {\n        attribute vehicleMass : Real;\n        attribute make : String;\n        attribute model : String;\n        attribute year : Integer;\n        part currentStatus : VehicleStatus;\n        part engine : Engine;\n        part driver : Driver[0..1];\n    }\n\n    part def Fleet {\n        part vehicles : Vehicle[*];\n    }\n\n    part vehicleFleet : Fleet {\n        part vehicles : Vehicle[*] {\n            part currentStatus : VehicleStatus {\n                attribute gearSetting : GearSetting = GearSetting::PARK;\n                attribute acceleratorPedalPosition : Real = 0.0;\n            }\n            part engine : Engine {\n                attribute displacement : Real = 2.0;\n                attribute horsepower : Real = 150.0;\n                attribute engineType : String = \"V4\";\n            }\n            part driver : Driver[0..1] {\n                part personInfo : Person {\n                    attribute firstName : String = \"John\";\n                    attribute lastName : String = \"Doe\";\n                    attribute licenseNumber : String = \"DL123456\";\n                }\n                attribute experienceYears : Integer = 5;\n            }\n            attribute vehicleMass : Real = 1500.0;\n            attribute make : String = \"Toyota\";\n            attribute model : String = \"Camry\";\n            attribute year : Integer = 2023;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 369,
+    "output_tokens": 534,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "msg_011QW6cHVfJE6otULQzfwLP7",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package EngineSelectionSystem {\n    private import ScalarValues::*;\n\n    enum def EngineType {\n        enum FourCylinder;\n        enum SixCylinder;\n    }\n\n    part def Engine {\n        attribute engineType : EngineType;\n        attribute power : Real;\n        attribute mass : Real;\n        attribute efficiency : Real;\n        attribute cost : Real;\n        attribute comprehensiveScore : Real;\n    }\n\n    part def FourCylinderEngine :> Engine {\n        attribute redefines engineType = EngineType::FourCylinder;\n    }\n\n    part def SixCylinderEngine :> Engine {\n        attribute redefines engineType = EngineType::SixCylinder;\n    }\n\n    part def EvaluationFunction {\n        attribute weightPower : Real;\n        attribute weightMass : Real;\n        attribute weightEfficiency : Real;\n        attribute weightCost : Real;\n    }\n\n    part def SelectionResult {\n        attribute selectedEngineType : EngineType;\n        attribute selectedPower : Real;\n        attribute selectedMass : Real;\n        attribute selectedEfficiency : Real;\n        attribute selectedCost : Real;\n        attribute selectedScore : Real;\n    }\n\n    part def EngineSelectionAnalysis {\n        attribute analysisName : String;\n\n        part evaluationFunction : EvaluationFunction {\n            attribute redefines weightPower = 0.35;\n            attribute redefines weightMass = 0.20;\n            attribute redefines weightEfficiency = 0.30;\n            attribute redefines weightCost = 0.15;\n        }\n\n        part fourCylinderCandidate : FourCylinderEngine {\n            attribute redefines power = 110.0;\n            attribute redefines mass = 140.0;\n            attribute redefines efficiency = 0.38;\n            attribute redefines cost = 8000.0;\n            attribute redefines comprehensiveScore = 0.72;\n        }\n\n        part sixCylinderCandidate : SixCylinderEngine {\n            attribute redefines power = 180.0;\n            attribute redefines mass = 210.0;\n            attribute redefines efficiency = 0.42;\n            attribute redefines cost = 14000.0;\n            attribute redefines comprehensiveScore = 0.81;\n        }\n\n        part selectionResult : SelectionResult {\n            attribute redefines selectedEngineType = EngineType::SixCylinder;\n            attribute redefines selectedPower = 180.0;\n            attribute redefines selectedMass = 210.0;\n            attribute redefines selectedEfficiency = 0.42;\n            attribute redefines selectedCost = 14000.0;\n            attribute redefines selectedScore = 0.81;\n        }\n    }\n\n    port def EngineDataPort {\n        attribute portPower : Real;\n        attribute portMass : Real;\n        attribute portEfficiency : Real;\n        attribute portCost : Real;\n        attribute portScore : Real;\n    }\n\n    part def EngineDataSource {\n        port outputPort : EngineDataPort;\n    }\n\n    part def EngineDataConsumer {\n        port inputPort : EngineDataPort;\n    }\n\n    part def EngineSelectionSystemDef {\n        attribute systemName : String = \"EngineSelectionSystem\";\n\n        attribute analysisName : String = \"ComprehensiveEngineEvaluation\";\n\n        part evaluationFunction : EvaluationFunction {\n            attribute redefines weightPower = 0.35;\n            attribute redefines weightMass = 0.20;\n            attribute redefines weightEfficiency = 0.30;\n            attribute redefines weightCost = 0.15;\n        }\n\n        part fourCylinderCandidate : FourCylinderEngine {\n            attribute redefines power = 110.0;\n            attribute redefines mass = 140.0;\n            attribute redefines efficiency = 0.38;\n            attribute redefines cost = 8000.0;\n            attribute redefines comprehensiveScore = 0.72;\n        }\n\n        part sixCylinderCandidate : SixCylinderEngine {\n            attribute redefines power = 180.0;\n            attribute redefines mass = 210.0;\n            attribute redefines efficiency = 0.42;\n            attribute redefines cost = 14000.0;\n            attribute redefines comprehensiveScore = 0.81;\n        }\n\n        part selectionResult : SelectionResult {\n            attribute redefines selectedEngineType = EngineType::SixCylinder;\n            attribute redefines selectedPower = 180.0;\n            attribute redefines selectedMass = 210.0;\n            attribute redefines selectedEfficiency = 0.42;\n            attribute redefines selectedCost = 14000.0;\n            attribute redefines selectedScore = 0.81;\n        }\n\n        part dataSource : EngineDataSource;\n        part dataConsumer : EngineDataConsumer;\n\n        connect dataSource.outputPort to dataConsumer.inputPort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 1810,
+    "output_tokens": 1272,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

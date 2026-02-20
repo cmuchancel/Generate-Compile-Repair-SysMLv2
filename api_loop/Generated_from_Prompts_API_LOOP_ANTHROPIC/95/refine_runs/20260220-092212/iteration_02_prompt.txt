@@ -1,0 +1,185 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system aims to establish a document management platform related to automobiles. It can manage and record information and documentation about automobiles, allowing users to enter, query, and archive various types of information using “Automobile” as the core object. The system also provides “Car” as an alias for “Automobile,” enabling different user groups to perform searches and operations flexibly according to their own habits. In addition, the system supports compatibility with standard physical quantity systems, enabling unified referencing and management of physical quantities such as torque (e.g., TorqueValue under the ISQ standard) to enhance the professionalism and accuracy of documentation. The system allows explanatory documents to be added for different objects and their aliases, ensuring that information within the platform is clearly annotated and traceable. In this way, the platform better serves the documentation management and knowledge accumulation needs of users in the automotive industry.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package AutomobileDocumentManagement {
+    private import ScalarValues::*;
+
+    part def Automobile {
+        attribute documentId : String;
+        attribute make : String;
+        attribute model : String;
+        attribute year : String;
+        attribute description : String;
+    }
+
+    part def Car {
+        attribute documentId : String;
+        attribute make : String;
+        attribute model : String;
+        attribute year : String;
+        attribute description : String;
+    }
+
+    enum def DocumentStatus {
+        enum Active;
+        enum Archived;
+        enum Pending;
+    }
+
+    part def TorqueValue {
+        attribute magnitude : Real;
+        attribute unit : String;
+        attribute standard : String;
+    }
+
+    part def DocumentRecord {
+        attribute recordId : String;
+        attribute title : String;
+        attribute content : String;
+        attribute status : DocumentStatus;
+        attribute annotation : String;
+    }
+
+    part def PhysicalQuantityReference {
+        attribute quantityName : String;
+        attribute isqStandard : String;
+        attribute description : String;
+    }
+
+    part def AutomobileDocument {
+        part vehicle : Automobile;
+        part torqueSpec : TorqueValue;
+        part record : DocumentRecord;
+        part quantityRef : PhysicalQuantityReference;
+    }
+
+    part def CarDocument {
+        part vehicle : Car;
+        part torqueSpec : TorqueValue;
+        part record : DocumentRecord;
+        part quantityRef : PhysicalQuantityReference;
+    }
+
+    part def DocumentManagementPlatform {
+        part automobileDoc : AutomobileDocument;
+        part carDoc : CarDocument;
+        attribute platformName : String;
+        attribute platformDescription : String;
+    }
+
+    part platform : DocumentManagementPlatform {
+        attribute platformName : String = "Automobile Document Management Platform";
+        attribute platformDescription : String = "A platform for managing automobile documentation with ISQ physical quantity support";
+
+        part automobileDoc : AutomobileDocument {
+            part vehicle : Automobile {
+                attribute documentId : String = "AUTO-001";
+                attribute make : String = "Generic";
+                attribute model : String = "Model";
+                attribute year : String = "2024";
+                attribute description : String = "Standard automobile record";
+            }
+            part torqueSpec : TorqueValue {
+                attribute magnitude : Real = 250.0;
+                attribute unit : String = "N·m";
+                attribute standard : String = "ISQ";
+            }
+            part record : DocumentRecord {
+                attribute recordId : String = "REC-001";
+                attribute title : String = "Automobile Technical Document";
+                attribute content : String = "Technical specifications and documentation";
+                attribute status : DocumentStatus = DocumentStatus::Active;
+                attribute annotation : String = "ISQ compliant torque values referenced";
+            }
+            part quantityRef : PhysicalQuantityReference {
+                attribute quantityName : String = "TorqueValue";
+                attribute isqStandard : String = "ISQ";
+                attribute description : String = "Torque quantity as defined under ISQ standard";
+            }
+        }
+
+        part carDoc : CarDocument {
+            part vehicle : Car {
+                attribute documentId : String = "CAR-001";
+                attribute make : String = "Generic";
+                attribute model : String = "Model";
+                attribute year : String = "2024";
+                attribute description : String = "Car alias record for automobile";
+            }
+            part torqueSpec : TorqueValue {
+                attribute magnitude : Real = 250.0;
+                attribute unit : String = "N·m";
+                attribute standard : String = "ISQ";
+            }
+            part record : DocumentRecord {
+                attribute recordId : String = "REC-002";
+                attribute title : String = "Car Technical Document";
+                attribute content : String = "Technical specifications using Car alias";
+                attribute status : DocumentStatus = DocumentStatus::Active;
+                attribute annotation : String = "Car is an alias for Automobile in this platform";
+            }
+            part quantityRef : PhysicalQuantityReference {
+                attribute quantityName : String = "TorqueValue";
+                attribute isqStandard : String = "ISQ";
+                attribute description : String = "Torque quantity as defined under ISQ standard";
+            }
+        }
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:29:19: error (parsing-error): Unexpected 'standard', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    29 |         attribute standard : String;
+       |                   ^^^^^^^^
+iteration_01.sysml:82:27: error (parsing-error): Unexpected 'standard', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    82 |                 attribute standard : String = "ISQ";
+       |                           ^^^^^^^^
+iteration_01.sysml:109:27: error (parsing-error): Unexpected 'standard', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    109 |                 attribute standard : String = "ISQ";
+        |                           ^^^^^^^^
+iteration_01.sysml:68:19: warning (namespace-distinguishability): Member name 'platformName' shadows AutomobileDocumentManagement::DocumentManagementPlatform::platformName
+│   68 |         attribute platformName : String = "Automobile Document Management Platform";
+│      |                   ^^^^^^^^^^^^
+└── iteration_01.sysml:63:19: note: Inherited from here
+    └── iteration_01.sysml:67:21: note: Because AutomobileDocumentManagement::DocumentManagementPlatform is specialized through FeatureTyping
+iteration_01.sysml:69:19: warning (namespace-distinguishability): Member name 'platformDescription' shadows AutomobileDocumentManagement::DocumentManagementPlatform::platformDescription
+│   69 |         attribute platformDescription : String = "A platform for managing automobile documentation with ISQ physical quantity support";
+│      |                   ^^^^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:64:19: note: Inherited from here
+    └── iteration_01.sysml:67:21: note: Because AutomobileDocumentManagement::DocumentManagementPlatform is specialized through FeatureTyping
+iteration_01.sysml:71:14: warning (namespace-distinguishability): Member name 'automobileDoc' shadows AutomobileDocumentManagement::DocumentManagementPlatform::automobileDoc
+│   71 |         part automobileDoc : AutomobileDocument {
+│      |              ^^^^^^^^^^^^^
+└── iteration_01.sysml:61:14: note: Inherited from here
+    └── iteration_01.sysml:67:21: note: Because AutomobileDocumentManagement::DocumentManagementPlatform is specialized through FeatureTyping
+iteration_01.sysml:72:18: warning (namespace-distinguishability): Member name 'vehicle' shadows AutomobileDocumentManagement::AutomobileDocument::vehicle
+│   72 |             part vehicle : Automobile {
+│      |                  ^^^^^^^
+└── iteration_01.sysml:47:14: note: Inherited from here
+    └── iteration_01.sysml:71:30: note: Because AutomobileDocumentManagement::AutomobileDocument is specialized through FeatureTyping
+iteration_01.sysml:73:27: warning (namespace-distinguishability): Member name 'documentId' shadows AutomobileDocumentManagement::Automobile::documentId
+│   73 |                 attribute documentId : String = "AUTO-001";
+│      |                           ^^^^^^^^^^
+└── iteration_01.sysml:5:19: note: Inherited from here
+    └── iteration_01.sysml:72:28: note: Because AutomobileDocumentManagement::Automobile is specialized through FeatureTyping
+iteration_01.sysml:74:27: warning (namespace-distinguishability): Member name 'make' shadows AutomobileDocumentManagement::Automobile::make
+│   74 |                 attribute make : String = "Generic";
+│      |
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

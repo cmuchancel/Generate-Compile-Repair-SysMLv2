@@ -1,0 +1,29 @@
+{
+  "id": "msg_01UHaJzeMdf3Vs4oV5H3GSdX",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package CarSafetyCompliance {\n    private import ScalarValues::*;\n\n    enum def SafetyLevel {\n        enum MANDATORY;\n        enum OPTIONAL;\n        enum NOT_REQUIRED;\n    }\n\n    attribute def SafetyMetadata {\n        attribute isSafety : Boolean;\n        attribute isMandatory : Boolean;\n        attribute safetyLevel : SafetyLevel;\n    }\n\n    part def SeatBelt {\n        attribute isSafety : Boolean = true;\n        attribute isMandatory : Boolean = true;\n        attribute safetyLevel : SafetyLevel = SafetyLevel::MANDATORY;\n        attribute quantity : Integer = 2;\n    }\n\n    part def DriverAirbag {\n        attribute isSafety : Boolean = true;\n        attribute isMandatory : Boolean = false;\n        attribute safetyLevel : SafetyLevel = SafetyLevel::OPTIONAL;\n    }\n\n    part def Bumper {\n        attribute isSafety : Boolean = true;\n        attribute isMandatory : Boolean = true;\n        attribute safetyLevel : SafetyLevel = SafetyLevel::MANDATORY;\n    }\n\n    part def KeylessEntry {\n        attribute isSafety : Boolean = false;\n        attribute isMandatory : Boolean = false;\n        attribute safetyLevel : SafetyLevel = SafetyLevel::NOT_REQUIRED;\n    }\n\n    part def Wheel {\n        attribute isSafety : Boolean = false;\n        attribute isMandatory : Boolean = true;\n        attribute quantity : Integer = 2;\n    }\n\n    part def AntiLockBrakingSystem {\n        attribute isSafety : Boolean = true;\n        attribute isMandatory : Boolean = false;\n        attribute safetyLevel : SafetyLevel = SafetyLevel::OPTIONAL;\n    }\n\n    part def Interior {\n        part seatBelt1 : SeatBelt;\n        part seatBelt2 : SeatBelt;\n        part driverAirbag : DriverAirbag;\n    }\n\n    part def Body {\n        part bumper : Bumper;\n        part keylessEntry : KeylessEntry;\n    }\n\n    part def WheelAssembly {\n        part wheel1 : Wheel;\n        part wheel2 : Wheel;\n        part abs : AntiLockBrakingSystem;\n    }\n\n    part def Car {\n        part interior : Interior;\n        part body : Body;\n        part wheelAssembly : WheelAssembly;\n    }\n\n    package SafetyFeatures {\n        part def SafetySeatBelt :> SeatBelt {\n            attribute annotation : String = \"Safety\";\n        }\n        part def SafetyDriverAirbag :> DriverAirbag {\n            attribute annotation : String = \"Safety\";\n        }\n        part def SafetyBumper :> Bumper {\n            attribute annotation : String = \"Safety\";\n        }\n        part def SafetyABS :> AntiLockBrakingSystem {\n            attribute annotation : String = \"Safety\";\n        }\n    }\n\n    package MandatorySafetyFeatures {\n        part def MandatorySeatBelt :> SeatBelt {\n            attribute annotation : String = \"Safety_Mandatory\";\n            attribute verifiedMandatory : Boolean = true;\n        }\n        part def MandatoryBumper :> Bumper {\n            attribute annotation : String = \"Safety_Mandatory\";\n            attribute verifiedMandatory : Boolean = true;\n        }\n    }\n\n    part carInstance : Car {\n        part interior : Interior {\n            part seatBelt1 : SeatBelt;\n            part seatBelt2 : SeatBelt;\n            part driverAirbag : DriverAirbag;\n        }\n        part body : Body {\n            part bumper : Bumper;\n            part keylessEntry : KeylessEntry;\n        }\n        part wheelAssembly : WheelAssembly {\n            part wheel1 : Wheel;\n            part wheel2 : Wheel;\n            part abs : AntiLockBrakingSystem;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 476,
+    "output_tokens": 1017,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

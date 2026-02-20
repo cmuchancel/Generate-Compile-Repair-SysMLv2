@@ -1,0 +1,29 @@
+{
+  "id": "msg_017KXsBn1eUjUZCxbykUbJXX",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomotiveComponents {\n    private import ScalarValues::*;\n\n    part def Tire {\n        attribute manufacturer : String;\n        attribute rimDiameter : Real;\n        attribute width : Integer;\n    }\n\n    part frenchTire : Tire {\n        attribute redefines manufacturer = \"Michelin\";\n        attribute redefines rimDiameter = 18.0;\n        attribute redefines width = 245;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 420,
+    "output_tokens": 110,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

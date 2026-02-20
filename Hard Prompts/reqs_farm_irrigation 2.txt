@@ -1,0 +1,115 @@
+MBSE Pretend Requirements — River-to-Farm Irrigation Lift
+Pretend-but-plausible requirements set for an MBSE effort to move river water up 30 ft to irrigate farmland at ≥ 20 GPM in a rural installation, deliverable within ~6 months, using simple controls.
+1) Mission and scope requirements
+R-MSN-001 (Purpose)
+The system shall lift and deliver river water to the farm’s irrigation inlet for routine agricultural irrigation use.
+R-MSN-002 (Operating environment)
+The system shall be deployable and operable in a rural outdoor environment with exposure to rain, dust, mud, insects, and seasonal temperature swings.
+R-MSN-003 (Schedule constraint)
+The system shall be designed, procured, installed, and commissioned within 6 months from project start.
+R-MSN-004 (User profile)
+The system shall be operable and maintainable by farm personnel with basic mechanical/electrical skills and common hand tools.
+2) Performance requirements
+R-PERF-001 (Static lift / head)
+The system shall lift water from the river water surface to the farm delivery point with a minimum static elevation gain of
+30 ft
+.
+R-PERF-002 (Flow rate)
+The system shall deliver a minimum steady-state flow of
+20 gallons per minute (GPM)
+at the farm delivery point.
+R-PERF-003 (Continuous operation)
+The system shall support continuous operation for at least
+8 hours/day
+during irrigation season without mandatory cool-down periods.
+R-PERF-004 (Flow control simplicity)
+The system shall provide a means to start/stop flow and to adjust flow in a coarse manner (e.g., on/off plus one adjustable valve), without requiring advanced automation.
+R-PERF-005 (Prime and restart)
+The system shall be capable of restarting after an intentional shutdown without requiring specialized priming equipment beyond built-in valves/check valves or a simple manual prime.
+3) Interfaces and boundary requirements
+R-INT-001 (Water source interface)
+The system shall intake water from the river without requiring permanent alteration of the riverbank beyond small-scale civil works (e.g., an anchored intake, riprap, small pad).
+R-INT-002 (Water delivery interface)
+The system shall output water through a standard farm-compatible connection (e.g., a pipe outlet or hose coupling) suitable for connection to irrigation piping or a holding tank.
+R-INT-003 (Electrical power availability)
+The system shall operate from available electrical power; no constraint is placed on power availability (“unlimited power” assumption), but the design shall include standard electrical protection and disconnect.
+R-INT-004 (Civil works allowance)
+The design may include concrete foundations, pads, or protective structures as required for stability, mounting, and erosion control.
+4) Control and autonomy constraints (explicitly “not sophisticated”)
+R-CTRL-001 (Control technology limitation)
+The system shall not rely on advanced control and actuation technologies (e.g., complex PLC automation, robotic actuators, multi-sensor closed-loop control).
+Acceptable control mechanisms include manual switches, basic starters, simple float switch cutoff, basic pressure switch, and manual valves.
+R-CTRL-002 (Local control)
+The system shall include local controls at the pump/power unit for start/stop and emergency stop.
+R-CTRL-003 (Status indication)
+The system shall provide simple status indication (e.g., power on, pump running, fault/trip) using basic indicator lights or a single meter.
+5) Reliability, availability, and maintainability
+R-RAM-001 (Availability goal)
+During irrigation season, the system shall achieve
+≥ 95% availability
+during planned operating hours (excluding scheduled maintenance).
+R-RAM-002 (Maintainability)
+Routine maintenance tasks (filter/strainer cleaning, visual inspection, lubrication if needed) shall be accomplishable in
+≤ 30 minutes
+per occurrence.
+R-RAM-003 (Spare parts strategy)
+Wear items (seals, strainer screens, common valves, fuses/breakers) shall be commercially available and replaceable without specialty tooling.
+R-RAM-004 (Clog tolerance)
+The system shall include intake protection (e.g., screened intake/strainer) and shall be tolerant of typical river debris (leaves, small sticks, sediment) without catastrophic damage.
+6) Safety requirements
+R-SAFE-001 (Electrical safety)
+The system shall include a lockable disconnect and overcurrent protection consistent with rural outdoor installation practices (e.g., NEMA-rated enclosure, GFCI where appropriate).
+R-SAFE-002 (Mechanical safety)
+Rotating components (couplings, belts if used) shall be guarded to prevent inadvertent contact during operation.
+R-SAFE-003 (Overpressure protection)
+The system shall prevent damaging overpressure events in the discharge line via at least one protective measure (e.g., relief valve, pressure switch trip, or designed pressure rating margin).
+R-SAFE-004 (Dry-run protection)
+The system shall include a simple means to avoid pump damage from dry running (e.g., low-water cutoff float switch at intake or a basic pressure/flow interlock).
+7) Environmental and regulatory considerations (generic, MBSE-friendly)
+R-ENV-001 (Spill/leak containment)
+If lubricants or fuels are used (only if a generator concept is considered), the system shall include provisions to minimize environmental release (drip pans/secondary containment).
+If grid power is guaranteed, you can drop this requirement.
+R-ENV-002 (Erosion control)
+Any riverbank installation shall include erosion mitigation appropriate to expected seasonal flows (e.g., anchored intake, riprap, stable pad).
+R-ENV-003 (Noise)
+The system shall not exceed a reasonable rural nuisance threshold at the farmstead boundary (define locally if needed), and shall include muffling/isolators if applicable.
+8) Verification-oriented requirements (good for MBSE)
+R-VER-001 (Flow verification)
+The delivered flow rate shall be verifiable with a simple field test (e.g., timed fill of a known-volume container or an inline mechanical flow meter).
+R-VER-002 (Head verification)
+The elevation gain shall be verifiable by survey/measurement of intake and delivery elevation, plus pressure measurement at delivery (if used).
+R-VER-003 (Acceptance test)
+The system shall pass an acceptance test demonstrating ≥ 20 GPM delivery at 30 ft lift for a continuous
+2-hour
+run under typical conditions.
+Logical system breakdown (MBSE-friendly “boxes”)
+Water Source Subsystem
+Intake structure (screen/strainer, foot valve/check valve)
+Intake anchoring & riverbank protection
+Pumping / Energy Conversion Subsystem
+Pump (centrifugal, jet, or submersible options)
+Motor/drive coupling
+Mounting base / alignment features
+Conveyance Subsystem
+Suction line (if applicable) and discharge line
+Valves (isolation, check, drain, throttling)
+Air release / priming provisions
+Pressure relief or equivalent protection
+Power Subsystem
+Power feed, disconnect, breaker/fuse
+Motor starter (simple)
+Grounding/lightning considerations (rural)
+Controls & Indication Subsystem
+Start/stop, emergency stop
+Simple fault indication (trip light)
+Optional: basic low-water cutoff (float switch)
+Civil/Structural Subsystem
+Concrete pad/foundation
+Protective housing or fencing
+Access path / maintenance clearance
+Operations & Maintenance Support
+Procedures, labeling
+Minimal spares kit list
+Inspection/maintenance schedule
+End of requested content (up to logical breakdown).
+Document generated for concept exploration and MBSE-style decomposition; not a final engineering specification.

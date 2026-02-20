@@ -1,0 +1,42 @@
+{
+  "id": "cba20f71-e6b2-421b-aa22-2bb16d7182ae",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleStructure {\n    private import ScalarValues::*;\n\n    part def VehicleComponent;\n\n    part def Engine :> VehicleComponent;\n    \n    part def Transmission :> VehicleComponent;\n    \n    part def Wheel :> VehicleComponent;\n    \n    part def Vehicle {\n        part engine : Engine[1];\n        part transmission : Transmission[1];\n        part wheels : Wheel[4];\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning_content": "We are generating a SysML v2 model for a vehicle structure.\n We have requirements:\n   - A vehicle is composed of multiple components.\n   - Major components: one engine, one transmission, and four wheels.\n   - Components are subclasses of vehicle components.\n   - The system should support extensibility for both vehicle and component types.\n\n We are to use a conservative subset of SysML v2 that is robust with syside.\n\n We are to output only SysML text with no prose or markdown.\n\n We are to use:\n   package, private import ScalarValues::*, enum def, part def, part, attribute, port def, port, item def, and connect A to B;\n\n We are to avoid: block, property, enumeration, signal def, event def, state machine, stateMachine, transition def, operation def, precondition, postcondition, when, connect A -> B, and quoted pseudo-code constraints.\n\n Let's design:\n\n We can have a package for the vehicle system.\n\n We can define an enum for component types? Or we can use part definitions for each component and then have a vehicle part that composes them.\n\n Since we need to support extensibility, we can define a base part definition for VehicleComponent and then specific components as specializations.\n\n However, note: the requirement says \"These components are all subclasses of vehicle components.\" So we can have a base type.\n\n We are to use part definitions and parts.\n\n We can do:\n\n   package VehicleStructure {\n        private import ScalarValues::*;\n\n        part def VehicleComponent {\n            // common attributes for all components?\n        }\n\n        part def Engine :> VehicleComponent {\n            // engine specific attributes\n        }\n\n        part def Transmission :> VehicleComponent {\n            // transmission specific attributes\n        }\n\n        part def Wheel :> VehicleComponent {\n            // wheel specific attributes\n        }\n\n        part def Vehicle {\n            // parts with multiplicity\n            part engine : Engine[1];\n            part transmission : Transmission[1];\n            part wheels : Wheel[4];\n        }\n   }\n\n But note: the requirement says \"a vehicle must be equipped with exactly four wheels, as well as one engine and one transmission.\"\n\n We can use multiplicities in the part definitions.\n\n However, note that we are to use `part` inside a part definition to represent composition.\n\n Let me try to write the model accordingly.\n\n We are also to use `item def` if needed, but I don't see a need for it in the initial model.\n\n Let me write the model.\n\n Important: We are to avoid `block` and use `part def` instead.\n\n We are also to use `private import ScalarValues::*;` for basic types.\n\n We'll use simple attribute declarations if needed.\n\n Let's write the code."
+      }
+    }
+  ],
+  "created": 1771599649,
+  "model": "deepseek-reasoner",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache",
+  "usage": {
+    "completion_tokens": 650,
+    "prompt_tokens": 366,
+    "total_tokens": 1016,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 563,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 320
+    },
+    "prompt_cache_hit_tokens": 320,
+    "prompt_cache_miss_tokens": 46
+  }
+}

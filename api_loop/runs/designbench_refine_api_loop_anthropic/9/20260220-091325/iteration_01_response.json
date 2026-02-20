@@ -1,0 +1,29 @@
+{
+  "id": "msg_01VWM3Dc5h49oGgA8Xbc4aG2",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package WheelAssembly {\n    private import ScalarValues::*;\n\n    enum def ConnectionType {\n        enum Press;\n        enum Bolt;\n        enum Interference;\n    }\n\n    part def WheelBearingUnit {\n        attribute description : String;\n    }\n\n    part def Bead {\n        attribute position : String;\n    }\n\n    part def Rim {\n        attribute position : String;\n    }\n\n    part def Tire {\n        attribute sealed : Boolean;\n        part bead1 : Bead;\n        part bead2 : Bead;\n    }\n\n    part def BoltMountingHole {\n        attribute diameter : Real;\n    }\n\n    part def ThreadedHole {\n        attribute diameter : Real;\n    }\n\n    part def BoltConnection {\n        attribute torque : Real;\n    }\n\n    part def Hub {\n        part rim1 : Rim;\n        part rim2 : Rim;\n        part mountingHole1 : BoltMountingHole;\n        part mountingHole2 : BoltMountingHole;\n        part mountingHole3 : BoltMountingHole;\n        part mountingHole4 : BoltMountingHole;\n        part threadedHole1 : ThreadedHole;\n        part threadedHole2 : ThreadedHole;\n        part threadedHole3 : ThreadedHole;\n        part threadedHole4 : ThreadedHole;\n    }\n\n    part def WheelAssemblySystem {\n        attribute description : String;\n\n        part bearing : WheelBearingUnit {\n            attribute description : String = \"Supports wheel rotation\";\n        }\n\n        part hub : Hub;\n\n        part tire : Tire {\n            attribute sealed : Boolean = true;\n        }\n\n        part bolt1 : BoltConnection {\n            attribute torque : Real = 120.0;\n        }\n\n        part bolt2 : BoltConnection {\n            attribute torque : Real = 120.0;\n        }\n\n        part bolt3 : BoltConnection {\n            attribute torque : Real = 120.0;\n        }\n\n        part bolt4 : BoltConnection {\n            attribute torque : Real = 120.0;\n        }\n\n        connect tire.bead1 to hub.rim1;\n        connect tire.bead2 to hub.rim2;\n        connect bolt1 to hub.mountingHole1;\n        connect bolt1 to hub.threadedHole1;\n        connect bolt2 to hub.mountingHole2;\n        connect bolt2 to hub.threadedHole2;\n        connect bolt3 to hub.mountingHole3;\n        connect bolt3 to hub.threadedHole3;\n        connect bolt4 to hub.mountingHole4;\n        connect bolt4 to hub.threadedHole4;\n        connect hub to bearing;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 421,
+    "output_tokens": 712,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

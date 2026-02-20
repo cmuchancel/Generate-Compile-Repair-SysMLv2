@@ -1,0 +1,29 @@
+{
+  "id": "msg_01ACNMQRVqU4mp8oMe6iE148",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package ServerSystem {\n    private import ScalarValues::*;\n\n    enum def ServerState {\n        enum off;\n        enum waiting;\n        enum response;\n    }\n\n    enum def CommandType {\n        enum start;\n        enum request;\n        enum stop;\n    }\n\n    item def RequestMessage {\n        attribute command : CommandType;\n    }\n\n    item def ResponseMessage {\n        attribute content : String;\n    }\n\n    port def RequestPort {\n        attribute receivedCommand : CommandType;\n    }\n\n    port def ClockPort {\n        attribute hours : Integer;\n        attribute minutes : Integer;\n        attribute seconds : Integer;\n    }\n\n    part def LocalClock {\n        attribute currentHours : Integer;\n        attribute currentMinutes : Integer;\n        attribute currentSeconds : Integer;\n        attribute scheduledOffHours : Integer = 23;\n        attribute scheduledOffMinutes : Integer = 59;\n        attribute scheduledOffSeconds : Integer = 0;\n        port clockOut : ClockPort;\n    }\n\n    part def Server {\n        attribute currentState : ServerState;\n        attribute responseWaitMinutes : Integer = 5;\n        attribute startupComplete : Boolean;\n        attribute dailyScheduleEnabled : Boolean = true;\n        attribute cycleCount : Integer;\n        attribute maxDailyCycles : Integer;\n        port requestPort : RequestPort;\n        port serverClockPort : ClockPort;\n        part localClock : LocalClock;\n    }\n\n    part def RequestSource {\n        attribute sourceId : String;\n        port outPort : RequestPort;\n    }\n\n    part def ServerSystem {\n        part server : Server;\n        part requestSource : RequestSource;\n        connect requestSource.outPort to server.requestPort;\n        connect server.localClock.clockOut to server.serverClockPort;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 425,
+    "output_tokens": 436,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

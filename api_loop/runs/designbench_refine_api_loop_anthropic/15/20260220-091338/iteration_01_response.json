@@ -1,0 +1,29 @@
+{
+  "id": "msg_019XqmQvAE2ZPZATzJggRB7k",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package FuelSystem {\n    private import ScalarValues::*;\n\n    enum def FuelFlowDirection {\n        enum SUPPLY;\n        enum RETURN;\n    }\n\n    item def Fuel;\n    item def FuelTemperatureSignal;\n\n    port def FuelSupplyPort {\n        attribute flowDirection : FuelFlowDirection;\n    }\n\n    port def FuelReturnPort {\n        attribute flowDirection : FuelFlowDirection;\n    }\n\n    port def TemperatureMonitorPort {\n        attribute temperature : Real;\n    }\n\n    part def FuelTankAssembly {\n        attribute fuelLevel : Real;\n        attribute tankCapacity : Real;\n\n        port supplyOut : FuelSupplyPort;\n        port returnIn : FuelReturnPort;\n        port tempMonitor : TemperatureMonitorPort;\n    }\n\n    part def Engine {\n        attribute fuelConsumptionRate : Real;\n        attribute operatingTemperature : Real;\n\n        port supplyIn : FuelSupplyPort;\n        port returnOut : FuelReturnPort;\n        port tempSensor : TemperatureMonitorPort;\n    }\n\n    part def FuelLine {\n        attribute lineLength : Real;\n        attribute lineDiameter : Real;\n\n        port lineInlet : FuelSupplyPort;\n        port lineOutlet : FuelSupplyPort;\n    }\n\n    part def ReturnFuelLine {\n        attribute lineLength : Real;\n        attribute lineDiameter : Real;\n\n        port returnLineInlet : FuelReturnPort;\n        port returnLineOutlet : FuelReturnPort;\n    }\n\n    part def VehicleFuelSystem {\n        attribute vehicleId : String;\n        attribute systemOperational : Boolean;\n\n        part tankAssembly : FuelTankAssembly;\n        part engine : Engine;\n        part supplyLine : FuelLine;\n        part returnLine : ReturnFuelLine;\n\n        connect tankAssembly.supplyOut to supplyLine.lineInlet;\n        connect supplyLine.lineOutlet to engine.supplyIn;\n        connect engine.returnOut to returnLine.returnLineInlet;\n        connect returnLine.returnLineOutlet to tankAssembly.returnIn;\n        connect tankAssembly.tempMonitor to engine.tempSensor;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 403,
+    "output_tokens": 564,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

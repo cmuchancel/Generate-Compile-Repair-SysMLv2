@@ -1,0 +1,29 @@
+{
+  "id": "msg_019P5n23Sryic16yB1BuFoGU",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package MassManagement {\n    private import ScalarValues::*;\n\n    attribute def BasicMass {\n        attribute value : Real;\n    }\n\n    attribute def MinMassThreshold {\n        attribute value : Real;\n    }\n\n    attribute def TotalMass {\n        attribute value : Real;\n    }\n\n    part def Component {\n        attribute basicMass : Real;\n        attribute totalMass : Real;\n        attribute minMassThreshold : Real;\n    }\n\n    part def Subcomponent {\n        attribute basicMass : Real;\n        attribute totalMass : Real;\n    }\n\n    part def CompositeObject {\n        attribute basicMass : Real;\n        attribute totalMass : Real;\n        attribute minMassThreshold : Real;\n\n        part subcomponent1 : Subcomponent;\n        part subcomponent2 : Subcomponent;\n        part subcomponent3 : Subcomponent;\n    }\n\n    part def FilteredCompositeObject {\n        attribute basicMass : Real;\n        attribute totalMass : Real;\n        attribute minMassThreshold : Real;\n\n        part subcomponent1 : Subcomponent;\n        part subcomponent2 : Subcomponent;\n        part subcomponent3 : Subcomponent;\n    }\n\n    part def MassAggregationSystem {\n        attribute systemTotalMass : Real;\n        attribute systemMinMassThreshold : Real;\n\n        part composite1 : CompositeObject;\n        part composite2 : FilteredCompositeObject;\n        part standalone : Component;\n    }\n\n    part massSystem : MassAggregationSystem {\n        attribute systemTotalMass : Real = 0.0;\n        attribute systemMinMassThreshold : Real = 0.0;\n\n        part composite1 : CompositeObject {\n            attribute basicMass : Real = 10.0;\n            attribute totalMass : Real = 40.0;\n            attribute minMassThreshold : Real = 0.0;\n\n            part subcomponent1 : Subcomponent {\n                attribute basicMass : Real = 5.0;\n                attribute totalMass : Real = 5.0;\n            }\n            part subcomponent2 : Subcomponent {\n                attribute basicMass : Real = 15.0;\n                attribute totalMass : Real = 15.0;\n            }\n            part subcomponent3 : Subcomponent {\n                attribute basicMass : Real = 10.0;\n                attribute totalMass : Real = 10.0;\n            }\n        }\n\n        part composite2 : FilteredCompositeObject {\n            attribute basicMass : Real = 8.0;\n            attribute totalMass : Real = 33.0;\n            attribute minMassThreshold : Real = 10.0;\n\n            part subcomponent1 : Subcomponent {\n                attribute basicMass : Real = 5.0;\n                attribute totalMass : Real = 5.0;\n            }\n            part subcomponent2 : Subcomponent {\n                attribute basicMass : Real = 15.0;\n                attribute totalMass : Real = 15.0;\n            }\n            part subcomponent3 : Subcomponent {\n                attribute basicMass : Real = 10.0;\n                attribute totalMass : Real = 10.0;\n            }\n        }\n\n        part standalone : Component {\n            attribute basicMass : Real = 20.0;\n            attribute totalMass : Real = 20.0;\n            attribute minMassThreshold : Real = 0.0;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 454,
+    "output_tokens": 879,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

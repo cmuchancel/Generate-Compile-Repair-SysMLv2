@@ -1,0 +1,29 @@
+{
+  "id": "msg_01FUeZcpyx1oog4NKSQtjFXg",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomatedPhotography {\n    private import ScalarValues::*;\n\n    enum def ShootingStatus {\n        enum IDLE;\n        enum FOCUSING;\n        enum FOCUSED;\n        enum SHOOTING;\n        enum COMPLETE;\n    }\n\n    item def Scene;\n    item def FocusedImage;\n    item def Photograph;\n\n    port def SceneInputPort {\n        attribute sceneDescription : String;\n    }\n\n    port def FocusedImagePort {\n        attribute imageReady : Boolean;\n    }\n\n    port def PhotographPort {\n        attribute photographReady : Boolean;\n    }\n\n    part def FocusProcessor {\n        attribute status : ShootingStatus;\n        attribute focusQuality : Real;\n        port sceneIn : SceneInputPort;\n        port imageOut : FocusedImagePort;\n    }\n\n    part def ShootingProcessor {\n        attribute status : ShootingStatus;\n        attribute shutterSpeed : Real;\n        attribute aperture : Real;\n        port imageIn : FocusedImagePort;\n        port photographOut : PhotographPort;\n    }\n\n    part def UserInterface {\n        attribute shootingScene : String;\n        port sceneOut : SceneInputPort;\n        port finalPhotoIn : PhotographPort;\n    }\n\n    part def AutomatedPhotographySystem {\n        attribute systemName : String = \"AutomatedPhotographySystem\";\n        attribute systemStatus : ShootingStatus;\n\n        part ui : UserInterface;\n        part focusProcessor : FocusProcessor;\n        part shootingProcessor : ShootingProcessor;\n\n        port systemSceneIn : SceneInputPort;\n        port systemPhotoOut : PhotographPort;\n\n        connect ui.sceneOut to focusProcessor.sceneIn;\n        connect focusProcessor.imageOut to shootingProcessor.imageIn;\n        connect shootingProcessor.photographOut to ui.finalPhotoIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 356,
+    "output_tokens": 468,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

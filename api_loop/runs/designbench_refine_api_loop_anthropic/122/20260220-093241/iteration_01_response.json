@@ -1,0 +1,29 @@
+{
+  "id": "msg_01AAQffNEtsrKDqPAtN3ttHn",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package FuelEconomySystem {\n    private import ScalarValues::*;\n\n    enum def DrivingCondition {\n        enum Urban;\n        enum Highway;\n    }\n\n    part def Powertrain {\n        attribute engineDisplacement : Real;\n        attribute horsepower : Real;\n        attribute torque : Real;\n    }\n\n    part def Vehicle {\n        attribute curbWeight : Real;\n        attribute additionalLoad : Real;\n        attribute totalWeight : Real;\n        attribute urbanFuelEconomy : Real;\n        attribute highwayFuelEconomy : Real;\n        attribute minUrbanFuelEconomy : Real;\n        attribute minHighwayFuelEconomy : Real;\n        attribute gallonVolumeCubicInches : Real;\n        attribute urbanRequirementMet : Boolean;\n        attribute highwayRequirementMet : Boolean;\n        part vehiclePowertrain : Powertrain;\n    }\n\n    part def FuelEconomyTest {\n        attribute testLoad : Real;\n        attribute condition : DrivingCondition;\n        attribute measuredFuelEconomy : Real;\n        attribute minimumRequired : Real;\n        attribute requirementMet : Boolean;\n    }\n\n    part def FuelEconomySystem {\n        part testVehicle : Vehicle;\n        part urbanTest : FuelEconomyTest;\n        part highwayTest : FuelEconomyTest;\n    }\n\n    part fuelEconomySystemInstance : FuelEconomySystem {\n        part testVehicle : Vehicle {\n            attribute curbWeight : Real = 3500.0;\n            attribute additionalLoad : Real = 1000.0;\n            attribute totalWeight : Real = 4500.0;\n            attribute urbanFuelEconomy : Real = 27.0;\n            attribute highwayFuelEconomy : Real = 32.0;\n            attribute minUrbanFuelEconomy : Real = 25.0;\n            attribute minHighwayFuelEconomy : Real = 30.0;\n            attribute gallonVolumeCubicInches : Real = 231.0;\n            attribute urbanRequirementMet : Boolean = true;\n            attribute highwayRequirementMet : Boolean = true;\n            part vehiclePowertrain : Powertrain {\n                attribute engineDisplacement : Real = 2.5;\n                attribute horsepower : Real = 180.0;\n                attribute torque : Real = 175.0;\n            }\n        }\n        part urbanTest : FuelEconomyTest {\n            attribute testLoad : Real = 1000.0;\n            attribute condition : DrivingCondition = DrivingCondition::Urban;\n            attribute measuredFuelEconomy : Real = 27.0;\n            attribute minimumRequired : Real = 25.0;\n            attribute requirementMet : Boolean = true;\n        }\n        part highwayTest : FuelEconomyTest {\n            attribute testLoad : Real = 1000.0;\n            attribute condition : DrivingCondition = DrivingCondition::Highway;\n            attribute measuredFuelEconomy : Real = 32.0;\n            attribute minimumRequired : Real = 30.0;\n            attribute requirementMet : Boolean = true;\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 435,
+    "output_tokens": 799,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

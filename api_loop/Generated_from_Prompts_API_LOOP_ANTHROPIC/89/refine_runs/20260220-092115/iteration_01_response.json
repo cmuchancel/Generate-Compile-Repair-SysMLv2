@@ -1,0 +1,29 @@
+{
+  "id": "msg_01KK5N4qCtz6CymAy8QLUvfN",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package RiskAndFailureManagement {\n    private import ScalarValues::*;\n\n    enum def SeverityLevel {\n        enum LOW;\n        enum MEDIUM;\n        enum HIGH;\n        enum CRITICAL;\n    }\n\n    enum def ProbabilityLevel {\n        enum VERY_LOW;\n        enum LOW;\n        enum MEDIUM;\n        enum HIGH;\n        enum VERY_HIGH;\n    }\n\n    enum def RiskCategory {\n        enum OPERATIONAL;\n        enum TECHNICAL;\n        enum ENVIRONMENTAL;\n        enum HUMAN;\n        enum ORGANIZATIONAL;\n    }\n\n    part def Situation {\n        attribute situationId : String;\n        attribute situationName : String;\n        attribute description : String;\n        attribute category : RiskCategory;\n    }\n\n    part def Cause {\n        attribute causeId : String;\n        attribute causeName : String;\n        attribute description : String;\n        attribute probability : ProbabilityLevel;\n        attribute probabilityValue : Real;\n    }\n\n    part def Failure {\n        attribute failureId : String;\n        attribute failureName : String;\n        attribute description : String;\n        attribute severity : SeverityLevel;\n        attribute impactDescription : String;\n    }\n\n    part def CausalRelationship {\n        attribute relationshipId : String;\n        attribute relationshipDescription : String;\n        attribute sequenceOrder : Integer;\n        attribute impactMechanism : String;\n    }\n\n    part def RiskScenario {\n        attribute scenarioId : String;\n        attribute scenarioName : String;\n        attribute description : String;\n        attribute overallRiskLevel : SeverityLevel;\n        attribute evaluationResult : String;\n        attribute mitigationStrategy : String;\n\n        part scenarioSituation : Situation;\n        part scenarioCauses : Cause[1..*];\n        part scenarioFailures : Failure[1..*];\n        part causalLinks : CausalRelationship[0..*];\n    }\n\n    part def RiskControl {\n        attribute controlId : String;\n        attribute controlName : String;\n        attribute controlDescription : String;\n        attribute effectiveness : SeverityLevel;\n        attribute implementationStatus : String;\n    }\n\n    part def DecisionSupport {\n        attribute decisionId : String;\n        attribute decisionName : String;\n        attribute decisionBasis : String;\n        attribute recommendedAction : String;\n        attribute priority : SeverityLevel;\n    }\n\n    port def RiskDataPort {\n        attribute dataType : String;\n        attribute dataVersion : String;\n    }\n\n    part def RiskAndFailureSystem {\n        attribute systemId : String;\n        attribute systemName : String;\n        attribute systemVersion : String;\n        attribute systemDescription : String;\n\n        port riskDataInput : RiskDataPort;\n        port riskDataOutput : RiskDataPort;\n\n        part situations : Situation[0..*];\n        part causes : Cause[0..*];\n        part failures : Failure[0..*];\n        part causalRelationships : CausalRelationship[0..*];\n        part riskScenarios : RiskScenario[0..*];\n        part riskControls : RiskControl[0..*];\n        part decisionSupports : DecisionSupport[0..*];\n    }\n\n    part def RiskEvaluator {\n        attribute evaluatorId : String;\n        attribute evaluatorName : String;\n        attribute evaluationMethod : String;\n\n        port evaluationInput : RiskDataPort;\n        port evaluationOutput : RiskDataPort;\n    }\n\n    part def RiskManager {\n        attribute managerId : String;\n        attribute managerName : String;\n\n        port managerInput : RiskDataPort;\n        port managerOutput : RiskDataPort;\n\n        part managedSystem : RiskAndFailureSystem;\n        part evaluator : RiskEvaluator;\n\n        connect managedSystem.riskDataOutput to evaluator.evaluationInput;\n        connect evaluator.evaluationOutput to managedSystem.riskDataInput;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 384,
+    "output_tokens": 983,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

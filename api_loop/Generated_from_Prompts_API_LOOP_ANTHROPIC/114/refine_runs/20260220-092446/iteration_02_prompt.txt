@@ -1,0 +1,295 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed for spatiotemporal simulation of the dynamic behavior of vehicles on roads at different moments. Users can define parameters such as the vehicle’s mass, position, velocity, and acceleration, and, combined with the road’s slope (angle) and surface friction coefficient, depict the state of the vehicle and the road at specific time points. The system supports snapshot recording at multiple moments within the simulation time series, enabling tracking of the vehicle’s state transitions from start-up (on state), through the driving process, to shutdown (off state). This provides detailed data to support vehicle dynamics analysis and road adaptability assessment, helping users predict vehicle performance under specific road and time conditions in a virtual environment.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleSpatiotemporalSimulation {
+    private import ScalarValues::*;
+
+    enum def VehicleState {
+        enum on;
+        enum off;
+    }
+
+    enum def RoadSurface {
+        enum dry;
+        enum wet;
+        enum icy;
+    }
+
+    part def Road {
+        attribute slopeAngle : Real;
+        attribute frictionCoefficient : Real;
+        attribute surfaceType : RoadSurface;
+    }
+
+    part def Vehicle {
+        attribute mass : Real;
+        attribute positionX : Real;
+        attribute positionY : Real;
+        attribute positionZ : Real;
+        attribute velocityX : Real;
+        attribute velocityY : Real;
+        attribute velocityZ : Real;
+        attribute accelerationX : Real;
+        attribute accelerationY : Real;
+        attribute accelerationZ : Real;
+        attribute state : VehicleState;
+    }
+
+    part def SimulationSnapshot {
+        attribute timePoint : Real;
+        attribute snapshotPositionX : Real;
+        attribute snapshotPositionY : Real;
+        attribute snapshotPositionZ : Real;
+        attribute snapshotVelocityX : Real;
+        attribute snapshotVelocityY : Real;
+        attribute snapshotVelocityZ : Real;
+        attribute snapshotAccelerationX : Real;
+        attribute snapshotAccelerationY : Real;
+        attribute snapshotAccelerationZ : Real;
+        attribute snapshotState : VehicleState;
+        attribute snapshotSlopeAngle : Real;
+        attribute snapshotFriction : Real;
+    }
+
+    part def SimulationTimeSeries {
+        attribute startTime : Real;
+        attribute endTime : Real;
+        attribute timeStepCount : Integer;
+        part snapshot1 : SimulationSnapshot;
+        part snapshot2 : SimulationSnapshot;
+        part snapshot3 : SimulationSnapshot;
+        part snapshot4 : SimulationSnapshot;
+        part snapshot5 : SimulationSnapshot;
+    }
+
+    port def VehicleDataPort {
+        attribute portMass : Real;
+        attribute portPositionX : Real;
+        attribute portPositionY : Real;
+        attribute portVelocityX : Real;
+        attribute portVelocityY : Real;
+        attribute portState : VehicleState;
+    }
+
+    port def RoadDataPort {
+        attribute portSlopeAngle : Real;
+        attribute portFriction : Real;
+        attribute portSurface : RoadSurface;
+    }
+
+    part def SimulationSystem {
+        attribute simulationId : Integer;
+        attribute description : String;
+
+        part road : Road;
+        part vehicle : Vehicle;
+        part timeSeries : SimulationTimeSeries;
+
+        port vehiclePort : VehicleDataPort;
+        port roadPort : RoadDataPort;
+    }
+
+    part def DynamicsAnalyzer {
+        attribute analyzerId : Integer;
+        port inputVehicle : VehicleDataPort;
+        port inputRoad : RoadDataPort;
+        attribute analysisResult : Real;
+        attribute performanceScore : Real;
+    }
+
+    part def RoadAdaptabilityAssessor {
+        attribute assessorId : Integer;
+        port vehicleInput : VehicleDataPort;
+        port roadInput : RoadDataPort;
+        attribute adaptabilityScore : Real;
+        attribute predictedPerformance : Real;
+    }
+
+    part simulationContext : SimulationSystem {
+        attribute simulationId = 1;
+        attribute description = "Vehicle Spatiotemporal Simulation";
+
+        part :>> road {
+            attribute slopeAngle = 5.0;
+            attribute frictionCoefficient = 0.7;
+            attribute surfaceType = RoadSurface::dry;
+        }
+
+        part :>> vehicle {
+            attribute mass = 1500.0;
+            attribute positionX = 0.0;
+            attribute positionY = 0.0;
+            attribute positionZ = 0.0;
+            attribute velocityX = 0.0;
+            attribute velocityY = 0.0;
+            attribute velocityZ = 0.0;
+            attribute accelerationX = 0.0;
+            attribute accelerationY = 0.0;
+            attribute accelerationZ = 0.0;
+            attribute state = VehicleState::off;
+        }
+
+        part :>> timeSeries {
+            attribute startTime = 0.0;
+            attribute endTime = 100.0;
+            attribute timeStepCount = 5;
+
+            part :>> snapshot1 {
+                attribute timePoint = 0.0;
+                attribute snapshotPositionX = 0.0;
+                attribute snapshotPositionY = 0.0;
+                attribute snapshotPositionZ = 0.0;
+                attribute snapshotVelocityX = 0.0;
+                attribute snapshotVelocityY = 0.0;
+                attribute snapshotVelocityZ = 0.0;
+                attribute snapshotAccelerationX = 0.0;
+                attribute snapshotAccelerationY = 0.0;
+                attribute snapshotAccelerationZ = 0.0;
+                attribute snapshotState = VehicleState::on;
+                attribute snapshotSlopeAngle = 5.0;
+                attribute snapshotFriction = 0.7;
+            }
+
+            part :>> snapshot2 {
+                attribute timePoint = 25.0;
+                attribute snapshotPositionX = 100.0;
+                attribute snapshotPositionY = 0.0;
+                attribute snapshotPositionZ = 0.0;
+                attribute snapshotVelocityX = 15.0;
+                attribute snapshotVelocityY = 0.0;
+                attribute snapshotVelocityZ = 0.0;
+                attribute snapshotAccelerationX = 2.0;
+                attribute snapshotAccelerationY = 0.0;
+                attribute snapshotAccelerationZ = 0.0;
+                attribute snapshotState = VehicleState::on;
+                attribute snapshotSlopeAngle = 5.0;
+                attribute snapshotFriction = 0.7;
+            }
+
+            part :>> snapshot3 {
+                attribute timePoint = 50.0;
+                attribute snapshotPositionX = 500.0;
+                attribute snapshotPositionY = 0.0;
+                attribute snapshotPositionZ = 0.0;
+                attribute snapshotVelocityX = 30.0;
+                attribute snapshotVelocityY = 0.0;
+                attribute snapshotVelocityZ = 0.0;
+                attribute snapshotAccelerationX = 0.0;
+                attribute snapshotAccelerationY = 0.0;
+                attribute snapshotAccelerationZ = 0.0;
+                attribute snapshotState = VehicleState::on;
+                attribute snapshotSlopeAngle = 5.0;
+                attribute snapshotFriction = 0.7;
+            }
+
+            part :>> snapshot4 {
+                attribute timePoint = 75.0;
+                attribute snapshotPositionX = 1200.0;
+                attribute snapshotPositionY = 0.0;
+                attribute snapshotPositionZ = 0.0;
+                attribute snapshotVelocityX = 10.0;
+                attribute snapshotVelocityY = 0.0;
+                attribute snapshotVelocityZ = 0.0;
+                attribute snapshotAccelerationX = -3.0;
+                attribute snapshotAccelerationY = 0.0;
+                attribute snapshotAccelerationZ = 0.0;
+                attribute snapshotState = VehicleState::on;
+                attribute snapshotSlopeAngle = 5.0;
+                attribute snapshotFriction = 0.7;
+            }
+
+            part :>> snapshot5 {
+                attribute timePoint = 100.0;
+                attribute snapshotPositionX = 1500.0;
+                attribute snapshotPositionY = 0.0;
+                attribute snapshotPositionZ = 0.0;
+                attribute snapshotVelocityX = 0.0;
+                attribute snapshotVelocityY = 0.0;
+                attribute snapshotVelocityZ = 0.0;
+                attribute snapshotAccelerationX = 0.0;
+                attribute snapshotAccelerationY = 0.0;
+                attribute snapshotAccelerationZ = 0.0;
+                attribute snapshotState = VehicleState::off;
+                attribute snapshotSlopeAngle = 5.0;
+                attribute snapshotFriction = 0.7;
+            }
+        }
+    }
+
+    part analyzer : DynamicsAnalyzer {
+        attribute analyzerId = 1;
+        attribute analysisResult = 0.0;
+        attribute performanceScore = 0.0;
+    }
+
+    part assessor : RoadAdaptabilityAssessor {
+        attribute assessorId = 1;
+        attribute adaptabilityScore = 0.0;
+        attribute predictedPerformance = 0.0;
+    }
+
+    connect simulationContext.vehiclePort to analyzer.inputVehicle;
+    connect simulationContext.roadPort to analyzer.inputRoad;
+    connect simulationContext.vehiclePort to assessor.vehicleInput;
+    connect simulationContext.roadPort to assessor.roadInput;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:32:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    32 |         attribute state : VehicleState;
+       |                   ^^^^^
+iteration_01.sysml:126:23: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    126 |             attribute state = VehicleState::off;
+        |                       ^^^^^
+iteration_01.sysml:106:19: warning (namespace-distinguishability): Member name 'simulationId' shadows VehicleSpatiotemporalSimulation::SimulationSystem::simulationId
+│   106 |         attribute simulationId = 1;
+│       |                   ^^^^^^^^^^^^
+└── iteration_01.sysml:78:19: note: Inherited from here
+    └── iteration_01.sysml:105:30: note: Because VehicleSpatiotemporalSimulation::SimulationSystem is specialized through FeatureTyping
+iteration_01.sysml:107:19: warning (namespace-distinguishability): Member name 'description' shadows VehicleSpatiotemporalSimulation::SimulationSystem::description
+│   107 |         attribute description = "Vehicle Spatiotemporal Simulation";
+│       |                   ^^^^^^^^^^^
+└── iteration_01.sysml:79:19: note: Inherited from here
+    └── iteration_01.sysml:105:30: note: Because VehicleSpatiotemporalSimulation::SimulationSystem is specialized through FeatureTyping
+iteration_01.sysml:110:23: warning (namespace-distinguishability): Member name 'slopeAngle' shadows VehicleSpatiotemporalSimulation::Road::slopeAngle
+│   110 |             attribute slopeAngle = 5.0;
+│       |                       ^^^^^^^^^^
+└── iteration_01.sysml:16:19: note: Inherited from here
+    ├── iteration_01.sysml:81:21: note: Because VehicleSpatiotemporalSimulation::Road is specialized through FeatureTyping
+    └── iteration_01.sysml:109:18: note: Because VehicleSpatiotemporalSimulation::SimulationSystem::road is specialized through Redefinition
+iteration_01.sysml:111:23: warning (namespace-distinguishability): Member name 'frictionCoefficient' shadows VehicleSpatiotemporalSimulation::Road::frictionCoefficient
+│   111 |             attribute frictionCoefficient = 0.7;
+│       |                       ^^^^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:17:19: note: Inherited from here
+    ├── iteration_01.sysml:81:21: note: Because VehicleSpatiotemporalSimulation::Road is specialized through FeatureTyping
+    └── iteration_01.sysml:109:18: note: Because VehicleSpatiotemporalSimulation::SimulationSystem::road is specialized through Redefinition
+iteration_01.sysml:112:23: warning (namespace-distinguishability): Member name 'surfaceType' shadows VehicleSpatiotemporalSimulation::Road::surfaceType
+│   112 |             attribute surfaceType = RoadSurface::dry;
+│       |                       ^^^^^^^^^^^
+└── iteration_01.sysml:18:19: note: Inherited from here
+    ├── iteration_01.sysml:81:21: note: Because VehicleSpatiotemporalSimulation::Road is specialized through FeatureTyping
+    └── iteration_01.sysml:109:18: note: Because VehicleSpatiotemporalSimulation::SimulationSystem::road is specialized through Redefinition
+iteration_01.sysml:116:23: warning (namespace-distinguishability): Member name 'mass' shadows VehicleSpatiotemporalSimulation::Vehicle::mass
+│   116 |             attribute mass = 1500.0;
+│       |                       ^^^^
+└── iteration_01.sysml:22:19: note: Inherited from here
+    ├── iteration_01.sysml:82:24: note: Because VehicleSpatiotemporalSimulation::Vehicle is specialized through FeatureTyping
+    └── iteration_01.sysml:115:18: note: Be
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

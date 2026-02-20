@@ -1,0 +1,29 @@
+{
+  "id": "msg_01JjpKSyZes8BZxUpqrTD6Jw",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package AutomobileAssembly {\n    private import ScalarValues::*;\n\n    enum def AssemblyStatus {\n        enum Incomplete;\n        enum Complete;\n    }\n\n    item def GearboxUnit {\n        attribute functional : Boolean;\n    }\n\n    item def EngineUnit {\n        attribute functional : Boolean;\n    }\n\n    part def VehicleWithoutGearboxAndEngine {\n        attribute status : AssemblyStatus;\n    }\n\n    part def VehicleWithGearboxNoEngine {\n        attribute status : AssemblyStatus;\n        part gearbox : GearboxUnit;\n    }\n\n    part def FullyAssembledVehicle {\n        attribute status : AssemblyStatus;\n        part gearbox : GearboxUnit;\n        part engine : EngineUnit;\n    }\n\n    port def AssemblyInputPort {\n        attribute stageId : String;\n    }\n\n    port def AssemblyOutputPort {\n        attribute stageId : String;\n    }\n\n    part def GearboxInstallationStep {\n        attribute stepName : String;\n        port input : AssemblyInputPort;\n        port output : AssemblyOutputPort;\n        part inputVehicle : VehicleWithoutGearboxAndEngine;\n        part gearboxItem : GearboxUnit;\n        part outputVehicle : VehicleWithGearboxNoEngine;\n    }\n\n    part def EngineInstallationStep {\n        attribute stepName : String;\n        port input : AssemblyInputPort;\n        port output : AssemblyOutputPort;\n        part inputVehicle : VehicleWithGearboxNoEngine;\n        part engineItem : EngineUnit;\n        part outputVehicle : FullyAssembledVehicle;\n    }\n\n    part def FinalAssemblyLine {\n        attribute lineName : String;\n\n        part step1 : GearboxInstallationStep {\n            attribute stepName = \"GearboxInstallation\";\n        }\n\n        part step2 : EngineInstallationStep {\n            attribute stepName = \"EngineInstallation\";\n        }\n\n        connect step1.output to step2.input;\n\n        part finalVehicle : FullyAssembledVehicle {\n            attribute status = AssemblyStatus::Complete;\n            part gearbox : GearboxUnit {\n                attribute functional = true;\n            }\n            part engine : EngineUnit {\n                attribute functional = true;\n            }\n        }\n    }\n\n    part assemblyLine : FinalAssemblyLine {\n        attribute lineName = \"MainFinalAssemblyLine\";\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 449,
+    "output_tokens": 637,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

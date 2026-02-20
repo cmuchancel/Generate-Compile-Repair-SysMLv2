@@ -1,0 +1,29 @@
+{
+  "id": "msg_0164xktdhnpoyv36wP2zBLdG",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleProductLine {\n    private import ScalarValues::*;\n\n    enum def PerformanceLevel {\n        enum HIGH;\n        enum STANDARD;\n    }\n\n    enum def EngineType {\n        enum SIX_CYLINDER;\n        enum FOUR_CYLINDER;\n    }\n\n    enum def TransmissionType {\n        enum AUTOMATIC;\n        enum MANUAL;\n    }\n\n    enum def WheelType {\n        enum WIDE_RIM;\n        enum NARROW_RIM;\n    }\n\n    part def Engine {\n        attribute engineType : EngineType;\n        attribute cylinders : Integer;\n        attribute horsepower : Real;\n    }\n\n    part def Transmission {\n        attribute transmissionType : TransmissionType;\n        attribute gearCount : Integer;\n    }\n\n    part def Wheel {\n        attribute wheelType : WheelType;\n        attribute rimWidth : Real;\n    }\n\n    part def VehicleConfiguration {\n        attribute performanceLevel : PerformanceLevel;\n        attribute configName : String;\n        part engine : Engine;\n        part transmission : Transmission;\n        part wheel : Wheel;\n    }\n\n    part def HighPerformanceEngine :> Engine {\n        attribute engineType : EngineType = EngineType::SIX_CYLINDER;\n        attribute cylinders : Integer = 6;\n        attribute horsepower : Real = 400.0;\n    }\n\n    part def StandardEngine :> Engine {\n        attribute engineType : EngineType = EngineType::FOUR_CYLINDER;\n        attribute cylinders : Integer = 4;\n        attribute horsepower : Real = 150.0;\n    }\n\n    part def AutomaticTransmission :> Transmission {\n        attribute transmissionType : TransmissionType = TransmissionType::AUTOMATIC;\n        attribute gearCount : Integer = 8;\n    }\n\n    part def ManualTransmission :> Transmission {\n        attribute transmissionType : TransmissionType = TransmissionType::MANUAL;\n        attribute gearCount : Integer = 6;\n    }\n\n    part def WideRimWheel :> Wheel {\n        attribute wheelType : WheelType = WheelType::WIDE_RIM;\n        attribute rimWidth : Real = 10.0;\n    }\n\n    part def NarrowRimWheel :> Wheel {\n        attribute wheelType : WheelType = WheelType::NARROW_RIM;\n        attribute rimWidth : Real = 7.0;\n    }\n\n    part def HighPerformanceConfiguration :> VehicleConfiguration {\n        attribute performanceLevel : PerformanceLevel = PerformanceLevel::HIGH;\n        attribute configName : String = \"HighPerformance\";\n        part engine : HighPerformanceEngine;\n        part transmission : AutomaticTransmission;\n        part wheel : WideRimWheel;\n    }\n\n    part def StandardConfiguration :> VehicleConfiguration {\n        attribute performanceLevel : PerformanceLevel = PerformanceLevel::STANDARD;\n        attribute configName : String = \"Standard\";\n        part engine : StandardEngine;\n        part transmission : ManualTransmission;\n        part wheel : NarrowRimWheel;\n    }\n\n    port def ConfigurationPort {\n        attribute performanceLevel : PerformanceLevel;\n    }\n\n    part def VehicleProductLineSystem {\n        attribute systemName : String = \"VehicleProductLineSystem\";\n        part highPerfConfig : HighPerformanceConfiguration;\n        part standardConfig : StandardConfiguration;\n        port highPerfPort : ConfigurationPort;\n        port standardPort : ConfigurationPort;\n    }\n\n    part def ProductLineManager {\n        attribute managerName : String = \"ProductLineManager\";\n        port managerPort : ConfigurationPort;\n        part system : VehicleProductLineSystem;\n    }\n\n    part vehicleSystem : VehicleProductLineSystem;\n    part manager : ProductLineManager;\n\n    connect manager.managerPort to vehicleSystem.highPerfPort;\n    connect manager.managerPort to vehicleSystem.standardPort;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 439,
+    "output_tokens": 993,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

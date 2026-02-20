@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T14:21:56.760792Z",
+    "iteration_end": "2026-02-20T14:22:06.047532Z",
+    "iteration_duration_seconds": 9.286717291994137,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/94/20260220-092156/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/94/20260220-092156/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/94/20260220-092156/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:39:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '\u6c7d\u8f66'.\n    39 |     part \u6c7d\u8f66Car : Automobile {\n       |          \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 408,
+      "output_tokens": 676,
+      "total_tokens": 1084
+    },
+    "tokens_used_total": 1084,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T14:22:06.047572Z",
+    "iteration_end": "2026-02-20T14:22:11.547571Z",
+    "iteration_duration_seconds": 5.500019041995984,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/94/20260220-092156/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/94/20260220-092156/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/94/20260220-092156/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1171,
+      "output_tokens": 672,
+      "total_tokens": 1843
+    },
+    "tokens_used_total": 2927,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  }
+]

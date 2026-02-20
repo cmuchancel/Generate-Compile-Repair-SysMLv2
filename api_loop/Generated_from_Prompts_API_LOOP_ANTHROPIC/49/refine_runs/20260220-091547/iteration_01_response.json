@@ -1,0 +1,29 @@
+{
+  "id": "msg_015Gbdp4c4HyEhPMndm5D7Gk",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package CruiseControlSystem {\n    private import ScalarValues::*;\n\n    enum def CommandType {\n        enum SET_SPEED;\n        enum FUEL_CONTROL;\n    }\n\n    enum def SensorStatus {\n        enum ACTIVE;\n        enum INACTIVE;\n    }\n\n    item def SpeedCommand {\n        attribute targetSpeed : Real;\n        attribute commandType : CommandType;\n    }\n\n    item def FuelControlCommand {\n        attribute fuelAdjustment : Real;\n        attribute commandType : CommandType;\n    }\n\n    item def SpeedReading {\n        attribute currentSpeed : Real;\n        attribute status : SensorStatus;\n    }\n\n    port def DriverInputPort {\n        in item speedCmd : SpeedCommand;\n    }\n\n    port def DriverOutputPort {\n        out item speedCmd : SpeedCommand;\n    }\n\n    port def SpeedSensorOutputPort {\n        out item speedReading : SpeedReading;\n    }\n\n    port def SpeedSensorInputPort {\n        in item speedReading : SpeedReading;\n    }\n\n    port def FuelCommandOutputPort {\n        out item fuelCmd : FuelControlCommand;\n    }\n\n    port def FuelCommandInputPort {\n        in item fuelCmd : FuelControlCommand;\n    }\n\n    part def Driver {\n        attribute driverName : String;\n        port driverOut : DriverOutputPort;\n    }\n\n    part def SpeedSensor {\n        attribute sensorId : String;\n        attribute measuredSpeed : Real;\n        port sensorOut : SpeedSensorOutputPort;\n    }\n\n    part def CruiseController {\n        attribute controllerId : String;\n        attribute setSpeed : Real;\n        attribute actualSpeed : Real;\n        port cmdIn : DriverInputPort;\n        port sensorIn : SpeedSensorInputPort;\n        port fuelCmdOut : FuelCommandOutputPort;\n    }\n\n    part def EngineController {\n        attribute engineControllerId : String;\n        port fuelCmdIn : FuelCommandInputPort;\n        port fuelCmdOut : FuelCommandOutputPort;\n    }\n\n    part def Engine {\n        attribute engineId : String;\n        attribute fuelFlow : Real;\n        port fuelCmdIn : FuelCommandInputPort;\n    }\n\n    part cruiseControlSystem {\n        part driver : Driver {\n            attribute driverName = \"Driver1\";\n            attribute setSpeed : Real;\n        }\n\n        part speedSensor : SpeedSensor {\n            attribute sensorId = \"SpeedSensor1\";\n            attribute measuredSpeed : Real = 0.0;\n        }\n\n        part cruiseController : CruiseController {\n            attribute controllerId = \"CruiseController1\";\n            attribute setSpeed : Real = 0.0;\n            attribute actualSpeed : Real = 0.0;\n        }\n\n        part engineController : EngineController {\n            attribute engineControllerId = \"EngineController1\";\n        }\n\n        part engine : Engine {\n            attribute engineId = \"Engine1\";\n            attribute fuelFlow : Real = 0.0;\n        }\n\n        connect driver.driverOut to cruiseController.cmdIn;\n        connect speedSensor.sensorOut to cruiseController.sensorIn;\n        connect cruiseController.fuelCmdOut to engineController.fuelCmdIn;\n        connect engineController.fuelCmdOut to engine.fuelCmdIn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 417,
+    "output_tokens": 834,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

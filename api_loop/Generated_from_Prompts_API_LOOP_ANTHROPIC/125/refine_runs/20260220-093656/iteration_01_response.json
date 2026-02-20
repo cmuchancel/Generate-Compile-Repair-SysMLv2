@@ -1,0 +1,29 @@
+{
+  "id": "msg_01FSXj5ic68wdvrxyahmhs2W",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSafetySecuritySystem {\n    private import ScalarValues::*;\n\n    enum def SafetyCategory {\n        enum Mandatory;\n        enum Optional;\n    }\n\n    enum def FeatureType {\n        enum Safety;\n        enum Security;\n    }\n\n    enum def DisplayFormat {\n        enum TreeStructure;\n        enum Table;\n    }\n\n    part def Vehicle {\n        attribute vehicleName : String;\n        part seatBelt : SeatBelt;\n        part bumper : Bumper;\n        part airbag : Airbag;\n        part antiLockBrakingSystem : AntiLockBrakingSystem;\n        part alarm : Alarm;\n        part keylessEntry : KeylessEntry;\n        part safetySecurityManager : SafetySecurityManager;\n    }\n\n    part def SafetyFeature {\n        attribute featureName : String;\n        attribute featureType : FeatureType;\n        attribute safetyCategory : SafetyCategory;\n        attribute isMandatory : Boolean;\n    }\n\n    part def SecurityFeature {\n        attribute featureName : String;\n        attribute featureType : FeatureType;\n        attribute isMandatory : Boolean;\n    }\n\n    part def SeatBelt {\n        attribute featureName : String = \"SeatBelt\";\n        attribute featureType : FeatureType = FeatureType::Safety;\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Mandatory;\n        attribute isMandatory : Boolean = true;\n    }\n\n    part def Bumper {\n        attribute featureName : String = \"Bumper\";\n        attribute featureType : FeatureType = FeatureType::Safety;\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Mandatory;\n        attribute isMandatory : Boolean = true;\n    }\n\n    part def Airbag {\n        attribute featureName : String = \"Airbag\";\n        attribute featureType : FeatureType = FeatureType::Safety;\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Optional;\n        attribute isMandatory : Boolean = false;\n    }\n\n    part def AntiLockBrakingSystem {\n        attribute featureName : String = \"AntiLockBrakingSystem\";\n        attribute featureType : FeatureType = FeatureType::Safety;\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Optional;\n        attribute isMandatory : Boolean = false;\n    }\n\n    part def Alarm {\n        attribute featureName : String = \"Alarm\";\n        attribute featureType : FeatureType = FeatureType::Security;\n        attribute isMandatory : Boolean = false;\n    }\n\n    part def KeylessEntry {\n        attribute featureName : String = \"KeylessEntry\";\n        attribute featureType : FeatureType = FeatureType::Security;\n        attribute isMandatory : Boolean = false;\n    }\n\n    port def SafetySecurityPort {\n        attribute portName : String;\n        attribute displayFormat : DisplayFormat;\n    }\n\n    part def SafetySecurityManager {\n        attribute managerName : String = \"SafetySecurityManager\";\n        attribute activeDisplayFormat : DisplayFormat;\n        port filterPort : SafetySecurityPort;\n        port displayPort : SafetySecurityPort;\n    }\n\n    part def FilteredView {\n        attribute viewName : String;\n        attribute filterType : FeatureType;\n        attribute displayFormat : DisplayFormat;\n    }\n\n    part def MandatorySafetyView {\n        attribute viewName : String = \"MandatorySafetyView\";\n        attribute filterType : FeatureType = FeatureType::Safety;\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Mandatory;\n        attribute displayFormat : DisplayFormat = DisplayFormat::TreeStructure;\n    }\n\n    part def OptionalSafetyView {\n        attribute viewName : String = \"OptionalSafetyView\";\n        attribute filterType : FeatureType = FeatureType::Safety;\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Optional;\n        attribute displayFormat : DisplayFormat = DisplayFormat::Table;\n    }\n\n    part def SecurityView {\n        attribute viewName : String = \"SecurityView\";\n        attribute filterType : FeatureType = FeatureType::Security;\n        attribute displayFormat : DisplayFormat = DisplayFormat::TreeStructure;\n    }\n\n    part vehicleSystem : Vehicle {\n        part seatBelt : SeatBelt;\n        part bumper : Bumper;\n        part airbag : Airbag;\n        part antiLockBrakingSystem : AntiLockBrakingSystem;\n        part alarm : Alarm;\n        part keylessEntry : KeylessEntry;\n        part safetySecurityManager : SafetySecurityManager;\n    }\n\n    connect vehicleSystem.safetySecurityManager.filterPort to vehicleSystem.safetySecurityManager.displayPort;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 453,
+    "output_tokens": 1232,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

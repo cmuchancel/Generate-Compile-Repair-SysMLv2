@@ -1,0 +1,29 @@
+{
+  "id": "msg_01BK2n6B3SxvtErkmBWURdXb",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package FuelSystem {\n    private import ScalarValues::*;\n\n    enum def FuelFlowState {\n        enum Flowing;\n        enum Idle;\n        enum Returning;\n    }\n\n    item def FuelItem;\n    item def ReturnedFuelItem;\n    item def TemperatureDataItem;\n\n    port def FuelOutletPort {\n        out item fuelOut : FuelItem;\n    }\n\n    port def FuelReturnPort {\n        in item fuelReturn : ReturnedFuelItem;\n    }\n\n    port def FuelInletPort {\n        in item fuelIn : FuelItem;\n    }\n\n    port def FuelSupplyPort {\n        out item fuelSupply : FuelItem;\n    }\n\n    port def TemperaturePort {\n        out item tempData : TemperatureDataItem;\n    }\n\n    part def FuelTank {\n        attribute capacity : Real;\n        attribute currentLevel : Real;\n        attribute fuelTemperature : Real;\n\n        port tankOutlet : FuelOutletPort;\n        port tankReturn : FuelReturnPort;\n        port tempMonitor : TemperaturePort;\n    }\n\n    part def FuelPump {\n        attribute pumpFlowRate : Real;\n        attribute isOperational : Boolean;\n        attribute flowState : FuelFlowState;\n\n        port pumpInlet : FuelInletPort;\n        port pumpOutlet : FuelSupplyPort;\n        port pumpReturn : FuelReturnPort;\n        port pumpTemp : TemperaturePort;\n    }\n\n    part def FuelTankAssembly {\n        attribute assemblyId : String;\n        attribute returnEnabled : Boolean;\n\n        port assemblyOutlet : FuelOutletPort;\n        port assemblyReturn : FuelReturnPort;\n        port assemblyTemp : TemperaturePort;\n\n        part tank : FuelTank;\n        part pump : FuelPump;\n\n        connect tank.tankOutlet to pump.pumpInlet;\n        connect tank.tankReturn to pump.pumpReturn;\n        connect tank.tempMonitor to pump.pumpTemp;\n        connect pump.pumpOutlet to assemblyOutlet;\n        connect assemblyReturn to tank.tankReturn;\n        connect assemblyTemp to tank.tempMonitor;\n    }\n\n    part def Engine {\n        attribute engineId : String;\n        attribute fuelDemand : Real;\n\n        port engineFuelInlet : FuelInletPort;\n        port engineFuelReturn : FuelOutletPort;\n    }\n\n    part def FuelSystemTop {\n        attribute systemName : String;\n        attribute systemVersion : String;\n\n        part fuelTankAssembly : FuelTankAssembly;\n        part engine : Engine;\n\n        connect fuelTankAssembly.assemblyOutlet to engine.engineFuelInlet;\n        connect engine.engineFuelReturn to fuelTankAssembly.assemblyReturn;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 416,
+    "output_tokens": 720,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

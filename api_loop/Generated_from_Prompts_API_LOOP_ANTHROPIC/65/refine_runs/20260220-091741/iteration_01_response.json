@@ -1,0 +1,29 @@
+{
+  "id": "msg_01N58WoqX7zYhyMsDzNyK8q5",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleWeightManagement {\n    private import ScalarValues::*;\n\n    enum def WeightStatus {\n        enum OK;\n        enum WARNING;\n    }\n\n    item def WeightData {\n        attribute value : Real;\n    }\n\n    port def WeightInputPort {\n        attribute weightValue : Real;\n    }\n\n    part def Chassis {\n        attribute weight : Real = 800.0;\n        port weightOut : WeightInputPort;\n    }\n\n    part def Engine {\n        attribute weight : Real = 600.0;\n        port weightOut : WeightInputPort;\n    }\n\n    part def Transmission {\n        attribute weight : Real = 400.0;\n        port weightOut : WeightInputPort;\n    }\n\n    part def WeightAggregator {\n        attribute chassisWeight : Real;\n        attribute engineWeight : Real;\n        attribute transmissionWeight : Real;\n        attribute totalWeight : Real;\n        attribute weightLimit : Real = 2500.0;\n        attribute status : WeightStatus;\n        port chassisIn : WeightInputPort;\n        port engineIn : WeightInputPort;\n        port transmissionIn : WeightInputPort;\n    }\n\n    part def VehicleWeightSystem {\n        part chassis : Chassis;\n        part engine : Engine;\n        part transmission : Transmission;\n        part aggregator : WeightAggregator;\n\n        connect chassis.weightOut to aggregator.chassisIn;\n        connect engine.weightOut to aggregator.engineIn;\n        connect transmission.weightOut to aggregator.transmissionIn;\n    }\n\n    part vehicleSystem : VehicleWeightSystem;\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 392,
+    "output_tokens": 395,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

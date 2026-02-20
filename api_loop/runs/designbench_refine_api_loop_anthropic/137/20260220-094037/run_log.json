@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T14:40:37.573295Z",
+    "iteration_end": "2026-02-20T14:40:44.757768Z",
+    "iteration_duration_seconds": 7.184476374997757,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/137/20260220-094037/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/137/20260220-094037/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/137/20260220-094037/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:35:37: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   35 |         attribute redefines mass_kg = 1200.0;\n\u2502      |                                     \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:27:34: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:36:38: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   36 |         attribute redefines length_m = 4.82;\n\u2502      |                                      \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:28:35: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:37:37: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   37 |         attribute redefines mass_lb = 2645.55;\n\u2502      |                                     \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:29:34: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:38:39: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   38 |         attribute redefines length_ft = 15.81;\n\u2502      |                                       \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:30:36: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:42:52: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   42 |                 attribute redefines hubDiameter_in = 18.0;\n\u2502      |                                                    \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:14:41: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:43:46: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   43 |                 attribute redefines width_mm = 245.0;\n\u2502      |                                              \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:15:35: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:44:52: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   44 |                 attribute redefines hubDiameter_mm = 457.2;\n\u2502      |                                                    \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:16:41: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:51:52: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   51 |                 attribute redefines hubDiameter_in = 18.0;\n\u2502      |                                                    \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:14:41: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:52:46: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   52 |                 attribute redefines width_mm = 245.0;\n\u2502      |                                              \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:15:35: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:53:52: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   53 |                 attribute redefines hubDiameter_mm = 457.2;\n\u2502      |                                                    \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:16:41: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 424,
+      "output_tokens": 600,
+      "total_tokens": 1024
+    },
+    "tokens_used_total": 1024,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T14:40:44.757828Z",
+    "iteration_end": "2026-02-20T14:40:51.061815Z",
+    "iteration_duration_seconds": 6.304005167010473,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/137/20260220-094037/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/137/20260220-094037/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_anthropic/137/20260220-094037/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1907,
+      "output_tokens": 539,
+      "total_tokens": 2446
+    },
+    "tokens_used_total": 3470,
+    "provider": "anthropic",
+    "model": "claude-sonnet-4-6"
+  }
+]

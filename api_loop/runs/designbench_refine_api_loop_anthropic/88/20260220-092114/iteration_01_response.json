@@ -1,0 +1,29 @@
+{
+  "id": "msg_01GQEj9JQMvJ9fpuFnqRVtbf",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleSafetyCompliance {\n    private import ScalarValues::*;\n\n    enum def SafetyCategory {\n        enum MANDATORY;\n        enum OPTIONAL;\n    }\n\n    part def SafetyFeature {\n        attribute category : SafetyCategory;\n        attribute isRequired : Boolean;\n    }\n\n    part def SeatBelt :> SafetyFeature {\n        attribute category : SafetyCategory = SafetyCategory::MANDATORY;\n        attribute isRequired : Boolean = true;\n    }\n\n    part def DriverAirbag :> SafetyFeature {\n        attribute category : SafetyCategory = SafetyCategory::OPTIONAL;\n        attribute isRequired : Boolean = false;\n    }\n\n    part def Bumper :> SafetyFeature {\n        attribute category : SafetyCategory = SafetyCategory::MANDATORY;\n        attribute isRequired : Boolean = true;\n    }\n\n    part def KeylessEntry :> SafetyFeature {\n        attribute category : SafetyCategory = SafetyCategory::OPTIONAL;\n        attribute isRequired : Boolean = false;\n    }\n\n    part def ABS :> SafetyFeature {\n        attribute category : SafetyCategory = SafetyCategory::OPTIONAL;\n        attribute isRequired : Boolean = false;\n    }\n\n    part def Tire {\n        attribute count : Integer;\n    }\n\n    part def VehicleInterior {\n        part seatBelt1 : SeatBelt;\n        part seatBelt2 : SeatBelt;\n        part driverAirbag : DriverAirbag;\n    }\n\n    part def VehicleBody {\n        part bumper : Bumper;\n        part keylessEntry : KeylessEntry;\n    }\n\n    part def ChassisSystem {\n        part tires : Tire {\n            attribute count : Integer = 4;\n        }\n        part abs : ABS;\n    }\n\n    part def Vehicle {\n        part interior : VehicleInterior;\n        part body : VehicleBody;\n        part chassis : ChassisSystem;\n    }\n\n    part vehicle : Vehicle {\n        part interior : VehicleInterior {\n            part seatBelt1 : SeatBelt {\n                attribute category : SafetyCategory = SafetyCategory::MANDATORY;\n                attribute isRequired : Boolean = true;\n            }\n            part seatBelt2 : SeatBelt {\n                attribute category : SafetyCategory = SafetyCategory::MANDATORY;\n                attribute isRequired : Boolean = true;\n            }\n            part driverAirbag : DriverAirbag {\n                attribute category : SafetyCategory = SafetyCategory::OPTIONAL;\n                attribute isRequired : Boolean = false;\n            }\n        }\n        part body : VehicleBody {\n            part bumper : Bumper {\n                attribute category : SafetyCategory = SafetyCategory::MANDATORY;\n                attribute isRequired : Boolean = true;\n            }\n            part keylessEntry : KeylessEntry {\n                attribute category : SafetyCategory = SafetyCategory::OPTIONAL;\n                attribute isRequired : Boolean = false;\n            }\n        }\n        part chassis : ChassisSystem {\n            part tires : Tire {\n                attribute count : Integer = 4;\n            }\n            part abs : ABS {\n                attribute category : SafetyCategory = SafetyCategory::OPTIONAL;\n                attribute isRequired : Boolean = false;\n            }\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 438,
+    "output_tokens": 840,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

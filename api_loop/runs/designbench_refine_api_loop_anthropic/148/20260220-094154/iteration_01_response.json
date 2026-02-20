@@ -1,0 +1,29 @@
+{
+  "id": "msg_01DoVfQowWKjUchPgeRkJsKs",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package EngineeringMaterialsDatabase {\n    private import ScalarValues::*;\n\n    enum def MaterialCategory {\n        enum Metal;\n        enum Alloy;\n        enum Polymer;\n        enum Ceramic;\n        enum Composite;\n    }\n\n    part def Material {\n        attribute materialName : String;\n        attribute atomicMass : Real;\n        attribute category : MaterialCategory;\n    }\n\n    part def Composition {\n        attribute constituentName : String;\n        attribute massFraction : Real;\n    }\n\n    part def MechanicalProperties {\n        attribute tensileStrengthValue : Real;\n        attribute tensileStrengthUnit : String;\n    }\n\n    part def Metal :> Material {\n        attribute density : Real;\n        attribute meltingPoint : Real;\n    }\n\n    part def Alloy :> Metal {\n        attribute baseMetal : String;\n        attribute numberOfConstituents : Integer;\n        part compositions : Composition[1..*];\n        part mechanicalProps : MechanicalProperties;\n    }\n\n    part def SteelAlloy :> Alloy {\n        attribute steelGrade : String;\n    }\n\n    part Steel_980 : SteelAlloy {\n        attribute materialName : String = \"Steel_980\";\n        attribute category : MaterialCategory = MaterialCategory::Alloy;\n        attribute density : Real = 7.85;\n        attribute baseMetal : String = \"Iron\";\n        attribute steelGrade : String = \"High-Strength\";\n        attribute numberOfConstituents : Integer = 3;\n\n        part ironComposition : Composition {\n            attribute constituentName : String = \"Iron\";\n            attribute massFraction : Real = 0.97;\n        }\n\n        part carbonComposition : Composition {\n            attribute constituentName : String = \"Carbon\";\n            attribute massFraction : Real = 0.009;\n        }\n\n        part manganeseComposition : Composition {\n            attribute constituentName : String = \"Manganese\";\n            attribute massFraction : Real = 0.021;\n        }\n\n        part mechanicalProps : MechanicalProperties {\n            attribute tensileStrengthValue : Real = 980.0;\n            attribute tensileStrengthUnit : String = \"N/mm2\";\n        }\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 502,
+    "output_tokens": 550,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}

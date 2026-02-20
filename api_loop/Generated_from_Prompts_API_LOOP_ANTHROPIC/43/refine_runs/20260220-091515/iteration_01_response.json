@@ -1,0 +1,29 @@
+{
+  "id": "msg_01E7biBGGRvzhbDfqd3g8Syd",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "package VehicleStartStopControl {\n    private import ScalarValues::*;\n\n    enum def VehicleState {\n        enum OFF;\n        enum STARTING;\n        enum STARTED;\n        enum SHUTDOWN;\n    }\n\n    enum def BrakeState {\n        enum RELEASED;\n        enum DEPRESSED;\n    }\n\n    enum def ParkingBrakeState {\n        enum DISENGAGED;\n        enum ENGAGED;\n    }\n\n    enum def SignalState {\n        enum INACTIVE;\n        enum ACTIVE;\n    }\n\n    item def VehicleStartSignal {\n        attribute signalState : SignalState;\n    }\n\n    item def VehicleOnSignal {\n        attribute signalState : SignalState;\n    }\n\n    item def ShutdownSignal {\n        attribute signalState : SignalState;\n    }\n\n    item def StartControlSignal {\n        attribute signalState : SignalState;\n    }\n\n    item def PowerSupplySignal {\n        attribute signalState : SignalState;\n    }\n\n    item def SelfCheckSignal {\n        attribute signalState : SignalState;\n    }\n\n    port def DriverInputPort {\n        attribute brakeState : BrakeState;\n        attribute vehicleStartSignal : SignalState;\n        attribute vehicleOnSignal : SignalState;\n        attribute shutdownSignal : SignalState;\n    }\n\n    port def ControllerOutputPort {\n        attribute startControlSignal : SignalState;\n        attribute powerSupplySignal : SignalState;\n        attribute selfCheckSignal : SignalState;\n        attribute parkingBrakeCommand : ParkingBrakeState;\n    }\n\n    port def VehicleControllerPort {\n        attribute receivedStartControl : SignalState;\n        attribute vehicleState : VehicleState;\n    }\n\n    part def DriverInputUnit {\n        attribute currentBrakeState : BrakeState = BrakeState::RELEASED;\n        attribute currentVehicleStartSignal : SignalState = SignalState::INACTIVE;\n        attribute currentVehicleOnSignal : SignalState = SignalState::INACTIVE;\n        attribute currentShutdownSignal : SignalState = SignalState::INACTIVE;\n\n        port driverOut : DriverInputPort;\n    }\n\n    part def StartStopController {\n        attribute currentVehicleState : VehicleState = VehicleState::OFF;\n        attribute currentParkingBrake : ParkingBrakeState = ParkingBrakeState::DISENGAGED;\n        attribute startControlOutput : SignalState = SignalState::INACTIVE;\n        attribute powerSupplyOutput : SignalState = SignalState::INACTIVE;\n        attribute selfCheckOutput : SignalState = SignalState::INACTIVE;\n\n        port controllerIn : DriverInputPort;\n        port controllerOut : ControllerOutputPort;\n        port vehicleControllerLink : VehicleControllerPort;\n    }\n\n    part def VehicleController {\n        attribute vehicleState : VehicleState = VehicleState::OFF;\n        attribute receivedStartControl : SignalState = SignalState::INACTIVE;\n        attribute powerActive : SignalState = SignalState::INACTIVE;\n        attribute selfCheckPassed : SignalState = SignalState::INACTIVE;\n        attribute parkingBrakeEngaged : ParkingBrakeState = ParkingBrakeState::DISENGAGED;\n\n        port vehicleIn : VehicleControllerPort;\n        port vehicleControlOut : ControllerOutputPort;\n    }\n\n    part def VehicleStartStopSystem {\n        part driverUnit : DriverInputUnit;\n        part controller : StartStopController;\n        part vehicleCtrl : VehicleController;\n\n        connect driverUnit.driverOut to controller.controllerIn;\n        connect controller.vehicleControllerLink to vehicleCtrl.vehicleIn;\n        connect vehicleCtrl.vehicleControlOut to controller.controllerOut;\n    }\n}",
+      "type": "text"
+    }
+  ],
+  "model": "claude-sonnet-4-6",
+  "role": "assistant",
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 468,
+    "output_tokens": 973,
+    "server_tool_use": null,
+    "service_tier": "standard"
+  }
+}
