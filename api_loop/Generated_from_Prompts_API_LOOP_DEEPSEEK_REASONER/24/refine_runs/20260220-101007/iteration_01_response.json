@@ -1,0 +1,42 @@
+{
+  "id": "982815c7-0a51-49ef-8449-69d6b5fe7b2c",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage PhotoCaptureSystem {\n    private import ScalarValues::*;\n\n    item def Scene;\n    item def Image;\n    item def Photo;\n\n    enum def FocusQuality {\n        enum WELL_FOCUSED;\n        enum NOT_FOCUSED;\n    }\n\n    port def SceneInput {\n        attribute incoming : Scene;\n    }\n\n    port def ImageOutput {\n        attribute outgoing : Image;\n    }\n\n    port def ImageInput {\n        attribute incoming : Image;\n    }\n\n    port def PhotoOutput {\n        attribute outgoing : Photo;\n    }\n\n    port def EvaluationInput {\n        attribute incoming : Image;\n    }\n\n    port def EvaluationOutput {\n        attribute result : FocusQuality;\n    }\n\n    part def FocusSystem {\n        port input : SceneInput;\n        port output : ImageOutput;\n    }\n\n    part def ImageEvaluator {\n        port input : EvaluationInput;\n        port output : EvaluationOutput;\n    }\n\n    part def ShootingSystem {\n        port input : ImageInput;\n        port output : PhotoOutput;\n    }\n\n    part def PhotoCaptureController {\n        part focus : FocusSystem;\n        part evaluator : ImageEvaluator;\n        part shooter : ShootingSystem;\n        \n        port systemInput : SceneInput;\n        port systemOutput : PhotoOutput;\n        \n        connect systemInput to focus.input;\n        connect focus.output to evaluator.input;\n        connect evaluator.output to shooter.input;\n        connect shooter.output to systemOutput;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning_content": "We are to create a SysML v2 model for a system that supports users in capturing high-quality photographs.\n The requirements describe a workflow: select scene -> focusing -> generate image -> evaluate focus -> if well-focused, shooting -> produce final photo.\n We are to use a conservative subset of SysML v2 that is robust with syside.\n\n We'll create a package for the system.\n We'll use part definitions to represent the components of the system, and ports to connect them.\n We are to avoid certain constructs and keep it simple.\n\n Steps:\n 1. Create a package for the system.\n 2. Define the necessary enums if needed (e.g., for focus quality).\n 3. Define part definitions for the components: maybe a FocusSystem, ImageEvaluator, ShootingSystem, etc.\n 4. Define the ports for interaction between these parts.\n 5. Connect the parts.\n\n However, note that the requirements mention: \"The entire shooting process is automatically linked from scene input to photo output\".\n\n We are to use only the allowed constructs: `package`, `private import ScalarValues::*`, `enum def`, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, `connect`.\n\n Let's break down the system:\n\n We have a user who selects a scene. Then the system performs focusing and generates an image. Then evaluates focus. If well-focused, it proceeds to shooting and produces the final photo.\n\n We can model the system as a composition of parts that perform these functions.\n\n We'll create:\n  - A part for the focusing subsystem: `FocusingSystem`\n  - A part for the image evaluation: `ImageEvaluator`\n  - A part for the shooting: `ShootingSystem`\n  - And maybe a controller that orchestrates the workflow: `PhotoCaptureController`\n\n We'll define ports to pass the scene, image, and photo between these parts.\n\n However, note that the system is automated and linked from scene input to photo output.\n\n We can define an item definition for Scene, Image, and Photo.\n\n Steps in the model:\n\n 1. Package and import.\n 2. Define item definitions for Scene, Image, Photo, and maybe FocusQuality.\n 3. Define an enum for FocusQuality: maybe `WELL_FOCUSED` and `NOT_FOCUSED`.\n 4. Define port definitions for the flow of these items.\n 5. Define the part definitions and their ports.\n 6. Define the top-level system part that contains the parts and connects them.\n\n Let's write the model accordingly.\n\n Note: We are to output only the SysML text, no prose.\n\n Let's start."
+      }
+    }
+  ],
+  "created": 1771600207,
+  "model": "deepseek-reasoner",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache",
+  "usage": {
+    "completion_tokens": 842,
+    "prompt_tokens": 358,
+    "total_tokens": 1200,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 545,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 320
+    },
+    "prompt_cache_hit_tokens": 320,
+    "prompt_cache_miss_tokens": 38
+  }
+}

@@ -1,0 +1,74 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The vehicle system model describes a car with a total mass of 2,500 kg, whose structure comprises front and rear axle assemblies. The front axle assembly has a mass of 150 kg and consists of two front wheels and a front axle; the front axle is characterized by properties of mass and steering angle. The rear axle assembly has a mass of 250 kg and consists of two rear wheels and a rear axle; the rear axle is characterized by a mass property. The model aims to illustrate the structural relationships and mass distribution of the vehicle components, providing system engineers with a reference for vehicle structure breakdown and definition of component attributes. This facilitates overall mass allocation, component decomposition, as well as subsequent detailed modeling of functions and performance during the design and analysis process.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleSystem {
+    private import ScalarValues::*;
+
+    part def Car {
+        attribute totalMass : Real = 2500.0 kg;
+        part frontAxleAssembly : FrontAxleAssembly;
+        part rearAxleAssembly : RearAxleAssembly;
+    }
+
+    part def FrontAxleAssembly {
+        attribute mass : Real = 150.0 kg;
+        part frontAxle : FrontAxle;
+        part frontWheel1 : FrontWheel;
+        part frontWheel2 : FrontWheel;
+    }
+
+    part def FrontAxle {
+        attribute mass : Real;
+        attribute steeringAngle : Real deg;
+    }
+
+    part def FrontWheel {
+        attribute mass : Real;
+    }
+
+    part def RearAxleAssembly {
+        attribute mass : Real = 250.0 kg;
+        part rearAxle : RearAxle;
+        part rearWheel1 : RearWheel;
+        part rearWheel2 : RearWheel;
+    }
+
+    part def RearAxle {
+        attribute mass : Real;
+    }
+
+    part def RearWheel {
+        attribute mass : Real;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:5:45: error (parsing-error): Unexpected identifier.
+    5 |         attribute totalMass : Real = 2500.0 kg;
+      |                                             ^^
+iteration_01.sysml:11:39: error (parsing-error): Unexpected identifier.
+    11 |         attribute mass : Real = 150.0 kg;
+       |                                       ^^
+iteration_01.sysml:19:40: error (parsing-error): Unexpected identifier.
+    19 |         attribute steeringAngle : Real deg;
+       |                                        ^^^
+iteration_01.sysml:27:39: error (parsing-error): Unexpected identifier.
+    27 |         attribute mass : Real = 250.0 kg;
+       |                                       ^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

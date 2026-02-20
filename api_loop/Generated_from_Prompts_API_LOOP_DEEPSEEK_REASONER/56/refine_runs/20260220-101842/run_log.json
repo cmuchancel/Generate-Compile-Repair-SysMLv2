@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:18:43.292231Z",
+    "iteration_end": "2026-02-20T15:23:55.766555Z",
+    "iteration_duration_seconds": 177.53635983300046,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/56/20260220-101842/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/56/20260220-101842/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/56/20260220-101842/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:10:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'simpleMass' shadows MassAggregation::Thing::simpleMass\n\u2502   10 |         attribute simpleMass : Real = 0;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:5:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:9:29: \u001b[38;2;255;255;255mnote\u001b[0m: Because MassAggregation::Thing is specialized through Subclassification\n\niteration_01.sysml:11:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'totalMass' shadows MassAggregation::Thing::totalMass\n\u2502   11 |         attribute totalMass : Real = simpleMass;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:6:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:9:29: \u001b[38;2;255;255;255mnote\u001b[0m: Because MassAggregation::Thing is specialized through Subclassification\n\niteration_01.sysml:15:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'simpleMass' shadows MassAggregation::Thing::simpleMass\n\u2502   15 |         attribute simpleMass : Real = 0;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:5:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:14:32: \u001b[38;2;255;255;255mnote\u001b[0m: Because MassAggregation::Thing is specialized through Subclassification\n\niteration_01.sysml:16:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'totalMass' shadows MassAggregation::Thing::totalMass\n\u2502   16 |         attribute totalMass : Real = simpleMass + (subcomponent.totalMass->sum());\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:6:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:14:32: \u001b[38;2;255;255;255mnote\u001b[0m: Because MassAggregation::Thing is specialized through Subclassification\n\niteration_01.sysml:16:76: \u001b[38;2;220;080;080merror\u001b[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`\n    16 |         attribute totalMass : Real = simpleMass + (subcomponent.totalMass->sum());\n       |                                                                            \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:16:76: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'sum' found.\n    16 |         attribute totalMass : Real = simpleMass + (subcomponent.totalMass->sum());\n       |                                                                            \u001b[38;2;220;080;080m^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 370,
+      "output_tokens": 2806,
+      "total_tokens": 3176
+    },
+    "tokens_used_total": 3176,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:23:55.766612Z",
+    "iteration_end": "2026-02-20T15:25:19.618709Z",
+    "iteration_duration_seconds": 83.85268750000978,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/56/20260220-101842/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/56/20260220-101842/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/56/20260220-101842/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "iteration_02.sysml:10:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'totalMass' shadows MassAggregation::Thing::totalMass\n\u2502   10 |         attribute totalMass : Real = simpleMass;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:6:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:9:29: \u001b[38;2;255;255;255mnote\u001b[0m: Because MassAggregation::Thing is specialized through Subclassification",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1092,
+      "output_tokens": 4388,
+      "total_tokens": 5480
+    },
+    "tokens_used_total": 8656,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

@@ -1,0 +1,126 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system model describes the safety compliance requirements of a car. It requires that the interior must be equipped with two mandatory seat belts, and explicitly states that the driver’s airbag is not a mandatory requirement (optional). The bumper in the body section is set as a mandatory safety device, while the keyless entry system is not a required safety option. For the wheel assembly, the car is equipped with two wheels and includes an optional anti-lock braking system (ABS). The model specifically separates “safety-related components” and “mandatory safety components” into two packages: all components marked as safety-relevant (@Safety) are recorded in “Safety Features,” while only those that are both safety components and marked as mandatory (@Safety and isMandatory=true) appear in the category of “Mandatory Safety Features.” This clearly distinguishes which safety configurations are legally required for installation and which are optional. This model helps companies and users clearly understand the safety configuration requirements of vehicles, facilitating compliant design and procurement decisions.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package CarSafetyCompliance {
+    private import ScalarValues::*;
+
+    enum def SafetyClassification {
+        Safety,
+        NonSafety
+    }
+
+    part def Component {
+        attribute safetyClass : SafetyClassification;
+        attribute isMandatory : Boolean;
+    }
+
+    part def SeatBelt {
+        attribute safetyClass : SafetyClassification = SafetyClassification::Safety;
+        attribute isMandatory : Boolean = true;
+    }
+
+    part def Airbag {
+        attribute safetyClass : SafetyClassification = SafetyClassification::Safety;
+        attribute isMandatory : Boolean = false;
+    }
+
+    part def Bumper {
+        attribute safetyClass : SafetyClassification = SafetyClassification::Safety;
+        attribute isMandatory : Boolean = true;
+    }
+
+    part def KeylessEntry {
+        attribute safetyClass : SafetyClassification = SafetyClassification::NonSafety;
+        attribute isMandatory : Boolean = false;
+    }
+
+    part def Wheel {
+        attribute safetyClass : SafetyClassification = SafetyClassification::NonSafety;
+        attribute isMandatory : Boolean = true;
+    }
+
+    part def ABS {
+        attribute safetyClass : SafetyClassification = SafetyClassification::Safety;
+        attribute isMandatory : Boolean = false;
+    }
+
+    part def Interior {
+        part seatBelt1 : SeatBelt;
+        part seatBelt2 : SeatBelt;
+        part driverAirbag : Airbag;
+    }
+
+    part def Body {
+        part bumper : Bumper;
+        part keylessEntry : KeylessEntry;
+    }
+
+    part def WheelAssembly {
+        part wheel1 : Wheel;
+        part wheel2 : Wheel;
+        part abs : ABS[0..1];
+    }
+
+    part def Car {
+        part interior : Interior;
+        part body : Body;
+        part wheelAssembly : WheelAssembly;
+    }
+
+    package SafetyFeatures {
+        part interiorSeatBelt1 : SeatBelt;
+        part interiorSeatBelt2 : SeatBelt;
+        part driverAirbag : Airbag;
+        part bumper : Bumper;
+        part abs : ABS;
+    }
+
+    package MandatorySafetyFeatures {
+        part interiorSeatBelt1 : SeatBelt;
+        part interiorSeatBelt2 : SeatBelt;
+        part bumper : Bumper;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:6:9: error (parsing-error): Unexpected identifier, expected one of ["end", "NAME", ";", "{", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "for", "import", "all", "*", "[", "abstract", "in", "inout", "out", "derived", "end", "ordered", "nonunique", "if", "+", "-", "<", "~", "not", "hastype", "istype", "@", "as", "#", "(", "null", "metadata", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "standard", "library", "package", "filter", "variation", "variant", "constant", "ref", "attribute", "enum", "occurrence", "individual", "timeslice", "snapshot", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "interface", "allocation", "allocate", "action", "perform", "merge", "decide", "join", "fork", "accept", "send", "assign", "terminate", "while", "loop", "state", "entry", "do", "exit", "exhibit", "transition", "calc", "return", "constraint", "assert", "requirement", "subject", "assume", "require", "frame", "concern", "actor", "stakeholder", "satisfy", "case", "objective", "analysis", "verification", "verify", "use", "include", "view", "render", "rendering", "expose", "viewpoint"].
+    6 |         NonSafety
+      |         ^^^^^^^^^
+iteration_01.sysml:7:5: error (parsing-error): Unexpected '}', expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    7 |     }
+      |     ^
+iteration_01.sysml:15:78: error (reference-error): No Feature named 'Safety' found.
+    15 |         attribute safetyClass : SafetyClassification = SafetyClassification::Safety;
+       |                                                                              ^^^^^^
+iteration_01.sysml:20:78: error (reference-error): No Feature named 'Safety' found.
+    20 |         attribute safetyClass : SafetyClassification = SafetyClassification::Safety;
+       |                                                                              ^^^^^^
+iteration_01.sysml:25:78: error (reference-error): No Feature named 'Safety' found.
+    25 |         attribute safetyClass : SafetyClassification = SafetyClassification::Safety;
+       |                                                                              ^^^^^^
+iteration_01.sysml:30:78: error (reference-error): No Feature named 'NonSafety' found.
+    30 |         attribute safetyClass : SafetyClassification = SafetyClassification::NonSafety;
+       |                                                                              ^^^^^^^^^
+iteration_01.sysml:35:78: error (reference-error): No Feature named 'NonSafety' found.
+    35 |         attribute safetyClass : SafetyClassification = SafetyClassification::NonSafety;
+       |                                                                              ^^^^^^^^^
+iteration_01.sysml:40:78: error (reference-error): No Feature named 'Safety' found.
+    40 |         attribute safetyClass : SafetyClassification = SafetyClassification::Safety;
+       |                                                                              ^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

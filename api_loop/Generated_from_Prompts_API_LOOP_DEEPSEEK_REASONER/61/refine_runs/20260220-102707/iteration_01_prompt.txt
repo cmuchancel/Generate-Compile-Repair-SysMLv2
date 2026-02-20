@@ -1,0 +1,16 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to describe and calculate the longitudinal dynamic constraints and state changes of a vehicle moving in a straight line. Users are required to provide the initial position, initial velocity, vehicle mass, wheel-end drive power, and time interval at a specific moment. Based on the input power, drag coefficient, friction coefficient, and other parameters, the system can automatically calculate the vehicle’s acceleration, final velocity, and final position within the given time interval. During the computation, the system comprehensively considers the effects of air resistance, frictional resistance, and other factors, and solves the dynamic equations under relevant constraints to ensure the physical consistency and accuracy of the motion simulation. This system is suitable for scenarios involving linear uniformly accelerated motion, and can meet the basic needs for vehicle dynamic performance simulation and analysis. It provides a computational basis for vehicle system dynamics modeling and performance evaluation.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+Return only the updated SysMLv2 model.

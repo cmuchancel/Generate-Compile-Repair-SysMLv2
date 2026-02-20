@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:41:20.542549Z",
+    "iteration_end": "2026-02-20T15:42:23.410957Z",
+    "iteration_duration_seconds": 62.868863583003986,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/124/20260220-104120/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/124/20260220-104120/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/124/20260220-104120/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:5:45: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    5 |         attribute totalMass : Real = 2500.0 kg;\n      |                                             \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:11:39: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    11 |         attribute mass : Real = 150.0 kg;\n       |                                       \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:19:40: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    19 |         attribute steeringAngle : Real deg;\n       |                                        \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:27:39: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    27 |         attribute mass : Real = 250.0 kg;\n       |                                       \u001b[38;2;220;080;080m^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 393,
+      "output_tokens": 3199,
+      "total_tokens": 3592
+    },
+    "tokens_used_total": 3592,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:42:23.411030Z",
+    "iteration_end": "2026-02-20T15:42:48.869618Z",
+    "iteration_duration_seconds": 25.458791666009347,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/124/20260220-104120/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/124/20260220-104120/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/124/20260220-104120/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 830,
+      "output_tokens": 1247,
+      "total_tokens": 2077
+    },
+    "tokens_used_total": 5669,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

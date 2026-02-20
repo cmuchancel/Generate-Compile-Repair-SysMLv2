@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:07:48.660988Z",
+    "iteration_end": "2026-02-20T15:09:14.993076Z",
+    "iteration_duration_seconds": 86.33221254100499,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/14/20260220-100748/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/14/20260220-100748/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/14/20260220-100748/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         port return : FuelReturn;\n       |              \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:28:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    28 |         port return : FuelReturn;\n       |              \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:41:35: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    41 |         connect mainReturn to pump.return;\n       |                                   \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:41:36: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"$\", \"NAME\", \"ElementReference\", \"MULTILINE_NOTE\", \"FeatureChaining\", \";\", \"{\", \",\", \"[\", \"(\", \")\", \"=\", \"from\", \"to\", \"if\", \"then\", \"accept\", \"via\", \"do\"].\n    41 |         connect mainReturn to pump.return;\n       |                                    \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:42:21: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    42 |         connect pump.return to tank.return;\n       |                     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:42:22: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"$\", \"NAME\", \"ElementReference\", \"MULTILINE_NOTE\", \"FeatureChaining\", \";\", \"{\", \",\", \"[\", \"(\", \")\", \"=\", \"from\", \"to\", \"if\", \"then\", \"accept\", \"via\", \"do\"].\n    42 |         connect pump.return to tank.return;\n       |                      \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:42:36: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    42 |         connect pump.return to tank.return;\n       |                                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:42:37: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"$\", \"NAME\", \"ElementReference\", \"MULTILINE_NOTE\", \"FeatureChaining\", \";\", \"{\", \",\", \"[\", \"(\", \")\", \"=\", \"from\", \"to\", \"if\", \"then\", \"accept\", \"via\", \"do\"].\n    42 |         connect pump.return to tank.return;\n       |                                     \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:41:31: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    41 |         connect mainReturn to pump.return;\n       |                               \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:42:17: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    42 |         connect pump.return to tank.return;\n       |                 \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:42:32: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    42 |         connect pump.return to tank.return;\n       |                                \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 390,
+      "output_tokens": 4358,
+      "total_tokens": 4748
+    },
+    "tokens_used_total": 4748,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:09:14.993134Z",
+    "iteration_end": "2026-02-20T15:10:05.689522Z",
+    "iteration_duration_seconds": 50.696515125004225,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/14/20260220-100748/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/14/20260220-100748/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/14/20260220-100748/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1531,
+      "output_tokens": 2570,
+      "total_tokens": 4101
+    },
+    "tokens_used_total": 8849,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

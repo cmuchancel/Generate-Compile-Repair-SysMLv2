@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:17:22.326790Z",
+    "iteration_end": "2026-02-20T15:18:28.776377Z",
+    "iteration_duration_seconds": 66.44970337499399,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:6:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'first', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"=\", \":=\", \"default\", \";\", \"{\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    6 |         enum first;\n      |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:31:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Vehicle::mass\n\u2502   31 |         mass = 2000;\n\u2502      |         \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:15:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:30:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:32:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'gear' shadows VehicleSystem::Vehicle::gear\n\u2502   32 |         gear = GearState::neutral;\n\u2502      |         \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:16:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:30:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:33:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'acceleratorPosition' shadows VehicleSystem::Vehicle::acceleratorPosition\n\u2502   33 |         acceleratorPosition = 0.0;\n\u2502      |         \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:17:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:30:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:37:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Vehicle::mass\n\u2502   37 |         mass = 1500;\n\u2502      |         \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:15:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:36:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:38:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'gear' shadows VehicleSystem::Vehicle::gear\n\u2502   38 |         gear = GearState::second;\n\u2502      |         \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:16:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:36:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:39:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'acceleratorPosition' shadows VehicleSystem::Vehicle::acceleratorPosition\n\u2502   39 |         acceleratorPosition = 0.5;\n\u2502      |         \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:17:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:36:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:15:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Mass' found.\n    15 |         attribute mass : Mass;\n       |                          \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:23:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Power' found.\n    23 |         attribute power : Power;\n       |                           \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 407,
+      "output_tokens": 3357,
+      "total_tokens": 3764
+    },
+    "tokens_used_total": 3764,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:18:28.776443Z",
+    "iteration_end": "2026-02-20T15:19:03.013926Z",
+    "iteration_duration_seconds": 34.23898308300704,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'first', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \";\", \"{\", \"}\", \"[\", \"<\", \"@\", \"#\", \":=\", \"REGULAR_COMMENT\", \"::>\", \"=>\", \":>>\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"ordered\", \"nonunique\", \"metadata\", \"=\", \"default\", \"NAME\", \":>\", \"subsets\", \"references\", \"crosses\", \"redefines\", \":\", \"defined\", \"enum\"].\n    6 |         first;\n      |         \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:31:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Vehicle::mass\n\u2502   31 |         mass = 2000;\n\u2502      |         \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:15:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:30:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_02.sysml:32:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'gear' shadows VehicleSystem::Vehicle::gear\n\u2502   32 |         gear = GearState::neutral;\n\u2502      |         \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:16:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:30:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_02.sysml:33:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'acceleratorPosition' shadows VehicleSystem::Vehicle::acceleratorPosition\n\u2502   33 |         acceleratorPosition = 0.0;\n\u2502      |         \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:17:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:30:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_02.sysml:37:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Vehicle::mass\n\u2502   37 |         mass = 1500;\n\u2502      |         \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:15:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:36:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_02.sysml:38:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'gear' shadows VehicleSystem::Vehicle::gear\n\u2502   38 |         gear = GearState::second;\n\u2502      |         \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:16:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:36:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_02.sysml:39:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'acceleratorPosition' shadows VehicleSystem::Vehicle::acceleratorPosition\n\u2502   39 |         acceleratorPosition = 0.5;\n\u2502      |         \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:17:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:36:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1502,
+      "output_tokens": 1646,
+      "total_tokens": 3148
+    },
+    "tokens_used_total": 6912,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:19:03.014066Z",
+    "iteration_end": "2026-02-20T15:24:11.690026Z",
+    "iteration_duration_seconds": 173.7367527079914,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:6:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'first', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"=\", \":=\", \"default\", \";\", \"{\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    6 |         enum first;\n      |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1400,
+      "output_tokens": 2672,
+      "total_tokens": 4072
+    },
+    "tokens_used_total": 10984,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T15:24:11.690077Z",
+    "iteration_end": "2026-02-20T15:24:33.274591Z",
+    "iteration_duration_seconds": 21.584689041992533,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'first', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \";\", \"{\", \"}\", \"[\", \"<\", \"@\", \"#\", \":=\", \"REGULAR_COMMENT\", \"::>\", \"=>\", \":>>\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"ordered\", \"nonunique\", \"metadata\", \"=\", \"default\", \"NAME\", \":>\", \"subsets\", \"references\", \"crosses\", \"redefines\", \":\", \"defined\", \"enum\"].\n    6 |         first;\n      |         \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 776,
+      "output_tokens": 1063,
+      "total_tokens": 1839
+    },
+    "tokens_used_total": 12823,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T15:24:33.274638Z",
+    "iteration_end": "2026-02-20T15:25:04.105129Z",
+    "iteration_duration_seconds": 30.830731417008792,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/52/20260220-101722/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:6:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'first', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"=\", \":=\", \"default\", \";\", \"{\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    6 |         enum first;\n      |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 795,
+      "output_tokens": 1559,
+      "total_tokens": 2354
+    },
+    "tokens_used_total": 15177,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

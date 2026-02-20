@@ -1,0 +1,42 @@
+{
+  "id": "36e1c2bc-40a1-4944-a08f-c3054817fe06",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "package ScientificConstants {\n    private import ScalarValues::*;\n\n    part def Constants {\n        attribute e : Real = 2.71828182845904523536;\n        attribute \u03c0 : Real = 3.14159265358979323846;\n        attribute speedOfLightInVacuum : Real = 299792458.0; // m/s\n        attribute fineStructureConstant : Real = 0.0072973525693;\n        attribute electronProtonMassRatio : Real = 0.000544617021487;\n        attribute standardGravitationalAcceleration : Real = 9.80665; // m/s^2\n        attribute amplifierGainModelX : Real = 100.0;\n    }\n\n    part constants : Constants;\n}",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning_content": "We are generating a SysML v2 model for a system that provides constants for scientific computing.\n We will structure the model with a package for the constants, and use an enum def for the constants (since they are fixed values).\n However, note that the requirements include constants with different types (mathematical, physical, scenario-based) and units.\n We can use an enum def for the constants, but note that enum members in SysML v2 are discrete and we can assign string or numeric values.\n But for physical constants, we might want to associate units. However, in the conservative subset, we don't have a direct way to attach units to enum values.\n\n Alternatively, we can define each constant as an attribute in a part, and then set the initial value of the attribute to the constant.\n But the requirement is for constants that are easily accessible and verifiable.\n\n Since the requirements specify high precision and clear SI unit annotations, we must consider how to represent units.\n\n However, note the allowed subset: we cannot use `unit` or `dimension` because they are not in the allowed subset.\n\n We must stick to the allowed subset: `package`, `private import ScalarValues::*`, `enum def`, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect`.\n\n Given the constraints, we can do:\n\n Option 1: Use an enum def for the constants, but we cannot attach units. We can only assign string or numeric values.\n\n Option 2: Use a part def with attributes for each constant, and then set the attribute to a value. We can use ScalarValues for the values, but note that the requirement is for up to 20 decimal places.\n\n However, note that the requirement says: \"with clear SI unit annotations\". Without the unit construct, we might have to rely on comments or the attribute name.\n\n Since the validator might not support unit annotations in the allowed subset, we must avoid using them.\n\n Let's try to use an enum def for the constants, and for the physical constants, we can include the unit in the name or as a separate string.\n\n But note: the requirement is for numerical precision up to 20 decimal places. We can represent that as a string in the enum, but then it's not a number.\n\n Alternatively, we can use a part def with attributes of type Real (if ScalarValues::Real is available) and set the initial value to the constant.\n\n Since we are allowed to use `private import ScalarValues::*`, we can use the Real type.\n\n Let's choose to create a part def that represents a collection of constants. We can then have attributes for each constant.\n\n We'll create a package for the constants, and then a part def that contains all the constants as attributes.\n\n Steps:\n\n 1. Create a package named \"ScientificConstants\".\n 2. Privately import ScalarValues to get Real.\n 3. Define a part def \"Constants\" that will hold all the constants as attributes.\n\n For mathematical constants (e.g., e and pi), we can define attributes with initial values.\n\n For physical constants, we can define attributes with initial values and perhaps a string attribute for the unit? But note, we cannot create a unit type.\n\n Alternatively, we can have two attributes for each physical constant: one for the value and one for the unit (as a string). But that might be cumbersome.\n\n However, the requirement says \"with clear SI unit annotations\". We can include the unit in the attribute name or as a comment.\n\n Let's include the unit in the attribute name for clarity.\n\n Example: attribute speedOfLightInVacuum : Real = 299792458.0; // m/s\n\n But note: the requirement for precision up to 20 decimal places. We can set the initial value as a real number with that precision.\n\n However, note that the validator might not support such long decimals, but we can try.\n\n We are also required to have scenario-based constants, like standard gravitational acceleration on Earth and amplifier gain for Model X.\n\n We can add these as attributes too.\n\n We'll create the part def and then an instance of it to make the constants accessible.\n\n But note: the requirement says the constants should be easily accessible and verifiable.\n\n We can create a part that is an instance of the Constants part def, and then we can refer to that part.\n\n Alternatively, we can use the part def as a library and then use the attributes without instantiation? But in SysML, attributes are typically accessed via instances.\n\n However, we can make the attributes \"readonly\" by setting them in the initial value and then not changing them.\n\n We'll create a part def and then a part that is an instance of it, and then we can use that part as a global constant set.\n\n Since the requirement is for a set of constants, we can have one instance that holds all the constants.\n\n Let's design:\n\n Package: ScientificConstants\n   private import ScalarValues::*\n\n   part def Constants {\n        // Mathematical constants\n        attribute e : Real = 2.71828182845904523536;\n        attribute pi : Real = 3.14159265358979323846;\n\n        // Physical constants\n        attribute speedOfLightInVacuum : Real = 299792458.0; // m/s\n        attribute fineStructureConstant : Real = 7.2973525693e-3;\n        attribute electronProtonMassRatio : Real = 5.44617021487e-4;\n\n        // Scenario-based constants\n        attribute standardGravitationalAcceleration : Real = 9.80665; // m/s^2\n        attribute amplifierGainModelX : Real = 100.0; // dimensionless\n   }\n\n   part ConstantsInstance : Constants;\n\n However, note that the requirement says \"with clear SI unit annotations\". We are using comments for the units.\n\n We cannot do better without the unit construct.\n\n Now, let's write the SysML v2 text accordingly.\n\n We are only allowed to use the conservative subset, so we avoid other constructs.\n\n Let's output the model."
+      }
+    }
+  ],
+  "created": 1771602171,
+  "model": "deepseek-reasoner",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache",
+  "usage": {
+    "completion_tokens": 1407,
+    "prompt_tokens": 409,
+    "total_tokens": 1816,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 1249,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 384
+    },
+    "prompt_cache_hit_tokens": 384,
+    "prompt_cache_miss_tokens": 25
+  }
+}

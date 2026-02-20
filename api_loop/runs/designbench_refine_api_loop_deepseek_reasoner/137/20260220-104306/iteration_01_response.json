@@ -1,0 +1,42 @@
+{
+  "id": "b75a03af-41a2-41ac-9593-a05c0cafb899",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomotiveComponentModel {\n\n    private import ScalarValues::*;\n\n    enum def WheelPosition {\n        enum LEFT;\n        enum RIGHT;\n    }\n\n    part def Tire {\n    }\n\n    part def Wheel {\n        attribute position : WheelPosition;\n        attribute hubDiameter : Length = 18.0::in;\n        attribute width : Length = 245.0::mm;\n        part tire : Tire;\n    }\n\n    part def Vehicle {\n        attribute mass : Mass = 1200.0::kg;\n        attribute length : Length = 4.82::m;\n        part leftFrontWheel : Wheel {\n            position = WheelPosition::LEFT;\n        }\n        part rightFrontWheel : Wheel {\n            position = WheelPosition::RIGHT;\n        }\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning_content": "We are generating a SysML v2 model for an automotive component.\n We have requirements for a vehicle and its front wheels, with specific dimensions and units.\n We are to support both SI and Imperial units.\n\n Steps:\n 1. We'll create a package for the automotive model.\n 2. We'll use the ScalarValues library for units and dimensions.\n 3. We'll define an enum for wheel position (left, right) if needed, but the problem says a pair of left and right front wheels.\n 4. We'll define a part definition for Wheel and for Tire.\n 5. We'll define a part definition for Vehicle that has two front wheels (left and right).\n 6. We'll specify the attributes with their units.\n\n However, note the rules: We are to use a conservative subset. We are to avoid certain constructs.\n\n Let's plan:\n - We'll have a package named \"AutomotiveComponentModel\".\n - We'll import ScalarValues::* privately.\n - We'll define a part def for Tire with the necessary attributes (but note: the requirements for the wheel include hub diameter and width, and the outer diameter is determined by hub and tire height).\n - We'll define a part def for Wheel that has a tire and the specified attributes (hub diameter and width). \n   But note: the wheel has a hub diameter and width, and then the tire is fitted. The tire height is not given as an attribute but note that the outer diameter of the wheel is determined by both the hub diameter and the tire height.\n\n However, the requirements are a bit ambiguous: The wheel has a hub diameter (18 inches) and width (245 mm). The tire is fitted and then the outer diameter is determined by both. We don't have a tire height given. \n\n Let's assume the tire height is an attribute of the tire. We might not have the value, but we can define the structure.\n\n Alternatively, we can think of the wheel as having:\n   - hub diameter (the inner diameter where the tire is mounted? or the diameter of the wheel hub? Actually, in common terms, the wheel size (rim) is given as 18 inches, and the tire has a profile (height) that is a percentage of the width).\n\n But the requirement says: \"the outer diameter of the wheel determined by both the hub diameter and the tire height.\"\n\n Let's break down:\n   - The wheel has a hub diameter (18 inches) and a width (245 mm).\n   - The tire has a height (which might be a percentage of the width? or a separate dimension?).\n\n However, the requirement does not specify the tire height. So we'll leave it as an attribute without a value.\n\n We are to support SI and Imperial conversions. We'll use the ScalarValues library for units.\n\n We'll define:\n   - For Wheel: \n        attribute hubDiameter : Length;   // with value 18 inches\n        attribute width : Length;         // with value 245 mm\n\n   - For Tire:\n        attribute height : Length;        // but we don't have a value, so we won't assign one.\n\n   - The Vehicle has a mass and a length, and two front wheels (left and right).\n\n We'll also define an enum for the wheel position? The requirement says each vehicle has a pair of left and right front wheels.\n\n We can define the wheel as having a position attribute of type WheelPosition (an enum with LEFT and RIGHT).\n\n But note: the vehicle has two front wheels, so we can have two parts: leftFrontWheel and rightFrontWheel.\n\n Alternatively, we can have an array of wheels with a condition, but let's keep it simple and have two distinct parts.\n\n Let's create:\n\n   enum def WheelPosition {\n        enum LEFT;\n        enum RIGHT;\n   }\n\n   part def Wheel {\n        attribute position : WheelPosition;\n        attribute hubDiameter : Length = 18.0::in;\n        attribute width : Length = 245.0::mm;\n        part tire : Tire;\n   }\n\n   part def Tire {\n        attribute height : Length;   // no default given\n   }\n\n   part def Vehicle {\n        attribute mass : Mass = 1200.0::kg;\n        attribute length : Length = 4.82::m;\n        part leftFrontWheel : Wheel {\n            position = WheelPosition::LEFT;\n        }\n        part rightFrontWheel : Wheel {\n            position = WheelPosition::RIGHT;\n        }\n   }\n\n But note: the wheel's hub diameter and width are given, but the tire height is not. We are to support conversion, so we use the units.\n\n However, we are to provide fundamental data structures for design and simulation, so we are modeling the structure.\n\n We are to output only SysML text. Let's write it in the required format.\n\n We are to use a single package and minimal structure.\n\n Let's write the code accordingly.\n\n However, note that the vehicle has only front wheels? The requirement says \"front wheels\", but we are not modeling rear wheels? \n The requirement only specifies front wheels, so we model only those.\n\n We are to output the model in a way that validates. We'll use the ScalarValues library for units.\n\n Let's code accordingly."
+      }
+    }
+  ],
+  "created": 1771602187,
+  "model": "deepseek-reasoner",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache",
+  "usage": {
+    "completion_tokens": 1238,
+    "prompt_tokens": 389,
+    "total_tokens": 1627,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 1075,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 384
+    },
+    "prompt_cache_hit_tokens": 384,
+    "prompt_cache_miss_tokens": 5
+  }
+}

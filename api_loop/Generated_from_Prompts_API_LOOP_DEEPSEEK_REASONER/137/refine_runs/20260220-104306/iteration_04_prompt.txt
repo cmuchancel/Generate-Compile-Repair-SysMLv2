@@ -1,0 +1,95 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system requires the definition of an automotive component model, which includes a vehicle and its front wheels. The vehicle has a mass of 1200 kilograms and a length of 4.82 meters. Each vehicle is equipped with a pair of left and right front wheels. For each wheel, the hub diameter must be specified as 18 inches and the width as 245 millimeters, with the outer diameter of the wheel determined by both the hub diameter and the tire height. In addition, each wheel must be fitted with a tire. All dimensions and units must support both International System of Units (SI) and United States customary units (Imperial) conversions. This model aims to provide fundamental data structures for the standardized design and simulation of automotive parts.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 3):
+                package AutomotiveComponentModel {
+    private import ScalarValues::*;
+
+    enum def WheelPosition {
+        enum LEFT;
+        enum RIGHT;
+    }
+
+    part def Tire {
+        attribute height : Length;
+    }
+
+    part def Wheel {
+        attribute position : WheelPosition;
+        attribute hubDiameter : Length = 18.0[inch];
+        attribute width : Length = 245.0[mm];
+        attribute outerDiameter : Length;
+        part tire : Tire;
+    }
+
+    part def Vehicle {
+        attribute mass : Mass = 1200.0[kg];
+        attribute length : Length = 4.82[m];
+        part leftFrontWheel : Wheel;
+        part rightFrontWheel : Wheel;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_03.sysml:15:42: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   15 |         attribute hubDiameter : Length = 18.0[inch];
+│      |                                          ^^^^^^^^^^
+└── iteration_03.sysml:15:47: note: (orphan <placeholder Feature>) does not conform to MeasurementReferences::MeasurementUnit
+iteration_03.sysml:16:36: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   16 |         attribute width : Length = 245.0[mm];
+│      |                                    ^^^^^^^^^
+└── iteration_03.sysml:16:42: note: (orphan <placeholder Feature>) does not conform to MeasurementReferences::MeasurementUnit
+iteration_03.sysml:22:33: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   22 |         attribute mass : Mass = 1200.0[kg];
+│      |                                 ^^^^^^^^^^
+└── iteration_03.sysml:22:40: note: (orphan <placeholder Feature>) does not conform to MeasurementReferences::MeasurementUnit
+iteration_03.sysml:23:37: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   23 |         attribute length : Length = 4.82[m];
+│      |                                     ^^^^^^^
+└── iteration_03.sysml:23:42: note: (orphan <placeholder Feature>) does not conform to MeasurementReferences::MeasurementUnit
+iteration_03.sysml:10:28: error (reference-error): No Type named 'Length' found.
+    10 |         attribute height : Length;
+       |                            ^^^^^^
+iteration_03.sysml:15:33: error (reference-error): No Type named 'Length' found.
+    15 |         attribute hubDiameter : Length = 18.0[inch];
+       |                                 ^^^^^^
+iteration_03.sysml:15:47: error (reference-error): No Feature named 'inch' found.
+    15 |         attribute hubDiameter : Length = 18.0[inch];
+       |                                               ^^^^
+iteration_03.sysml:16:27: error (reference-error): No Type named 'Length' found.
+    16 |         attribute width : Length = 245.0[mm];
+       |                           ^^^^^^
+iteration_03.sysml:16:42: error (reference-error): No Feature named 'mm' found.
+    16 |         attribute width : Length = 245.0[mm];
+       |                                          ^^
+iteration_03.sysml:17:35: error (reference-error): No Type named 'Length' found.
+    17 |         attribute outerDiameter : Length;
+       |                                   ^^^^^^
+iteration_03.sysml:22:26: error (reference-error): No Type named 'Mass' found.
+    22 |         attribute mass : Mass = 1200.0[kg];
+       |                          ^^^^
+iteration_03.sysml:22:40: error (reference-error): No Feature named 'kg' found.
+    22 |         attribute mass : Mass = 1200.0[kg];
+       |                                        ^^
+iteration_03.sysml:23:28: error (reference-error): No Type named 'Length' found.
+    23 |         attribute length : Length = 4.82[m];
+       |                            ^^^^^^
+iteration_03.sysml:23:42: error (reference-error): No Feature named 'm' found.
+    23 |         attribute length : Length = 4.82[m];
+       |                                          ^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

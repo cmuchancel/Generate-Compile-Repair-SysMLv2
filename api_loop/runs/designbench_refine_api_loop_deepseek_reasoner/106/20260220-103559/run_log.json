@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:36:00.542834Z",
+    "iteration_end": "2026-02-20T15:36:45.460944Z",
+    "iteration_duration_seconds": 44.91843695899297,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/106/20260220-103559/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/106/20260220-103559/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/106/20260220-103559/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:22:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'in', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    22 |         port in fuelInput : FuelCommand;\n       |              \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:23:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    23 |         port out torqueOutput : MechanicalInterface;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:24:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    24 |         attribute state : EngineState = EngineState::Off;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:28:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'in', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    28 |         port in inputShaft : MechanicalInterface;\n       |              \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:29:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    29 |         port out outputShaft : MechanicalInterface;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:34:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'in', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    34 |         port in input : MechanicalInterface;\n       |              \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:35:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    35 |         port out frontLeft : MechanicalInterface;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:36:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    36 |         port out frontRight : MechanicalInterface;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:37:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    37 |         port out rearLeft : MechanicalInterface;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:38:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    38 |         port out rearRight : MechanicalInterface;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:42:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'in', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    42 |         port in axle : MechanicalInterface;\n       |              \u001b[38;2;220;080;080m^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 374,
+      "output_tokens": 2310,
+      "total_tokens": 2684
+    },
+    "tokens_used_total": 2684,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:36:45.461000Z",
+    "iteration_end": "2026-02-20T15:37:07.056655Z",
+    "iteration_duration_seconds": 21.595839917004923,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/106/20260220-103559/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/106/20260220-103559/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/106/20260220-103559/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:24:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    24 |         attribute state : EngineState = EngineState::Off;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 2047,
+      "output_tokens": 1043,
+      "total_tokens": 3090
+    },
+    "tokens_used_total": 5774,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:37:07.056712Z",
+    "iteration_end": "2026-02-20T15:37:50.071896Z",
+    "iteration_duration_seconds": 43.01552816700132,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/106/20260220-103559/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/106/20260220-103559/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/106/20260220-103559/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 893,
+      "output_tokens": 2216,
+      "total_tokens": 3109
+    },
+    "tokens_used_total": 8883,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

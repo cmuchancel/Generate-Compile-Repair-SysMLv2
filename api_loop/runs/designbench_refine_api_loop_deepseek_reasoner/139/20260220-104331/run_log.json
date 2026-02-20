@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:43:31.336174Z",
+    "iteration_end": "2026-02-20T15:44:30.697470Z",
+    "iteration_duration_seconds": 59.36171179100347,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/139/20260220-104331/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/139/20260220-104331/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/139/20260220-104331/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:5:48: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';'.\n    5 |         attribute totalMass : Mass = 1200.0::kg;\n      |                                                \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:6:44: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';'.\n    6 |         attribute length : Length = 4.82::m;\n      |                                            \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:23:48: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';'.\n    23 |         attribute diameter : Length = 457.2::mm; // 18 inches converted to mm\n       |                                                \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:27:45: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';'.\n    27 |         attribute width : Length = 245.0::mm;\n       |                                             \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:28:45: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';'.\n    28 |         attribute height : Length = 45.0::mm;\n       |                                             \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:29:48: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';'.\n    29 |         attribute treadDepth : Length = 6.0::mm;\n       |                                                \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:30:51: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';'.\n    30 |         attribute minTreadDepth : Length = 3.5::mm;\n       |                                                   \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:35:45: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';'.\n    35 |         attribute radius : Length = 95.0::mm;\n       |                                             \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:5:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Mass' found.\n    5 |         attribute totalMass : Mass = 1200.0::kg;\n      |                               \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:6:28: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Length' found.\n    6 |         attribute length : Length = 4.82::m;\n      |                            \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:19:35: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Length' found.\n    19 |         attribute outerDiameter : Length = rim.diameter + 2 * tire.height;\n       |                                   \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:23:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Length' found.\n    23 |         attribute diameter : Length = 457.2::mm; // 18 inches converted to mm\n       |                              \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:27:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Length' found.\n    27 |         attribute width : Length = 245.0::mm;\n       |                           \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:28:28: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Length' found.\n    28 |         attribute height : Length = 45.0::mm;\n       |                            \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:29:32: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Length' found.\n    29 |         attribute treadDepth : Length = 6.0::mm;\n       |                                \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:30:35: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Length' found.\n    30 |         attribute minTreadDepth : Length = 3.5::mm;\n       |                                   \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:35:28: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Length' found.\n    35 |         attribute radius : Length = 95.0::mm;\n       |                            \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:36:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Length' found.\n    36 |         attribute diameter : Length = 2 * radius;\n       |                              \u001b[38;2;220;080;080m^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 477,
+      "output_tokens": 3046,
+      "total_tokens": 3523
+    },
+    "tokens_used_total": 3523,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:44:30.697540Z",
+    "iteration_end": "2026-02-20T15:45:15.599419Z",
+    "iteration_duration_seconds": 44.90220808399317,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/139/20260220-104331/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/139/20260220-104331/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/139/20260220-104331/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1635,
+      "output_tokens": 2263,
+      "total_tokens": 3898
+    },
+    "tokens_used_total": 7421,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

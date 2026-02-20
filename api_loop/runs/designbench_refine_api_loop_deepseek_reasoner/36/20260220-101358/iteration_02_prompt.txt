@@ -1,0 +1,46 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is primarily used to manage the operational status of a vehicle, enabling the vehicle to automatically switch states according to different control signals. When entering the system for the first time, the vehicle is in the "off" state. If a "VehicleStartSignal" is received at this time, the system will switch to the "starting" state. Next, upon receiving a "VehicleOnSignal," the system will enter the "on" (running) state. During vehicle operation, as soon as a "VehicleOffSignal" is received, the vehicle status will return to the "off" state. This entire process realizes automatic state management from shut down, through starting, to running, and then back to shut down, allowing users to comprehensively control and monitor the vehicle.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleStateManagement {
+    private import ScalarValues::*;
+
+    enum def VehicleState {
+        enum off;
+        enum starting;
+        enum on;
+    }
+
+    part def VehicleSystem {
+        attribute currentState : VehicleState = VehicleState::off;
+
+        port def ControlPort {
+            attribute receivedSignal : String;
+        }
+
+        port controlInput : in ControlPort;
+    }
+
+    part vehicleController : VehicleSystem;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_01.sysml:17:29: error (parsing-error): Unexpected 'in', expected one of ["NAME", ";", "{", "from", "for", "[", "ordered", "nonunique", "if", "~", "not", "#", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "by", "ref", "attribute", "enum", "occurrence", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "of", "interface", "allocation", "allocate", "action", "perform", "accept", "via", "at", "after", "when", "send", "assign", "terminate", "while", "loop", "state", "parallel", "do", "exhibit", "calc", "constraint", "assert", "requirement", "concern", "satisfy", "case", "analysis", "verification", "use", "include", "view", "rendering", "viewpoint"].
+17 |         port controlInput : in ControlPort;
+   |                             ^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

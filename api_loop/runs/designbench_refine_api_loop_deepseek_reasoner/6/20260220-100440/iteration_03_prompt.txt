@@ -1,0 +1,152 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system needs to implement an information classification management mechanism based on the “traffic light” principle. Information is divided into three levels: “Unclassified,” “Confidential,” and “Secret,” each corresponding to a code and a color: unclassified information uses the code “uncl” and is marked in green; confidential information uses the code “conf” and is marked in yellow; and secret information uses the code “secr” and is marked in red. In addition, the system must also support grade classification. Grade levels include A, B, C, D, and F, which correspond to 4.0, 3.0, 2.0, 1.0, and 0.0 points, respectively. The classification of different types of information and the scores for grades must be clearly defined and distinguished in the system, so that users can easily and intuitively identify various categories of information and grades during operation and management.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 2):
+                package InformationClassification {
+    private import ScalarValues::*;
+
+    enum def InformationLevel {
+        enum unclassified;
+        enum confidential;
+        enum secret;
+    }
+
+    part def TrafficLightInfo {
+        attribute level : InformationLevel;
+        attribute code : string;
+        attribute color : string;
+    }
+
+    part UnclassifiedInfo : TrafficLightInfo {
+        attribute level = InformationLevel::unclassified;
+        attribute code = "uncl";
+        attribute color = "green";
+    }
+
+    part ConfidentialInfo : TrafficLightInfo {
+        attribute level = InformationLevel::confidential;
+        attribute code = "conf";
+        attribute color = "yellow";
+    }
+
+    part SecretInfo : TrafficLightInfo {
+        attribute level = InformationLevel::secret;
+        attribute code = "secr";
+        attribute color = "red";
+    }
+
+    enum def Grade {
+        enum A;
+        enum B;
+        enum C;
+        enum D;
+        enum F;
+    }
+
+    part def GradeInfo {
+        attribute grade : Grade;
+        attribute points : real;
+    }
+
+    part GradeA : GradeInfo {
+        attribute grade = Grade::A;
+        attribute points = 4.0;
+    }
+
+    part GradeB : GradeInfo {
+        attribute grade = Grade::B;
+        attribute points = 3.0;
+    }
+
+    part GradeC : GradeInfo {
+        attribute grade = Grade::C;
+        attribute points = 2.0;
+    }
+
+    part GradeD : GradeInfo {
+        attribute grade = Grade::D;
+        attribute points = 1.0;
+    }
+
+    part GradeF : GradeInfo {
+        attribute grade = Grade::F;
+        attribute points = 0.0;
+    }
+
+    part def ClassifiedItem {
+        attribute infoClassification : TrafficLightInfo;
+        attribute gradeClassification : GradeInfo;
+    }
+
+    part def ManagementSystem {
+        part items : ClassifiedItem[0..*];
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_02.sysml:17:19: warning (namespace-distinguishability): Member name 'level' shadows InformationClassification::TrafficLightInfo::level
+│   17 |         attribute level = InformationLevel::unclassified;
+│      |                   ^^^^^
+└── iteration_02.sysml:11:19: note: Inherited from here
+    └── iteration_02.sysml:16:29: note: Because InformationClassification::TrafficLightInfo is specialized through FeatureTyping
+iteration_02.sysml:18:19: warning (namespace-distinguishability): Member name 'code' shadows InformationClassification::TrafficLightInfo::code
+│   18 |         attribute code = "uncl";
+│      |                   ^^^^
+└── iteration_02.sysml:12:19: note: Inherited from here
+    └── iteration_02.sysml:16:29: note: Because InformationClassification::TrafficLightInfo is specialized through FeatureTyping
+iteration_02.sysml:19:19: warning (namespace-distinguishability): Member name 'color' shadows InformationClassification::TrafficLightInfo::color
+│   19 |         attribute color = "green";
+│      |                   ^^^^^
+└── iteration_02.sysml:13:19: note: Inherited from here
+    └── iteration_02.sysml:16:29: note: Because InformationClassification::TrafficLightInfo is specialized through FeatureTyping
+iteration_02.sysml:23:19: warning (namespace-distinguishability): Member name 'level' shadows InformationClassification::TrafficLightInfo::level
+│   23 |         attribute level = InformationLevel::confidential;
+│      |                   ^^^^^
+└── iteration_02.sysml:11:19: note: Inherited from here
+    └── iteration_02.sysml:22:29: note: Because InformationClassification::TrafficLightInfo is specialized through FeatureTyping
+iteration_02.sysml:24:19: warning (namespace-distinguishability): Member name 'code' shadows InformationClassification::TrafficLightInfo::code
+│   24 |         attribute code = "conf";
+│      |                   ^^^^
+└── iteration_02.sysml:12:19: note: Inherited from here
+    └── iteration_02.sysml:22:29: note: Because InformationClassification::TrafficLightInfo is specialized through FeatureTyping
+iteration_02.sysml:25:19: warning (namespace-distinguishability): Member name 'color' shadows InformationClassification::TrafficLightInfo::color
+│   25 |         attribute color = "yellow";
+│      |                   ^^^^^
+└── iteration_02.sysml:13:19: note: Inherited from here
+    └── iteration_02.sysml:22:29: note: Because InformationClassification::TrafficLightInfo is specialized through FeatureTyping
+iteration_02.sysml:29:19: warning (namespace-distinguishability): Member name 'level' shadows InformationClassification::TrafficLightInfo::level
+│   29 |         attribute level = InformationLevel::secret;
+│      |                   ^^^^^
+└── iteration_02.sysml:11:19: note: Inherited from here
+    └── iteration_02.sysml:28:23: note: Because InformationClassification::TrafficLightInfo is specialized through FeatureTyping
+iteration_02.sysml:30:19: warning (namespace-distinguishability): Member name 'code' shadows InformationClassification::TrafficLightInfo::code
+│   30 |         attribute code = "secr";
+│      |                   ^^^^
+└── iteration_02.sysml:12:19: note: Inherited from here
+    └── iteration_02.sysml:28:23: note: Because InformationClassification::TrafficLightInfo is specialized through FeatureTyping
+... (truncated compiler output) ...
+    └── iteration_02.sysml:52:19: note: Because InformationClassification::GradeInfo is specialized through FeatureTyping
+iteration_02.sysml:58:19: warning (namespace-distinguishability): Member name 'grade' shadows InformationClassification::GradeInfo::grade
+│   58 |         attribute grade = Grade::C;
+│      |                   ^^^^^
+└── iteration_02.sysml:43:19: note: Inherited from here
+    └── iteration_02.sysml:57:19: note: Because InformationClassification::GradeInfo is specialized through FeatureTyping
+iteration_02.sysml:59:19: warning (namespace-distinguishability): Member name 'points' shadows InformationClassification::GradeInfo::points
+│
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:46:24.099301Z",
+    "iteration_end": "2026-02-20T15:47:03.520293Z",
+    "iteration_duration_seconds": 39.42127750000509,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/143/20260220-104623/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/143/20260220-104623/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/143/20260220-104623/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:13:18: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    13 |         critical : \"red\";\n       |                  \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:13:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    13 |         critical : \"red\";\n       |                    \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:14:17: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    14 |         warning : \"yellow\";\n       |                 \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:14:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    14 |         warning : \"yellow\";\n       |                   \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:15:16: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    15 |         normal : \"green\";\n       |                \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:15:18: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    15 |         normal : \"green\";\n       |                  \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:19:15: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    19 |         Small : 60;\n       |               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:19:17: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'DECIMAL_VALUE'.\n    19 |         Small : 60;\n       |                 \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:20:16: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    20 |         Medium : 70;\n       |                \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:20:18: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'DECIMAL_VALUE'.\n    20 |         Medium : 70;\n       |                  \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:21:15: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    21 |         Large : 80;\n       |               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:21:17: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'DECIMAL_VALUE'.\n    21 |         Large : 80;\n       |                 \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:27:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    27 |         attribute timestamp : DateTime;\n       |                               \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 436,
+      "output_tokens": 1932,
+      "total_tokens": 2368
+    },
+    "tokens_used_total": 2368,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:47:03.520351Z",
+    "iteration_end": "2026-02-20T15:47:42.852246Z",
+    "iteration_duration_seconds": 39.332204709004145,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/143/20260220-104623/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/143/20260220-104623/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/143/20260220-104623/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1928,
+      "output_tokens": 1877,
+      "total_tokens": 3805
+    },
+    "tokens_used_total": 6173,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

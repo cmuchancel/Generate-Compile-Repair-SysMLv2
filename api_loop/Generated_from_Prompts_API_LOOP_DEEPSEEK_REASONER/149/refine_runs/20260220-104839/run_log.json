@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:48:39.951354Z",
+    "iteration_end": "2026-02-20T15:49:42.141281Z",
+    "iteration_duration_seconds": 62.19038070899842,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/149/20260220-104839/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/149/20260220-104839/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/149/20260220-104839/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:7:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"end\", \"NAME\", \";\", \"{\", \"}\", \"dependency\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"alias\", \"for\", \"import\", \"all\", \"*\", \"[\", \"abstract\", \"in\", \"inout\", \"out\", \"derived\", \"end\", \"ordered\", \"nonunique\", \"if\", \"+\", \"-\", \"<\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \"(\", \"null\", \"metadata\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"standard\", \"library\", \"package\", \"filter\", \"variation\", \"variant\", \"constant\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"individual\", \"timeslice\", \"snapshot\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"merge\", \"decide\", \"join\", \"fork\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"entry\", \"do\", \"exit\", \"exhibit\", \"transition\", \"calc\", \"return\", \"constraint\", \"assert\", \"requirement\", \"subject\", \"assume\", \"require\", \"frame\", \"concern\", \"actor\", \"stakeholder\", \"satisfy\", \"case\", \"objective\", \"analysis\", \"verification\", \"verify\", \"use\", \"include\", \"view\", \"render\", \"rendering\", \"expose\", \"viewpoint\"].\n    7 |         HIGH\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:8:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    8 |     }\n      |     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:8:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    8 |     }\n      |     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:19:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'message', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    19 |         attribute message : Message;\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:11:29: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    11 |         attribute content : string;\n       |                             \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:12:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    12 |         attribute topic : string;\n       |                           \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:14:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'dateTime' found.\n    14 |         attribute timestamp : dateTime;\n       |                               \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:18:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    18 |         attribute topic : string;\n       |                           \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:23:38: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    23 |         attribute subscribedTopics : string[*];\n       |                                      \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:28:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    28 |         attribute allTopics : string[*];\n       |                               \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:34:24: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    34 |         attribute id : string;\n       |                        \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:39:24: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    39 |         attribute id : string;\n       |                        \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:44:35: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    44 |         attribute subscriptions : string[*];\n       |                                   \u001b[38;2;220;080;080m^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 390,
+      "output_tokens": 3071,
+      "total_tokens": 3461
+    },
+    "tokens_used_total": 3461,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:49:42.141348Z",
+    "iteration_end": "2026-02-20T15:50:13.681140Z",
+    "iteration_duration_seconds": 31.54004820800037,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/149/20260220-104839/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/149/20260220-104839/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/149/20260220-104839/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:14:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    14 |         attribute timestamp : DateTime;\n       |                               \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 2018,
+      "output_tokens": 1523,
+      "total_tokens": 3541
+    },
+    "tokens_used_total": 7002,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:50:13.681200Z",
+    "iteration_end": "2026-02-20T15:50:45.628551Z",
+    "iteration_duration_seconds": 31.947624458000064,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/149/20260220-104839/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/149/20260220-104839/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/149/20260220-104839/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 756,
+      "output_tokens": 1540,
+      "total_tokens": 2296
+    },
+    "tokens_used_total": 9298,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

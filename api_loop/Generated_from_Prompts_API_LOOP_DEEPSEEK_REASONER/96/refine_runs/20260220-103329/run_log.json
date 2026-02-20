@@ -1,0 +1,86 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:33:30.289950Z",
+    "iteration_end": "2026-02-20T15:34:21.675940Z",
+    "iteration_duration_seconds": 51.386364124991815,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:5:17: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    5 | item def Torque : TorqueValue;\n\niteration_01.sysml:11:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    11 | part def Car : Automobile;\n\niteration_01.sysml:5:19: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'TorqueValue' found.\n    5 | item def Torque : TorqueValue;\n      |                   \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 358,
+      "output_tokens": 2632,
+      "total_tokens": 2990
+    },
+    "tokens_used_total": 2990,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:34:21.676003Z",
+    "iteration_end": "2026-02-20T15:35:01.507744Z",
+    "iteration_duration_seconds": 39.83206975000212,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:5:22: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    5 | item def TorqueValue : Real;\n\niteration_02.sysml:6:17: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    6 | item def Torque : TorqueValue;\n\niteration_02.sysml:12:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    12 | part def Car : Automobile;",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 564,
+      "output_tokens": 2017,
+      "total_tokens": 2581
+    },
+    "tokens_used_total": 5571,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:35:01.507821Z",
+    "iteration_end": "2026-02-20T15:35:59.656297Z",
+    "iteration_duration_seconds": 58.148934915996506,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:5:1: \u001b[38;2;220;080;080merror\u001b[0m (class-specialization): A classifier must not specialize a data type or an association\n\u2502   5 | item def TorqueValue :> Real;\n\u2502     | \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:5:25: \u001b[38;2;255;255;255mnote\u001b[0m: DataType specialized here",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 566,
+      "output_tokens": 2905,
+      "total_tokens": 3471
+    },
+    "tokens_used_total": 9042,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T15:35:59.656385Z",
+    "iteration_end": "2026-02-20T15:36:49.778712Z",
+    "iteration_duration_seconds": 50.1227133749926,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/96/20260220-103329/iteration_04_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 525,
+      "output_tokens": 2521,
+      "total_tokens": 3046
+    },
+    "tokens_used_total": 12088,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

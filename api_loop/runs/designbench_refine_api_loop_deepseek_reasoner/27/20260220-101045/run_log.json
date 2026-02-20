@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:10:46.175876Z",
+    "iteration_end": "2026-02-20T15:11:24.498547Z",
+    "iteration_duration_seconds": 38.32273675000761,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/27/20260220-101045/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/27/20260220-101045/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/27/20260220-101045/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'enum', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    6 |         enum NOT_CHARGING\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:7:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    7 |     }\n\niteration_01.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute state : ChargingState = ChargingState::NOT_CHARGING;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute state : ChargingState;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 352,
+      "output_tokens": 1939,
+      "total_tokens": 2291
+    },
+    "tokens_used_total": 2291,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:11:24.498597Z",
+    "iteration_end": "2026-02-20T15:11:47.998674Z",
+    "iteration_duration_seconds": 23.500131791995955,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/27/20260220-101045/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/27/20260220-101045/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/27/20260220-101045/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    6 |         NOT_CHARGING\n      |         \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:7:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    7 |     }",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1173,
+      "output_tokens": 1125,
+      "total_tokens": 2298
+    },
+    "tokens_used_total": 4589,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:11:47.998717Z",
+    "iteration_end": "2026-02-20T15:12:03.939792Z",
+    "iteration_duration_seconds": 15.94112899999891,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/27/20260220-101045/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/27/20260220-101045/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/27/20260220-101045/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 887,
+      "output_tokens": 709,
+      "total_tokens": 1596
+    },
+    "tokens_used_total": 6185,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:33:29.980379Z",
+    "iteration_end": "2026-02-20T15:34:18.416442Z",
+    "iteration_duration_seconds": 48.43640800000867,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/95/20260220-103329/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/95/20260220-103329/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/95/20260220-103329/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:15:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}'.\n    15 |     }\n       |     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:6:25: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    6 |         attribute VIN : string;\n      |                         \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:7:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    7 |         attribute make : string;\n      |                          \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:8:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    8 |         attribute model : string;\n      |                           \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:9:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'integer' found.\n    9 |         attribute year : integer;\n      |                          \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:10:28: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'TorqueValue' found.\n    10 |         attribute torque : TorqueValue;\n       |                            \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:18:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    18 |         attribute title : string;\n       |                           \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:19:29: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    19 |         attribute content : string;\n       |                             \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:20:38: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    20 |         attribute referencedObject : string[1..*];\n       |                                      \u001b[38;2;220;080;080m^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 417,
+      "output_tokens": 2452,
+      "total_tokens": 2869
+    },
+    "tokens_used_total": 2869,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:34:18.416506Z",
+    "iteration_end": "2026-02-20T15:35:20.207377Z",
+    "iteration_duration_seconds": 61.791329667001264,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/95/20260220-103329/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/95/20260220-103329/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/95/20260220-103329/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 955,
+      "output_tokens": 3143,
+      "total_tokens": 4098
+    },
+    "tokens_used_total": 6967,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

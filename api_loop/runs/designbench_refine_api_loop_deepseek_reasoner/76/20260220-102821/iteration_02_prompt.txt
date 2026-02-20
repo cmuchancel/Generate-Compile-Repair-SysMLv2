@@ -1,0 +1,75 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system is designed to verify the mass of vehicles to ensure that the actual mass of each vehicle does not exceed 2,500 kilograms. Under this system, every vehicle to be inspected must undergo a mass inspection process to check whether its mass complies with the specified upper limit. The system consists of vehicles, weighing equipment, and a mass verification unit. It measures the current actual mass of the vehicle using the weighing equipment and processes and evaluates the measured data. If the inspected vehicle's mass is less than or equal to 2,500 kilograms, it is deemed qualified; if it exceeds this value, it is deemed unqualified. The entire mass verification process is carried out independently for each vehicle to ensure that all vehicles involved in verification comply with the relevant standards and regulatory requirements.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package MassVerificationSystem {
+    private import ScalarValues::*;
+
+    item def MassValue {
+        attribute value : Real;
+    }
+
+    port def MassDataPort;
+
+    enum def QualificationResult {
+        enum qualified;
+        enum unqualified;
+    }
+
+    part def Vehicle {
+        attribute mass : Real;
+        attribute result : QualificationResult;
+        port out massPort : MassDataPort;
+    }
+
+    part def WeighingEquipment {
+        attribute measuredMass : Real;
+        port in inputPort : MassDataPort;
+        port out outputPort : MassDataPort;
+    }
+
+    part def MassVerificationUnit {
+        attribute threshold : Real = 2500.0;
+        attribute verificationResult : QualificationResult;
+        port in inputPort : MassDataPort;
+    }
+
+    part def InspectionSystem {
+        part vehicle : Vehicle;
+        part weigher : WeighingEquipment;
+        part verifier : MassVerificationUnit;
+
+        connect vehicle.massPort to weigher.inputPort;
+        connect weigher.outputPort to verifier.inputPort;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:18:14: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    18 |         port out massPort : MassDataPort;
+       |              ^^^
+iteration_01.sysml:23:14: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    23 |         port in inputPort : MassDataPort;
+       |              ^^
+iteration_01.sysml:24:14: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    24 |         port out outputPort : MassDataPort;
+       |              ^^^
+iteration_01.sysml:30:14: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    30 |         port in inputPort : MassDataPort;
+       |              ^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

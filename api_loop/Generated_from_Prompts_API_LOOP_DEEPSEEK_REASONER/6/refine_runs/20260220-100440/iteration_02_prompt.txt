@@ -1,0 +1,113 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system needs to implement an information classification management mechanism based on the “traffic light” principle. Information is divided into three levels: “Unclassified,” “Confidential,” and “Secret,” each corresponding to a code and a color: unclassified information uses the code “uncl” and is marked in green; confidential information uses the code “conf” and is marked in yellow; and secret information uses the code “secr” and is marked in red. In addition, the system must also support grade classification. Grade levels include A, B, C, D, and F, which correspond to 4.0, 3.0, 2.0, 1.0, and 0.0 points, respectively. The classification of different types of information and the scores for grades must be clearly defined and distinguished in the system, so that users can easily and intuitively identify various categories of information and grades during operation and management.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package InformationClassification {
+    private import ScalarValues::*;
+
+    enum def InformationLevel {
+        unclassified,
+        confidential,
+        secret
+    }
+
+    part def TrafficLightInfo {
+        attribute level : InformationLevel;
+        attribute code : string;
+        attribute color : string;
+    }
+
+    part UnclassifiedInfo : TrafficLightInfo {
+        attribute level = InformationLevel::unclassified;
+        attribute code = "uncl";
+        attribute color = "green";
+    }
+
+    part ConfidentialInfo : TrafficLightInfo {
+        attribute level = InformationLevel::confidential;
+        attribute code = "conf";
+        attribute color = "yellow";
+    }
+
+    part SecretInfo : TrafficLightInfo {
+        attribute level = InformationLevel::secret;
+        attribute code = "secr";
+        attribute color = "red";
+    }
+
+    enum def Grade {
+        A,
+        B,
+        C,
+        D,
+        F
+    }
+
+    part def GradeInfo {
+        attribute grade : Grade;
+        attribute points : real;
+    }
+
+    part GradeA : GradeInfo {
+        attribute grade = Grade::A;
+        attribute points = 4.0;
+    }
+
+    part GradeB : GradeInfo {
+        attribute grade = Grade::B;
+        attribute points = 3.0;
+    }
+
+    part GradeC : GradeInfo {
+        attribute grade = Grade::C;
+        attribute points = 2.0;
+    }
+
+    part GradeD : GradeInfo {
+        attribute grade = Grade::D;
+        attribute points = 1.0;
+    }
+
+    part GradeF : GradeInfo {
+        attribute grade = Grade::F;
+        attribute points = 0.0;
+    }
+
+    part def ClassifiedItem {
+        attribute infoClassification : TrafficLightInfo;
+        attribute gradeClassification : GradeInfo;
+    }
+
+    part def ManagementSystem {
+        part items : ClassifiedItem[0..*];
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:7:9: error (parsing-error): Unexpected identifier, expected one of ["end", "NAME", ";", "{", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "for", "import", "all", "*", "[", "abstract", "in", "inout", "out", "derived", "end", "ordered", "nonunique", "if", "+", "-", "<", "~", "not", "hastype", "istype", "@", "as", "#", "(", "null", "metadata", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "standard", "library", "package", "filter", "variation", "variant", "constant", "ref", "attribute", "enum", "occurrence", "individual", "timeslice", "snapshot", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "interface", "allocation", "allocate", "action", "perform", "merge", "decide", "join", "fork", "accept", "send", "assign", "terminate", "while", "loop", "state", "entry", "do", "exit", "exhibit", "transition", "calc", "return", "constraint", "assert", "requirement", "subject", "assume", "require", "frame", "concern", "actor", "stakeholder", "satisfy", "case", "objective", "analysis", "verification", "verify", "use", "include", "view", "render", "rendering", "expose", "viewpoint"].
+    7 |         secret
+      |         ^^^^^^
+iteration_01.sysml:8:5: error (parsing-error): Unexpected '}', expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    8 |     }
+      |     ^
+iteration_01.sysml:8:5: error (parsing-error): Unexpected '}', expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    8 |     }
+      |     ^
+iteration_01.sysml:39:9: error (parsing-error): Unexpected identifier, expected one of ["end", "NAME", ";", "{", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "for", "import", "all", "*", "[", "abstract", "in", "inout", "out", "derived", "end", "ordered", "nonunique", "if", "+", "-", "<", "~", "not", "hastype", "istype", "@", "as", "#", "(", "null", "metadata", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "standard", "library", "package", "filter", "variation", "variant", "constant", "ref", "attribute", "enum", "occurrence", "individual", "timeslice", "snapshot", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "interface", "allocation", "allocate", "action", "perform", "merge", "decide", "join", "fork", "accept", "send", "assign", "terminate", "while", "loop", "state", "entry", "do", "exit", "exhibit", "transition", "
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

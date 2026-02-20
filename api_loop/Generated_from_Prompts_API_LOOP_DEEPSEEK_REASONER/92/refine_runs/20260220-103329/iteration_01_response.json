@@ -1,0 +1,42 @@
+{
+  "id": "994dff5d-7674-4633-8dde-b6e06d291d7c",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "package StructuralDecompositionExample {\n    private import ScalarValues::*;\n\n    port def PowerPort {\n        attribute voltage : Real;\n        attribute maxCurrent : Real;\n    }\n\n    port def DataPort {\n        attribute protocol : String;\n        attribute bandwidth : Real;\n    }\n\n    port def MechanicalPort {\n        attribute maxLoad : Real;\n    }\n\n    part def Battery {\n        port p : PowerPort;\n        attribute capacity : Real;\n    }\n\n    part def SolarPanel {\n        port p : PowerPort;\n        attribute efficiency : Real;\n    }\n\n    part def PowerBus {\n        port input : PowerPort;\n        port output : PowerPort;\n    }\n\n    part def PowerSubsystem {\n        part battery : Battery;\n        part solarPanel : SolarPanel;\n        part bus : PowerBus;\n        connect battery.p to bus.input;\n        connect solarPanel.p to bus.input;\n    }\n\n    part def Sensor {\n        port data : DataPort;\n        port power : PowerPort;\n        attribute accuracy : Real;\n    }\n\n    part def Processor {\n        port dataIn : DataPort;\n        port dataOut : DataPort;\n        port power : PowerPort;\n        attribute speed : Real;\n    }\n\n    part def CommunicationSubsystem {\n        part sensor : Sensor;\n        part processor : Processor;\n        connect sensor.data to processor.dataIn;\n        connect sensor.power to processor.power;\n    }\n\n    part def StructuralFrame {\n        port mount : MechanicalPort;\n        attribute weight : Real;\n    }\n\n    part def ThermalSystem {\n        port power : PowerPort;\n        attribute coolingCapacity : Real;\n    }\n\n    part def MainSystem {\n        part powerSubsystem : PowerSubsystem;\n        part commSubsystem : CommunicationSubsystem;\n        part frame : StructuralFrame;\n        part thermal : ThermalSystem;\n\n        connect powerSubsystem.bus.output to commSubsystem.processor.power;\n        connect powerSubsystem.bus.output to thermal.power;\n    }\n}",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning_content": "We are to create a SysML v2 model that satisfies the given requirements.\n The model should demonstrate structural decomposition with a top-down hierarchical structure, well-defined interfaces, and allow for independent understanding and analysis of components.\n We are to use a conservative subset of SysML v2: package, private import, enum def, part def, part, attribute, port def, port, item def, and connect.\n We are to avoid constructs that frequently fail validation and keep the model simple.\n\n Steps:\n 1. We'll create a package for the system.\n 2. We'll use private import for ScalarValues.\n 3. We can define an enum if needed, but the requirements don't specify, so we might skip or use a simple one for demonstration.\n 4. We'll define a top-level system part that decomposes into subsystems and components.\n 5. We'll define port definitions and ports to specify interfaces.\n 6. We'll use connections to connect the parts through their ports.\n\n Since the requirements are about structural decomposition and interfaces, we'll create:\n   - A top-level system (e.g., \"Spacecraft\") that is composed of subsystems (e.g., \"PowerSystem\", \"CommunicationSystem\").\n   - Each subsystem may be further decomposed into components (e.g., \"Battery\", \"SolarPanel\" for the power system).\n   - We'll define port definitions for the interfaces (e.g., \"PowerInterface\", \"DataInterface\").\n   - We'll define the parts and connect them.\n\n Let's outline the model:\n\n Package: StructuralDecompositionExample\n\n We'll define:\n   - A port definition for power (with an attribute for voltage, for example) and one for data (with an attribute for data rate).\n   - Then, we'll define part definitions for the system, subsystems, and components.\n\n However, note that we are to use a conservative subset and avoid complex constructs.\n\n Let's create:\n\n 1. Import ScalarValues.\n 2. Define an enum for power state (optional, but to show enum usage).\n 3. Define port definitions for PowerPort and DataPort.\n 4. Define part definitions for the components (e.g., Battery, SolarPanel, Transmitter, Receiver).\n 5. Define part definitions for the subsystems (e.g., PowerSystem, CommunicationSystem) that are composed of the components.\n 6. Define the top-level system (e.g., Spacecraft) composed of the subsystems.\n 7. Define the parts and connections in the top-level part.\n\n We'll keep attributes simple.\n\n Let's write the SysML v2 text accordingly.\n\n Note: We are to output only the SysML text with no prose or markdown.\n\n Let's generate the model step by step."
+      }
+    }
+  ],
+  "created": 1771601610,
+  "model": "deepseek-reasoner",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache",
+  "usage": {
+    "completion_tokens": 960,
+    "prompt_tokens": 369,
+    "total_tokens": 1329,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 559,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 320
+    },
+    "prompt_cache_hit_tokens": 320,
+    "prompt_cache_miss_tokens": 49
+  }
+}

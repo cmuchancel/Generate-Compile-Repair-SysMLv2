@@ -1,0 +1,86 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:27:59.728187Z",
+    "iteration_end": "2026-02-20T15:28:37.636598Z",
+    "iteration_duration_seconds": 37.90864662500098,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, did you mean 'inout'?\n    15 |         port input drivingCondition : DrivingTrajectory;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:16:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    16 |         port output fuelConsumption : Real;\n       |              \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    31 |         port output scenario : DrivingTrajectory;\n       |              \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:32:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, did you mean 'inout'?\n    32 |         port input consumption : Real;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 388,
+      "output_tokens": 1860,
+      "total_tokens": 2248
+    },
+    "tokens_used_total": 2248,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:28:37.636652Z",
+    "iteration_end": "2026-02-20T15:28:54.271283Z",
+    "iteration_duration_seconds": 16.63477074999537,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:15:51: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, did you mean 'in'?\n    15 |         port drivingCondition : DrivingTrajectory in;\n       |                                                   \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_02.sysml:16:37: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, did you mean 'objective'?\n    16 |         port fuelConsumption : Real out;\n       |                                     \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:31:43: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, did you mean 'objective'?\n    31 |         port scenario : DrivingTrajectory out;\n       |                                           \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:32:33: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, did you mean 'in'?\n    32 |         port consumption : Real in;\n       |                                 \u001b[38;2;220;080;080m^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1143,
+      "output_tokens": 784,
+      "total_tokens": 1927
+    },
+    "tokens_used_total": 4175,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:28:54.271324Z",
+    "iteration_end": "2026-02-20T15:29:04.860916Z",
+    "iteration_duration_seconds": 10.589691083994694,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'in', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         port in drivingCondition : DrivingTrajectory;\n       |              \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_03.sysml:16:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    16 |         port out fuelConsumption : Real;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_03.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         port out scenario : DrivingTrajectory;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_03.sysml:32:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'in', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    32 |         port in consumption : Real;\n       |              \u001b[38;2;220;080;080m^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 874,
+      "output_tokens": 496,
+      "total_tokens": 1370
+    },
+    "tokens_used_total": 5545,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T15:29:04.860956Z",
+    "iteration_end": "2026-02-20T15:29:19.823917Z",
+    "iteration_duration_seconds": 14.9630924170051,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/73/20260220-102759/iteration_04_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1250,
+      "output_tokens": 711,
+      "total_tokens": 1961
+    },
+    "tokens_used_total": 7506,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

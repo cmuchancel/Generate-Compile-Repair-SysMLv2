@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:33:30.110272Z",
+    "iteration_end": "2026-02-20T15:33:52.076265Z",
+    "iteration_duration_seconds": 21.966143207988353,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/94/20260220-103329/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/94/20260220-103329/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/94/20260220-103329/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:4:11: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    4 |     alias \"\u6c7d\u8f66 (Car)\" for \u6c7d\u8f66;\n      |           \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:4:30: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ERROR', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"NAME\", \"$\"].\n    4 |     alias \"\u6c7d\u8f66 (Car)\" for \u6c7d\u8f66;\n      |                            \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:4:30: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '\u6c7d\u8f66'.\n    4 |     alias \"\u6c7d\u8f66 (Car)\" for \u6c7d\u8f66;\n      |                            \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:6:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '\u626d\u77e9'.\n    6 |     item def \u626d\u77e9 {\n      |              \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:11:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '\u6c7d\u8f66'.\n    11 |     part def \u6c7d\u8f66 {\n       |              \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:12:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '\u626d\u77e9'.\n    12 |         attribute \u626d\u77e9 : \u626d\u77e9;\n       |                   \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:12:26: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    12 |         attribute \u626d\u77e9 : \u626d\u77e9;\n       |                        \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:12:28: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '\u626d\u77e9'.\n    12 |         attribute \u626d\u77e9 : \u626d\u77e9;\n       |                          \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:14:1: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}', expected one of [\"end\", \"NAME\", \";\", \"{\", \"}\", \"dependency\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"alias\", \"for\", \"import\", \"all\", \"*\", \"[\", \"abstract\", \"in\", \"inout\", \"out\", \"derived\", \"end\", \"ordered\", \"nonunique\", \"if\", \"else\", \"+\", \"-\", \"<\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \"(\", \"null\", \"metadata\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"standard\", \"library\", \"package\", \"filter\", \"variation\", \"variant\", \"constant\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"individual\", \"timeslice\", \"snapshot\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"merge\", \"decide\", \"join\", \"fork\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"entry\", \"do\", \"exit\", \"exhibit\", \"transition\", \"calc\", \"return\", \"constraint\", \"assert\", \"requirement\", \"subject\", \"assume\", \"require\", \"frame\", \"concern\", \"actor\", \"stakeholder\", \"satisfy\", \"case\", \"objective\", \"analysis\", \"verification\", \"verify\", \"use\", \"include\", \"view\", \"render\", \"rendering\", \"expose\", \"viewpoint\"].\n    14 | }\n       | \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:7:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Real' found.\n    7 |         attribute value : Real;\n      |                           \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:8:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'String' found.\n    8 |         attribute unit : String = \"Nm\";\n      |                          \u001b[38;2;220;080;080m^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 370,
+      "output_tokens": 1038,
+      "total_tokens": 1408
+    },
+    "tokens_used_total": 1408,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:33:52.076307Z",
+    "iteration_end": "2026-02-20T15:34:45.512835Z",
+    "iteration_duration_seconds": 53.43692658399232,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/94/20260220-103329/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/94/20260220-103329/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/94/20260220-103329/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:17:11: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '\u626d\u77e9'.\n    17 |     alias \u626d\u77e9 for Torque;\n       |           \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_02.sysml:18:11: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '\u6c7d\u8f66'.\n    18 |     alias \u6c7d\u8f66 for Automobile;\n       |           \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_02.sysml:2:20: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Namespace named 'BaseTypes' found.\n    2 |     private import BaseTypes::*;\n      |                    \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_02.sysml:6:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Real' found.\n    6 |         attribute value : Real;\n      |                           \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_02.sysml:7:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'String' found.\n    7 |         attribute unit : String = \"Nm\";\n      |                          \u001b[38;2;220;080;080m^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1482,
+      "output_tokens": 2724,
+      "total_tokens": 4206
+    },
+    "tokens_used_total": 5614,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:34:45.512888Z",
+    "iteration_end": "2026-02-20T15:35:08.739308Z",
+    "iteration_duration_seconds": 23.22661241599417,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/94/20260220-103329/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/94/20260220-103329/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/94/20260220-103329/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 733,
+      "output_tokens": 1115,
+      "total_tokens": 1848
+    },
+    "tokens_used_total": 7462,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

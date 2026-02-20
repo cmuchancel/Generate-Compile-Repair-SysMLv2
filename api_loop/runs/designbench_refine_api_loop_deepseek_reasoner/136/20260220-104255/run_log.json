@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:42:56.207903Z",
+    "iteration_end": "2026-02-20T15:43:25.740515Z",
+    "iteration_duration_seconds": 29.532828042007168,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:11:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'manufacturer' shadows AutomotiveComponents::Tire::manufacturer\n\u2502   11 |         attribute manufacturer = \"Michelin\";\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:5:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:10:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping\n\niteration_01.sysml:12:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'rimDiameter' shadows AutomotiveComponents::Tire::rimDiameter\n\u2502   12 |         attribute rimDiameter = 18.0;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:6:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:10:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping\n\niteration_01.sysml:13:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'width' shadows AutomotiveComponents::Tire::width\n\u2502   13 |         attribute width = 245;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:7:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:10:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping\n\niteration_01.sysml:5:34: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    5 |         attribute manufacturer : string;\n      |                                  \u001b[38;2;220;080;080m^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 392,
+      "output_tokens": 1502,
+      "total_tokens": 1894
+    },
+    "tokens_used_total": 1894,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:43:25.740570Z",
+    "iteration_end": "2026-02-20T15:44:10.280157Z",
+    "iteration_duration_seconds": 44.539915207991726,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:10:25: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    10 |     part def FrenchTire : Tire {\n\niteration_02.sysml:11:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'manufacturer' shadows AutomotiveComponents::Tire::manufacturer\n\u2502   11 |         attribute manufacturer = \"Michelin\";\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:5:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:10:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping\n\niteration_02.sysml:12:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'rimDiameter' shadows AutomotiveComponents::Tire::rimDiameter\n\u2502   12 |         attribute rimDiameter = 18.0;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:6:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:10:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping\n\niteration_02.sysml:13:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'width' shadows AutomotiveComponents::Tire::width\n\u2502   13 |         attribute width = 245;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:7:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:10:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 862,
+      "output_tokens": 2218,
+      "total_tokens": 3080
+    },
+    "tokens_used_total": 4974,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:44:10.280200Z",
+    "iteration_end": "2026-02-20T15:44:58.319132Z",
+    "iteration_duration_seconds": 48.03931179200299,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:10:25: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    10 |     part def FrenchTire : Tire {\n\niteration_03.sysml:11:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'manufacturer' shadows AutomotiveComponents::Tire::manufacturer\n\u2502   11 |         attribute manufacturer : String = \"Michelin\";\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:5:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_03.sysml:10:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping\n\niteration_03.sysml:12:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'rimDiameter' shadows AutomotiveComponents::Tire::rimDiameter\n\u2502   12 |         attribute rimDiameter : Real = 18.0;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:6:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_03.sysml:10:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping\n\niteration_03.sysml:13:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'width' shadows AutomotiveComponents::Tire::width\n\u2502   13 |         attribute width : Integer = 245;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:7:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_03.sysml:10:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 874,
+      "output_tokens": 2422,
+      "total_tokens": 3296
+    },
+    "tokens_used_total": 8270,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T15:44:58.319203Z",
+    "iteration_end": "2026-02-20T15:45:48.170361Z",
+    "iteration_duration_seconds": 49.85153316700598,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:10:25: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    10 |     part def FrenchTire : Tire;",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 886,
+      "output_tokens": 2467,
+      "total_tokens": 3353
+    },
+    "tokens_used_total": 11623,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T15:45:48.170415Z",
+    "iteration_end": "2026-02-20T15:46:22.578602Z",
+    "iteration_duration_seconds": 34.40846179200162,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/136/20260220-104255/iteration_05_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "iteration_05.sysml:11:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'manufacturer' shadows AutomotiveComponents::Tire::manufacturer\n\u2502   11 |         attribute manufacturer : String = \"Michelin\";\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_05.sysml:5:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_05.sysml:10:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping\n\niteration_05.sysml:12:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'rimDiameter' shadows AutomotiveComponents::Tire::rimDiameter\n\u2502   12 |         attribute rimDiameter : Real = 18.0;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_05.sysml:6:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_05.sysml:10:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping\n\niteration_05.sysml:13:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'width' shadows AutomotiveComponents::Tire::width\n\u2502   13 |         attribute width : Integer = 245;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_05.sysml:7:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_05.sysml:10:30: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 565,
+      "output_tokens": 1684,
+      "total_tokens": 2249
+    },
+    "tokens_used_total": 13872,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

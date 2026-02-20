@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:07:59.449991Z",
+    "iteration_end": "2026-02-20T15:08:30.096520Z",
+    "iteration_duration_seconds": 30.646648957990692,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/17/20260220-100759/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/17/20260220-100759/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/17/20260220-100759/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:14:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    14 |         port return : FuelInterface;\n       |              \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:27:42: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    27 |         connect engine.fuelReturn to tank.return;\n       |                                          \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:27:43: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"$\", \"NAME\", \"ElementReference\", \"MULTILINE_NOTE\", \"FeatureChaining\", \";\", \"{\", \",\", \"[\", \"(\", \")\", \"=\", \"from\", \"to\", \"if\", \"then\", \"accept\", \"via\", \"do\"].\n    27 |         connect engine.fuelReturn to tank.return;\n       |                                           \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:27:38: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    27 |         connect engine.fuelReturn to tank.return;\n       |                                      \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 362,
+      "output_tokens": 1441,
+      "total_tokens": 1803
+    },
+    "tokens_used_total": 1803,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:08:30.096645Z",
+    "iteration_end": "2026-02-20T15:08:40.993316Z",
+    "iteration_duration_seconds": 10.896750333005912,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/17/20260220-100759/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/17/20260220-100759/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/17/20260220-100759/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 880,
+      "output_tokens": 497,
+      "total_tokens": 1377
+    },
+    "tokens_used_total": 3180,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

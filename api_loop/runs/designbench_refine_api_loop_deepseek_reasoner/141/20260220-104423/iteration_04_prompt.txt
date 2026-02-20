@@ -1,0 +1,137 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to provide a standardized unit system library that supports the interoperability and adaptation between the International System of Quantities (ISQ) and United States Customary Units (USCustomaryUnits). The goal is to enable users to conveniently manage, convert, and apply various units of physical quantities, effectively reducing confusion and errors caused by inconsistent units. At the same time, the system must ensure the accuracy and authoritative standardization of all unit types, meeting the measurement needs of engineering, scientific research, and daily life. This will enhance the efficiency and reliability of data processing and communication.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 3):
+                package UnitSystemLibrary {
+    private import ScalarValues::*;
+
+    enum def ISQBaseUnits {
+        enum meter;
+        enum kilogram;
+        enum second;
+        enum ampere;
+        enum kelvin;
+        enum mole;
+        enum candela;
+    }
+
+    enum def USCustomaryLengthUnits {
+        enum inch;
+        enum foot;
+        enum yard;
+        enum mile;
+    }
+
+    enum def USCustomaryMassUnits {
+        enum pound;
+        enum ounce;
+        enum ton;
+    }
+
+    part def UnitConverter {
+        attribute sourceValue : Real;
+        attribute targetValue : Real;
+        attribute factor : Real;
+    }
+
+    part def Quantity {
+        attribute magnitude : Real;
+        attribute unitName : String;
+    }
+
+    part def LengthQuantity {
+        part baseQuantity : Quantity;
+    }
+
+    part def MassQuantity {
+        part baseQuantity : Quantity;
+    }
+
+    part def TimeQuantity {
+        part baseQuantity : Quantity;
+    }
+
+    part def LengthConverter {
+        part myUnitConverter : UnitConverter;
+        attribute fromUnit : USCustomaryLengthUnits;
+        attribute toUnit : ISQBaseUnits;
+    }
+
+    part def MassConverter {
+        part myUnitConverter : UnitConverter;
+        attribute fromUnit : USCustomaryMassUnits;
+        attribute toUnit : ISQBaseUnits;
+    }
+
+    part def SystemController {
+        part lengthConv : LengthConverter;
+        part massConv : MassConverter;
+        attribute activeCount : Real;
+    }
+
+    part controller : SystemController;
+
+    part converter1 : LengthConverter;
+    part converter2 : MassConverter;
+
+    connect controller.lengthConv to converter1;
+    connect controller.massConv to converter2;
+
+    attribute converter1.fromUnit : USCustomaryLengthUnits = USCustomaryLengthUnits::inch;
+    attribute converter1.toUnit : ISQBaseUnits = ISQBaseUnits::meter;
+    attribute converter1.myUnitConverter.factor : Real = 0.0254;
+
+    attribute converter2.fromUnit : USCustomaryMassUnits = USCustomaryMassUnits::pound;
+    attribute converter2.toUnit : ISQBaseUnits = ISQBaseUnits::kilogram;
+    attribute converter2.myUnitConverter.factor : Real = 0.453592;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_03.sysml:76:35: error (parsing-error): Unexpected ':', expected one of ["SINGLE_LINE_NOTE", "[", ":>", ":", "=", "subsets", "defined", "ordered", "nonunique", "MULTILINE_NOTE", "::>", "references", "=>", "crosses", ":>>", "redefines", "MultiplicityRange", "OwningMembership", ";", "{", "from", ":=", "default", "by", "then", "of", "accept", "send", "assign", "parallel"].
+    76 |     attribute converter1.fromUnit : USCustomaryLengthUnits = USCustomaryLengthUnits::inch;
+       |                                   ^
+iteration_03.sysml:77:33: error (parsing-error): Unexpected ':', expected one of ["SINGLE_LINE_NOTE", "[", ":>", ":", "=", "subsets", "defined", "ordered", "nonunique", "MULTILINE_NOTE", "::>", "references", "=>", "crosses", ":>>", "redefines", "MultiplicityRange", "OwningMembership", ";", "{", "from", ":=", "default", "by", "then", "of", "accept", "send", "assign", "parallel"].
+    77 |     attribute converter1.toUnit : ISQBaseUnits = ISQBaseUnits::meter;
+       |                                 ^
+iteration_03.sysml:78:42: error (parsing-error): Unexpected identifier, expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    78 |     attribute converter1.myUnitConverter.factor : Real = 0.0254;
+       |                                          ^^^^^^
+iteration_03.sysml:80:35: error (parsing-error): Unexpected ':', expected one of ["SINGLE_LINE_NOTE", "[", ":>", ":", "=", "subsets", "defined", "ordered", "nonunique", "MULTILINE_NOTE", "::>", "references", "=>", "crosses", ":>>", "redefines", "MultiplicityRange", "OwningMembership", ";", "{", "from", ":=", "default", "by", "then", "of", "accept", "send", "assign", "parallel"].
+    80 |     attribute converter2.fromUnit : USCustomaryMassUnits = USCustomaryMassUnits::pound;
+       |                                   ^
+iteration_03.sysml:81:33: error (parsing-error): Unexpected ':', expected one of ["SINGLE_LINE_NOTE", "[", ":>", ":", "=", "subsets", "defined", "ordered", "nonunique", "MULTILINE_NOTE", "::>", "references", "=>", "crosses", ":>>", "redefines", "MultiplicityRange", "OwningMembership", ";", "{", "from", ":=", "default", "by", "then", "of", "accept", "send", "assign", "parallel"].
+    81 |     attribute converter2.toUnit : ISQBaseUnits = ISQBaseUnits::kilogram;
+       |                                 ^
+iteration_03.sysml:82:42: error (parsing-error): Unexpected identifier, expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    82 |     attribute converter2.myUnitConverter.factor : Real = 0.453592;
+       |                                          ^^^^^^
+iteration_03.sysml:76:15: warning (namespace-distinguishability): Member name 'converter1' shadows UnitSystemLibrary::converter1
+│   76 |     attribute converter1.fromUnit : USCustomaryLengthUnits = USCustomaryLengthUnits::inch;
+│      |               ^^^^^^^^^^
+└── iteration_03.sysml:70:10: note: First declared here
+iteration_03.sysml:77:15: warning (namespace-distinguishability): Member name 'converter1' shadows UnitSystemLibrary::converter1
+│   77 |     attribute converter1.toUnit : ISQBaseUnits = ISQBaseUnits::meter;
+│      |               ^^^^^^^^^^
+└── iteration_03.sysml:70:10: note: First declared here
+iteration_03.sysml:80:15: warning (namespace-distinguishability): Member name 'converter2' shadows UnitSystemLibrary::converter2
+│   80 |     attribute converter2.fromUnit : USCustomaryMassUnits = USCustomaryMassUnits::pound;
+│      |               ^^^^^^^^^^
+└── iteration_03.sysml:71:10: note: First declared here
+iteration_03.sysml:81:15: w
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,143 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system is designed to describe an automotive configuration space, supporting combinations of different engines and transmission systems. Vehicles can be equipped with either a 4-cylinder or 6-cylinder engine, with each engine type containing the corresponding number of cylinders. Cylinder diameter is a key parameter and can be selected between two specifications: 70mm and 100mm. Each vehicle can only be fitted with one type of engine and one type of transmission system. The transmission can be either a manual or an automatic gearbox. Furthermore, the following constraints apply to concrete configurations: if the engine is a 4-cylinder, a manual transmission must be used; if the engine is a 6-cylinder, an automatic transmission must be used. This model provides users with a clear structure and constraints, enabling the flexible selection of vehicle components and parameters according to actual requirements.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package AutomotiveConfiguration {
+    private import ScalarValues::*;
+
+    enum def TransmissionType {
+        enum manual;
+        enum automatic;
+    }
+
+    enum def CylinderDiameter {
+        enum "70mm";
+        enum "100mm";
+    }
+
+    part def Cylinder {
+        attribute diameter : CylinderDiameter;
+    }
+
+    part def Engine {
+        part cylinders[0..*] : Cylinder;
+    }
+
+    part def FourCylinderEngine {
+        part engine : Engine {
+            part cylinders[4] : Cylinder;
+        }
+    }
+
+    part def SixCylinderEngine {
+        part engine : Engine {
+            part cylinders[6] : Cylinder;
+        }
+    }
+
+    part def Transmission {
+        attribute type : TransmissionType;
+    }
+
+    part def ManualTransmission {
+        attribute type : TransmissionType = TransmissionType::manual;
+    }
+
+    part def AutomaticTransmission {
+        attribute type : TransmissionType = TransmissionType::automatic;
+    }
+
+    part def Vehicle {
+        part engine : Engine;
+        part transmission : Transmission;
+    }
+
+    part def VehicleConfiguration {
+        part vehicle : Vehicle {
+            part engine : FourCylinderEngine {
+                part engine : Engine {
+                    part cylinders[4] : Cylinder;
+                }
+            }
+            part transmission : ManualTransmission;
+        }
+    }
+
+    part def VehicleConfiguration2 {
+        part vehicle : Vehicle {
+            part engine : SixCylinderEngine {
+                part engine : Engine {
+                    part cylinders[6] : Cylinder;
+                }
+            }
+            part transmission : AutomaticTransmission;
+        }
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:10:14: error (parsing-error): Unexpected 'STRING_VALUE', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "=", ":=", "default", ";", "{", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    10 |         enum "70mm";
+       |              ^^^^^^
+iteration_01.sysml:11:14: error (parsing-error): Unexpected 'STRING_VALUE'.
+    11 |         enum "100mm";
+       |              ^^^^^^^
+iteration_01.sysml:24:18: warning (namespace-distinguishability): Member name 'cylinders' shadows AutomotiveConfiguration::Engine::cylinders
+│   24 |             part cylinders[4] : Cylinder;
+│      |                  ^^^^^^^^^
+└── iteration_01.sysml:19:14: note: Inherited from here
+    └── iteration_01.sysml:23:23: note: Because AutomotiveConfiguration::Engine is specialized through FeatureTyping
+iteration_01.sysml:30:18: warning (namespace-distinguishability): Member name 'cylinders' shadows AutomotiveConfiguration::Engine::cylinders
+│   30 |             part cylinders[6] : Cylinder;
+│      |                  ^^^^^^^^^
+└── iteration_01.sysml:19:14: note: Inherited from here
+    └── iteration_01.sysml:29:23: note: Because AutomotiveConfiguration::Engine is specialized through FeatureTyping
+iteration_01.sysml:53:18: warning (namespace-distinguishability): Member name 'engine' shadows AutomotiveConfiguration::Vehicle::engine
+│   53 |             part engine : FourCylinderEngine {
+│      |                  ^^^^^^
+└── iteration_01.sysml:47:14: note: Inherited from here
+    └── iteration_01.sysml:52:24: note: Because AutomotiveConfiguration::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:54:22: warning (namespace-distinguishability): Member name 'engine' shadows AutomotiveConfiguration::FourCylinderEngine::engine
+│   54 |                 part engine : Engine {
+│      |                      ^^^^^^
+└── iteration_01.sysml:23:14: note: Inherited from here
+    └── iteration_01.sysml:53:27: note: Because AutomotiveConfiguration::FourCylinderEngine is specialized through FeatureTyping
+iteration_01.sysml:55:26: warning (namespace-distinguishability): Member name 'cylinders' shadows AutomotiveConfiguration::Engine::cylinders
+│   55 |                     part cylinders[4] : Cylinder;
+│      |                          ^^^^^^^^^
+└── iteration_01.sysml:19:14: note: Inherited from here
+    └── iteration_01.sysml:54:31: note: Because AutomotiveConfiguration::Engine is specialized through FeatureTyping
+iteration_01.sysml:58:18: warning (namespace-distinguishability): Member name 'transmission' shadows AutomotiveConfiguration::Vehicle::transmission
+│   58 |             part transmission : ManualTransmission;
+│      |                  ^^^^^^^^^^^^
+└── iteration_01.sysml:48:14: note: Inherited from here
+    └── iteration_01.sysml:52:24: note: Because AutomotiveConfiguration::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:64:18: warning (namespace-distinguishability): Member name 'engine' shadows AutomotiveConfiguration::Vehicle::engine
+│   64 |             part engine : SixCylinderEngine {
+│      |                  ^^^^^^
+└── iteration_01.sysml:47:14: note: Inherited from here
+    └── iteration_01.sysml:63:24: note: Because AutomotiveConfiguration::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:65:22: warning (namespace-distinguishability): Member name 'engine' shadows AutomotiveConfiguration::SixCylinderEngine::engine
+│   65 |                 part engine : Engine {
+│      |                      ^^^^^^
+└── iteration_01.sysml:29:14: note: Inherited from here
+    └── iteration_01.sysml:64:27: note: Because AutomotiveConfiguration::SixCylinderEngine is specialized through FeatureTyping
+iteration_01.sysml:66:26: warning (namespace-distinguishability): Member name 'cylinders' shadows AutomotiveConfiguration::Engine::cylinders
+│   66 |                     part cylin
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

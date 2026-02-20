@@ -1,0 +1,16 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is primarily designed for configuration management of the vehicle product line and aims to support the diverse requirements for engine and transmission combinations. Vehicles can be equipped with different types of engines, including four-cylinder and six-cylinder engines; the four-cylinder engine has 4 cylinders, while the six-cylinder engine has 6 cylinders. For each cylinder, the diameter can be selected as either small (70 mm) or large (100 mm). Vehicles can also choose between manual and automatic transmissions, but there are strict combination constraints: manual transmissions are only allowed when a four-cylinder engine is selected, and six-cylinder engines can only be paired with automatic transmissions; no other combinations are permitted. The system needs to flexibly support the creation of these variants while ensuring that each vehicle satisfies the above combination rules to guarantee the correctness and rationality of the product structure.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+Return only the updated SysMLv2 model.

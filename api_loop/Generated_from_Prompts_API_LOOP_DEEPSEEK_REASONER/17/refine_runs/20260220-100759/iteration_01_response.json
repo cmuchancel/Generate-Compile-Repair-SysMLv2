@@ -1,0 +1,42 @@
+{
+  "id": "1f8588c8-1262-45fa-ac2d-69c180ddf099",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleFuelSystem {\n    private import ScalarValues::*;\n\n    item def Fuel {\n        attribute temperature : Real;\n    }\n\n    port def FuelInterface {\n        attribute currentTemperature : Real;\n    }\n\n    part def FuelTankAssembly {\n        port supply : FuelInterface;\n        port return : FuelInterface;\n    }\n\n    part def Engine {\n        port fuelSupply : FuelInterface;\n        port fuelReturn : FuelInterface;\n    }\n\n    part def FuelSystem {\n        part tank : FuelTankAssembly;\n        part engine : Engine;\n\n        connect tank.supply to engine.fuelSupply;\n        connect engine.fuelReturn to tank.return;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning_content": "We are generating a SysML v2 model for a vehicle fuel system management.\n The system has two core components: Fuel Tank Assembly and Engine.\n Fuel flows from the tank to the engine (supply) and can be returned from engine to tank.\n Each fuel interface should provide current temperature information.\n We are to use a conservative subset: package, private import ScalarValues::*, enum def, part def, part, attribute, port def, port, item def, and connect.\n\n Steps:\n 1. We'll create a package for the fuel system.\n 2. We'll use private import ScalarValues::* for basic types (like Real).\n 3. We'll define an item def for Fuel, which might have attributes like temperature.\n 4. We'll define port defs for the fuel interfaces (supply and return) that can provide temperature information.\n 5. We'll define part defs for the Fuel Tank Assembly and the Engine, each with appropriate ports.\n 6. We'll define a part for the overall system that contains instances of the tank and engine and connects them.\n\n However, note the requirement: \"Each fuel interface should provide the current temperature information of the fuel\".\n We can model this by having a port that can transmit fuel and also provide temperature. But note that in SysML, we might model the temperature as an attribute of the fuel item.\n\n Let's break down:\n\n - We can have an item definition for Fuel, which has an attribute for temperature.\n - We can define two port definitions: one for fuel supply and one for fuel return. But note that the requirement says each fuel interface should provide temperature. We might model the same port definition for both supply and return, but they are opposite in direction.\n\n Alternatively, we can define a port definition that is for fuel flow, and then in the connections, we specify the direction.\n\n Since the requirement is for monitoring and regulation, we might also want to have a port that provides temperature information. But note that the requirement says \"Each fuel interface should provide the current temperature information\", meaning that when fuel is flowing through that interface, we know its temperature.\n\n We can model this by having the fuel item carry the temperature. Then, any port that transmits fuel will have the temperature as part of the item.\n\n However, note that the requirement says \"provide the current temperature information\", which might be interpreted as an interface that can be queried for temperature. But in the context of the fuel flow, it might be more straightforward to have the fuel item have a temperature attribute.\n\n Let's design:\n\n 1. Define an item definition for Fuel:\n    - It has a temperature attribute.\n\n 2. Define a port definition for fuel flow. This port will be used to transmit the Fuel item. We can call it `FuelFlowPort`. We don't need to define anything else in the port definition because the item carries the data.\n\n 3. The Fuel Tank Assembly and Engine will have ports of type `FuelFlowPort` for supply and return.\n\n 4. We'll have two connections: one for supply (from tank to engine) and one for return (from engine to tank).\n\n But note: the requirement says \"Each fuel interface should provide the current temperature information\". This might be satisfied by having the fuel item carry the temperature.\n\n However, note that the requirement might also imply that the port itself has a way to provide temperature, but that would be redundant if the fuel item already has it. Alternatively, we might have a separate port for temperature sensor, but the requirement says \"each fuel interface\", meaning the same interface that handles fuel flow.\n\n Given the simplicity of the requirement and the fact that we are using a conservative subset, we'll model the fuel item with temperature.\n\n Let's create:\n\n - A package named \"VehicleFuelSystem\"\n - Import ScalarValues::* for Real type.\n\n Steps in code:\n\n 1. Define the package and import.\n 2. Define the item definition for Fuel with a temperature attribute.\n 3. Define a port definition for FuelFlowPort that transmits the Fuel item.\n 4. Define part definitions for FuelTankAssembly and Engine, each with two ports: one for supply and one for return? Actually, note that the fuel tank has a supply port to send fuel and a return port to receive fuel. Similarly, the engine has a supply port to receive fuel and a return port to send fuel back.\n\n We can model:\n\n FuelTankAssembly:\n   - supplyPort: a port that sends out fuel (output)\n   - returnPort: a port that receives fuel (input)\n\n Engine:\n   - supplyPort: a port that receives fuel (input)\n   - returnPort: a port that sends back fuel (output)\n\n Then, we connect:\n   FuelTankAssembly.supplyPort to Engine.supplyPort (supply line)\n   Engine.returnPort to FuelTankAssembly.returnPort (return line)\n\n However, note that the same port definition `FuelFlowPort` can be used for both input and output? In SysML, a port definition can be for an interface that is either provided or required. But we are using a conservative subset and we are not specifying direction in the port definition. Instead, we will rely on the connection to show the direction of flow.\n\n Alternatively, we can define two port definitions: `FuelSupplyPort` and `FuelReturnPort`, but that might be overkill and we are told to keep minimal.\n\n Let's stick with one port definition `FuelFlowPort` and then in the parts, we can have ports of that type and then connect them appropriately.\n\n However, note that the item flow in the connection will show the direction. We can use `connect` without specifying direction and then the item flow will be from the source to the target.\n\n In the system, we have:\n\n   FuelTankAssembly.supplyPort --(fuel supply)--> Engine.supplyPort\n   Engine.returnPort --(fuel return)--> FuelTankAssembly.returnPort\n\n We can model the system as a part that contains the tank and engine and makes these connections.\n\n Let's write the code accordingly.\n\n We'll also need to define the part for the overall system.\n\n Let's code accordingly.\n\n Note: We are to avoid constructs that fail validation, so we stick to the allowed ones.\n\n Let's write the SysMLv2 text."
+      }
+    }
+  ],
+  "created": 1771600079,
+  "model": "deepseek-reasoner",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache",
+  "usage": {
+    "completion_tokens": 1441,
+    "prompt_tokens": 362,
+    "total_tokens": 1803,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 1299,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 320
+    },
+    "prompt_cache_hit_tokens": 320,
+    "prompt_cache_miss_tokens": 42
+  }
+}

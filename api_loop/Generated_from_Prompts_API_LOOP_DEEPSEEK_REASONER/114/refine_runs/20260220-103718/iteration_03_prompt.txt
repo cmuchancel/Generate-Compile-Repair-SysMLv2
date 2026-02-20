@@ -1,0 +1,63 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed for spatiotemporal simulation of the dynamic behavior of vehicles on roads at different moments. Users can define parameters such as the vehicle’s mass, position, velocity, and acceleration, and, combined with the road’s slope (angle) and surface friction coefficient, depict the state of the vehicle and the road at specific time points. The system supports snapshot recording at multiple moments within the simulation time series, enabling tracking of the vehicle’s state transitions from start-up (on state), through the driving process, to shutdown (off state). This provides detailed data to support vehicle dynamics analysis and road adaptability assessment, helping users predict vehicle performance under specific road and time conditions in a virtual environment.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 2):
+                package VehicleRoadSimulation {
+    private import ScalarValues::*;
+
+    enum def VehicleState {
+        enum on;
+        enum driving;
+        enum off;
+    }
+
+    part def Vehicle {
+        attribute mass : Real;
+        attribute position : Real;
+        attribute velocity : Real;
+        attribute acceleration : Real;
+        attribute state : VehicleState;
+    }
+
+    part def Road {
+        attribute slope : Real;
+        attribute frictionCoefficient : Real;
+    }
+
+    item def Snapshot {
+        attribute time : Real;
+        attribute vehicleState : VehicleState;
+        attribute vehiclePosition : Real;
+        attribute vehicleVelocity : Real;
+        attribute vehicleAcceleration : Real;
+        attribute roadSlope : Real;
+        attribute roadFriction : Real;
+    }
+
+    part def SimulationSystem {
+        part mainVehicle : Vehicle;
+        part currentRoad : Road;
+        attribute recordedSnapshots : Snapshot[*];
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_02.sysml:15:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+15 |         attribute state : VehicleState;
+   |                   ^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

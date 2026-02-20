@@ -1,0 +1,84 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system involves the definition of vehicles, including basic vehicles, engines, and the configuration of engine cylinders. In standard vehicles, each engine contains 4 to 6 cylinders. For small vehicles, the engine is required to contain only 4 cylinders; for large vehicles, the engine needs to be equipped with 6 cylinders. The system should automatically select and configure the appropriate number of engine cylinders according to the vehicle size to meet the practical application requirements of different types of vehicles.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleSystem {
+    private import ScalarValues::*;
+
+    enum def VehicleSize {
+        Small,
+        Standard,
+        Large
+    }
+
+    part def Engine {
+        attribute cylinders : Integer[4..6];
+    }
+
+    part def Vehicle {
+        attribute size : VehicleSize;
+        part engine : Engine;
+    }
+
+    part def SmallVehicle :> Vehicle {
+        attribute size = VehicleSize::Small;
+        part engine : Engine {
+            attribute cylinders = 4;
+        }
+    }
+
+    part def StandardVehicle :> Vehicle {
+        attribute size = VehicleSize::Standard;
+    }
+
+    part def LargeVehicle :> Vehicle {
+        attribute size = VehicleSize::Large;
+        part engine : Engine {
+            attribute cylinders = 6;
+        }
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:7:9: error (parsing-error): Unexpected identifier, expected one of ["end", "NAME", ";", "{", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "for", "import", "all", "*", "[", "abstract", "in", "inout", "out", "derived", "end", "ordered", "nonunique", "if", "+", "-", "<", "~", "not", "hastype", "istype", "@", "as", "#", "(", "null", "metadata", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "standard", "library", "package", "filter", "variation", "variant", "constant", "ref", "attribute", "enum", "occurrence", "individual", "timeslice", "snapshot", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "interface", "allocation", "allocate", "action", "perform", "merge", "decide", "join", "fork", "accept", "send", "assign", "terminate", "while", "loop", "state", "entry", "do", "exit", "exhibit", "transition", "calc", "return", "constraint", "assert", "requirement", "subject", "assume", "require", "frame", "concern", "actor", "stakeholder", "satisfy", "case", "objective", "analysis", "verification", "verify", "use", "include", "view", "render", "rendering", "expose", "viewpoint"].
+    7 |         Large
+      |         ^^^^^
+iteration_01.sysml:8:5: error (parsing-error): Unexpected '}', expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    8 |     }
+      |     ^
+iteration_01.sysml:8:5: error (parsing-error): Unexpected '}', expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    8 |     }
+      |     ^
+iteration_01.sysml:20:19: warning (namespace-distinguishability): Member name 'size' shadows VehicleSystem::Vehicle::size
+│   20 |         attribute size = VehicleSize::Small;
+│      |                   ^^^^
+└── iteration_01.sysml:15:19: note: Inherited from here
+    └── iteration_01.sysml:19:30: note: Because VehicleSystem::Vehicle is specialized through Subclassification
+iteration_01.sysml:21:14: warning (namespace-distinguishability): Member name 'engine' shadows VehicleSystem::Vehicle::engine
+│   21 |         part engine : Engine {
+│      |              ^^^^^^
+└── iteration_01.sysml:16:14: note: Inherited from here
+    └── iteration_01.sysml:19:30: note: Because VehicleSystem::Vehicle is specialized through Subclassification
+iteration_01.sysml:22:23: warning (namespace-distinguishability): Member name 'cylinders' shadows VehicleSystem::Engine::cylinders
+│   22 |             attribute cylinders = 4;
+│      |                       ^^^^^^^^^
+└── iteration_01.sysml:11:19: note: Inherited from here
+    └── iteration_01.sysml:21:23: note: Because VehicleSystem::Engine is specialized through FeatureTyping
+iteration_01.sysml:27:19: warnin
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

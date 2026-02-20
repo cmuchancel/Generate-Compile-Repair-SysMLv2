@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:13:58.670341Z",
+    "iteration_end": "2026-02-20T15:14:39.516570Z",
+    "iteration_duration_seconds": 40.84629779100942,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/35/20260220-101358/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/35/20260220-101358/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/35/20260220-101358/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:13:32: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'in', expected one of [\"NAME\", \";\", \"{\", \"from\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \"~\", \"not\", \"#\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"by\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"of\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"accept\", \"via\", \"at\", \"after\", \"when\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"parallel\", \"do\", \"exhibit\", \"calc\", \"constraint\", \"assert\", \"requirement\", \"concern\", \"satisfy\", \"case\", \"analysis\", \"verification\", \"use\", \"include\", \"view\", \"rendering\", \"viewpoint\"].\n    13 |         port inControlSignal : in VehicleControlSignal;\n       |                                \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:20:35: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, did you mean 'in'?\n    20 |     port def VehicleControlSignal in;\n       |                                   \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:23:33: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"NAME\", \";\", \"{\", \"from\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \"~\", \"not\", \"#\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"by\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"of\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"accept\", \"via\", \"at\", \"after\", \"when\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"parallel\", \"do\", \"exhibit\", \"calc\", \"constraint\", \"assert\", \"requirement\", \"concern\", \"satisfy\", \"case\", \"analysis\", \"verification\", \"use\", \"include\", \"view\", \"rendering\", \"viewpoint\"].\n    23 |         port outControlSignal : out VehicleControlSignal;\n       |                                 \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:20:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'VehicleControlSignal' shadows VehicleStateManager::VehicleControlSignal\n\u2502   20 |     port def VehicleControlSignal in;\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:16:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 366,
+      "output_tokens": 2012,
+      "total_tokens": 2378
+    },
+    "tokens_used_total": 2378,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:14:39.516622Z",
+    "iteration_end": "2026-02-20T15:15:35.958035Z",
+    "iteration_duration_seconds": 56.44153454199841,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/35/20260220-101358/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/35/20260220-101358/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/35/20260220-101358/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1295,
+      "output_tokens": 2797,
+      "total_tokens": 4092
+    },
+    "tokens_used_total": 6470,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

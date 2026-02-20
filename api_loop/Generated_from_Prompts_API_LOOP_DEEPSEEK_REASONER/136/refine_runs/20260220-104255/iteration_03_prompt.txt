@@ -1,0 +1,56 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system needs to establish a specification model for automotive components, capable of describing relevant attribute information for car tires. Each tire should include parameters such as the manufacturer name, rim diameter, and width. The rim diameter should be represented as a real number indicating the length, the manufacturer should be identified by a string, and the width should be an integer value. Additionally, the system should be able to instantiate and distinguish tires of different brands and specifications. For example, it should be able to generate a tire data instance with the manufacturer as Michelin, a rim diameter of 18.0, and a width of 245 as a French tire. This will provide clear and structured fundamental data support for the selection, configuration, and management of vehicle components.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 2):
+                package AutomotiveComponents {
+    private import ScalarValues::*;
+
+    part def Tire {
+        attribute manufacturer : String;
+        attribute rimDiameter : Real;
+        attribute width : Integer;
+    }
+
+    part def FrenchTire : Tire {
+        attribute manufacturer = "Michelin";
+        attribute rimDiameter = 18.0;
+        attribute width = 245;
+    }
+
+    part exampleFrenchTire : FrenchTire;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_02.sysml:10:25: error (parsing-error): Expected a token. Did you forget ';'?
+    10 |     part def FrenchTire : Tire {
+iteration_02.sysml:11:19: warning (namespace-distinguishability): Member name 'manufacturer' shadows AutomotiveComponents::Tire::manufacturer
+│   11 |         attribute manufacturer = "Michelin";
+│      |                   ^^^^^^^^^^^^
+└── iteration_02.sysml:5:19: note: Inherited from here
+    └── iteration_02.sysml:10:27: note: Because AutomotiveComponents::Tire is specialized through FeatureTyping
+iteration_02.sysml:12:19: warning (namespace-distinguishability): Member name 'rimDiameter' shadows AutomotiveComponents::Tire::rimDiameter
+│   12 |         attribute rimDiameter = 18.0;
+│      |                   ^^^^^^^^^^^
+└── iteration_02.sysml:6:19: note: Inherited from here
+    └── iteration_02.sysml:10:27: note: Because AutomotiveComponents::Tire is specialized through FeatureTyping
+iteration_02.sysml:13:19: warning (namespace-distinguishability): Member name 'width' shadows AutomotiveComponents::Tire::width
+│   13 |         attribute width = 245;
+│      |                   ^^^^^
+└── iteration_02.sysml:7:19: note: Inherited from here
+    └── iteration_02.sysml:10:27: note: Because AutomotiveComponents::Tire is specialized through FeatureTyping
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

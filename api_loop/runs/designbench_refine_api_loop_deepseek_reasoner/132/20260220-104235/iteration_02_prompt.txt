@@ -1,0 +1,85 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system is required to classify and label each component to meet information security management requirements. Every component must be clearly assigned a security classification level, such as "Unclassified," "Confidential," or "Secret." When a component is marked as "Confidential," the system should be able to recognize and display its corresponding classification attribute, thereby enabling effective differentiation and protection of sensitive information during system operation and document management.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package SecurityManagement {
+
+    private import ScalarValues::*;
+
+    enum def SecurityLevel {
+        enum Unclassified;
+        enum Confidential;
+        enum Secret;
+    }
+
+    part def Component {
+        attribute securityClassification : SecurityLevel;
+    }
+
+    part def System {
+        attribute component1 : Component;
+        attribute component2 : Component;
+        attribute component3 : Component;
+    }
+
+    part exampleSystem : System {
+        attribute component1 : Component = Component {
+            securityClassification = SecurityLevel::Confidential
+        };
+        attribute component2 : Component = Component {
+            securityClassification = SecurityLevel::Unclassified
+        };
+        attribute component3 : Component = Component {
+            securityClassification = SecurityLevel::Secret
+        };
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:24:9: error (parsing-error): Unexpected '}', expected one of [";", "{", "}", "dependency", "from", ",", "to", "about", "::", "**", "*", "[", "]", ".", "if", "?", "else", "??", "implies", "or", "and", "+", "-", "|", "&", "xor", "==", "!=", "===", "!==", "<", ">", "<=", ">=", "..", "/", "%", "^", "hastype", "istype", "@", "as", "@@", "meta", "#", "(", ")", ".?", "->", "=", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "by", "package", "attribute", "enum", "then", "connect", "binding", "bind", "succession", "first", "of", "action", "merge", "decide", "join", "fork", "via", "parallel", "do"].
+    24 |         };
+       |         ^
+iteration_01.sysml:27:9: error (parsing-error): Unexpected '}', expected one of [";", "{", "}", "dependency", "from", ",", "to", "about", "::", "**", "*", "[", "]", ".", "if", "?", "else", "??", "implies", "or", "and", "+", "-", "|", "&", "xor", "==", "!=", "===", "!==", "<", ">", "<=", ">=", "..", "/", "%", "^", "hastype", "istype", "@", "as", "@@", "meta", "#", "(", ")", ".?", "->", "=", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "by", "package", "attribute", "enum", "then", "connect", "binding", "bind", "succession", "first", "of", "action", "merge", "decide", "join", "fork", "via", "parallel", "do"].
+    27 |         };
+       |         ^
+iteration_01.sysml:30:9: error (parsing-error): Unexpected '}', expected one of [";", "{", "}", "dependency", "from", ",", "to", "about", "::", "**", "*", "[", "]", ".", "if", "?", "else", "??", "implies", "or", "and", "+", "-", "|", "&", "xor", "==", "!=", "===", "!==", "<", ">", "<=", ">=", "..", "/", "%", "^", "hastype", "istype", "@", "as", "@@", "meta", "#", "(", ")", ".?", "->", "=", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "by", "package", "attribute", "enum", "then", "connect", "binding", "bind", "succession", "first", "of", "action", "merge", "decide", "join", "fork", "via", "parallel", "do"].
+    30 |         };
+       |         ^
+iteration_01.sysml:32:2: error (parsing-error): Expected a token. Did you forget '}'? (no source underlining available since segment is out of bounds)
+iteration_01.sysml:32:2: error (parsing-error): Expected a token. Did you forget '}'? (no source underlining available since segment is out of bounds)
+iteration_01.sysml:32:2: error (parsing-error): Expected a token. Did you forget '}'? (no source underlining available since segment is out of bounds)
+iteration_01.sysml:22:19: warning (namespace-distinguishability): Member name 'component1' shadows SecurityManagement::System::component1
+│   22 |         attribute component1 : Component = Component {
+│      |                   ^^^^^^^^^^
+└── iteration_01.sysml:16:19: note: Inherited from here
+    └── iteration_01.sysml:21:26: note: Because SecurityManagement::System is specialized through FeatureTyping
+iteration_01.sysml:22:44: error (feature-reference-expression-referent-is-feature): Referent must be a feature but is PartDefinition
+    22 |         attribute component1 : Component = Component {
+       |                                            ^^^^^^^^^
+iteration_01.sysml:23:13: warning (namespace-distinguishability): Member name 'securityClassification' shadows SecurityManagement::Component::securityClassification
+│   23 |             securityClassification = SecurityLevel::Confidential
+│      |             ^^^^^^^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:12:19: note: Inherited from here
+    └── iteration_01.sysml:22:32: note: Because SecurityManagement::Component is specialized through FeatureTyping
+iteration_01.sysml:25:44: error (feature-reference-expression-referent-is-feature): Referent must be a feature but is PartDefinition
+    25 |         attribute component2 : Component = Component {
+       |                                            ^^^^^^^^^
+iteration_01.sysml:26:13: warning (namespace-distinguishability): Member name 'securityClassification' shadows SecurityManagement::Component::securityClassification
+│   26 |             securityClassification = SecurityLevel::Unc
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

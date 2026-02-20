@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:15:04.716284Z",
+    "iteration_end": "2026-02-20T15:15:57.911845Z",
+    "iteration_duration_seconds": 53.19566329200461,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/41/20260220-101504/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/41/20260220-101504/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/41/20260220-101504/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:7:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"end\", \"NAME\", \";\", \"{\", \"}\", \"dependency\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"alias\", \"for\", \"import\", \"all\", \"*\", \"[\", \"abstract\", \"in\", \"inout\", \"out\", \"derived\", \"end\", \"ordered\", \"nonunique\", \"if\", \"+\", \"-\", \"<\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \"(\", \"null\", \"metadata\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"standard\", \"library\", \"package\", \"filter\", \"variation\", \"variant\", \"constant\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"individual\", \"timeslice\", \"snapshot\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"merge\", \"decide\", \"join\", \"fork\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"entry\", \"do\", \"exit\", \"exhibit\", \"transition\", \"calc\", \"return\", \"constraint\", \"assert\", \"requirement\", \"subject\", \"assume\", \"require\", \"frame\", \"concern\", \"actor\", \"stakeholder\", \"satisfy\", \"case\", \"objective\", \"analysis\", \"verification\", \"verify\", \"use\", \"include\", \"view\", \"render\", \"rendering\", \"expose\", \"viewpoint\"].\n    7 |         response\n      |         \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:8:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    8 |     }\n      |     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:8:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    8 |     }\n      |     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:24:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    24 |         attribute state : StateKind = StateKind::off;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:27:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'localClock' shadows Occurrences::Occurrence::localClock\n\u2502   27 |         part localClock : Clock;\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Kernel Libraries/Kernel Semantic Library/Occurrences.kerml:52:11: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u251c\u2500\u2500 /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Kernel Libraries/Kernel Semantic Library/Objects.kerml:24:37: \u001b[38;2;255;255;255mnote\u001b[0m: Because Occurrences::Occurrence is specialized through Subclassification\n    \u251c\u2500\u2500 /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Systems Library/Items.sysml:24:28: \u001b[38;2;255;255;255mnote\u001b[0m: Because Objects::Object is specialized through Subclassification\n    \u251c\u2500\u2500 /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Systems Library/Parts.sysml:19:28: \u001b[38;2;255;255;255mnote\u001b[0m: Because Items::Item is specialized through Subclassification\n    \u2514\u2500\u2500 iteration_01.sysml:23:5: \u001b[38;2;255;255;255mnote\u001b[0m: Because Parts::Part is implicitly specialized through Subclassification\n\niteration_01.sysml:19:33: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Type element but found LibraryPackage (Time)\n    19 |         attribute currentTime : Time;\n       |                                 \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:20:34: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Type element but found LibraryPackage (Time)\n    20 |         attribute lastMidnight : Time;\n       |                                  \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:24:50: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'off' found.\n    24 |         attribute state : StateKind = StateKind::off;\n       |                                                  \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:25:35: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Type element but found LibraryPackage (Time)\n    25 |         attribute responseStart : Time;\n       |                                   \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 397,
+      "output_tokens": 2405,
+      "total_tokens": 2802
+    },
+    "tokens_used_total": 2802,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:15:57.911902Z",
+    "iteration_end": "2026-02-20T15:16:19.953925Z",
+    "iteration_duration_seconds": 22.042098541991436,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/41/20260220-101504/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/41/20260220-101504/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/41/20260220-101504/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:24:33: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Type element but found LibraryPackage (Time)\n    24 |         attribute currentTime : Time;\n       |                                 \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_02.sysml:25:34: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Type element but found LibraryPackage (Time)\n    25 |         attribute lastMidnight : Time;\n       |                                  \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_02.sysml:30:35: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Type element but found LibraryPackage (Time)\n    30 |         attribute responseStart : Time;\n       |                                   \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1840,
+      "output_tokens": 1003,
+      "total_tokens": 2843
+    },
+    "tokens_used_total": 5645,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:16:19.953987Z",
+    "iteration_end": "2026-02-20T15:16:46.377892Z",
+    "iteration_duration_seconds": 26.423982749998686,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/41/20260220-101504/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/41/20260220-101504/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/41/20260220-101504/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 721,
+      "output_tokens": 1252,
+      "total_tokens": 1973
+    },
+    "tokens_used_total": 7618,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

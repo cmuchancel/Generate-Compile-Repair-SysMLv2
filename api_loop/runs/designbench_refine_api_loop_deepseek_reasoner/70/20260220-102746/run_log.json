@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:27:46.499232Z",
+    "iteration_end": "2026-02-20T15:28:30.566210Z",
+    "iteration_duration_seconds": 44.0672830830008,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/70/20260220-102746/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/70/20260220-102746/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/70/20260220-102746/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:16:42: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    16 |         attribute emptyMass : Mass = 1500kg;\n       |                                          \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:17:48: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    17 |         attribute fullyFueledMass : Mass = 2000kg;\n       |                                                \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:16:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Mass' found.\n    16 |         attribute emptyMass : Mass = 1500kg;\n       |                               \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:17:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Mass' found.\n    17 |         attribute fullyFueledMass : Mass = 2000kg;\n       |                                     \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 356,
+      "output_tokens": 2194,
+      "total_tokens": 2550
+    },
+    "tokens_used_total": 2550,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:28:30.566256Z",
+    "iteration_end": "2026-02-20T15:29:19.829717Z",
+    "iteration_duration_seconds": 49.26382416600245,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/70/20260220-102746/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/70/20260220-102746/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/70/20260220-102746/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 698,
+      "output_tokens": 2503,
+      "total_tokens": 3201
+    },
+    "tokens_used_total": 5751,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

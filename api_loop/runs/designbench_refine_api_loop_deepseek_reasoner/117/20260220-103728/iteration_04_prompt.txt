@@ -1,0 +1,94 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to provide flexible solutions for vehicle product line configuration, capable of automatically matching suitable combinations of engines, transmissions, and wheels based on different performance requirements and user preferences. For example, when high performance is required, the system will configure a 6-cylinder engine, automatic transmission, and wide-rim wheels, ensuring compatibility among these components. For standard performance requirements, a combination of a 4-cylinder engine, manual transmission, and narrow-rim wheels is offered. The system enforces a series of configuration constraints to ensure that each configuration scheme meets vehicle performance and component compatibility requirements, preventing unreasonable combinations. Ultimately, it enables customized vehicles tailored to individual user needs. Additionally, the system supports the selection of multiple vehicle model variants, allowing enterprises to quickly respond to market demands and achieve flexible expansion and management of their product lines.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 3):
+                package VehicleProductLine {
+    private import ScalarValues::*;
+
+    enum def PerformanceRequirement {
+        enum standard;
+        enum high;
+    }
+
+    enum def EngineType {
+        enum I4;
+        enum V6;
+    }
+
+    enum def TransmissionType {
+        enum manual;
+        enum automatic;
+    }
+
+    enum def WheelType {
+        enum narrowRim;
+        enum wideRim;
+    }
+
+    part def Engine {
+        attribute type : EngineType;
+    }
+
+    part def Transmission {
+        attribute type : TransmissionType;
+    }
+
+    part def Wheel {
+        attribute type : WheelType;
+    }
+
+    part def VehicleConfiguration {
+        attribute requirement : PerformanceRequirement;
+
+        part engine : Engine;
+        part transmission : Transmission;
+        part wheels : Wheel[4];
+
+        port def performancePort;
+        port performancePort : performancePort;
+    }
+
+    part def ProductLineSystem {
+        part config : VehicleConfiguration;
+
+        port def systemPort;
+        port systemPort : systemPort;
+
+        connect config.performancePort to systemPort;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_03.sysml:5:14: error (parsing-error): Unexpected 'standard', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "=", ":=", "default", ";", "{", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    5 |         enum standard;
+      |              ^^^^^^^^
+iteration_03.sysml:37:9: error (parsing-error): Unexpected 'attribute', expected one of ["NAME", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "import", "[", "abstract", "in", "inout", "out", "derived", "end", "ordered", "nonunique", "<", "not", "@", "#", "metadata", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "standard", "library", "package", "variation", "variant", "constant", "ref", "attribute", "enum", "occurrence", "individual", "timeslice", "snapshot", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "interface", "allocation", "allocate", "action", "perform", "state", "exhibit", "calc", "constraint", "assert", "requirement", "concern", "satisfy", "case", "analysis", "verification", "use", "include", "view", "rendering", "viewpoint", "Dependency", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "Membership", "MembershipImport", "NamespaceImport", "FeatureDirectionKind", "OwningMembership", "MultiplicityRange", "Annotation", "OwningMembership", "Package", "LibraryPackage", "OwningMembership", "VariantMembership", "FeatureMembership", "FeatureMembership", "ReferenceUsage", "ReferenceUsage", "AttributeDefinition", "AttributeUsage", "EnumerationDefinition", "EnumerationUsage", "OccurrenceDefinition", "OccurrenceDefinition", "OccurrenceUsage", "OccurrenceUsage", "OccurrenceUsage", "PortionKind", "EventOccurrenceUsage", "FeatureMembership", "SuccessionAsUsage", "ItemDefinition", "ItemUsage", "PartDefinition", "PartUsage", "PortDefinition", "PortUsage", "ConnectionDefinition", "ConnectionUsage", "BindingConnectorAsUsage", "SuccessionAsUsage", "FlowDefinition", "FlowUsage", "FlowUsage", "SuccessionFlowUsage", "InterfaceDefinition", "InterfaceUsage", "AllocationDefinition", "AllocationUsage", "ActionDefinition", "ActionUsage", "PerformActionUsage", "StateDefinition", "StateUsage", "ExhibitStateUsage", "CalculationDefinition", "CalculationUsage", "ConstraintDefinition", "ConstraintUsage", "AssertConstraintUsage", "RequirementDefinition", "RequirementUsage", "SatisfyRequirementUsage", "ConcernDefinition", "ConcernUsage", "CaseDefinition", "CaseUsage", "AnalysisCaseDefinition", "AnalysisCaseUsage", "VerificationCaseDefinition", "VerificationCaseUsage", "UseCaseDefinition", "UseCaseUsage", "IncludeUseCaseUsage", "ViewDefinition", "ViewUsage", "ViewpointDefinition", "ViewpointUsage", "RenderingDefinition", "RenderingUsage", "MetadataDefinition", "MetadataUsage", "MetadataUsage", "Definition", "Usage", "Dependency_repeat1"].
+    37 |         attribute requirement : PerformanceRequirement;
+       |         ^^^^^^^^^
+iteration_03.sysml:44:14: warning (namespace-distinguishability): Member name 'performancePort' shadows VehicleProductLine::VehicleConfiguration::performancePort
+│   44 |         port performancePort : performancePort;
+│      |              ^^^^^^^^^^^^^^^
+└── iteration_03.sysml:43:18: note: First declared here
+iteration_03.sysml:51:14: warning (namespace-distinguishability): Member name 'systemPort' shadows VehicleProductLine::ProductLineSystem::systemPort
+│   51 |         port systemPort : systemPort;
+│      |              ^^^^^^^^^^
+└── iteration_03.sysml:50:18: note: First declared here
+iteration_03.sysml:53:24: error (reference-error): Expected Feature element but found PortDefinition (VehicleProductLine::VehicleConfiguration::performancePort)
+    53 |
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

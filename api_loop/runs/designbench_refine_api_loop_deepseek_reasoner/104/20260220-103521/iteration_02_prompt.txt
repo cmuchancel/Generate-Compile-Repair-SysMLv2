@@ -1,0 +1,92 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to implement the functional architecture of an automotive powertrain, including the input of fuel commands, engine start-stop control, and support for power transmission and distribution. Users can control the system’s power output through fuel commands. Once the engine is ignited and started, the system generates engine torque according to the fuel command. The torque is then sequentially amplified from the engine to the transmission, transmitted to the driveshaft, and finally distributed to the left and right wheels, thus enabling control of the vehicle’s driving force. Additionally, users can shut down the engine via a command, triggering the cessation of the system’s powertrain. During engine shutdown, generation and transmission of driving force will likewise be suspended, ensuring safe and intelligent operation of the system.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package PowertrainSystem {
+    private import ScalarValues::*;
+
+    item def Torque {
+        attribute value : Real;
+    }
+
+    enum def EngineState {
+        enum STOPPED;
+        enum STARTED;
+    }
+
+    port def TorquePort {
+        attribute torque : Torque;
+    }
+
+    port def ControlPort {
+        attribute command : Real;
+    }
+
+    port def SwitchPort {
+        attribute state : EngineState;
+    }
+
+    part def Engine {
+        port fuelIn : ControlPort;
+        port switchIn : SwitchPort;
+        port torqueOut : TorquePort;
+        attribute state : EngineState = EngineState::STOPPED;
+        attribute torque : Torque;
+    }
+
+    part def Transmission {
+        port torqueIn : TorquePort;
+        port torqueOut : TorquePort;
+        attribute ratio : Real = 1.0;
+        attribute torque : Torque;
+    }
+
+    part def DriveShaft {
+        port torqueIn : TorquePort;
+        port leftOut : TorquePort;
+        port rightOut : TorquePort;
+        attribute torque : Torque;
+    }
+
+    part def Wheel {
+        port torqueIn : TorquePort;
+        attribute torque : Torque;
+    }
+
+    part def Powertrain {
+        part engine : Engine;
+        part transmission : Transmission;
+        part driveshaft : DriveShaft;
+        part leftWheel : Wheel;
+        part rightWheel : Wheel;
+
+        connect engine.torqueOut to transmission.torqueIn;
+        connect transmission.torqueOut to driveshaft.torqueIn;
+        connect driveshaft.leftOut to leftWheel.torqueIn;
+        connect driveshaft.rightOut to rightWheel.torqueIn;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:22:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    22 |         attribute state : EngineState;
+       |                   ^^^^^
+iteration_01.sysml:29:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    29 |         attribute state : EngineState = EngineState::STOPPED;
+       |                   ^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

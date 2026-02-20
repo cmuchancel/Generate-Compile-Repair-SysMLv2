@@ -1,0 +1,67 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to automate the photography process. Users only need to provide a shooting scene, and the system will first perform focus processing on the scene to generate an image suitable for shooting. It will then convert the image into a photograph through a shooting operation. The entire process is seamlessly integrated, requiring no in-depth user intervention in focusing or shooting details. This simplifies the photography workflow, helping users obtain the final photograph easily and efficiently.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 2):
+                package AutomatedPhotographySystem {
+    private import ScalarValues::*;
+
+    item def ShootingScene;
+
+    item def ProcessedImage;
+
+    item def Photograph;
+
+    part def FocusProcessor {
+        port sceneInput : in ShootingScene;
+        port imageOutput : out ProcessedImage;
+    }
+
+    part def Shooter {
+        port imageInput : in ProcessedImage;
+        port photoOutput : out Photograph;
+    }
+
+    part def AutomatedPhotographySystem {
+        part focusProcessor : FocusProcessor;
+        part shooter : Shooter;
+
+        port systemInput : in ShootingScene;
+        port systemOutput : out Photograph;
+
+        connect systemInput to focusProcessor.sceneInput;
+        connect focusProcessor.imageOutput to shooter.imageInput;
+        connect shooter.photoOutput to systemOutput;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_02.sysml:11:27: error (parsing-error): Unexpected 'in', expected one of ["NAME", ";", "{", "from", "for", "[", "ordered", "nonunique", "if", "~", "not", "#", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "by", "ref", "attribute", "enum", "occurrence", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "of", "interface", "allocation", "allocate", "action", "perform", "accept", "via", "at", "after", "when", "send", "assign", "terminate", "while", "loop", "state", "parallel", "do", "exhibit", "calc", "constraint", "assert", "requirement", "concern", "satisfy", "case", "analysis", "verification", "use", "include", "view", "rendering", "viewpoint"].
+    11 |         port sceneInput : in ShootingScene;
+       |                           ^^
+iteration_02.sysml:12:28: error (parsing-error): Unexpected 'out', expected one of ["NAME", ";", "{", "from", "for", "[", "ordered", "nonunique", "if", "~", "not", "#", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "by", "ref", "attribute", "enum", "occurrence", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "of", "interface", "allocation", "allocate", "action", "perform", "accept", "via", "at", "after", "when", "send", "assign", "terminate", "while", "loop", "state", "parallel", "do", "exhibit", "calc", "constraint", "assert", "requirement", "concern", "satisfy", "case", "analysis", "verification", "use", "include", "view", "rendering", "viewpoint"].
+    12 |         port imageOutput : out ProcessedImage;
+       |                            ^^^
+iteration_02.sysml:16:27: error (parsing-error): Unexpected 'in', expected one of ["NAME", ";", "{", "from", "for", "[", "ordered", "nonunique", "if", "~", "not", "#", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "by", "ref", "attribute", "enum", "occurrence", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "of", "interface", "allocation", "allocate", "action", "perform", "accept", "via", "at", "after", "when", "send", "assign", "terminate", "while", "loop", "state", "parallel", "do", "exhibit", "calc", "constraint", "assert", "requirement", "concern", "satisfy", "case", "analysis", "verification", "use", "include", "view", "rendering", "viewpoint"].
+    16 |         port imageInput : in ProcessedImage;
+       |                           ^^
+iteration_02.sysml:17:28: error (parsing-error): Unexpected 'out', expected one of ["NAME", ";", "{", "from", "for", "[", "ordered", "nonunique", "if", "~", "not", "#", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "by", "ref", "attribute", "enum", "occurrence", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "of", "interface", "allocation", "allocate", "action", "perform", "accept", "via", "at", "after", "when", "send", "assign", "terminate", "while", "loop", "state", "parallel", "do", "exhibit", "calc", "constraint", "assert", "requirement", "concern", "satisfy", "case", "analysis", "verification", "use", "include", "view", "rendering", "viewpoint"].
+    17 |         port photoOutput : out Photograph;
+       |                            ^^^
+iteration_02.sysml:24:28: error (parsing-error): Unexpected 'in', expected one of ["NAME", ";", "{", "from", "for", "[", "ordered", "nonunique", "if", "~", "not", "#", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", ":>
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

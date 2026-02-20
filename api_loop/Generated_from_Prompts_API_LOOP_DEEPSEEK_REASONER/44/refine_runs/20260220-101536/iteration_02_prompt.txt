@@ -1,0 +1,109 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is a cruise control system, mainly composed of the driver, cruise controller, speedometer, engine, and vehicle, among other components. The driver activates the cruise function by sending a command to set the desired speed. The cruise controller inside the vehicle receives this set-speed command and subsequently obtains the actual vehicle speed information from the speedometer. Based on these inputs, the cruise controller generates and sends corresponding fuel control commands to the engine. The speedometer collects the real-time speed of the vehicle and transmits this information to the cruise controller, while the engine adjusts its output according to the received fuel control commands to ensure the vehicle travels at the set speed. The aforementioned modules exchange information through events to realize the cruise control function as expected by the driver.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package CruiseControlSystem {
+    private import ScalarValues::*;
+
+    item def SpeedCommand {
+        attribute targetSpeed : Real;
+    }
+
+    item def SpeedReading {
+        attribute currentSpeed : Real;
+    }
+
+    item def FuelCommand {
+        attribute fuelLevel : Real;
+    }
+
+    port def DriverPort {
+        attribute command : SpeedCommand;
+    }
+
+    port def ControllerPort {
+        attribute setSpeed : SpeedCommand;
+        attribute actualSpeed : SpeedReading;
+        attribute fuelOut : FuelCommand;
+    }
+
+    port def SpeedometerPort {
+        attribute speedOut : SpeedReading;
+    }
+
+    port def EnginePort {
+        attribute fuelIn : FuelCommand;
+    }
+
+    part def Driver {
+        port out commandPort : DriverPort;
+    }
+
+    part def CruiseController {
+        port in driverIn : DriverPort;
+        port in speedIn : SpeedometerPort;
+        port out engineOut : EnginePort;
+        attribute targetSpeed : Real;
+        attribute currentSpeed : Real;
+    }
+
+    part def Speedometer {
+        port out speedPort : SpeedometerPort;
+        attribute measuredSpeed : Real;
+    }
+
+    part def Engine {
+        port in controlPort : EnginePort;
+        attribute fuelInput : Real;
+    }
+
+    part def Vehicle {
+        part controller : CruiseController;
+        part speedometer : Speedometer;
+        part engine : Engine;
+        connect controller.engineOut to engine.controlPort;
+        connect speedometer.speedPort to controller.speedIn;
+    }
+
+    part def CruiseControlSystem {
+        part driver : Driver;
+        part vehicle : Vehicle;
+        connect driver.commandPort to vehicle.controller.driverIn;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:35:14: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    35 |         port out commandPort : DriverPort;
+       |              ^^^
+iteration_01.sysml:39:14: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    39 |         port in driverIn : DriverPort;
+       |              ^^
+iteration_01.sysml:40:14: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    40 |         port in speedIn : SpeedometerPort;
+       |              ^^
+iteration_01.sysml:41:14: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    41 |         port out engineOut : EnginePort;
+       |              ^^^
+iteration_01.sysml:47:14: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    47 |         port out speedPort : SpeedometerPort;
+       |              ^^^
+iteration_01.sysml:52:14: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    52 |         port in controlPort : EnginePort;
+       |              ^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

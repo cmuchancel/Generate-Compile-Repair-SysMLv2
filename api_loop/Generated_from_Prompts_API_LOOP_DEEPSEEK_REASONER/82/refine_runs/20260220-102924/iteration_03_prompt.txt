@@ -1,0 +1,63 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system must be composed of a system assembly, which includes a computer subsystem and a storage subsystem. The software design section should define the message format and data format. The computer subsystem must be capable of utilizing and integrating all functions specified in the software design, while the storage subsystem must be able to access and be compatible with the message and data formats defined by the software. The software and hardware of the entire system must be able to work together seamlessly to ensure that the processes of information storage, transmission, and processing within the system are efficient, reliable, and compliant with the required data structure specifications.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 2):
+                package SystemModel {
+    private import ScalarValues::*;
+
+    item def MessageFormat {
+        attribute header : String;
+        attribute payload : String;
+        attribute timestamp : String;
+        attribute checksum : Integer;
+    }
+
+    item def DataFormat {
+        attribute id : Integer;
+        attribute size : Integer;
+        attribute encodedData : String;
+        attribute metadata : String;
+    }
+
+    port def DataPort {
+        attribute msg : MessageFormat;
+        attribute data : DataFormat;
+    }
+
+    part def ComputerSubsystem {
+        port primaryInterface : DataPort;
+        attribute processor : String;
+    }
+
+    part def StorageSubsystem {
+        port storageInterface : DataPort;
+        attribute capacity : Integer;
+    }
+
+    part def SystemAssembly {
+        part computer : ComputerSubsystem;
+        part storage : StorageSubsystem;
+        connect computer.primaryInterface to storage.storageInterface;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_02.sysml:15:19: error (parsing-error): Unexpected 'metadata', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+15 |         attribute metadata : String;
+   |                   ^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

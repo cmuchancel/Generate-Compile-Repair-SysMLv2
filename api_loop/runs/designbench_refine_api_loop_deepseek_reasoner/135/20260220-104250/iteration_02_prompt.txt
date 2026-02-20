@@ -1,0 +1,40 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system is required to provide a set of standard and precise constants for scientific computing and simulation applications, including mathematical constants, fundamental physical constants, and context-specific parameters. Specifically, the system should have built-in commonly used mathematical constants such as Euler’s number e and pi π, with numerical precision up to 20 decimal places. At the same time, it should integrate typical physical constants, including the precisely defined speed of light in vacuum, the fine-structure constant, and the electron-to-proton mass ratio, with clear SI unit annotations. Additionally, the system should support scenario-based constants, such as standard gravitational acceleration on Earth and the amplifier gain coefficient in specific products (e.g., Model X). All constants should be easily accessible and verifiable by the system, in order to meet the high standards of scientific computation and engineering domains.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package ScientificConstants {
+    private import ScalarValues::*;
+
+    part def Constants {
+        attribute e : Real = 2.71828182845904523536;
+        attribute π : Real = 3.14159265358979323846;
+        attribute speedOfLightInVacuum : Real = 299792458.0; // m/s
+        attribute fineStructureConstant : Real = 0.0072973525693;
+        attribute electronProtonMassRatio : Real = 0.000544617021487;
+        attribute standardGravitationalAcceleration : Real = 9.80665; // m/s^2
+        attribute amplifierGainModelX : Real = 100.0;
+    }
+
+    part constants : Constants;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_01.sysml:6:19: error (parsing-error): Unexpected token 'π'.
+6 |         attribute π : Real = 3.14159265358979323846;
+  |                   ^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

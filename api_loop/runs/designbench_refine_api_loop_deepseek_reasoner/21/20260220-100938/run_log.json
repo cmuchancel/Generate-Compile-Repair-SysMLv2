@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:09:38.506910Z",
+    "iteration_end": "2026-02-20T15:10:18.474816Z",
+    "iteration_duration_seconds": 39.96798770900932,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/21/20260220-100938/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/21/20260220-100938/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/21/20260220-100938/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:11:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, did you mean 'inout'?\n    11 |         port input sceneInput : ShootingScene;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:12:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    12 |         port output imageOutput : ProcessedImage;\n       |              \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:16:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, did you mean 'inout'?\n    16 |         port input imageInput : ProcessedImage;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:17:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    17 |         port output photoOutput : Photograph;\n       |              \u001b[38;2;220;080;080m^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 328,
+      "output_tokens": 1959,
+      "total_tokens": 2287
+    },
+    "tokens_used_total": 2287,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:10:18.474884Z",
+    "iteration_end": "2026-02-20T15:10:27.873273Z",
+    "iteration_duration_seconds": 9.398439749988029,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/21/20260220-100938/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/21/20260220-100938/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/21/20260220-100938/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:11:27: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'in', expected one of [\"NAME\", \";\", \"{\", \"from\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \"~\", \"not\", \"#\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"by\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"of\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"accept\", \"via\", \"at\", \"after\", \"when\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"parallel\", \"do\", \"exhibit\", \"calc\", \"constraint\", \"assert\", \"requirement\", \"concern\", \"satisfy\", \"case\", \"analysis\", \"verification\", \"use\", \"include\", \"view\", \"rendering\", \"viewpoint\"].\n    11 |         port sceneInput : in ShootingScene;\n       |                           \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_02.sysml:12:28: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"NAME\", \";\", \"{\", \"from\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \"~\", \"not\", \"#\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"by\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"of\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"accept\", \"via\", \"at\", \"after\", \"when\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"parallel\", \"do\", \"exhibit\", \"calc\", \"constraint\", \"assert\", \"requirement\", \"concern\", \"satisfy\", \"case\", \"analysis\", \"verification\", \"use\", \"include\", \"view\", \"rendering\", \"viewpoint\"].\n    12 |         port imageOutput : out ProcessedImage;\n       |                            \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:16:27: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'in', expected one of [\"NAME\", \";\", \"{\", \"from\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \"~\", \"not\", \"#\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"by\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"of\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"accept\", \"via\", \"at\", \"after\", \"when\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"parallel\", \"do\", \"exhibit\", \"calc\", \"constraint\", \"assert\", \"requirement\", \"concern\", \"satisfy\", \"case\", \"analysis\", \"verification\", \"use\", \"include\", \"view\", \"rendering\", \"viewpoint\"].\n    16 |         port imageInput : in ProcessedImage;\n       |                           \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_02.sysml:17:28: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"NAME\", \";\", \"{\", \"from\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \"~\", \"not\", \"#\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"by\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"of\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"accept\", \"via\", \"at\", \"after\", \"when\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"parallel\", \"do\", \"exhibit\", \"calc\", \"constraint\", \"assert\", \"requirement\", \"concern\", \"satisfy\", \"case\", \"analysis\", \"verification\", \"use\", \"include\", \"view\", \"rendering\", \"viewpoint\"].\n    17 |         port photoOutput : out Photograph;\n       |                            \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:24:28: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'in', expected one of [\"NAME\", \";\", \"{\", \"from\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \"~\", \"not\", \"#\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"by\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"of\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"accept\", \"via\", \"at\", \"after\", \"when\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"parallel\", \"do\", \"exhibit\", \"calc\", \"constraint\", \"assert\", \"requirement\", \"concern\", \"satisfy\", \"case\", \"analysis\", \"verification\", \"use\", \"include\", \"view\", \"rendering\", \"viewpoint\"].\n    24 |         port systemInput : in ShootingScene;\n       |                            \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_02.sysml:25:29: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"NAME\", \";\", \"{\", \"from\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \"~\", \"not\", \"#\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"by\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"of\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"accept\", \"via\", \"at\", \"after\", \"when\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"parallel\", \"do\", \"exhibit\", \"calc\", \"constraint\", \"assert\", \"requirement\", \"concern\", \"satisfy\", \"case\", \"analysis\", \"verification\", \"use\", \"include\", \"view\", \"rendering\", \"viewpoint\"].\n    25 |         port systemOutput : out Photograph;\n       |                             \u001b[38;2;220;080;080m^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 980,
+      "output_tokens": 404,
+      "total_tokens": 1384
+    },
+    "tokens_used_total": 3671,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:10:27.873329Z",
+    "iteration_end": "2026-02-20T15:10:44.831400Z",
+    "iteration_duration_seconds": 16.958145625001634,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/21/20260220-100938/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/21/20260220-100938/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/21/20260220-100938/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1857,
+      "output_tokens": 765,
+      "total_tokens": 2622
+    },
+    "tokens_used_total": 6293,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

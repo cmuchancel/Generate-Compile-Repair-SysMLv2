@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:29:24.905774Z",
+    "iteration_end": "2026-02-20T15:30:13.714980Z",
+    "iteration_duration_seconds": 48.809531582999625,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'metadata', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute metadata : string;\n       |                   \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:5:28: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    5 |         attribute header : string;\n      |                            \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:6:29: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    6 |         attribute payload : string;\n      |                             \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:7:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    7 |         attribute timestamp : string;\n      |                               \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:8:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'integer' found.\n    8 |         attribute checksum : integer;\n      |                              \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:12:24: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'integer' found.\n    12 |         attribute id : integer;\n       |                        \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:13:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'integer' found.\n    13 |         attribute size : integer;\n       |                          \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:14:33: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    14 |         attribute encodedData : string;\n       |                                 \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:15:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    15 |         attribute metadata : string;\n       |                              \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:25:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'string' found.\n    25 |         attribute processor : string;\n       |                               \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:30:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'integer' found.\n    30 |         attribute capacity : integer;\n       |                              \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 360,
+      "output_tokens": 2489,
+      "total_tokens": 2849
+    },
+    "tokens_used_total": 2849,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:30:13.715036Z",
+    "iteration_end": "2026-02-20T15:30:24.110468Z",
+    "iteration_duration_seconds": 10.395529791989247,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'metadata', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute metadata : String;\n       |                   \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1125,
+      "output_tokens": 468,
+      "total_tokens": 1593
+    },
+    "tokens_used_total": 4442,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:30:24.110508Z",
+    "iteration_end": "2026-02-20T15:31:15.602894Z",
+    "iteration_duration_seconds": 51.49276033299975,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'meta', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute meta : String;\n       |                   \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 721,
+      "output_tokens": 2605,
+      "total_tokens": 3326
+    },
+    "tokens_used_total": 7768,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T15:31:15.602943Z",
+    "iteration_end": "2026-02-20T15:31:29.136966Z",
+    "iteration_duration_seconds": 13.5341447910032,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'metadata', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute metadata : String;\n       |                   \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 720,
+      "output_tokens": 615,
+      "total_tokens": 1335
+    },
+    "tokens_used_total": 9103,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T15:31:29.137014Z",
+    "iteration_end": "2026-02-20T15:32:52.187008Z",
+    "iteration_duration_seconds": 83.05059600000095,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/82/20260220-102924/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'metadata', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute metadata : String;\n       |                   \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 721,
+      "output_tokens": 4264,
+      "total_tokens": 4985
+    },
+    "tokens_used_total": 14088,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

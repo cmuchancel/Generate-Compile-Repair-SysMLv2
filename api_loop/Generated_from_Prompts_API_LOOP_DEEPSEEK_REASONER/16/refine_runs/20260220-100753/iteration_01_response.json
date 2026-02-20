@@ -1,0 +1,42 @@
+{
+  "id": "9cb5d496-76c8-48e4-9936-117eec8acff6",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "package FuelSystem {\n    private import ScalarValues::*;\n\n    port def FuelPort {\n        attribute fuelTemperature : Real;\n    }\n\n    part def FuelTank {\n        port supply : FuelPort;\n        port return : FuelPort;\n    }\n\n    part def Engine {\n        port fuelInlet : FuelPort;\n        port fuelReturn : FuelPort;\n    }\n\n    part def VehicleFuelManagement {\n        part fuelTank : FuelTank;\n        part engine : Engine;\n\n        connect fuelTank.supply to engine.fuelInlet;\n        connect engine.fuelReturn to fuelTank.return;\n    }\n}",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning_content": "We are generating a SysML v2 model for a fuel supply and return management system.\n The system has a fuel tank assembly and an engine unit.\n We need to show the connection between the fuel tank and the engine for both supply and return.\n We'll use a conservative subset as per the rules.\n\n Steps:\n 1. Define a package for the system.\n 2. Import ScalarValues for basic types (if needed, but note we are using simple types, so we might use Real without import).\n 3. Define an item definition for Fuel (if needed) but the requirements focus on ports and parts, so we might not need an item definition for fuel.\n 4. Define port definitions for the fuel inlet and outlet. The ports have attributes like fuel temperature.\n 5. Define part definitions for the fuel tank and the engine, each with appropriate ports.\n 6. Connect the parts in an enclosing part (the vehicle fuel system).\n\n However, note the requirement: \"Port information includes attributes such as fuel temperature\".\n We can model this by having a port definition that includes an attribute for temperature.\n\n Let's break down:\n\n We'll have:\n   - A port definition for the fuel supply port (which can be used for both supply and return, but note that the flow can be bidirectional).\n   - The fuel tank has an outlet port (for supply) and an inlet port (for return) or can we have a single bidirectional port? The requirement says the tank has a fuel outlet port that connects to the engine\u2019s fuel inlet port, and can also receive fuel return from the engine. So, the tank might have two ports: one for outlet and one for inlet. Similarly, the engine has an inlet and an outlet.\n\n Alternatively, we can define one port type that is bidirectional and use two instances: one for supply and one for return? But the requirement says the tank has an outlet port and the engine has an inlet port for supply, and for return, the engine has an outlet and the tank has an inlet.\n\n Let's define a port definition `FuelPort` that has an attribute for temperature. Then, we can use it for both supply and return.\n\n However, note that in the connection, we want to connect the tank's outlet to the engine's inlet (for supply) and the engine's outlet to the tank's inlet (for return). So we need two ports on each part.\n\n Alternatively, we can define two port definitions: `FuelOutletPort` and `FuelInletPort`, both with temperature, but that might be redundant.\n\n Let's stick with one port definition `FuelPort` and use it for both.\n\n But note: the requirement says the fuel tank has a fuel outlet port and the engine has a fuel inlet port for supply. And for return, the engine has an outlet and the tank has an inlet.\n\n We can model:\n   - FuelTank:\n        outletPort: FuelPort (for supply)\n        inletPort: FuelPort (for return)\n   - Engine:\n        inletPort: FuelPort (for supply)\n        outletPort: FuelPort (for return)\n\n Then we connect:\n        FuelTank.outletPort to Engine.inletPort   (supply)\n        Engine.outletPort to FuelTank.inletPort   (return)\n\n However, note that the requirement says the system is designed for both forward and reverse flow. The above connections are two separate connections.\n\n Let's create:\n\n   package FuelSystem {\n        private import ScalarValues::*;\n\n        port def FuelPort {\n            attribute fuelTemperature : Real;  // we can use Real for temperature\n        }\n\n        part def FuelTank {\n            port outletPort : FuelPort;  // for supplying fuel to engine\n            port inletPort : FuelPort;   // for receiving returned fuel\n        }\n\n        part def Engine {\n            port inletPort : FuelPort;   // for receiving fuel from tank\n            port outletPort : FuelPort;  // for returning fuel to tank\n        }\n\n        part def VehicleFuelSystem {\n            part fuelTank : FuelTank;\n            part engine : Engine;\n\n            connect fuelTank.outletPort to engine.inletPort;   // supply line\n            connect engine.outletPort to fuelTank.inletPort;   // return line\n        }\n   }\n\n However, note that the requirement says the fuel tank assembly and engine unit are connected via fuel interfaces. The above model uses two connections.\n\n Let's output the model accordingly.\n\n But note: the requirement says \"port information includes attributes such as fuel temperature\". We have included that in the FuelPort.\n\n We are not using an item definition for fuel because the requirement does not specify the fuel properties beyond temperature, and the temperature is at the port.\n\n We are also not using any constraints or operations, as per the rules to avoid constructs that fail validation.\n\n Let's write the SysML v2 text."
+      }
+    }
+  ],
+  "created": 1771600074,
+  "model": "deepseek-reasoner",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": "fp_eaab8d114b_prod0820_fp8_kvcache",
+  "usage": {
+    "completion_tokens": 1129,
+    "prompt_tokens": 415,
+    "total_tokens": 1544,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 999,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 384
+    },
+    "prompt_cache_hit_tokens": 384,
+    "prompt_cache_miss_tokens": 31
+  }
+}

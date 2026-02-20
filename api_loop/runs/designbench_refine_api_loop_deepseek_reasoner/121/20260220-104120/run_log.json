@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:41:20.666610Z",
+    "iteration_end": "2026-02-20T15:42:31.139343Z",
+    "iteration_duration_seconds": 70.47322666698892,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/121/20260220-104120/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/121/20260220-104120/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/121/20260220-104120/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:8:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'enum', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    8 |         enum Electric\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:8:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'enum', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    8 |         enum Electric\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:8:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'enum', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    8 |         enum Electric\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:9:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    9 |     }\n\niteration_01.sysml:14:12: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehiclePowertrain::EngineComponent)\n    14 |         :> EngineComponent;\n       |            \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:18:12: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehiclePowertrain::EngineComponent)\n    18 |         :> EngineComponent;\n       |            \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:22:12: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehiclePowertrain::EngineComponent)\n    22 |         :> EngineComponent;\n       |            \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:26:12: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehiclePowertrain::EngineComponent)\n    26 |         :> EngineComponent;\n       |            \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 420,
+      "output_tokens": 3591,
+      "total_tokens": 4011
+    },
+    "tokens_used_total": 4011,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:42:31.139393Z",
+    "iteration_end": "2026-02-20T15:42:50.369768Z",
+    "iteration_duration_seconds": 19.230539916999987,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/121/20260220-104120/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/121/20260220-104120/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/121/20260220-104120/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:8:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"end\", \"NAME\", \";\", \"{\", \"}\", \"dependency\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"alias\", \"for\", \"import\", \"all\", \"*\", \"[\", \"abstract\", \"in\", \"inout\", \"out\", \"derived\", \"end\", \"ordered\", \"nonunique\", \"if\", \"+\", \"-\", \"<\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \"(\", \"null\", \"metadata\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"standard\", \"library\", \"package\", \"filter\", \"variation\", \"variant\", \"constant\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"individual\", \"timeslice\", \"snapshot\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"merge\", \"decide\", \"join\", \"fork\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"entry\", \"do\", \"exit\", \"exhibit\", \"transition\", \"calc\", \"return\", \"constraint\", \"assert\", \"requirement\", \"subject\", \"assume\", \"require\", \"frame\", \"concern\", \"actor\", \"stakeholder\", \"satisfy\", \"case\", \"objective\", \"analysis\", \"verification\", \"verify\", \"use\", \"include\", \"view\", \"render\", \"rendering\", \"expose\", \"viewpoint\"].\n    8 |         Electric\n      |         \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_02.sysml:9:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    9 |     }\n      |     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:9:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    9 |     }\n      |     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:9:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}', expected one of [\"NAME\", \";\", \"{\", \"}\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"[\", \"ordered\", \"nonunique\", \"<\", \"@\", \"#\", \"metadata\", \"=\", \":=\", \"default\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"enum\", \"OwningMembership\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"FeatureValue\", \"OwningMembership\", \"MultiplicityRange\", \"OwningMembership\", \"VariantMembership\", \"EnumerationUsage\", \"MetadataUsage\", \"MetadataUsage\"].\n    9 |     }\n      |     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:13:23: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    13 |     part def Cylinder : EngineComponent {\n\niteration_02.sysml:16:21: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    16 |     part def Piston : EngineComponent {\n\niteration_02.sysml:19:28: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    19 |     part def ConnectingRod : EngineComponent {\n\niteration_02.sysml:22:25: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    22 |     part def Crankshaft : EngineComponent {",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1749,
+      "output_tokens": 928,
+      "total_tokens": 2677
+    },
+    "tokens_used_total": 6688,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T15:42:50.369817Z",
+    "iteration_end": "2026-02-20T15:43:04.934685Z",
+    "iteration_duration_seconds": 14.565014374995371,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/121/20260220-104120/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/121/20260220-104120/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/121/20260220-104120/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 2115,
+      "output_tokens": 714,
+      "total_tokens": 2829
+    },
+    "tokens_used_total": 9517,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]

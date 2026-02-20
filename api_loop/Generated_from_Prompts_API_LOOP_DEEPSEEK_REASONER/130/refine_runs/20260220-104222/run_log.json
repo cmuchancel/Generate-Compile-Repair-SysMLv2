@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T15:42:23.127684Z",
+    "iteration_end": "2026-02-20T15:42:43.029045Z",
+    "iteration_duration_seconds": 19.901534125005128,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/130/20260220-104222/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/130/20260220-104222/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/130/20260220-104222/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:10:53: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Safety' found.\n    10 |         attribute classification : Classification = Safety;\n       |                                                     \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:15:53: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Safety' found.\n    15 |         attribute classification : Classification = Safety;\n       |                                                     \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:20:53: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Security' found.\n    20 |         attribute classification : Classification = Security;\n       |                                                     \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:25:53: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Safety' found.\n    25 |         attribute classification : Classification = Safety;\n       |                                                     \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:30:53: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Security' found.\n    30 |         attribute classification : Classification = Security;\n       |                                                     \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:35:53: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Safety' found.\n    35 |         attribute classification : Classification = Safety;\n       |                                                     \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:40:53: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Safety' found.\n    40 |         attribute classification : Classification = Safety;\n       |                                                     \u001b[38;2;220;080;080m^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 421,
+      "output_tokens": 996,
+      "total_tokens": 1417
+    },
+    "tokens_used_total": 1417,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T15:42:43.029140Z",
+    "iteration_end": "2026-02-20T15:42:55.291297Z",
+    "iteration_duration_seconds": 12.262270916995476,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/130/20260220-104222/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/130/20260220-104222/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_deepseek_reasoner/130/20260220-104222/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1068,
+      "output_tokens": 582,
+      "total_tokens": 1650
+    },
+    "tokens_used_total": 3067,
+    "provider": "deepseek_reasoner",
+    "model": "deepseek-reasoner"
+  }
+]
