@@ -26,6 +26,9 @@ import sys
 from pathlib import Path
 from typing import Dict, Iterable, List, Optional
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+
 try:
     from openai import OpenAI
 except ImportError as exc:  # pragma: no cover - make the error explicit for the user
@@ -36,28 +39,29 @@ except ImportError as exc:  # pragma: no cover - make the error explicit for the
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run GPT-4.1 SysML precision/recall evals.")
+    default_generated = detect_default_generated_root()
     parser.add_argument(
         "--generated-root",
         type=Path,
-        default=Path("Generated_from_Prompts"),
+        default=default_generated,
         help="Directory containing generated model subdirectories (default: %(default)s).",
     )
     parser.add_argument(
         "--reference-root",
         type=Path,
-        default=Path("Generated_from_Prompts"),
+        default=default_generated,
         help="Directory containing reference/ground-truth subdirectories (default: %(default)s).",
     )
     parser.add_argument(
         "--precision-prompt",
         type=Path,
-        default=Path("DesignBench/src/metrics/sysm-eval-p.txt"),
+        default=SCRIPT_DIR / "Evaluation_Prompts" / "sysm-eval-p.txt",
         help="Path to the precision prompt template.",
     )
     parser.add_argument(
         "--recall-prompt",
         type=Path,
-        default=Path("DesignBench/src/metrics/sysm-eval-r.txt"),
+        default=SCRIPT_DIR / "Evaluation_Prompts" / "sysm-eval-r.txt",
         help="Path to the recall prompt template.",
     )
     parser.add_argument(
@@ -96,6 +100,17 @@ def parse_args() -> argparse.Namespace:
         help="If set, do not call GPT-4.1. Prompts are still rendered and saved.",
     )
     return parser.parse_args()
+
+
+def detect_default_generated_root() -> Path:
+    candidates = [
+        REPO_ROOT / "ai_agent" / "Generated_from_Prompts_AI_AGENT",
+        REPO_ROOT / "api_loop" / "Generated_from_Prompts_API_LOOP",
+    ]
+    for path in candidates:
+        if path.exists():
+            return path
+    return candidates[0]
 
 
 def load_text(path: Path) -> str:

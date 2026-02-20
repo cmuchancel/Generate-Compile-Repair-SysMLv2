@@ -16,15 +16,19 @@ import statistics
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+
 SCORE_RE = re.compile(r"Score:\s*(\d+(?:\.\d+)?)/(\d+(?:\.\d+)?)", re.IGNORECASE)
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Summarize GPT-4.1 precision/recall scores.")
+    default_root = detect_default_generated_root()
     parser.add_argument(
         "--root",
         type=Path,
-        default=Path("Generated_from_Prompts"),
+        default=default_root,
         help="Base directory containing model subdirectories (default: %(default)s).",
     )
     parser.add_argument(
@@ -36,7 +40,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--end-id",
         type=int,
-        default=75,
+        default=151,
         help="Last model id to include (default: %(default)s).",
     )
     parser.add_argument(
@@ -62,6 +66,17 @@ def parse_args() -> argparse.Namespace:
         help="Suppress per-model logs; only print the final summary.",
     )
     return parser.parse_args()
+
+
+def detect_default_generated_root() -> Path:
+    candidates = [
+        REPO_ROOT / "ai_agent" / "Generated_from_Prompts_AI_AGENT",
+        REPO_ROOT / "api_loop" / "Generated_from_Prompts_API_LOOP",
+    ]
+    for path in candidates:
+        if path.exists():
+            return path
+    return candidates[0]
 
 
 def extract_score(payload: Dict) -> Optional[Tuple[float, float, float]]:

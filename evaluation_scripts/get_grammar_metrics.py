@@ -1,9 +1,12 @@
+#!/usr/bin/env python3
+import argparse
 import json
 import re
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-# Grammar-level aggregation using Generated_from_Prompts scores.
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
 
 SCORE_RE = re.compile(
     r"Score:\s*[*_\s]*\s*(\d+(?:\.\d+)?)\s*/\s*(\d+(?:\.\d+)?)\s*[*_\s]*",
@@ -11,8 +14,56 @@ SCORE_RE = re.compile(
 )
 
 
+def detect_default_dataset_path() -> Path:
+    candidates = [
+        REPO_ROOT / "api_loop" / "DesignBench" / "dataset" / "sysml" / "dataset.json",
+        REPO_ROOT / "DesignBench" / "dataset" / "sysml" / "dataset.json",
+    ]
+    for path in candidates:
+        if path.exists():
+            return path
+    return candidates[0]
+
+
+def detect_default_scores_root() -> Path:
+    candidates = [
+        REPO_ROOT / "ai_agent" / "Generated_from_Prompts_AI_AGENT",
+        REPO_ROOT / "api_loop" / "Generated_from_Prompts_API_LOOP",
+    ]
+    for path in candidates:
+        if path.exists():
+            return path
+    return candidates[0]
+
+
+def parse_args() -> argparse.Namespace:
+    default_dataset = detect_default_dataset_path()
+    default_scores = detect_default_scores_root()
+    parser = argparse.ArgumentParser(description="Compute grammar metrics from eval score JSONs.")
+    parser.add_argument(
+        "--dataset",
+        type=Path,
+        default=default_dataset,
+        help="Path to DesignBench dataset.json (default: %(default)s).",
+    )
+    parser.add_argument(
+        "--scores-root",
+        type=Path,
+        default=default_scores,
+        help="Generated outputs root containing per-id score JSON files (default: %(default)s).",
+    )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=None,
+        help=(
+            "Output JSON path. Default: <scores-root-parent>/grammar_result.json"
+        ),
+    )
+    return parser.parse_args()
+
+
 def extract_score(payload: Dict) -> Optional[Tuple[float, float, float]]:
-    """Return (score, numerator, denominator) if a Score line is present."""
     response = payload.get("response") or {}
     text = response.get("response_text") or ""
     text = text.replace("**\n", "** ").replace("**  ", "** ")
@@ -27,7 +78,6 @@ def extract_score(payload: Dict) -> Optional[Tuple[float, float, float]]:
 
 
 def load_scores_for_id(root: Path, model_id: int) -> Optional[Tuple[float, float]]:
-    """Load precision/recall scores for a model id if both files exist and parse."""
     model_dir = root / str(model_id)
     p_path = model_dir / f"{model_id}_precision_gpt41.json"
     r_path = model_dir / f"{model_id}_recall_gpt41.json"
@@ -47,7 +97,7 @@ def get_grammar_id(dataset_path: Path) -> Dict[str, List[int]]:
     with dataset_path.open("r", encoding="utf-8") as f:
         data = json.load(f)
     result: Dict[str, List[int]] = {}
-    for idx, sample in enumerate(data, start=1):  # 1-based ids
+    for idx, sample in enumerate(data, start=1):
         grammar = sample["grammar"]
         result.setdefault(grammar, []).append(idx)
     return result
@@ -76,11 +126,21 @@ def get_metrics_various_grammar(grammar2id: Dict[str, List[int]], scores_root: P
     return grammar_result
 
 
-if __name__ == "__main__":
-    dataset_path = Path("DesignBench/dataset/sysml/dataset.json")
-    scores_root = Path("Generated_from_Prompts")
+def main() -> None:
+    args = parse_args()
+    dataset_path = args.dataset.resolve()
+    scores_root = args.scores_root.resolve()
+    if args.output is None:
+        result_path = scores_root.parent / "analysis" / "grammar_result.json"
+    else:
+        result_path = args.output.resolve()
+
     grammar2sampleid = get_grammar_id(dataset_path)
     result = get_metrics_various_grammar(grammar2sampleid, scores_root)
-    result_path = Path("grammar_result.json")
+    result_path.parent.mkdir(parents=True, exist_ok=True)
     result_path.write_text(json.dumps(result, ensure_ascii=False, indent=4), encoding="utf-8")
     print(f"Grammar metrics saved to {result_path} (from {scores_root})")
+
+
+if __name__ == "__main__":
+    main()
