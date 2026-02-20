@@ -1,0 +1,34 @@
+{
+  "id": "d4b2a698d85f4882b93c8e012db37bbd",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage CruiseControlSystem {\n    private import ScalarValues::*;\n\n    enum def SpeedUnit {\n        enum KPH;\n        enum MPH;\n    }\n\n    part def Speedometer {\n        attribute currentSpeed : Real;\n        attribute unit : SpeedUnit = SpeedUnit::KPH;\n    }\n\n    part def EngineSystem {\n        port throttleControl : ThrottlePort;\n    }\n\n    port def ThrottlePort {\n    }\n\n    part def CruiseController {\n        attribute setSpeed : Real;\n        port speedInput : SpeedInputPort;\n        port throttleOutput : ThrottlePort;\n    }\n\n    port def SpeedInputPort {\n    }\n\n    part def Driver {\n        port setSpeedCommand : SetSpeedPort;\n    }\n\n    port def SetSpeedPort {\n    }\n\n    part vehicle {\n        part speedometer : Speedometer;\n        part engine : EngineSystem;\n        part controller : CruiseController;\n        part driver : Driver;\n\n        connect driver.setSpeedCommand to controller;\n        connect controller.speedInput to speedometer;\n        connect controller.throttleOutput to engine.throttleControl;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603548,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 231,
+    "prompt_tokens": 359,
+    "total_tokens": 590,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

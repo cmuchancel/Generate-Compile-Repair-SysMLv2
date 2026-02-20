@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:14:49.646201Z",
+    "iteration_end": "2026-02-20T16:14:57.946743Z",
+    "iteration_duration_seconds": 8.300426250003511,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/112/20260220-111448/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/112/20260220-111448/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/112/20260220-111448/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:18:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |         attribute state : VehicleState = VehicleState::Off;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 510,
+      "output_tokens": 367,
+      "total_tokens": 877
+    },
+    "tokens_used_total": 877,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:14:57.946822Z",
+    "iteration_end": "2026-02-20T16:15:03.679692Z",
+    "iteration_duration_seconds": 5.733403957987321,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/112/20260220-111448/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/112/20260220-111448/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/112/20260220-111448/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1055,
+      "output_tokens": 365,
+      "total_tokens": 1420
+    },
+    "tokens_used_total": 2297,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

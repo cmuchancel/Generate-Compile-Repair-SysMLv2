@@ -1,0 +1,34 @@
+{
+  "id": "9b53f9e5057940f1a42afd2243439547",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage PowertrainSystem {\n    private import ScalarValues::*;\n\n    enum def PowerSourceType {\n        enum InternalCombustionEngine;\n        enum ElectricMotor;\n        enum Hybrid;\n    }\n\n    part def TorqueGenerator {\n        attribute torqueOutput : Real;\n        attribute efficiency : Real;\n    }\n\n    part def PowerUnit {\n        attribute powerOutput : Real;\n        attribute torqueOutput : Real;\n        attribute sourceType : PowerSourceType;\n    }\n\n    part def LogicalLayer {\n        part torqueGenerator : TorqueGenerator;\n    }\n\n    part def PhysicalLayer {\n        part powerUnit : PowerUnit;\n    }\n\n    part def PowertrainSystem {\n        part logicalLayer : LogicalLayer;\n        part physicalLayer : PhysicalLayer;\n\n        connect logicalLayer.torqueGenerator to physicalLayer.powerUnit;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603791,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 175,
+    "prompt_tokens": 410,
+    "total_tokens": 585,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

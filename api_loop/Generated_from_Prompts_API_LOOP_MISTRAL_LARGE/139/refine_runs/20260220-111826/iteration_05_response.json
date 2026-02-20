@@ -1,0 +1,34 @@
+{
+  "id": "cfdb9fd343f94e0586ae8d5671e9f165",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomotiveSystem {\n    private import ScalarValues::*;\n\n    attribute def MassValue {\n        value : Real;\n    }\n\n    attribute def LengthValue {\n        value : Real;\n    }\n\n    part def Car {\n        attribute totalMass : MassValue = (value => 1200.0);\n        attribute length : LengthValue = (value => 4.82);\n        part wheelAssemblies : WheelAssembly[4];\n    }\n\n    part def WheelAssembly {\n        part wheel : Wheel;\n        part brakeDisc : BrakeDisc;\n    }\n\n    part def Wheel {\n        part rim : Rim;\n        part tire : Tire;\n    }\n\n    part def Rim {\n        attribute diameter : LengthValue = (value => 18.0);\n    }\n\n    part def Tire {\n        attribute width : LengthValue = (value => 245.0);\n        attribute height : LengthValue = (value => 45.0);\n        attribute treadDepth : LengthValue = (value => 6.0);\n        attribute minTreadDepth : LengthValue = (value => 3.5);\n        attribute outerDiameter : LengthValue;\n    }\n\n    part def BrakeDisc {\n        attribute radius : LengthValue = (value => 95.0);\n        attribute diameter : LengthValue = (value => 2 * radius.value);\n    }\n\n    part car : Car;\n\n    constraint def WheelAssemblyFitment {\n        car.wheelAssemblies->forAll(wa |\n            wa.brakeDisc.diameter.value < wa.wheel.tire.outerDiameter.value\n        )\n    }\n\n    constraint def TreadDepthCompliance {\n        car.wheelAssemblies->forAll(wa |\n            wa.wheel.tire.treadDepth.value >= wa.wheel.tire.minTreadDepth.value\n        )\n    }\n\n    attribute def CalculateOuterDiameter : LengthValue {\n        value = (car.wheelAssemblies[1].wheel.rim.diameter.value * 25.4) + (2 * car.wheelAssemblies[1].wheel.tire.height.value);\n    }\n\n    car.wheelAssemblies->forAll(wa |\n        wa.wheel.tire.outerDiameter = CalculateOuterDiameter\n    )\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604335,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 479,
+    "prompt_tokens": 2098,
+    "total_tokens": 2577,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 464
+    }
+  }
+}

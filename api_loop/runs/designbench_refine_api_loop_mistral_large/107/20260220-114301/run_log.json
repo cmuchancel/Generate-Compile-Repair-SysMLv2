@@ -1,0 +1,422 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:43:01.875410Z",
+    "iteration_end": "2026-02-20T16:43:05.684554Z",
+    "iteration_duration_seconds": 3.8091385419975268,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 362,
+      "output_tokens": 167,
+      "total_tokens": 529
+    },
+    "tokens_used_total": 529,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:43:05.684617Z",
+    "iteration_end": "2026-02-20T16:43:08.866403Z",
+    "iteration_duration_seconds": 3.1818315419950522,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 843,
+      "output_tokens": 164,
+      "total_tokens": 1007
+    },
+    "tokens_used_total": 1536,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:43:08.866492Z",
+    "iteration_end": "2026-02-20T16:43:11.591381Z",
+    "iteration_duration_seconds": 2.724896458996227,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_03.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 843,
+      "output_tokens": 164,
+      "total_tokens": 1007
+    },
+    "tokens_used_total": 2543,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:43:11.591425Z",
+    "iteration_end": "2026-02-20T16:43:14.467651Z",
+    "iteration_duration_seconds": 2.876248582993867,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_04.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 843,
+      "output_tokens": 164,
+      "total_tokens": 1007
+    },
+    "tokens_used_total": 3550,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:43:14.467717Z",
+    "iteration_end": "2026-02-20T16:43:17.680703Z",
+    "iteration_duration_seconds": 3.2130008329986595,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_05.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 843,
+      "output_tokens": 164,
+      "total_tokens": 1007
+    },
+    "tokens_used_total": 4557,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 6,
+    "iteration_start": "2026-02-20T16:43:17.680764Z",
+    "iteration_end": "2026-02-20T16:43:20.582901Z",
+    "iteration_duration_seconds": 2.902160041994648,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_06.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_06_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_06_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_06.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_06.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 843,
+      "output_tokens": 164,
+      "total_tokens": 1007
+    },
+    "tokens_used_total": 5564,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 7,
+    "iteration_start": "2026-02-20T16:43:20.582972Z",
+    "iteration_end": "2026-02-20T16:43:23.262005Z",
+    "iteration_duration_seconds": 2.679044500007876,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_07.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_07_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_07_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_07.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_07.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 843,
+      "output_tokens": 164,
+      "total_tokens": 1007
+    },
+    "tokens_used_total": 6571,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 8,
+    "iteration_start": "2026-02-20T16:43:23.262053Z",
+    "iteration_end": "2026-02-20T16:43:26.228300Z",
+    "iteration_duration_seconds": 2.966295916994568,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_08.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_08_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_08_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_08.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_08.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 843,
+      "output_tokens": 164,
+      "total_tokens": 1007
+    },
+    "tokens_used_total": 7578,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 9,
+    "iteration_start": "2026-02-20T16:43:26.228390Z",
+    "iteration_end": "2026-02-20T16:43:29.160122Z",
+    "iteration_duration_seconds": 2.931753208002192,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_09.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_09_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_09_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_09.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_09.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 843,
+      "output_tokens": 164,
+      "total_tokens": 1007
+    },
+    "tokens_used_total": 8585,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 10,
+    "iteration_start": "2026-02-20T16:43:29.160187Z",
+    "iteration_end": "2026-02-20T16:43:31.975263Z",
+    "iteration_duration_seconds": 2.815085458001704,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_10.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_10_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_10_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_10.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_10.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 843,
+      "output_tokens": 164,
+      "total_tokens": 1007
+    },
+    "tokens_used_total": 9592,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 11,
+    "iteration_start": "2026-02-20T16:43:31.975312Z",
+    "iteration_end": "2026-02-20T16:43:34.833531Z",
+    "iteration_duration_seconds": 2.8582225410063984,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_11.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_11_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_11_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_11.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_11.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 844,
+      "output_tokens": 164,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 10600,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 12,
+    "iteration_start": "2026-02-20T16:43:34.833570Z",
+    "iteration_end": "2026-02-20T16:43:37.820377Z",
+    "iteration_duration_seconds": 2.9868274170003133,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_12.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_12_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_12_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_12.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_12.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 844,
+      "output_tokens": 164,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 11608,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 13,
+    "iteration_start": "2026-02-20T16:43:37.820444Z",
+    "iteration_end": "2026-02-20T16:43:41.145750Z",
+    "iteration_duration_seconds": 3.3253747080016183,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_13.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_13_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_13_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_13.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_13.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 844,
+      "output_tokens": 164,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 12616,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 14,
+    "iteration_start": "2026-02-20T16:43:41.145887Z",
+    "iteration_end": "2026-02-20T16:43:43.994747Z",
+    "iteration_duration_seconds": 2.848875499999849,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_14.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_14_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_14_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_14.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_14.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 844,
+      "output_tokens": 164,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 13624,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 15,
+    "iteration_start": "2026-02-20T16:43:43.994805Z",
+    "iteration_end": "2026-02-20T16:43:46.894575Z",
+    "iteration_duration_seconds": 2.8997891659964807,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_15.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_15_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_15_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_15.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_15.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 844,
+      "output_tokens": 164,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 14632,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 16,
+    "iteration_start": "2026-02-20T16:43:46.894634Z",
+    "iteration_end": "2026-02-20T16:43:49.723327Z",
+    "iteration_duration_seconds": 2.828710665999097,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_16.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_16_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_16_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_16.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_16.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 844,
+      "output_tokens": 164,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 15640,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 17,
+    "iteration_start": "2026-02-20T16:43:49.723388Z",
+    "iteration_end": "2026-02-20T16:43:52.413356Z",
+    "iteration_duration_seconds": 2.689978207999957,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_17.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_17_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_17_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_17.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_17.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 844,
+      "output_tokens": 164,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 16648,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 18,
+    "iteration_start": "2026-02-20T16:43:52.413402Z",
+    "iteration_end": "2026-02-20T16:43:56.689135Z",
+    "iteration_duration_seconds": 4.275736832991242,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_18.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_18_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_18_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_18.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_18.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 844,
+      "output_tokens": 164,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 17656,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 19,
+    "iteration_start": "2026-02-20T16:43:56.689196Z",
+    "iteration_end": "2026-02-20T16:43:59.684252Z",
+    "iteration_duration_seconds": 2.9950860000099055,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_19.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_19_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_19_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_19.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_19.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 844,
+      "output_tokens": 164,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 18664,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 20,
+    "iteration_start": "2026-02-20T16:43:59.684347Z",
+    "iteration_end": "2026-02-20T16:44:02.943692Z",
+    "iteration_duration_seconds": 3.2593516670021927,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_20.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_20_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-114301/iteration_20_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_20.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_20.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 844,
+      "output_tokens": 164,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 19672,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

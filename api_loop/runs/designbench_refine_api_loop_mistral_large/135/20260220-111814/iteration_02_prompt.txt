@@ -1,0 +1,81 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system is required to provide a set of standard and precise constants for scientific computing and simulation applications, including mathematical constants, fundamental physical constants, and context-specific parameters. Specifically, the system should have built-in commonly used mathematical constants such as Euler’s number e and pi π, with numerical precision up to 20 decimal places. At the same time, it should integrate typical physical constants, including the precisely defined speed of light in vacuum, the fine-structure constant, and the electron-to-proton mass ratio, with clear SI unit annotations. Additionally, the system should support scenario-based constants, such as standard gravitational acceleration on Earth and the amplifier gain coefficient in specific products (e.g., Model X). All constants should be easily accessible and verifiable by the system, in order to meet the high standards of scientific computation and engineering domains.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package ScientificConstants {
+    private import ScalarValues::*;
+
+    enum def MathConstants {
+        PI,
+        EULER_NUMBER
+    }
+
+    enum def PhysicalConstants {
+        SPEED_OF_LIGHT,
+        FINE_STRUCTURE_CONSTANT,
+        ELECTRON_PROTON_MASS_RATIO
+    }
+
+    enum def ScenarioConstants {
+        STANDARD_GRAVITY,
+        AMPLIFIER_GAIN_MODEL_X
+    }
+
+    part def MathematicalConstants {
+        attribute pi : Real = 3.14159265358979323846;
+        attribute e : Real = 2.71828182845904523536;
+    }
+
+    part def FundamentalPhysicalConstants {
+        attribute speedOfLight : Real = 299792458.0; // m/s
+        attribute fineStructureConstant : Real = 0.0072973525693;
+        attribute electronProtonMassRatio : Real = 0.000544617021487;
+    }
+
+    part def ContextSpecificConstants {
+        attribute standardGravity : Real = 9.80665; // m/s^2
+        attribute amplifierGainModelX : Real = 100.0; // unitless
+    }
+
+    part def ScientificConstantsSystem {
+        part mathConstants : MathematicalConstants;
+        part physicalConstants : FundamentalPhysicalConstants;
+        part scenarioConstants : ContextSpecificConstants;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:6:9: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    6 |         EULER_NUMBER
+      |         ^^^^^^^^^^^^
+iteration_01.sysml:7:5: error (parsing-error): Expected a token. Did you forget ';'?
+    7 |     }
+iteration_01.sysml:12:9: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    12 |         ELECTRON_PROTON_MASS_RATIO
+       |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:12:9: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    12 |         ELECTRON_PROTON_MASS_RATIO
+       |         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:13:5: error (parsing-error): Expected a token. Did you forget ';'?
+    13 |     }
+iteration_01.sysml:17:9: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    17 |         AMPLIFIER_GAIN_MODEL_X
+       |         ^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:18:5: error (parsing-error): Expected a token. Did you forget ';'?
+    18 |     }
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,34 @@
+{
+  "id": "647d382336fb4a5e9f0c67aaf452ba4b",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def VehicleType {\n        enum SmallVehicle;\n        enum LargeVehicle;\n    }\n\n    part def Engine {\n        attribute cylinderCount : Integer;\n    }\n\n    part def SmallEngine : Engine {\n        attribute cylinderCount : Integer = 4;\n    }\n\n    part def LargeEngine : Engine {\n        attribute cylinderCount : Integer = 6;\n    }\n\n    part def Vehicle {\n        attribute vehicleType : VehicleType;\n        part engine : Engine;\n    }\n\n    part def SmallVehicle : Vehicle {\n        attribute vehicleType : VehicleType = VehicleType::SmallVehicle;\n        part engine : SmallEngine;\n    }\n\n    part def LargeVehicle : Vehicle {\n        attribute vehicleType : VehicleType = VehicleType::LargeVehicle;\n        part engine : LargeEngine;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603313,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 174,
+    "prompt_tokens": 374,
+    "total_tokens": 548,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:15:06.545320Z",
+    "iteration_end": "2026-02-20T16:15:12.187321Z",
+    "iteration_duration_seconds": 5.641937374995905,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/114/20260220-111505/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/114/20260220-111505/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/114/20260220-111505/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute state : VehicleState = VehicleState::on;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:34:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'snapshots' shadows Occurrences::Occurrence::snapshots\n\u2502   34 |         part snapshots : SimulationSnapshot[*];\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Kernel Libraries/Kernel Semantic Library/Occurrences.kerml:331:23: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u251c\u2500\u2500 /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Kernel Libraries/Kernel Semantic Library/Objects.kerml:24:37: \u001b[38;2;255;255;255mnote\u001b[0m: Because Occurrences::Occurrence is specialized through Subclassification\n    \u251c\u2500\u2500 /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Systems Library/Items.sysml:24:28: \u001b[38;2;255;255;255mnote\u001b[0m: Because Objects::Object is specialized through Subclassification\n    \u251c\u2500\u2500 /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Systems Library/Parts.sysml:19:28: \u001b[38;2;255;255;255mnote\u001b[0m: Because Items::Item is specialized through Subclassification\n    \u2514\u2500\u2500 iteration_01.sysml:31:5: \u001b[38;2;255;255;255mnote\u001b[0m: Because Parts::Part is implicitly specialized through Subclassification",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 382,
+      "output_tokens": 238,
+      "total_tokens": 620
+    },
+    "tokens_used_total": 620,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:15:12.187412Z",
+    "iteration_end": "2026-02-20T16:15:16.214932Z",
+    "iteration_duration_seconds": 4.027610417004325,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/114/20260220-111505/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/114/20260220-111505/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/114/20260220-111505/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:25:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    25 |         attribute state : VehicleState;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1178,
+      "output_tokens": 231,
+      "total_tokens": 1409
+    },
+    "tokens_used_total": 2029,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:15:16.215142Z",
+    "iteration_end": "2026-02-20T16:15:20.197939Z",
+    "iteration_duration_seconds": 3.9828007920004893,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/114/20260220-111505/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/114/20260220-111505/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/114/20260220-111505/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 789,
+      "output_tokens": 237,
+      "total_tokens": 1026
+    },
+    "tokens_used_total": 3055,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

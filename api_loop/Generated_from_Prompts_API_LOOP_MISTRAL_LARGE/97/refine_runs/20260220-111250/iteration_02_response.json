@@ -1,0 +1,34 @@
+{
+  "id": "17cfd3c8358d4e8b92ac4ae9847b00fd",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def VehicleSize {\n        enum Small;\n        enum Standard;\n        enum Large;\n    }\n\n    part def Cylinder;\n\n    part def Engine {\n        attribute cylinderCount : Integer;\n        part cylinders : Cylinder[4..6];\n    }\n\n    part def Vehicle {\n        attribute size : VehicleSize;\n        part engine : Engine;\n\n        attribute smallConstraint : Boolean = size == VehicleSize::Small implies engine.cylinderCount == 4;\n        attribute largeConstraint : Boolean = size == VehicleSize::Large implies engine.cylinderCount == 6;\n        attribute standardConstraint : Boolean = size == VehicleSize::Standard implies (engine.cylinderCount >= 4 and engine.cylinderCount <= 6);\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603975,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 162,
+    "prompt_tokens": 1543,
+    "total_tokens": 1705,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

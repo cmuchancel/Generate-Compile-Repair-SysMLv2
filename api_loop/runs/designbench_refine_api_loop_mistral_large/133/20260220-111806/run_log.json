@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:18:06.688303Z",
+    "iteration_end": "2026-02-20T16:18:12.928542Z",
+    "iteration_duration_seconds": 6.223279208003078,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/133/20260220-111806/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/133/20260220-111806/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/133/20260220-111806/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:6:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    6 |     }",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 395,
+      "output_tokens": 263,
+      "total_tokens": 658
+    },
+    "tokens_used_total": 658,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:18:12.928934Z",
+    "iteration_end": "2026-02-20T16:18:17.224501Z",
+    "iteration_duration_seconds": 4.295630082997377,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/133/20260220-111806/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/133/20260220-111806/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/133/20260220-111806/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 727,
+      "output_tokens": 263,
+      "total_tokens": 990
+    },
+    "tokens_used_total": 1648,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

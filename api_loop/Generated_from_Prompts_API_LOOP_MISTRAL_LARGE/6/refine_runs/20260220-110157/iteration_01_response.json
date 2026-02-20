@@ -1,0 +1,34 @@
+{
+  "id": "9c7ddcda59f24094a34005aeb6ee1188",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage InformationClassification {\n\n    private import ScalarValues::*;\n\n    enum def ClassificationLevel {\n        enum uncl;\n        enum conf;\n        enum secr;\n    }\n\n    enum def ClassificationColor {\n        enum green;\n        enum yellow;\n        enum red;\n    }\n\n    enum def GradeLevel {\n        enum A;\n        enum B;\n        enum C;\n        enum D;\n        enum F;\n    }\n\n    part def Classification {\n        attribute level : ClassificationLevel;\n        attribute code : String;\n        attribute color : ClassificationColor;\n    }\n\n    part unclassified : Classification {\n        attribute level = ClassificationLevel::uncl;\n        attribute code = \"uncl\";\n        attribute color = ClassificationColor::green;\n    }\n\n    part confidential : Classification {\n        attribute level = ClassificationLevel::conf;\n        attribute code = \"conf\";\n        attribute color = ClassificationColor::yellow;\n    }\n\n    part secret : Classification {\n        attribute level = ClassificationLevel::secr;\n        attribute code = \"secr\";\n        attribute color = ClassificationColor::red;\n    }\n\n    part def Grade {\n        attribute grade : GradeLevel;\n        attribute points : Real;\n    }\n\n    part gradeA : Grade {\n        attribute grade = GradeLevel::A;\n        attribute points = 4.0;\n    }\n\n    part gradeB : Grade {\n        attribute grade = GradeLevel::B;\n        attribute points = 3.0;\n    }\n\n    part gradeC : Grade {\n        attribute grade = GradeLevel::C;\n        attribute points = 2.0;\n    }\n\n    part gradeD : Grade {\n        attribute grade = GradeLevel::D;\n        attribute points = 1.0;\n    }\n\n    part gradeF : Grade {\n        attribute grade = GradeLevel::F;\n        attribute points = 0.0;\n    }\n\n    part def Information {\n        attribute classification : Classification;\n        attribute grade : Grade;\n    }\n\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603318,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 394,
+    "prompt_tokens": 434,
+    "total_tokens": 828,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

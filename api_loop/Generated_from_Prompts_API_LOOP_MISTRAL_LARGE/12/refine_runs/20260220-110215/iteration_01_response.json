@@ -1,0 +1,34 @@
+{
+  "id": "13ce07e2f572469d9418bca27d3d4433",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage WaterSupplyNetwork {\n    private import ScalarValues::*;\n\n    enum def WaterType {\n        enum Hot;\n        enum Cold;\n    }\n\n    part def SpigotBank {\n        port hotOut : Spigot;\n        port coldOut : Spigot;\n    }\n\n    part def Spigot {\n        attribute waterType : WaterType;\n    }\n\n    part def Faucet {\n        port hotIn : FaucetInlet;\n        port coldIn : FaucetInlet;\n    }\n\n    part def FaucetInlet {\n        attribute waterType : WaterType;\n    }\n\n    part def WaterSupplySystem {\n        part mainSupply : SpigotBank;\n\n        part faucet1 : Faucet;\n        part faucet2 : Faucet;\n\n        connect mainSupply.hotOut to faucet1.hotIn;\n        connect mainSupply.hotOut to faucet2.hotIn;\n        connect mainSupply.coldOut to faucet1.coldIn;\n        connect mainSupply.coldOut to faucet2.coldIn;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603336,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 243,
+    "prompt_tokens": 384,
+    "total_tokens": 627,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,108 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to model and analyze the quality attributes of vehicles, enabling effective management of both the entire vehicle and its key components (including the engine, transmission, front axle assembly, and rear axle assembly). Users can input quality data for each component, and the system will automatically aggregate and calculate the total mass of the vehicle, providing a data foundation for quality analysis. The system also supports the definition of quality analysis requirements and the formulation of analysis use cases. Based on set analysis objectives, it can automatically generate analysis tasks and plans, achieving comprehensive evaluation and requirements tracking for vehicle quality. Ultimately, the system provides scientific support for vehicle design and performance optimization, improving overall development efficiency and product performance.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleQualityAnalysis {
+    private import ScalarValues::*;
+
+    enum def QualityAttribute {
+        mass,
+        durability,
+        reliability,
+        performance,
+        efficiency
+    }
+
+    part def Vehicle {
+        attribute totalMass : Real;
+        part engine : Engine;
+        part transmission : Transmission;
+        part frontAxle : AxleAssembly;
+        part rearAxle : AxleAssembly;
+    }
+
+    part def Engine {
+        attribute mass : Real;
+        attribute durability : Real;
+        attribute reliability : Real;
+    }
+
+    part def Transmission {
+        attribute mass : Real;
+        attribute efficiency : Real;
+    }
+
+    part def AxleAssembly {
+        attribute mass : Real;
+        attribute durability : Real;
+    }
+
+    part def QualityAnalysisSystem {
+        part vehicle : Vehicle;
+        attribute analysisObjective : String;
+        attribute analysisPlan : String;
+
+        attribute calculateTotalMass() : Real {
+            vehicle.engine.mass + vehicle.transmission.mass +
+            vehicle.frontAxle.mass + vehicle.rearAxle.mass
+        }
+    }
+
+    part def QualityDataInput {
+        port inputData : QualityDataPort;
+    }
+
+    port def QualityDataPort {
+    }
+
+    item def QualityData {
+        attribute componentName : String;
+        attribute attributeType : QualityAttribute;
+        attribute value : Real;
+    }
+
+    part qualitySystem : QualityAnalysisSystem;
+    part dataInput : QualityDataInput;
+
+    connect dataInput.inputData to qualitySystem.vehicle;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:9:9: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    9 |         efficiency
+      |         ^^^^^^^^^^
+iteration_01.sysml:9:9: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    9 |         efficiency
+      |         ^^^^^^^^^^
+iteration_01.sysml:9:9: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    9 |         efficiency
+      |         ^^^^^^^^^^
+iteration_01.sysml:9:9: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "}", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "[", "ordered", "nonunique", "<", "@", "#", "metadata", "=", ":=", "default", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "enum", "OwningMembership", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "FeatureValue", "OwningMembership", "MultiplicityRange", "OwningMembership", "VariantMembership", "EnumerationUsage", "MetadataUsage", "MetadataUsage"].
+    9 |         efficiency
+      |         ^^^^^^^^^^
+iteration_01.sysml:10:5: error (parsing-error): Expected a token. Did you forget ';'?
+    10 |     }
+iteration_01.sysml:41:37: error (parsing-error): Unexpected '(', expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    41 |         attribute calculateTotalMass() : Real {
+       |                                     ^
+iteration_01.sysml:42:21: error (parsing-error): Unexpected identifier.
+    42 |             vehicle.engine.mass + vehicle.transmission.mass +
+       |                     ^^^^^^
+iteration_01.sysml:44:9: error (parsing-error): Unexpected '}', expected one of ["NAME", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "import", "[", "abstract", "in", "inout", "out", "derived", "end",
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

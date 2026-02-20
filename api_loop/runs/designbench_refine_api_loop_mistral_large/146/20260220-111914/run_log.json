@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:19:15.327424Z",
+    "iteration_end": "2026-02-20T16:19:22.519400Z",
+    "iteration_duration_seconds": 7.191954833004274,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/146/20260220-111914/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/146/20260220-111914/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/146/20260220-111914/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:7:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    7 |     }\n\niteration_01.sysml:12:40: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    12 |         attribute timePoints : Sequence<Real>;\n\niteration_01.sysml:13:39: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    13 |         attribute positions : Sequence<Vector3D>;\n\niteration_01.sysml:14:40: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    14 |         attribute velocities : Sequence<Vector3D>;\n\niteration_01.sysml:11:39: \u001b[38;2;204;204;057mwarning\u001b[0m (usage-feature-typing): Usages should only be typed by Classifiers, this will be upgraded to error in Syside v0.9\n    11 |         attribute referenceTimeZero : Real = 0.0;\n       |                                       \u001b[38;2;204;204;057m^^^^\u001b[0m\n\niteration_01.sysml:11:46: \u001b[38;2;220;080;080merror\u001b[0m (type-error): ScalarValues::Rational does not conform to SpacecraftTrajectory::Spacecraft::Real\n    11 |         attribute referenceTimeZero : Real = 0.0;\n       |                                              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:14:41: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'Vector3D' shadows SpacecraftTrajectory::Spacecraft::Vector3D\n\u2502   14 |         attribute velocities : Sequence<Vector3D>;\n\u2502      |                                         \u001b[38;2;204;204;057m^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:13:40: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_01.sysml:12:32: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Sequence' found.\n    12 |         attribute timePoints : Sequence<Real>;\n       |                                \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:13:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Sequence' found.\n    13 |         attribute positions : Sequence<Vector3D>;\n       |                               \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:14:32: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Sequence' found.\n    14 |         attribute velocities : Sequence<Vector3D>;\n       |                                \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 437,
+      "output_tokens": 283,
+      "total_tokens": 720
+    },
+    "tokens_used_total": 720,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:19:22.519617Z",
+    "iteration_end": "2026-02-20T16:19:27.533190Z",
+    "iteration_duration_seconds": 5.013548333008657,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/146/20260220-111914/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/146/20260220-111914/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/146/20260220-111914/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1303,
+      "output_tokens": 298,
+      "total_tokens": 1601
+    },
+    "tokens_used_total": 2321,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

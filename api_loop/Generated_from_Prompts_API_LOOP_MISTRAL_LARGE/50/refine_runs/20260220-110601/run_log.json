@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:06:01.733744Z",
+    "iteration_end": "2026-02-20T16:06:07.452927Z",
+    "iteration_duration_seconds": 5.719125042000087,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/50/20260220-110601/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/50/20260220-110601/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/50/20260220-110601/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:13:34: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    13 |         attribute assemblyDate : Date;\n       |                                  \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:14:34: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    14 |         attribute deliveryDate : Date;\n       |                                  \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:15:35: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    15 |         attribute scrappingDate : Date;\n       |                                   \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:32:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    32 |         attribute startDate : Date;\n       |                               \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:33:29: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    33 |         attribute endDate : Date;\n       |                             \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:38:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    38 |         attribute startTime : DateTime;\n       |                               \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:39:29: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    39 |         attribute endTime : DateTime;\n       |                             \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:51:61: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'vehicle' found.\n    51 |     connect lifecycle.vehicle to lifecycle.ownershipRecords.vehicle;\n       |                                                             \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:52:59: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'vehicle' found.\n    52 |     connect lifecycle.vehicle to lifecycle.drivingRecords.vehicle;\n       |                                                           \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 411,
+      "output_tokens": 280,
+      "total_tokens": 691
+    },
+    "tokens_used_total": 691,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:06:07.453009Z",
+    "iteration_end": "2026-02-20T16:06:12.649041Z",
+    "iteration_duration_seconds": 5.19604129200161,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/50/20260220-110601/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/50/20260220-110601/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/50/20260220-110601/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1169,
+      "output_tokens": 346,
+      "total_tokens": 1515
+    },
+    "tokens_used_total": 2206,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

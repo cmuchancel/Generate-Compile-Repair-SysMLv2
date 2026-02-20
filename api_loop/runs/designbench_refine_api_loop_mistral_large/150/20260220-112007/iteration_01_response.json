@@ -1,0 +1,34 @@
+{
+  "id": "1da5f11d98294516a9258927e4a0691b",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage PublishSubscribeSystem {\n    private import ScalarValues::*;\n\n    enum def Topic {\n        enum Weather;\n        enum News;\n        enum Sports;\n    }\n\n    part def Producer {\n        port publishPort : PublishPort;\n    }\n\n    part def Consumer {\n        port subscribePort : SubscribePort;\n        port receivePort : ReceivePort;\n    }\n\n    part def Server {\n        port publishReceivePort : PublishPort;\n        port subscribeHandlePort : SubscribePort;\n        port pushPort : PushPort;\n\n        attribute subscriptions : Topic -> Consumer[*] = (Topic::Weather -> Consumer[*], Topic::News -> Consumer[*], Topic::Sports -> Consumer[*]);\n    }\n\n    port def PublishPort {\n        attribute topic : Topic;\n        attribute message : String;\n    }\n\n    port def SubscribePort {\n        attribute topic : Topic;\n    }\n\n    port def ReceivePort {\n        attribute message : String;\n    }\n\n    port def PushPort {\n        attribute topic : Topic;\n        attribute message : String;\n    }\n\n    item def Message {\n        attribute topic : Topic;\n        attribute content : String;\n    }\n\n    part producer1 : Producer;\n    part producer2 : Producer;\n    part consumer1 : Consumer;\n    part consumer2 : Consumer;\n    part server : Server;\n\n    connect producer1.publishPort to server.publishReceivePort;\n    connect producer2.publishPort to server.publishReceivePort;\n    connect consumer1.subscribePort to server.subscribeHandlePort;\n    connect consumer2.subscribePort to server.subscribeHandlePort;\n    connect server.pushPort to consumer1.receivePort;\n    connect server.pushPort to consumer2.receivePort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604409,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 338,
+    "prompt_tokens": 377,
+    "total_tokens": 715,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

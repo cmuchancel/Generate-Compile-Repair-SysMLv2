@@ -1,0 +1,34 @@
+{
+  "id": "ed316fe3fd6d45be849b5629f38514f4",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage AutomotivePowertrain {\n    private import ScalarValues::*;\n\n    enum def EngineState {\n        enum OFF;\n        enum STARTING;\n        enum RUNNING;\n        enum STOPPING;\n    }\n\n    part def Engine {\n        attribute currentState : EngineState = EngineState::OFF;\n        attribute fuelCommand : Real;\n        attribute torqueOutput : Real;\n        port fuelInput : FuelCommandPort;\n        port torqueOutputPort : TorquePort;\n    }\n\n    part def Transmission {\n        attribute gearRatio : Real;\n        port inputTorque : TorquePort;\n        port outputTorque : TorquePort;\n    }\n\n    part def Driveshaft {\n        port inputTorque : TorquePort;\n        port leftOutput : TorquePort;\n        port rightOutput : TorquePort;\n    }\n\n    part def Wheel {\n        port torqueInput : TorquePort;\n    }\n\n    part def PowertrainController {\n        port engineControl : EngineControlPort;\n        port userInput : UserCommandPort;\n    }\n\n    port def FuelCommandPort;\n    port def TorquePort;\n    port def EngineControlPort;\n    port def UserCommandPort;\n\n    part powertrainSystem {\n        part engine : Engine;\n        part transmission : Transmission;\n        part driveshaft : Driveshaft;\n        part leftWheel : Wheel;\n        part rightWheel : Wheel;\n        part controller : PowertrainController;\n\n        connect controller.engineControl to engine.fuelInput;\n        connect engine.torqueOutputPort to transmission.inputTorque;\n        connect transmission.outputTorque to driveshaft.inputTorque;\n        connect driveshaft.leftOutput to leftWheel.torqueInput;\n        connect driveshaft.rightOutput to rightWheel.torqueInput;\n        connect controller.userInput to engine.fuelInput;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604024,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 371,
+    "prompt_tokens": 946,
+    "total_tokens": 1317,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 368
+    }
+  }
+}

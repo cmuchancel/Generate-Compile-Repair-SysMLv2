@@ -1,0 +1,34 @@
+{
+  "id": "debc8fd6dad54114b277839605b84d43",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomobileModel {\n    private import ScalarValues::*;\n\n    part def Automobile;\n    alias def Car = Automobile;\n\n    item def TorqueValue {\n        attribute value : Real;\n        attribute unit : String = \"N\u00b7m\";\n    }\n    alias def Torque = TorqueValue;\n\n    part def AutomobileSystem {\n        part car : Automobile;\n        attribute engineTorque : Torque;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603965,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 95,
+    "prompt_tokens": 358,
+    "total_tokens": 453,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

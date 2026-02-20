@@ -1,0 +1,209 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to provide a standardized unit system library that supports the interoperability and adaptation between the International System of Quantities (ISQ) and United States Customary Units (USCustomaryUnits). The goal is to enable users to conveniently manage, convert, and apply various units of physical quantities, effectively reducing confusion and errors caused by inconsistent units. At the same time, the system must ensure the accuracy and authoritative standardization of all unit types, meeting the measurement needs of engineering, scientific research, and daily life. This will enhance the efficiency and reliability of data processing and communication.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 4):
+                package UnitSystemLibrary {
+    private import ScalarValues::*;
+
+    enum def QuantityKind {
+        enum length;
+        enum mass;
+        enum time;
+        enum electricCurrent;
+        enum thermodynamicTemperature;
+        enum amountOfSubstance;
+        enum luminousIntensity;
+        enum planeAngle;
+        enum solidAngle;
+        enum area;
+        enum volume;
+        enum velocity;
+        enum acceleration;
+        enum force;
+        enum pressure;
+        enum energy;
+        enum power;
+        enum electricCharge;
+        enum electricPotential;
+        enum electricResistance;
+        enum frequency;
+    }
+
+    part def MeasurementUnit {
+        attribute symbol : String;
+        attribute quantityKind : QuantityKind;
+    }
+
+    part def ISQUnit {
+        attribute meter : MeasurementUnit;
+        attribute kilogram : MeasurementUnit;
+        attribute second : MeasurementUnit;
+        attribute ampere : MeasurementUnit;
+        attribute kelvin : MeasurementUnit;
+        attribute mole : MeasurementUnit;
+        attribute candela : MeasurementUnit;
+        attribute radian : MeasurementUnit;
+        attribute steradian : MeasurementUnit;
+    }
+
+    part def USCustomaryUnit {
+        attribute inch : MeasurementUnit;
+        attribute foot : MeasurementUnit;
+        attribute yard : MeasurementUnit;
+        attribute mile : MeasurementUnit;
+        attribute poundMass : MeasurementUnit;
+        attribute slug : MeasurementUnit;
+        attribute second : MeasurementUnit;
+        attribute ampere : MeasurementUnit;
+        attribute rankine : MeasurementUnit;
+        attribute fahrenheit : MeasurementUnit;
+        attribute mole : MeasurementUnit;
+        attribute candela : MeasurementUnit;
+        attribute radian : MeasurementUnit;
+        attribute steradian : MeasurementUnit;
+    }
+
+    part isqUnits : ISQUnit {
+        attribute meter : MeasurementUnit = new MeasurementUnit(symbol = "m", quantityKind = QuantityKind::length);
+        attribute kilogram : MeasurementUnit = new MeasurementUnit(symbol = "kg", quantityKind = QuantityKind::mass);
+        attribute second : MeasurementUnit = new MeasurementUnit(symbol = "s", quantityKind = QuantityKind::time);
+        attribute ampere : MeasurementUnit = new MeasurementUnit(symbol = "A", quantityKind = QuantityKind::electricCurrent);
+        attribute kelvin : MeasurementUnit = new MeasurementUnit(symbol = "K", quantityKind = QuantityKind::thermodynamicTemperature);
+        attribute mole : MeasurementUnit = new MeasurementUnit(symbol = "mol", quantityKind = QuantityKind::amountOfSubstance);
+        attribute candela : MeasurementUnit = new MeasurementUnit(symbol = "cd", quantityKind = QuantityKind::luminousIntensity);
+        attribute radian : MeasurementUnit = new MeasurementUnit(symbol = "rad", quantityKind = QuantityKind::planeAngle);
+        attribute steradian : MeasurementUnit = new MeasurementUnit(symbol = "sr", quantityKind = QuantityKind::solidAngle);
+    }
+
+    part usCustomaryUnits : USCustomaryUnit {
+        attribute inch : MeasurementUnit = new MeasurementUnit(symbol = "in", quantityKind = QuantityKind::length);
+        attribute foot : MeasurementUnit = new MeasurementUnit(symbol = "ft", quantityKind = QuantityKind::length);
+        attribute yard : MeasurementUnit = new MeasurementUnit(symbol = "yd", quantityKind = QuantityKind::length);
+        attribute mile : MeasurementUnit = new MeasurementUnit(symbol = "mi", quantityKind = QuantityKind::length);
+        attribute poundMass : MeasurementUnit = new MeasurementUnit(symbol = "lbm", quantityKind = QuantityKind::mass);
+        attribute slug : MeasurementUnit = new MeasurementUnit(symbol = "slug", quantityKind = QuantityKind::mass);
+        attribute second : MeasurementUnit = new MeasurementUnit(symbol = "s", quantityKind = QuantityKind::time);
+        attribute ampere : MeasurementUnit = new MeasurementUnit(symbol = "A", quantityKind = QuantityKind::electricCurrent);
+        attribute rankine : MeasurementUnit = new MeasurementUnit(symbol = "°R", quantityKind = QuantityKind::thermodynamicTemperature);
+        attribute fahrenheit : MeasurementUnit = new MeasurementUnit(symbol = "°F", quantityKind = QuantityKind::thermodynamicTemperature);
+        attribute mole : MeasurementUnit = new MeasurementUnit(symbol = "mol", quantityKind = QuantityKind::amountOfSubstance);
+        attribute candela : MeasurementUnit = new MeasurementUnit(symbol = "cd", quantityKind = QuantityKind::luminousIntensity);
+        attribute radian : MeasurementUnit = new MeasurementUnit(symbol = "rad", quantityKind = QuantityKind::planeAngle);
+        attribute steradian : MeasurementUnit = new MeasurementUnit(symbol = "sr", quantityKind = QuantityKind::solidAngle);
+    }
+
+    part def UnitConverter {
+        attribute sourceUnit : MeasurementUnit;
+        attribute targetUnit : MeasurementUnit;
+        attribute conversionFactor : Real;
+        attribute offset : Real = 0.0;
+    }
+
+    part def UnitSystem {
+        attribute systemName : String;
+        attribute baseUnits : MeasurementUnit[*];
+        attribute derivedUnits : MeasurementUnit[*];
+    }
+
+    part isqSystem : UnitSystem {
+        attribute systemName = "International System of Quantities";
+        attribute baseUnits = [isqUnits.meter, isqUnits.kilogram, isqUnits.second, isqUnits.ampere, isqUnits.kelvin, isqUnits.mole, isqUnits.candela];
+    }
+
+    part usCustomarySystem : UnitSystem {
+        attribute systemName = "United States Customary Units";
+        attribute baseUnits = [usCustomaryUnits.foot, usCustomaryUnits.poundMass, usCustomaryUnits.second, usCustomaryUnits.ampere];
+    }
+
+    part def Quantity {
+        attribute value : Real;
+        attribute unit : MeasurementUnit;
+    }
+
+    part lengthConverter : UnitConverter {
+        attribute sourceUnit = isqUnits.meter;
+        attribute targetUnit = usCustomaryUnits.foot;
+        attribute conversionFactor = 3.28084;
+    }
+
+    part massConverter : UnitConverter {
+        attribute sourceUnit = isqUnits.kilogram;
+        attribute targetUnit = usCustomaryUnits.poundMass;
+        attribute conversionFactor = 2.20462;
+    }
+
+    part temperatureConverter : UnitConverter {
+        attribute sourceUnit = isqUnits.kelvin;
+        attribute targetUnit = usCustomaryUnits.rankine;
+        attribute conversionFactor = 1.8;
+        attribute offset = 0.0;
+    }
+
+    part temperatureOffsetConverter : UnitConverter {
+        attribute sourceUnit = isqUnits.kelvin;
+        attribute targetUnit = usCustomaryUnits.fahrenheit;
+        attribute conversionFactor = 1.8;
+        attribute offset = 459.67;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_04.sysml:106:31: error (parsing-error): Expected a token. Did you forget an identifier?
+    106 |         attribute baseUnits = [isqUnits.meter, isqUnits.kilogram, isqUnits.second, isqUnits.ampere, isqUnits.kelvin, isqUnits.mole, isqUnits.candela];
+iteration_04.sysml:111:31: error (parsing-error): Expected a token. Did you forget an identifier?
+    111 |         attribute baseUnits = [usCustomaryUnits.foot, usCustomaryUnits.poundMass, usCustomaryUnits.second, usCustomaryUnits.ampere];
+iteration_04.sysml:63:19: warning (namespace-distinguishability): Member name 'meter' shadows UnitSystemLibrary::ISQUnit::meter
+│   63 |         attribute meter : MeasurementUnit = new MeasurementUnit(symbol = "m", quantityKind = QuantityKind::length);
+│      |                   ^^^^^
+└── iteration_04.sysml:34:19: note: Inherited from here
+    └── iteration_04.sysml:62:21: note: Because UnitSystemLibrary::ISQUnit is specialized through FeatureTyping
+iteration_04.sysml:64:19: warning (namespace-distinguishability): Member name 'kilogram' shadows UnitSystemLibrary::ISQUnit::kilogram
+│   64 |         attribute kilogram : MeasurementUnit = new MeasurementUnit(symbol = "kg", quantityKind = QuantityKind::mass);
+│      |                   ^^^^^^^^
+└── iteration_04.sysml:35:19: note: Inherited from here
+    └── iteration_04.sysml:62:21: note: Because UnitSystemLibrary::ISQUnit is specialized through FeatureTyping
+iteration_04.sysml:65:19: warning (namespace-distinguishability): Member name 'second' shadows UnitSystemLibrary::ISQUnit::second
+│   65 |         attribute second : MeasurementUnit = new MeasurementUnit(symbol = "s", quantityKind = QuantityKind::time);
+│      |                   ^^^^^^
+└── iteration_04.sysml:36:19: note: Inherited from here
+    └── iteration_04.sysml:62:21: note: Because UnitSystemLibrary::ISQUnit is specialized through FeatureTyping
+iteration_04.sysml:66:19: warning (namespace-distinguishability): Member name 'ampere' shadows UnitSystemLibrary::ISQUnit::ampere
+│   66 |         attribute ampere : MeasurementUnit = new MeasurementUnit(symbol = "A", quantityKind = QuantityKind::electricCurrent);
+│      |                   ^^^^^^
+└── iteration_04.sysml:37:19: note: Inherited from here
+    └── iteration_04.sysml:62:21: note: Because UnitSystemLibrary::ISQUnit is specialized through FeatureTyping
+iteration_04.sysml:67:19: warning (namespace-distinguishability): Member name 'kelvin' shadows UnitSystemLibrary::ISQUnit::kelvin
+│   67 |         attribute kelvin : MeasurementUnit = new MeasurementUnit(symbol = "K", quantityKind = QuantityKind::thermodynamicTemperature);
+│      |                   ^^^^^^
+└── iteration_04.sysml:38:19: note: Inherited from here
+    └── iteration_04.sysml:62:21: note: Because UnitSystemLibrary::ISQUnit is specialized through FeatureTyping
+iteration_04.sysml:68:19: warning (namespace-distinguishability): Member name 'mole' shadows UnitSystemLibrary::ISQUnit::mole
+│   68 |         attribute mole : MeasurementUnit = new MeasurementUnit(symbol = "mol", quantityKind = QuantityKind::amountOfSubstance);
+│      |                   ^^^^
+└── iteration_04.sysml:39:19: note: Inherited from here
+    └── iteration_04.sysml:62:21: note: Because UnitSystemLibrary::ISQUnit is specialized through FeatureTyping
+iteration_04.sysml:69:19: warning (namespace-distinguishability): Member name 'candela' shadows UnitSystemLibrary::ISQUnit::candela
+│   69 |         attribute candela : MeasurementUnit = new MeasurementUnit(symbol = "cd", quantityKind = QuantityKind::luminousIntensity);
+│      |                   ^^^^^^^
+└── iteration_04.sysml:40:19: note: Inherited from here
+    └── iteration_04.sysml:62:21: note: Because UnitSystemLibrary::ISQUnit is specialized through FeatureTyping
+iteration_04.sysml:70:19: warning (namespace-distinguishability): Member name 'radian' shadows UnitSystemLibrary::ISQUnit::radian
+... (truncated compiler output) ...
+    └── iteration_04.sysml:131:33: note: Because UnitSystemLibrary::UnitConvert
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

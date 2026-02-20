@@ -1,0 +1,34 @@
+{
+  "id": "1c2f5271ab434a798f7b188b5848a2d9",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomotiveConfigurationManagement {\n    private import ScalarValues::*;\n\n    enum def SubsystemAConfig {\n        enum Config1;\n        enum Config2;\n    }\n\n    enum def SubsystemBConfig {\n        enum Config1;\n        enum Config2;\n    }\n\n    part def Component1;\n    part def Component2;\n    part def Component3;\n    part def Component4;\n    part def Component5;\n    part def Component6;\n\n    part def SubsystemA {\n        attribute config : SubsystemAConfig;\n\n        part comp1 : Component1;\n        part comp2 : Component2;\n        part comp3 : Component3;\n    }\n\n    part def SubsystemB {\n        attribute config : SubsystemBConfig;\n\n        part comp4 : Component4;\n        part comp5 : Component5;\n        part comp6 : Component6;\n    }\n\n    part def Automobile {\n        part subsystemA : SubsystemA;\n        part subsystemB : SubsystemB;\n\n        attribute vehicleConfig : String;\n    }\n\n    part automobileA : Automobile {\n        part subsystemA : SubsystemA {\n            attribute config : SubsystemAConfig = SubsystemAConfig::Config1;\n        }\n        part subsystemB : SubsystemB {\n            attribute config : SubsystemBConfig = SubsystemBConfig::Config1;\n        }\n        attribute vehicleConfig : String = \"Configuration A\";\n    }\n\n    part automobileB : Automobile {\n        part subsystemA : SubsystemA {\n            attribute config : SubsystemAConfig = SubsystemAConfig::Config2;\n        }\n        part subsystemB : SubsystemB {\n            attribute config : SubsystemBConfig = SubsystemBConfig::Config1;\n        }\n        attribute vehicleConfig : String = \"Configuration B\";\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604117,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 368,
+    "prompt_tokens": 531,
+    "total_tokens": 899,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

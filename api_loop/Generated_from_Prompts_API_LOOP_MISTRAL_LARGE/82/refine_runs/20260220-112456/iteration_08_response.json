@@ -1,0 +1,34 @@
+{
+  "id": "c2f7bc8543dc4e8b84b42588e6c6f213",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage SystemModel {\n    private import ScalarValues::*;\n\n    part def SystemAssembly;\n    part def ComputerSubsystem;\n    part def StorageSubsystem;\n    part def SoftwareDesignSection;\n\n    item def MessageFormat;\n    item def DataFormat;\n\n    port def SoftwarePort;\n    port def MessagePort;\n    port def DataPort;\n\n    part systemAssembly : SystemAssembly {\n        part computer : ComputerSubsystem;\n        part storage : StorageSubsystem;\n        part software : SoftwareDesignSection;\n    }\n\n    part def SoftwareDesignSection {\n        attribute messageFormat : MessageFormat;\n        attribute dataFormat : DataFormat;\n        port softwarePort : SoftwarePort;\n    }\n\n    part def ComputerSubsystem {\n        attribute canIntegrateFunctions : Boolean = true;\n        port softwarePort : SoftwarePort;\n    }\n\n    part def StorageSubsystem {\n        attribute canAccessMessageFormat : Boolean = true;\n        attribute isCompatibleWithDataFormat : Boolean = true;\n        port messagePort : MessagePort;\n        port dataPort : DataPort;\n    }\n\n    connect systemAssembly.software.softwarePort to systemAssembly.computer.softwarePort;\n    connect systemAssembly.software.messageFormat to systemAssembly.storage.messagePort;\n    connect systemAssembly.software.dataFormat to systemAssembly.storage.dataPort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604731,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 264,
+    "prompt_tokens": 1245,
+    "total_tokens": 1509,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 320
+    }
+  }
+}

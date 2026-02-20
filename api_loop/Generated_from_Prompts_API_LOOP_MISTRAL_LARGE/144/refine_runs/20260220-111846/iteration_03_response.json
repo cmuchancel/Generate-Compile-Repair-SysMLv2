@@ -1,0 +1,34 @@
+{
+  "id": "73e16567f8e64c3a9d0f026a4c6e42f6",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage SparePartsManagement {\n    private import ScalarValues::*;\n\n    part def SparePart;\n\n    part def Person;\n\n    item def Bag {\n        attribute elements : SparePart[*];\n    }\n\n    item def IntList {\n        attribute items : Integer[*];\n    }\n\n    item def StringSet {\n        attribute members : String[*];\n    }\n\n    item def PersonOrderedSet {\n        attribute elements : Person[*];\n    }\n\n    item def NestedPersonSetList {\n        attribute sets : StringSet[*];\n    }\n\n    part def CollectionManager {\n        attribute spareParts : Bag;\n        attribute integers : IntList;\n        attribute strings : StringSet;\n        attribute personnel : PersonOrderedSet;\n        attribute nestedPersonSets : IntList;\n        attribute realNumbers : Real[4];\n    }\n\n    part manager : CollectionManager;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604334,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 173,
+    "prompt_tokens": 1460,
+    "total_tokens": 1633,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

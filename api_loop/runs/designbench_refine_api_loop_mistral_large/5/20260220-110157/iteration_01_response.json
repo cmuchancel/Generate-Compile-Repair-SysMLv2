@@ -1,0 +1,34 @@
+{
+  "id": "3e91067ed46641fb98d9ce1d31d1ef47",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage TrafficSignalSystem {\n    private import ScalarValues::*;\n\n    enum def TrafficLightColor {\n        enum green;\n        enum yellow;\n        enum red;\n    }\n\n    part def TrafficSignal {\n        attribute currentColor : TrafficLightColor;\n    }\n\n    part def AlwaysGreenSignal {\n        attribute currentColor : TrafficLightColor = TrafficLightColor::green;\n    }\n\n    part trafficSignal : TrafficSignal;\n    part alwaysGreenSignal : AlwaysGreenSignal;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603318,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 100,
+    "prompt_tokens": 324,
+    "total_tokens": 424,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "13ae9626648b4353bca93f30789592de",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehiclePowerManagement {\n    private import ScalarValues::*;\n\n    enum def PowerState {\n        enum off;\n        enum startPhase;\n        enum poweredOn;\n    }\n\n    enum def ControlSignal {\n        enum startCommand;\n        enum startedSignal;\n        enum shutdownCommand;\n    }\n\n    part def Vehicle {\n        attribute powerState : PowerState = PowerState::off;\n        attribute isDiagnosing : Boolean = false;\n        attribute isPowerSupplied : Boolean = false;\n        attribute isBrakeEngaged : Boolean = false;\n\n        port controlIn : ControlSignalPort;\n        port powerOut : PowerSupplyPort;\n    }\n\n    part def ControlUnit {\n        port controlOut : ControlSignalPort;\n    }\n\n    part def FunctionalUnit {\n        port powerIn : PowerSupplyPort;\n    }\n\n    port def ControlSignalPort {\n        attribute signal : ControlSignal;\n    }\n\n    port def PowerSupplyPort {\n        attribute isPowered : Boolean;\n    }\n\n    item def ControlSignalItem {\n        attribute signal : ControlSignal;\n    }\n\n    part vehicle : Vehicle;\n    part controlUnit : ControlUnit;\n    part functionalUnit : FunctionalUnit;\n\n    connect controlUnit.controlOut to vehicle.controlIn;\n    connect vehicle.powerOut to functionalUnit.powerIn;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603513,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 268,
+    "prompt_tokens": 397,
+    "total_tokens": 665,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

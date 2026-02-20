@@ -1,0 +1,34 @@
+{
+  "id": "cb007c1769ae49699680379444aa65ad",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomaticBrakingSystem {\n    private import ScalarValues::*;\n\n    enum def BrakeStatus {\n        enum Released;\n        enum Pressed;\n        enum Modulating;\n    }\n\n    enum def RoadCondition {\n        enum Dry;\n        enum Wet;\n        enum Icy;\n        enum Snowy;\n    }\n\n    part def BrakePedal {\n        attribute status : BrakeStatus;\n        attribute pressure : Real;\n    }\n\n    part def TractionMonitor {\n        attribute roadCondition : RoadCondition;\n        attribute adhesion : Real;\n    }\n\n    part def BrakeController {\n        attribute modulationFrequency : Real;\n        attribute targetPressure : Real;\n    }\n\n    part def Vehicle {\n        part brakePedal : BrakePedal;\n        part tractionMonitor : TractionMonitor;\n        part brakeController : BrakeController;\n    }\n\n    port def BrakeSignalPort {\n        attribute pressure : Real;\n    }\n\n    port def TractionDataPort {\n        attribute roadCondition : RoadCondition;\n        attribute adhesion : Real;\n    }\n\n    part system : Vehicle {\n        port brakeInput : BrakeSignalPort;\n        port tractionInput : TractionDataPort;\n        port brakeOutput : BrakeSignalPort;\n    }\n\n    connect system.brakePedal to system.brakeInput;\n    connect system.tractionMonitor to system.tractionInput;\n    connect system.brakeController to system.brakeOutput;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603382,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 292,
+    "prompt_tokens": 377,
+    "total_tokens": 669,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

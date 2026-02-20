@@ -1,0 +1,34 @@
+{
+  "id": "b56372ed2612475c93777f0f40b17192",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleMassManagement {\n    private import ScalarValues::*;\n\n    enum def MassStatus {\n        enum compliant;\n        enum overweight;\n    }\n\n    part def Chassis {\n        attribute mass : Real;\n    }\n\n    part def Engine {\n        attribute mass : Real;\n    }\n\n    part def Gearbox {\n        attribute mass : Real;\n    }\n\n    part def Vehicle {\n        part chassis : Chassis;\n        part engine : Engine;\n        part gearbox : Gearbox;\n        attribute totalMass : Real;\n        attribute status : MassStatus = MassStatus::compliant;\n    }\n\n    item def MassCalculator {\n        attribute maxPermittedMass : Real = 2500.0;\n        attribute calculateTotalMass : Real;\n        attribute checkMassStatus : MassStatus;\n    }\n\n    part vehicle : Vehicle;\n    part massCalculator : MassCalculator;\n\n    attribute chassisMass : Real;\n    attribute engineMass : Real;\n    attribute gearboxMass : Real;\n\n    vehicle.totalMass = chassisMass + engineMass + gearboxMass;\n    vehicle.status = if (vehicle.totalMass <= massCalculator.maxPermittedMass) then MassStatus::compliant else MassStatus::overweight;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603655,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 247,
+    "prompt_tokens": 1899,
+    "total_tokens": 2146,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

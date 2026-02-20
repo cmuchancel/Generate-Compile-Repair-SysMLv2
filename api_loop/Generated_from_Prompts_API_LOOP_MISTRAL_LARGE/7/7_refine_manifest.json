@@ -1,0 +1,40 @@
+{
+  "model_id": 7,
+  "status": "ok",
+  "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/nl_prompts/7/nl.txt",
+  "generated_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/7/7.sysml",
+  "groundtruth_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/7/7_groundtruth.sysml",
+  "run_dir": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/7/20260220-110213",
+  "archived_run_dir": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/7/refine_runs/20260220-110213",
+  "run_log_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/7/20260220-110213/run_log.json",
+  "stdout_log": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/7/7_refine_stdout.log",
+  "stderr_log": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/7/7_refine_stderr.log",
+  "iterations_completed": 2,
+  "final_iteration_success": true,
+  "tokens_used_total": 2401,
+  "loop_start_utc": "2026-02-20T16:02:12.642992Z",
+  "loop_end_utc": "2026-02-20T16:02:20.042120Z",
+  "loop_duration_seconds": 7.399007708998397,
+  "iteration_timings": [
+    {
+      "iteration": 1,
+      "iteration_start": "2026-02-20T16:02:13.613664Z",
+      "iteration_end": "2026-02-20T16:02:17.330549Z",
+      "iteration_duration_seconds": 3.716847959003644,
+      "success": false,
+      "return_code": 1,
+      "tokens_used_this_iter_total": 460,
+      "tokens_used_total": 460
+    },
+    {
+      "iteration": 2,
+      "iteration_start": "2026-02-20T16:02:17.330653Z",
+      "iteration_end": "2026-02-20T16:02:19.797827Z",
+      "iteration_duration_seconds": 2.4672553749987856,
+      "success": true,
+      "return_code": 0,
+      "tokens_used_this_iter_total": 1941,
+      "tokens_used_total": 2401
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system needs to support the management of several core data types, including unsigned integers and unsigned floating-point numbers, both of which must be non-negative. The system should also be capable of handling basic data types such as date-time, string, and boolean values. The system must provide color labeling for status conditions, with “red”, “yellow”, and “green” respectively representing different status levels (e.g., severity levels such as critical, warning, and normal), and automatically associate each level with the corresponding color. The system should also be able to describe physical dimensions, in particular, support a diameter parameter measured in millimeters, with selectable options of “Small (60 mm)”, “Medium (70 mm)”, and “Large (80 mm)”, and a default initial value set to Small. Overall, the system’s data types should be designed for future extensibility and ensure correct enforcement of value constraints and the logic that associates statuses with their corresponding colors.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package CoreDataTypes {
+    private import ScalarValues::*;
+
+    enum def StatusColor {
+        enum red;
+        enum yellow;
+        enum green;
+    }
+
+    enum def DiameterSize {
+        enum small = "Small (60 mm)";
+        enum medium = "Medium (70 mm)";
+        enum large = "Large (80 mm)";
+    }
+
+    part def UnsignedInteger {
+        attribute value : Integer;
+        constraint {
+            value >= 0
+        }
+    }
+
+    part def UnsignedFloat {
+        attribute value : Real;
+        constraint {
+            value >= 0.0
+        }
+    }
+
+    part def Status {
+        attribute level : StatusColor;
+        attribute color : String = switch {
+            level == StatusColor::red => "red";
+            level == StatusColor::yellow => "yellow";
+            level == StatusColor::green => "green";
+        };
+    }
+
+    part def PhysicalDimension {
+        attribute diameter : DiameterSize = DiameterSize::small;
+    }
+
+    part def SystemData {
+        attribute unsignedInt : UnsignedInteger;
+        attribute unsignedFloat : UnsignedFloat;
+        attribute dateTime : DateTime;
+        attribute stringValue : String;
+        attribute booleanValue : Boolean;
+        attribute status : Status;
+        attribute dimension : PhysicalDimension;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:33:19: error (parsing-error): Unexpected '=', expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    33 |             level == StatusColor::red => "red";
+       |                   ^
+iteration_01.sysml:33:39: error (parsing-error): Unexpected '=', expected one of [";", "{", "}", "dependency", "from", ",", "to", "about", "::", "**", "*", "[", "]", ".", "if", "?", "else", "??", "implies", "or", "and", "+", "-", "|", "&", "xor", "==", "!=", "===", "!==", "<", ">", "<=", ">=", "..", "/", "%", "^", "hastype", "istype", "@", "as", "@@", "meta", "#", "(", ")", ".?", "->", "=", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "by", "package", "attribute", "enum", "then", "connect", "binding", "bind", "succession", "first", "of", "action", "merge", "decide", "join", "fork", "via", "parallel", "do"].
+    33 |             level == StatusColor::red => "red";
+       |                                       ^
+iteration_01.sysml:34:19: error (parsing-error): Unexpected '=', expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    34 |             level == StatusColor::yellow => "yellow";
+       |                   ^
+iteration_01.sysml:34:42: error (parsing-error): Unexpected '=', expected one of [";", "{", "}", "dependency", "from", ",", "to", "about", "::", "**", "*", "[", "]", ".", "if", "?", "else", "??", "implies", "or", "and", "+", "-", "|", "&", "xor", "==", "!=", "===", "!==", "<", ">", "<=", ">=", "..", "/", "%", "^", "hastype", "istype", "@", "as", "@@", "meta", "#", "(", ")", ".?", "->", "=", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "by", "package", "attribute", "enum", "then", "connect", "binding", "bind", "succession", "first", "of", "action", "merge", "decide", "join", "fork", "via", "parallel", "do"].
+    34 |             level == StatusColor::yellow => "yellow";
+       |                                          ^
+iteration_01.sysml:35:19: error (parsing-error): Unexpected '=', expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    35 |             level == StatusColor::green => "green";
+       |                   ^
+iteration_01.sysml:35:41: error (parsing-error): Unexpected '=', expected one of [";", "{", "}", "dependency", "from", ",", "to", "about", "::", "**", "*", "[", "]", ".", "if", "?", "else", "??", "implies", "or", "and", "+", "-", "|", "&", "xor", "==", "!=", "===", "!==", "<", ">", "<=", ">=", "..", "/", "%", "^", "hastype", "istype", "@", "as", "@@", "meta", "#", "(", ")", ".?", "->", "=", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "by", "package", "attribute", "enum", "then", "connect", "binding", "bind", "succession", "first", "of", "action", "merge", "decide", "join", "fork", "via", "parallel", "do"].
+    35 |             level == StatusColor::green => "green";
+       |                                         ^
+iteration_01.sysml:36:10: error (parsing-error): Unexpected ';', expected one of ["end", "NAME", ";", "{", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected"
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

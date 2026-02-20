@@ -1,0 +1,34 @@
+{
+  "id": "253b7adb68d2479bb2f6f45c22997984",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleModeling {\n    private import ScalarValues::*;\n\n    enum def FuelType {\n        enum GASOLINE;\n        enum DIESEL;\n        enum ELECTRIC;\n        enum HYDROGEN;\n    }\n\n    part def Fuel {\n        attribute fuelType : FuelType;\n        attribute quantity : Real;\n    }\n\n    part def FuelTank {\n        attribute capacity : Real;\n        part fuel : Fuel;\n    }\n\n    part def Driver {\n        attribute name : String;\n        attribute licenseNumber : String;\n        attribute age : Integer;\n    }\n\n    part def Vehicle {\n        attribute make : String;\n        attribute model : String;\n        attribute year : Integer;\n        attribute weight : Real;\n\n        part driver : Driver;\n        part fuelTank : FuelTank;\n    }\n\n    part systemContext {\n        part vehicle : Vehicle;\n        part fuelSupply : Fuel;\n    }\n\n    connect systemContext.vehicle.fuelTank.fuel to systemContext.fuelSupply;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603322,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 214,
+    "prompt_tokens": 342,
+    "total_tokens": 556,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:06:04.650215Z",
+    "iteration_end": "2026-02-20T16:06:10.954899Z",
+    "iteration_duration_seconds": 6.304601875002845,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    6 |         enum DRIVE\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:36:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Vehicle::mass\n\u2502   36 |         attribute mass : Real = 1500.0;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:24:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:35:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:37:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'leftFrontWheel' shadows VehicleSystem::Vehicle::leftFrontWheel\n\u2502   37 |         part leftFrontWheel : Wheel {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:31:14: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:35:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:38:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Wheel::mass\n\u2502   38 |             attribute mass : Real = 20.0;\n\u2502      |                       \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:16:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:37:31: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Wheel is specialized through FeatureTyping\n\niteration_01.sysml:40:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'rightFrontWheel' shadows VehicleSystem::Vehicle::rightFrontWheel\n\u2502   40 |         part rightFrontWheel : Wheel {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:32:14: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:35:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:41:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Wheel::mass\n\u2502   41 |             attribute mass : Real = 20.0;\n\u2502      |                       \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:16:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:40:32: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Wheel is specialized through FeatureTyping\n\niteration_01.sysml:25:78: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'NEUTRAL' found.\n    25 |         attribute operationalStatus : OperationalStatus = OperationalStatus::NEUTRAL;\n       |                                                                              \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:26:65: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'NEUTRAL' found.\n    26 |         attribute gear : OperationalStatus = OperationalStatus::NEUTRAL;\n       |                                                                 \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 391,
+      "output_tokens": 384,
+      "total_tokens": 775
+    },
+    "tokens_used_total": 775,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:06:10.954971Z",
+    "iteration_end": "2026-02-20T16:06:16.471245Z",
+    "iteration_duration_seconds": 5.516253207999398,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    6 |         DRIVE\n      |         \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:48:37: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1 does not conform to VehicleSystem::Vehicle\n    48 |         part vehicleRef : Vehicle = vehicle_1;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_02.sysml:49:42: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1::leftFrontWheel does not conform to VehicleSystem::Wheel\n    49 |         part leftFrontWheelRef : Wheel = vehicle_1.leftFrontWheel;\n       |                                          \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:50:43: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1::rightFrontWheel does not conform to VehicleSystem::Wheel\n    50 |         part rightFrontWheelRef : Wheel = vehicle_1.rightFrontWheel;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:56:37: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1 does not conform to VehicleSystem::Vehicle\n    56 |         part vehicleRef : Vehicle = vehicle_1;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_02.sysml:57:42: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1::leftFrontWheel does not conform to VehicleSystem::Wheel\n    57 |         part leftFrontWheelRef : Wheel = vehicle_1.leftFrontWheel;\n       |                                          \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:58:43: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1::rightFrontWheel does not conform to VehicleSystem::Wheel\n    58 |         part rightFrontWheelRef : Wheel = vehicle_1.rightFrontWheel;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:25:78: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'NEUTRAL' found.\n    25 |         attribute operationalStatus : OperationalStatus = OperationalStatus::NEUTRAL;\n       |                                                                              \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_02.sysml:26:65: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'NEUTRAL' found.\n    26 |         attribute gear : OperationalStatus = OperationalStatus::NEUTRAL;\n       |                                                                 \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_02.sysml:35:23: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehicleSystem::Vehicle)\n    35 |     part vehicle_1 :> Vehicle {\n       |                       \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_02.sysml:37:32: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehicleSystem::Wheel)\n    37 |         part leftFrontWheel :> Wheel {\n       |                                \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:40:33: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehicleSystem::Wheel)\n    40 |         part rightFrontWheel :> Wheel {\n       |                                 \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1684,
+      "output_tokens": 383,
+      "total_tokens": 2067
+    },
+    "tokens_used_total": 2842,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:06:16.471349Z",
+    "iteration_end": "2026-02-20T16:06:22.069772Z",
+    "iteration_duration_seconds": 5.598357834009221,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    6 |         enum DRIVE\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_03.sysml:36:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Vehicle::mass\n\u2502   36 |         attribute mass : Real = 1500.0;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:24:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_03.sysml:35:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_03.sysml:37:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'leftFrontWheel' shadows VehicleSystem::Vehicle::leftFrontWheel\n\u2502   37 |         part leftFrontWheel : Wheel {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:31:14: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_03.sysml:35:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_03.sysml:38:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Wheel::mass\n\u2502   38 |             attribute mass : Real = 20.0;\n\u2502      |                       \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:16:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_03.sysml:37:31: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Wheel is specialized through FeatureTyping\n\niteration_03.sysml:40:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'rightFrontWheel' shadows VehicleSystem::Vehicle::rightFrontWheel\n\u2502   40 |         part rightFrontWheel : Wheel {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:32:14: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_03.sysml:35:22: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Vehicle is specialized through FeatureTyping\n\niteration_03.sysml:41:23: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Wheel::mass\n\u2502   41 |             attribute mass : Real = 20.0;\n\u2502      |                       \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:16:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_03.sysml:40:32: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleSystem::Wheel is specialized through FeatureTyping\n\niteration_03.sysml:25:78: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'NEUTRAL' found.\n    25 |         attribute operationalStatus : OperationalStatus = OperationalStatus::NEUTRAL;\n       |                                                                              \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_03.sysml:26:65: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'NEUTRAL' found.\n    26 |         attribute gear : OperationalStatus = OperationalStatus::NEUTRAL;\n       |                                                                 \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1680,
+      "output_tokens": 381,
+      "total_tokens": 2061
+    },
+    "tokens_used_total": 4903,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:06:22.069824Z",
+    "iteration_end": "2026-02-20T16:06:27.608083Z",
+    "iteration_duration_seconds": 5.538207667006645,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:48:37: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1 does not conform to VehicleSystem::Vehicle\n    48 |         part vehicleRef : Vehicle = vehicle_1;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_04.sysml:49:42: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1::leftFrontWheel does not conform to VehicleSystem::Wheel\n    49 |         part leftFrontWheelRef : Wheel = vehicle_1.leftFrontWheel;\n       |                                          \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_04.sysml:50:43: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1::rightFrontWheel does not conform to VehicleSystem::Wheel\n    50 |         part rightFrontWheelRef : Wheel = vehicle_1.rightFrontWheel;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_04.sysml:56:37: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1 does not conform to VehicleSystem::Vehicle\n    56 |         part vehicleRef : Vehicle = vehicle_1;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_04.sysml:57:42: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1::leftFrontWheel does not conform to VehicleSystem::Wheel\n    57 |         part leftFrontWheelRef : Wheel = vehicle_1.leftFrontWheel;\n       |                                          \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_04.sysml:58:43: \u001b[38;2;220;080;080merror\u001b[0m (type-error): VehicleSystem::vehicle_1::rightFrontWheel does not conform to VehicleSystem::Wheel\n    58 |         part rightFrontWheelRef : Wheel = vehicle_1.rightFrontWheel;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_04.sysml:35:23: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehicleSystem::Vehicle)\n    35 |     part vehicle_1 :> Vehicle {\n       |                       \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_04.sysml:37:32: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehicleSystem::Wheel)\n    37 |         part leftFrontWheel :> Wheel {\n       |                                \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_04.sysml:40:33: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehicleSystem::Wheel)\n    40 |         part rightFrontWheel :> Wheel {\n       |                                 \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1684,
+      "output_tokens": 387,
+      "total_tokens": 2071
+    },
+    "tokens_used_total": 6974,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:06:27.608149Z",
+    "iteration_end": "2026-02-20T16:06:32.932007Z",
+    "iteration_duration_seconds": 5.323811249996652,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/51/20260220-110604/iteration_05_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1400,
+      "output_tokens": 376,
+      "total_tokens": 1776
+    },
+    "tokens_used_total": 8750,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

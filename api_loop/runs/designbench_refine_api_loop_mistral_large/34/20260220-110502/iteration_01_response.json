@@ -1,0 +1,34 @@
+{
+  "id": "0b5d5304bdca4261875a790df693af77",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage SensorManagement {\n    private import ScalarValues::*;\n\n    enum def SensorState {\n        enum READY;\n        enum UPDATING;\n        enum ERROR;\n        enum IDLE;\n    }\n\n    part def Sensor {\n        attribute id : String;\n        attribute state : SensorState = SensorState::IDLE;\n        attribute lastUpdate : Real;\n    }\n\n    part def SensorManager {\n        attribute sensors : Sensor[0..*];\n        attribute updateInterval : Real = 1.0;\n\n        port updatePort : UpdatePort;\n    }\n\n    port def UpdatePort;\n\n    item def UpdateCommand {\n        attribute targetSensor : Sensor;\n    }\n\n    part system : SensorManager;\n\n    for sensor in system.sensors {\n        if (sensor.state == SensorState::READY) {\n            part updateCommand : UpdateCommand {\n                attribute targetSensor = sensor;\n            }\n            connect updateCommand to system.updatePort;\n        }\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603503,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 198,
+    "prompt_tokens": 334,
+    "total_tokens": 532,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

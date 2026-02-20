@@ -1,0 +1,34 @@
+{
+  "id": "78cd0857e07443d48ece3730a2a28d63",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage transportation_system {\n    private import ScalarValues::*;\n\n    enum def PassengerCapacity {\n        ONE,\n        TWO,\n        THREE,\n        FOUR\n    }\n\n    enum def EnvironmentalFactor {\n        WEATHER,\n        ROAD_CONDITION,\n        TRAFFIC,\n        AIR_QUALITY\n    }\n\n    part def Vehicle {\n        attribute capacity : PassengerCapacity = PassengerCapacity::FOUR;\n        attribute driverPresent : Boolean;\n        attribute passengers : Integer;\n        attribute isOperational : Boolean = true;\n\n        port def EntryExitPort;\n        port entryExit : EntryExitPort;\n\n        port def EnvironmentalSensorPort;\n        port environmentalSensor : EnvironmentalSensorPort;\n\n        port def InfrastructureInterfacePort;\n        port infrastructureInterface : InfrastructureInterfacePort;\n    }\n\n    part def User {\n        attribute isDriver : Boolean;\n    }\n\n    part def Environment {\n        attribute factors : EnvironmentalFactor[*];\n    }\n\n    part def Infrastructure {\n        attribute hasGasStation : Boolean = true;\n    }\n\n    part system : Vehicle {\n        part driver : User;\n        part passengers : User[0..4];\n\n        part environment : Environment;\n        part infrastructure : Infrastructure;\n    }\n\n    connect system.entryExit to system.driver;\n    connect system.entryExit to system.passengers;\n    connect system.environmentalSensor to system.environment;\n    connect system.infrastructureInterface to system.infrastructure;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603746,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 288,
+    "prompt_tokens": 383,
+    "total_tokens": 671,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

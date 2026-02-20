@@ -1,0 +1,422 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:34:36.078820Z",
+    "iteration_end": "2026-02-20T16:34:41.306717Z",
+    "iteration_duration_seconds": 5.227879125013715,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:26:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_01.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 362,
+      "output_tokens": 194,
+      "total_tokens": 556
+    },
+    "tokens_used_total": 556,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:34:41.306771Z",
+    "iteration_end": "2026-02-20T16:34:44.537374Z",
+    "iteration_duration_seconds": 3.2306390829908196,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:26:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_02.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1306,
+      "output_tokens": 191,
+      "total_tokens": 1497
+    },
+    "tokens_used_total": 2053,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:34:44.537454Z",
+    "iteration_end": "2026-02-20T16:34:48.011434Z",
+    "iteration_duration_seconds": 3.473997415989288,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:26:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_03.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_03.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_03.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_03.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_03.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1306,
+      "output_tokens": 191,
+      "total_tokens": 1497
+    },
+    "tokens_used_total": 3550,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:34:48.011493Z",
+    "iteration_end": "2026-02-20T16:34:51.789656Z",
+    "iteration_duration_seconds": 3.778271333008888,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:26:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_04.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_04.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_04.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_04.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_04.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1306,
+      "output_tokens": 191,
+      "total_tokens": 1497
+    },
+    "tokens_used_total": 5047,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:34:51.789815Z",
+    "iteration_end": "2026-02-20T16:34:55.263167Z",
+    "iteration_duration_seconds": 3.4734809170040535,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:26:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_05.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_05.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_05.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_05.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_05.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1306,
+      "output_tokens": 191,
+      "total_tokens": 1497
+    },
+    "tokens_used_total": 6544,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 6,
+    "iteration_start": "2026-02-20T16:34:55.263362Z",
+    "iteration_end": "2026-02-20T16:35:00.339376Z",
+    "iteration_duration_seconds": 5.076146750012413,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_06.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_06_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_06_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_06.sysml:26:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_06.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_06.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_06.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_06.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_06.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1306,
+      "output_tokens": 191,
+      "total_tokens": 1497
+    },
+    "tokens_used_total": 8041,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 7,
+    "iteration_start": "2026-02-20T16:35:00.339601Z",
+    "iteration_end": "2026-02-20T16:35:03.648434Z",
+    "iteration_duration_seconds": 3.3088789580069715,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_07.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_07_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_07_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_07.sysml:26:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_07.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_07.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_07.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_07.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_07.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1306,
+      "output_tokens": 191,
+      "total_tokens": 1497
+    },
+    "tokens_used_total": 9538,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 8,
+    "iteration_start": "2026-02-20T16:35:03.648523Z",
+    "iteration_end": "2026-02-20T16:35:07.056606Z",
+    "iteration_duration_seconds": 3.4084545420046197,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_08.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_08_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_08_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_08.sysml:26:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_08.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_08.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_08.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_08.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_08.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1306,
+      "output_tokens": 191,
+      "total_tokens": 1497
+    },
+    "tokens_used_total": 11035,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 9,
+    "iteration_start": "2026-02-20T16:35:07.057028Z",
+    "iteration_end": "2026-02-20T16:35:10.590332Z",
+    "iteration_duration_seconds": 3.533326415999909,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_09.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_09_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_09_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_09.sysml:26:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_09.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_09.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_09.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_09.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_09.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1306,
+      "output_tokens": 191,
+      "total_tokens": 1497
+    },
+    "tokens_used_total": 12532,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 10,
+    "iteration_start": "2026-02-20T16:35:10.590397Z",
+    "iteration_end": "2026-02-20T16:35:14.908445Z",
+    "iteration_duration_seconds": 4.318072166992351,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_10.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_10_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_10_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_10.sysml:26:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_10.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_10.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_10.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_10.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_10.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1306,
+      "output_tokens": 191,
+      "total_tokens": 1497
+    },
+    "tokens_used_total": 14029,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 11,
+    "iteration_start": "2026-02-20T16:35:14.908521Z",
+    "iteration_end": "2026-02-20T16:35:18.131717Z",
+    "iteration_duration_seconds": 3.2232078750093933,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_11.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_11_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_11_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_11.sysml:26:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_11.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_11.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_11.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_11.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_11.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1307,
+      "output_tokens": 191,
+      "total_tokens": 1498
+    },
+    "tokens_used_total": 15527,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 12,
+    "iteration_start": "2026-02-20T16:35:18.131765Z",
+    "iteration_end": "2026-02-20T16:35:21.066117Z",
+    "iteration_duration_seconds": 2.9343554170045536,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_12.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_12_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_12_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_12.sysml:26:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_12.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_12.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_12.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_12.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_12.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1307,
+      "output_tokens": 191,
+      "total_tokens": 1498
+    },
+    "tokens_used_total": 17025,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 13,
+    "iteration_start": "2026-02-20T16:35:21.066155Z",
+    "iteration_end": "2026-02-20T16:35:24.188743Z",
+    "iteration_duration_seconds": 3.1226064160000533,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_13.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_13_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_13_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_13.sysml:26:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_13.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_13.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_13.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_13.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_13.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1307,
+      "output_tokens": 191,
+      "total_tokens": 1498
+    },
+    "tokens_used_total": 18523,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 14,
+    "iteration_start": "2026-02-20T16:35:24.188799Z",
+    "iteration_end": "2026-02-20T16:35:27.177809Z",
+    "iteration_duration_seconds": 2.989025999995647,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_14.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_14_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_14_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_14.sysml:26:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_14.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_14.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_14.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_14.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_14.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1307,
+      "output_tokens": 191,
+      "total_tokens": 1498
+    },
+    "tokens_used_total": 20021,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 15,
+    "iteration_start": "2026-02-20T16:35:27.177860Z",
+    "iteration_end": "2026-02-20T16:35:30.479566Z",
+    "iteration_duration_seconds": 3.301738916998147,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_15.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_15_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_15_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_15.sysml:26:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_15.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_15.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_15.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_15.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_15.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1307,
+      "output_tokens": 191,
+      "total_tokens": 1498
+    },
+    "tokens_used_total": 21519,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 16,
+    "iteration_start": "2026-02-20T16:35:30.479645Z",
+    "iteration_end": "2026-02-20T16:35:33.543710Z",
+    "iteration_duration_seconds": 3.0640757079963805,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_16.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_16_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_16_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_16.sysml:26:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_16.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_16.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_16.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_16.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_16.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1307,
+      "output_tokens": 191,
+      "total_tokens": 1498
+    },
+    "tokens_used_total": 23017,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 17,
+    "iteration_start": "2026-02-20T16:35:33.543764Z",
+    "iteration_end": "2026-02-20T16:35:36.803177Z",
+    "iteration_duration_seconds": 3.2594405409909086,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_17.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_17_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_17_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_17.sysml:26:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_17.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_17.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_17.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_17.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_17.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1307,
+      "output_tokens": 191,
+      "total_tokens": 1498
+    },
+    "tokens_used_total": 24515,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 18,
+    "iteration_start": "2026-02-20T16:35:36.803245Z",
+    "iteration_end": "2026-02-20T16:35:39.897872Z",
+    "iteration_duration_seconds": 3.0946291250002105,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_18.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_18_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_18_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_18.sysml:26:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_18.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_18.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_18.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_18.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_18.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1307,
+      "output_tokens": 191,
+      "total_tokens": 1498
+    },
+    "tokens_used_total": 26013,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 19,
+    "iteration_start": "2026-02-20T16:35:39.897911Z",
+    "iteration_end": "2026-02-20T16:35:42.904850Z",
+    "iteration_duration_seconds": 3.006962499988731,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_19.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_19_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_19_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_19.sysml:26:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_19.sysml:31:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_19.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_19.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_19.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_19.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1307,
+      "output_tokens": 191,
+      "total_tokens": 1498
+    },
+    "tokens_used_total": 27511,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 20,
+    "iteration_start": "2026-02-20T16:35:42.904913Z",
+    "iteration_end": "2026-02-20T16:35:46.319671Z",
+    "iteration_duration_seconds": 3.4147790409915615,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_20.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_20_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/107/20260220-113435/iteration_20_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_20.sysml:26:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_20.sysml:31:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    31 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_20.sysml:38:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_20.sysml:38:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_20.sysml:38:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'hitchBall' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_20.sysml:38:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'trailerCoupler' found.\n    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1307,
+      "output_tokens": 191,
+      "total_tokens": 1498
+    },
+    "tokens_used_total": 29009,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

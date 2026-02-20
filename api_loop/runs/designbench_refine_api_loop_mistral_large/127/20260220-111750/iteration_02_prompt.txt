@@ -1,0 +1,87 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to realize the torque generation function within the powertrain system. The system should include relevant components capable of generating torque, and it is required that the torque produced during operation must be greater than zero newton-meters to ensure driving capability. During the design and implementation process, the logic layer's torque generator function should be effectively allocated and mapped to the physical layer of the powertrain (including actual components such as the engine), thereby ensuring the actual generation and transmission of torque to meet the overall vehicle power output requirements.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package PowertrainSystem {
+    private import ScalarValues::*;
+
+    part def Powertrain;
+    part def Engine;
+    part def TorqueGenerator;
+
+    attribute minTorque : Real = 0.0;
+
+    port def TorquePort {
+        :> out torque : Real;
+    }
+
+    part def Vehicle {
+        part engine : Engine;
+        part torqueGenerator : TorqueGenerator;
+        port torqueOut : TorquePort;
+    }
+
+    part vehicle : Vehicle {
+        part engine : Engine;
+        part torqueGenerator : TorqueGenerator {
+            attribute generatedTorque : Real;
+            port torqueOutput : TorquePort;
+        }
+        port torqueOut : TorquePort;
+    }
+
+    requirement TorqueGeneration {
+        attribute requiredTorque : Real;
+        attribute description : String = "The system shall generate torque greater than zero newton-meters during operation.";
+    }
+
+    requirement TorqueAllocation {
+        attribute description : String = "The torque generator function shall be allocated to physical powertrain components.";
+    }
+
+    part powertrain : Powertrain {
+        part engine : Engine;
+        part torqueGenerator : TorqueGenerator {
+            attribute generatedTorque : Real;
+            port torqueOutput : TorquePort;
+        }
+    }
+
+    connect vehicle.torqueGenerator.torqueOutput to vehicle.torqueOut;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:11:9: error (parsing-error): Unexpected ':>', expected one of ["NAME", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "import", "[", "abstract", "in", "inout", "out", "derived", "end", "ordered", "nonunique", "<", "not", "@", "#", "metadata", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "standard", "library", "package", "variation", "variant", "constant", "ref", "attribute", "enum", "occurrence", "individual", "timeslice", "snapshot", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "interface", "allocation", "allocate", "action", "perform", "state", "exhibit", "calc", "constraint", "assert", "requirement", "concern", "satisfy", "case", "analysis", "verification", "use", "include", "view", "rendering", "viewpoint", "Dependency", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "Membership", "MembershipImport", "NamespaceImport", "FeatureDirectionKind", "OwningMembership", "MultiplicityRange", "Annotation", "OwningMembership", "Package", "LibraryPackage", "OwningMembership", "VariantMembership", "FeatureMembership", "FeatureMembership", "ReferenceUsage", "ReferenceUsage", "AttributeDefinition", "AttributeUsage", "EnumerationDefinition", "EnumerationUsage", "OccurrenceDefinition", "OccurrenceDefinition", "OccurrenceUsage", "OccurrenceUsage", "OccurrenceUsage", "PortionKind", "EventOccurrenceUsage", "FeatureMembership", "SuccessionAsUsage", "ItemDefinition", "ItemUsage", "PartDefinition", "PartUsage", "PortDefinition", "PortUsage", "ConnectionDefinition", "ConnectionUsage", "BindingConnectorAsUsage", "SuccessionAsUsage", "FlowDefinition", "FlowUsage", "FlowUsage", "SuccessionFlowUsage", "InterfaceDefinition", "InterfaceUsage", "AllocationDefinition", "AllocationUsage", "ActionDefinition", "ActionUsage", "PerformActionUsage", "StateDefinition", "StateUsage", "ExhibitStateUsage", "CalculationDefinition", "CalculationUsage", "ConstraintDefinition", "ConstraintUsage", "AssertConstraintUsage", "RequirementDefinition", "RequirementUsage", "SatisfyRequirementUsage", "ConcernDefinition", "ConcernUsage", "CaseDefinition", "CaseUsage", "AnalysisCaseDefinition", "AnalysisCaseUsage", "VerificationCaseDefinition", "VerificationCaseUsage", "UseCaseDefinition", "UseCaseUsage", "IncludeUseCaseUsage", "ViewDefinition", "ViewUsage", "ViewpointDefinition", "ViewpointUsage", "RenderingDefinition", "RenderingUsage", "MetadataDefinition", "MetadataUsage", "MetadataUsage", "Definition", "Usage", "Dependency_repeat1"].
+    11 |         :> out torque : Real;
+       |         ^^
+iteration_01.sysml:21:14: warning (namespace-distinguishability): Member name 'engine' shadows PowertrainSystem::Vehicle::engine
+│   21 |         part engine : Engine;
+│      |              ^^^^^^
+└── iteration_01.sysml:15:14: note: Inherited from here
+    └── iteration_01.sysml:20:20: note: Because PowertrainSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:22:14: warning (namespace-distinguishability): Member name 'torqueGenerator' shadows PowertrainSystem::Vehicle::torqueGenerator
+│   22 |         part torqueGenerator : TorqueGenerator {
+│      |              ^^^^^^^^^^^^^^^
+└── iteration_01.sysml:16:14: note: Inherited from here
+    └── iteration_01.sysml:20:20: note: Because PowertrainSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:26:14: warning (namespace-distinguishability): Member name 'torqueOut' shadows PowertrainSystem::Vehicle::torqueOut
+│   26 |         port torqueOut : TorquePort;
+│      |              ^^^^^^^^^
+└── iteration_01.sysml:17:14: note: Inherited from here
+    └── iteration_01.sysml:20:20: note: Because PowertrainSystem::Vehicle is specialized through FeatureTyping
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

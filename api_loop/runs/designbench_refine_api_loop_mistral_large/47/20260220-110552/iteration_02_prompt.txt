@@ -1,0 +1,87 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+            This system is designed to implement automotive cruise control functionality. When the driver wishes to set the vehicle’s cruising speed, they can send a command specifying the desired speed. Upon receiving this command, the vehicle’s cruise controller calculates and sends appropriate throttle control instructions to the engine based on real-time speed information from the speedometer. This enables the automatic adjustment and maintenance of the vehicle at the set cruising speed.
+
+The system workflow includes promptly collecting and transmitting the driver’s speed setting request, real-time sensing and feedback of the vehicle speed, and intelligent throttle adjustment by the cruise controller to the engine. The system aims to ensure convenience and comfort for the driver during operation while enabling the vehicle to automatically cruise at the preset speed with accuracy and smoothness.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package CruiseControlSystem {
+    private import ScalarValues::*;
+
+    enum def SpeedUnit {
+        enum MPH;
+        enum KPH;
+    }
+
+    part def Driver {
+        port setSpeedPort;
+    }
+
+    part def Speedometer {
+        port speedFeedbackPort;
+        attribute currentSpeed : Real;
+        attribute unit : SpeedUnit = SpeedUnit::MPH;
+    }
+
+    part def CruiseController {
+        port speedCommandPort;
+        port throttleControlPort;
+        attribute setSpeed : Real;
+        attribute isActive : Boolean = false;
+
+        attribute calculateThrottle(currentSpeed : Real) : Real {
+            /* conservative placeholder */
+            return 0.0;
+        }
+    }
+
+    part def Engine {
+        port throttleInputPort;
+    }
+
+    part def Vehicle {
+        part driver : Driver;
+        part speedometer : Speedometer;
+        part cruiseController : CruiseController;
+        part engine : Engine;
+
+        connect driver.setSpeedPort to cruiseController.speedCommandPort;
+        connect speedometer.speedFeedbackPort to cruiseController.speedCommandPort;
+        connect cruiseController.throttleControlPort to engine.throttleInputPort;
+    }
+
+    item def SpeedCommand {
+        attribute desiredSpeed : Real;
+        attribute unit : SpeedUnit = SpeedUnit::MPH;
+    }
+
+    item def ThrottleCommand {
+        attribute throttleValue : Real;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:25:50: error (parsing-error): Unexpected ':', expected one of ["SINGLE_LINE_NOTE", "[", ":>", ":", "=", "subsets", "defined", "ordered", "nonunique", "MULTILINE_NOTE", "::>", "references", "=>", "crosses", ":>>", "redefines", "MultiplicityRange", "OwningMembership", ";", "{", "from", ":=", "default", "by", "then", "of", "accept", "send", "assign", "parallel"].
+    25 |         attribute calculateThrottle(currentSpeed : Real) : Real {
+       |                                                  ^
+iteration_01.sysml:25:56: error (parsing-error): Unexpected ')', expected one of ["SINGLE_LINE_NOTE", "::", "ElementReference_repeat1", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", ",", "[", "ordered", "nonunique", ".", ":=", "default", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "of", "accept", "send", "assign", "parallel"].
+    25 |         attribute calculateThrottle(currentSpeed : Real) : Real {
+       |                                                        ^
+iteration_01.sysml:27:20: error (parsing-error): Unexpected 'REAL_VALUE'.
+    27 |             return 0.0;
+       |                    ^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

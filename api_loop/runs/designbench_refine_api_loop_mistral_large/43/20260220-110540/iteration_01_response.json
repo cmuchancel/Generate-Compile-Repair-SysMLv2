@@ -1,0 +1,34 @@
+{
+  "id": "3970833fc4e942e3bb60a6fecb0197d3",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleStartStopSystem {\n    private import ScalarValues::*;\n\n    enum def VehicleState {\n        enum off;\n        enum starting;\n        enum started;\n        enum shuttingDown;\n    }\n\n    part def VehicleController {\n        attribute currentState : VehicleState = VehicleState::off;\n    }\n\n    part def BrakeSystem {\n        attribute isDepressed : Boolean = false;\n    }\n\n    part def PowerSystem {\n        attribute isPowerSupplied : Boolean = false;\n    }\n\n    part def ParkingBrake {\n        attribute isApplied : Boolean = false;\n    }\n\n    part def StartStopSystem {\n        attribute startSignalReceived : Boolean = false;\n        attribute shutdownSignalReceived : Boolean = false;\n        attribute vehicleOnSignalReceived : Boolean = false;\n\n        part vehicleController : VehicleController;\n        part brakeSystem : BrakeSystem;\n        part powerSystem : PowerSystem;\n        part parkingBrake : ParkingBrake;\n    }\n\n    port def ControlSignalPort {\n        attribute signal : String;\n    }\n\n    part vehicleStartStop : StartStopSystem;\n\n    connect vehicleStartStop.vehicleController to vehicleStartStop.brakeSystem;\n    connect vehicleStartStop.vehicleController to vehicleStartStop.powerSystem;\n    connect vehicleStartStop.vehicleController to vehicleStartStop.parkingBrake;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603541,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 275,
+    "prompt_tokens": 437,
+    "total_tokens": 712,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

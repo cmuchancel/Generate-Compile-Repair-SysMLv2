@@ -1,0 +1,34 @@
+{
+  "id": "75216921c14f4e0d83d4759398a67abf",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleMassCompliance {\n    private import ScalarValues::*;\n\n    enum def ComplianceStatus {\n        enum COMPLIANT;\n        enum NON_COMPLIANT;\n    }\n\n    part def Vehicle {\n        attribute actualMass : Real;\n        attribute maxPermissibleMass : Real = 2500.0;\n        attribute complianceStatus : ComplianceStatus;\n    }\n\n    part def WeighingEquipment {\n        attribute measuredMass : Real;\n    }\n\n    part def TestOperator {\n    }\n\n    part def ComplianceSystem {\n        part vehicle : Vehicle;\n        part weighingEquipment : WeighingEquipment;\n        part testOperator : TestOperator;\n\n        attribute isCompliant : Boolean;\n\n        port def MassInputPort;\n        port def StatusOutputPort;\n\n        port massInput : MassInputPort;\n        port statusOutput : StatusOutputPort;\n    }\n\n    item def MassData {\n        attribute value : Real;\n    }\n\n    item def ComplianceResult {\n        attribute status : ComplianceStatus;\n    }\n\n    part complianceSystem : ComplianceSystem;\n\n    connect complianceSystem.weighingEquipment to complianceSystem.massInput;\n    connect complianceSystem.statusOutput to complianceSystem.vehicle;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604151,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 252,
+    "prompt_tokens": 378,
+    "total_tokens": 630,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

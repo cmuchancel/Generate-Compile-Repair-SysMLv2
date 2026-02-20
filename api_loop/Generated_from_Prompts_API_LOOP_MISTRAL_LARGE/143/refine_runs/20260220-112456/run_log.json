@@ -1,0 +1,422 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:24:56.970832Z",
+    "iteration_end": "2026-02-20T16:25:02.620064Z",
+    "iteration_duration_seconds": 5.6491286660020705,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:51:18: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '=', expected one of [\"SINGLE_LINE_NOTE\", \"[\", \":>\", \":\", \"=\", \"subsets\", \"defined\", \"ordered\", \"nonunique\", \"MULTILINE_NOTE\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"MultiplicityRange\", \"OwningMembership\", \";\", \"{\", \"from\", \":=\", \"default\", \"by\", \"then\", \"of\", \"accept\", \"send\", \"assign\", \"parallel\"].\n    51 |     status.color = switch {\n       |                  \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:52:16: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"NAME\", \"}\", \"dependency\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"alias\", \"import\", \"[\", \"abstract\", \"in\", \"inout\", \"out\", \"derived\", \"end\", \"ordered\", \"nonunique\", \"<\", \"not\", \"@\", \"#\", \"metadata\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"standard\", \"library\", \"package\", \"variation\", \"variant\", \"constant\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"individual\", \"timeslice\", \"snapshot\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"state\", \"exhibit\", \"calc\", \"constraint\", \"assert\", \"requirement\", \"concern\", \"satisfy\", \"case\", \"analysis\", \"verification\", \"use\", \"include\", \"view\", \"rendering\", \"viewpoint\", \"Dependency\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"Membership\", \"MembershipImport\", \"NamespaceImport\", \"FeatureDirectionKind\", \"OwningMembership\", \"MultiplicityRange\", \"Annotation\", \"OwningMembership\", \"Package\", \"LibraryPackage\", \"OwningMembership\", \"VariantMembership\", \"FeatureMembership\", \"FeatureMembership\", \"ReferenceUsage\", \"ReferenceUsage\", \"AttributeDefinition\", \"AttributeUsage\", \"EnumerationDefinition\", \"EnumerationUsage\", \"OccurrenceDefinition\", \"OccurrenceDefinition\", \"OccurrenceUsage\", \"OccurrenceUsage\", \"OccurrenceUsage\", \"PortionKind\", \"EventOccurrenceUsage\", \"FeatureMembership\", \"SuccessionAsUsage\", \"ItemDefinition\", \"ItemUsage\", \"PartDefinition\", \"PartUsage\", \"PortDefinition\", \"PortUsage\", \"ConnectionDefinition\", \"ConnectionUsage\", \"BindingConnectorAsUsage\", \"SuccessionAsUsage\", \"FlowDefinition\", \"FlowUsage\", \"FlowUsage\", \"SuccessionFlowUsage\", \"InterfaceDefinition\", \"InterfaceUsage\", \"AllocationDefinition\", \"AllocationUsage\", \"ActionDefinition\", \"ActionUsage\", \"PerformActionUsage\", \"StateDefinition\", \"StateUsage\", \"ExhibitStateUsage\", \"CalculationDefinition\", \"CalculationUsage\", \"ConstraintDefinition\", \"ConstraintUsage\", \"AssertConstraintUsage\", \"RequirementDefinition\", \"RequirementUsage\", \"SatisfyRequirementUsage\", \"ConcernDefinition\", \"ConcernUsage\", \"CaseDefinition\", \"CaseUsage\", \"AnalysisCaseDefinition\", \"AnalysisCaseUsage\", \"VerificationCaseDefinition\", \"VerificationCaseUsage\", \"UseCaseDefinition\", \"UseCaseUsage\", \"IncludeUseCaseUsage\", \"ViewDefinition\", \"ViewUsage\", \"ViewpointDefinition\", \"ViewpointUsage\", \"RenderingDefinition\", \"RenderingUsage\", \"MetadataDefinition\", \"MetadataUsage\", \"MetadataUsage\", \"Definition\", \"Usage\", \"Dependency_repeat1\"].\n    52 |         status.level == StatusColor::red -> \"red\";\n       |                \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:52:22: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '=', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    52 |         status.level == StatusColor::red -> \"red\";\n       |                      \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:52:45: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    52 |         status.level == StatusColor::red -> \"red\";\n       |                                             \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:53:15: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    53 |         status.level == StatusColor::yellow -> \"yellow\";\n       |               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:53:48: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    53 |         status.level == StatusColor::yellow -> \"yellow\";\n       |                                                \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:54:15: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    54 |         status.level == StatusColor::green -> \"green\";\n       |               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:54:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE', expected one of [\"NAME\", \";\", \"{\", \"all\", \"*\", \"if\", \"+\", \"-\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"(\", \"null\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \"$\", \"Feature\", \"FeatureChaining\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"ParameterMembership\", \"Feature\", \"FeatureValue\", \"ParameterMembership\", \"Feature\", \"FeatureValue\", \"MetadataAccessExpression\", \"OperatorExpression\", \"FeatureValue\", \"Feature\", \"ParameterMembership\", \"FeatureValue\", \"Feature\", \"ParameterMembership\", \"OperatorExpression\", \"IndexExpression\", \"FeatureChainExpression\", \"CollectExpression\", \"SelectExpression\", \"InvocationExpression\", \"OwningMembership\", \"NullExpression\", \"FeatureReferenceExpression\", \"Membership\", \"MetadataAccessExpression\", \"Membership\", \"InvocationExpression\", \"ConstructorExpression\", \"Membership\", \"FeatureReferenceExpression\", \"FeatureMembership\", \"Expression\", \"LiteralBoolean\", \"LiteralString\", \"LiteralInteger\", \"LiteralRational\", \"LiteralInfinity\", \"ElementReference\"].\n    54 |         status.level == StatusColor::green -> \"green\";\n       |                                               \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:55:6: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';', expected one of [\"end\", \"NAME\", \";\", \"{\", \"}\", \"dependency\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"alias\", \"for\", \"import\", \"all\", \"*\", \"[\", \"abstract\", \"in\", \"inout\", \"out\", \"derived\", \"end\", \"ordered\", \"nonunique\", \"if\", \"else\", \"+\", \"-\", \"<\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \"(\", \"null\", \"metadata\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"standard\", \"library\", \"package\", \"filter\", \"variation\", \"variant\", \"constant\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"individual\", \"timeslice\", \"snapshot\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"merge\", \"decide\", \"join\", \"fork\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"entry\", \"do\", \"exit\", \"exhibit\", \"transition\", \"calc\", \"return\", \"constraint\", \"assert\", \"requirement\", \"subject\", \"assume\", \"require\", \"frame\", \"concern\", \"actor\", \"stakeholder\", \"satisfy\", \"case\", \"objective\", \"analysis\", \"verification\", \"verify\", \"use\", \"include\", \"view\", \"render\", \"rendering\", \"expose\", \"viewpoint\"].\n    55 |     };\n       |      \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:52:25: \u001b[38;2;220;080;080merror\u001b[0m (type-error): CoreDataTypes::StatusColor::red does not conform to ScalarValues::Boolean\n    52 |         status.level == StatusColor::red -> \"red\";\n       |                         \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:52:25: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   52 |         status.level == StatusColor::red -> \"red\";\n\u2502      |                         \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:52:23: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:53:9: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    53 |         status.level == StatusColor::yellow -> \"yellow\";\n       |         \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:53:9: \u001b[38;2;220;080;080merror\u001b[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`\n    53 |         status.level == StatusColor::yellow -> \"yellow\";\n       |         \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:53:16: \u001b[38;2;204;204;057mwarning\u001b[0m (usage-feature-typing): Usages should only be typed by Classifiers, this will be upgraded to error in Syside v0.9\n    53 |         status.level == StatusColor::yellow -> \"yellow\";\n       |                \u001b[38;2;204;204;057m^^^^^\u001b[0m\n\niteration_01.sysml:53:25: \u001b[38;2;220;080;080merror\u001b[0m (type-error): CoreDataTypes::StatusColor::yellow does not conform to ScalarValues::Boolean\n    53 |         status.level == StatusColor::yellow -> \"yellow\";\n       |                         \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:53:25: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   53 |         status.level == StatusColor::yellow -> \"yellow\";\n\u2502      |                         \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:52:23: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here\n\niteration_01.sysml:54:9: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    54 |         status.level == StatusColor::green -> \"green\";\n       |         \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:54:9: \u001b[38;2;220;080;080merror\u001b[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`\n    54 |         status.level == StatusColor::green -> \"green\";\n       |         \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:54:16: \u001b[38;2;204;204;057mwarning\u001b[0m (usage-feature-typing): Usages should only be typed by Classifiers, this will be upgraded to error in Syside v0.9\n    54 |         status.level == StatusColor::green -> \"green\";\n       |                \u001b[38;2;204;204;057m^^^^^\u001b[0m\n\niteration_01.sysml:54:25: \u001b[38;2;220;080;080merror\u001b[0m (parameter-membership-owning-type): A parameter may only be owned by a behavior, step, or constructor expression return parameter\n    54 |         status.level == StatusColor::green -> \"green\";\n       |                         \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    42 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:51:20: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'switch' found.\n    51 |     status.color = switch {\n       |                    \u001b[38;2;220;080;080m^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 439,
+      "output_tokens": 288,
+      "total_tokens": 727
+    },
+    "tokens_used_total": 727,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:25:02.620119Z",
+    "iteration_end": "2026-02-20T16:25:07.513524Z",
+    "iteration_duration_seconds": 4.893379582994385,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:33:18: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '(', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"=\", \":=\", \"default\", \"def\", \"{\", \";\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    33 |             case (StatusColor::red) \"red\";\n       |                  \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:33:30: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    33 |             case (StatusColor::red) \"red\";\n       |                              \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:33:37: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    33 |             case (StatusColor::red) \"red\";\n       |                                     \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:34:18: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '(', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"=\", \":=\", \"default\", \"def\", \"{\", \";\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    34 |             case (StatusColor::yellow) \"yellow\";\n       |                  \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:34:30: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    34 |             case (StatusColor::yellow) \"yellow\";\n       |                              \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:34:40: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    34 |             case (StatusColor::yellow) \"yellow\";\n       |                                        \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_02.sysml:35:18: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '(', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"=\", \":=\", \"default\", \"def\", \"{\", \";\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    35 |             case (StatusColor::green) \"green\";\n       |                  \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:35:30: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    35 |             case (StatusColor::green) \"green\";\n       |                              \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:35:39: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    35 |             case (StatusColor::green) \"green\";\n       |                                       \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_02.sysml:36:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';', expected one of [\"end\", \"NAME\", \";\", \"{\", \"}\", \"dependency\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"alias\", \"for\", \"import\", \"all\", \"*\", \"[\", \"abstract\", \"in\", \"inout\", \"out\", \"derived\", \"end\", \"ordered\", \"nonunique\", \"if\", \"else\", \"+\", \"-\", \"<\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \"(\", \"null\", \"metadata\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"standard\", \"library\", \"package\", \"filter\", \"variation\", \"variant\", \"constant\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"individual\", \"timeslice\", \"snapshot\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"merge\", \"decide\", \"join\", \"fork\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"entry\", \"do\", \"exit\", \"exhibit\", \"transition\", \"calc\", \"return\", \"constraint\", \"assert\", \"requirement\", \"subject\", \"assume\", \"require\", \"frame\", \"concern\", \"actor\", \"stakeholder\", \"satisfy\", \"case\", \"objective\", \"analysis\", \"verification\", \"verify\", \"use\", \"include\", \"view\", \"render\", \"rendering\", \"expose\", \"viewpoint\"].\n    36 |         };\n       |          \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:32:36: \u001b[38;2;220;080;080merror\u001b[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`\n    32 |         attribute color : String = switch (level) {\n       |                                    \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_02.sysml:34:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'StatusColor' shadows CoreDataTypes::Status::color::StatusColor\n\u2502   34 |             case (StatusColor::yellow) \"yellow\";\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:33:19: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_02.sysml:35:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'StatusColor' shadows CoreDataTypes::Status::color::StatusColor\n\u2502   35 |             case (StatusColor::green) \"green\";\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:33:19: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_02.sysml:32:36: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'switch' found.\n    32 |         attribute color : String = switch (level) {\n       |                                    \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_02.sysml:33:32: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'red' found.\n    33 |             case (StatusColor::red) \"red\";\n       |                                \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:34:32: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'yellow' found.\n    34 |             case (StatusColor::yellow) \"yellow\";\n       |                                \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_02.sysml:35:32: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'green' found.\n    35 |             case (StatusColor::green) \"green\";\n       |                                \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:46:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    46 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1891,
+      "output_tokens": 264,
+      "total_tokens": 2155
+    },
+    "tokens_used_total": 2882,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:25:07.513610Z",
+    "iteration_end": "2026-02-20T16:25:11.733807Z",
+    "iteration_duration_seconds": 4.220184332996723,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:19:23: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"*\", \".\", \"?\", \"-\", \"==\", \"!=\", \"<\", \">\", \"/\", \";\", \"{\", \"}\", \"from\", \",\", \"to\", \"**\", \"[\", \"]\", \"if\", \"else\", \"??\", \"implies\", \"or\", \"and\", \"+\", \"|\", \"&\", \"xor\", \"===\", \"!==\", \"<=\", \">=\", \"..\", \"%\", \"^\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \")\", \".?\", \"->\", \"by\", \"then\", \"connect\", \"of\", \"action\", \"via\", \"parallel\", \"do\"].\n    19 |             value >= 0;\n       |                       \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_03.sysml:26:25: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"*\", \".\", \"?\", \"-\", \"==\", \"!=\", \"<\", \">\", \"/\", \";\", \"{\", \"}\", \"from\", \",\", \"to\", \"**\", \"[\", \"]\", \"if\", \"else\", \"??\", \"implies\", \"or\", \"and\", \"+\", \"|\", \"&\", \"xor\", \"===\", \"!==\", \"<=\", \">=\", \"..\", \"%\", \"^\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \")\", \".?\", \"->\", \"by\", \"then\", \"connect\", \"of\", \"action\", \"via\", \"parallel\", \"do\"].\n    26 |             value >= 0.0;\n       |                         \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_03.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    42 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 2013,
+      "output_tokens": 248,
+      "total_tokens": 2261
+    },
+    "tokens_used_total": 5143,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:25:11.733897Z",
+    "iteration_end": "2026-02-20T16:25:16.424139Z",
+    "iteration_duration_seconds": 4.690257041991572,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:32:45: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    32 |         attribute color : String = \"red\" if level == StatusColor::red else\n       |                                             \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_04.sysml:44:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    44 |         attribute dateTime : Date;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1152,
+      "output_tokens": 273,
+      "total_tokens": 1425
+    },
+    "tokens_used_total": 6568,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:25:16.424274Z",
+    "iteration_end": "2026-02-20T16:25:20.579796Z",
+    "iteration_duration_seconds": 4.155518708008458,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    42 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 851,
+      "output_tokens": 245,
+      "total_tokens": 1096
+    },
+    "tokens_used_total": 7664,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 6,
+    "iteration_start": "2026-02-20T16:25:20.579896Z",
+    "iteration_end": "2026-02-20T16:25:24.928294Z",
+    "iteration_duration_seconds": 4.348603083009948,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_06.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_06_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_06_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_06.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    42 |         attribute dateTime : Date;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 772,
+      "output_tokens": 244,
+      "total_tokens": 1016
+    },
+    "tokens_used_total": 8680,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 7,
+    "iteration_start": "2026-02-20T16:25:24.928609Z",
+    "iteration_end": "2026-02-20T16:25:29.556266Z",
+    "iteration_duration_seconds": 4.627647208006238,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_07.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_07_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_07_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_07.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    42 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 767,
+      "output_tokens": 245,
+      "total_tokens": 1012
+    },
+    "tokens_used_total": 9692,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 8,
+    "iteration_start": "2026-02-20T16:25:29.556371Z",
+    "iteration_end": "2026-02-20T16:25:33.773719Z",
+    "iteration_duration_seconds": 4.217370500002289,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_08.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_08_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_08_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_08.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    42 |         attribute dateTime : Date;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 772,
+      "output_tokens": 244,
+      "total_tokens": 1016
+    },
+    "tokens_used_total": 10708,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 9,
+    "iteration_start": "2026-02-20T16:25:33.773843Z",
+    "iteration_end": "2026-02-20T16:25:38.276218Z",
+    "iteration_duration_seconds": 4.502425707993098,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_09.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_09_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_09_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_09.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    42 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 767,
+      "output_tokens": 245,
+      "total_tokens": 1012
+    },
+    "tokens_used_total": 11720,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 10,
+    "iteration_start": "2026-02-20T16:25:38.276449Z",
+    "iteration_end": "2026-02-20T16:25:42.201021Z",
+    "iteration_duration_seconds": 3.9245628749922616,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_10.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_10_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_10_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_10.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    42 |         attribute dateTime : Date;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 772,
+      "output_tokens": 247,
+      "total_tokens": 1019
+    },
+    "tokens_used_total": 12739,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 11,
+    "iteration_start": "2026-02-20T16:25:42.201107Z",
+    "iteration_end": "2026-02-20T16:25:46.425823Z",
+    "iteration_duration_seconds": 4.2247373330028495,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_11.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_11_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_11_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_11.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    42 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 768,
+      "output_tokens": 245,
+      "total_tokens": 1013
+    },
+    "tokens_used_total": 13752,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 12,
+    "iteration_start": "2026-02-20T16:25:46.425950Z",
+    "iteration_end": "2026-02-20T16:25:50.771317Z",
+    "iteration_duration_seconds": 4.345466750004562,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_12.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_12_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_12_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_12.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    42 |         attribute dateTime : Date;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 773,
+      "output_tokens": 244,
+      "total_tokens": 1017
+    },
+    "tokens_used_total": 14769,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 13,
+    "iteration_start": "2026-02-20T16:25:50.771529Z",
+    "iteration_end": "2026-02-20T16:25:55.131932Z",
+    "iteration_duration_seconds": 4.36045620799996,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_13.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_13_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_13_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_13.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    42 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 768,
+      "output_tokens": 245,
+      "total_tokens": 1013
+    },
+    "tokens_used_total": 15782,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 14,
+    "iteration_start": "2026-02-20T16:25:55.132106Z",
+    "iteration_end": "2026-02-20T16:25:59.788876Z",
+    "iteration_duration_seconds": 4.656752583003254,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_14.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_14_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_14_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_14.sysml:33:44: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    33 |                                   \"yellow\" when level == StatusColor::yellow else\n       |                                            \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_14.sysml:34:35: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    34 |                                   \"green\";\n       |                                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_14.sysml:34:35: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    34 |                                   \"green\";\n       |                                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_14.sysml:34:35: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'STRING_VALUE'.\n    34 |                                   \"green\";\n       |                                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_14.sysml:32:36: \u001b[38;2;220;080;080merror\u001b[0m (parameter-membership-owning-type): A parameter may only be owned by a behavior, step, or constructor expression return parameter\n    32 |         attribute color : String = \"red\" when level == StatusColor::red else\n       |                                    \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_14.sysml:32:47: \u001b[38;2;220;080;080merror\u001b[0m (parameter-membership-owning-type): A parameter may only be owned by a behavior, step, or constructor expression return parameter\n    32 |         attribute color : String = \"red\" when level == StatusColor::red else\n       |                                               \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_14.sysml:33:35: \u001b[38;2;220;080;080merror\u001b[0m (parameter-membership-owning-type): A parameter may only be owned by a behavior, step, or constructor expression return parameter\n    33 |                                   \"yellow\" when level == StatusColor::yellow else\n       |                                   \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_14.sysml:44:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    44 |         attribute dateTime : Date;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 773,
+      "output_tokens": 276,
+      "total_tokens": 1049
+    },
+    "tokens_used_total": 16831,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 15,
+    "iteration_start": "2026-02-20T16:25:59.788964Z",
+    "iteration_end": "2026-02-20T16:26:04.323896Z",
+    "iteration_duration_seconds": 4.53490874999261,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_15.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_15_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_15_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_15.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    42 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1213,
+      "output_tokens": 248,
+      "total_tokens": 1461
+    },
+    "tokens_used_total": 18292,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 16,
+    "iteration_start": "2026-02-20T16:26:04.323977Z",
+    "iteration_end": "2026-02-20T16:26:10.454269Z",
+    "iteration_duration_seconds": 6.130729541007895,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_16.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_16_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_16_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_16.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    42 |         attribute dateTime : Date;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 776,
+      "output_tokens": 247,
+      "total_tokens": 1023
+    },
+    "tokens_used_total": 19315,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 17,
+    "iteration_start": "2026-02-20T16:26:10.455006Z",
+    "iteration_end": "2026-02-20T16:26:14.824217Z",
+    "iteration_duration_seconds": 4.369327374995919,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_17.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_17_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_17_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_17.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    42 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 771,
+      "output_tokens": 248,
+      "total_tokens": 1019
+    },
+    "tokens_used_total": 20334,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 18,
+    "iteration_start": "2026-02-20T16:26:14.824439Z",
+    "iteration_end": "2026-02-20T16:26:18.996787Z",
+    "iteration_duration_seconds": 4.17233750000014,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_18.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_18_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_18_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_18.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    42 |         attribute dateTime : Date;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 776,
+      "output_tokens": 250,
+      "total_tokens": 1026
+    },
+    "tokens_used_total": 21360,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 19,
+    "iteration_start": "2026-02-20T16:26:18.996873Z",
+    "iteration_end": "2026-02-20T16:26:24.215639Z",
+    "iteration_duration_seconds": 5.218751916996553,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_19.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_19_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_19_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_19.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    42 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 771,
+      "output_tokens": 248,
+      "total_tokens": 1019
+    },
+    "tokens_used_total": 22379,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 20,
+    "iteration_start": "2026-02-20T16:26:24.215767Z",
+    "iteration_end": "2026-02-20T16:26:28.783024Z",
+    "iteration_duration_seconds": 4.567295667002327,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_20.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_20_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-112456/iteration_20_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_20.sysml:42:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Date' found.\n    42 |         attribute dateTime : Date;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 776,
+      "output_tokens": 250,
+      "total_tokens": 1026
+    },
+    "tokens_used_total": 23405,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

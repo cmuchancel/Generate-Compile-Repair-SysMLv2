@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:07:18.372806Z",
+    "iteration_end": "2026-02-20T16:07:24.283708Z",
+    "iteration_duration_seconds": 5.91082395799458,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:41:80: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';'.\n    41 |         attribute totalMass : Mass = (curbWeight.value + fuel.mass.value)::Mass;\n       |                                                                                \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:41:38: \u001b[38;2;220;080;080merror\u001b[0m (type-error): ScalarValues::Real does not conform to VehicleSystem::Mass\n    41 |         attribute totalMass : Mass = (curbWeight.value + fuel.mass.value)::Mass;\n       |                                      \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:11:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'kilogram' found.\n    11 |         attribute unit : MassUnit = kilogram;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:54:13: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'vehicle' found.\n    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;\n       |             \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:54:21: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'engine' found.\n    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;\n       |                     \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:54:28: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'clutchInterface' found.\n    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;\n       |                            \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:54:47: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'vehicle' found.\n    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;\n       |                                               \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:54:55: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'clutch' found.\n    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;\n       |                                                       \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:54:62: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'input' found.\n    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;\n       |                                                              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:55:13: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'vehicle' found.\n    55 |     connect vehicle.clutch.output to vehicle.transmission.input;\n       |             \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:55:21: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'clutch' found.\n    55 |     connect vehicle.clutch.output to vehicle.transmission.input;\n       |                     \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:55:28: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'output' found.\n    55 |     connect vehicle.clutch.output to vehicle.transmission.input;\n       |                            \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:55:38: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'vehicle' found.\n    55 |     connect vehicle.clutch.output to vehicle.transmission.input;\n       |                                      \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:55:46: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'transmission' found.\n    55 |     connect vehicle.clutch.output to vehicle.transmission.input;\n       |                                              \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:55:59: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'input' found.\n    55 |     connect vehicle.clutch.output to vehicle.transmission.input;\n       |                                                           \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 328,
+      "output_tokens": 274,
+      "total_tokens": 602
+    },
+    "tokens_used_total": 602,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:07:24.283773Z",
+    "iteration_end": "2026-02-20T16:07:29.100838Z",
+    "iteration_duration_seconds": 4.817046334006591,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:42:38: \u001b[38;2;220;080;080merror\u001b[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`\n    42 |         attribute totalMass : Mass = Mass(totalMassValue, MassUnit::kilogram);\n       |                                      \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_02.sysml:42:59: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   42 |         attribute totalMass : Mass = Mass(totalMassValue, MassUnit::kilogram);\n\u2502      |                                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:11:35: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1448,
+      "output_tokens": 295,
+      "total_tokens": 1743
+    },
+    "tokens_used_total": 2345,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:07:29.100926Z",
+    "iteration_end": "2026-02-20T16:07:33.971926Z",
+    "iteration_duration_seconds": 4.8709639579901705,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:57:25: \u001b[38;2;220;080;080merror\u001b[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`\n    57 |         :>> totalMass = Mass(totalMassValue, totalMassUnit);\n       |                         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_03.sysml:57:46: \u001b[38;2;220;080;080merror\u001b[0m (feature-value-overriding): Cannot override a binding feature value\n\u2502   57 |         :>> totalMass = Mass(totalMassValue, totalMassUnit);\n\u2502      |                                              \u001b[38;2;220;080;080m^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:11:35: \u001b[38;2;255;255;255mnote\u001b[0m: Redefined binding feature value here",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 831,
+      "output_tokens": 316,
+      "total_tokens": 1147
+    },
+    "tokens_used_total": 3492,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:07:33.971996Z",
+    "iteration_end": "2026-02-20T16:07:39.003489Z",
+    "iteration_duration_seconds": 5.031483708007727,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:42:38: \u001b[38;2;220;080;080merror\u001b[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`\n    42 |         attribute totalMass : Mass = Mass();\n       |                                      \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 842,
+      "output_tokens": 325,
+      "total_tokens": 1167
+    },
+    "tokens_used_total": 4659,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:07:39.003591Z",
+    "iteration_end": "2026-02-20T16:07:43.993559Z",
+    "iteration_duration_seconds": 4.989922084001591,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110718/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:57:25: \u001b[38;2;220;080;080merror\u001b[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`\n    57 |         :>> totalMass = Mass();\n       |                         \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 755,
+      "output_tokens": 331,
+      "total_tokens": 1086
+    },
+    "tokens_used_total": 5745,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

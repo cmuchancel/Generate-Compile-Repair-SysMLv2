@@ -1,0 +1,34 @@
+{
+  "id": "2bc8bf125376402ca68831f2076095c9",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleStructure {\n    private import ScalarValues::*;\n\n    part def VehicleComponent;\n\n    part def Engine :> VehicleComponent;\n    part def Transmission :> VehicleComponent;\n    part def Wheel :> VehicleComponent;\n\n    part def Vehicle {\n        attribute engineCount : Integer = 1;\n        attribute transmissionCount : Integer = 1;\n        attribute wheelCount : Integer = 4;\n\n        part engine : Engine[1];\n        part transmission : Transmission[1];\n        part wheels : Wheel[4];\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603313,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 113,
+    "prompt_tokens": 365,
+    "total_tokens": 478,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

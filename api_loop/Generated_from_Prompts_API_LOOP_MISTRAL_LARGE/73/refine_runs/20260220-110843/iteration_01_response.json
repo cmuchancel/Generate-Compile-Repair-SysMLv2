@@ -1,0 +1,34 @@
+{
+  "id": "3e08d98b3a2a4a57bf17538c19639c79",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleFuelEconomySimulation {\n    private import ScalarValues::*;\n\n    enum def DrivingScenario {\n        enum urban;\n        enum highway;\n    }\n\n    part def Vehicle {\n        attribute curbWeight : Real;\n        attribute load : Real;\n        attribute wheelDiameter : Real;\n        attribute transmissionEfficiency : Real;\n    }\n\n    part def Engine {\n        attribute fuelConsumptionRate : Real;\n    }\n\n    part def DrivingTrajectory {\n        attribute speedVariation : Real;\n        attribute scenario : DrivingScenario;\n    }\n\n    part def SimulationResult {\n        attribute wheelPower : Real;\n        attribute acceleration : Real;\n        attribute energyConsumption : Real;\n        attribute enginePowerDemand : Real;\n        attribute fuelConsumptionLitersPer100km : Real;\n        attribute fuelEconomyMpg : Real;\n    }\n\n    part def FuelEconomyValidator {\n        attribute minimumRequiredMpg : Real = 30.0;\n    }\n\n    part simulationSystem {\n        part vehicle : Vehicle;\n        part engine : Engine;\n        part trajectory : DrivingTrajectory;\n        part result : SimulationResult;\n        part validator : FuelEconomyValidator;\n\n        connect vehicle to result;\n        connect engine to result;\n        connect trajectory to result;\n        connect result to validator;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603724,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 280,
+    "prompt_tokens": 393,
+    "total_tokens": 673,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

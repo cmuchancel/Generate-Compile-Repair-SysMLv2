@@ -1,0 +1,34 @@
+{
+  "id": "6437cc3e0dd2495a9eb8a75c7eca29ac",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehiclePowerManagement {\n    private import ScalarValues::*;\n\n    enum def OperatingState {\n        enum Off;\n        enum Start;\n        enum On;\n    }\n\n    part def Vehicle {\n        attribute currentState : OperatingState = OperatingState::Off;\n        attribute healthState : String;\n    }\n\n    port def ControlSignal {\n        attribute signal : String;\n    }\n\n    part def User {\n        port startSignal : ControlSignal;\n        port onSignal : ControlSignal;\n        port offSignal : ControlSignal;\n    }\n\n    part def PowerManager {\n        port startInput : ControlSignal;\n        port onInput : ControlSignal;\n        port offInput : ControlSignal;\n        port stateOutput : ControlSignal;\n    }\n\n    item def StartSignal {\n        attribute value : String = \"start\";\n    }\n\n    item def OnSignal {\n        attribute value : String = \"on\";\n    }\n\n    item def OffSignal {\n        attribute value : String = \"off\";\n    }\n\n    part vehicle : Vehicle;\n    part user : User;\n    part powerManager : PowerManager;\n\n    connect user.startSignal to powerManager.startInput;\n    connect user.onSignal to powerManager.onInput;\n    connect user.offSignal to powerManager.offInput;\n    connect powerManager.stateOutput to vehicle;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603522,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 267,
+    "prompt_tokens": 402,
+    "total_tokens": 669,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

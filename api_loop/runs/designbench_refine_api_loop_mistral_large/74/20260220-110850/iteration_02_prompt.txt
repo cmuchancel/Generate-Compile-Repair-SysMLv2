@@ -1,0 +1,90 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to conduct a comprehensive selection analysis for various types of engines, including four-cylinder and six-cylinder engines. For each type of engine, the system will aggregate and calculate key performance indicators such as power, mass, efficiency, and cost. Based on these indicators, a unified evaluation function will be used to comprehensively assess each engine. Finally, according to the comprehensive evaluation results, the system will automatically screen and recommend the optimal engine selection from all candidates, thereby maximizing both engine performance and economic efficiency.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package EngineSelectionAnalysis {
+    private import ScalarValues::*;
+
+    enum def EngineType {
+        enum FourCylinder;
+        enum SixCylinder;
+    }
+
+    part def Engine {
+        attribute power : Real;
+        attribute mass : Real;
+        attribute efficiency : Real;
+        attribute cost : Real;
+        attribute engineType : EngineType;
+    }
+
+    part def EvaluationFunction {
+        attribute weightPower : Real = 0.3;
+        attribute weightMass : Real = 0.2;
+        attribute weightEfficiency : Real = 0.3;
+        attribute weightCost : Real = 0.2;
+
+        attribute evaluate(engine : Engine) : Real {
+            return (engine.power * weightPower) -
+                   (engine.mass * weightMass) +
+                   (engine.efficiency * weightEfficiency) -
+                   (engine.cost * weightCost);
+        }
+    }
+
+    part def EngineSelectionSystem {
+        part candidateEngines : Engine[0..*];
+        part evaluator : EvaluationFunction;
+        attribute selectedEngine : Engine;
+
+        port def SelectionOutput {
+            attribute recommendedEngine : Engine;
+        }
+
+        port output : SelectionOutput;
+
+        attribute selectOptimalEngine() : Engine {
+            var bestScore : Real = -Infinity;
+            for engine in candidateEngines {
+                var score : Real = evaluator.evaluate(engine);
+                if (score > bestScore) {
+                    bestScore = score;
+                    selectedEngine = engine;
+                }
+            }
+            output.recommendedEngine = selectedEngine;
+            return selectedEngine;
+        }
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:23:35: error (parsing-error): Unexpected ':', expected one of ["SINGLE_LINE_NOTE", "[", ":>", ":", "=", "subsets", "defined", "ordered", "nonunique", "MULTILINE_NOTE", "::>", "references", "=>", "crosses", ":>>", "redefines", "MultiplicityRange", "OwningMembership", ";", "{", "from", ":=", "default", "by", "then", "of", "accept", "send", "assign", "parallel"].
+    23 |         attribute evaluate(engine : Engine) : Real {
+       |                                   ^
+iteration_01.sysml:23:43: error (parsing-error): Unexpected ')', expected one of ["SINGLE_LINE_NOTE", "::", "ElementReference_repeat1", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", ",", "[", "ordered", "nonunique", ".", ":=", "default", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "of", "accept", "send", "assign", "parallel"].
+    23 |         attribute evaluate(engine : Engine) : Real {
+       |                                           ^
+iteration_01.sysml:25:21: error (parsing-error): Unexpected identifier.
+    25 |                    (engine.mass * weightMass) +
+       |                     ^^^^^^
+iteration_01.sysml:26:41: error (parsing-error): Unexpected identifier, expected one of ["NAME", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "import", "[", "abstract", "in", "inout", "out", "derived", "end", "ordered", "nonunique", "<", "not", "@", "#", "metadata", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "standard", "library", "package", "variation", "variant", "constant", "ref", "attribute", "enum", "occurrence", "individual", "timeslice", "snapshot", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "interface", "allocation", "allocate", "action", "perform", "state", "exhibit", "calc", "constraint", "assert", "requirement", "concern", "satisfy", "case", "analysis", "verification", "use", "include", "view", "rendering", "viewpoint", "Dependency", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "Membership", "MembershipImport", "NamespaceImport", "FeatureDirectionKind", "OwningMembership", "MultiplicityRange", "Annotation", "OwningMembership", "Package", "LibraryPackage", "OwningMembership", "VariantMembership", "FeatureMembership", "FeatureMembership", "ReferenceUsage", "ReferenceUsage", "AttributeDefinition", "AttributeUsage", "EnumerationDefinition", "EnumerationUsage", "OccurrenceDefinition", "OccurrenceDefinition", "OccurrenceUsage", "OccurrenceUsage", "OccurrenceUsage", "PortionKind", "EventOccurrenceUsage", "FeatureMembership", "SuccessionAsUsage", "ItemDefinition", "ItemUsage", "PartDefinition", "PartUsage", "PortDefinition", "PortUsage", "ConnectionDefinition", "ConnectionUsage", "BindingConnectorAsUsage", "SuccessionAsUsage", "FlowDefinition", "FlowUsage", "FlowUsage", "SuccessionFlowUsage", "InterfaceDefinition", "InterfaceUsage", "AllocationDefinition", "AllocationUsage", "ActionDefinition", "ActionUsage", "PerformActionUsage", "StateDefinition", "StateUsage", "ExhibitStateUsage", "CalculationDefinition", "CalculationUsage", "ConstraintDefinition", "ConstraintUsage", "AssertConstraintUsage", "RequirementDefinition", "RequirementUsage", "SatisfyRequirementUsage", "ConcernDefinition", "ConcernUsage", "CaseDefinition", "CaseUsage", "AnalysisCaseDefinition", "AnalysisCaseUsage", "VerificationCaseDefinition", "VerificationCaseUsage", "UseCaseDefinition", "UseCaseUsage", "IncludeUseCaseUsage", "ViewDefinition", "ViewUsage", "ViewpointDefinition", "ViewpointUsage", "RenderingDefinition", "RenderingUsage", "MetadataDefinition", "MetadataUsage", "MetadataUsage", "Definition", "Usage", "Dependency_repeat1"].
+    26 |                    (engine.efficiency * weightEfficiency) -
+       |                                         ^
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

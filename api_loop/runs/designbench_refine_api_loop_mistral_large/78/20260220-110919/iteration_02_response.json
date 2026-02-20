@@ -1,0 +1,34 @@
+{
+  "id": "e38fd3b2cf714f6d992f45640358ae53",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage TransportationSystem {\n    private import ScalarValues::*;\n\n    enum def VehicleState {\n        enum parked;\n        enum driving;\n        enum refueling;\n        enum arrived;\n    }\n\n    enum def EnvironmentCondition {\n        enum clear;\n        enum rainy;\n        enum snowy;\n        enum foggy;\n    }\n\n    part def Person {\n        attribute role : String;\n    }\n\n    part def Driver specializes Person {\n        attribute licenseValid : Boolean = true;\n    }\n\n    part def Passenger specializes Person {\n    }\n\n    part def Vehicle {\n        attribute state : VehicleState = VehicleState::parked;\n        attribute fuelLevel : Real = 100.0;\n        attribute maxPassengers : Integer = 4;\n        attribute currentPassengers : Integer = 0;\n\n        part driver : Driver;\n        part passengers : Passenger[0..4];\n\n        port def FuelPort;\n        port fuelIn : FuelPort;\n\n        port def ControlPort;\n        port control : ControlPort;\n    }\n\n    part def GasStation {\n        port def FuelDispenserPort;\n        port dispenser : FuelDispenserPort;\n    }\n\n    part def Environment {\n        attribute condition : EnvironmentCondition = EnvironmentCondition::clear;\n    }\n\n    part def TransportationScenario {\n        part vehicle : Vehicle;\n        part gasStation : GasStation;\n        part environment : Environment;\n        part driver : Driver;\n        part passengers : Passenger[0..4];\n\n        connect vehicle.driver to driver;\n        connect vehicle.passengers to passengers;\n        connect vehicle.fuelIn to gasStation.dispenser;\n    }\n\n    item def Fuel;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603767,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 336,
+    "prompt_tokens": 1379,
+    "total_tokens": 1715,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

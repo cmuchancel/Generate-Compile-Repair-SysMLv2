@@ -1,0 +1,75 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is used to configure the vehicle's powertrain, including the engine and transmission. The vehicle can be equipped with either a four-cylinder engine or a six-cylinder engine, and can be paired with either a manual transmission or an automatic transmission. Each vehicle must select one type of engine and one type of transmission. If the vehicle is a high-performance model, it must be equipped with a six-cylinder engine; otherwise, a four-cylinder engine must be used. In addition, there are only two valid powertrain combinations: either a four-cylinder engine with a manual transmission, or a six-cylinder engine with an automatic transmission. No other combinations are permitted.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehiclePowertrain {
+    private import ScalarValues::*;
+
+    enum def EngineType {
+        enum FourCylinder;
+        enum SixCylinder;
+    }
+
+    enum def TransmissionType {
+        enum Manual;
+        enum Automatic;
+    }
+
+    part def Engine {
+        attribute type : EngineType;
+    }
+
+    part def Transmission {
+        attribute type : TransmissionType;
+    }
+
+    part def Vehicle {
+        attribute isHighPerformance : Boolean;
+        part engine : Engine;
+        part transmission : Transmission;
+    }
+
+    part def PowertrainConfigurator {
+        part vehicle : Vehicle;
+
+        constraint {
+            if vehicle.isHighPerformance then
+                vehicle.engine.type == EngineType::SixCylinder
+            else
+                vehicle.engine.type == EngineType::FourCylinder
+            end;
+
+            (vehicle.engine.type == EngineType::FourCylinder and vehicle.transmission.type == TransmissionType::Manual) or
+            (vehicle.engine.type == EngineType::SixCylinder and vehicle.transmission.type == TransmissionType::Automatic)
+        }
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:35:17: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "all", "*", "if", "+", "-", "~", "not", "hastype", "istype", "@", "as", "(", "null", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", "$", "Feature", "FeatureChaining", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "ParameterMembership", "Feature", "FeatureValue", "ParameterMembership", "Feature", "FeatureValue", "MetadataAccessExpression", "OperatorExpression", "FeatureValue", "Feature", "ParameterMembership", "FeatureValue", "Feature", "ParameterMembership", "OperatorExpression", "IndexExpression", "FeatureChainExpression", "CollectExpression", "SelectExpression", "InvocationExpression", "OwningMembership", "NullExpression", "FeatureReferenceExpression", "Membership", "MetadataAccessExpression", "Membership", "InvocationExpression", "ConstructorExpression", "Membership", "FeatureReferenceExpression", "FeatureMembership", "Expression", "LiteralBoolean", "LiteralString", "LiteralInteger", "LiteralRational", "LiteralInfinity", "ElementReference", "ParameterMembership"].
+    35 |                 vehicle.engine.type == EngineType::FourCylinder
+       |                 ^^^^^^^
+iteration_01.sysml:35:17: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "all", "*", "if", "+", "-", "~", "not", "hastype", "istype", "@", "as", "(", "null", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", "$", "Feature", "FeatureChaining", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "ParameterMembership", "Feature", "FeatureValue", "ParameterMembership", "Feature", "FeatureValue", "MetadataAccessExpression", "OperatorExpression", "FeatureValue", "Feature", "ParameterMembership", "FeatureValue", "Feature", "ParameterMembership", "OperatorExpression", "IndexExpression", "FeatureChainExpression", "CollectExpression", "SelectExpression", "InvocationExpression", "OwningMembership", "NullExpression", "FeatureReferenceExpression", "Membership", "MetadataAccessExpression", "Membership", "InvocationExpression", "ConstructorExpression", "Membership", "FeatureReferenceExpression", "FeatureMembership", "Expression", "LiteralBoolean", "LiteralString", "LiteralInteger", "LiteralRational", "LiteralInfinity", "ElementReference", "ParameterMembership"].
+    35 |                 vehicle.engine.type == EngineType::FourCylinder
+       |                 ^^^^^^^
+iteration_01.sysml:36:13: error (parsing-error): Unexpected identifier, expected one of [";", "{", "}", "dependency", "from", ",", "to", "about", "::", "**", "*", "[", "]", ".", "if", "?", "else", "??", "implies", "or", "and", "+", "-", "|", "&", "xor", "==", "!=", "===", "!==", "<", ">", "<=", ">=", "..", "/", "%", "^", "hastype", "istype", "@", "as", "@@", "meta", "#", "(", ")", ".?", "->", "=", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "by", "package", "attribute", "enum", "then", "connect", "binding", "bind", "succession", "first", "of", "action", "merge", "decide", "join", "fork", "via", "parallel", "do"].
+    36 |             end;
+       |             ^^^
+iteration_01.sysml:40:9: error (parsing-error): Unexpected '}', expected one of ["NAME", ";", "{", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "for", "import", "all", "*", "[", "abstract", "in", "inout", "out", "derived", "end", "ordered", "nonunique", "if", "+", "-", "<", "~", "not", "hastype", "istype", "@", "as", "#", "(", "null", "metadata", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "standard",
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

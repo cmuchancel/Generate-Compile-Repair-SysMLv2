@@ -1,0 +1,34 @@
+{
+  "id": "3627eb3478b746829825464438c57c6f",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleTrailerCouplingSystem {\n    private import ScalarValues::*;\n\n    enum def CouplingType {\n        enum TowHitch;\n        enum BallConnector;\n    }\n\n    part def Hitch {\n        attribute couplingType : CouplingType;\n        port couplingBall : CouplingBallPort;\n    }\n\n    part def Vehicle {\n        port couplingInterface : CouplingInterfacePort;\n    }\n\n    part def Trailer {\n        port couplingConnector : CouplingConnectorPort;\n    }\n\n    port def CouplingBallPort;\n    port def CouplingInterfacePort;\n    port def CouplingConnectorPort;\n\n    part couplingSystem {\n        part vehicle : Vehicle;\n        part hitch : Hitch;\n        part trailer : Trailer;\n\n        connect vehicle.couplingInterface to hitch.couplingBall;\n        connect hitch.couplingBall to trailer.couplingConnector;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603983,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 185,
+    "prompt_tokens": 418,
+    "total_tokens": 603,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,110 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is primarily used to manage the operational status of a vehicle, enabling the vehicle to automatically switch states according to different control signals. When entering the system for the first time, the vehicle is in the "off" state. If a "VehicleStartSignal" is received at this time, the system will switch to the "starting" state. Next, upon receiving a "VehicleOnSignal," the system will enter the "on" (running) state. During vehicle operation, as soon as a "VehicleOffSignal" is received, the vehicle status will return to the "off" state. This entire process realizes automatic state management from shut down, through starting, to running, and then back to shut down, allowing users to comprehensively control and monitor the vehicle.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 3):
+                package VehicleOperationalStatus {
+    private import ScalarValues::*;
+
+    enum def VehicleState {
+        enum off;
+        enum starting;
+        enum on;
+    }
+
+    port def VehicleStartSignalPort {
+        attribute signal : VehicleStartSignal;
+    }
+
+    port def VehicleOnSignalPort {
+        attribute signal : VehicleOnSignal;
+    }
+
+    port def VehicleOffSignalPort {
+        attribute signal : VehicleOnSignal;
+    }
+
+    item def VehicleStartSignal;
+    item def VehicleOnSignal;
+    item def VehicleOffSignal;
+
+    part def Vehicle {
+        attribute state : VehicleState = off;
+        port startSignal : VehicleStartSignalPort;
+        port onSignal : VehicleOnSignalPort;
+        port offSignal : VehicleOffSignalPort;
+    }
+
+    part vehicle : Vehicle;
+
+    part startSignalSource {
+        port out : VehicleStartSignalPort;
+    }
+
+    part onSignalSource {
+        port out : VehicleOnSignalPort;
+    }
+
+    part offSignalSource {
+        port out : VehicleOffSignalPort;
+    }
+
+    connect vehicle.startSignal to startSignalSource.out;
+    connect vehicle.onSignal to onSignalSource.out;
+    connect vehicle.offSignal to offSignalSource.out;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_03.sysml:27:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    27 |         attribute state : VehicleState = off;
+       |                   ^^^^^
+iteration_03.sysml:36:14: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    36 |         port out : VehicleStartSignalPort;
+       |              ^^^
+iteration_03.sysml:40:14: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    40 |         port out : VehicleOnSignalPort;
+       |              ^^^
+iteration_03.sysml:44:14: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    44 |         port out : VehicleOffSignalPort;
+       |              ^^^
+iteration_03.sysml:47:53: error (parsing-error): Unexpected token '.'.
+    47 |     connect vehicle.startSignal to startSignalSource.out;
+       |                                                     ^
+iteration_03.sysml:47:54: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE_NOTE", "FeatureChaining", ";", "{", ",", "[", "(", ")", "=", "from", "to", "if", "then", "accept", "via", "do"].
+    47 |     connect vehicle.startSignal to startSignalSource.out;
+       |                                                      ^^^
+iteration_03.sysml:48:47: error (parsing-error): Unexpected token '.'.
+    48 |     connect vehicle.onSignal to onSignalSource.out;
+       |                                               ^
+iteration_03.sysml:48:48: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE_NOTE", "FeatureChaining", ";", "{", ",", "[", "(", ")", "=", "from", "to", "if", "then", "accept", "via", "do"].
+    48 |     connect vehicle.onSignal to onSignalSource.out;
+       |                                                ^^^
+iteration_03.sysml:49:49: error (parsing-error): Unexpected token '.'.
+    49 |     connect vehicle.offSignal to offSignalSource.out;
+       |                                                 ^
+iteration_03.sysml:49:50: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE_NOTE", "FeatureChaining", ";", "{", ",", "[", "(", ")", "=", "from", "to", "if", "then", "accept", "via", "do"].
+    49 |     connect vehicle.offSignal to offSignalSource.out;
+       |                                                  ^^^
+iteration_03.sysml:47:36: error (feature-chaining-feature-not-one): Feature cannot have only one feature chaining
+    47 |     connect vehicle.startSignal to startSignalSource.out;
+       |                                    ^^^^^^^^^^^^^^^^^
+iteration_03.sysml:48:33: error (feature-chaining-feature-not-one): Feature cannot have only one feature chaining
+    48 |     connect vehicle.onSignal to onSignalSource.out;
+       |                                 ^^^^^^^^^^^^^^
+iteration_03.sysml:49:34: error (feature-chaining-feat
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

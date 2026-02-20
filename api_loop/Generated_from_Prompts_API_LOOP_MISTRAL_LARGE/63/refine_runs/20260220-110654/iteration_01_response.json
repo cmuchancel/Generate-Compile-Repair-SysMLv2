@@ -1,0 +1,34 @@
+{
+  "id": "c160f6150f3b47b587a3d9ec8a72dd64",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleMassBudget {\n    private import ScalarValues::*;\n\n    part def Vehicle {\n        attribute chassisMass : Real;\n        attribute engineMass : Real;\n        attribute transmissionMass : Real;\n        attribute totalMass : Real;\n        attribute massLimit : Real = 2500.0;\n\n        part chassis : Chassis;\n        part engine : Engine;\n        part transmission : Transmission;\n    }\n\n    part def Chassis {\n        attribute mass : Real;\n    }\n\n    part def Engine {\n        attribute mass : Real;\n    }\n\n    part def Transmission {\n        attribute mass : Real;\n    }\n\n    part vehicle : Vehicle;\n\n    attribute vehicle.chassisMass : Real = vehicle.chassis.mass;\n    attribute vehicle.engineMass : Real = vehicle.engine.mass;\n    attribute vehicle.transmissionMass : Real = vehicle.transmission.mass;\n    attribute vehicle.totalMass : Real = vehicle.chassisMass + vehicle.engineMass + vehicle.transmissionMass;\n\n    constraint massConstraint {\n        vehicle.totalMass <= vehicle.massLimit\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603616,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 217,
+    "prompt_tokens": 406,
+    "total_tokens": 623,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

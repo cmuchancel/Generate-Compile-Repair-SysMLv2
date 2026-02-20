@@ -1,0 +1,34 @@
+{
+  "id": "0a3d321ccb914bad8cfa1103b486ef12",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleMassCompliance {\n    private import ScalarValues::*;\n\n    part def Chassis {\n        attribute mass : Real;\n    };\n\n    part def Engine {\n        attribute mass : Real;\n    };\n\n    part def Transmission {\n        attribute mass : Real;\n    };\n\n    part def Vehicle {\n        part chassis : Chassis;\n        part engine : Engine;\n        part transmission : Transmission;\n        attribute totalMass : Real;\n        attribute isCompliant : Boolean;\n    };\n\n    item def MassData {\n        attribute chassisMass : Real;\n        attribute engineMass : Real;\n        attribute transmissionMass : Real;\n    };\n\n    part def MassRegulator {\n        port massInput : MassData;\n        part vehicle : Vehicle;\n\n        attribute maxAllowedMass : Real = 2500.0;\n\n        connect massInput to vehicle {\n            vehicle.chassis.mass = massInput.chassisMass;\n            vehicle.engine.mass = massInput.engineMass;\n            vehicle.transmission.mass = massInput.transmissionMass;\n            vehicle.totalMass = massInput.chassisMass + massInput.engineMass + massInput.transmissionMass;\n            vehicle.isCompliant = vehicle.totalMass <= maxAllowedMass;\n        };\n    };\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603615,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 254,
+    "prompt_tokens": 391,
+    "total_tokens": 645,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

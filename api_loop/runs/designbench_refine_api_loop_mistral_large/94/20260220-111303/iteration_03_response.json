@@ -1,0 +1,34 @@
+{
+  "id": "e33aaff3ac564d089805f3da2aa7712c",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage AutomotiveDomain {\n    private import ScalarValues::*;\n\n    /* Core automobile definition with alias */\n    part def Automobile {\n        alias Car;\n        comment /* The central component representing an automobile in the model.\n             This part definition serves as the foundation for all automotive-related elements. */\n\n        /* Physical quantities associated with automobiles */\n        attribute torque : TorqueValue;\n        attribute maxSpeed : SpeedValue;\n        attribute power : PowerValue;\n        attribute fuelConsumption : FuelConsumptionValue;\n    }\n\n    /* Physical quantity definitions */\n    part def TorqueValue {\n        comment /* Standardized representation of torque in automotive systems */\n        attribute value : Real;\n        attribute unit : TorqueUnit;\n    }\n\n    part def SpeedValue {\n        comment /* Standardized representation of speed */\n        attribute value : Real;\n        attribute unit : SpeedUnit;\n    }\n\n    part def PowerValue {\n        comment /* Standardized representation of power */\n        attribute value : Real;\n        attribute unit : PowerUnit;\n    }\n\n    part def FuelConsumptionValue {\n        comment /* Standardized representation of fuel consumption */\n        attribute value : Real;\n        attribute unit : FuelConsumptionUnit;\n    }\n\n    /* Unit enumerations */\n    enum def TorqueUnit {\n        enum Nm;\n        enum lb_ft;\n    }\n\n    enum def SpeedUnit {\n        enum km_h;\n        enum mph;\n    }\n\n    enum def PowerUnit {\n        enum kW;\n        enum hp;\n    }\n\n    enum def FuelConsumptionUnit {\n        enum L_100km;\n        enum mpg;\n    }\n\n    /* Example automobile instance */\n    part myCar : Automobile {\n        attribute torque : TorqueValue {\n            value = 350;\n            unit = Nm;\n        }\n        attribute maxSpeed : SpeedValue {\n            value = 250;\n            unit = km_h;\n        }\n        attribute power : PowerValue {\n            value = 200;\n            unit = kW;\n        }\n        attribute fuelConsumption : FuelConsumptionValue {\n            value = 6.5;\n            unit = L_100km;\n        }\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603999,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 443,
+    "prompt_tokens": 2027,
+    "total_tokens": 2470,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

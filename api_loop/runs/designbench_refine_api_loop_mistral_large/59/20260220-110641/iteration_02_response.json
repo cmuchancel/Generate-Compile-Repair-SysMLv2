@@ -1,0 +1,34 @@
+{
+  "id": "4cb957e2c1194baf9e6b3b7cf87ee320",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleDynamicsSimulation {\n    private import ScalarValues::*;\n\n    enum def ResistanceType {\n        enum Aerodynamic;\n        enum Rolling;\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        attribute initialSpeed : Real;\n        attribute initialPosition : Real;\n        attribute dragCoefficient : Real;\n        attribute rollingResistanceCoefficient : Real;\n        attribute wheelEndPower : Real;\n        attribute timeStep : Real;\n\n        attribute currentSpeed : Real = initialSpeed;\n        attribute currentPosition : Real = initialPosition;\n        attribute currentAcceleration : Real;\n\n        port powerInput : PowerPort;\n        port stateOutput : StatePort;\n    }\n\n    part def Environment {\n        attribute airDensity : Real = 1.225;\n        attribute gravitationalAcceleration : Real = 9.81;\n    }\n\n    part def SimulationController {\n        port powerOutput : PowerPort;\n        port stateInput : StatePort;\n    }\n\n    port def PowerPort {\n        attribute power : Real;\n    }\n\n    port def StatePort {\n        attribute speed : Real;\n        attribute position : Real;\n        attribute acceleration : Real;\n    }\n\n    item def PowerData {\n        attribute value : Real;\n    }\n\n    item def StateData {\n        attribute speed : Real;\n        attribute position : Real;\n        attribute acceleration : Real;\n    }\n\n    part simulationSystem {\n        part vehicle : Vehicle;\n        part environment : Environment;\n        part controller : SimulationController;\n\n        connect controller.powerOutput to vehicle.powerInput;\n        connect vehicle.stateOutput to controller.stateInput;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603609,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 326,
+    "prompt_tokens": 1359,
+    "total_tokens": 1685,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

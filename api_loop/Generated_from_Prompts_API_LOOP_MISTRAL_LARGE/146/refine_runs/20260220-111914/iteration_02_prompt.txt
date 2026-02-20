@@ -1,0 +1,94 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system is required to sample and record the trajectory of the spacecraft during the ascent phase. The system should use the mission liftoff time as the reference time zero, measured in seconds, and be able to take the UTC liftoff time of the mission (for example, 22:42:32.924534 on August 23, 2020) as the reference time. The system should collect key parameters including the position and velocity of the spacecraft at different time points. Each set of sampled data must associate a specific time point with the corresponding position and velocity data. Both the three-dimensional position and velocity should be described in a Cartesian coordinate system, with units of meters and meters per second, respectively. The system should record multiple sampling points during the ascent phase, with each sampling point containing explicit information on time, position, and velocity, in order to provide accurate data support for subsequent trajectory analysis and performance evaluation.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package SpacecraftTrajectory {
+
+    private import ScalarValues::*;
+
+    enum def TimeReference {
+        enum MissionLiftoffTime
+    }
+
+    part def Spacecraft {
+        attribute liftoffUTC : String = "22:42:32.924534 on August 23, 2020";
+        attribute referenceTimeZero : Real = 0.0;
+        attribute timePoints : Sequence<Real>;
+        attribute positions : Sequence<Vector3D>;
+        attribute velocities : Sequence<Vector3D>;
+    }
+
+    part def Vector3D {
+        attribute x : Real;
+        attribute y : Real;
+        attribute z : Real;
+    }
+
+    part def TrajectorySampler {
+        attribute sampleInterval : Real = 1.0;
+        port dataOut : TrajectoryDataPort;
+    }
+
+    port def TrajectoryDataPort {
+        attribute time : Real;
+        attribute position : Vector3D;
+        attribute velocity : Vector3D;
+    }
+
+    part def TrajectoryRecorder {
+        port dataIn : TrajectoryDataPort;
+    }
+
+    part system {
+        part spacecraft : Spacecraft;
+        part sampler : TrajectorySampler;
+        part recorder : TrajectoryRecorder;
+
+        connect sampler.dataOut to recorder.dataIn;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:7:5: error (parsing-error): Expected a token. Did you forget ';'?
+    7 |     }
+iteration_01.sysml:12:40: error (parsing-error): Expected a token. Did you forget ';'?
+    12 |         attribute timePoints : Sequence<Real>;
+iteration_01.sysml:13:39: error (parsing-error): Expected a token. Did you forget ';'?
+    13 |         attribute positions : Sequence<Vector3D>;
+iteration_01.sysml:14:40: error (parsing-error): Expected a token. Did you forget ';'?
+    14 |         attribute velocities : Sequence<Vector3D>;
+iteration_01.sysml:11:39: warning (usage-feature-typing): Usages should only be typed by Classifiers, this will be upgraded to error in Syside v0.9
+    11 |         attribute referenceTimeZero : Real = 0.0;
+       |                                       ^^^^
+iteration_01.sysml:11:46: error (type-error): ScalarValues::Rational does not conform to SpacecraftTrajectory::Spacecraft::Real
+    11 |         attribute referenceTimeZero : Real = 0.0;
+       |                                              ^^^
+iteration_01.sysml:14:41: warning (namespace-distinguishability): Member name 'Vector3D' shadows SpacecraftTrajectory::Spacecraft::Vector3D
+│   14 |         attribute velocities : Sequence<Vector3D>;
+│      |                                         ^^^^^^^^
+└── iteration_01.sysml:13:40: note: First declared here
+iteration_01.sysml:12:32: error (reference-error): No Type named 'Sequence' found.
+    12 |         attribute timePoints : Sequence<Real>;
+       |                                ^^^^^^^^
+iteration_01.sysml:13:31: error (reference-error): No Type named 'Sequence' found.
+    13 |         attribute positions : Sequence<Vector3D>;
+       |                               ^^^^^^^^
+iteration_01.sysml:14:32: error (reference-error): No Type named 'Sequence' found.
+    14 |         attribute velocities : Sequence<Vector3D>;
+       |                                ^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

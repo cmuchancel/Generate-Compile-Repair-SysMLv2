@@ -1,0 +1,131 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is used for modeling the structural and functional constraints of automotive components, where a car comprises several wheels and related parts. The vehicle has a total mass of 1200 kilograms and a length of 4.82 meters, and is equipped with multiple wheel assemblies. Each wheel assembly consists of a set of tires and the corresponding brake disc. A single wheel is composed of a rim and a tire, with the rim diameter being 18 inches, tire width 245 millimeters, and tire height 45 millimeters, based on which the outer diameter is calculated. The default tread depth of the tire is 6.0 millimeters, and it must not be less than 3.5 millimeters to comply with road safety regulations. The brake disc assembly installed on each wheel assembly has a radius of 95 millimeters, and the system requires that the brake disc diameter (i.e., twice the radius) of each wheel assembly must be less than the outer diameter of the corresponding wheel, ensuring proper installation and safety clearance between components. The system also enforces related constraints to ensure that all wheel assemblies meet the fitment requirements between the brake disc and rim, thereby safeguarding overall safety and performance.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 4):
+                package AutomotiveSystem {
+    private import ScalarValues::*;
+
+    attribute def MassValue : Real;
+    attribute def LengthValue : Real;
+
+    part def Car {
+        attribute totalMass : MassValue = MassValue(1200.0);
+        attribute length : LengthValue = LengthValue(4.82);
+        part wheelAssemblies : WheelAssembly[4];
+    }
+
+    part def WheelAssembly {
+        part wheel : Wheel;
+        part brakeDisc : BrakeDisc;
+    }
+
+    part def Wheel {
+        part rim : Rim;
+        part tire : Tire;
+    }
+
+    part def Rim {
+        attribute diameter : LengthValue = LengthValue(18.0);
+    }
+
+    part def Tire {
+        attribute width : LengthValue = LengthValue(245.0);
+        attribute height : LengthValue = LengthValue(45.0);
+        attribute treadDepth : LengthValue = LengthValue(6.0);
+        attribute minTreadDepth : LengthValue = LengthValue(3.5);
+        attribute outerDiameter : LengthValue;
+    }
+
+    part def BrakeDisc {
+        attribute radius : LengthValue = LengthValue(95.0);
+        attribute diameter : LengthValue = LengthValue(2 * radius.value);
+    }
+
+    part car : Car;
+
+    constraint def WheelAssemblyFitment {
+        for wheelAssembly in car.wheelAssemblies {
+            wheelAssembly.brakeDisc.diameter.value < wheelAssembly.wheel.tire.outerDiameter.value
+        }
+    }
+
+    constraint def TreadDepthCompliance {
+        for wheelAssembly in car.wheelAssemblies {
+            wheelAssembly.wheel.tire.treadDepth.value >= wheelAssembly.wheel.tire.minTreadDepth.value
+        }
+    }
+
+    attribute def CalculateOuterDiameter : LengthValue {
+        value = (car.wheelAssemblies[1].wheel.rim.diameter.value * 25.4) + (2 * car.wheelAssemblies[1].wheel.tire.height.value)
+    }
+
+    for wheelAssembly in car.wheelAssemblies {
+        wheelAssembly.wheel.tire.outerDiameter = CalculateOuterDiameter;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_04.sysml:4:29: error (parsing-error): Expected a token. Did you forget ';'?
+    4 |     attribute def MassValue : Real;
+iteration_04.sysml:5:31: error (parsing-error): Expected a token. Did you forget ';'?
+    5 |     attribute def LengthValue : Real;
+iteration_04.sysml:44:27: error (parsing-error): Unexpected identifier.
+    44 |             wheelAssembly.brakeDisc.diameter.value < wheelAssembly.wheel.tire.outerDiameter.value
+       |                           ^^^^^^^^^
+iteration_04.sysml:44:54: error (parsing-error): Unexpected identifier.
+    44 |             wheelAssembly.brakeDisc.diameter.value < wheelAssembly.wheel.tire.outerDiameter.value
+       |                                                      ^^^^^^^^^^^^^
+iteration_04.sysml:50:27: error (parsing-error): Unexpected identifier.
+    50 |             wheelAssembly.wheel.tire.treadDepth.value >= wheelAssembly.wheel.tire.minTreadDepth.value
+       |                           ^^^^^
+iteration_04.sysml:50:72: error (parsing-error): Unexpected identifier.
+    50 |             wheelAssembly.wheel.tire.treadDepth.value >= wheelAssembly.wheel.tire.minTreadDepth.value
+       |                                                                        ^^^^^
+iteration_04.sysml:54:42: error (parsing-error): Expected a token. Did you forget ';'?
+    54 |     attribute def CalculateOuterDiameter : LengthValue {
+iteration_04.sysml:58:9: error (parsing-error): Unexpected identifier.
+    58 |     for wheelAssembly in car.wheelAssemblies {
+       |         ^^^^^^^^^^^^^
+iteration_04.sysml:59:23: error (parsing-error): Unexpected identifier.
+    59 |         wheelAssembly.wheel.tire.outerDiameter = CalculateOuterDiameter;
+       |                       ^^^^^
+iteration_04.sysml:61:2: error (parsing-error): Expected a token. Did you forget '}'? (no source underlining available since segment is out of bounds)
+iteration_04.sysml:8:43: error (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    8 |         attribute totalMass : MassValue = MassValue(1200.0);
+      |                                           ^^^^^^^^^
+iteration_04.sysml:9:42: error (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    9 |         attribute length : LengthValue = LengthValue(4.82);
+      |                                          ^^^^^^^^^^^
+iteration_04.sysml:24:44: error (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    24 |         attribute diameter : LengthValue = LengthValue(18.0);
+       |                                            ^^^^^^^^^^^
+iteration_04.sysml:28:41: error (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    28 |         attribute width : LengthValue = LengthValue(245.0);
+       |                                         ^^^^^^^^^^^
+iteration_04.sysml:29:42: error (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    29 |         attribute height : LengthValue = LengthValue(45.0);
+       |                                          ^^^^^^^^^^^
+... (truncated compiler output) ...
+    55 |         value = (car.wheelAssemblies[1].wheel.rim.diameter.value * 25.4) + (2 * car.wheelAssemblies[1].wheel.tire.height.value)
+       |                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_04.sysml:55:18: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   55 |         value = (car.wheelAssemblies[1].wheel.rim.diameter.value * 25.4) + (2 * car.wheelAssemblies[1].wheel.tire.height.value)
+│      |                  ^^^^^^^^^^^^^^^^^^^^^^
+└
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

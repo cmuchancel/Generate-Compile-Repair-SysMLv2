@@ -1,0 +1,34 @@
+{
+  "id": "373c74e5b99c4ed78d17f0e7d829d757",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleHealthMonitoring {\n    private import ScalarValues::*;\n\n    enum def HealthStatus {\n        enum normal;\n        enum degraded;\n        enum maintenance;\n    }\n\n    part def VehicleController;\n\n    part def TemperatureSensor {\n        attribute currentTemperature : Real;\n    }\n\n    part def HealthMonitor {\n        attribute maxAllowableTemp : Real = 100.0;\n        attribute maintenanceInterval : Real = 30.0; // days\n        attribute nextMaintenanceTime : Real;\n        attribute healthStatus : HealthStatus = HealthStatus::normal;\n        attribute maintenanceDuration : Real = 48.0; // hours\n        attribute maintenanceStartTime : Real;\n\n        port tempInput : TemperatureSensor;\n        port controllerOutput : VehicleController;\n    }\n\n    part def VehicleSystem {\n        part temperatureSensor : TemperatureSensor;\n        part healthMonitor : HealthMonitor;\n        part vehicleController : VehicleController;\n\n        connect temperatureSensor to healthMonitor.tempInput;\n        connect healthMonitor.controllerOutput to vehicleController;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603530,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 216,
+    "prompt_tokens": 431,
+    "total_tokens": 647,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

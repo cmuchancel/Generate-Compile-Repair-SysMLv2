@@ -1,0 +1,95 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system must be able to define and distinguish between different types of vehicles, including small vehicles and large vehicles, with each category equipped with a specific type of engine. All vehicles are equipped with an engine component: small vehicles must be equipped with a small engine, which contains 4 cylinders, while large vehicles must be equipped with a large engine, which contains 6 cylinders. Each engine contains a functional subsystem composed of a specific number of cylinders to meet the actual requirements of the vehicle's power system. By strictly classifying vehicle types and the specifications of their key components, the system ensures the adaptability and reliability of each type of vehicle in terms of structure and performance.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleSystem {
+    private import ScalarValues::*;
+
+    enum def VehicleType {
+        enum SmallVehicle;
+        enum LargeVehicle;
+    }
+
+    part def Engine {
+        attribute cylinderCount : Integer;
+    }
+
+    part def SmallEngine : Engine {
+        attribute cylinderCount : Integer = 4;
+    }
+
+    part def LargeEngine : Engine {
+        attribute cylinderCount : Integer = 6;
+    }
+
+    part def Vehicle {
+        attribute vehicleType : VehicleType;
+        part engine : Engine;
+    }
+
+    part def SmallVehicle : Vehicle {
+        attribute vehicleType : VehicleType = VehicleType::SmallVehicle;
+        part engine : SmallEngine;
+    }
+
+    part def LargeVehicle : Vehicle {
+        attribute vehicleType : VehicleType = VehicleType::LargeVehicle;
+        part engine : LargeEngine;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:13:26: error (parsing-error): Expected a token. Did you forget ';'?
+    13 |     part def SmallEngine : Engine {
+iteration_01.sysml:17:26: error (parsing-error): Expected a token. Did you forget ';'?
+    17 |     part def LargeEngine : Engine {
+iteration_01.sysml:26:27: error (parsing-error): Expected a token. Did you forget ';'?
+    26 |     part def SmallVehicle : Vehicle {
+iteration_01.sysml:31:27: error (parsing-error): Expected a token. Did you forget ';'?
+    31 |     part def LargeVehicle : Vehicle {
+iteration_01.sysml:14:19: warning (namespace-distinguishability): Member name 'cylinderCount' shadows VehicleSystem::Engine::cylinderCount
+│   14 |         attribute cylinderCount : Integer = 4;
+│      |                   ^^^^^^^^^^^^^
+└── iteration_01.sysml:10:19: note: Inherited from here
+    └── iteration_01.sysml:13:28: note: Because VehicleSystem::Engine is specialized through FeatureTyping
+iteration_01.sysml:18:19: warning (namespace-distinguishability): Member name 'cylinderCount' shadows VehicleSystem::Engine::cylinderCount
+│   18 |         attribute cylinderCount : Integer = 6;
+│      |                   ^^^^^^^^^^^^^
+└── iteration_01.sysml:10:19: note: Inherited from here
+    └── iteration_01.sysml:17:28: note: Because VehicleSystem::Engine is specialized through FeatureTyping
+iteration_01.sysml:27:19: warning (namespace-distinguishability): Member name 'vehicleType' shadows VehicleSystem::Vehicle::vehicleType
+│   27 |         attribute vehicleType : VehicleType = VehicleType::SmallVehicle;
+│      |                   ^^^^^^^^^^^
+└── iteration_01.sysml:22:19: note: Inherited from here
+    └── iteration_01.sysml:26:29: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:28:14: warning (namespace-distinguishability): Member name 'engine' shadows VehicleSystem::Vehicle::engine
+│   28 |         part engine : SmallEngine;
+│      |              ^^^^^^
+└── iteration_01.sysml:23:14: note: Inherited from here
+    └── iteration_01.sysml:26:29: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:32:19: warning (namespace-distinguishability): Member name 'vehicleType' shadows VehicleSystem::Vehicle::vehicleType
+│   32 |         attribute vehicleType : VehicleType = VehicleType::LargeVehicle;
+│      |                   ^^^^^^^^^^^
+└── iteration_01.sysml:22:19: note: Inherited from here
+    └── iteration_01.sysml:31:29: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:33:14: warning (namespace-distinguishability): Member name 'engine' shadows VehicleSystem::Vehicle::engine
+│   33 |         part engine : LargeEngine;
+│      |              ^^^^^^
+└── iteration_01.sysml:23:14: note: Inherited from here
+    └── iteration_01.sysml:31:29: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

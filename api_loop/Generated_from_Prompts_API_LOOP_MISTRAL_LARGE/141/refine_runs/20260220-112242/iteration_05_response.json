@@ -1,0 +1,34 @@
+{
+  "id": "4d4efb87c3124a939d5d994742f83f39",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage UnitSystemLibrary {\n    private import ScalarValues::*;\n\n    enum def QuantityKind {\n        enum length;\n        enum mass;\n        enum time;\n        enum electricCurrent;\n        enum temperature;\n        enum amountOfSubstance;\n        enum luminousIntensity;\n    }\n\n    enum def ISQUnit {\n        enum meter :> length;\n        enum kilogram :> mass;\n        enum second :> time;\n        enum ampere :> electricCurrent;\n        enum kelvin :> temperature;\n        enum mole :> amountOfSubstance;\n        enum candela :> luminousIntensity;\n    }\n\n    enum def USCustomaryUnit {\n        enum inch :> length;\n        enum foot :> length;\n        enum yard :> length;\n        enum mile :> length;\n        enum poundMass :> mass;\n        enum ounce :> mass;\n        enum second :> time;\n        enum ampere :> electricCurrent;\n        enum rankine :> temperature;\n        enum fahrenheit :> temperature;\n    }\n\n    part def Unit {\n        attribute unitName : String;\n        attribute unitSymbol : String;\n        attribute quantityKind : QuantityKind;\n    }\n\n    part def UnitConverter {\n        attribute sourceUnit : Unit;\n        attribute targetUnit : Unit;\n        attribute conversionFactor : Real;\n        attribute offset : Real = 0.0;\n    }\n\n    part def UnitSystem {\n        attribute systemName : String;\n        attribute baseUnitNames : String[0..*];\n    }\n\n    part def PhysicalQuantity {\n        attribute value : Real;\n        attribute unit : Unit;\n    }\n\n    part meterInstance : Unit {\n        attribute unitName = \"meter\";\n        attribute unitSymbol = \"m\";\n        attribute quantityKind = QuantityKind::length;\n    }\n\n    part kilogramInstance : Unit {\n        attribute unitName = \"kilogram\";\n        attribute unitSymbol = \"kg\";\n        attribute quantityKind = QuantityKind::mass;\n    }\n\n    part secondInstance : Unit {\n        attribute unitName = \"second\";\n        attribute unitSymbol = \"s\";\n        attribute quantityKind = QuantityKind::time;\n    }\n\n    part ampereInstance : Unit {\n        attribute unitName = \"ampere\";\n        attribute unitSymbol = \"A\";\n        attribute quantityKind = QuantityKind::electricCurrent;\n    }\n\n    part kelvinInstance : Unit {\n        attribute unitName = \"kelvin\";\n        attribute unitSymbol = \"K\";\n        attribute quantityKind = QuantityKind::temperature;\n    }\n\n    part moleInstance : Unit {\n        attribute unitName = \"mole\";\n        attribute unitSymbol = \"mol\";\n        attribute quantityKind = QuantityKind::amountOfSubstance;\n    }\n\n    part candelaInstance : Unit {\n        attribute unitName = \"candela\";\n        attribute unitSymbol = \"cd\";\n        attribute quantityKind = QuantityKind::luminousIntensity;\n    }\n\n    part inchInstance : Unit {\n        attribute unitName = \"inch\";\n        attribute unitSymbol = \"in\";\n        attribute quantityKind = QuantityKind::length;\n    }\n\n    part footInstance : Unit {\n        attribute unitName = \"foot\";\n        attribute unitSymbol = \"ft\";\n        attribute quantityKind = QuantityKind::length;\n    }\n\n    part yardInstance : Unit {\n        attribute unitName = \"yard\";\n        attribute unitSymbol = \"yd\";\n        attribute quantityKind = QuantityKind::length;\n    }\n\n    part mileInstance : Unit {\n        attribute unitName = \"mile\";\n        attribute unitSymbol = \"mi\";\n        attribute quantityKind = QuantityKind::length;\n    }\n\n    part poundMassInstance : Unit {\n        attribute unitName = \"pound\";\n        attribute unitSymbol = \"lbm\";\n        attribute quantityKind = QuantityKind::mass;\n    }\n\n    part ounceInstance : Unit {\n        attribute unitName = \"ounce\";\n        attribute unitSymbol = \"oz\";\n        attribute quantityKind = QuantityKind::mass;\n    }\n\n    part rankineInstance : Unit {\n        attribute unitName = \"rankine\";\n        attribute unitSymbol = \"\u00b0R\";\n        attribute quantityKind = QuantityKind::temperature;\n    }\n\n    part fahrenheitInstance : Unit {\n        attribute unitName = \"fahrenheit\";\n        attribute unitSymbol = \"\u00b0F\";\n        attribute quantityKind = QuantityKind::temperature;\n    }\n\n    part isqSystem : UnitSystem {\n        attribute systemName = \"ISQ\";\n        attribute baseUnitNames = (\"meter\", \"kilogram\", \"second\", \"ampere\", \"kelvin\", \"mole\", \"candela\");\n    }\n\n    part usCustomarySystem : UnitSystem {\n        attribute systemName = \"USCustomary\";\n        attribute baseUnitNames = (\"foot\", \"pound\", \"second\", \"ampere\", \"rankine\");\n    }\n\n    part lengthConverter : UnitConverter {\n        attribute sourceUnit = meterInstance;\n        attribute targetUnit = footInstance;\n        attribute conversionFactor = 3.28084;\n    }\n\n    part massConverter : UnitConverter {\n        attribute sourceUnit = kilogramInstance;\n        attribute targetUnit = poundMassInstance;\n        attribute conversionFactor = 2.20462;\n    }\n\n    part temperatureConverter : UnitConverter {\n        attribute sourceUnit = kelvinInstance;\n        attribute targetUnit = rankineInstance;\n        attribute conversionFactor = 1.8;\n        attribute offset = 0.0;\n    }\n\n    part fahrenheitConverter : UnitConverter {\n        attribute sourceUnit = kelvinInstance;\n        attribute targetUnit = fahrenheitInstance;\n        attribute conversionFactor = 1.8;\n        attribute offset = 459.67;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604611,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 1160,
+    "prompt_tokens": 2682,
+    "total_tokens": 3842,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 336
+    }
+  }
+}

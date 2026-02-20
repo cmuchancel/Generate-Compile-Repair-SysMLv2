@@ -1,0 +1,34 @@
+{
+  "id": "a6df78f59aff4005894c836598f6a379",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage CoreDataTypes {\n    private import ScalarValues::*;\n\n    enum def StatusColor {\n        enum red;\n        enum yellow;\n        enum green;\n    }\n\n    enum def DiameterSize {\n        enum small;\n        enum medium;\n        enum large;\n    }\n\n    part def UnsignedInteger {\n        attribute value : Integer;\n        constraint {\n            value >= 0\n        }\n    }\n\n    part def UnsignedFloat {\n        attribute value : Real;\n        constraint {\n            value >= 0.0\n        }\n    }\n\n    part def Status {\n        attribute level : StatusColor;\n        attribute color : String;\n    }\n\n    part def PhysicalDimension {\n        attribute diameter : DiameterSize = DiameterSize::small;\n    }\n\n    part def SystemData {\n        attribute unsignedInt : UnsignedInteger;\n        attribute unsignedFloat : UnsignedFloat;\n        attribute dateTime : DateTime;\n        attribute stringValue : String;\n        attribute booleanValue : Boolean;\n        attribute status : Status;\n        attribute dimension : PhysicalDimension;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604341,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 215,
+    "prompt_tokens": 737,
+    "total_tokens": 952,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

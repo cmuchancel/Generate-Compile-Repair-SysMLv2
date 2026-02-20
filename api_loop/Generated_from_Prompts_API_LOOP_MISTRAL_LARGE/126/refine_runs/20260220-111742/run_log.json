@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:17:42.593130Z",
+    "iteration_end": "2026-02-20T16:17:46.350702Z",
+    "iteration_duration_seconds": 3.757538125006249,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/126/20260220-111742/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/126/20260220-111742/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/126/20260220-111742/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:19:36: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    19 |     part servicePort : ServicePort in service;\n       |                                    \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:20:30: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    20 |     part dataPort : DataPort in data;\n       |                              \u001b[38;2;220;080;080m^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 337,
+      "output_tokens": 128,
+      "total_tokens": 465
+    },
+    "tokens_used_total": 465,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:17:46.350797Z",
+    "iteration_end": "2026-02-20T16:17:48.986414Z",
+    "iteration_duration_seconds": 2.6356452500040177,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/126/20260220-111742/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/126/20260220-111742/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/126/20260220-111742/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:19:36: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    19 |     port servicePort : ServicePort in service;\n       |                                    \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_02.sysml:20:30: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    20 |     port dataPort : DataPort in data;\n       |                              \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_02.sysml:22:36: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'servicePort' found.\n    22 |     connect application to service.servicePort;\n       |                                    \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:23:21: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'servicePort' found.\n    23 |     connect service.servicePort to data.dataPort;\n       |                     \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:23:41: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'dataPort' found.\n    23 |     connect service.servicePort to data.dataPort;\n       |                                         \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 590,
+      "output_tokens": 128,
+      "total_tokens": 718
+    },
+    "tokens_used_total": 1183,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:17:48.986519Z",
+    "iteration_end": "2026-02-20T16:17:51.967875Z",
+    "iteration_duration_seconds": 2.9816025829932187,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/126/20260220-111742/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/126/20260220-111742/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/126/20260220-111742/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 749,
+      "output_tokens": 131,
+      "total_tokens": 880
+    },
+    "tokens_used_total": 2063,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

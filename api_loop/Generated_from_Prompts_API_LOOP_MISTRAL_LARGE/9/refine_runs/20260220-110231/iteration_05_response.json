@@ -1,0 +1,34 @@
+{
+  "id": "66b57496c4664e58a90317327f9fb536",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage AutomobileWheelAssembly {\n    private import ScalarValues::*;\n\n    part def WheelBearingUnit;\n    part def Tire;\n    part def Bead;\n    part def Hub;\n    part def Rim;\n    part def Bolt;\n    part def BoltMountingHole;\n    part def ThreadedHole;\n\n    part wheelAssembly : WheelAssembly;\n\n    part def WheelAssembly {\n        part bearingUnit : WheelBearingUnit;\n        part tire : Tire {\n            part bead1 : Bead;\n            part bead2 : Bead;\n        }\n        part hub : Hub {\n            part rim1 : Rim;\n            part rim2 : Rim;\n            part mountingHoles : BoltMountingHole[0..*];\n            part threadedHoles : ThreadedHole[0..*];\n        }\n        part bolts : Bolt[0..*];\n    }\n\n    connect wheelAssembly.tire.bead1 to wheelAssembly.hub.rim1;\n    connect wheelAssembly.tire.bead2 to wheelAssembly.hub.rim2;\n\n    connect wheelAssembly.hub.mountingHoles to wheelAssembly.hub.threadedHoles via wheelAssembly.bolts;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603380,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 248,
+    "prompt_tokens": 1988,
+    "total_tokens": 2236,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

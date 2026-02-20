@@ -1,0 +1,34 @@
+{
+  "id": "a23c3955145f41589c884c75fbf69db1",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage WheelAssembly {\n    private import ScalarValues::*;\n\n    part def WheelBearingUnit;\n    part def Tire;\n    part def Bead;\n    part def Hub;\n    part def Rim;\n    part def Bolt;\n    part def BoltMountingHole;\n    part def ThreadedHole;\n\n    port def PressFitPort;\n    port def BoltConnectionPort;\n\n    part wheelAssembly {\n        part bearingUnit : WheelBearingUnit;\n        part tire : Tire;\n        part hub : Hub;\n\n        part rim1 : Rim;\n        part rim2 : Rim;\n\n        part bead1 : Bead;\n        part bead2 : Bead;\n\n        part mountingHoles : BoltMountingHole[4];\n        part threadedHoles : ThreadedHole[4];\n        part bolts : Bolt[4];\n\n        port pressFit1 : PressFitPort;\n        port pressFit2 : PressFitPort;\n        port boltPorts : BoltConnectionPort[4];\n    }\n\n    connect wheelAssembly.bead1 to wheelAssembly.rim1;\n    connect wheelAssembly.bead2 to wheelAssembly.rim2;\n\n    connect wheelAssembly.mountingHoles[1] to wheelAssembly.threadedHoles[1] using wheelAssembly.bolts[1];\n    connect wheelAssembly.bolts[1] to wheelAssembly.boltPorts[1];\n    connect wheelAssembly.mountingHoles[2] to wheelAssembly.threadedHoles[2] using wheelAssembly.bolts[2];\n    connect wheelAssembly.bolts[2] to wheelAssembly.boltPorts[2];\n    connect wheelAssembly.mountingHoles[3] to wheelAssembly.threadedHoles[3] using wheelAssembly.bolts[3];\n    connect wheelAssembly.bolts[3] to wheelAssembly.boltPorts[3];\n    connect wheelAssembly.mountingHoles[4] to wheelAssembly.threadedHoles[4] using wheelAssembly.bolts[4];\n    connect wheelAssembly.bolts[4] to wheelAssembly.boltPorts[4];\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603452,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 445,
+    "prompt_tokens": 2017,
+    "total_tokens": 2462,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 368
+    }
+  }
+}

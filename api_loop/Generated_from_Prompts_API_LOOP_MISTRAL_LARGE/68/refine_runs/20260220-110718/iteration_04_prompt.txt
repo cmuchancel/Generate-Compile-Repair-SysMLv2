@@ -1,0 +1,91 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system requires that the total mass of the vehicle (including curb weight and fuel mass) must not exceed the specified maximum mass limit, and the fuel mass must be a positive value. In addition, the engine must be able to generate corresponding torque according to the speed curve, and the torque produced by the engine must be effectively transmitted to the transmission through the clutch interface to ensure that power is smoothly delivered to the vehicle’s drive system.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 3):
+                package VehicleSystem {
+    private import ScalarValues::*;
+
+    enum def MassUnit {
+        enum kilogram;
+        enum gram;
+    }
+
+    part def Mass {
+        attribute value : Real;
+        attribute unit : MassUnit = MassUnit::kilogram;
+    }
+
+    part def Engine {
+        attribute speed : Real;
+        attribute torque : Real;
+        port clutchInterface : ClutchPort;
+    }
+
+    part def Clutch {
+        port input : ClutchPort;
+        port output : ClutchPort;
+    }
+
+    part def Transmission {
+        port input : ClutchPort;
+    }
+
+    part def Fuel {
+        attribute mass : Mass;
+    }
+
+    part def Vehicle {
+        attribute curbWeight : Mass;
+        attribute maxMassLimit : Mass;
+        part fuel : Fuel;
+        part engine : Engine;
+        part clutch : Clutch;
+        part transmission : Transmission;
+
+        attribute totalMassValue : Real = curbWeight.value + fuel.mass.value;
+        attribute totalMass : Mass;
+        attribute totalMassUnit : MassUnit = MassUnit::kilogram;
+
+        constraint maxMassConstraint {
+            totalMass.value <= maxMassLimit.value
+        }
+
+        constraint positiveFuelMass {
+            fuel.mass.value > 0.0
+        }
+    }
+
+    port def ClutchPort;
+
+    part vehicle : Vehicle {
+        :>> totalMass = Mass(totalMassValue, totalMassUnit);
+    }
+
+    connect vehicle.engine.clutchInterface to vehicle.clutch.input;
+    connect vehicle.clutch.output to vehicle.transmission.input;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_03.sysml:57:25: error (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    57 |         :>> totalMass = Mass(totalMassValue, totalMassUnit);
+       |                         ^^^^
+iteration_03.sysml:57:46: error (feature-value-overriding): Cannot override a binding feature value
+│   57 |         :>> totalMass = Mass(totalMassValue, totalMassUnit);
+│      |                                              ^^^^^^^^^^^^^
+└── iteration_03.sysml:11:35: note: Redefined binding feature value here
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,34 @@
+{
+  "id": "37ace8be1aff4105bd3f213bb73ee611",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleLifecycleManagement {\n    private import ScalarValues::*;\n\n    enum def LifecycleStage {\n        enum Assembly;\n        enum Delivery;\n        enum Ownership;\n        enum EndOfUse;\n    }\n\n    part def Vehicle {\n        attribute vin : String;\n        attribute assemblyDate : Date;\n        attribute deliveryDate : Date;\n        attribute scrappingDate : Date;\n        attribute currentStage : LifecycleStage = LifecycleStage::Assembly;\n    }\n\n    part def Owner {\n        attribute ownerId : String;\n        attribute name : String;\n        attribute contact : String;\n    }\n\n    part def Driver {\n        attribute driverId : String;\n        attribute name : String;\n        attribute licenseNumber : String;\n    }\n\n    part def OwnershipRecord {\n        attribute startDate : Date;\n        attribute endDate : Date;\n        part owner : Owner;\n    }\n\n    part def DrivingRecord {\n        attribute startTime : DateTime;\n        attribute endTime : DateTime;\n        part driver : Driver;\n    }\n\n    part def VehicleLifecycle {\n        part vehicle : Vehicle;\n        part ownershipRecords : OwnershipRecord[*];\n        part drivingRecords : DrivingRecord[*];\n    }\n\n    part lifecycle : VehicleLifecycle;\n\n    connect lifecycle.vehicle to lifecycle.ownershipRecords.vehicle;\n    connect lifecycle.vehicle to lifecycle.drivingRecords.vehicle;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603562,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 280,
+    "prompt_tokens": 411,
+    "total_tokens": 691,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,16 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to implement an automotive cruise control function. The driver sends a set speed command to the system via the in-vehicle control interface. After receiving this command, the cruise controller compares the set speed with the current vehicle speed information provided by the speed sensor (speedometer). Upon obtaining the current vehicle speed, the cruise controller calculates the difference between the set speed and the actual speed, generates the corresponding throttle control command, and sends it to the engine. This adjusts the engine output to maintain or reach the set speed. Throughout this process, the driver, cruise controller, speedometer, and engine work together through message transmission. As a result, after the driver sets the target speed, the vehicle can automatically maintain that speed without the driver needing to continuously operate the accelerator pedal.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,34 @@
+{
+  "id": "acf73076918b4b609ca0f1452815dcce",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomotiveConfigurationSpace {\n    private import ScalarValues::*;\n\n    enum def EngineType {\n        enum FourCylinder;\n        enum SixCylinder;\n    }\n\n    enum def TransmissionType {\n        enum Manual;\n        enum Automatic;\n    }\n\n    enum def CylinderDiameter {\n        enum Diameter70mm;\n        enum Diameter100mm;\n    }\n\n    part def Engine {\n        attribute type : EngineType;\n        attribute cylinderCount : Integer;\n        attribute cylinderDiameter : CylinderDiameter;\n    }\n\n    part def Transmission {\n        attribute type : TransmissionType;\n    }\n\n    part def Vehicle {\n        part engine : Engine;\n        part transmission : Transmission;\n    }\n\n    part fourCylEngine : Engine {\n        attribute type : EngineType = EngineType::FourCylinder;\n        attribute cylinderCount : Integer = 4;\n        attribute cylinderDiameter : CylinderDiameter;\n    }\n\n    part sixCylEngine : Engine {\n        attribute type : EngineType = EngineType::SixCylinder;\n        attribute cylinderCount : Integer = 6;\n        attribute cylinderDiameter : CylinderDiameter;\n    }\n\n    part manualTransmission : Transmission {\n        attribute type : TransmissionType = TransmissionType::Manual;\n    }\n\n    part automaticTransmission : Transmission {\n        attribute type : TransmissionType = TransmissionType::Automatic;\n    }\n\n    part valid4CylVehicle : Vehicle {\n        part engine = fourCylEngine;\n        part transmission = manualTransmission;\n    }\n\n    part valid6CylVehicle : Vehicle {\n        part engine = sixCylEngine;\n        part transmission = automaticTransmission;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603780,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 344,
+    "prompt_tokens": 413,
+    "total_tokens": 757,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

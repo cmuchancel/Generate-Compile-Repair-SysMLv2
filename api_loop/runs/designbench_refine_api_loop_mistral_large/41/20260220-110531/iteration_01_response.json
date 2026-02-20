@@ -1,0 +1,34 @@
+{
+  "id": "de3de858b69b42b096135ad7abf40b22",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage TimedServerSystem {\n    private import ScalarValues::*;\n\n    enum def ServerState {\n        enum off;\n        enum waiting;\n        enum response;\n    }\n\n    part def Clock {\n        attribute currentTime : String;\n    }\n\n    part def RequestPort {\n        port in request : Request;\n    }\n\n    item def Request;\n    item def StartCommand;\n\n    part def Server {\n        attribute state : ServerState = ServerState::off;\n        attribute localClock : Clock;\n        port requestPort : RequestPort;\n\n        attribute lastResponseTime : String;\n        attribute dailyResetTime : String = \"11:59:00\";\n    }\n\n    part server : Server;\n    part clock : Clock;\n    part requestPort : RequestPort;\n\n    connect server.localClock to clock;\n    connect server.requestPort to requestPort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603531,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 178,
+    "prompt_tokens": 400,
+    "total_tokens": 578,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

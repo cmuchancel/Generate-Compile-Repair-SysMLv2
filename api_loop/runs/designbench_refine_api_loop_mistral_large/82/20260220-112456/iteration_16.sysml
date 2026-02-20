@@ -1,0 +1,41 @@
+package SystemModel {
+    private import ScalarValues::*;
+
+    part def SystemAssembly;
+    part def ComputerSubsystem;
+    part def StorageSubsystem;
+    part def SoftwareDesignDef;
+
+    item def MessageFormat;
+    item def DataFormat;
+
+    port def SoftwarePort;
+    port def MessagePort;
+    port def DataPort;
+
+    part systemAssembly : SystemAssembly {
+        part computer : ComputerSubsystem;
+        part storage : StorageSubsystem;
+        part software : SoftwareDesignDef;
+    }
+
+    part def SoftwareDesignDef {
+        attribute messageFormat : MessageFormat;
+        attribute dataFormat : DataFormat;
+        port softwarePort : SoftwarePort;
+    }
+
+    part def ComputerSubsystem {
+        attribute canIntegrateFunctions : Boolean = true;
+        port softwarePort : SoftwarePort;
+    }
+
+    part def StorageSubsystem {
+        attribute canAccessMessageFormat : Boolean = true;
+        attribute isCompatibleWithDataFormat : Boolean = true;
+        port messagePort : MessagePort;
+        port dataPort : DataPort;
+    }
+
+    connect systemAssembly.software.softwarePort to systemAssembly.computer.softwarePort;
+}

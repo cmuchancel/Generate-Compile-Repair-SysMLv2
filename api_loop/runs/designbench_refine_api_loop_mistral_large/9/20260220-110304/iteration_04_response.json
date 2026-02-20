@@ -1,0 +1,34 @@
+{
+  "id": "2e8485ed1b724656baad74577825f2e6",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage WheelAssembly {\n    private import ScalarValues::*;\n\n    part def WheelBearingUnit;\n    part def Tire;\n    part def Bead;\n    part def Hub;\n    part def Rim;\n    part def Bolt;\n    part def BoltMountingHole;\n    part def ThreadedHole;\n\n    port def PressFitPort;\n    port def BoltConnectionPort;\n\n    part wheelAssembly {\n        part bearingUnit : WheelBearingUnit;\n        part tire : Tire;\n        part bead1 : Bead;\n        part bead2 : Bead;\n        part hub : Hub;\n        part rim1 : Rim;\n        part rim2 : Rim;\n\n        attribute numMountingHoles : Integer = 5;\n        part mountingHoles : BoltMountingHole[numMountingHoles];\n        part threadedHoles : ThreadedHole[numMountingHoles];\n        part bolts : Bolt[numMountingHoles];\n\n        port pressFit1 : PressFitPort;\n        port pressFit2 : PressFitPort;\n        port boltPorts : BoltConnectionPort[numMountingHoles];\n    }\n\n    connect wheelAssembly.bead1 to wheelAssembly.rim1 via PressFitPort;\n    connect wheelAssembly.bead2 to wheelAssembly.rim2 via PressFitPort;\n\n    for i in 0..4 {\n        connect wheelAssembly.mountingHoles[i] to wheelAssembly.boltPorts[i];\n        connect wheelAssembly.boltPorts[i] to wheelAssembly.bolts[i];\n        connect wheelAssembly.bolts[i] to wheelAssembly.threadedHoles[i] via BoltConnectionPort;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603405,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 343,
+    "prompt_tokens": 2311,
+    "total_tokens": 2654,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 368
+    }
+  }
+}

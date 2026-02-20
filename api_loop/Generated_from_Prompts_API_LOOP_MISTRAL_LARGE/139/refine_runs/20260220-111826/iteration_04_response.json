@@ -1,0 +1,34 @@
+{
+  "id": "7911432437104b5987335f84fb1e8f55",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomotiveSystem {\n    private import ScalarValues::*;\n\n    attribute def MassValue : Real;\n    attribute def LengthValue : Real;\n\n    part def Car {\n        attribute totalMass : MassValue = MassValue(1200.0);\n        attribute length : LengthValue = LengthValue(4.82);\n        part wheelAssemblies : WheelAssembly[4];\n    }\n\n    part def WheelAssembly {\n        part wheel : Wheel;\n        part brakeDisc : BrakeDisc;\n    }\n\n    part def Wheel {\n        part rim : Rim;\n        part tire : Tire;\n    }\n\n    part def Rim {\n        attribute diameter : LengthValue = LengthValue(18.0);\n    }\n\n    part def Tire {\n        attribute width : LengthValue = LengthValue(245.0);\n        attribute height : LengthValue = LengthValue(45.0);\n        attribute treadDepth : LengthValue = LengthValue(6.0);\n        attribute minTreadDepth : LengthValue = LengthValue(3.5);\n        attribute outerDiameter : LengthValue;\n    }\n\n    part def BrakeDisc {\n        attribute radius : LengthValue = LengthValue(95.0);\n        attribute diameter : LengthValue = LengthValue(2 * radius.value);\n    }\n\n    part car : Car;\n\n    constraint def WheelAssemblyFitment {\n        for wheelAssembly in car.wheelAssemblies {\n            wheelAssembly.brakeDisc.diameter.value < wheelAssembly.wheel.tire.outerDiameter.value\n        }\n    }\n\n    constraint def TreadDepthCompliance {\n        for wheelAssembly in car.wheelAssemblies {\n            wheelAssembly.wheel.tire.treadDepth.value >= wheelAssembly.wheel.tire.minTreadDepth.value\n        }\n    }\n\n    attribute def CalculateOuterDiameter : LengthValue {\n        value = (car.wheelAssemblies[1].wheel.rim.diameter.value * 25.4) + (2 * car.wheelAssemblies[1].wheel.tire.height.value)\n    }\n\n    for wheelAssembly in car.wheelAssemblies {\n        wheelAssembly.wheel.tire.outerDiameter = CalculateOuterDiameter;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604328,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 462,
+    "prompt_tokens": 1903,
+    "total_tokens": 2365,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

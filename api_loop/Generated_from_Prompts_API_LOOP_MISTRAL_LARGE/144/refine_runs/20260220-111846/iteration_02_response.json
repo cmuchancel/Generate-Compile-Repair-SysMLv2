@@ -1,0 +1,34 @@
+{
+  "id": "c0f5f49ffb4f4d5380673922e570d80c",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage SparePartsManagement {\n    private import ScalarValues::*;\n\n    part def SparePart;\n\n    part def Person;\n\n    item def Bag<T>;\n\n    item def List<T>;\n\n    item def Set<T>;\n\n    item def OrderedSet<T>;\n\n    part def CollectionManager {\n        attribute spareParts : Bag<SparePart>;\n        attribute integers : List<Integer>;\n        attribute strings : Set<String>;\n        attribute personnel : OrderedSet<Person>;\n        attribute nestedPersonSets : List<Set>;\n        attribute realNumbers : Real[4];\n    }\n\n    part manager : CollectionManager;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604331,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 123,
+    "prompt_tokens": 1695,
+    "total_tokens": 1818,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

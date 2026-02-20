@@ -1,0 +1,34 @@
+{
+  "id": "89ee4491aee54183a970f4b656f79115",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomotiveFuelSystem {\n    private import ScalarValues::*;\n\n    enum def FuelFlowDirection {\n        enum supplyFlow;\n        enum returnFlow;\n    }\n\n    port def FuelPort {\n        attribute direction : FuelFlowDirection;\n    }\n\n    item def Fuel {\n        attribute temperature : Real;\n    }\n\n    part def FuelTankAssembly {\n        attribute capacity : Real;\n        attribute currentFuelLevel : Real;\n        attribute fuelTemperature : Real;\n\n        port fuelSupplyOutlet : FuelPort;\n        port fuelReturnInlet : FuelPort;\n    }\n\n    part def FuelPump {\n        attribute isActive : Boolean;\n        attribute flowRate : Real;\n\n        port fuelInlet : FuelPort;\n        port fuelOutlet : FuelPort;\n    }\n\n    part fuelSystem : FuelTankAssembly {\n        part pump : FuelPump;\n\n        connect fuelSupplyOutlet to pump.fuelInlet;\n        connect pump.fuelOutlet to fuelSupplyOutlet;\n        connect fuelReturnInlet to pump.fuelInlet;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603345,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 218,
+    "prompt_tokens": 996,
+    "total_tokens": 1214,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

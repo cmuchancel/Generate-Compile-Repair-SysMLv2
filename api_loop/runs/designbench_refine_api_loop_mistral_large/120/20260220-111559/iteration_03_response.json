@@ -1,0 +1,34 @@
+{
+  "id": "bae6bc6b6f5d43a1a96ec578ee422652",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleQualityAnalysis {\n    private import ScalarValues::*;\n\n    enum def QualityAttribute {\n        enum mass;\n        enum durability;\n        enum reliability;\n        enum performance;\n    }\n\n    part def VehicleDef;\n    part def EngineDef;\n    part def TransmissionDef;\n    part def FrontAxleAssemblyDef;\n    part def RearAxleAssemblyDef;\n    part def QualityAnalysisRequirementDef;\n    part def AnalysisUseCaseDef;\n    part def AnalysisTaskDef;\n    part def AnalysisPlanDef;\n\n    part def VehicleDef {\n        attribute totalMass : Real;\n        part engine : EngineDef;\n        part transmission : TransmissionDef;\n        part frontAxle : FrontAxleAssemblyDef;\n        part rearAxle : RearAxleAssemblyDef;\n    }\n\n    part def EngineDef {\n        attribute mass : Real;\n        attribute durability : Real;\n        attribute reliability : Real;\n    }\n\n    part def TransmissionDef {\n        attribute mass : Real;\n        attribute durability : Real;\n    }\n\n    part def FrontAxleAssemblyDef {\n        attribute mass : Real;\n        attribute reliability : Real;\n    }\n\n    part def RearAxleAssemblyDef {\n        attribute mass : Real;\n        attribute reliability : Real;\n    }\n\n    part def QualityAnalysisRequirementDef {\n        attribute requirementText : String;\n        attribute targetAttribute : QualityAttribute;\n    }\n\n    part def AnalysisUseCaseDef {\n        attribute useCaseName : String;\n        attribute useCaseObjective : String;\n    }\n\n    part def AnalysisTaskDef {\n        attribute taskName : String;\n        attribute status : String;\n    }\n\n    part def AnalysisPlanDef {\n        attribute planName : String;\n    }\n\n    part vehicle : VehicleDef;\n    part engine : EngineDef;\n    part transmission : TransmissionDef;\n    part frontAxle : FrontAxleAssemblyDef;\n    part rearAxle : RearAxleAssemblyDef;\n    part requirement : QualityAnalysisRequirementDef;\n    part useCase : AnalysisUseCaseDef;\n    part task : AnalysisTaskDef;\n    part plan : AnalysisPlanDef;\n\n    attribute vehicleTotalMass : Real = vehicle.engine.mass + vehicle.transmission.mass + vehicle.frontAxle.mass + vehicle.rearAxle.mass;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604184,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 455,
+    "prompt_tokens": 2117,
+    "total_tokens": 2572,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

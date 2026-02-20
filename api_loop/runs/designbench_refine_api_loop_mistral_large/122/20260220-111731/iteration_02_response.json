@@ -1,0 +1,34 @@
+{
+  "id": "5b25ec31f4694bc9bf8bde68bc23e31d",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleFuelEconomy {\n    private import ScalarValues::*;\n\n    enum def DrivingCondition {\n        enum urban;\n        enum highway;\n    }\n\n    part def Vehicle {\n        attribute baseFuelEconomyUrban : Real;\n        attribute baseFuelEconomyHighway : Real;\n        attribute additionalLoad : Real = 1000.0;\n        attribute measuredFuelEconomyUrban : Real;\n        attribute measuredFuelEconomyHighway : Real;\n    }\n\n    part def Powertrain {\n        attribute efficiency : Real;\n    }\n\n    part def TestScenario {\n        attribute condition : DrivingCondition;\n        attribute minFuelEconomy : Real;\n    }\n\n    part vehicle : Vehicle;\n    part powertrain : Powertrain;\n    part urbanTest : TestScenario {\n        attribute condition : DrivingCondition = DrivingCondition::urban;\n        attribute minFuelEconomy : Real = 25.0;\n    }\n    part highwayTest : TestScenario {\n        attribute condition : DrivingCondition = DrivingCondition::highway;\n        attribute minFuelEconomy : Real = 30.0;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604257,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 244,
+    "prompt_tokens": 1829,
+    "total_tokens": 2073,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

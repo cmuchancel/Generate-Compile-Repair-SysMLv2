@@ -1,0 +1,34 @@
+{
+  "id": "63ae18a272304a259484656f3cdec216",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage SystemModel {\n    private import ScalarValues::*;\n\n    part def SystemAssembly;\n    part def Computer;\n    part def Storage;\n    part def SoftwareDesign;\n\n    item def MessageFormat;\n    item def DataFormat;\n\n    port def SoftwarePort;\n    port def MessagePort;\n    port def DataPort;\n\n    part systemAssembly : SystemAssembly {\n        part computer : Computer;\n        part storage : Storage;\n        part software : SoftwareDesign;\n    }\n\n    part def SoftwareDesign {\n        attribute messageFormat : MessageFormat;\n        attribute dataFormat : DataFormat;\n        port softwarePort : SoftwarePort;\n    }\n\n    part def Computer {\n        attribute canIntegrateFunctions : Boolean = true;\n        port softwarePort : SoftwarePort;\n    }\n\n    part def Storage {\n        attribute canAccessMessageFormat : Boolean = true;\n        attribute isCompatibleWithDataFormat : Boolean = true;\n        port messagePort : MessagePort;\n        port dataPort : DataPort;\n    }\n\n    connect systemAssembly.software.softwarePort to systemAssembly.computer.softwarePort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604784,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 219,
+    "prompt_tokens": 1018,
+    "total_tokens": 1237,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 336
+    }
+  }
+}

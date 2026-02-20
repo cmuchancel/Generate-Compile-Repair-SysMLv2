@@ -1,0 +1,34 @@
+{
+  "id": "9c9703a8b47140e6848818ad234ff90b",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleMaintenanceSystem {\n    private import ScalarValues::*;\n\n    enum def MaintenanceStatus {\n        enum healthy;\n        enum under_maintenance;\n    }\n\n    part def Vehicle {\n        attribute id : String;\n        attribute nextMaintenanceTime : Real;\n        attribute maintenanceInterval : Real;\n        attribute maxAllowedTemperature : Real;\n        attribute status : MaintenanceStatus = MaintenanceStatus::healthy;\n        attribute lastHealthyEndTime : Real;\n        attribute actualMaintenanceStartTime : Real;\n        attribute maintenanceDuration : Real;\n    }\n\n    part def MaintenanceScheduler {\n        port schedulePort : SchedulePort;\n        port monitorPort : MonitorPort;\n    }\n\n    port def SchedulePort {\n    }\n\n    port def MonitorPort {\n    }\n\n    item def MaintenanceEvent {\n        attribute scheduledTime : Real;\n        attribute actualStartTime : Real;\n        attribute duration : Real;\n    }\n\n    part vehicle : Vehicle;\n    part scheduler : MaintenanceScheduler;\n\n    connect scheduler.schedulePort to vehicle;\n    connect scheduler.monitorPort to vehicle;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603632,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 214,
+    "prompt_tokens": 396,
+    "total_tokens": 610,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "e09cf8a5915743f98532c219075ee4ea",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage SpacecraftTrajectory {\n\n    private import ScalarValues::*;\n\n    enum def TimeReference {\n        enum MissionLiftoffTime\n    }\n\n    part def Spacecraft {\n        attribute liftoffUTC : String = \"22:42:32.924534 on August 23, 2020\";\n        attribute referenceTimeZero : Real = 0.0;\n        attribute timePoints : Sequence<Real>;\n        attribute positions : Sequence<Vector3D>;\n        attribute velocities : Sequence<Vector3D>;\n    }\n\n    part def Vector3D {\n        attribute x : Real;\n        attribute y : Real;\n        attribute z : Real;\n    }\n\n    part def TrajectorySampler {\n        attribute sampleInterval : Real = 1.0;\n        port dataOut : TrajectoryDataPort;\n    }\n\n    port def TrajectoryDataPort {\n        attribute time : Real;\n        attribute position : Vector3D;\n        attribute velocity : Vector3D;\n    }\n\n    part def TrajectoryRecorder {\n        port dataIn : TrajectoryDataPort;\n    }\n\n    part system {\n        part spacecraft : Spacecraft;\n        part sampler : TrajectorySampler;\n        part recorder : TrajectoryRecorder;\n\n        connect sampler.dataOut to recorder.dataIn;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604355,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 283,
+    "prompt_tokens": 437,
+    "total_tokens": 720,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

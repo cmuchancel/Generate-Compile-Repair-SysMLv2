@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:07:45.722772Z",
+    "iteration_end": "2026-02-20T16:07:53.755484Z",
+    "iteration_duration_seconds": 8.03261612499773,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110745/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110745/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110745/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:64:66: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"NAME\", \";\", \"{\", \"all\", \"*\", \"if\", \"+\", \"-\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"(\", \"null\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \"$\", \"Feature\", \"FeatureChaining\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"ParameterMembership\", \"Feature\", \"FeatureValue\", \"ParameterMembership\", \"Feature\", \"FeatureValue\", \"MetadataAccessExpression\", \"OperatorExpression\", \"FeatureValue\", \"Feature\", \"ParameterMembership\", \"FeatureValue\", \"Feature\", \"ParameterMembership\", \"OperatorExpression\", \"IndexExpression\", \"FeatureChainExpression\", \"CollectExpression\", \"SelectExpression\", \"InvocationExpression\", \"OwningMembership\", \"NullExpression\", \"FeatureReferenceExpression\", \"Membership\", \"MetadataAccessExpression\", \"Membership\", \"InvocationExpression\", \"ConstructorExpression\", \"Membership\", \"FeatureReferenceExpression\", \"FeatureMembership\", \"Expression\", \"LiteralBoolean\", \"LiteralString\", \"LiteralInteger\", \"LiteralRational\", \"LiteralInfinity\", \"ElementReference\"].\n    64 |         attribute satisfied : Boolean = engine.torque > 0.0 when engine.speed > 0.0;\n       |                                                                  \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:64:57: \u001b[38;2;220;080;080merror\u001b[0m (parameter-membership-owning-type): A parameter may only be owned by a behavior, step, or constructor expression return parameter\n    64 |         attribute satisfied : Boolean = engine.torque > 0.0 when engine.speed > 0.0;\n       |                                                         \u001b[38;2;220;080;080m^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 328,
+      "output_tokens": 407,
+      "total_tokens": 735
+    },
+    "tokens_used_total": 735,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:07:53.755573Z",
+    "iteration_end": "2026-02-20T16:08:03.649294Z",
+    "iteration_duration_seconds": 9.89367420799681,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110745/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110745/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110745/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:67:36: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '{'.\n    67 |     requirement TorqueTransmission {\n       |                                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:67:36: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '{'.\n    67 |     requirement TorqueTransmission {\n       |                                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:71:1: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}', expected one of [\"NAME\", \"}\", \"dependency\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"alias\", \"import\", \"[\", \"abstract\", \"in\", \"inout\", \"out\", \"derived\", \"end\", \"ordered\", \"nonunique\", \"<\", \"not\", \"@\", \"#\", \"metadata\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"standard\", \"library\", \"package\", \"variation\", \"variant\", \"constant\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"individual\", \"timeslice\", \"snapshot\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"state\", \"exhibit\", \"calc\", \"constraint\", \"assert\", \"requirement\", \"subject\", \"assume\", \"require\", \"frame\", \"concern\", \"actor\", \"stakeholder\", \"satisfy\", \"case\", \"analysis\", \"verification\", \"verify\", \"use\", \"include\", \"view\", \"rendering\", \"viewpoint\", \"Dependency\", \"Comment\", \"Documentation\", \"TextualRepresentation\", \"VisibilityKind\", \"Membership\", \"MembershipImport\", \"NamespaceImport\", \"FeatureDirectionKind\", \"OwningMembership\", \"MultiplicityRange\", \"Annotation\", \"OwningMembership\", \"Package\", \"LibraryPackage\", \"OwningMembership\", \"VariantMembership\", \"FeatureMembership\", \"FeatureMembership\", \"ReferenceUsage\", \"ReferenceUsage\", \"AttributeDefinition\", \"AttributeUsage\", \"EnumerationDefinition\", \"EnumerationUsage\", \"OccurrenceDefinition\", \"OccurrenceDefinition\", \"OccurrenceUsage\", \"OccurrenceUsage\", \"OccurrenceUsage\", \"PortionKind\", \"EventOccurrenceUsage\", \"FeatureMembership\", \"SuccessionAsUsage\", \"ItemDefinition\", \"ItemUsage\", \"PartDefinition\", \"PartUsage\", \"PortDefinition\", \"PortUsage\", \"ConnectionDefinition\", \"ConnectionUsage\", \"BindingConnectorAsUsage\", \"SuccessionAsUsage\", \"FlowDefinition\", \"FlowUsage\", \"FlowUsage\", \"SuccessionFlowUsage\", \"InterfaceDefinition\", \"InterfaceUsage\", \"AllocationDefinition\", \"AllocationUsage\", \"ActionDefinition\", \"ActionUsage\", \"PerformActionUsage\", \"StateDefinition\", \"StateUsage\", \"ExhibitStateUsage\", \"CalculationDefinition\", \"CalculationUsage\", \"ConstraintDefinition\", \"ConstraintUsage\", \"AssertConstraintUsage\", \"RequirementDefinition\", \"SubjectMembership\", \"RequirementConstraintMembership\", \"RequirementConstraintKind\", \"FramedConcernMembership\", \"ActorMembership\", \"StakeholderMembership\", \"RequirementUsage\", \"SatisfyRequirementUsage\", \"ConcernDefinition\", \"ConcernUsage\", \"CaseDefinition\", \"CaseUsage\", \"AnalysisCaseDefinition\", \"AnalysisCaseUsage\", \"VerificationCaseDefinition\", \"VerificationCaseUsage\", \"RequirementVerificationMembership\", \"UseCaseDefinition\", \"UseCaseUsage\", \"IncludeUseCaseUsage\", \"ViewDefinition\", \"ViewUsage\", \"ViewpointDefinition\", \"ViewpointUsage\", \"RenderingDefinition\", \"RenderingUsage\", \"MetadataDefinition\", \"MetadataUsage\", \"MetadataUsage\", \"Definition\", \"Usage\", \"Dependency_repeat1\"].\n    71 | }\n       | \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:71:2: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget '}'? (\u001b[38;2;220;080;080mno source underlining available since segment is out of bounds\u001b[0m)\n\niteration_02.sysml:64:44: \u001b[38;2;220;080;080merror\u001b[0m (parameter-membership-owning-type): A parameter may only be owned by a behavior, step, or constructor expression return parameter\n    64 |         attribute satisfied : Boolean = if engine.speed > 0.0 then engine.torque > 0.0 else true;\n       |                                            \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:64:68: \u001b[38;2;220;080;080merror\u001b[0m (parameter-membership-owning-type): A parameter may only be owned by a behavior, step, or constructor expression return parameter\n    64 |         attribute satisfied : Boolean = if engine.speed > 0.0 then engine.torque > 0.0 else true;\n       |                                                                    \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:67:36: \u001b[38;2;220;080;080merror\u001b[0m (parameter-membership-owning-type): A parameter may only be owned by a behavior, step, or constructor expression return parameter\n    67 |     requirement TorqueTransmission {\n       |                                    \u001b[38;2;220;080;080m^\u001b[0m\n    68 |         attribute description : String = \"Torque must be effectively transmitted through clutch.\";\n       | \u001b[38;2;220;080;080m        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n    69 |         attribute satisfied : Boolean = clutch.torqueInput.torque == clutch.torqueOutput.torque;\n       | \u001b[38;2;220;080;080m        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n    70 |     }\n       | \u001b[38;2;220;080;080m    ^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1191,
+      "output_tokens": 407,
+      "total_tokens": 1598
+    },
+    "tokens_used_total": 2333,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:08:03.649460Z",
+    "iteration_end": "2026-02-20T16:08:13.316941Z",
+    "iteration_duration_seconds": 9.667358708000393,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110745/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110745/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/68/20260220-110745/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1844,
+      "output_tokens": 385,
+      "total_tokens": 2229
+    },
+    "tokens_used_total": 4562,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

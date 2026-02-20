@@ -1,0 +1,34 @@
+{
+  "id": "f05f72bcd1c54377a6a722a8629e3eca",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage MassManagement {\n    private import ScalarValues::*;\n\n    part def MassObject {\n        attribute basicMass : Real;\n        attribute subcomponents : MassObject[*];\n        attribute totalMass(minThreshold : Real = 0.0) : Real {\n            return basicMass + subcomponents->sum(m | if m.totalMass(minThreshold) >= minThreshold then m.totalMass(minThreshold) else 0.0 endif);\n        }\n    }\n\n    part def MassAggregator {\n        part objects : MassObject[*];\n\n        attribute aggregateMass(minThreshold : Real = 0.0) : Real {\n            return objects->sum(o | o.totalMass(minThreshold));\n        }\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603595,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 146,
+    "prompt_tokens": 420,
+    "total_tokens": 566,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

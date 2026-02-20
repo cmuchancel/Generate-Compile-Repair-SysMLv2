@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:03:04.541225Z",
+    "iteration_end": "2026-02-20T16:03:09.955471Z",
+    "iteration_duration_seconds": 5.414187292000861,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    6 |         enum CHARGING\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:24:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    24 |         attribute state : ChargingState = ChargingState::IDLE;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:24:58: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'IDLE' found.\n    24 |         attribute state : ChargingState = ChargingState::IDLE;\n       |                                                          \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:34:20: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (BatteryChargingSystem::ChargingController)\n    34 |     part system :> ChargingController {\n       |                    \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:35:25: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (BatteryChargingSystem::Battery)\n    35 |         part battery :> Battery;\n       |                         \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:36:25: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (BatteryChargingSystem::Charger)\n    36 |         part charger :> Charger;\n       |                         \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:38:17: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'batteryPort' found.\n    38 |         connect batteryPort to battery;\n       |                 \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:39:17: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'chargerPort' found.\n    39 |         connect chargerPort to charger.powerOut;\n       |                 \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:39:40: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'powerOut' found.\n    39 |         connect chargerPort to charger.powerOut;\n       |                                        \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 356,
+      "output_tokens": 209,
+      "total_tokens": 565
+    },
+    "tokens_used_total": 565,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:03:09.955552Z",
+    "iteration_end": "2026-02-20T16:03:14.250451Z",
+    "iteration_duration_seconds": 4.294898290987476,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:5:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    5 |         IDLE\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_02.sysml:7:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    7 |         FULL\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_02.sysml:28:65: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'IDLE' found.\n    28 |         attribute currentState : ChargingState = ChargingState::IDLE;\n       |                                                                 \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1310,
+      "output_tokens": 220,
+      "total_tokens": 1530
+    },
+    "tokens_used_total": 2095,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:03:14.250552Z",
+    "iteration_end": "2026-02-20T16:03:18.099509Z",
+    "iteration_duration_seconds": 3.84895608399529,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    6 |         enum CHARGING\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_03.sysml:28:65: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'IDLE' found.\n    28 |         attribute currentState : ChargingState = ChargingState::IDLE;\n       |                                                                 \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 878,
+      "output_tokens": 223,
+      "total_tokens": 1101
+    },
+    "tokens_used_total": 3196,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:03:18.099598Z",
+    "iteration_end": "2026-02-20T16:03:21.619056Z",
+    "iteration_duration_seconds": 3.519452207998256,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:5:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    5 |         IDLE\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_04.sysml:7:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    7 |         FULL\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_04.sysml:28:50: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'IDLE' found.\n    28 |         attribute currentState : ChargingState = IDLE;\n       |                                                  \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 847,
+      "output_tokens": 216,
+      "total_tokens": 1063
+    },
+    "tokens_used_total": 4259,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:03:21.619143Z",
+    "iteration_end": "2026-02-20T16:03:25.074480Z",
+    "iteration_duration_seconds": 3.455305166004109,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/27/20260220-110304/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    6 |         enum CHARGING\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_05.sysml:28:65: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'IDLE' found.\n    28 |         attribute currentState : ChargingState = ChargingState::IDLE;\n       |                                                                 \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 870,
+      "output_tokens": 223,
+      "total_tokens": 1093
+    },
+    "tokens_used_total": 5352,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

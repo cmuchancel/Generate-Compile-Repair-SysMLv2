@@ -1,0 +1,34 @@
+{
+  "id": "825211dad3a74d9fa1fec1d90f75e8bd",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage EngineSelectionAnalysis {\n    private import ScalarValues::*;\n\n    enum def EngineType {\n        enum FourCylinder;\n        enum SixCylinder;\n    }\n\n    part def Engine {\n        attribute power : Real;\n        attribute mass : Real;\n        attribute efficiency : Real;\n        attribute cost : Real;\n        attribute engineType : EngineType;\n    }\n\n    part def EvaluationFunction {\n        attribute weightPower : Real = 0.3;\n        attribute weightMass : Real = 0.2;\n        attribute weightEfficiency : Real = 0.3;\n        attribute weightCost : Real = 0.2;\n\n        attribute evaluate : Real;\n    }\n\n    part def EngineSelectionSystem {\n        part candidateEngines : Engine[0..*];\n        part evaluator : EvaluationFunction;\n        attribute selectedEngine : Engine;\n\n        port def SelectionOutput {\n            attribute recommendedEngine : Engine;\n        }\n\n        port output : SelectionOutput;\n\n        attribute selectOptimalEngine() : Engine {\n            var bestScore : Real = -Infinity;\n            for engine in candidateEngines {\n                evaluator.evaluate = (engine.power * evaluator.weightPower) -\n                                    (engine.mass * evaluator.weightMass) +\n                                    (engine.efficiency * evaluator.weightEfficiency) -\n                                    (engine.cost * evaluator.weightCost);\n                var score : Real = evaluator.evaluate;\n                if (score > bestScore) {\n                    bestScore = score;\n                    selectedEngine = engine;\n                }\n            }\n            output.recommendedEngine = selectedEngine;\n            return selectedEngine;\n        }\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603738,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 329,
+    "prompt_tokens": 1816,
+    "total_tokens": 2145,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

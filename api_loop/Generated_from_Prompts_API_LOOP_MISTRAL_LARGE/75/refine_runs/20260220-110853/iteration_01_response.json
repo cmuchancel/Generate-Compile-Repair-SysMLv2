@@ -1,0 +1,34 @@
+{
+  "id": "8cd85e91682c4840999bc06a177e2493",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleWeightValidation {\n    private import ScalarValues::*;\n\n    enum def EvaluationResult {\n        enum Qualified;\n        enum Unqualified;\n    }\n\n    part def Vehicle {\n        attribute curbWeight : Real;\n    }\n\n    part def WeightDataCollector {\n        port collectDataPort;\n    }\n\n    part def WeightDataProcessor {\n        port processDataPort;\n    }\n\n    part def WeightEvaluator {\n        attribute maxAllowedWeight : Real = 2500.0;\n        port evaluatePort;\n    }\n\n    part def WeightValidationSystem {\n        part vehicle : Vehicle;\n        part collector : WeightDataCollector;\n        part processor : WeightDataProcessor;\n        part evaluator : WeightEvaluator;\n        attribute result : EvaluationResult;\n\n        connect collector.collectDataPort to processor.processDataPort;\n        connect processor.processDataPort to evaluator.evaluatePort;\n    }\n\n    item def WeightData {\n        attribute rawWeight : Real;\n        attribute processedWeight : Real;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603734,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 205,
+    "prompt_tokens": 360,
+    "total_tokens": 565,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

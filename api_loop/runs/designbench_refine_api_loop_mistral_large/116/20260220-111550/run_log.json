@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:15:50.466153Z",
+    "iteration_end": "2026-02-20T16:15:55.983950Z",
+    "iteration_duration_seconds": 5.517823500005761,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:5:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'standard', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"=\", \":=\", \"default\", \";\", \"{\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    5 |         enum standard;\n      |              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:18:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |         attribute variant : ComponentVariant = ComponentVariant::standard;\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:18:64: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '::'.\n    18 |         attribute variant : ComponentVariant = ComponentVariant::standard;\n       |                                                                \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:18:66: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'standard', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"MULTILINE_NOTE\", \";\", \"{\", \"}\", \",\", \"::\", \"**\", \"[\", \"]\", \"??\", \"+\", \"|\", \"&\", \"===\", \"!==\", \"<=\", \">=\", \"..\", \"%\", \"^\", \"@@\", \"#\", \"(\", \")\", \".?\", \"->\", \"from\", \"to\", \"*\", \".\", \"if\", \"?\", \"else\", \"implies\", \"or\", \"and\", \"-\", \"xor\", \"==\", \"!=\", \"<\", \">\", \"/\", \"hastype\", \"istype\", \"@\", \"as\", \"meta\", \"=\", \"by\", \"then\", \"connect\", \"of\", \"action\", \"via\", \"parallel\", \"do\"].\n    18 |         attribute variant : ComponentVariant = ComponentVariant::standard;\n       |                                                                  \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:18:48: \u001b[38;2;220;080;080merror\u001b[0m (feature-reference-expression-referent-is-feature): Referent must be a feature but is EnumerationDefinition\n    18 |         attribute variant : ComponentVariant = ComponentVariant::standard;\n       |                                                \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 472,
+      "output_tokens": 256,
+      "total_tokens": 728
+    },
+    "tokens_used_total": 728,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:15:55.984125Z",
+    "iteration_end": "2026-02-20T16:16:00.492318Z",
+    "iteration_duration_seconds": 4.508188000007067,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:5:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'standard', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"=\", \":=\", \"default\", \";\", \"{\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    5 |         enum standard;\n      |              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_02.sysml:18:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |         attribute variant : ComponentVariant;\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1374,
+      "output_tokens": 251,
+      "total_tokens": 1625
+    },
+    "tokens_used_total": 2353,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:16:00.492422Z",
+    "iteration_end": "2026-02-20T16:16:04.611684Z",
+    "iteration_duration_seconds": 4.119269415998133,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:5:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'standard', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \"=\", \":=\", \"default\", \";\", \"{\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    5 |         enum standard {}\n      |              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_03.sysml:18:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |         attribute variant : ComponentVariant = ComponentVariant::standard;\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_03.sysml:18:64: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '::'.\n    18 |         attribute variant : ComponentVariant = ComponentVariant::standard;\n       |                                                                \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_03.sysml:18:66: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'standard', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"MULTILINE_NOTE\", \";\", \"{\", \"}\", \",\", \"::\", \"**\", \"[\", \"]\", \"??\", \"+\", \"|\", \"&\", \"===\", \"!==\", \"<=\", \">=\", \"..\", \"%\", \"^\", \"@@\", \"#\", \"(\", \")\", \".?\", \"->\", \"from\", \"to\", \"*\", \".\", \"if\", \"?\", \"else\", \"implies\", \"or\", \"and\", \"-\", \"xor\", \"==\", \"!=\", \"<\", \">\", \"/\", \"hastype\", \"istype\", \"@\", \"as\", \"meta\", \"=\", \"by\", \"then\", \"connect\", \"of\", \"action\", \"via\", \"parallel\", \"do\"].\n    18 |         attribute variant : ComponentVariant = ComponentVariant::standard;\n       |                                                                  \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_03.sysml:18:48: \u001b[38;2;220;080;080merror\u001b[0m (feature-reference-expression-referent-is-feature): Referent must be a feature but is EnumerationDefinition\n    18 |         attribute variant : ComponentVariant = ComponentVariant::standard;\n       |                                                \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1031,
+      "output_tokens": 253,
+      "total_tokens": 1284
+    },
+    "tokens_used_total": 3637,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:16:04.611785Z",
+    "iteration_end": "2026-02-20T16:16:10.478560Z",
+    "iteration_duration_seconds": 5.866729457993642,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:6:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    6 |         enum ENHANCED\n      |         \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_04.sysml:8:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    8 |     }\n\niteration_04.sysml:18:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |         attribute variant : ComponentVariant = ComponentVariant::STANDARD;\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_04.sysml:18:66: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'STANDARD' found.\n    18 |         attribute variant : ComponentVariant = ComponentVariant::STANDARD;\n       |                                                                  \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1374,
+      "output_tokens": 263,
+      "total_tokens": 1637
+    },
+    "tokens_used_total": 5274,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:16:10.478643Z",
+    "iteration_end": "2026-02-20T16:16:15.530990Z",
+    "iteration_duration_seconds": 5.052358792003361,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111550/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:18:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |         attribute variant : ComponentVariant;\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1186,
+      "output_tokens": 259,
+      "total_tokens": 1445
+    },
+    "tokens_used_total": 6719,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

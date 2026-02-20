@@ -1,0 +1,16 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system requires the design of a configurable engine, with a basic structure composed of multiple cylinders. The number of cylinders can be either 4 or 6. Each cylinder is available in two diameters: 70 mm and 100 mm, with the specific selection depending on actual requirements. In terms of engine configurations, the system should support at least two engine variants: a four-cylinder engine and a six-cylinder engine. Users can choose the appropriate combination of cylinder quantity and diameter according to different application scenarios, thereby enabling flexible adjustment of engine performance and size.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+Return only the updated SysMLv2 model.

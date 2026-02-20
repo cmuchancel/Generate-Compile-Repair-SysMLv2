@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:15:50.884556Z",
+    "iteration_end": "2026-02-20T16:15:54.799060Z",
+    "iteration_duration_seconds": 3.9144782079965807,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:19:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    19 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:33:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    33 |     connect vehicle.chassis.towBall to trailer.frame.coupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:33:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'coupler' found.\n    33 |     connect vehicle.chassis.towBall to trailer.frame.coupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 390,
+      "output_tokens": 171,
+      "total_tokens": 561
+    },
+    "tokens_used_total": 561,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:15:54.799146Z",
+    "iteration_end": "2026-02-20T16:15:58.133313Z",
+    "iteration_duration_seconds": 3.334580916998675,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:23:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    23 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:33:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    33 |     connect vehicle.chassis.towBall to trailer.frame.coupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:33:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'coupler' found.\n    33 |     connect vehicle.chassis.towBall to trailer.frame.coupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 949,
+      "output_tokens": 168,
+      "total_tokens": 1117
+    },
+    "tokens_used_total": 1678,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:15:58.133817Z",
+    "iteration_end": "2026-02-20T16:16:01.682292Z",
+    "iteration_duration_seconds": 3.5485570000018924,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:23:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    23 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_03.sysml:33:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    33 |     connect vehicle.chassis.towBall to trailer.frame.coupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_03.sysml:33:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'coupler' found.\n    33 |     connect vehicle.chassis.towBall to trailer.frame.coupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 949,
+      "output_tokens": 168,
+      "total_tokens": 1117
+    },
+    "tokens_used_total": 2795,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:16:01.682601Z",
+    "iteration_end": "2026-02-20T16:16:04.620789Z",
+    "iteration_duration_seconds": 2.9382018339965725,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:23:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    23 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_04.sysml:33:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    33 |     connect vehicle.chassis.towBall to trailer.frame.coupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_04.sysml:33:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'coupler' found.\n    33 |     connect vehicle.chassis.towBall to trailer.frame.coupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 949,
+      "output_tokens": 168,
+      "total_tokens": 1117
+    },
+    "tokens_used_total": 3912,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:16:04.620878Z",
+    "iteration_end": "2026-02-20T16:16:08.774472Z",
+    "iteration_duration_seconds": 4.153601708007045,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/108/20260220-111550/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:23:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    23 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_05.sysml:33:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '.', expected one of [\"SINGLE_LINE_NOTE\", \"=\", \"[\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"to\", \".\", \"if\", \")\", \"then\", \"via\", \"do\", \"ordered\", \"nonunique\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"at\", \"after\", \"when\"].\n    33 |     connect vehicle.chassis.towBall to trailer.frame.coupler;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_05.sysml:33:54: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'coupler' found.\n    33 |     connect vehicle.chassis.towBall to trailer.frame.coupler;\n       |                                                      \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 949,
+      "output_tokens": 168,
+      "total_tokens": 1117
+    },
+    "tokens_used_total": 5029,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

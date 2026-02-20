@@ -1,0 +1,34 @@
+{
+  "id": "d48325d45ed8432eb3650cc40c0122d0",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleTrailerHitchSystem {\n    private import ScalarValues::*;\n\n    enum def ConnectionStatus {\n        enum connected;\n        enum disconnected;\n    }\n\n    part def VehicleFrame;\n    part def TrailerFrame;\n    part def HitchBall;\n    part def TrailerCoupler;\n\n    part def Vehicle {\n        attribute frame : VehicleFrame;\n        attribute hitchBall : HitchBall;\n        attribute connectionStatus : ConnectionStatus = ConnectionStatus::disconnected;\n    }\n\n    part def Trailer {\n        attribute frame : TrailerFrame;\n        attribute coupler : TrailerCoupler;\n    }\n\n    part vehicle : Vehicle;\n    part trailer : Trailer;\n\n    port def PowerPort;\n\n    part vehiclePowerPort : PowerPort;\n    part trailerPowerPort : PowerPort;\n\n    connect vehicle.hitchBall to trailer.coupler;\n    connect vehiclePowerPort to trailerPowerPort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771605352,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 184,
+    "prompt_tokens": 863,
+    "total_tokens": 1047,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 336
+    }
+  }
+}

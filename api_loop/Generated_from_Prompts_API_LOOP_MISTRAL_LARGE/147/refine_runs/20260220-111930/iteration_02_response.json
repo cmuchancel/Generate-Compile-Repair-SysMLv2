@@ -1,0 +1,34 @@
+{
+  "id": "e7d9cabe19bb4a10aa13497293169797",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage MaterialsScience {\n\n    private import ScalarValues::*;\n\n    enum def MassFractionUnit {\n        enum PERCENT;\n        enum PPM;\n        enum FRACTION;\n    }\n\n    part def Substance {\n        attribute name : String;\n        attribute atomicMass : Real;\n        attribute atomicMassUnit : String = \"u\";\n    }\n\n    part def Metal {\n        attribute base : Substance;\n    }\n\n    part def Alloy {\n        attribute name : String;\n        attribute tensileStrength : Real;\n        attribute tensileStrengthUnit : String = \"N/mm^2\";\n\n        part components : Component[1..*];\n    }\n\n    part def Component {\n        attribute massFraction : Real;\n        attribute massFractionUnit : MassFractionUnit = MassFractionUnit::PERCENT;\n\n        part material : Metal;\n    }\n\n    part ironSubstance : Substance {\n        attribute name : String = \"Iron\";\n        attribute atomicMass : Real = 55.845;\n    }\n\n    part iron : Metal {\n        part base = ironSubstance;\n    }\n\n    part carbonSubstance : Substance {\n        attribute name : String = \"Carbon\";\n        attribute atomicMass : Real = 12.011;\n    }\n\n    part carbon : Metal {\n        part base = carbonSubstance;\n    }\n\n    part manganeseSubstance : Substance {\n        attribute name : String = \"Manganese\";\n        attribute atomicMass : Real = 54.938;\n    }\n\n    part manganese : Metal {\n        part base = manganeseSubstance;\n    }\n\n    part steel980 : Alloy {\n        attribute name : String = \"Steel 980\";\n        attribute tensileStrength : Real = 980.0;\n\n        part components : Component[2] {\n            part component1 : Component {\n                attribute massFraction : Real = 98.0;\n                part material = iron;\n            }\n            part component2 : Component {\n                attribute massFraction : Real = 2.0;\n                part material = carbon;\n            }\n        }\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604377,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 431,
+    "prompt_tokens": 2106,
+    "total_tokens": 2537,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

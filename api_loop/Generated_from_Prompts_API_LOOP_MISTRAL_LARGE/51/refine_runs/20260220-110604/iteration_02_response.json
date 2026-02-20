@@ -1,0 +1,34 @@
+{
+  "id": "ae8d194f2f694197a7d1b229f41bbaa0",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def OperationalStatus {\n        NEUTRAL\n        DRIVE\n        REVERSE\n        PARK\n    }\n\n    part def Engine {\n        attribute mass : Real;\n    }\n\n    part def Wheel {\n        attribute mass : Real;\n    }\n\n    part def Driver {\n        attribute name : String;\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        attribute operationalStatus : OperationalStatus = OperationalStatus::NEUTRAL;\n        attribute gear : OperationalStatus = OperationalStatus::NEUTRAL;\n        attribute acceleratorPedalPosition : Real = 0.0;\n\n        part engine : Engine;\n        part driver : Driver;\n        part leftFrontWheel : Wheel;\n        part rightFrontWheel : Wheel;\n    }\n\n    part vehicle_1 :> Vehicle {\n        attribute vehicleMass : Real = 1500.0;\n        part leftFrontWheel :> Wheel {\n            attribute wheelMass : Real = 20.0;\n        }\n        part rightFrontWheel :> Wheel {\n            attribute wheelMass : Real = 20.0;\n        }\n    }\n\n    // Time snapshot 1\n    part vehicle_1_snapshot1 {\n        attribute time : Real = 0.0;\n        part vehicleRef : Vehicle = vehicle_1;\n        part leftFrontWheelRef : Wheel = vehicle_1.leftFrontWheel;\n        part rightFrontWheelRef : Wheel = vehicle_1.rightFrontWheel;\n    }\n\n    // Time snapshot 2\n    part vehicle_1_snapshot2 {\n        attribute time : Real = 1.0;\n        part vehicleRef : Vehicle = vehicle_1;\n        part leftFrontWheelRef : Wheel = vehicle_1.leftFrontWheel;\n        part rightFrontWheelRef : Wheel = vehicle_1.rightFrontWheel;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603571,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 383,
+    "prompt_tokens": 1684,
+    "total_tokens": 2067,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

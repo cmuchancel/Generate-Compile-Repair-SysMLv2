@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:12:13.938620Z",
+    "iteration_end": "2026-02-20T16:12:18.597407Z",
+    "iteration_duration_seconds": 4.65872424999543,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:18:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'SoftwareDesign' shadows SystemModel::SoftwareDesign\n\u2502   18 |     part def SoftwareDesign {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:7:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_01.sysml:23:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'ComputerSubsystem' shadows SystemModel::ComputerSubsystem\n\u2502   23 |     part def ComputerSubsystem {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:5:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_01.sysml:27:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'StorageSubsystem' shadows SystemModel::StorageSubsystem\n\u2502   27 |     part def StorageSubsystem {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:6:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_01.sysml:32:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'messageFormat' found.\n    32 |     connect systemAssembly.software.messageFormat to systemAssembly.storage;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:33:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'dataFormat' found.\n    33 |     connect systemAssembly.software.dataFormat to systemAssembly.storage;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 361,
+      "output_tokens": 204,
+      "total_tokens": 565
+    },
+    "tokens_used_total": 565,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:12:18.597471Z",
+    "iteration_end": "2026-02-20T16:12:22.503482Z",
+    "iteration_duration_seconds": 3.9059847080061445,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:18:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'SoftwareDesignSection' shadows SystemModel::SoftwareDesignSection\n\u2502   18 |     part def SoftwareDesignSection {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:7:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_02.sysml:23:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'ComputerSubsystem' shadows SystemModel::ComputerSubsystem\n\u2502   23 |     part def ComputerSubsystem {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:5:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_02.sysml:28:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'StorageSubsystem' shadows SystemModel::StorageSubsystem\n\u2502   28 |     part def StorageSubsystem {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:6:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_02.sysml:35:64: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'softwarePort' found.\n    35 |     connect systemAssembly.software to systemAssembly.computer.softwarePort;\n       |                                                                \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:36:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'messageFormat' found.\n    36 |     connect systemAssembly.software.messageFormat to systemAssembly.storage.messagePort;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:36:77: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'messagePort' found.\n    36 |     connect systemAssembly.software.messageFormat to systemAssembly.storage.messagePort;\n       |                                                                             \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:37:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'dataFormat' found.\n    37 |     connect systemAssembly.software.dataFormat to systemAssembly.storage.dataPort;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:37:74: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'dataPort' found.\n    37 |     connect systemAssembly.software.dataFormat to systemAssembly.storage.dataPort;\n       |                                                                          \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 966,
+      "output_tokens": 226,
+      "total_tokens": 1192
+    },
+    "tokens_used_total": 1757,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:12:22.503549Z",
+    "iteration_end": "2026-02-20T16:12:26.350064Z",
+    "iteration_duration_seconds": 3.846490415991866,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:22:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'SoftwareDesign' shadows SystemModel::SoftwareDesign\n\u2502   22 |     part def SoftwareDesign {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:7:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_03.sysml:27:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'ComputerSubsystem' shadows SystemModel::ComputerSubsystem\n\u2502   27 |     part def ComputerSubsystem {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:5:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_03.sysml:32:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'StorageSubsystem' shadows SystemModel::StorageSubsystem\n\u2502   32 |     part def StorageSubsystem {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:6:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_03.sysml:39:64: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'softwarePort' found.\n    39 |     connect systemAssembly.software to systemAssembly.computer.softwarePort;\n       |                                                                \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_03.sysml:40:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'messageFormat' found.\n    40 |     connect systemAssembly.software.messageFormat to systemAssembly.storage.messagePort;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^^^^^\u001b[0m\n\niteration_03.sysml:40:77: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'messagePort' found.\n    40 |     connect systemAssembly.software.messageFormat to systemAssembly.storage.messagePort;\n       |                                                                             \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m\n\niteration_03.sysml:41:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'dataFormat' found.\n    41 |     connect systemAssembly.software.dataFormat to systemAssembly.storage.dataPort;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^^\u001b[0m\n\niteration_03.sysml:41:74: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'dataPort' found.\n    41 |     connect systemAssembly.software.dataFormat to systemAssembly.storage.dataPort;\n       |                                                                          \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1177,
+      "output_tokens": 250,
+      "total_tokens": 1427
+    },
+    "tokens_used_total": 3184,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:12:26.350134Z",
+    "iteration_end": "2026-02-20T16:12:30.880324Z",
+    "iteration_duration_seconds": 4.530149291997077,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:22:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'SoftwareDesignSection' shadows SystemModel::SoftwareDesignSection\n\u2502   22 |     part def SoftwareDesignSection {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_04.sysml:7:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_04.sysml:28:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'ComputerSubsystem' shadows SystemModel::ComputerSubsystem\n\u2502   28 |     part def ComputerSubsystem {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_04.sysml:5:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_04.sysml:33:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'StorageSubsystem' shadows SystemModel::StorageSubsystem\n\u2502   33 |     part def StorageSubsystem {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_04.sysml:6:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_04.sysml:40:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'softwarePort' found.\n    40 |     connect systemAssembly.software.softwarePort to systemAssembly.computer.softwarePort;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_04.sysml:40:77: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'softwarePort' found.\n    40 |     connect systemAssembly.software.softwarePort to systemAssembly.computer.softwarePort;\n       |                                                                             \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_04.sysml:41:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'messageFormat' found.\n    41 |     connect systemAssembly.software.messageFormat to systemAssembly.storage.messagePort;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^^^^^\u001b[0m\n\niteration_04.sysml:41:77: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'messagePort' found.\n    41 |     connect systemAssembly.software.messageFormat to systemAssembly.storage.messagePort;\n       |                                                                             \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m\n\niteration_04.sysml:42:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'dataFormat' found.\n    42 |     connect systemAssembly.software.dataFormat to systemAssembly.storage.dataPort;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^^\u001b[0m\n\niteration_04.sysml:42:74: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'dataPort' found.\n    42 |     connect systemAssembly.software.dataFormat to systemAssembly.storage.dataPort;\n       |                                                                          \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1195,
+      "output_tokens": 264,
+      "total_tokens": 1459
+    },
+    "tokens_used_total": 4643,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:12:30.880387Z",
+    "iteration_end": "2026-02-20T16:12:34.780224Z",
+    "iteration_duration_seconds": 3.899804790999042,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/82/20260220-111213/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:22:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'SoftwareDesign' shadows SystemModel::SoftwareDesign\n\u2502   22 |     part def SoftwareDesign {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_05.sysml:7:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_05.sysml:28:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'Computer' shadows SystemModel::Computer\n\u2502   28 |     part def Computer {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_05.sysml:5:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_05.sysml:33:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'Storage' shadows SystemModel::Storage\n\u2502   33 |     part def Storage {\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_05.sysml:6:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_05.sysml:40:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'softwarePort' found.\n    40 |     connect systemAssembly.software.softwarePort to systemAssembly.computer.softwarePort;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_05.sysml:40:77: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'softwarePort' found.\n    40 |     connect systemAssembly.software.softwarePort to systemAssembly.computer.softwarePort;\n       |                                                                             \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_05.sysml:41:38: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'messageFormat' found.\n    41 |     connect systemAssembly.software::messageFormat to systemAssembly.storage.messagePort;\n       |                                      \u001b[38;2;220;080;080m^^^^^^^^^^^^^\u001b[0m\n\niteration_05.sysml:41:78: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'messagePort' found.\n    41 |     connect systemAssembly.software::messageFormat to systemAssembly.storage.messagePort;\n       |                                                                              \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m\n\niteration_05.sysml:42:38: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'dataFormat' found.\n    42 |     connect systemAssembly.software::dataFormat to systemAssembly.storage.dataPort;\n       |                                      \u001b[38;2;220;080;080m^^^^^^^^^^\u001b[0m\n\niteration_05.sysml:42:75: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'dataPort' found.\n    42 |     connect systemAssembly.software::dataFormat to systemAssembly.storage.dataPort;\n       |                                                                           \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1281,
+      "output_tokens": 251,
+      "total_tokens": 1532
+    },
+    "tokens_used_total": 6175,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

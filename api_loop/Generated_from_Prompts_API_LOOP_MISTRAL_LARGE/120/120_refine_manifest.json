@@ -1,0 +1,60 @@
+{
+  "model_id": 120,
+  "status": "ok",
+  "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/nl_prompts/120/nl.txt",
+  "generated_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/120/120.sysml",
+  "groundtruth_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/120/120_groundtruth.sysml",
+  "run_dir": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/120/20260220-111648",
+  "archived_run_dir": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/120/refine_runs/20260220-111648",
+  "run_log_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/120/20260220-111648/run_log.json",
+  "stdout_log": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/120/120_refine_stdout.log",
+  "stderr_log": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/120/120_refine_stderr.log",
+  "iterations_completed": 4,
+  "final_iteration_success": true,
+  "tokens_used_total": 6681,
+  "loop_start_utc": "2026-02-20T16:16:47.848288Z",
+  "loop_end_utc": "2026-02-20T16:17:09.552274Z",
+  "loop_duration_seconds": 21.703604374997667,
+  "iteration_timings": [
+    {
+      "iteration": 1,
+      "iteration_start": "2026-02-20T16:16:49.210280Z",
+      "iteration_end": "2026-02-20T16:16:55.569917Z",
+      "iteration_duration_seconds": 6.3595445419923635,
+      "success": false,
+      "return_code": 1,
+      "tokens_used_this_iter_total": 688,
+      "tokens_used_total": 688
+    },
+    {
+      "iteration": 2,
+      "iteration_start": "2026-02-20T16:16:55.569985Z",
+      "iteration_end": "2026-02-20T16:17:00.274522Z",
+      "iteration_duration_seconds": 4.704518750004354,
+      "success": false,
+      "return_code": 1,
+      "tokens_used_this_iter_total": 2241,
+      "tokens_used_total": 2929
+    },
+    {
+      "iteration": 3,
+      "iteration_start": "2026-02-20T16:17:00.274631Z",
+      "iteration_end": "2026-02-20T16:17:04.918752Z",
+      "iteration_duration_seconds": 4.644110875000479,
+      "success": false,
+      "return_code": 1,
+      "tokens_used_this_iter_total": 1854,
+      "tokens_used_total": 4783
+    },
+    {
+      "iteration": 4,
+      "iteration_start": "2026-02-20T16:17:04.918869Z",
+      "iteration_end": "2026-02-20T16:17:09.403576Z",
+      "iteration_duration_seconds": 4.484696250001434,
+      "success": true,
+      "return_code": 0,
+      "tokens_used_this_iter_total": 1898,
+      "tokens_used_total": 6681
+    }
+  ]
+}

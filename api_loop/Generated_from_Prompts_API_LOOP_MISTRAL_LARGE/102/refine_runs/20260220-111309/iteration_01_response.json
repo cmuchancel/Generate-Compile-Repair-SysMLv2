@@ -1,0 +1,34 @@
+{
+  "id": "942b62fc6f59441cbf09289d8153bfb3",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehiclePowerTransmissionSystem {\n    private import ScalarValues::*;\n\n    enum def PowerFlowDirection {\n        input\n        output\n        bidirectional\n    }\n\n    port def PowerPort {\n        attribute direction : PowerFlowDirection;\n    }\n\n    port def ClutchPort {\n        attribute engaged : Boolean;\n    }\n\n    port def CommandPort {\n        attribute command : String;\n    }\n\n    port def RoadInterfacePort {\n        attribute frictionCoefficient : Real;\n    }\n\n    part def Engine {\n        port fuelCommand : CommandPort;\n        port powerOut : PowerPort;\n        port clutchIn : ClutchPort;\n    }\n\n    part def Transmission {\n        port powerIn : PowerPort;\n        port clutchOut : ClutchPort;\n        port powerOut : PowerPort;\n    }\n\n    part def Clutch {\n        port engineSide : ClutchPort;\n        port transmissionSide : ClutchPort;\n    }\n\n    part def Driveshaft {\n        port powerIn : PowerPort;\n        port powerOut : PowerPort;\n    }\n\n    part def Differential {\n        port powerIn : PowerPort;\n        port leftPowerOut : PowerPort;\n        port rightPowerOut : PowerPort;\n    }\n\n    part def HalfShaft {\n        port powerIn : PowerPort;\n        port wheelSide : PowerPort;\n    }\n\n    part def Wheel {\n        port axleSide : PowerPort;\n        port roadInterface : RoadInterfacePort;\n    }\n\n    part def RearAxleAssembly {\n        part differential : Differential;\n        part leftHalfShaft : HalfShaft;\n        part rightHalfShaft : HalfShaft;\n\n        connect differential.leftPowerOut to leftHalfShaft.powerIn;\n        connect differential.rightPowerOut to rightHalfShaft.powerIn;\n    }\n\n    part vehiclePowerTransmissionSystem {\n        part engine : Engine;\n        part clutch : Clutch;\n        part transmission : Transmission;\n        part driveshaft : Driveshaft;\n        part rearAxle : RearAxleAssembly;\n        part leftRearWheel : Wheel;\n        part rightRearWheel : Wheel;\n\n        connect engine.powerOut to clutch.engineSide;\n        connect clutch.transmissionSide to transmission.clutchOut;\n        connect transmission.powerOut to driveshaft.powerIn;\n        connect driveshaft.powerOut to rearAxle.differential.powerIn;\n        connect rearAxle.leftHalfShaft.wheelSide to leftRearWheel.axleSide;\n        connect rearAxle.rightHalfShaft.wheelSide to rightRearWheel.axleSide;\n        connect engine.fuelCommand to transmission.fuelCommand;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603990,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 544,
+    "prompt_tokens": 502,
+    "total_tokens": 1046,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,71 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is primarily used to manage the operational status of a vehicle, enabling the vehicle to automatically switch states according to different control signals. When entering the system for the first time, the vehicle is in the "off" state. If a "VehicleStartSignal" is received at this time, the system will switch to the "starting" state. Next, upon receiving a "VehicleOnSignal," the system will enter the "on" (running) state. During vehicle operation, as soon as a "VehicleOffSignal" is received, the vehicle status will return to the "off" state. This entire process realizes automatic state management from shut down, through starting, to running, and then back to shut down, allowing users to comprehensively control and monitor the vehicle.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 4):
+                package VehicleOperationalStatus {
+    private import ScalarValues::*;
+
+    enum def VehicleState {
+        enum off;
+        enum starting;
+        enum on;
+    }
+
+    item def VehicleStartSignal;
+    item def VehicleOnSignal;
+    item def VehicleOffSignal;
+
+    port def VehicleStartSignalPort {
+        in attribute signal : VehicleStartSignal;
+    }
+
+    port def VehicleOnSignalPort {
+        in attribute signal : VehicleOnSignal;
+    }
+
+    port def VehicleOffSignalPort {
+        in attribute signal : VehicleOffSignal;
+    }
+
+    part def Vehicle {
+        attribute currentState : VehicleState = off;
+        port startIn : VehicleStartSignalPort;
+        port onIn : VehicleOnSignalPort;
+        port offIn : VehicleOffSignalPort;
+    }
+
+    part vehicle : Vehicle;
+
+    part def SignalSource {
+        port startOut : VehicleStartSignalPort;
+        port onOut : VehicleOnSignalPort;
+        port offOut : VehicleOffSignalPort;
+    }
+
+    part signalSource : SignalSource;
+
+    connect vehicle.startIn to signalSource.startOut;
+    connect vehicle.onIn to signalSource.onOut;
+    connect vehicle.offIn to signalSource.offOut;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_04.sysml:27:49: error (reference-error): No Feature named 'off' found.
+27 |         attribute currentState : VehicleState = off;
+   |                                                 ^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

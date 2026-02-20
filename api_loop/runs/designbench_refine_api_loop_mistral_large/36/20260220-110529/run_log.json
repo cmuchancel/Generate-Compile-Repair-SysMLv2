@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:05:29.501630Z",
+    "iteration_end": "2026-02-20T16:05:33.765725Z",
+    "iteration_duration_seconds": 4.264113291996182,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:11:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    11 |         attribute state : VehicleState = VehicleState::off;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:27:36: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found ItemDefinition (VehicleOperationalStatus::VehicleStartSignal)\n    27 |     connect vehicle.startSignal to VehicleStartSignal;\n       |                                    \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:28:33: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found ItemDefinition (VehicleOperationalStatus::VehicleOnSignal)\n    28 |     connect vehicle.onSignal to VehicleOnSignal;\n       |                                 \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:29:34: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found ItemDefinition (VehicleOperationalStatus::VehicleOffSignal)\n    29 |     connect vehicle.offSignal to VehicleOffSignal;\n       |                                  \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 397,
+      "output_tokens": 172,
+      "total_tokens": 569
+    },
+    "tokens_used_total": 569,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:05:33.765876Z",
+    "iteration_end": "2026-02-20T16:05:37.176205Z",
+    "iteration_duration_seconds": 3.4103041250054957,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:27:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    27 |         attribute state : VehicleState = VehicleState::off;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:35:36: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehicleOperationalStatus::VehicleStartSignalPort)\n    35 |     connect vehicle.startSignal to VehicleStartSignalPort;\n       |                                    \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:36:33: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehicleOperationalStatus::VehicleOnSignalPort)\n    36 |     connect vehicle.onSignal to VehicleOnSignalPort;\n       |                                 \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:37:34: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Feature element but found PartDefinition (VehicleOperationalStatus::VehicleOffSignalPort)\n    37 |     connect vehicle.offSignal to VehicleOffSignalPort;\n       |                                  \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 942,
+      "output_tokens": 202,
+      "total_tokens": 1144
+    },
+    "tokens_used_total": 1713,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:05:37.176281Z",
+    "iteration_end": "2026-02-20T16:05:41.922868Z",
+    "iteration_duration_seconds": 4.746580375009216,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:27:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    27 |         attribute state : VehicleState = off;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_03.sysml:36:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    36 |         port out : VehicleStartSignalPort;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_03.sysml:40:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    40 |         port out : VehicleOnSignalPort;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_03.sysml:44:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    44 |         port out : VehicleOffSignalPort;\n       |              \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_03.sysml:47:53: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    47 |     connect vehicle.startSignal to startSignalSource.out;\n       |                                                     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_03.sysml:47:54: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"$\", \"NAME\", \"ElementReference\", \"MULTILINE_NOTE\", \"FeatureChaining\", \";\", \"{\", \",\", \"[\", \"(\", \")\", \"=\", \"from\", \"to\", \"if\", \"then\", \"accept\", \"via\", \"do\"].\n    47 |     connect vehicle.startSignal to startSignalSource.out;\n       |                                                      \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_03.sysml:48:47: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    48 |     connect vehicle.onSignal to onSignalSource.out;\n       |                                               \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_03.sysml:48:48: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"$\", \"NAME\", \"ElementReference\", \"MULTILINE_NOTE\", \"FeatureChaining\", \";\", \"{\", \",\", \"[\", \"(\", \")\", \"=\", \"from\", \"to\", \"if\", \"then\", \"accept\", \"via\", \"do\"].\n    48 |     connect vehicle.onSignal to onSignalSource.out;\n       |                                                \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_03.sysml:49:49: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    49 |     connect vehicle.offSignal to offSignalSource.out;\n       |                                                 \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_03.sysml:49:50: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'out', expected one of [\"SINGLE_LINE_NOTE\", \"$\", \"NAME\", \"ElementReference\", \"MULTILINE_NOTE\", \"FeatureChaining\", \";\", \"{\", \",\", \"[\", \"(\", \")\", \"=\", \"from\", \"to\", \"if\", \"then\", \"accept\", \"via\", \"do\"].\n    49 |     connect vehicle.offSignal to offSignalSource.out;\n       |                                                  \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_03.sysml:47:36: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    47 |     connect vehicle.startSignal to startSignalSource.out;\n       |                                    \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_03.sysml:48:33: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    48 |     connect vehicle.onSignal to onSignalSource.out;\n       |                                 \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m\n\niteration_03.sysml:49:34: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    49 |     connect vehicle.offSignal to offSignalSource.out;\n       |                                  \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^\u001b[0m\n\niteration_03.sysml:27:42: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'off' found.\n    27 |         attribute state : VehicleState = off;\n       |                                          \u001b[38;2;220;080;080m^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 987,
+      "output_tokens": 250,
+      "total_tokens": 1237
+    },
+    "tokens_used_total": 2950,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:05:41.922970Z",
+    "iteration_end": "2026-02-20T16:05:45.953480Z",
+    "iteration_duration_seconds": 4.030486458999803,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:27:49: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'off' found.\n    27 |         attribute currentState : VehicleState = off;\n       |                                                 \u001b[38;2;220;080;080m^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1874,
+      "output_tokens": 250,
+      "total_tokens": 2124
+    },
+    "tokens_used_total": 5074,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:05:45.953548Z",
+    "iteration_end": "2026-02-20T16:05:49.877007Z",
+    "iteration_duration_seconds": 3.9234841669967864,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/36/20260220-110529/iteration_05_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 733,
+      "output_tokens": 253,
+      "total_tokens": 986
+    },
+    "tokens_used_total": 6060,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

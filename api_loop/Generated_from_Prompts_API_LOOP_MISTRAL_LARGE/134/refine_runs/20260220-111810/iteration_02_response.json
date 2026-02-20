@@ -1,0 +1,34 @@
+{
+  "id": "f4742920551a458ba05f4f2a395f2c4b",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage BloodGlucoseMeterSystem {\n    private import ScalarValues::*;\n\n    enum def BatteryStatus {\n        enum OK;\n        enum LOW;\n        enum DEPLETED;\n        enum CHARGING;\n        enum FAULT;\n    }\n\n    part def Battery {\n        attribute status : BatteryStatus = BatteryStatus::OK;\n        attribute voltage : Real;\n        attribute chargeLevel : Real;\n    }\n\n    port def AlertSignal;\n\n    part def AlertSystem {\n        port alertOut : AlertSignal;\n    }\n\n    item def Alert {\n        attribute message : String;\n        attribute severity : String;\n    }\n\n    part def BloodGlucoseMeter {\n        part battery : Battery;\n        part alertSystem : AlertSystem;\n\n        attribute isOperational : Boolean = true;\n        attribute lastMeasurementTime : Real;\n    }\n\n    part meter : BloodGlucoseMeter;\n\n    connect meter.alertSystem.alertOut to meter.battery;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604297,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 189,
+    "prompt_tokens": 1042,
+    "total_tokens": 1231,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "c3f970ecac444f3e9d74f5c2046f2645",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage UnitSystemLibrary {\n    private import ScalarValues::*;\n\n    enum def QuantityKind {\n        enum length;\n        enum mass;\n        enum time;\n        enum electricCurrent;\n        enum thermodynamicTemperature;\n        enum amountOfSubstance;\n        enum luminousIntensity;\n        enum planeAngle;\n        enum solidAngle;\n        enum frequency;\n        enum force;\n        enum pressure;\n        enum energy;\n        enum power;\n        enum electricCharge;\n        enum electricPotential;\n        enum electricCapacitance;\n        enum electricResistance;\n        enum electricConductance;\n        enum magneticFlux;\n        enum magneticFluxDensity;\n        enum inductance;\n        enum temperature;\n        enum area;\n        enum volume;\n        enum velocity;\n        enum acceleration;\n        enum angularVelocity;\n        enum angularAcceleration;\n        enum density;\n        enum surfaceDensity;\n        enum specificVolume;\n        enum luminance;\n    }\n\n    enum def UnitSystem {\n        enum ISQ;\n        enum USCustomary;\n    }\n\n    part def Unit {\n        attribute name : String;\n        attribute symbol : String;\n        attribute quantityKind : QuantityKind;\n        attribute conversionFactorToBase : Real;\n        attribute system : UnitSystem;\n    }\n\n    part def UnitConverter {\n        attribute sourceUnit : Unit;\n        attribute targetUnit : Unit;\n        attribute conversionFactor : Real;\n\n        port def inputPort;\n        port def outputPort;\n\n        port input : inputPort;\n        port output : outputPort;\n    }\n\n    part def UnitLibrary {\n        attribute units : Unit[*];\n        attribute converters : UnitConverter[*];\n\n        part isqUnits : Unit[*] {\n            attribute :>> units;\n        }\n\n        part usCustomaryUnits : Unit[*] {\n            attribute :>> units;\n        }\n\n        part isqToUSConverters : UnitConverter[*] {\n            attribute :>> converters;\n        }\n\n        part usToISQConverters : UnitConverter[*] {\n            attribute :>> converters;\n        }\n    }\n\n    part unitLibrary : UnitLibrary;\n\n    connect unitLibrary.isqToUSConverters.input to unitLibrary.isqUnits;\n    connect unitLibrary.usToISQConverters.input to unitLibrary.usCustomaryUnits;\n    connect unitLibrary.isqToUSConverters.output to unitLibrary.usCustomaryUnits;\n    connect unitLibrary.usToISQConverters.output to unitLibrary.isqUnits;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604636,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 498,
+    "prompt_tokens": 1123,
+    "total_tokens": 1621,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

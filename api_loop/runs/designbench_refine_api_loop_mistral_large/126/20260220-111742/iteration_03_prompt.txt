@@ -1,0 +1,61 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system adopts a layered architecture, including the application layer, service layer, and data layer. The application layer needs to use the functionalities provided by the service layer, while the service layer relies on the data layer to retrieve and store data. The system should possess three core attributes: x, y, and z, where attribute z depends on attributes x and y. The entire system must ensure clear division of responsibilities and dependencies between layers, guaranteeing smooth data flow and functional calls.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 2):
+                package LayeredSystem {
+    private import ScalarValues::*;
+
+    part def ApplicationLayer;
+    part def ServiceLayer;
+    part def DataLayer;
+
+    attribute x : Real;
+    attribute y : Real;
+    attribute z : Real = x + y;
+
+    part application : ApplicationLayer;
+    part service : ServiceLayer;
+    part data : DataLayer;
+
+    port def ServicePort;
+    port def DataPort;
+
+    port servicePort : ServicePort in service;
+    port dataPort : DataPort in data;
+
+    connect application to service.servicePort;
+    connect service.servicePort to data.dataPort;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_02.sysml:19:36: error (parsing-error): Unexpected identifier.
+    19 |     port servicePort : ServicePort in service;
+       |                                    ^^
+iteration_02.sysml:20:30: error (parsing-error): Unexpected identifier.
+    20 |     port dataPort : DataPort in data;
+       |                              ^^
+iteration_02.sysml:22:36: error (reference-error): No Feature named 'servicePort' found.
+    22 |     connect application to service.servicePort;
+       |                                    ^^^^^^^^^^^
+iteration_02.sysml:23:21: error (reference-error): No Feature named 'servicePort' found.
+    23 |     connect service.servicePort to data.dataPort;
+       |                     ^^^^^^^^^^^
+iteration_02.sysml:23:41: error (reference-error): No Feature named 'dataPort' found.
+    23 |     connect service.servicePort to data.dataPort;
+       |                                         ^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

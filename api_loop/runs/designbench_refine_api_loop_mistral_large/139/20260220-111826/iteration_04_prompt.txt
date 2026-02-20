@@ -1,0 +1,94 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is used for modeling the structural and functional constraints of automotive components, where a car comprises several wheels and related parts. The vehicle has a total mass of 1200 kilograms and a length of 4.82 meters, and is equipped with multiple wheel assemblies. Each wheel assembly consists of a set of tires and the corresponding brake disc. A single wheel is composed of a rim and a tire, with the rim diameter being 18 inches, tire width 245 millimeters, and tire height 45 millimeters, based on which the outer diameter is calculated. The default tread depth of the tire is 6.0 millimeters, and it must not be less than 3.5 millimeters to comply with road safety regulations. The brake disc assembly installed on each wheel assembly has a radius of 95 millimeters, and the system requires that the brake disc diameter (i.e., twice the radius) of each wheel assembly must be less than the outer diameter of the corresponding wheel, ensuring proper installation and safety clearance between components. The system also enforces related constraints to ensure that all wheel assemblies meet the fitment requirements between the brake disc and rim, thereby safeguarding overall safety and performance.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 3):
+                package AutomotiveSystem {
+    private import ScalarValues::*;
+
+    attribute def MassValue : Real;
+    attribute def LengthValue : Real;
+
+    part def Car {
+        attribute totalMass : MassValue = 1200.0;
+        attribute length : LengthValue = 4.82;
+        part wheelAssemblies : WheelAssembly[4];
+    }
+
+    part def WheelAssembly {
+        part wheel : Wheel;
+        part brakeDisc : BrakeDisc;
+    }
+
+    part def Wheel {
+        part rim : Rim;
+        part tire : Tire;
+    }
+
+    part def Rim {
+        attribute diameter : LengthValue = 18.0;
+    }
+
+    part def Tire {
+        attribute width : LengthValue = 245.0;
+        attribute height : LengthValue = 45.0;
+        attribute treadDepth : LengthValue = 6.0;
+        attribute minTreadDepth : LengthValue = 3.5;
+        attribute outerDiameter : LengthValue = (rim.diameter * 25.4) + (2 * height);
+    }
+
+    part def BrakeDisc {
+        attribute radius : LengthValue = 95.0;
+        attribute diameter : LengthValue = 2 * radius;
+    }
+
+    part car : Car;
+
+    constraint def WheelAssemblyFitment {
+        car.wheelAssemblies.brakeDisc.diameter < car.wheelAssemblies.wheel.tire.outerDiameter;
+    }
+
+    constraint def TreadDepthCompliance {
+        car.wheelAssemblies.wheel.tire.treadDepth >= car.wheelAssemblies.wheel.tire.minTreadDepth;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_03.sysml:4:29: error (parsing-error): Expected a token. Did you forget ';'?
+    4 |     attribute def MassValue : Real;
+iteration_03.sysml:5:31: error (parsing-error): Expected a token. Did you forget ';'?
+    5 |     attribute def LengthValue : Real;
+iteration_03.sysml:43:94: error (parsing-error): Unexpected ';', expected one of ["NAME", ";", "{", "all", "*", "if", "+", "-", "~", "not", "hastype", "istype", "@", "as", "(", "null", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", "$", "Feature", "FeatureChaining", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "ParameterMembership", "Feature", "FeatureValue", "ParameterMembership", "Feature", "FeatureValue", "MetadataAccessExpression", "OperatorExpression", "FeatureValue", "Feature", "ParameterMembership", "FeatureValue", "Feature", "ParameterMembership", "OperatorExpression", "IndexExpression", "FeatureChainExpression", "CollectExpression", "SelectExpression", "InvocationExpression", "OwningMembership", "NullExpression", "FeatureReferenceExpression", "Membership", "MetadataAccessExpression", "Membership", "InvocationExpression", "ConstructorExpression", "Membership", "FeatureReferenceExpression", "FeatureMembership", "Expression", "LiteralBoolean", "LiteralString", "LiteralInteger", "LiteralRational", "LiteralInfinity", "ElementReference"].
+    43 |         car.wheelAssemblies.brakeDisc.diameter < car.wheelAssemblies.wheel.tire.outerDiameter;
+       |                                                                                              ^
+iteration_03.sysml:47:98: error (parsing-error): Unexpected ';', expected one of ["NAME", ";", "{", "all", "*", "if", "+", "-", "~", "not", "hastype", "istype", "@", "as", "(", "null", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", "$", "Feature", "FeatureChaining", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "ParameterMembership", "Feature", "FeatureValue", "ParameterMembership", "Feature", "FeatureValue", "MetadataAccessExpression", "OperatorExpression", "FeatureValue", "Feature", "ParameterMembership", "FeatureValue", "Feature", "ParameterMembership", "OperatorExpression", "IndexExpression", "FeatureChainExpression", "CollectExpression", "SelectExpression", "InvocationExpression", "OwningMembership", "NullExpression", "FeatureReferenceExpression", "Membership", "MetadataAccessExpression", "Membership", "InvocationExpression", "ConstructorExpression", "Membership", "FeatureReferenceExpression", "FeatureMembership", "Expression", "LiteralBoolean", "LiteralString", "LiteralInteger", "LiteralRational", "LiteralInfinity", "ElementReference"].
+    47 |         car.wheelAssemblies.wheel.tire.treadDepth >= car.wheelAssemblies.wheel.tire.minTreadDepth;
+       |                                                                                                  ^
+iteration_03.sysml:8:43: error (type-error): ScalarValues::Rational does not conform to AutomotiveSystem::MassValue
+    8 |         attribute totalMass : MassValue = 1200.0;
+      |                                           ^^^^^^
+iteration_03.sysml:9:42: error (type-error): ScalarValues::Rational does not conform to AutomotiveSystem::LengthValue
+    9 |         attribute length : LengthValue = 4.82;
+      |                                          ^^^^
+iteration_03.sysml:24:44: error (type-error): ScalarValues::Rational does not conform to AutomotiveSystem::LengthValue
+    24 |         attribute diameter : LengthValue = 18.0;
+       |                                            ^^^^
+iteration_03.sysml:28:41: error (type-error): ScalarValues::Rational does not conform to AutomotiveSystem::LengthValue
+    28 |         attribute width : LengthValue = 245.0;
+       |
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

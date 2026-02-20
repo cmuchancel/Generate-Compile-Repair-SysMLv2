@@ -1,0 +1,83 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to restrict and manage the vehicle’s total mass, ensuring that the overall vehicle weight does not exceed the maximum permitted limit of 2,500 kilograms. The vehicle consists of a chassis, an engine, and a gearbox, each with its own mass parameter. The system will automatically calculate the total mass of the chassis, engine, and gearbox, and check whether this total complies with the requirement of not exceeding 2,500 kilograms. If the combined mass of the chassis, engine, and gearbox exceeds the specified limit, the system will issue an overweight warning, ensuring that the vehicle design meets the relevant weight regulations.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleMassManagement {
+    private import ScalarValues::*;
+
+    enum def MassStatus {
+        enum compliant
+        enum overweight
+    }
+
+    part def Chassis {
+        attribute mass : Real;
+    }
+
+    part def Engine {
+        attribute mass : Real;
+    }
+
+    part def Gearbox {
+        attribute mass : Real;
+    }
+
+    part def Vehicle {
+        part chassis : Chassis;
+        part engine : Engine;
+        part gearbox : Gearbox;
+        attribute totalMass : Real;
+        attribute status : MassStatus = MassStatus::compliant;
+        attribute maxPermittedMass : Real = 2500.0;
+
+        attribute calculateTotalMass() : Real {
+            chassis.mass + engine.mass + gearbox.mass
+        }
+
+        attribute checkMassCompliance() : MassStatus {
+            if (calculateTotalMass() > maxPermittedMass) then MassStatus::overweight
+            else MassStatus::compliant
+        }
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:6:9: error (parsing-error): Unexpected identifier, expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    6 |         enum overweight
+      |         ^^^^
+iteration_01.sysml:29:37: error (parsing-error): Unexpected '(', expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    29 |         attribute calculateTotalMass() : Real {
+       |                                     ^
+iteration_01.sysml:30:21: error (parsing-error): Unexpected identifier.
+    30 |             chassis.mass + engine.mass + gearbox.mass
+       |                     ^^^^
+iteration_01.sysml:30:50: error (parsing-error): Unexpected identifier.
+    30 |             chassis.mass + engine.mass + gearbox.mass
+       |                                                  ^^^^
+iteration_01.sysml:33:38: error (parsing-error): Unexpected '(', expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    33 |         attribute checkMassCompliance() : MassStatus {
+       |                                      ^
+iteration_01.sysml:34:73: error (parsing-error): Unexpected ':', expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    34 |             if (calculateTotalMass() > maxPermittedMass) then MassStatus::overweight
+       |                                                                         ^
+iteration_01.sysml:35:13: error (parsing-error): Unexpected identifier.
+    35 |             else MassStatus::compliant
+       |             ^^^^
+iteration_01.sysml:36:9: error (parsing-error): Unexpected '}', expected one of ["NAME", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "import", "[", "abstract", "in", "inout", "out", "derived", "end", "ordered", "nonunique", "<", "not", "@", "#", "metadata", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "standard", "library", "package", "variation", "variant", "constant", "ref", "attribute", "enum", "occurrence", "individual", "timeslice", "snapshot", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "interface", "allocation", "allocate", "action", "perform", "state", "exhibit", "calc", "constraint", "assert", "requirement", "concern", "satisfy", "case", "analysis", "verification", "use", "include", "view", "rendering", "viewpoint", "Dependency", "Comment", "Documentation", "TextualRepresentation", "VisibilityKind", "Membership", "MembershipImport", "NamespaceImport", "FeatureDirectionKind", "OwningMembership", "MultiplicityRange", "Annota
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

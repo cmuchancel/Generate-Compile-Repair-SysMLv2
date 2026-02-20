@@ -1,0 +1,66 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to describe the fuel system of motor vehicles, including the fuel supply and return process between the fuel tank assembly and the engine. As the fuel supply port, the fuel tank is capable of providing fuel to the engine, while the engine can also return a portion of the fuel to the fuel tank, ensuring the circulation and utilization of fuel. During the fuel flow process, the system can monitor key parameters such as temperature to ensure the safety and efficiency of fuel supply. The entire fuel system is designed to support interface connections between different components, ensuring smooth and well-integrated fuel supply routes, and meeting the requirements for stability and reliability of fuel supply during vehicle operation.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleFuelSystem {
+    private import ScalarValues::*;
+
+    enum def FuelFlowDirection {
+        enum supply;
+        enum return;
+    }
+
+    part def FuelTankAssembly {
+        attribute capacity : Real;
+        attribute currentFuelLevel : Real;
+        attribute fuelTemperature : Real;
+        port fuelSupplyPort : FuelPort;
+        port fuelReturnPort : FuelPort;
+    }
+
+    part def Engine {
+        attribute fuelConsumptionRate : Real;
+        port fuelSupplyPort : FuelPort;
+        port fuelReturnPort : FuelPort;
+    }
+
+    part def FuelSystem {
+        part tank : FuelTankAssembly;
+        part engine : Engine;
+        attribute systemTemperature : Real;
+    }
+
+    port def FuelPort {
+        attribute direction : FuelFlowDirection;
+    }
+
+    item def Fuel {
+        attribute temperature : Real;
+    }
+
+    part system : FuelSystem;
+
+    connect system.tank.fuelSupplyPort to system.engine.fuelSupplyPort;
+    connect system.engine.fuelReturnPort to system.tank.fuelReturnPort;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_01.sysml:6:14: error (parsing-error): Unexpected 'return', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "=", ":=", "default", ";", "{", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+6 |         enum return;
+  |              ^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

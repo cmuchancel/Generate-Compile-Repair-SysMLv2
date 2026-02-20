@@ -1,0 +1,129 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The engineering materials database system should be capable of modeling and managing various types of engineering materials, including metals and their alloys. The system should support the description of fundamental properties of materials, such as atomic mass, compositional information, and mechanical property indicators. For metals and alloys, the system must be able to define their detailed compositional information, including the mass fraction of each constituent material. Regarding mechanical properties, the system should support standardized and dimensional management of parameters such as tensile strength, and be able to represent and convert them using commonly used engineering units (e.g., Newtons per square millimeter). Taking high-strength steel Steel_980 as an example, the system should accurately record the mass fractions of its components such as iron, carbon, and manganese, as well as its overall tensile strength, to facilitate subsequent material selection, evaluation, and application. Overall, the system aims to provide end users with an intuitive, standardized, and flexible data management approach, enabling convenient data entry, querying, and comparison of engineering materials, thereby improving the efficiency and scientific rigor of materials engineering research, development, and application.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 4):
+                package EngineeringMaterialsDatabase {
+    private import ScalarValues::*;
+
+    enum def MaterialType {
+        enum Metal;
+        enum Alloy;
+        enum Polymer;
+        enum Ceramic;
+        enum Composite;
+    }
+
+    part def Material {
+        attribute name : String;
+        attribute materialType : MaterialType;
+        attribute atomicMass : Real;
+        attribute density : Real;
+    }
+
+    part def Composition {
+        attribute constituent : String;
+        attribute massFraction : Real;
+    }
+
+    part def MechanicalProperty {
+        attribute propertyName : String;
+        attribute value : Real;
+        attribute unit : String;
+    }
+
+    part def Metal {
+        attribute baseElement : String;
+    }
+
+    part def Alloy {
+        attribute baseMetal : String;
+        part composition : Composition[*];
+    }
+
+    part def Steel_980 : Alloy {
+        attribute tensileStrengthName : String = "Tensile Strength";
+        attribute tensileStrengthValue : Real = 980.0;
+        attribute tensileStrengthUnit : String = "N/mm^2";
+        part iron : Composition;
+        part carbon : Composition;
+        part manganese : Composition;
+    }
+
+    part materialsDatabase {
+        part steel980 : Steel_980;
+        part steel980_iron : Composition {
+            constituent = "Iron";
+            massFraction = 0.97;
+        }
+        part steel980_carbon : Composition {
+            constituent = "Carbon";
+            massFraction = 0.002;
+        }
+        part steel980_manganese : Composition {
+            constituent = "Manganese";
+            massFraction = 0.015;
+        }
+        connect steel980.composition to steel980_iron;
+        connect steel980.composition to steel980_carbon;
+        connect steel980.composition to steel980_manganese;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_04.sysml:39:24: error (parsing-error): Expected a token. Did you forget ';'?
+    39 |     part def Steel_980 : Alloy {
+iteration_04.sysml:51:13: warning (namespace-distinguishability): Member name 'constituent' shadows EngineeringMaterialsDatabase::Composition::constituent
+│   51 |             constituent = "Iron";
+│      |             ^^^^^^^^^^^
+└── iteration_04.sysml:20:19: note: Inherited from here
+    └── iteration_04.sysml:50:30: note: Because EngineeringMaterialsDatabase::Composition is specialized through FeatureTyping
+iteration_04.sysml:52:13: warning (namespace-distinguishability): Member name 'massFraction' shadows EngineeringMaterialsDatabase::Composition::massFraction
+│   52 |             massFraction = 0.97;
+│      |             ^^^^^^^^^^^^
+└── iteration_04.sysml:21:19: note: Inherited from here
+    └── iteration_04.sysml:50:30: note: Because EngineeringMaterialsDatabase::Composition is specialized through FeatureTyping
+iteration_04.sysml:55:13: warning (namespace-distinguishability): Member name 'constituent' shadows EngineeringMaterialsDatabase::Composition::constituent
+│   55 |             constituent = "Carbon";
+│      |             ^^^^^^^^^^^
+└── iteration_04.sysml:20:19: note: Inherited from here
+    └── iteration_04.sysml:54:32: note: Because EngineeringMaterialsDatabase::Composition is specialized through FeatureTyping
+iteration_04.sysml:56:13: warning (namespace-distinguishability): Member name 'massFraction' shadows EngineeringMaterialsDatabase::Composition::massFraction
+│   56 |             massFraction = 0.002;
+│      |             ^^^^^^^^^^^^
+└── iteration_04.sysml:21:19: note: Inherited from here
+    └── iteration_04.sysml:54:32: note: Because EngineeringMaterialsDatabase::Composition is specialized through FeatureTyping
+iteration_04.sysml:59:13: warning (namespace-distinguishability): Member name 'constituent' shadows EngineeringMaterialsDatabase::Composition::constituent
+│   59 |             constituent = "Manganese";
+│      |             ^^^^^^^^^^^
+└── iteration_04.sysml:20:19: note: Inherited from here
+    └── iteration_04.sysml:58:35: note: Because EngineeringMaterialsDatabase::Composition is specialized through FeatureTyping
+iteration_04.sysml:60:13: warning (namespace-distinguishability): Member name 'massFraction' shadows EngineeringMaterialsDatabase::Composition::massFraction
+│   60 |             massFraction = 0.015;
+│      |             ^^^^^^^^^^^^
+└── iteration_04.sysml:21:19: note: Inherited from here
+    └── iteration_04.sysml:58:35: note: Because EngineeringMaterialsDatabase::Composition is specialized through FeatureTyping
+iteration_04.sysml:62:26: error (reference-error): No Feature named 'composition' found.
+    62 |         connect steel980.composition to steel980_iron;
+       |                          ^^^^^^^^^^^
+iteration_04.sysml:63:26: error (reference-error): No Feature named 'composition' found.
+    63 |         connect steel980.composition to steel980_carbon;
+       |                          ^^^^^^^^^^^
+iteration_04.sysml:64:26: error (reference-error): No Feature named 'composition' found.
+    64 |         connect steel980.composition to steel980_manganese;
+       |                          ^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

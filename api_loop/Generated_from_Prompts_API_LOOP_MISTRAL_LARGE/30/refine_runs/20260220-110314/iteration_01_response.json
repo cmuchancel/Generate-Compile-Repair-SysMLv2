@@ -1,0 +1,34 @@
+{
+  "id": "85dff74972be411e912f219cc09a4c6d",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage CameraShootingSystem {\n    private import ScalarValues::*;\n\n    enum def ShootingScene {\n        enum Landscape;\n        enum Portrait;\n        enum Night;\n        enum Sports;\n        enum Macro;\n    }\n\n    part def Viewfinder {\n        attribute isActive : Boolean = false;\n    }\n\n    part def FocusModule {\n        attribute isFocused : Boolean = false;\n        attribute selectedScene : ShootingScene;\n    }\n\n    part def ImagingModule {\n        attribute isCapturing : Boolean = false;\n        attribute finalPhoto : String;\n    }\n\n    part def CameraController {\n        port controlPort : ControlPort;\n    }\n\n    port def ControlPort;\n\n    part cameraSystem {\n        part viewfinder : Viewfinder;\n        part focusModule : FocusModule;\n        part imagingModule : ImagingModule;\n        part controller : CameraController;\n\n        connect controller.controlPort to focusModule;\n        connect controller.controlPort to imagingModule;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603394,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 198,
+    "prompt_tokens": 367,
+    "total_tokens": 565,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

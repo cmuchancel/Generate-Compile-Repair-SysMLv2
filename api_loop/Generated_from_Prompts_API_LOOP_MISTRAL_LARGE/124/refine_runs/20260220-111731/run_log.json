@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:17:31.859139Z",
+    "iteration_end": "2026-02-20T16:17:36.255087Z",
+    "iteration_duration_seconds": 4.395959874993423,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/124/20260220-111731/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/124/20260220-111731/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/124/20260220-111731/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:5:48: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    5 |         attribute totalMass : MassValue = 2500 kg;\n      |                                                \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:11:42: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    11 |         attribute mass : MassValue = 150 kg;\n       |                                          \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:23:42: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    23 |         attribute mass : MassValue = 250 kg;\n       |                                          \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:5:31: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'MassValue' found.\n    5 |         attribute totalMass : MassValue = 2500 kg;\n      |                               \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_01.sysml:11:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'MassValue' found.\n    11 |         attribute mass : MassValue = 150 kg;\n       |                          \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_01.sysml:18:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'MassValue' found.\n    18 |         attribute mass : MassValue;\n       |                          \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_01.sysml:19:35: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'AngleValue' found.\n    19 |         attribute steeringAngle : AngleValue;\n       |                                   \u001b[38;2;220;080;080m^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:23:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'MassValue' found.\n    23 |         attribute mass : MassValue = 250 kg;\n       |                          \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m\n\niteration_01.sysml:30:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'MassValue' found.\n    30 |         attribute mass : MassValue;\n       |                          \u001b[38;2;220;080;080m^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 399,
+      "output_tokens": 216,
+      "total_tokens": 615
+    },
+    "tokens_used_total": 615,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:17:36.255234Z",
+    "iteration_end": "2026-02-20T16:17:40.335553Z",
+    "iteration_duration_seconds": 4.080413000003318,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/124/20260220-111731/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/124/20260220-111731/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/124/20260220-111731/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1107,
+      "output_tokens": 213,
+      "total_tokens": 1320
+    },
+    "tokens_used_total": 1935,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

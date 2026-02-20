@@ -1,0 +1,164 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system model describes a vehicle structural architecture, whose core components include the vehicle as a whole, axle assemblies, front/rear axles, and wheels. The vehicle itself possesses an attribute for mass, enabling explicit definition of the total vehicle mass (such as 1750 kg and 2000 kg in the examples). Each vehicle contains front and rear axle assemblies, each comprising specific axle components and two sequentially arranged wheels. The front axle can optionally be configured with a special type that features a steering angle parameter. In certain vehicle configurations, the left and right wheels on both the front and rear axles can be distinctly identified and named, thus supporting the individual recognition and control of each wheel. The entire model is designed to provide a clear and flexible hierarchical combination of components and attribute descriptions for vehicle structural design and configuration, facilitating the needs of vehicle design, assembly, and subsequent maintenance management.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 4):
+                package VehicleStructuralArchitecture {
+    private import ScalarValues::*;
+
+    part def Vehicle {
+        attribute mass : Real;
+        part frontAxleAssembly : AxleAssembly;
+        part rearAxleAssembly : AxleAssembly;
+    }
+
+    part def AxleAssembly {
+        part axle : Axle;
+        part wheel1 : Wheel;
+        part wheel2 : Wheel;
+    }
+
+    part def Axle {
+        attribute isSteerable : Boolean = false;
+        attribute steeringAngle : Real = 0.0;
+    }
+
+    part def Wheel {
+        attribute name : String = "";
+    }
+
+    part vehicle1 {
+        :>> Vehicle;
+        mass = 1750.0;
+        frontAxleAssembly = {
+            :>> AxleAssembly;
+            axle = {
+                :>> Axle;
+                isSteerable = true;
+                steeringAngle = 0.0;
+            };
+            wheel1 = {
+                :>> Wheel;
+                name = "FrontLeft";
+            };
+            wheel2 = {
+                :>> Wheel;
+                name = "FrontRight";
+            };
+        };
+        rearAxleAssembly = {
+            :>> AxleAssembly;
+            axle = {
+                :>> Axle;
+            };
+            wheel1 = {
+                :>> Wheel;
+                name = "RearLeft";
+            };
+            wheel2 = {
+                :>> Wheel;
+                name = "RearRight";
+            };
+        };
+    }
+
+    part vehicle2 {
+        :>> Vehicle;
+        mass = 2000.0;
+        frontAxleAssembly = {
+            :>> AxleAssembly;
+            axle = {
+                :>> Axle;
+            };
+            wheel1 = {
+                :>> Wheel;
+            };
+            wheel2 = {
+                :>> Wheel;
+            };
+        };
+        rearAxleAssembly = {
+            :>> AxleAssembly;
+            axle = {
+                :>> Axle;
+            };
+            wheel1 = {
+                :>> Wheel;
+            };
+            wheel2 = {
+                :>> Wheel;
+            };
+        };
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_04.sysml:26:13: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Vehicle)
+    26 |         :>> Vehicle;
+       |             ^^^^^^^
+iteration_04.sysml:29:17: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::AxleAssembly)
+    29 |             :>> AxleAssembly;
+       |                 ^^^^^^^^^^^^
+iteration_04.sysml:31:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Axle)
+    31 |                 :>> Axle;
+       |                     ^^^^
+iteration_04.sysml:36:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Wheel)
+    36 |                 :>> Wheel;
+       |                     ^^^^^
+iteration_04.sysml:40:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Wheel)
+    40 |                 :>> Wheel;
+       |                     ^^^^^
+iteration_04.sysml:45:17: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::AxleAssembly)
+    45 |             :>> AxleAssembly;
+       |                 ^^^^^^^^^^^^
+iteration_04.sysml:47:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Axle)
+    47 |                 :>> Axle;
+       |                     ^^^^
+iteration_04.sysml:50:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Wheel)
+    50 |                 :>> Wheel;
+       |                     ^^^^^
+iteration_04.sysml:54:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Wheel)
+    54 |                 :>> Wheel;
+       |                     ^^^^^
+iteration_04.sysml:61:13: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Vehicle)
+    61 |         :>> Vehicle;
+       |             ^^^^^^^
+iteration_04.sysml:64:17: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::AxleAssembly)
+    64 |             :>> AxleAssembly;
+       |                 ^^^^^^^^^^^^
+iteration_04.sysml:66:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Axle)
+    66 |                 :>> Axle;
+       |                     ^^^^
+iteration_04.sysml:69:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Wheel)
+    69 |                 :>> Wheel;
+       |                     ^^^^^
+iteration_04.sysml:72:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Wheel)
+    72 |                 :>> Wheel;
+       |                     ^^^^^
+iteration_04.sysml:76:17: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::AxleAssembly)
+    76 |             :>> AxleAssembly;
+       |                 ^^^^^^^^^^^^
+iteration_04.sysml:78:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Axle)
+    78 |                 :>> Axle;
+       |                     ^^^^
+iteration_04.sysml:81:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Wheel)
+    81 |                 :>> Wheel;
+       |                     ^^^^^
+iteration_04.sysml:84:21: error (reference-error): Expected Feature element but found PartDefinition (VehicleStructuralArchitecture::Wheel)
+    84 |                 :>> Wheel;
+       |                     ^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

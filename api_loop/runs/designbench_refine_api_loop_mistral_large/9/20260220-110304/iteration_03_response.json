@@ -1,0 +1,34 @@
+{
+  "id": "e7376257d41a452c97e1f2ee1ec43e40",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage WheelAssembly {\n    private import ScalarValues::*;\n\n    part def WheelBearingUnit;\n    part def Tire;\n    part def Bead;\n    part def Hub;\n    part def Rim;\n    part def Bolt;\n    part def BoltMountingHole;\n    part def ThreadedHole;\n\n    port def PressFitPort;\n    port def BoltConnectionPort;\n\n    part wheelAssembly {\n        part bearingUnit : WheelBearingUnit;\n        part tire : Tire;\n        part bead1 : Bead;\n        part bead2 : Bead;\n        part hub : Hub;\n        part rim1 : Rim;\n        part rim2 : Rim;\n\n        attribute numMountingHoles : Integer = 5;\n        part mountingHoles : BoltMountingHole[numMountingHoles];\n        part threadedHoles : ThreadedHole[numMountingHoles];\n        part bolts : Bolt[numMountingHoles];\n\n        port pressFit1 : PressFitPort;\n        port pressFit2 : PressFitPort;\n        port boltPorts : BoltConnectionPort[numMountingHoles];\n    }\n\n    connect wheelAssembly.bead1 to wheelAssembly.rim1;\n    connect wheelAssembly.bead2 to wheelAssembly.rim2;\n\n    connect wheelAssembly.mountingHoles[0] to wheelAssembly.bolts[0];\n    connect wheelAssembly.bolts[0] to wheelAssembly.threadedHoles[0];\n    connect wheelAssembly.mountingHoles[1] to wheelAssembly.bolts[1];\n    connect wheelAssembly.bolts[1] to wheelAssembly.threadedHoles[1];\n    connect wheelAssembly.mountingHoles[2] to wheelAssembly.bolts[2];\n    connect wheelAssembly.bolts[2] to wheelAssembly.threadedHoles[2];\n    connect wheelAssembly.mountingHoles[3] to wheelAssembly.bolts[3];\n    connect wheelAssembly.bolts[3] to wheelAssembly.threadedHoles[3];\n    connect wheelAssembly.mountingHoles[4] to wheelAssembly.bolts[4];\n    connect wheelAssembly.bolts[4] to wheelAssembly.threadedHoles[4];\n\n    connect wheelAssembly.boltPorts[0] to wheelAssembly.bolts[0];\n    connect wheelAssembly.boltPorts[1] to wheelAssembly.bolts[1];\n    connect wheelAssembly.boltPorts[2] to wheelAssembly.bolts[2];\n    connect wheelAssembly.boltPorts[3] to wheelAssembly.bolts[3];\n    connect wheelAssembly.boltPorts[4] to wheelAssembly.bolts[4];\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603398,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 572,
+    "prompt_tokens": 2214,
+    "total_tokens": 2786,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

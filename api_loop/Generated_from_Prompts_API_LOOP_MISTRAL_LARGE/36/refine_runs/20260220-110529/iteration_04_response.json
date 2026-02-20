@@ -1,0 +1,34 @@
+{
+  "id": "f296822aa53046688c31f5b9683a5ac7",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleOperationalStatus {\n    private import ScalarValues::*;\n\n    enum def VehicleState {\n        enum off;\n        enum starting;\n        enum on;\n    }\n\n    item def VehicleStartSignal;\n    item def VehicleOnSignal;\n    item def VehicleOffSignal;\n\n    port def VehicleStartSignalPort {\n        in attribute signal : VehicleStartSignal;\n    }\n\n    port def VehicleOnSignalPort {\n        in attribute signal : VehicleOnSignal;\n    }\n\n    port def VehicleOffSignalPort {\n        in attribute signal : VehicleOffSignal;\n    }\n\n    part def Vehicle {\n        attribute currentState : VehicleState = off;\n        port startIn : VehicleStartSignalPort;\n        port onIn : VehicleOnSignalPort;\n        port offIn : VehicleOffSignalPort;\n    }\n\n    part vehicle : Vehicle;\n\n    part def SignalSource {\n        port startOut : VehicleStartSignalPort;\n        port onOut : VehicleOnSignalPort;\n        port offOut : VehicleOffSignalPort;\n    }\n\n    part signalSource : SignalSource;\n\n    connect vehicle.startIn to signalSource.startOut;\n    connect vehicle.onIn to signalSource.onOut;\n    connect vehicle.offIn to signalSource.offOut;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603542,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 250,
+    "prompt_tokens": 1874,
+    "total_tokens": 2124,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

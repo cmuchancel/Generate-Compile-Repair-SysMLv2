@@ -1,0 +1,34 @@
+{
+  "id": "ad232eb49ccc4367adad0d33d2269ceb",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleStructuralArchitecture {\n    private import ScalarValues::*;\n\n    part def Vehicle {\n        attribute mass : Real;\n        part frontAxleAssembly : AxleAssembly;\n        part rearAxleAssembly : AxleAssembly;\n    }\n\n    part def AxleAssembly {\n        part axle : Axle;\n        part wheel1 : Wheel;\n        part wheel2 : Wheel;\n    }\n\n    part def Axle {\n    }\n\n    part def FrontAxle specializes Axle {\n        attribute steeringAngle : Real;\n    }\n\n    part def Wheel {\n        attribute name : String;\n    }\n\n    part vehicle1 : Vehicle {\n        mass = 1750.0;\n        frontAxleAssembly = {\n            part axle : FrontAxle;\n            part wheel1 : Wheel;\n            part wheel2 : Wheel;\n        };\n        rearAxleAssembly = {\n            part axle : Axle;\n            part wheel1 : Wheel;\n            part wheel2 : Wheel;\n        };\n    }\n\n    part vehicle2 : Vehicle {\n        mass = 2000.0;\n        frontAxleAssembly = {\n            part axle : FrontAxle;\n            part wheel1 : Wheel;\n            part wheel2 : Wheel;\n        };\n        rearAxleAssembly = {\n            part axle : Axle;\n            part wheel1 : Wheel;\n            part wheel2 : Wheel;\n        };\n    }\n\n    part vehicle1_frontAxle : FrontAxle {\n        :>> vehicle1.frontAxleAssembly.axle;\n        steeringAngle = 0.0;\n    }\n\n    part vehicle1_leftFrontWheel : Wheel {\n        :>> vehicle1.frontAxleAssembly.wheel1;\n        name = \"Left Front Wheel\";\n    }\n\n    part vehicle1_rightFrontWheel : Wheel {\n        :>> vehicle1.frontAxleAssembly.wheel2;\n        name = \"Right Front Wheel\";\n    }\n\n    part vehicle1_leftRearWheel : Wheel {\n        :>> vehicle1.rearAxleAssembly.wheel1;\n        name = \"Left Rear Wheel\";\n    }\n\n    part vehicle1_rightRearWheel : Wheel {\n        :>> vehicle1.rearAxleAssembly.wheel2;\n        name = \"Right Rear Wheel\";\n    }\n\n    part vehicle2_frontAxle : FrontAxle {\n        :>> vehicle2.frontAxleAssembly.axle;\n        steeringAngle = 0.0;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604037,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 495,
+    "prompt_tokens": 1959,
+    "total_tokens": 2454,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

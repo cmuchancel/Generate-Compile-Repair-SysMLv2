@@ -1,0 +1,116 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system model describes the composition and basic attributes of a vehicle. The vehicle possesses attributes such as mass and operational status; its operational status includes gear setting and accelerator pedal position. The vehicle consists of an engine and a driver, with the driver being an external reference. The vehicle also contains multiple wheels, such as the left front wheel and right front wheel. In the model, a specific vehicle instance identified as “vehicle_1” is defined, where its left front and right front wheels are associated and described under different time snapshots to facilitate tracking of component status changes over time. This system model supports the management and tracking of vehicle structure, operational status, and key components, making it convenient for users to understand the system and for subsequent functional extensions.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 3):
+                package VehicleSystem {
+    private import ScalarValues::*;
+
+    enum def OperationalStatus {
+        enum NEUTRAL
+        enum DRIVE
+        enum REVERSE
+        enum PARK
+    }
+
+    part def Engine {
+        attribute mass : Real;
+    }
+
+    part def Wheel {
+        attribute mass : Real;
+    }
+
+    part def Driver {
+        attribute name : String;
+    }
+
+    part def Vehicle {
+        attribute mass : Real;
+        attribute operationalStatus : OperationalStatus = OperationalStatus::NEUTRAL;
+        attribute gear : OperationalStatus = OperationalStatus::NEUTRAL;
+        attribute acceleratorPedalPosition : Real = 0.0;
+
+        part engine : Engine;
+        part driver : Driver;
+        part leftFrontWheel : Wheel;
+        part rightFrontWheel : Wheel;
+    }
+
+    part vehicle_1 : Vehicle {
+        attribute mass : Real = 1500.0;
+        part leftFrontWheel : Wheel {
+            attribute mass : Real = 20.0;
+        }
+        part rightFrontWheel : Wheel {
+            attribute mass : Real = 20.0;
+        }
+    }
+
+    // Time snapshot 1
+    part vehicle_1_snapshot1 {
+        attribute time : Real = 0.0;
+        part vehicleRef : Vehicle = vehicle_1;
+        part leftFrontWheelRef : Wheel = vehicle_1.leftFrontWheel;
+        part rightFrontWheelRef : Wheel = vehicle_1.rightFrontWheel;
+    }
+
+    // Time snapshot 2
+    part vehicle_1_snapshot2 {
+        attribute time : Real = 1.0;
+        part vehicleRef : Vehicle = vehicle_1;
+        part leftFrontWheelRef : Wheel = vehicle_1.leftFrontWheel;
+        part rightFrontWheelRef : Wheel = vehicle_1.rightFrontWheel;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_03.sysml:6:9: error (parsing-error): Unexpected identifier, expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    6 |         enum DRIVE
+      |         ^^^^
+iteration_03.sysml:36:19: warning (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Vehicle::mass
+│   36 |         attribute mass : Real = 1500.0;
+│      |                   ^^^^
+└── iteration_03.sysml:24:19: note: Inherited from here
+    └── iteration_03.sysml:35:22: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+iteration_03.sysml:37:14: warning (namespace-distinguishability): Member name 'leftFrontWheel' shadows VehicleSystem::Vehicle::leftFrontWheel
+│   37 |         part leftFrontWheel : Wheel {
+│      |              ^^^^^^^^^^^^^^
+└── iteration_03.sysml:31:14: note: Inherited from here
+    └── iteration_03.sysml:35:22: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+iteration_03.sysml:38:23: warning (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Wheel::mass
+│   38 |             attribute mass : Real = 20.0;
+│      |                       ^^^^
+└── iteration_03.sysml:16:19: note: Inherited from here
+    └── iteration_03.sysml:37:31: note: Because VehicleSystem::Wheel is specialized through FeatureTyping
+iteration_03.sysml:40:14: warning (namespace-distinguishability): Member name 'rightFrontWheel' shadows VehicleSystem::Vehicle::rightFrontWheel
+│   40 |         part rightFrontWheel : Wheel {
+│      |              ^^^^^^^^^^^^^^^
+└── iteration_03.sysml:32:14: note: Inherited from here
+    └── iteration_03.sysml:35:22: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+iteration_03.sysml:41:23: warning (namespace-distinguishability): Member name 'mass' shadows VehicleSystem::Wheel::mass
+│   41 |             attribute mass : Real = 20.0;
+│      |                       ^^^^
+└── iteration_03.sysml:16:19: note: Inherited from here
+    └── iteration_03.sysml:40:32: note: Because VehicleSystem::Wheel is specialized through FeatureTyping
+iteration_03.sysml:25:78: error (reference-error): No Feature named 'NEUTRAL' found.
+    25 |         attribute operationalStatus : OperationalStatus = OperationalStatus::NEUTRAL;
+       |                                                                              ^^^^^^^
+iteration_03.sysml:26:65: error (reference-error): No Feature named 'NEUTRAL' found.
+    26 |         attribute gear : OperationalStatus = OperationalStatus::NEUTRAL;
+       |                                                                 ^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,34 @@
+{
+  "id": "5ed0a0abd16a4276b4247c9468c31fe4",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage BatteryRiskAnalysis {\n    private import ScalarValues::*;\n\n    enum def SeverityLevel {\n        enum low;\n        enum medium;\n        enum high;\n        enum critical;\n    }\n\n    part def Battery {\n        attribute level : Real;\n        attribute agingFactor : Real = 0.0;\n        attribute minThreshold : Real = 20.0;\n        attribute isLow : Boolean = false;\n        attribute failureProbability : Real = 0.0;\n    }\n\n    part def Device {\n        part battery : Battery;\n        attribute isShutdown : Boolean = false;\n    }\n\n    part def RiskAnalyzer {\n        attribute detectedRisk : String;\n        attribute severity : SeverityLevel;\n    }\n\n    part system : Device {\n        part analyzer : RiskAnalyzer;\n    }\n\n    connect system.battery to system.analyzer;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603957,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 177,
+    "prompt_tokens": 440,
+    "total_tokens": 617,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

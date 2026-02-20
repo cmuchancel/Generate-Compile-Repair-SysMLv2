@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:05:52.601574Z",
+    "iteration_end": "2026-02-20T16:05:58.910980Z",
+    "iteration_duration_seconds": 6.309292249992723,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/47/20260220-110552/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/47/20260220-110552/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/47/20260220-110552/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:25:50: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ':', expected one of [\"SINGLE_LINE_NOTE\", \"[\", \":>\", \":\", \"=\", \"subsets\", \"defined\", \"ordered\", \"nonunique\", \"MULTILINE_NOTE\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"MultiplicityRange\", \"OwningMembership\", \";\", \"{\", \"from\", \":=\", \"default\", \"by\", \"then\", \"of\", \"accept\", \"send\", \"assign\", \"parallel\"].\n    25 |         attribute calculateThrottle(currentSpeed : Real) : Real {\n       |                                                  \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:25:56: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ')', expected one of [\"SINGLE_LINE_NOTE\", \"::\", \"ElementReference_repeat1\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \",\", \"[\", \"ordered\", \"nonunique\", \".\", \":=\", \"default\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"of\", \"accept\", \"send\", \"assign\", \"parallel\"].\n    25 |         attribute calculateThrottle(currentSpeed : Real) : Real {\n       |                                                        \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:27:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'REAL_VALUE'.\n    27 |             return 0.0;\n       |                    \u001b[38;2;220;080;080m^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 391,
+      "output_tokens": 288,
+      "total_tokens": 679
+    },
+    "tokens_used_total": 679,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:05:58.911091Z",
+    "iteration_end": "2026-02-20T16:06:03.317062Z",
+    "iteration_duration_seconds": 4.405959750001784,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/47/20260220-110552/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/47/20260220-110552/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/47/20260220-110552/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1068,
+      "output_tokens": 269,
+      "total_tokens": 1337
+    },
+    "tokens_used_total": 2016,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

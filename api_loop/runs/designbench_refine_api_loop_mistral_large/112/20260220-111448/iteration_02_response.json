@@ -1,0 +1,34 @@
+{
+  "id": "ec18c04fc95c42b08a2b0a97b70a3c00",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleControlSystem {\n    private import ScalarValues::*;\n\n    enum def VehicleState {\n        enum Off;\n        enum Starting;\n        enum Running;\n        enum Degraded;\n        enum Maintenance;\n    }\n\n    enum def HealthStatus {\n        enum Normal;\n        enum OverTemperature;\n    }\n\n    part def VehicleA {\n        attribute currentState : VehicleState = VehicleState::Off;\n        attribute health : HealthStatus = HealthStatus::Normal;\n        attribute temperature : Real;\n        attribute safetyThreshold : Real = 100.0;\n        attribute brakePressed : Boolean = false;\n        attribute startSignal : Boolean = false;\n        attribute vehicleOnSignal : Boolean = false;\n        attribute restoreToNormalSignal : Boolean = false;\n        attribute parkingBrakeApplied : Boolean = false;\n\n        port startUpPort : StartUpPort;\n        port healthMonitorPort : HealthMonitorPort;\n        port controllerPort : ControllerPort;\n    }\n\n    part def VehicleController {\n        attribute controllerState : VehicleState = VehicleState::Off;\n\n        port controlPort : ControllerPort;\n    }\n\n    port def StartUpPort {\n        attribute brakeInput : Boolean;\n        attribute startInput : Boolean;\n        attribute vehicleOnOutput : Boolean;\n    }\n\n    port def HealthMonitorPort {\n        attribute temperatureInput : Real;\n        attribute healthOutput : HealthStatus;\n        attribute overTempOutput : Boolean;\n    }\n\n    port def ControllerPort {\n        attribute stateInput : VehicleState;\n        attribute stateOutput : VehicleState;\n        attribute restoreSignal : Boolean;\n    }\n\n    part vehicle : VehicleA;\n    part controller : VehicleController;\n\n    connect vehicle.startUpPort to controller.controlPort;\n    connect vehicle.healthMonitorPort to controller.controlPort;\n    connect controller.controlPort to vehicle.controllerPort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604098,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 365,
+    "prompt_tokens": 1055,
+    "total_tokens": 1420,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

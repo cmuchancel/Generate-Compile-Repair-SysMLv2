@@ -1,0 +1,34 @@
+{
+  "id": "ea1816627490451e9c478b680486c0cd",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage AutomotiveSystem {\n    private import ScalarValues::*;\n\n    enum def SafetyStatus {\n        enum mandatory;\n        enum optional;\n    }\n\n    part def AutomotiveSystem {\n        part root : Vehicle;\n    }\n\n    part def Vehicle {\n        part chassis : Chassis;\n        part powertrain : Powertrain;\n        part safetySystem : SafetySystem;\n        part infotainment : Infotainment;\n        part body : Body;\n    }\n\n    part def Chassis {\n        part suspension : Suspension;\n        part steering : Steering;\n        part braking : Braking;\n    }\n\n    part def Powertrain {\n        part engine : Engine;\n        part transmission : Transmission;\n        part drivetrain : Drivetrain;\n    }\n\n    part def SafetySystem {\n        attribute safetyStatus : SafetyStatus;\n\n        part seatBelts : SeatBelts {\n            attribute safetyStatus : SafetyStatus = SafetyStatus::mandatory;\n        }\n        part bumpers : Bumpers {\n            attribute safetyStatus : SafetyStatus = SafetyStatus::mandatory;\n        }\n        part driverAirbags : DriverAirbags {\n            attribute safetyStatus : SafetyStatus = SafetyStatus::optional;\n        }\n        part abs : ABS {\n            attribute safetyStatus : SafetyStatus = SafetyStatus::optional;\n        }\n    }\n\n    part def Infotainment {\n        part headUnit : HeadUnit;\n        part speakers : Speakers;\n    }\n\n    part def Body {\n        part doors : Doors;\n        part windows : Windows;\n    }\n\n    part def SeatBelts;\n    part def Bumpers;\n    part def DriverAirbags;\n    part def ABS;\n    part def Suspension;\n    part def Steering;\n    part def Braking;\n    part def Engine;\n    part def Transmission;\n    part def Drivetrain;\n    part def HeadUnit;\n    part def Speakers;\n    part def Doors;\n    part def Windows;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603964,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 402,
+    "prompt_tokens": 2178,
+    "total_tokens": 2580,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "54d2f0b36a2741ec90d6d01bfc115931",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage AutomotiveSystem {\n    private import ScalarValues::*;\n\n    part def Car {\n        attribute totalMass : Real = 1200.0;\n        attribute length : Real = 4.82;\n        part wheelAssemblies : WheelAssembly[4];\n    }\n\n    part def WheelAssembly {\n        part wheel : Wheel;\n        part brakeDisc : BrakeDisc;\n    }\n\n    part def Wheel {\n        part rim : Rim;\n        part tire : Tire;\n        attribute outerDiameter : Real = (rim.diameter) + (2 * (tire.width * tire.height / 100.0));\n    }\n\n    part def Rim {\n        attribute diameterInches : Real = 18.0;\n        attribute diameter : Real = diameterInches * 25.4;\n    }\n\n    part def Tire {\n        attribute width : Real = 245.0;\n        attribute height : Real = 45.0;\n        attribute treadDepth : Real = 6.0;\n        attribute minTreadDepth : Real = 3.5;\n    }\n\n    part def BrakeDisc {\n        attribute radius : Real = 95.0;\n        attribute diameter : Real = radius * 2;\n    }\n\n    requirement TreadDepthRequirement {\n        attribute description : String = \"Tire tread depth must not be less than 3.5 millimeters.\";\n        attribute satisfied : Boolean = carWheelAssembly.wheel.tire.treadDepth >= carWheelAssembly.wheel.tire.minTreadDepth;\n    }\n\n    requirement BrakeDiscFitmentRequirement {\n        attribute description : String = \"Brake disc diameter must be less than wheel outer diameter.\";\n        attribute satisfied : Boolean = carWheelAssembly.brakeDisc.diameter < carWheelAssembly.wheel.outerDiameter;\n    }\n\n    part car : Car;\n    part carWheelAssembly : WheelAssembly;\n    part carWheel : Wheel;\n    part carRim : Rim;\n    part carTire : Tire;\n    part carBrakeDisc : BrakeDisc;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604361,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 432,
+    "prompt_tokens": 1554,
+    "total_tokens": 1986,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

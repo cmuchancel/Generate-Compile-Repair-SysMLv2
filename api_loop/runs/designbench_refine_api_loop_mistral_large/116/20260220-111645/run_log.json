@@ -1,0 +1,107 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:16:45.984460Z",
+    "iteration_end": "2026-02-20T16:16:52.143091Z",
+    "iteration_duration_seconds": 6.158561207994353,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:18:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |         attribute variant : ComponentVariant = ComponentVariant::basic;\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:47:27: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    47 |                 attribute variant : ComponentVariant = ComponentVariant::extended;\n       |                           \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_01.sysml:49:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';', expected one of [\"end\", \"NAME\", \";\", \"{\", \"}\", \"dependency\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"alias\", \"for\", \"import\", \"all\", \"*\", \"[\", \"abstract\", \"in\", \"inout\", \"out\", \"derived\", \"end\", \"ordered\", \"nonunique\", \"if\", \"else\", \"+\", \"-\", \"<\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \"(\", \"null\", \"metadata\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"standard\", \"library\", \"package\", \"filter\", \"variation\", \"variant\", \"constant\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"individual\", \"timeslice\", \"snapshot\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"merge\", \"decide\", \"join\", \"fork\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"entry\", \"do\", \"exit\", \"exhibit\", \"transition\", \"calc\", \"return\", \"constraint\", \"assert\", \"requirement\", \"subject\", \"assume\", \"require\", \"frame\", \"concern\", \"actor\", \"stakeholder\", \"satisfy\", \"case\", \"objective\", \"analysis\", \"verification\", \"verify\", \"use\", \"include\", \"view\", \"render\", \"rendering\", \"expose\", \"viewpoint\"].\n    49 |         };\n       |          \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:46:18: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'part5' shadows modular_vehicle_platform::SubsystemB::part5\n\u2502   46 |             part part5 : Part5 {\n\u2502      |                  \u001b[38;2;204;204;057m^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:31:14: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:45:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because modular_vehicle_platform::SubsystemB is specialized through FeatureTyping",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 472,
+      "output_tokens": 300,
+      "total_tokens": 772
+    },
+    "tokens_used_total": 772,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:16:52.143165Z",
+    "iteration_end": "2026-02-20T16:16:57.139506Z",
+    "iteration_duration_seconds": 4.99630574999901,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:46:27: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    46 |                 attribute variant : ComponentVariant = ComponentVariant::extended;\n       |                           \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_02.sysml:48:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected ';', expected one of [\"end\", \"NAME\", \";\", \"{\", \"}\", \"dependency\", \"locale\", \"comment\", \"doc\", \"rep\", \"language\", \"private\", \"protected\", \"public\", \"alias\", \"for\", \"import\", \"all\", \"*\", \"[\", \"abstract\", \"in\", \"inout\", \"out\", \"derived\", \"end\", \"ordered\", \"nonunique\", \"if\", \"else\", \"+\", \"-\", \"<\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \"(\", \"null\", \"metadata\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"REGULAR_COMMENT\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \":>\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"$\", \":\", \"defined\", \"standard\", \"library\", \"package\", \"filter\", \"variation\", \"variant\", \"constant\", \"ref\", \"attribute\", \"enum\", \"occurrence\", \"individual\", \"timeslice\", \"snapshot\", \"event\", \"then\", \"item\", \"part\", \"port\", \"connection\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"flow\", \"message\", \"interface\", \"allocation\", \"allocate\", \"action\", \"perform\", \"merge\", \"decide\", \"join\", \"fork\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"state\", \"entry\", \"do\", \"exit\", \"exhibit\", \"transition\", \"calc\", \"return\", \"constraint\", \"assert\", \"requirement\", \"subject\", \"assume\", \"require\", \"frame\", \"concern\", \"actor\", \"stakeholder\", \"satisfy\", \"case\", \"objective\", \"analysis\", \"verification\", \"verify\", \"use\", \"include\", \"view\", \"render\", \"rendering\", \"expose\", \"viewpoint\"].\n    48 |         };\n       |          \u001b[38;2;220;080;080m^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1703,
+      "output_tokens": 289,
+      "total_tokens": 1992
+    },
+    "tokens_used_total": 2764,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:16:57.139581Z",
+    "iteration_end": "2026-02-20T16:17:02.807186Z",
+    "iteration_duration_seconds": 5.667584875001921,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:18:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |         attribute variant : ComponentVariant;\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_03.sysml:47:27: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    47 |                 attribute variant : ComponentVariant = ComponentVariant::extended;\n       |                           \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1429,
+      "output_tokens": 296,
+      "total_tokens": 1725
+    },
+    "tokens_used_total": 4489,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T16:17:02.807289Z",
+    "iteration_end": "2026-02-20T16:17:07.333730Z",
+    "iteration_duration_seconds": 4.526395584005513,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_04_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_04.sysml:18:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |         attribute variant : ComponentVariant = ComponentVariant::basic;\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_04.sysml:47:27: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    47 |                 attribute variant : ComponentVariant = ComponentVariant::extended;\n       |                           \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1091,
+      "output_tokens": 304,
+      "total_tokens": 1395
+    },
+    "tokens_used_total": 5884,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 5,
+    "iteration_start": "2026-02-20T16:17:07.333787Z",
+    "iteration_end": "2026-02-20T16:17:14.472987Z",
+    "iteration_duration_seconds": 7.1391074580024,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_05.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_05_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/116/20260220-111645/iteration_05_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_05.sysml:18:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |         attribute variant : ComponentVariant;\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_05.sysml:41:27: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    41 |                 attribute variant : ComponentVariant = ComponentVariant::basic;\n       |                           \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_05.sysml:53:27: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'variant', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    53 |                 attribute variant : ComponentVariant = ComponentVariant::extended;\n       |                           \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_05.sysml:40:18: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'part5' shadows modular_vehicle_platform::SubsystemB::part5\n\u2502   40 |             part part5 : Part5 {\n\u2502      |                  \u001b[38;2;204;204;057m^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_05.sysml:32:14: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_05.sysml:39:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because modular_vehicle_platform::SubsystemB is specialized through FeatureTyping\n\niteration_05.sysml:42:27: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'variant_basic' shadows modular_vehicle_platform::Part5::variant_basic\n\u2502   42 |                 attribute variant_basic : Boolean = true;\n\u2502      |                           \u001b[38;2;204;204;057m^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_05.sysml:19:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_05.sysml:40:26: \u001b[38;2;255;255;255mnote\u001b[0m: Because modular_vehicle_platform::Part5 is specialized through FeatureTyping\n\niteration_05.sysml:54:27: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'variant_basic' shadows modular_vehicle_platform::Part5::variant_basic\n\u2502   54 |                 attribute variant_basic : Boolean = false;\n\u2502      |                           \u001b[38;2;204;204;057m^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_05.sysml:19:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_05.sysml:52:34: \u001b[38;2;255;255;255mnote\u001b[0m: Because modular_vehicle_platform::Part5 is specialized through FeatureTyping",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1101,
+      "output_tokens": 350,
+      "total_tokens": 1451
+    },
+    "tokens_used_total": 7335,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

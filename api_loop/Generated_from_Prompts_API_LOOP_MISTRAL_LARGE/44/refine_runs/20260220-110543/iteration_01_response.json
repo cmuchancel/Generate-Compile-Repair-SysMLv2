@@ -1,0 +1,34 @@
+{
+  "id": "0f83b0a85e1f4032977a1473c80aed53",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage CruiseControlSystem {\n    private import ScalarValues::*;\n\n    enum def ActivationStatus {\n        enum active;\n        enum inactive;\n    }\n\n    part def Driver {\n        attribute desiredSpeed : Real;\n        port setSpeedPort : SetSpeedPort;\n    }\n\n    part def CruiseController {\n        attribute currentSpeed : Real;\n        attribute setSpeed : Real;\n        attribute status : ActivationStatus = ActivationStatus::inactive;\n        port speedInputPort : SpeedInputPort;\n        port fuelControlPort : FuelControlPort;\n    }\n\n    part def Speedometer {\n        attribute actualSpeed : Real;\n        port speedOutputPort : SpeedOutputPort;\n    }\n\n    part def Engine {\n        port fuelInputPort : FuelInputPort;\n    }\n\n    part def Vehicle {\n        part driver : Driver;\n        part cruiseController : CruiseController;\n        part speedometer : Speedometer;\n        part engine : Engine;\n    }\n\n    port def SetSpeedPort;\n    port def SpeedInputPort;\n    port def SpeedOutputPort;\n    port def FuelControlPort;\n    port def FuelInputPort;\n\n    item def SpeedCommand {\n        attribute speed : Real;\n    }\n\n    item def FuelCommand {\n        attribute fuelRate : Real;\n    }\n\n    part vehicle : Vehicle;\n\n    connect vehicle.driver.setSpeedPort to vehicle.cruiseController.speedInputPort;\n    connect vehicle.speedometer.speedOutputPort to vehicle.cruiseController.speedInputPort;\n    connect vehicle.cruiseController.fuelControlPort to vehicle.engine.fuelInputPort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603544,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 316,
+    "prompt_tokens": 392,
+    "total_tokens": 708,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

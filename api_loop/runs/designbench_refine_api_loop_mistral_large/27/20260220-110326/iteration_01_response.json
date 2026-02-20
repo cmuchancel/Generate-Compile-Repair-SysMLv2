@@ -1,0 +1,34 @@
+{
+  "id": "4ae2015c0ca14c5ebe7833bdf948f7cd",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage BatteryChargingControlSystem {\n    private import ScalarValues::*;\n\n    enum def ChargingState {\n        enum IDLE;\n        enum CHARGING;\n        enum FULL;\n    }\n\n    part def Battery {\n        attribute capacity : Real;\n        attribute currentLevel : Real = 0.0;\n        attribute isCharging : Boolean = false;\n    }\n\n    part def Charger {\n        port powerOut : PowerPort;\n    }\n\n    port def PowerPort {\n    }\n\n    part def ChargeController {\n        attribute state : ChargingState = ChargingState::IDLE;\n        attribute threshold : Real = 100.0;\n\n        part battery : Battery;\n        part charger : Charger;\n\n        port monitor : MonitorPort;\n        port control : ControlPort;\n    }\n\n    port def MonitorPort {\n    }\n\n    port def ControlPort {\n    }\n\n    part system : ChargeController;\n\n    connect system.battery to system.monitor;\n    connect system.charger.powerOut to system.control;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603407,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 214,
+    "prompt_tokens": 356,
+    "total_tokens": 570,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 320
+    }
+  }
+}

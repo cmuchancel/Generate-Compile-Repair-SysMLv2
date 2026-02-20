@@ -1,0 +1,34 @@
+{
+  "id": "bf05f2f1a777488db7b053dc24a95137",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage CruiseControlSystem {\n    private import ScalarValues::*;\n\n    enum def SpeedUnit {\n        enum MPH;\n        enum KPH;\n    }\n\n    part def SpeedSensor {\n        attribute currentSpeed : Real;\n        attribute speedUnit : SpeedUnit = SpeedUnit::KPH;\n        port speedOut : SpeedOutputPort;\n    }\n\n    part def CruiseController {\n        port speedIn : SpeedInputPort;\n        port setSpeedIn : SetSpeedInputPort;\n        port fuelCommandOut : FuelCommandOutputPort;\n    }\n\n    part def EngineController {\n        port fuelCommandIn : FuelCommandInputPort;\n        port fuelCommandOut : FuelCommandOutputPort;\n    }\n\n    part def Engine {\n        port fuelCommandIn : FuelCommandInputPort;\n    }\n\n    port def SpeedOutputPort {\n        attribute speed : Real;\n    }\n\n    port def SpeedInputPort {\n        attribute speed : Real;\n    }\n\n    port def SetSpeedInputPort {\n        attribute setSpeed : Real;\n    }\n\n    port def FuelCommandOutputPort {\n        attribute commandValue : Real;\n    }\n\n    port def FuelCommandInputPort {\n        attribute commandValue : Real;\n    }\n\n    part vehicle {\n        part speedSensor : SpeedSensor;\n        part cruiseController : CruiseController;\n        part engineController : EngineController;\n        part engine : Engine;\n        port setSpeedPort : SetSpeedInputPort;\n    }\n\n    connect vehicle.speedSensor.speedOut to vehicle.cruiseController.speedIn;\n    connect vehicle.setSpeedPort to vehicle.cruiseController.setSpeedIn;\n    connect vehicle.cruiseController.fuelCommandOut to vehicle.engineController.fuelCommandIn;\n    connect vehicle.engineController.fuelCommandOut to vehicle.engine.fuelCommandIn;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603570,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 357,
+    "prompt_tokens": 855,
+    "total_tokens": 1212,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

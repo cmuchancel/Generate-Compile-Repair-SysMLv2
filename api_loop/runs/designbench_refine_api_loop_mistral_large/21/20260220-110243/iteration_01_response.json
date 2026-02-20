@@ -1,0 +1,34 @@
+{
+  "id": "1392c3a75b88476caab8b39c649e7fbd",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomatedPhotographySystem {\n    private import ScalarValues::*;\n\n    enum def FocusState {\n        enum UNFOCUSED;\n        enum FOCUSING;\n        enum FOCUSED;\n    }\n\n    enum def ShootingState {\n        enum IDLE;\n        enum PROCESSING;\n        enum COMPLETED;\n    }\n\n    part def Scene {\n        attribute description : String;\n    }\n\n    part def FocusProcessor {\n        attribute currentState : FocusState = FocusState::UNFOCUSED;\n        port focusInput : Scene;\n        port focusOutput : Image;\n    }\n\n    part def Shooter {\n        attribute currentState : ShootingState = ShootingState::IDLE;\n        port shootingInput : Image;\n        port shootingOutput : Photograph;\n    }\n\n    part def Image;\n    part def Photograph;\n\n    part system :> FocusProcessor, Shooter {\n        part scene : Scene;\n        part focusProcessor : FocusProcessor;\n        part shooter : Shooter;\n        part finalPhotograph : Photograph;\n\n        connect scene to focusProcessor.focusInput;\n        connect focusProcessor.focusOutput to shooter.shootingInput;\n        connect shooter.shootingOutput to finalPhotograph;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603364,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 255,
+    "prompt_tokens": 330,
+    "total_tokens": 585,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

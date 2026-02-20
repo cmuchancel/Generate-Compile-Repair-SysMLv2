@@ -1,0 +1,34 @@
+{
+  "id": "38175df765d14b00a3a480e2d3e934b7",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomotiveDomain {\n    private import ScalarValues::*;\n\n    /* Core automobile definition with alias */\n    part def \u6c7d\u8f66 {\n        alias: \u6c7d\u8f66 (Car);\n        doc /* The central component representing an automobile in the model. */\n    }\n\n    /* Physical quantities for automotive characteristics */\n    attribute def \u626d\u77e9 : ScalarValues::Real {\n        doc /* Torque, measured in Newton-meters (Nm). */\n    }\n\n    /* Additional automotive physical quantities */\n    attribute def \u901f\u5ea6 : ScalarValues::Real {\n        doc /* Speed, measured in kilometers per hour (km/h). */\n    }\n\n    attribute def \u529f\u7387 : ScalarValues::Real {\n        doc /* Power, measured in kilowatts (kW). */\n    }\n\n    attribute def \u6cb9\u8017 : ScalarValues::Real {\n        doc /* Fuel consumption, measured in liters per 100 kilometers (L/100km). */\n    }\n\n    /* Example automobile instance */\n    part myCar : \u6c7d\u8f66 {\n        attribute torque : \u626d\u77e9 = 350.0;\n        attribute speed : \u901f\u5ea6 = 0.0;\n        attribute power : \u529f\u7387 = 150.0;\n        attribute fuelConsumption : \u6cb9\u8017 = 6.5;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603957,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 283,
+    "prompt_tokens": 378,
+    "total_tokens": 661,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

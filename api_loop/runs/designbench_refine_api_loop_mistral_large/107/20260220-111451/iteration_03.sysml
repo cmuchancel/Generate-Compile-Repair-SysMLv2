@@ -1,0 +1,30 @@
+package VehicleTrailerHitchSystem {
+    private import ScalarValues::*;
+
+    enum def HitchStatus {
+        enum connected;
+        enum disconnected;
+    }
+
+    part def VehicleFrame;
+    part def TrailerFrame;
+    part def HitchBall;
+    part def TrailerCoupler;
+
+    part def Vehicle {
+        part frame : VehicleFrame;
+        part hitchBall : HitchBall;
+        attribute status : HitchStatus = HitchStatus::disconnected;
+    }
+
+    part def Trailer {
+        part frame : TrailerFrame;
+        part coupler : TrailerCoupler;
+        attribute status : HitchStatus = HitchStatus::disconnected;
+    }
+
+    part vehicle : Vehicle;
+    part trailer : Trailer;
+
+    connect vehicle.hitchBall to trailer.coupler;
+}

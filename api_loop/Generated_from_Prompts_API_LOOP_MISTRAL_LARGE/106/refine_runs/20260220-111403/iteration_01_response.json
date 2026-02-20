@@ -1,0 +1,34 @@
+{
+  "id": "e722ff8b434e4902a6be779aad8a0638",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehiclePowertrainManagement {\n    private import ScalarValues::*;\n\n    enum def EngineSignal {\n        enum START;\n        enum SHUTDOWN;\n    }\n\n    part def Engine {\n        attribute fuelCommand : Real;\n        attribute outputTorque : Real;\n        attribute engineSignal : EngineSignal;\n    }\n\n    part def Transmission {\n        attribute amplifiedTorque : Real;\n    }\n\n    part def Wheel {\n        attribute distributedTorque : Real;\n    }\n\n    part def PowertrainSystem {\n        part engine : Engine;\n        part transmission : Transmission;\n        part frontLeftWheel : Wheel;\n        part frontRightWheel : Wheel;\n        part rearLeftWheel : Wheel;\n        part rearRightWheel : Wheel;\n\n        connect engine to transmission;\n        connect transmission to frontLeftWheel;\n        connect transmission to frontRightWheel;\n        connect transmission to rearLeftWheel;\n        connect transmission to rearRightWheel;\n    }\n\n    item def Torque;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604044,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 198,
+    "prompt_tokens": 374,
+    "total_tokens": 572,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

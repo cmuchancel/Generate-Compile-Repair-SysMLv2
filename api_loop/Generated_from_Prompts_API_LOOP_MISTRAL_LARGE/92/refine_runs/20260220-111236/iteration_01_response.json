@@ -1,0 +1,34 @@
+{
+  "id": "41b93097bcbb4ae9be587011b6783df7",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage StructuralDecomposition {\n    private import ScalarValues::*;\n\n    part def System {\n        attribute name : String = \"TopLevelSystem\";\n        part subsystem1 : Subsystem;\n        part subsystem2 : Subsystem;\n        part subsystem3 : Subsystem;\n\n        port def SystemPort {\n            attribute protocol : String;\n        }\n\n        port systemPort1 : SystemPort;\n        port systemPort2 : SystemPort;\n    }\n\n    part def Subsystem {\n        attribute name : String;\n        part component1 : Component;\n        part component2 : Component;\n\n        port def SubsystemPort {\n            attribute protocol : String;\n        }\n\n        port subsystemPort1 : SubsystemPort;\n        port subsystemPort2 : SubsystemPort;\n    }\n\n    part def Component {\n        attribute name : String;\n        attribute function : String;\n\n        port def ComponentPort {\n            attribute protocol : String;\n        }\n\n        port componentPort1 : ComponentPort;\n        port componentPort2 : ComponentPort;\n    }\n\n    part topSystem : System;\n\n    connect topSystem.subsystem1.subsystemPort1 to topSystem.subsystem2.subsystemPort1;\n    connect topSystem.subsystem2.subsystemPort2 to topSystem.subsystem3.subsystemPort1;\n    connect topSystem.subsystem1.component1.componentPort1 to topSystem.subsystem1.component2.componentPort1;\n    connect topSystem.subsystem2.component1.componentPort1 to topSystem.subsystem2.component2.componentPort1;\n    connect topSystem.subsystem3.component1.componentPort1 to topSystem.subsystem3.component2.componentPort1;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603957,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 331,
+    "prompt_tokens": 370,
+    "total_tokens": 701,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

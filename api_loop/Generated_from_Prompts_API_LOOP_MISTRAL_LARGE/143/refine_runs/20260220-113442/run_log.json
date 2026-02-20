@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:34:42.579413Z",
+    "iteration_end": "2026-02-20T16:34:48.819086Z",
+    "iteration_duration_seconds": 6.23962045799999,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-113442/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-113442/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-113442/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:33:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '=', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    33 |             level == StatusColor::red => \"red\"\n       |                   \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:33:39: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '=', expected one of [\";\", \"{\", \"}\", \"dependency\", \"from\", \",\", \"to\", \"about\", \"::\", \"**\", \"*\", \"[\", \"]\", \".\", \"if\", \"?\", \"else\", \"??\", \"implies\", \"or\", \"and\", \"+\", \"-\", \"|\", \"&\", \"xor\", \"==\", \"!=\", \"===\", \"!==\", \"<\", \">\", \"<=\", \">=\", \"..\", \"/\", \"%\", \"^\", \"hastype\", \"istype\", \"@\", \"as\", \"@@\", \"meta\", \"#\", \"(\", \")\", \".?\", \"->\", \"=\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"by\", \"package\", \"attribute\", \"enum\", \"then\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"of\", \"action\", \"merge\", \"decide\", \"join\", \"fork\", \"via\", \"parallel\", \"do\"].\n    33 |             level == StatusColor::red => \"red\"\n       |                                       \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:34:13: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    34 |             level == StatusColor::yellow => \"yellow\"\n       |             \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:34:42: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '=', expected one of [\";\", \"{\", \"}\", \"dependency\", \"from\", \",\", \"to\", \"about\", \"::\", \"**\", \"*\", \"[\", \"]\", \".\", \"if\", \"?\", \"else\", \"??\", \"implies\", \"or\", \"and\", \"+\", \"-\", \"|\", \"&\", \"xor\", \"==\", \"!=\", \"===\", \"!==\", \"<\", \">\", \"<=\", \">=\", \"..\", \"/\", \"%\", \"^\", \"hastype\", \"istype\", \"@\", \"as\", \"@@\", \"meta\", \"#\", \"(\", \")\", \".?\", \"->\", \"=\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"by\", \"package\", \"attribute\", \"enum\", \"then\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"of\", \"action\", \"merge\", \"decide\", \"join\", \"fork\", \"via\", \"parallel\", \"do\"].\n    34 |             level == StatusColor::yellow => \"yellow\"\n       |                                          \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:35:13: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    35 |             level == StatusColor::green => \"green\"\n       |             \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:35:41: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '=', expected one of [\";\", \"{\", \"}\", \"dependency\", \"from\", \",\", \"to\", \"about\", \"::\", \"**\", \"*\", \"[\", \"]\", \".\", \"if\", \"?\", \"else\", \"??\", \"implies\", \"or\", \"and\", \"+\", \"-\", \"|\", \"&\", \"xor\", \"==\", \"!=\", \"===\", \"!==\", \"<\", \">\", \"<=\", \">=\", \"..\", \"/\", \"%\", \"^\", \"hastype\", \"istype\", \"@\", \"as\", \"@@\", \"meta\", \"#\", \"(\", \")\", \".?\", \"->\", \"=\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"by\", \"package\", \"attribute\", \"enum\", \"then\", \"connect\", \"binding\", \"bind\", \"succession\", \"first\", \"of\", \"action\", \"merge\", \"decide\", \"join\", \"fork\", \"via\", \"parallel\", \"do\"].\n    35 |             level == StatusColor::green => \"green\"\n       |                                         \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:36:9: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}', expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"*\", \".\", \"?\", \"-\", \"==\", \"!=\", \"<\", \">\", \"/\", \";\", \"{\", \"}\", \"from\", \",\", \"to\", \"**\", \"[\", \"]\", \"if\", \"else\", \"??\", \"implies\", \"or\", \"and\", \"+\", \"|\", \"&\", \"xor\", \"===\", \"!==\", \"<=\", \">=\", \"..\", \"%\", \"^\", \"hastype\", \"istype\", \"@\", \"as\", \"#\", \")\", \".?\", \"->\", \"by\", \"then\", \"connect\", \"of\", \"action\", \"via\", \"parallel\", \"do\"].\n    36 |         };\n       |         \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:52:2: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget '}'? (\u001b[38;2;220;080;080mno source underlining available since segment is out of bounds\u001b[0m)\n\niteration_01.sysml:32:36: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'switch' found.\n    32 |         attribute color : String = switch {\n       |                                    \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:46:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'DateTime' found.\n    46 |         attribute dateTime : DateTime;\n       |                              \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 439,
+      "output_tokens": 277,
+      "total_tokens": 716
+    },
+    "tokens_used_total": 716,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:34:48.819156Z",
+    "iteration_end": "2026-02-20T16:34:53.452668Z",
+    "iteration_duration_seconds": 4.633545666001737,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-113442/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-113442/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/143/20260220-113442/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 2083,
+      "output_tokens": 234,
+      "total_tokens": 2317
+    },
+    "tokens_used_total": 3033,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:06:42.273103Z",
+    "iteration_end": "2026-02-20T16:06:48.979870Z",
+    "iteration_duration_seconds": 6.706681083000149,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/59/20260220-110641/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/59/20260220-110641/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/59/20260220-110641/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:59:50: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '::'.\n    59 |         connect controller.stateOutput to vehicle::(currentSpeed, currentPosition, currentAcceleration);\n       |                                                  \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:59:52: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '(', expected one of [\"SINGLE_LINE_NOTE\", \"[\", \"$\", \"NAME\", \"(\", \"ElementReference\", \"MULTILINE_NOTE\", \"MultiplicityRange\", \"OwningMembership\", \"ReferenceSubsetting\", \"Feature\", \"Feature\", \"OwningMembership\", \"FeatureChaining\", \"EndFeatureMembership\", \"Feature\"].\n    59 |         connect controller.stateOutput to vehicle::(currentSpeed, currentPosition, currentAcceleration);\n       |                                                    \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:59:17: \u001b[38;2;204;204;057mwarning\u001b[0m (subsetting-featuring-types): Subsetted feature must be accessible from the subsetting feature (use dot notation for nesting)\n\u2502   59 |         connect controller.stateOutput to vehicle::(currentSpeed, currentPosition, currentAcceleration);\n\u2502      |                 \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u251c\u2500\u2500 iteration_01.sysml:59:17: \u001b[38;2;255;255;255mnote\u001b[0m: Subsetted feature declared here\n\u2502   \u2514\u2500\u2500 iteration_01.sysml:53:10: \u001b[38;2;255;255;255mnote\u001b[0m: Subsetted feature is featured by VehicleDynamicsSimulation::simulationSystem\n\u2514\u2500\u2500 iteration_01.sysml:59:17: \u001b[38;2;255;255;255mnote\u001b[0m: Because featuring types of subsetted feature do not conform to the featuring types of the subsetting feature\n    \u2514\u2500\u2500 iteration_01.sysml:59:17: \u001b[38;2;255;255;255mnote\u001b[0m: Subsetting feature is featured by (orphan Type)\n\niteration_01.sysml:59:53: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'currentSpeed' found.\n    59 |         connect controller.stateOutput to vehicle::(currentSpeed, currentPosition, currentAcceleration);\n       |                                                     \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:59:67: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'currentPosition' found.\n    59 |         connect controller.stateOutput to vehicle::(currentSpeed, currentPosition, currentAcceleration);\n       |                                                                   \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:59:84: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'currentAcceleration' found.\n    59 |         connect controller.stateOutput to vehicle::(currentSpeed, currentPosition, currentAcceleration);\n       |                                                                                    \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 408,
+      "output_tokens": 323,
+      "total_tokens": 731
+    },
+    "tokens_used_total": 731,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:06:48.979946Z",
+    "iteration_end": "2026-02-20T16:06:53.672194Z",
+    "iteration_duration_seconds": 4.692265584002598,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/59/20260220-110641/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/59/20260220-110641/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/59/20260220-110641/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1359,
+      "output_tokens": 326,
+      "total_tokens": 1685
+    },
+    "tokens_used_total": 2416,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

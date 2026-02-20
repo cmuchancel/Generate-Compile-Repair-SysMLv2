@@ -1,0 +1,34 @@
+{
+  "id": "caf33168d3d44721ad54285bcc5881a0",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage UnitSystemLibrary {\n    private import ScalarValues::*;\n\n    enum def QuantityKind {\n        enum length;\n        enum mass;\n        enum time;\n        enum electricCurrent;\n        enum thermodynamicTemperature;\n        enum amountOfSubstance;\n        enum luminousIntensity;\n        enum planeAngle;\n        enum solidAngle;\n        enum area;\n        enum volume;\n        enum velocity;\n        enum acceleration;\n        enum force;\n        enum pressure;\n        enum energy;\n        enum power;\n        enum electricCharge;\n        enum electricPotential;\n        enum electricResistance;\n        enum frequency;\n    }\n\n    part def MeasurementUnit {\n        attribute symbol : String;\n        attribute quantityKind : QuantityKind;\n    }\n\n    part def ISQUnit {\n        attribute meter : MeasurementUnit;\n        attribute kilogram : MeasurementUnit;\n        attribute second : MeasurementUnit;\n        attribute ampere : MeasurementUnit;\n        attribute kelvin : MeasurementUnit;\n        attribute mole : MeasurementUnit;\n        attribute candela : MeasurementUnit;\n        attribute radian : MeasurementUnit;\n        attribute steradian : MeasurementUnit;\n    }\n\n    part def USCustomaryUnit {\n        attribute inch : MeasurementUnit;\n        attribute foot : MeasurementUnit;\n        attribute yard : MeasurementUnit;\n        attribute mile : MeasurementUnit;\n        attribute poundMass : MeasurementUnit;\n        attribute slug : MeasurementUnit;\n        attribute second : MeasurementUnit;\n        attribute ampere : MeasurementUnit;\n        attribute rankine : MeasurementUnit;\n        attribute fahrenheit : MeasurementUnit;\n        attribute mole : MeasurementUnit;\n        attribute candela : MeasurementUnit;\n        attribute radian : MeasurementUnit;\n        attribute steradian : MeasurementUnit;\n    }\n\n    part isqUnits : ISQUnit {\n        attribute meter = (symbol = \"m\", quantityKind = QuantityKind::length);\n        attribute kilogram = (symbol = \"kg\", quantityKind = QuantityKind::mass);\n        attribute second = (symbol = \"s\", quantityKind = QuantityKind::time);\n        attribute ampere = (symbol = \"A\", quantityKind = QuantityKind::electricCurrent);\n        attribute kelvin = (symbol = \"K\", quantityKind = QuantityKind::thermodynamicTemperature);\n        attribute mole = (symbol = \"mol\", quantityKind = QuantityKind::amountOfSubstance);\n        attribute candela = (symbol = \"cd\", quantityKind = QuantityKind::luminousIntensity);\n        attribute radian = (symbol = \"rad\", quantityKind = QuantityKind::planeAngle);\n        attribute steradian = (symbol = \"sr\", quantityKind = QuantityKind::solidAngle);\n    }\n\n    part usCustomaryUnits : USCustomaryUnit {\n        attribute inch = (symbol = \"in\", quantityKind = QuantityKind::length);\n        attribute foot = (symbol = \"ft\", quantityKind = QuantityKind::length);\n        attribute yard = (symbol = \"yd\", quantityKind = QuantityKind::length);\n        attribute mile = (symbol = \"mi\", quantityKind = QuantityKind::length);\n        attribute poundMass = (symbol = \"lbm\", quantityKind = QuantityKind::mass);\n        attribute slug = (symbol = \"slug\", quantityKind = QuantityKind::mass);\n        attribute second = (symbol = \"s\", quantityKind = QuantityKind::time);\n        attribute ampere = (symbol = \"A\", quantityKind = QuantityKind::electricCurrent);\n        attribute rankine = (symbol = \"\u00b0R\", quantityKind = QuantityKind::thermodynamicTemperature);\n        attribute fahrenheit = (symbol = \"\u00b0F\", quantityKind = QuantityKind::thermodynamicTemperature);\n        attribute mole = (symbol = \"mol\", quantityKind = QuantityKind::amountOfSubstance);\n        attribute candela = (symbol = \"cd\", quantityKind = QuantityKind::luminousIntensity);\n        attribute radian = (symbol = \"rad\", quantityKind = QuantityKind::planeAngle);\n        attribute steradian = (symbol = \"sr\", quantityKind = QuantityKind::solidAngle);\n    }\n\n    part def UnitConverter {\n        attribute sourceUnit : MeasurementUnit;\n        attribute targetUnit : MeasurementUnit;\n        attribute conversionFactor : Real;\n        attribute offset : Real = 0.0;\n    }\n\n    part def UnitSystem {\n        attribute systemName : String;\n        attribute baseUnits : MeasurementUnit[*];\n        attribute derivedUnits : MeasurementUnit[*];\n    }\n\n    part isqSystem : UnitSystem {\n        attribute systemName = \"International System of Quantities\";\n        attribute baseUnits = [isqUnits.meter, isqUnits.kilogram, isqUnits.second, isqUnits.ampere, isqUnits.kelvin, isqUnits.mole, isqUnits.candela];\n    }\n\n    part usCustomarySystem : UnitSystem {\n        attribute systemName = \"United States Customary Units\";\n        attribute baseUnits = [usCustomaryUnits.foot, usCustomaryUnits.poundMass, usCustomaryUnits.second, usCustomaryUnits.ampere];\n    }\n\n    part def Quantity {\n        attribute value : Real;\n        attribute unit : MeasurementUnit;\n    }\n\n    part lengthConverter : UnitConverter {\n        attribute sourceUnit = isqUnits.meter;\n        attribute targetUnit = usCustomaryUnits.foot;\n        attribute conversionFactor = 3.28084;\n    }\n\n    part massConverter : UnitConverter {\n        attribute sourceUnit = isqUnits.kilogram;\n        attribute targetUnit = usCustomaryUnits.poundMass;\n        attribute conversionFactor = 2.20462;\n    }\n\n    part temperatureConverter : UnitConverter {\n        attribute sourceUnit = isqUnits.kelvin;\n        attribute targetUnit = usCustomaryUnits.rankine;\n        attribute conversionFactor = 1.8;\n        attribute offset = 0.0;\n    }\n\n    part temperatureOffsetConverter : UnitConverter {\n        attribute sourceUnit = isqUnits.kelvin;\n        attribute targetUnit = usCustomaryUnits.fahrenheit;\n        attribute conversionFactor = 1.8;\n        attribute offset = 459.67;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604432,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 1258,
+    "prompt_tokens": 2493,
+    "total_tokens": 3751,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

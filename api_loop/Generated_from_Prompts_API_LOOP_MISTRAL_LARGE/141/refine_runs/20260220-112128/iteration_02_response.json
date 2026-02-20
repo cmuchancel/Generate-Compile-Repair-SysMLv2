@@ -1,0 +1,34 @@
+{
+  "id": "472fb4dd54bd4fbd9bfeff7b5b963be3",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage UnitSystemLibrary {\n    private import ScalarValues::*;\n\n    enum def QuantityKind {\n        enum length;\n        enum mass;\n        enum time;\n        enum electricCurrent;\n        enum thermodynamicTemperature;\n        enum amountOfSubstance;\n        enum luminousIntensity;\n    }\n\n    enum def ISQUnit {\n        enum meter :> length;\n        enum kilogram :> mass;\n        enum second :> time;\n        enum ampere :> electricCurrent;\n        enum kelvin :> thermodynamicTemperature;\n        enum mole :> amountOfSubstance;\n        enum candela :> luminousIntensity;\n    }\n\n    enum def USCustomaryUnit {\n        enum inch :> length;\n        enum foot :> length;\n        enum yard :> length;\n        enum mile :> length;\n        enum pound :> mass;\n        enum ounce :> mass;\n        enum second :> time;\n        enum ampere :> electricCurrent;\n        enum rankine :> thermodynamicTemperature;\n        enum fahrenheit :> thermodynamicTemperature;\n    }\n\n    part def UnitConverter {\n        attribute sourceUnit : String;\n        attribute targetUnit : String;\n        attribute conversionFactor : Real;\n        attribute offset : Real = 0.0;\n\n        port def input;\n        port def output;\n\n        port inputPort : input;\n        port outputPort : output;\n    }\n\n    part def UnitSystem {\n        attribute systemName : String;\n        attribute systemDescription : String;\n\n        part isqUnits : ISQUnit[0..*];\n        part usCustomaryUnits : USCustomaryUnit[0..*];\n        part converters : UnitConverter[0..*];\n    }\n\n    part unitSystem : UnitSystem {\n        attribute systemName = \"StandardizedUnitSystem\";\n        attribute systemDescription = \"Supports ISQ and US Customary Units interoperability\";\n\n        part isqUnits : ISQUnit = (ISQUnit::meter, ISQUnit::kilogram, ISQUnit::second, ISQUnit::ampere, ISQUnit::kelvin, ISQUnit::mole, ISQUnit::candela);\n        part usCustomaryUnits : USCustomaryUnit = (USCustomaryUnit::inch, USCustomaryUnit::foot, USCustomaryUnit::yard, USCustomaryUnit::mile, USCustomaryUnit::pound, USCustomaryUnit::ounce, USCustomaryUnit::second, USCustomaryUnit::ampere, USCustomaryUnit::rankine, USCustomaryUnit::fahrenheit);\n\n        part meterToInch : UnitConverter {\n            attribute sourceUnit = \"ISQUnit::meter\";\n            attribute targetUnit = \"USCustomaryUnit::inch\";\n            attribute conversionFactor = 39.3701;\n        }\n\n        part inchToMeter : UnitConverter {\n            attribute sourceUnit = \"USCustomaryUnit::inch\";\n            attribute targetUnit = \"ISQUnit::meter\";\n            attribute conversionFactor = 0.0254;\n        }\n\n        part kilogramToPound : UnitConverter {\n            attribute sourceUnit = \"ISQUnit::kilogram\";\n            attribute targetUnit = \"USCustomaryUnit::pound\";\n            attribute conversionFactor = 2.20462;\n        }\n\n        part poundToKilogram : UnitConverter {\n            attribute sourceUnit = \"USCustomaryUnit::pound\";\n            attribute targetUnit = \"ISQUnit::kilogram\";\n            attribute conversionFactor = 0.453592;\n        }\n\n        part kelvinToRankine : UnitConverter {\n            attribute sourceUnit = \"ISQUnit::kelvin\";\n            attribute targetUnit = \"USCustomaryUnit::rankine\";\n            attribute conversionFactor = 1.8;\n        }\n\n        part rankineToKelvin : UnitConverter {\n            attribute sourceUnit = \"USCustomaryUnit::rankine\";\n            attribute targetUnit = \"ISQUnit::kelvin\";\n            attribute conversionFactor = 0.555556;\n        }\n\n        part celsiusToFahrenheit : UnitConverter {\n            attribute sourceUnit = \"ISQUnit::kelvin\";\n            attribute targetUnit = \"USCustomaryUnit::fahrenheit\";\n            attribute conversionFactor = 1.8;\n            attribute offset = 32.0;\n        }\n\n        part fahrenheitToCelsius : UnitConverter {\n            attribute sourceUnit = \"USCustomaryUnit::fahrenheit\";\n            attribute targetUnit = \"ISQUnit::kelvin\";\n            attribute conversionFactor = 0.555556;\n            attribute offset = -32.0;\n        }\n    }\n\n    connect unitSystem.meterToInch.inputPort to unitSystem.inchToMeter.outputPort;\n    connect unitSystem.inchToMeter.inputPort to unitSystem.meterToInch.outputPort;\n    connect unitSystem.kilogramToPound.inputPort to unitSystem.poundToKilogram.outputPort;\n    connect unitSystem.poundToKilogram.inputPort to unitSystem.kilogramToPound.outputPort;\n    connect unitSystem.kelvinToRankine.inputPort to unitSystem.rankineToKelvin.outputPort;\n    connect unitSystem.rankineToKelvin.inputPort to unitSystem.kelvinToRankine.outputPort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604504,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 1110,
+    "prompt_tokens": 2589,
+    "total_tokens": 3699,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 336
+    }
+  }
+}

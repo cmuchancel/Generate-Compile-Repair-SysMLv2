@@ -1,0 +1,34 @@
+{
+  "id": "81daa07da4ff4fcf8dedb2ea0b5a5eea",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleWeightManagement {\n    private import ScalarValues::*;\n\n    part def Chassis {\n        attribute weight : Real;\n    }\n\n    part def Engine {\n        attribute weight : Real;\n    }\n\n    part def Transmission {\n        attribute weight : Real;\n    }\n\n    part def WeightMonitor {\n        attribute maxAllowedWeight : Real = 2500.0;\n        attribute totalWeight : Real = 0.0;\n        attribute warningActive : Boolean = false;\n\n        part chassis : Chassis;\n        part engine : Engine;\n        part transmission : Transmission;\n\n        attribute calculateTotalWeight : Real = chassis.weight + engine.weight + transmission.weight;\n\n        attribute checkWeightLimit : Boolean = if (calculateTotalWeight > maxAllowedWeight) then true else false;\n    }\n\n    part vehicleWeightSystem : WeightMonitor;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603682,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 170,
+    "prompt_tokens": 1913,
+    "total_tokens": 2083,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:23:47.236291Z",
+    "iteration_end": "2026-02-20T16:23:56.558796Z",
+    "iteration_duration_seconds": 9.322254250000697,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/141/20260220-112346/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/141/20260220-112346/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/141/20260220-112346/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:88:50: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'to'.\n    88 |     connect unitLibrary.isqToUSConverters->input to unitLibrary.isqUnits;\n       |                                                  \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:89:50: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'to'.\n    89 |     connect unitLibrary.usToISQConverters->input to unitLibrary.usCustomaryUnits;\n       |                                                  \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:90:51: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'to'.\n    90 |     connect unitLibrary.isqToUSConverters->output to unitLibrary.usCustomaryUnits;\n       |                                                   \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:91:51: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'to'.\n    91 |     connect unitLibrary.usToISQConverters->output to unitLibrary.isqUnits;\n       |                                                   \u001b[38;2;220;080;080m^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 359,
+      "output_tokens": 505,
+      "total_tokens": 864
+    },
+    "tokens_used_total": 864,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:23:56.558860Z",
+    "iteration_end": "2026-02-20T16:24:03.170501Z",
+    "iteration_duration_seconds": 6.61155845799658,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/141/20260220-112346/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/141/20260220-112346/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/141/20260220-112346/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1123,
+      "output_tokens": 498,
+      "total_tokens": 1621
+    },
+    "tokens_used_total": 2485,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

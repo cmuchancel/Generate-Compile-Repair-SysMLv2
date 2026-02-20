@@ -1,0 +1,34 @@
+{
+  "id": "cc295e942b3f42a7a4f7712482021845",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomotiveComponents {\n    private import ScalarValues::*;\n\n    part def Tire {\n        attribute manufacturer : String;\n        attribute rimDiameter : Real;\n        attribute width : Integer;\n    }\n\n    part michelinTire : Tire {\n        manufacturer = \"Michelin\";\n        rimDiameter = 18.0;\n        width = 245;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604297,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 87,
+    "prompt_tokens": 394,
+    "total_tokens": 481,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "824a2d626a5942cc977aaebe3f1f2c1b",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleMassManagement {\n    private import ScalarValues::*;\n\n    enum def MassStatus {\n        enum compliant\n        enum overweight\n    }\n\n    part def Chassis {\n        attribute mass : Real;\n    }\n\n    part def Engine {\n        attribute mass : Real;\n    }\n\n    part def Gearbox {\n        attribute mass : Real;\n    }\n\n    part def Vehicle {\n        part chassis : Chassis;\n        part engine : Engine;\n        part gearbox : Gearbox;\n        attribute totalMass : Real;\n        attribute status : MassStatus = MassStatus::compliant;\n    }\n\n    item def MassCalculator {\n        attribute maxPermittedMass : Real = 2500.0;\n        attribute calculateTotalMass(chassisMass : Real, engineMass : Real, gearboxMass : Real) : Real;\n        attribute checkMassStatus(totalMass : Real) : MassStatus;\n    }\n\n    part vehicle : Vehicle;\n    part massCalculator : MassCalculator;\n\n    attribute vehicle.chassis.mass : Real;\n    attribute vehicle.engine.mass : Real;\n    attribute vehicle.gearbox.mass : Real;\n\n    vehicle.totalMass = massCalculator.calculateTotalMass(vehicle.chassis.mass, vehicle.engine.mass, vehicle.gearbox.mass);\n    vehicle.status = massCalculator.checkMassStatus(vehicle.totalMass);\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603644,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 275,
+    "prompt_tokens": 377,
+    "total_tokens": 652,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "f32900f9628c4fbba839cbdffc90e6d9",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage ScientificConstants {\n    private import ScalarValues::*;\n\n    part def MathematicalConstants {\n        attribute pi : Real = 3.14159265358979323846;\n        attribute e : Real = 2.71828182845904523536;\n    }\n\n    part def FundamentalPhysicalConstants {\n        attribute speedOfLight : Real = 299792458.0; // m/s\n        attribute fineStructureConstant : Real = 0.0072973525693;\n        attribute electronProtonMassRatio : Real = 0.000544617021487;\n    }\n\n    part def ContextSpecificConstants {\n        attribute standardGravity : Real = 9.80665; // m/s^2\n        attribute amplifierGainModelX : Real = 100.0; // unitless\n    }\n\n    part def ScientificConstantsSystem {\n        part mathConstants : MathematicalConstants;\n        part physicalConstants : FundamentalPhysicalConstants;\n        part scenarioConstants : ContextSpecificConstants;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604302,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 258,
+    "prompt_tokens": 1841,
+    "total_tokens": 2099,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

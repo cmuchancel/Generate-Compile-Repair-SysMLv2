@@ -1,0 +1,34 @@
+{
+  "id": "d8f0e6d4b2b544bfa34336ebd55e20ae",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage PowertrainSystem {\n    private import ScalarValues::*;\n\n    part def Powertrain;\n    part def Engine;\n    part def TorqueGenerator;\n\n    attribute minTorque : Real = 0.0;\n\n    port def TorquePort {\n        out torque : Real;\n    }\n\n    part def Vehicle {\n        part engine : Engine;\n        part torqueGenerator : TorqueGenerator;\n        port torqueOut : TorquePort;\n    }\n\n    part vehicleInstance : Vehicle {\n        part engineInstance : Engine;\n        part torqueGeneratorInstance : TorqueGenerator {\n            attribute generatedTorque : Real;\n            port torqueOutput : TorquePort;\n        }\n        port torqueOutPort : TorquePort;\n    }\n\n    requirement TorqueGeneration {\n        attribute requiredTorque : Real;\n        attribute description : String = \"The system shall generate torque greater than zero newton-meters during operation.\";\n    }\n\n    requirement TorqueAllocation {\n        attribute description : String = \"The torque generator function shall be allocated to physical powertrain components.\";\n    }\n\n    part powertrain : Powertrain {\n        part engine : Engine;\n        part torqueGenerator : TorqueGenerator {\n            attribute generatedTorque : Real;\n            port torqueOutput : TorquePort;\n        }\n    }\n\n    connect vehicleInstance.torqueGeneratorInstance.torqueOutput to vehicleInstance.torqueOutPort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604277,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 284,
+    "prompt_tokens": 1775,
+    "total_tokens": 2059,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

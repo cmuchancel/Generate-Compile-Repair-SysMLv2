@@ -1,0 +1,66 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to implement a power connection and disconnection mechanism between a vehicle and a trailer. The vehicle and the trailer each possess independent structural frames; a hitch ball is installed on the vehicle frame, while a trailer coupler is installed on the trailer frame. The system enables the vehicle and the trailer to be “connected” or “disconnected” via the hitching mechanism, and allows users to safely and reliably connect the trailer to the vehicle when needed, or disengage it. This achieves a flexible combination and separation, meeting user requirements for vehicle and trailer power coupling functions in various scenarios.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 57):
+                package VehicleTrailerHitchSystem {
+    private import ScalarValues::*;
+
+    enum def ConnectionStatus {
+        enum connected;
+        enum disconnected;
+    }
+
+    part def VehicleFrame;
+    part def TrailerFrame;
+    part def HitchBall;
+    part def TrailerCoupler;
+
+    port def PowerPort {
+        attribute voltage : Real;
+        attribute current : Real;
+    }
+
+    part def Vehicle {
+        part frame : VehicleFrame;
+        part hitchBall : HitchBall;
+        port powerOut : PowerPort;
+        attribute status : ConnectionStatus = ConnectionStatus::disconnected;
+    }
+
+    part def Trailer {
+        part frame : TrailerFrame;
+        part coupler : TrailerCoupler;
+        port powerIn : PowerPort;
+        attribute status : ConnectionStatus = ConnectionStatus::disconnected;
+    }
+
+    part vehicle : Vehicle;
+    part trailer : Trailer;
+
+    connect vehicle.hitchBall to trailer.coupler;
+    connect vehicle.powerOut to trailer.powerIn;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_57.sysml:20:14: error (parsing-error): Unexpected 'frame', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    20 |         part frame : VehicleFrame;
+       |              ^^^^^
+iteration_57.sysml:27:14: error (parsing-error): Unexpected 'frame', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    27 |         part frame : TrailerFrame;
+       |              ^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

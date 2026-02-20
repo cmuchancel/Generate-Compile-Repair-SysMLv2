@@ -1,0 +1,69 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is used to manage the start-up and shutdown states of a vehicle. The vehicle is initially in the off state. Upon receiving a "vehicle start signal," the vehicle switches to the "starting" state. Subsequently, when a "vehicle power-on signal" is received, the vehicle transitions to the "on" state. At any time, if a "vehicle shutdown signal" is received, the vehicle state switches back to the "off" state. The system must, according to the above logic, reliably ensure that the vehicle state responds appropriately to the corresponding control signals, and safely and sequentially transitions between each state.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleStartupShutdown {
+    private import ScalarValues::*;
+
+    enum def VehicleState {
+        enum off;
+        enum starting;
+        enum on;
+    }
+
+    item def VehicleStartSignal;
+    item def VehiclePowerOnSignal;
+    item def VehicleShutdownSignal;
+
+    port def StartPort {
+        in item start : VehicleStartSignal;
+    }
+
+    port def PowerPort {
+        in item power : VehiclePowerOnSignal;
+    }
+
+    port def ShutdownPort {
+        in item shutdown : VehicleShutdownSignal;
+    }
+
+    port def StatePort {
+        out item state : VehicleState;
+    }
+
+    part def VehicleController {
+        attribute currentState : VehicleState = VehicleState::off;
+        port startPort : StartPort;
+        port powerPort : PowerPort;
+        port shutdownPort : ShutdownPort;
+        port statePort : StatePort;
+    }
+
+    part vehicleController : VehicleController;
+
+    connect vehicleController.startPort to vehicleController;
+    connect vehicleController.powerPort to vehicleController;
+    connect vehicleController.shutdownPort to vehicleController;
+    connect vehicleController.statePort to vehicleController;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_01.sysml:27:13: error (parsing-error): Unexpected 'item', expected one of ["NAME", "for", "[", "abstract", "derived", "ordered", "nonunique", "if", "<", "not", "#", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "variation", "constant", "ref", "attribute", "enum", "occurrence", "individual", "timeslice", "snapshot", "event", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "interface", "allocation", "allocate", "action", "perform", "merge", "decide", "join", "fork", "accept", "send", "assign", "terminate", "while", "loop", "state", "exhibit", "calc", "constraint", "assert", "requirement", "concern", "satisfy", "case", "analysis", "verification", "use", "include", "view", "rendering", "viewpoint"].
+27 |         out item state : VehicleState;
+   |             ^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

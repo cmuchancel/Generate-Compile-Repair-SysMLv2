@@ -1,0 +1,34 @@
+{
+  "id": "4ed604eb1bc84a0db36ca8d6e903eef3",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleCompliance {\n    private import ScalarValues::*;\n\n    enum def SafetyClassification {\n        enum Mandatory;\n        enum Optional;\n    }\n\n    enum def SecurityClassification {\n        enum Mandatory;\n        enum Optional;\n    }\n\n    part def SeatBelt;\n    part def Airbag;\n    part def AntiTheftAlarm;\n    part def Bumper;\n    part def KeylessEntrySystem;\n    part def Wheel;\n    part def AntiLockBrakingSystem;\n\n    part def VehicleInterior {\n        attribute seatBelt1 : SeatBelt;\n        attribute seatBelt2 : SeatBelt;\n        attribute airbag : Airbag;\n        attribute antiTheftAlarm : AntiTheftAlarm;\n        attribute safetyClassification : SafetyClassification = SafetyClassification::Mandatory;\n        attribute securityClassification : SecurityClassification = SecurityClassification::Mandatory;\n    }\n\n    part def VehicleBody {\n        attribute bumper : Bumper;\n        attribute keylessEntrySystem : KeylessEntrySystem;\n        attribute safetyClassification : SafetyClassification = SafetyClassification::Mandatory;\n        attribute securityClassification : SecurityClassification = SecurityClassification::Mandatory;\n    }\n\n    part def VehicleChassis {\n        attribute wheel1 : Wheel;\n        attribute wheel2 : Wheel;\n        attribute abs1 : AntiLockBrakingSystem;\n        attribute abs2 : AntiLockBrakingSystem;\n        attribute safetyClassification : SafetyClassification = SafetyClassification::Optional;\n    }\n\n    part def Vehicle {\n        part interior : VehicleInterior;\n        part body : VehicleBody;\n        part chassis : VehicleChassis;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604278,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 338,
+    "prompt_tokens": 421,
+    "total_tokens": 759,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

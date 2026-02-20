@@ -1,0 +1,34 @@
+{
+  "id": "65a9554f61b141d4ac2f0a2a29ae4298",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleSpatiotemporalSimulation {\n    private import ScalarValues::*;\n\n    enum def VehicleState {\n        enum on;\n        enum driving;\n        enum off;\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        attribute position : Real[3];\n        attribute velocity : Real[3];\n        attribute acceleration : Real[3];\n        attribute vehicleState : VehicleState = VehicleState::on;\n    }\n\n    part def Road {\n        attribute slopeAngle : Real;\n        attribute frictionCoefficient : Real;\n    }\n\n    part def SimulationSnapshot {\n        attribute snapshotTime : Real;\n        attribute snapshotState : VehicleState;\n        attribute snapshotPosition : Real[3];\n        attribute snapshotVelocity : Real[3];\n        attribute snapshotAcceleration : Real[3];\n    }\n\n    part def Simulation {\n        part vehicle : Vehicle;\n        part road : Road;\n        part snapshotSeries : SimulationSnapshot[*];\n    }\n\n    item def TimePoint {\n        attribute value : Real;\n    }\n\n    port def VehiclePort {\n        attribute currentState : VehicleState;\n    }\n\n    part simulation : Simulation;\n\n    connect simulation.vehicle to simulation.road;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604116,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 237,
+    "prompt_tokens": 789,
+    "total_tokens": 1026,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 352
+    }
+  }
+}

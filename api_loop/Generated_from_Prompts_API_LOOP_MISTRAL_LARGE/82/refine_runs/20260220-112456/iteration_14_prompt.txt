@@ -1,0 +1,81 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system must be composed of a system assembly, which includes a computer subsystem and a storage subsystem. The software design section should define the message format and data format. The computer subsystem must be capable of utilizing and integrating all functions specified in the software design, while the storage subsystem must be able to access and be compatible with the message and data formats defined by the software. The software and hardware of the entire system must be able to work together seamlessly to ensure that the processes of information storage, transmission, and processing within the system are efficient, reliable, and compliant with the required data structure specifications.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 13):
+                package SystemModel {
+    private import ScalarValues::*;
+
+    part def SystemAssembly;
+    part def Computer;
+    part def Storage;
+    part def SoftwareDesign;
+
+    item def MessageFormat;
+    item def DataFormat;
+
+    port def SoftwarePort;
+    port def MessagePort;
+    port def DataPort;
+
+    part systemAssembly : SystemAssembly {
+        part computer : Computer;
+        part storage : Storage;
+        part software : SoftwareDesign;
+    }
+
+    part def SoftwareDesign {
+        attribute messageFormat : MessageFormat;
+        attribute dataFormat : DataFormat;
+        port softwarePort : SoftwarePort;
+    }
+
+    part def Computer {
+        attribute canIntegrateFunctions : Boolean = true;
+        port softwarePort : SoftwarePort;
+    }
+
+    part def Storage {
+        attribute canAccessMessageFormat : Boolean = true;
+        attribute isCompatibleWithDataFormat : Boolean = true;
+        port messagePort : MessagePort;
+        port dataPort : DataPort;
+    }
+
+    connect systemAssembly.software.softwarePort to systemAssembly.computer.softwarePort;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_13.sysml:22:14: warning (namespace-distinguishability): Member name 'SoftwareDesign' shadows SystemModel::SoftwareDesign
+│   22 |     part def SoftwareDesign {
+│      |              ^^^^^^^^^^^^^^
+└── iteration_13.sysml:7:14: note: First declared here
+iteration_13.sysml:28:14: warning (namespace-distinguishability): Member name 'Computer' shadows SystemModel::Computer
+│   28 |     part def Computer {
+│      |              ^^^^^^^^
+└── iteration_13.sysml:5:14: note: First declared here
+iteration_13.sysml:33:14: warning (namespace-distinguishability): Member name 'Storage' shadows SystemModel::Storage
+│   33 |     part def Storage {
+│      |              ^^^^^^^
+└── iteration_13.sysml:6:14: note: First declared here
+iteration_13.sysml:40:37: error (reference-error): No Feature named 'softwarePort' found.
+    40 |     connect systemAssembly.software.softwarePort to systemAssembly.computer.softwarePort;
+       |                                     ^^^^^^^^^^^^
+iteration_13.sysml:40:77: error (reference-error): No Feature named 'softwarePort' found.
+    40 |     connect systemAssembly.software.softwarePort to systemAssembly.computer.softwarePort;
+       |                                                                             ^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

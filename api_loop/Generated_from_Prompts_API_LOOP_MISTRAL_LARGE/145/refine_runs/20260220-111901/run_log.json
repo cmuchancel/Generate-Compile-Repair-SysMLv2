@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:19:01.820211Z",
+    "iteration_end": "2026-02-20T16:19:05.989234Z",
+    "iteration_duration_seconds": 4.1689629159955075,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/145/20260220-111901/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/145/20260220-111901/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/145/20260220-111901/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:16:52: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget an identifier?\n    16 |         attribute installationPosition : Real[3] = [0.0, 0.0, 0.0];\n\niteration_01.sysml:16:52: \u001b[38;2;220;080;080merror\u001b[0m (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument\n\u2502   16 |         attribute installationPosition : Real[3] = [0.0, 0.0, 0.0];\n\u2502      |                                                    \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:16:53: \u001b[38;2;255;255;255mnote\u001b[0m: ScalarValues::Rational does not conform to MeasurementReferences::MeasurementUnit",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 387,
+      "output_tokens": 132,
+      "total_tokens": 519
+    },
+    "tokens_used_total": 519,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:19:05.989325Z",
+    "iteration_end": "2026-02-20T16:19:09.159025Z",
+    "iteration_duration_seconds": 3.169729417000781,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/145/20260220-111901/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/145/20260220-111901/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/145/20260220-111901/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:22:54: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"NAME\", \";\", \"{\", \"all\", \"*\", \"if\", \"+\", \"-\", \"~\", \"not\", \"hastype\", \"istype\", \"@\", \"as\", \"(\", \")\", \"null\", \"new\", \"true\", \"false\", \"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"DECIMAL_VALUE\", \"REAL_VALUE\", \"STRING_VALUE\", \"$\", \"Feature\", \"FeatureChaining\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"OperatorExpression\", \"ParameterMembership\", \"Feature\", \"FeatureValue\", \"ParameterMembership\", \"Feature\", \"FeatureValue\", \"MetadataAccessExpression\", \"OperatorExpression\", \"FeatureValue\", \"Feature\", \"ParameterMembership\", \"FeatureValue\", \"Feature\", \"ParameterMembership\", \"OperatorExpression\", \"IndexExpression\", \"OperatorExpression\", \"FeatureChainExpression\", \"CollectExpression\", \"SelectExpression\", \"InvocationExpression\", \"OwningMembership\", \"NullExpression\", \"FeatureReferenceExpression\", \"Membership\", \"MetadataAccessExpression\", \"Membership\", \"InvocationExpression\", \"ConstructorExpression\", \"Membership\", \"FeatureReferenceExpression\", \"FeatureMembership\", \"Expression\", \"LiteralBoolean\", \"LiteralString\", \"LiteralInteger\", \"LiteralRational\", \"LiteralInfinity\", \"ElementReference\"].\n    22 |         attribute installationPosition : Vector3D = (x: 0.0, y: 0.0, z: 0.0);\n       |                                                      \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:22:62: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    22 |         attribute installationPosition : Vector3D = (x: 0.0, y: 0.0, z: 0.0);\n       |                                                              \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:22:70: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    22 |         attribute installationPosition : Vector3D = (x: 0.0, y: 0.0, z: 0.0);\n       |                                                                      \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_02.sysml:22:53: \u001b[38;2;220;080;080merror\u001b[0m (type-error): ScalarValues::Rational does not conform to TireSystem::Vector3D\n    22 |         attribute installationPosition : Vector3D = (x: 0.0, y: 0.0, z: 0.0);\n       |                                                     \u001b[38;2;220;080;080m^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 728,
+      "output_tokens": 162,
+      "total_tokens": 890
+    },
+    "tokens_used_total": 1409,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:19:09.159137Z",
+    "iteration_end": "2026-02-20T16:19:12.799810Z",
+    "iteration_duration_seconds": 3.640702208998846,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/145/20260220-111901/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/145/20260220-111901/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/145/20260220-111901/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1145,
+      "output_tokens": 155,
+      "total_tokens": 1300
+    },
+    "tokens_used_total": 2709,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

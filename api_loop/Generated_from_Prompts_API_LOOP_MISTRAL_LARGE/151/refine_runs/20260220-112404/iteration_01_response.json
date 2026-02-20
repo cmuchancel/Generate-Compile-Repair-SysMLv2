@@ -1,0 +1,34 @@
+{
+  "id": "7471c911bb89493996d2d912d6dbacf9",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage transportation_system {\n    private import ScalarValues::*;\n\n    enum def FuelStatus {\n        OK\n        LOW\n        EMPTY\n    }\n\n    enum def EnvironmentalFactor {\n        RAIN\n        SNOW\n        FOG\n        HIGH_TEMPERATURE\n        LOW_TEMPERATURE\n        NORMAL\n    }\n\n    part def User {\n        attribute role : String;\n    }\n\n    part def Driver {\n        attribute licenseValid : Boolean = true;\n    }\n\n    part def Passenger {\n    }\n\n    part def Vehicle {\n        attribute maxFuelCapacity : Real;\n        attribute currentFuelLevel : Real = maxFuelCapacity;\n        attribute fuelStatus : FuelStatus = FuelStatus::OK;\n        attribute maxPassengerCapacity : Integer = 4;\n        attribute currentPassengerCount : Integer = 0;\n\n        port fuelPort;\n        port userEntryPort;\n        port environmentalSensorPort;\n    }\n\n    part def GasStation {\n        port fuelSupplyPort;\n    }\n\n    part def Environment {\n        attribute currentFactor : EnvironmentalFactor = EnvironmentalFactor::NORMAL;\n    }\n\n    part system : Vehicle {\n        part driver : Driver;\n        part passengers : Passenger[0..4];\n\n        attribute fuelThreshold : Real = 0.1;\n\n        connect driver to userEntryPort;\n        connect passengers to userEntryPort;\n    }\n\n    part refuelingSystem {\n        part vehicle : Vehicle;\n        part gasStation : GasStation;\n\n        connect vehicle.fuelPort to gasStation.fuelSupplyPort;\n    }\n\n    part environmentalMonitoring {\n        part vehicle : Vehicle;\n        part environment : Environment;\n\n        connect environment to vehicle.environmentalSensorPort;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604644,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 349,
+    "prompt_tokens": 385,
+    "total_tokens": 734,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

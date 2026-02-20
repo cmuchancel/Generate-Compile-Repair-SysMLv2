@@ -1,0 +1,79 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to implement a power connection and disconnection mechanism between a vehicle and a trailer. The vehicle and the trailer each possess independent structural frames; a hitch ball is installed on the vehicle frame, while a trailer coupler is installed on the trailer frame. The system enables the vehicle and the trailer to be “connected” or “disconnected” via the hitching mechanism, and allows users to safely and reliably connect the trailer to the vehicle when needed, or disengage it. This achieves a flexible combination and separation, meeting user requirements for vehicle and trailer power coupling functions in various scenarios.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleTrailerCouplingSystem {
+    private import ScalarValues::*;
+
+    enum def ConnectionStatus {
+        enum connected;
+        enum disconnected;
+    }
+
+    part def HitchBall {
+        attribute diameter : Real;
+    }
+
+    part def TrailerCoupler {
+        attribute maxLoad : Real;
+    }
+
+    part def VehicleFrame {
+        part hitchBall : HitchBall;
+    }
+
+    part def TrailerFrame {
+        part trailerCoupler : TrailerCoupler;
+    }
+
+    part def Vehicle {
+        part frame : VehicleFrame;
+        attribute connectionStatus : ConnectionStatus = ConnectionStatus::disconnected;
+    }
+
+    part def Trailer {
+        part frame : TrailerFrame;
+        attribute connectionStatus : ConnectionStatus = ConnectionStatus::disconnected;
+    }
+
+    part vehicle : Vehicle;
+    part trailer : Trailer;
+
+    connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:26:14: error (parsing-error): Unexpected 'frame', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    26 |         part frame : VehicleFrame;
+       |              ^^^^^
+iteration_01.sysml:31:14: error (parsing-error): Unexpected 'frame', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    31 |         part frame : TrailerFrame;
+       |              ^^^^^
+iteration_01.sysml:38:20: error (parsing-error): Unexpected '.', expected one of ["SINGLE_LINE_NOTE", "=", "[", "::", "ElementReference_repeat1", "MULTILINE_NOTE", ":>", ":", ";", "{", "from", ",", "to", ".", "if", ")", "then", "via", "do", "ordered", "nonunique", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "at", "after", "when"].
+    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;
+       |                    ^
+iteration_01.sysml:38:47: error (parsing-error): Unexpected '.', expected one of ["SINGLE_LINE_NOTE", "=", "[", "::", "ElementReference_repeat1", "MULTILINE_NOTE", ":>", ":", ";", "{", "from", ",", "to", ".", "if", ")", "then", "via", "do", "ordered", "nonunique", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "at", "after", "when"].
+    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;
+       |                                               ^
+iteration_01.sysml:38:27: error (reference-error): No Feature named 'hitchBall' found.
+    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;
+       |                           ^^^^^^^^^
+iteration_01.sysml:38:54: error (reference-error): No Feature named 'trailerCoupler' found.
+    38 |     connect vehicle.frame.hitchBall to trailer.frame.trailerCoupler;
+       |                                                      ^^^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

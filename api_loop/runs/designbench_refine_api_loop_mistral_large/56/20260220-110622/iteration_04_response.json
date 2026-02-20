@@ -1,0 +1,34 @@
+{
+  "id": "ae34a83671c0495691c09e0fff569d96",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage MassAggregation {\n    private import ScalarValues::*;\n\n    part def simpleThing {\n        attribute simpleMass : Real;\n        attribute totalMass : Real = simpleMass;\n    }\n\n    part def compositeThing {\n        attribute simpleMass : Real;\n        attribute totalMass : Real;\n        part subcomponents : simpleThing[0..*];\n\n        attribute sumOfSubcomponentMasses : Real = 0.0;\n\n        totalMass = simpleMass + sumOfSubcomponentMasses;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603591,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 106,
+    "prompt_tokens": 1783,
+    "total_tokens": 1889,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

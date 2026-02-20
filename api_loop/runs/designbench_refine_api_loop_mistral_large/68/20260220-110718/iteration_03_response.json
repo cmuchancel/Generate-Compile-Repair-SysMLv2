@@ -1,0 +1,34 @@
+{
+  "id": "d097c5f2bb414f568c0b6299e8b3c19a",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def MassUnit {\n        enum kilogram;\n        enum gram;\n    }\n\n    part def Mass {\n        attribute value : Real;\n        attribute unit : MassUnit = MassUnit::kilogram;\n    }\n\n    part def Engine {\n        attribute speed : Real;\n        attribute torque : Real;\n        port clutchInterface : ClutchPort;\n    }\n\n    part def Clutch {\n        port input : ClutchPort;\n        port output : ClutchPort;\n    }\n\n    part def Transmission {\n        port input : ClutchPort;\n    }\n\n    part def Fuel {\n        attribute mass : Mass;\n    }\n\n    part def Vehicle {\n        attribute curbWeight : Mass;\n        attribute maxMassLimit : Mass;\n        part fuel : Fuel;\n        part engine : Engine;\n        part clutch : Clutch;\n        part transmission : Transmission;\n\n        attribute totalMassValue : Real = curbWeight.value + fuel.mass.value;\n        attribute totalMass : Mass;\n        attribute totalMassUnit : MassUnit = MassUnit::kilogram;\n\n        constraint maxMassConstraint {\n            totalMass.value <= maxMassLimit.value\n        }\n\n        constraint positiveFuelMass {\n            fuel.mass.value > 0.0\n        }\n    }\n\n    port def ClutchPort;\n\n    part vehicle : Vehicle {\n        :>> totalMass = Mass(totalMassValue, totalMassUnit);\n    }\n\n    connect vehicle.engine.clutchInterface to vehicle.clutch.input;\n    connect vehicle.clutch.output to vehicle.transmission.input;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603649,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 316,
+    "prompt_tokens": 831,
+    "total_tokens": 1147,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

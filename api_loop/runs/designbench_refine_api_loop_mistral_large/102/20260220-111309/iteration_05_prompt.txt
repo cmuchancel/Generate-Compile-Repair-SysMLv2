@@ -1,0 +1,118 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system requirements are described as follows: This project aims to design and model a typical vehicle power transmission system, mainly including the engine, transmission (gearbox), clutch, driveshaft, rear axle assembly (including differential and left/right half-shafts), wheels, and the interface for interaction with the road surface. The engine receives control signals via a fuel command port and is coupled to the transmission through power and clutch ports. Power is transmitted via the driveshaft to the rear axle assembly. The rear axle assembly includes a differential that connects separately to the left and right half-shafts, delivering power to the rear wheels through interfaces between the shafts and wheels. Each rear wheel is equipped with interfaces to both the rear axle and the road, enabling power output to the ground. The interfaces between the internal components of the system are clearly defined, allowing for flexible combination and hierarchical decomposition at various levels and within major assemblies. This supports port and component binding, redefinition, and multi-level nesting, ensuring clear transmission of power and command flows among the components. The system is designed to be modular and reconfigurable, meeting the needs of vehicle dynamics modeling, simulation, and subsequent optimization design. It enables end users to understand, adjust, and expand the relationships and functions of various vehicle power components with ease.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 4):
+                package VehiclePowerTransmissionSystem {
+    private import ScalarValues::*;
+
+    enum def PowerFlowDirection {
+        enum IN
+        enum OUT
+        enum INOUT
+    }
+
+    port def PowerPort {
+        attribute direction : PowerFlowDirection;
+    }
+
+    port def ClutchPort {
+        attribute engaged : Boolean;
+    }
+
+    port def CommandPort {
+        attribute command : String;
+    }
+
+    port def RoadInterfacePort {
+        attribute frictionCoefficient : Real;
+    }
+
+    part def Engine {
+        port fuelCommand : CommandPort;
+        port powerOut : PowerPort;
+        port clutchIn : ClutchPort;
+    }
+
+    part def Transmission {
+        port powerIn : PowerPort;
+        port clutchOut : ClutchPort;
+        port powerOut : PowerPort;
+        port fuelCommand : CommandPort;
+    }
+
+    part def Clutch {
+        port engineSide : ClutchPort;
+        port transmissionSide : ClutchPort;
+    }
+
+    part def Driveshaft {
+        port powerIn : PowerPort;
+        port powerOut : PowerPort;
+    }
+
+    part def Differential {
+        port powerIn : PowerPort;
+        port leftPowerOut : PowerPort;
+        port rightPowerOut : PowerPort;
+    }
+
+    part def HalfShaft {
+        port powerIn : PowerPort;
+        port wheelSide : PowerPort;
+    }
+
+    part def Wheel {
+        port axleSide : PowerPort;
+        port roadInterface : RoadInterfacePort;
+    }
+
+    part def RearAxleAssembly {
+        part differential : Differential;
+        part leftHalfShaft : HalfShaft;
+        part rightHalfShaft : HalfShaft;
+
+        connect differential.leftPowerOut to leftHalfShaft.powerIn;
+        connect differential.rightPowerOut to rightHalfShaft.powerIn;
+    }
+
+    part vehiclePowerTransmissionSystem {
+        part engine : Engine;
+        part clutch : Clutch;
+        part transmission : Transmission;
+        part driveshaft : Driveshaft;
+        part rearAxle : RearAxleAssembly;
+        part leftRearWheel : Wheel;
+        part rightRearWheel : Wheel;
+
+        connect engine.powerOut to clutch.engineSide;
+        connect clutch.transmissionSide to transmission.clutchOut;
+        connect transmission.powerOut to driveshaft.powerIn;
+        connect driveshaft.powerOut to rearAxle.differential.powerIn;
+        connect rearAxle.leftHalfShaft.wheelSide to leftRearWheel.axleSide;
+        connect rearAxle.rightHalfShaft.wheelSide to rightRearWheel.axleSide;
+        connect engine.fuelCommand to transmission.fuelCommand;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_04.sysml:6:9: error (parsing-error): Unexpected identifier, expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    6 |         enum OUT
+      |         ^^^^
+iteration_04.sysml:8:5: error (parsing-error): Expected a token. Did you forget ';'?
+    8 |     }
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

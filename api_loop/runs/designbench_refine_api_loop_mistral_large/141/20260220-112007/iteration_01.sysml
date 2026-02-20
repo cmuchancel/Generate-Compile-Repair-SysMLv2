@@ -1,0 +1,110 @@
+package UnitSystemLibrary {
+    private import ScalarValues::*;
+
+    enum def QuantityKind {
+        enum length;
+        enum mass;
+        enum time;
+        enum electricCurrent;
+        enum thermodynamicTemperature;
+        enum amountOfSubstance;
+        enum luminousIntensity;
+        enum planeAngle;
+        enum solidAngle;
+        enum area;
+        enum volume;
+        enum velocity;
+        enum acceleration;
+        enum force;
+        enum pressure;
+        enum energy;
+        enum power;
+        enum electricCharge;
+        enum electricPotential;
+        enum electricResistance;
+        enum frequency;
+    }
+
+    enum def ISQUnit {
+        enum meter :> length;
+        enum kilogram :> mass;
+        enum second :> time;
+        enum ampere :> electricCurrent;
+        enum kelvin :> thermodynamicTemperature;
+        enum mole :> amountOfSubstance;
+        enum candela :> luminousIntensity;
+        enum radian :> planeAngle;
+        enum steradian :> solidAngle;
+    }
+
+    enum def USCustomaryUnit {
+        enum inch :> length;
+        enum foot :> length;
+        enum yard :> length;
+        enum mile :> length;
+        enum poundMass :> mass;
+        enum slug :> mass;
+        enum second :> time;
+        enum ampere :> electricCurrent;
+        enum rankine :> thermodynamicTemperature;
+        enum fahrenheit :> thermodynamicTemperature;
+        enum mole :> amountOfSubstance;
+        enum candela :> luminousIntensity;
+        enum radian :> planeAngle;
+        enum steradian :> solidAngle;
+    }
+
+    part def UnitConverter {
+        attribute sourceUnit : ISQUnit | USCustomaryUnit;
+        attribute targetUnit : ISQUnit | USCustomaryUnit;
+        attribute conversionFactor : Real;
+        attribute offset : Real = 0.0;
+    }
+
+    part def UnitSystem {
+        attribute name : String;
+        attribute baseUnits : ISQUnit[*] | USCustomaryUnit[*];
+        attribute derivedUnits : ISQUnit[*] | USCustomaryUnit[*];
+    }
+
+    part isqSystem : UnitSystem {
+        attribute name = "International System of Quantities";
+        attribute baseUnits = ISQUnit::meter, ISQUnit::kilogram, ISQUnit::second, ISQUnit::ampere, ISQUnit::kelvin, ISQUnit::mole, ISQUnit::candela;
+    }
+
+    part usCustomarySystem : UnitSystem {
+        attribute name = "United States Customary Units";
+        attribute baseUnits = USCustomaryUnit::foot, USCustomaryUnit::poundMass, USCustomaryUnit::second, USCustomaryUnit::ampere;
+    }
+
+    part def Quantity {
+        attribute value : Real;
+        attribute unit : ISQUnit | USCustomaryUnit;
+    }
+
+    part lengthConverter : UnitConverter {
+        attribute sourceUnit = ISQUnit::meter;
+        attribute targetUnit = USCustomaryUnit::foot;
+        attribute conversionFactor = 3.28084;
+    }
+
+    part massConverter : UnitConverter {
+        attribute sourceUnit = ISQUnit::kilogram;
+        attribute targetUnit = USCustomaryUnit::poundMass;
+        attribute conversionFactor = 2.20462;
+    }
+
+    part temperatureConverter : UnitConverter {
+        attribute sourceUnit = ISQUnit::kelvin;
+        attribute targetUnit = USCustomaryUnit::rankine;
+        attribute conversionFactor = 1.8;
+        attribute offset = 0.0;
+    }
+
+    part temperatureOffsetConverter : UnitConverter {
+        attribute sourceUnit = ISQUnit::kelvin;
+        attribute targetUnit = USCustomaryUnit::fahrenheit;
+        attribute conversionFactor = 1.8;
+        attribute offset = 459.67;
+    }
+}

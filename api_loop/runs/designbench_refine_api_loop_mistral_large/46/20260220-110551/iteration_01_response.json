@@ -1,0 +1,34 @@
+{
+  "id": "b3bbd2f7b7064e44999064fda3b257ea",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage CruiseControlSystem {\n    private import ScalarValues::*;\n\n    enum def SpeedUnit {\n        enum kmph;\n        enum mph;\n    }\n\n    part def Driver {\n        port setSpeedPort : SetSpeedPort;\n    }\n\n    part def CruiseController {\n        port setSpeedPort : SetSpeedPort;\n        port currentSpeedPort : CurrentSpeedPort;\n        port throttleControlPort : ThrottleControlPort;\n    }\n\n    part def Speedometer {\n        port currentSpeedPort : CurrentSpeedPort;\n        attribute currentSpeed : Real;\n        attribute unit : SpeedUnit = SpeedUnit::kmph;\n    }\n\n    part def Engine {\n        port throttleControlPort : ThrottleControlPort;\n    }\n\n    port def SetSpeedPort;\n    port def CurrentSpeedPort;\n    port def ThrottleControlPort;\n\n    item def SpeedCommand {\n        attribute targetSpeed : Real;\n        attribute unit : SpeedUnit = SpeedUnit::kmph;\n    }\n\n    item def ThrottleCommand {\n        attribute throttleValue : Real;\n    }\n\n    part vehicle {\n        part driver : Driver;\n        part cruiseController : CruiseController;\n        part speedometer : Speedometer;\n        part engine : Engine;\n\n        connect driver.setSpeedPort to cruiseController.setSpeedPort;\n        connect cruiseController.currentSpeedPort to speedometer.currentSpeedPort;\n        connect cruiseController.throttleControlPort to engine.throttleControlPort;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603552,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 299,
+    "prompt_tokens": 399,
+    "total_tokens": 698,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

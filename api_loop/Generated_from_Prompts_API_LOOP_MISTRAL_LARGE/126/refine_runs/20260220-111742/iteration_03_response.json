@@ -1,0 +1,34 @@
+{
+  "id": "89d24ce63f4d4819b0d4a6e5fc92e7f2",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage LayeredSystem {\n    private import ScalarValues::*;\n\n    part def ApplicationLayer;\n    part def ServiceLayer;\n    part def DataLayer;\n\n    attribute x : Real;\n    attribute y : Real;\n    attribute z : Real = x + y;\n\n    part application : ApplicationLayer;\n    part service : ServiceLayer {\n        port servicePort : ServicePort;\n    }\n    part data : DataLayer {\n        port dataPort : DataPort;\n    }\n\n    port def ServicePort;\n    port def DataPort;\n\n    connect application to service::servicePort;\n    connect service::servicePort to data::dataPort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604269,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 131,
+    "prompt_tokens": 749,
+    "total_tokens": 880,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

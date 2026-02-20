@@ -1,0 +1,34 @@
+{
+  "id": "810605510d234dfeab163348745d0c12",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleStartStopSystem {\n    private import ScalarValues::*;\n\n    enum def StartStopState {\n        enum off;\n        enum starting;\n        enum operating;\n    }\n\n    part def VehicleController;\n\n    part def BrakePedal {\n        attribute isDepressed : Boolean;\n    }\n\n    part def ParkingBrake {\n        attribute isApplied : Boolean;\n    }\n\n    port def StartSignalPort;\n    port def PowerOnSignalPort;\n    port def StopSignalPort;\n    port def ControllerSignalPort;\n\n    item def StartSignal;\n    item def PowerOnSignal;\n    item def StopSignal;\n    item def ControllerCommand;\n\n    part def VehicleStartStop {\n        attribute state : StartStopState = StartStopState::off;\n\n        part brakePedal : BrakePedal;\n        part parkingBrake : ParkingBrake;\n        part controller : VehicleController;\n\n        port startSignalPort : StartSignalPort;\n        port powerOnSignalPort : PowerOnSignalPort;\n        port stopSignalPort : StopSignalPort;\n        port controllerSignalPort : ControllerSignalPort;\n    }\n\n    connect VehicleStartStop::startSignalPort to VehicleStartStop::controllerSignalPort;\n    connect VehicleStartStop::powerOnSignalPort to VehicleStartStop::controllerSignalPort;\n    connect VehicleStartStop::stopSignalPort to VehicleStartStop::parkingBrake;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603542,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 284,
+    "prompt_tokens": 874,
+    "total_tokens": 1158,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "4340bec7f846487285e3031bcd090b06",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleSafetyAndAntiTheft {\n\n    private import ScalarValues::*;\n\n    enum def SafetyCategory {\n        enum Mandatory;\n        enum Optional;\n        enum BothSafetyAndAntiTheft;\n    }\n\n    enum def ComponentType {\n        enum Safety;\n        enum AntiTheft;\n        enum Both;\n    }\n\n    part def Vehicle {\n        attribute safetyComponents : SafetyComponent[*];\n        attribute antiTheftComponents : AntiTheftComponent[*];\n        attribute combinedComponents : CombinedComponent[*];\n    }\n\n    part def SafetyComponent {\n        attribute name : String;\n        attribute category : SafetyCategory = SafetyCategory::Optional;\n    }\n\n    part def AntiTheftComponent {\n        attribute name : String;\n    }\n\n    part def CombinedComponent {\n        attribute name : String;\n    }\n\n    part def FrontSeatBelt : SafetyComponent {\n        attribute name : String = \"Front Seat Belt\";\n        attribute category : SafetyCategory = SafetyCategory::Mandatory;\n    }\n\n    part def Bumper : SafetyComponent {\n        attribute name : String = \"Bumper\";\n        attribute category : SafetyCategory = SafetyCategory::Mandatory;\n    }\n\n    part def DriversAirbag : SafetyComponent {\n        attribute name : String = \"Driver's Airbag\";\n        attribute category : SafetyCategory = SafetyCategory::Optional;\n    }\n\n    part def AntiLockBrakingSystem : SafetyComponent {\n        attribute name : String = \"Anti-lock Braking System\";\n        attribute category : SafetyCategory = SafetyCategory::Optional;\n    }\n\n    part def AlarmSystem : AntiTheftComponent {\n        attribute name : String = \"Alarm System\";\n    }\n\n    part def KeylessEntrySystem : AntiTheftComponent {\n        attribute name : String = \"Keyless Entry System\";\n    }\n\n    part def Immobilizer : CombinedComponent {\n        attribute name : String = \"Immobilizer\";\n    }\n\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604273,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 394,
+    "prompt_tokens": 448,
+    "total_tokens": 842,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

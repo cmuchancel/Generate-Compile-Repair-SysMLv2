@@ -1,0 +1,34 @@
+{
+  "id": "fc5f301b8efd44ff984a999c0630e073",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage ConfigurableEngine {\n    private import ScalarValues::*;\n\n    enum def CylinderDiameter {\n        enum D70;\n        enum D100;\n    }\n\n    part def Cylinder {\n        attribute diameter : CylinderDiameter;\n    }\n\n    part def Engine {\n        attribute cylinderCount : Integer;\n        part cylinders : Cylinder[*];\n    }\n\n    part fourCylinderEngine : Engine {\n        attribute cylinderCount : Integer = 4;\n        part cylinders : Cylinder[4] {\n            attribute :>> diameter = CylinderDiameter::D70;\n        }\n    }\n\n    part sixCylinderEngine : Engine {\n        attribute cylinderCount : Integer = 6;\n        part cylinders : Cylinder[6] {\n            attribute :>> diameter = CylinderDiameter::D70;\n        }\n    }\n\n    part def EngineVariant {\n        part engine : Engine;\n    }\n\n    part fourCylD70 : EngineVariant {\n        part engine : fourCylinderEngine;\n    }\n\n    part fourCylD100 : EngineVariant {\n        part engine : fourCylinderEngine {\n            part cylinders : Cylinder[4] {\n                attribute :>> diameter = CylinderDiameter::D100;\n            }\n        }\n    }\n\n    part sixCylD70 : EngineVariant {\n        part engine : sixCylinderEngine;\n    }\n\n    part sixCylD100 : EngineVariant {\n        part engine : sixCylinderEngine {\n            part cylinders : Cylinder[6] {\n                attribute :>> diameter = CylinderDiameter::D100;\n            }\n        }\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603783,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 343,
+    "prompt_tokens": 2341,
+    "total_tokens": 2684,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

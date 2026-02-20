@@ -1,0 +1,34 @@
+{
+  "id": "320922ca9a6e4fb594a61d8cb90774f5",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleProductLineConfiguration {\n    private import ScalarValues::*;\n\n    enum def PerformanceRequirement {\n        HighPerformance\n        StandardPerformance\n    }\n\n    enum def EngineType {\n        FourCylinder\n        SixCylinder\n    }\n\n    enum def TransmissionType {\n        Manual\n        Automatic\n    }\n\n    enum def WheelType {\n        NarrowRim\n        WideRim\n    }\n\n    part def Engine {\n        attribute engineType : EngineType;\n    }\n\n    part def Transmission {\n        attribute transmissionType : TransmissionType;\n    }\n\n    part def Wheel {\n        attribute wheelType : WheelType;\n        attribute quantity : Integer = 4;\n    }\n\n    part def Vehicle {\n        attribute performanceRequirement : PerformanceRequirement;\n        part engine : Engine;\n        part transmission : Transmission;\n        part wheels : Wheel[4];\n    }\n\n    part def ConfigurationSystem {\n        part vehicle : Vehicle;\n\n        attribute selectedPerformance : PerformanceRequirement;\n\n        port def InputPort {\n            attribute performance : PerformanceRequirement;\n        }\n\n        port def OutputPort {\n            part configuredVehicle : Vehicle;\n        }\n\n        port input : InputPort;\n        port output : OutputPort;\n    }\n\n    part configurationSystem : ConfigurationSystem;\n\n    connect configurationSystem.input to configurationSystem.vehicle {\n        attribute performanceRequirement = configurationSystem.input.performance;\n    }\n\n    // High performance configuration\n    part highPerformanceEngine : Engine {\n        attribute engineType = EngineType::SixCylinder;\n    }\n\n    part highPerformanceTransmission : Transmission {\n        attribute transmissionType = TransmissionType::Automatic;\n    }\n\n    part highPerformanceWheels : Wheel {\n        attribute wheelType = WheelType::WideRim;\n    }\n\n    // Standard performance configuration\n    part standardPerformanceEngine : Engine {\n        attribute engineType = EngineType::FourCylinder;\n    }\n\n    part standardPerformanceTransmission : Transmission {\n        attribute transmissionType = TransmissionType::Manual;\n    }\n\n    part standardPerformanceWheels : Wheel {\n        attribute wheelType = WheelType::NarrowRim;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604125,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 423,
+    "prompt_tokens": 407,
+    "total_tokens": 830,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

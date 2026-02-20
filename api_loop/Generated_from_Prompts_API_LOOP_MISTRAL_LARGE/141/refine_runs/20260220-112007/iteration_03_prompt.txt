@@ -1,0 +1,182 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to provide a standardized unit system library that supports the interoperability and adaptation between the International System of Quantities (ISQ) and United States Customary Units (USCustomaryUnits). The goal is to enable users to conveniently manage, convert, and apply various units of physical quantities, effectively reducing confusion and errors caused by inconsistent units. At the same time, the system must ensure the accuracy and authoritative standardization of all unit types, meeting the measurement needs of engineering, scientific research, and daily life. This will enhance the efficiency and reliability of data processing and communication.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 2):
+                package UnitSystemLibrary {
+    private import ScalarValues::*;
+
+    enum def QuantityKind {
+        enum length;
+        enum mass;
+        enum time;
+        enum electricCurrent;
+        enum thermodynamicTemperature;
+        enum amountOfSubstance;
+        enum luminousIntensity;
+        enum planeAngle;
+        enum solidAngle;
+        enum area;
+        enum volume;
+        enum velocity;
+        enum acceleration;
+        enum force;
+        enum pressure;
+        enum energy;
+        enum power;
+        enum electricCharge;
+        enum electricPotential;
+        enum electricResistance;
+        enum frequency;
+    }
+
+    enum def ISQUnit {
+        enum meter :> length;
+        enum kilogram :> mass;
+        enum second :> time;
+        enum ampere :> electricCurrent;
+        enum kelvin :> thermodynamicTemperature;
+        enum mole :> amountOfSubstance;
+        enum candela :> luminousIntensity;
+        enum radian :> planeAngle;
+        enum steradian :> solidAngle;
+    }
+
+    enum def USCustomaryUnit {
+        enum inch :> length;
+        enum foot :> length;
+        enum yard :> length;
+        enum mile :> length;
+        enum poundMass :> mass;
+        enum slug :> mass;
+        enum second :> time;
+        enum ampere :> electricCurrent;
+        enum rankine :> thermodynamicTemperature;
+        enum fahrenheit :> thermodynamicTemperature;
+        enum mole :> amountOfSubstance;
+        enum candela :> luminousIntensity;
+        enum radian :> planeAngle;
+        enum steradian :> solidAngle;
+    }
+
+    part def UnitConverter {
+        attribute sourceUnit : ISQUnit;
+        attribute targetUnit : USCustomaryUnit;
+        attribute conversionFactor : Real;
+        attribute offset : Real = 0.0;
+    }
+
+    part def UnitSystem {
+        attribute name : String;
+        attribute baseUnits : ISQUnit[*];
+        attribute derivedUnits : ISQUnit[*];
+    }
+
+    part def USUnitSystem {
+        attribute name : String;
+        attribute baseUnits : USCustomaryUnit[*];
+        attribute derivedUnits : USCustomaryUnit[*];
+    }
+
+    part isqSystem : UnitSystem {
+        attribute name = "International System of Quantities";
+        attribute baseUnits = [ISQUnit::meter, ISQUnit::kilogram, ISQUnit::second, ISQUnit::ampere, ISQUnit::kelvin, ISQUnit::mole, ISQUnit::candela];
+    }
+
+    part usCustomarySystem : USUnitSystem {
+        attribute name = "United States Customary Units";
+        attribute baseUnits = [USCustomaryUnit::foot, USCustomaryUnit::poundMass, USCustomaryUnit::second, USCustomaryUnit::ampere];
+    }
+
+    part def Quantity {
+        attribute value : Real;
+        attribute unit : ISQUnit;
+    }
+
+    part def USQuantity {
+        attribute value : Real;
+        attribute unit : USCustomaryUnit;
+    }
+
+    part lengthConverter : UnitConverter {
+        attribute sourceUnit = ISQUnit::meter;
+        attribute targetUnit = USCustomaryUnit::foot;
+        attribute conversionFactor = 3.28084;
+    }
+
+    part massConverter : UnitConverter {
+        attribute sourceUnit = ISQUnit::kilogram;
+        attribute targetUnit = USCustomaryUnit::poundMass;
+        attribute conversionFactor = 2.20462;
+    }
+
+    part temperatureConverter : UnitConverter {
+        attribute sourceUnit = ISQUnit::kelvin;
+        attribute targetUnit = USCustomaryUnit::rankine;
+        attribute conversionFactor = 1.8;
+        attribute offset = 0.0;
+    }
+
+    part temperatureOffsetConverter : UnitConverter {
+        attribute sourceUnit = ISQUnit::kelvin;
+        attribute targetUnit = USCustomaryUnit::fahrenheit;
+        attribute conversionFactor = 1.8;
+        attribute offset = 459.67;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_02.sysml:78:31: error (parsing-error): Expected a token. Did you forget an identifier?
+    78 |         attribute baseUnits = [ISQUnit::meter, ISQUnit::kilogram, ISQUnit::second, ISQUnit::ampere, ISQUnit::kelvin, ISQUnit::mole, ISQUnit::candela];
+iteration_02.sysml:83:31: error (parsing-error): Expected a token. Did you forget an identifier?
+    83 |         attribute baseUnits = [USCustomaryUnit::foot, USCustomaryUnit::poundMass, USCustomaryUnit::second, USCustomaryUnit::ampere];
+iteration_02.sysml:77:19: warning (namespace-distinguishability): Member name 'name' shadows UnitSystemLibrary::UnitSystem::name
+│   77 |         attribute name = "International System of Quantities";
+│      |                   ^^^^
+└── iteration_02.sysml:65:19: note: Inherited from here
+    └── iteration_02.sysml:76:22: note: Because UnitSystemLibrary::UnitSystem is specialized through FeatureTyping
+iteration_02.sysml:78:19: warning (namespace-distinguishability): Member name 'baseUnits' shadows UnitSystemLibrary::UnitSystem::baseUnits
+│   78 |         attribute baseUnits = [ISQUnit::meter, ISQUnit::kilogram, ISQUnit::second, ISQUnit::ampere, ISQUnit::kelvin, ISQUnit::mole, ISQUnit::candela];
+│      |                   ^^^^^^^^^
+└── iteration_02.sysml:66:19: note: Inherited from here
+    └── iteration_02.sysml:76:22: note: Because UnitSystemLibrary::UnitSystem is specialized through FeatureTyping
+iteration_02.sysml:78:31: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   78 |         attribute baseUnits = [ISQUnit::meter, ISQUnit::kilogram, ISQUnit::second, ISQUnit::ampere, ISQUnit::kelvin, ISQUnit::mole, ISQUnit::candela];
+│      |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+└── iteration_02.sysml:78:32: note: UnitSystemLibrary::ISQUnit::meter does not conform to MeasurementReferences::MeasurementUnit
+iteration_02.sysml:82:19: warning (namespace-distinguishability): Member name 'name' shadows UnitSystemLibrary::USUnitSystem::name
+│   82 |         attribute name = "United States Customary Units";
+│      |                   ^^^^
+└── iteration_02.sysml:71:19: note: Inherited from here
+    └── iteration_02.sysml:81:30: note: Because UnitSystemLibrary::USUnitSystem is specialized through FeatureTyping
+iteration_02.sysml:83:19: warning (namespace-distinguishability): Member name 'baseUnits' shadows UnitSystemLibrary::USUnitSystem::baseUnits
+│   83 |         attribute baseUnits = [USCustomaryUnit::foot, USCustomaryUnit::poundMass, USCustomaryUnit::second, USCustomaryUnit::ampere];
+│      |                   ^^^^^^^^^
+└── iteration_02.sysml:72:19: note: Inherited from here
+    └── iteration_02.sysml:81:30: note: Because UnitSystemLibrary::USUnitSystem is specialized through FeatureTyping
+iteration_02.sysml:83:31: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   83 |         attribute baseUnits = [USCustomaryUnit::foot, USCustomaryUnit::poundMass, USCustomaryUnit::second, USCustomaryUnit::ampere];
+│      |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+└── iteration_02.sysml:83:32: note: UnitSystemLibrary::USCustomaryUnit::foot does not conform to MeasurementReferences::MeasurementUnit
+iteration_02.sysml:97:19: warning (namespace-distinguishability): Member name 'sourceUnit' shadows UnitSystemLibrary::UnitConverter::sourceUnit
+│   97 |         attribute sourceUnit = ISQUnit::meter;
+│      |                   ^^^^^^^^^^
+└── iteration_02.sysml:58:19: note: Inherited from here
+    └── iteration_02.sysml:96:28: note: Because UnitSystemLibrary::UnitConverter is specialized through FeatureTyping
+iteration_02.sysml:98:19: warning (namespace-distinguishability): Member name 'targetUnit' shadows UnitSystemLibrary::UnitConverte
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,34 @@
+{
+  "id": "b8d09b477c184a139ed067391539e8d4",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleMassAndDynamics {\n    private import ScalarValues::*;\n\n    part def Chassis {\n        attribute mass : Real;\n    }\n\n    part def Engine {\n        attribute mass : Real;\n    }\n\n    part def Transmission {\n        attribute mass : Real;\n    }\n\n    part def Vehicle {\n        part chassis : Chassis;\n        part engine : Engine;\n        part transmission : Transmission;\n        attribute totalMass : Real;\n        attribute initialVelocity : Real;\n        attribute finalVelocity : Real;\n        attribute appliedForce : Real;\n        attribute time : Real;\n\n        constraint maxMass {\n            chassis.mass + engine.mass + transmission.mass <= 2500.0\n        }\n\n        constraint positiveMass {\n            chassis.mass > 0.0 and engine.mass > 0.0 and transmission.mass > 0.0\n        }\n\n        constraint dynamicConstraint {\n            appliedForce * time == (finalVelocity - initialVelocity) * (chassis.mass + engine.mass + transmission.mass)\n        }\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603814,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 220,
+    "prompt_tokens": 1989,
+    "total_tokens": 2209,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 496
+    }
+  }
+}

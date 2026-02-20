@@ -1,0 +1,44 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:13:51.989391Z",
+    "iteration_end": "2026-02-20T16:13:59.917922Z",
+    "iteration_duration_seconds": 7.9283816250099335,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/105/20260220-111351/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/105/20260220-111351/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/105/20260220-111351/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:19:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    19 |         attribute state : EngineState = EngineState::OFF;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:55:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'FuelCommand' shadows AutomotivePowertrainControl::FuelCommand\n\u2502   55 |     port def FuelCommand;\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:50:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_01.sysml:56:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'Torque' shadows AutomotivePowertrainControl::Torque\n\u2502   56 |     port def Torque;\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:51:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_01.sysml:57:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'StallSignal' shadows AutomotivePowertrainControl::StallSignal\n\u2502   57 |     port def StallSignal;\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:52:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_01.sysml:58:14: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'EngineControl' shadows AutomotivePowertrainControl::EngineControl\n\u2502   58 |     port def EngineControl;\n\u2502      |              \u001b[38;2;204;204;057m^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:53:14: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 377,
+      "output_tokens": 466,
+      "total_tokens": 843
+    },
+    "tokens_used_total": 843,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:13:59.917969Z",
+    "iteration_end": "2026-02-20T16:14:17.799996Z",
+    "iteration_duration_seconds": 17.881799041002523,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/105/20260220-111351/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/105/20260220-111351/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop_mistral_large/105/20260220-111351/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1360,
+      "output_tokens": 485,
+      "total_tokens": 1845
+    },
+    "tokens_used_total": 2688,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

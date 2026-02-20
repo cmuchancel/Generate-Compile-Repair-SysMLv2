@@ -1,0 +1,34 @@
+{
+  "id": "23ffc43277024431b4eaaaccfb3ae133",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehiclePowertrainOptimization {\n    private import ScalarValues::*;\n\n    enum def EngineType {\n        enum FourCylinder;\n        enum SixCylinder;\n        enum EightCylinder;\n        enum Hybrid;\n        enum Electric;\n    }\n\n    part def Cylinder;\n    part def Piston;\n    part def ConnectingRod;\n    part def Crankshaft;\n    part def EngineBlock;\n    part def EngineControlUnit;\n\n    part def Engine {\n        attribute engineType : EngineType;\n        attribute power : Real;\n        attribute mass : Real;\n        attribute efficiency : Real;\n        attribute reliability : Real;\n        attribute cost : Real;\n\n        part cylinders : Cylinder[4..8];\n        part pistons : Piston[4..8];\n        part connectingRods : ConnectingRod[4..8];\n        part crankshaft : Crankshaft;\n        part engineBlock : EngineBlock;\n        part ecu : EngineControlUnit;\n    }\n\n    part def Vehicle {\n        part engine : Engine;\n    }\n\n    part def TradeOffAnalysis {\n        attribute powerWeight : Real = 0.2;\n        attribute massWeight : Real = 0.2;\n        attribute efficiencyWeight : Real = 0.2;\n        attribute reliabilityWeight : Real = 0.2;\n        attribute costWeight : Real = 0.2;\n\n        attribute evaluate : Real;\n    }\n\n    part def PowertrainOptimizer {\n        part vehicle : Vehicle;\n        attribute analysis : TradeOffAnalysis;\n\n        attribute recommendOptimalEngine : Engine;\n    }\n\n    port def InputPort;\n    port def OutputPort;\n\n    part def UserInterface {\n        port input : InputPort;\n        port output : OutputPort;\n    }\n\n    part system : PowertrainOptimizer {\n        part ui : UserInterface;\n    }\n\n    connect system.ui.output to system.analysis.evaluate;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604267,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 386,
+    "prompt_tokens": 1550,
+    "total_tokens": 1936,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

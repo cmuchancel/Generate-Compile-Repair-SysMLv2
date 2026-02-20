@@ -1,0 +1,34 @@
+{
+  "id": "cce406bb331b4189a9a342468763162b",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleTrailerConnectionSystem {\n    private import ScalarValues::*;\n\n    enum def ConnectionStatus {\n        enum connected;\n        enum disconnected;\n    }\n\n    part def Vehicle {\n        attribute chassis : Chassis;\n        attribute towBall : TowBall;\n        attribute connectionStatus : ConnectionStatus = ConnectionStatus::disconnected;\n    }\n\n    part def Trailer {\n        attribute frame : TrailerFrame;\n        attribute coupler : Coupler;\n    }\n\n    part def Chassis;\n    part def TowBall;\n    part def TrailerFrame;\n    part def Coupler;\n\n    part vehicle : Vehicle;\n    part trailer : Trailer;\n\n    connect vehicle.towBall to trailer.coupler;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604071,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 147,
+    "prompt_tokens": 390,
+    "total_tokens": 537,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 368
+    }
+  }
+}

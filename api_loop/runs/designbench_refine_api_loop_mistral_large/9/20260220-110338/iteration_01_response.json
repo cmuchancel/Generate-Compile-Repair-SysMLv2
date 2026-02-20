@@ -1,0 +1,34 @@
+{
+  "id": "f1f1171f41c64a8a97ca7fff0f8141b2",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage WheelAssembly {\n    private import ScalarValues::*;\n\n    part def WheelBearingUnit;\n    part def Tire;\n    part def Bead;\n    part def Hub;\n    part def Rim;\n    part def Bolt;\n    part def BoltMountingHole;\n    part def ThreadedHole;\n\n    part wheelAssembly {\n        part bearingUnit : WheelBearingUnit;\n        part tire : Tire;\n        part hub : Hub;\n\n        part leftBead : Bead;\n        part rightBead : Bead;\n        part leftRim : Rim;\n        part rightRim : Rim;\n\n        attribute mountingHoleCount : Integer = 5;\n        part mountingHoles : BoltMountingHole[mountingHoleCount];\n        part threadedHoles : ThreadedHole[mountingHoleCount];\n        part bolts : Bolt[mountingHoleCount];\n    }\n\n    connect wheelAssembly.leftBead to wheelAssembly.leftRim;\n    connect wheelAssembly.rightBead to wheelAssembly.rightRim;\n\n    for i in 1..wheelAssembly.mountingHoleCount {\n        connect wheelAssembly.mountingHoles[i] to wheelAssembly.bolts[i];\n        connect wheelAssembly.bolts[i] to wheelAssembly.threadedHoles[i];\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603419,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 278,
+    "prompt_tokens": 390,
+    "total_tokens": 668,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 352
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "0e1a1b490e0a49caaf96b4ba55180638",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehiclePerformanceAnalysis {\n    private import ScalarValues::*;\n\n    enum def DriveCycleType {\n        enum Urban;\n        enum Highway;\n        enum Custom;\n    }\n\n    part def Vehicle {\n        attribute curbWeight : Real;\n        attribute payload : Real;\n        attribute wheelDiameter : Real;\n        attribute transmissionEfficiency : Real;\n        attribute urbanFuelEconomy : Real;\n        attribute highwayFuelEconomy : Real;\n    }\n\n    part def DriveCycle {\n        attribute cycleType : DriveCycleType;\n        attribute timeStamps : Real[*];\n        attribute positions : Real[*];\n        attribute speeds : Real[*];\n    }\n\n    part def PerformanceAnalyzer {\n        attribute targetFuelEconomy : Real;\n        attribute calculatedPowerDemand : Real;\n        attribute calculatedAcceleration : Real;\n        attribute calculatedSpeed : Real;\n        attribute calculatedPosition : Real;\n        attribute totalFuelConsumption : Real;\n        attribute fuelEconomyResult : Real;\n        attribute complianceStatus : Boolean;\n    }\n\n    part def SystemContext {\n        part vehicle : Vehicle;\n        part driveCycle : DriveCycle;\n        part analyzer : PerformanceAnalyzer;\n    }\n\n    item def PowerDemand;\n    item def Acceleration;\n    item def Speed;\n    item def Position;\n    item def FuelConsumption;\n\n    port def VehiclePort {\n        out powerDemand : PowerDemand;\n        out acceleration : Acceleration;\n        out speed : Speed;\n        out position : Position;\n    }\n\n    port def DriveCyclePort {\n        in powerDemand : PowerDemand;\n        in acceleration : Acceleration;\n        in speed : Speed;\n        in position : Position;\n    }\n\n    port def AnalyzerPort {\n        in powerDemand : PowerDemand;\n        in acceleration : Acceleration;\n        in speed : Speed;\n        in position : Position;\n        out fuelConsumption : FuelConsumption;\n    }\n\n    part system : SystemContext {\n        part vehicle : Vehicle {\n            port vehiclePort : VehiclePort;\n        }\n\n        part driveCycle : DriveCycle {\n            port driveCyclePort : DriveCyclePort;\n        }\n\n        part analyzer : PerformanceAnalyzer {\n            port analyzerPort : AnalyzerPort;\n        }\n\n        connect vehicle.vehiclePort to driveCycle.driveCyclePort;\n        connect driveCycle.driveCyclePort to analyzer.analyzerPort;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603713,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 486,
+    "prompt_tokens": 464,
+    "total_tokens": 950,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "5c7630bffc6748ee9a3852ccd6547f2b",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage WheelAssembly {\n    private import ScalarValues::*;\n\n    part def WheelBearingUnit;\n    part def Tire;\n    part def Bead;\n    part def Hub;\n    part def Rim;\n    part def Bolt;\n    part def BoltMountingHole;\n    part def ThreadedHole;\n\n    port def PressFitPort;\n    port def BoltConnectionPort;\n\n    part wheelAssembly {\n        part bearingUnit : WheelBearingUnit;\n        part tire : Tire;\n        part hub : Hub;\n\n        part rim1 : Rim;\n        part rim2 : Rim;\n\n        part bead1 : Bead;\n        part bead2 : Bead;\n\n        part mountingHoles : BoltMountingHole[4];\n        part threadedHoles : ThreadedHole[4];\n        part bolts : Bolt[4];\n\n        port pressFit1 : PressFitPort;\n        port pressFit2 : PressFitPort;\n        port boltPorts : BoltConnectionPort[4];\n    }\n\n    connect wheelAssembly.bead1 to wheelAssembly.rim1 via pressFit1;\n    connect wheelAssembly.bead2 to wheelAssembly.rim2 via pressFit2;\n\n    for i in 1..4 {\n        connect wheelAssembly.mountingHoles[i] to wheelAssembly.threadedHoles[i];\n        connect wheelAssembly.bolts[i] to wheelAssembly.mountingHoles[i];\n        connect wheelAssembly.bolts[i] to wheelAssembly.boltPorts[i];\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603464,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 314,
+    "prompt_tokens": 2231,
+    "total_tokens": 2545,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 368
+    }
+  }
+}

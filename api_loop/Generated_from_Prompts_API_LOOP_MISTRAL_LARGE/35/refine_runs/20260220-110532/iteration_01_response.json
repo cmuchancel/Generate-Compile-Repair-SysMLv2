@@ -1,0 +1,34 @@
+{
+  "id": "2b62914f2fa249fa9ca217dad06559e6",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleStartupShutdown {\n    private import ScalarValues::*;\n\n    enum def VehicleState {\n        enum off;\n        enum starting;\n        enum on;\n    }\n\n    item def VehicleStartSignal;\n    item def VehiclePowerOnSignal;\n    item def VehicleShutdownSignal;\n\n    port def StartPort {\n        in item start : VehicleStartSignal;\n    }\n\n    port def PowerPort {\n        in item power : VehiclePowerOnSignal;\n    }\n\n    port def ShutdownPort {\n        in item shutdown : VehicleShutdownSignal;\n    }\n\n    port def StatePort {\n        out item state : VehicleState;\n    }\n\n    part def VehicleController {\n        attribute currentState : VehicleState = VehicleState::off;\n        port startPort : StartPort;\n        port powerPort : PowerPort;\n        port shutdownPort : ShutdownPort;\n        port statePort : StatePort;\n    }\n\n    part vehicleController : VehicleController;\n\n    connect vehicleController.startPort to vehicleController;\n    connect vehicleController.powerPort to vehicleController;\n    connect vehicleController.shutdownPort to vehicleController;\n    connect vehicleController.statePort to vehicleController;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603533,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 238,
+    "prompt_tokens": 366,
+    "total_tokens": 604,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

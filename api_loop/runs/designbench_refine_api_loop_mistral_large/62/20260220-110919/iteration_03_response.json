@@ -1,0 +1,34 @@
+{
+  "id": "2c9fcc1c6f924581b8c9531cb823c11b",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleMassManagement {\n    private import ScalarValues::*;\n\n    enum def MassStatus {\n        enum withinLimit\n        enum overweight\n    }\n\n    part def Chassis {\n        attribute mass : Real;\n    }\n\n    part def Engine {\n        attribute mass : Real;\n    }\n\n    part def Gearbox {\n        attribute mass : Real;\n    }\n\n    part def Vehicle {\n        part chassis : Chassis;\n        part engine : Engine;\n        part gearbox : Gearbox;\n        attribute totalMass : Real;\n        attribute status : MassStatus = MassStatus::withinLimit;\n        attribute maxPermittedMass : Real = 2500.0;\n\n        constraint massConstraint {\n            totalMass == chassis.mass + engine.mass + gearbox.mass;\n        }\n\n        constraint statusConstraint {\n            if (totalMass > maxPermittedMass) then (status == MassStatus::overweight)\n            else (status == MassStatus::withinLimit);\n        }\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603769,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 203,
+    "prompt_tokens": 1659,
+    "total_tokens": 1862,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

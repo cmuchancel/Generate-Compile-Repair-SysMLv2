@@ -1,0 +1,34 @@
+{
+  "id": "928f7f8f095549f4b10cb2e13c9fc50d",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage WheelAssembly {\n    private import ScalarValues::*;\n\n    part def WheelBearingUnit;\n    part def Tire;\n    part def Bead;\n    part def Hub;\n    part def Rim;\n    part def Bolt;\n    part def BoltMountingHole;\n    part def ThreadedHole;\n\n    part wheelAssembly {\n        part bearingUnit : WheelBearingUnit;\n        part tire : Tire;\n        part hub : Hub;\n\n        part leftBead : Bead;\n        part rightBead : Bead;\n        part leftRim : Rim;\n        part rightRim : Rim;\n\n        attribute mountingHoleCount : Integer = 5;\n        part mountingHoles : BoltMountingHole[mountingHoleCount];\n        part threadedHoles : ThreadedHole[mountingHoleCount];\n        part bolts : Bolt[mountingHoleCount];\n    }\n\n    connect wheelAssembly.leftBead to wheelAssembly.leftRim;\n    connect wheelAssembly.rightBead to wheelAssembly.rightRim;\n\n    connect wheelAssembly.mountingHoles[1] to wheelAssembly.bolts[1];\n    connect wheelAssembly.bolts[1] to wheelAssembly.threadedHoles[1];\n\n    connect wheelAssembly.mountingHoles[2] to wheelAssembly.bolts[2];\n    connect wheelAssembly.bolts[2] to wheelAssembly.threadedHoles[2];\n\n    connect wheelAssembly.mountingHoles[3] to wheelAssembly.bolts[3];\n    connect wheelAssembly.bolts[3] to wheelAssembly.threadedHoles[3];\n\n    connect wheelAssembly.mountingHoles[4] to wheelAssembly.bolts[4];\n    connect wheelAssembly.bolts[4] to wheelAssembly.threadedHoles[4];\n\n    connect wheelAssembly.mountingHoles[5] to wheelAssembly.bolts[5];\n    connect wheelAssembly.bolts[5] to wheelAssembly.threadedHoles[5];\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603424,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 429,
+    "prompt_tokens": 2019,
+    "total_tokens": 2448,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "cc15db770fee4fe68b9e3a887bde0d89",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage SystemModel {\n    private import ScalarValues::*;\n\n    part def SystemAssembly;\n    part def Computer;\n    part def Storage;\n    part def Software;\n\n    item def MessageFormat;\n    item def DataFormat;\n\n    part systemAssembly : SystemAssembly {\n        part computer : Computer;\n        part storage : Storage;\n        part software : Software;\n    }\n\n    part def Software {\n        attribute messageFormat : MessageFormat;\n        attribute dataFormat : DataFormat;\n    }\n\n    part def Computer {\n        attribute canIntegrateFunctions : Boolean = true;\n    }\n\n    part def Storage {\n        attribute canAccessMessageFormat : Boolean = true;\n        attribute isCompatibleWithDataFormat : Boolean = true;\n    }\n\n    connect systemAssembly.software.messageFormat to systemAssembly.storage::Storage;\n    connect systemAssembly.software.dataFormat to systemAssembly.storage::Storage;\n    connect systemAssembly.computer::Computer to systemAssembly.software::Software;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603917,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 194,
+    "prompt_tokens": 966,
+    "total_tokens": 1160,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "5d18dbfe32664ac79148451960e619a7",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleFeatureAnnotationSystem {\n    private import ScalarValues::*;\n\n    enum def SafetyFeatureType {\n        enum SeatBelt;\n        enum DriverAirbag;\n        enum Bumper;\n    }\n\n    enum def SecurityFeatureType {\n        enum AntiTheftAlarm;\n        enum KeylessEntry;\n    }\n\n    part def Vehicle {\n        part interior : InteriorAssembly;\n        part body : BodyAssembly;\n    }\n\n    part def InteriorAssembly {\n        part seatBelts : SeatBelt[2] = SeatBelt;\n        part frontSeats : FrontSeat[2] = FrontSeat;\n        part driverAirbag : DriverAirbag = DriverAirbag;\n        part alarmSystem : AntiTheftAlarm = AntiTheftAlarm;\n    }\n\n    part def BodyAssembly {\n        part bodyShell : BodyShell = BodyShell;\n        part bumpers : Bumper[2] = Bumper;\n        part keylessEntryDevice : KeylessEntry = KeylessEntry;\n    }\n\n    part def SeatBelt {\n        attribute safetyType : SafetyFeatureType = SafetyFeatureType::SeatBelt;\n    }\n\n    part def FrontSeat;\n\n    part def DriverAirbag {\n        attribute safetyType : SafetyFeatureType = SafetyFeatureType::DriverAirbag;\n    }\n\n    part def AntiTheftAlarm {\n        attribute securityType : SecurityFeatureType = SecurityFeatureType::AntiTheftAlarm;\n    }\n\n    part def BodyShell;\n\n    part def Bumper {\n        attribute safetyType : SafetyFeatureType = SafetyFeatureType::Bumper;\n    }\n\n    part def KeylessEntry {\n        attribute securityType : SecurityFeatureType = SecurityFeatureType::KeylessEntry;\n    }\n\n    part vehicle : Vehicle;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603811,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 366,
+    "prompt_tokens": 416,
+    "total_tokens": 782,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

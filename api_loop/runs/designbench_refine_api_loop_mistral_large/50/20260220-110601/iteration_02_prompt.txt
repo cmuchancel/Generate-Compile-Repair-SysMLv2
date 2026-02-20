@@ -1,0 +1,102 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to manage and track the entire lifecycle of a vehicle. First, a vehicle will go through the assembly and delivery stages. The specific delivery date must be recorded at the time of delivery for each vehicle. After delivery, the vehicle may undergo multiple ownership changes, each of which requires clearly recording the owner's information and ensuring that each stage can be traced to a unique owner. During each ownership period, different drivers can be tracked and recorded; each driving operation must specify the actual driver. When the vehicle reaches the end-of-use stage, its scrapping (or de-registration) information should also be recorded. The entire system should be able to accurately and comprehensively record and manage all lifecycle-related data from vehicle assembly, delivery, ownership transfer, driving details to final scrapping, and should support inquiry and traceability of relevant information.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleLifecycleManagement {
+    private import ScalarValues::*;
+
+    enum def LifecycleStage {
+        enum Assembly;
+        enum Delivery;
+        enum Ownership;
+        enum EndOfUse;
+    }
+
+    part def Vehicle {
+        attribute vin : String;
+        attribute assemblyDate : Date;
+        attribute deliveryDate : Date;
+        attribute scrappingDate : Date;
+        attribute currentStage : LifecycleStage = LifecycleStage::Assembly;
+    }
+
+    part def Owner {
+        attribute ownerId : String;
+        attribute name : String;
+        attribute contact : String;
+    }
+
+    part def Driver {
+        attribute driverId : String;
+        attribute name : String;
+        attribute licenseNumber : String;
+    }
+
+    part def OwnershipRecord {
+        attribute startDate : Date;
+        attribute endDate : Date;
+        part owner : Owner;
+    }
+
+    part def DrivingRecord {
+        attribute startTime : DateTime;
+        attribute endTime : DateTime;
+        part driver : Driver;
+    }
+
+    part def VehicleLifecycle {
+        part vehicle : Vehicle;
+        part ownershipRecords : OwnershipRecord[*];
+        part drivingRecords : DrivingRecord[*];
+    }
+
+    part lifecycle : VehicleLifecycle;
+
+    connect lifecycle.vehicle to lifecycle.ownershipRecords.vehicle;
+    connect lifecycle.vehicle to lifecycle.drivingRecords.vehicle;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:13:34: error (reference-error): No Type named 'Date' found.
+    13 |         attribute assemblyDate : Date;
+       |                                  ^^^^
+iteration_01.sysml:14:34: error (reference-error): No Type named 'Date' found.
+    14 |         attribute deliveryDate : Date;
+       |                                  ^^^^
+iteration_01.sysml:15:35: error (reference-error): No Type named 'Date' found.
+    15 |         attribute scrappingDate : Date;
+       |                                   ^^^^
+iteration_01.sysml:32:31: error (reference-error): No Type named 'Date' found.
+    32 |         attribute startDate : Date;
+       |                               ^^^^
+iteration_01.sysml:33:29: error (reference-error): No Type named 'Date' found.
+    33 |         attribute endDate : Date;
+       |                             ^^^^
+iteration_01.sysml:38:31: error (reference-error): No Type named 'DateTime' found.
+    38 |         attribute startTime : DateTime;
+       |                               ^^^^^^^^
+iteration_01.sysml:39:29: error (reference-error): No Type named 'DateTime' found.
+    39 |         attribute endTime : DateTime;
+       |                             ^^^^^^^^
+iteration_01.sysml:51:61: error (reference-error): No Feature named 'vehicle' found.
+    51 |     connect lifecycle.vehicle to lifecycle.ownershipRecords.vehicle;
+       |                                                             ^^^^^^^
+iteration_01.sysml:52:59: error (reference-error): No Feature named 'vehicle' found.
+    52 |     connect lifecycle.vehicle to lifecycle.drivingRecords.vehicle;
+       |                                                           ^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

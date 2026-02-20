@@ -1,0 +1,34 @@
+{
+  "id": "8102e060b45a4949acccecfa85e8feae",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleSimulation {\n    private import ScalarValues::*;\n\n    enum def TimeUnit {\n        second\n    }\n\n    enum def DistanceUnit {\n        meter\n    }\n\n    enum def MassUnit {\n        kilogram\n    }\n\n    enum def PowerUnit {\n        watt\n    }\n\n    enum def VelocityUnit {\n        meterPerSecond\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        attribute massUnit : MassUnit = kilogram;\n        attribute initialPosition : Real;\n        attribute positionUnit : DistanceUnit = meter;\n        attribute initialVelocity : Real;\n        attribute velocityUnit : VelocityUnit = meterPerSecond;\n    }\n\n    part def SimulationParameters {\n        attribute timeStep : Real;\n        attribute timeUnit : TimeUnit = second;\n    }\n\n    part def PowerInput {\n        attribute powerSequence : Sequence<Real>;\n        attribute powerUnit : PowerUnit = watt;\n    }\n\n    part def SimulationOutput {\n        attribute positionTrajectory : Sequence<Real>;\n        attribute positionUnit : DistanceUnit = meter;\n    }\n\n    part def Simulation {\n        part vehicle : Vehicle;\n        part parameters : SimulationParameters;\n        part powerInput : PowerInput;\n        part output : SimulationOutput;\n\n        port def PowerPort {\n            attribute power : Real;\n        }\n\n        port powerIn : PowerPort;\n        port powerOut : PowerPort;\n\n        connect powerInput to powerIn;\n        connect powerOut to output;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603503,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 300,
+    "prompt_tokens": 359,
+    "total_tokens": 659,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

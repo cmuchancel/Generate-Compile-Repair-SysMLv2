@@ -1,0 +1,263 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to provide a standardized unit system library that supports the interoperability and adaptation between the International System of Quantities (ISQ) and United States Customary Units (USCustomaryUnits). The goal is to enable users to conveniently manage, convert, and apply various units of physical quantities, effectively reducing confusion and errors caused by inconsistent units. At the same time, the system must ensure the accuracy and authoritative standardization of all unit types, meeting the measurement needs of engineering, scientific research, and daily life. This will enhance the efficiency and reliability of data processing and communication.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 4):
+                package UnitSystemLibrary {
+    private import ScalarValues::*;
+
+    enum def QuantityKind {
+        enum length;
+        enum mass;
+        enum time;
+        enum electricCurrent;
+        enum temperature;
+        enum amountOfSubstance;
+        enum luminousIntensity;
+    }
+
+    enum def ISQUnit {
+        enum meter :> length;
+        enum kilogram :> mass;
+        enum second :> time;
+        enum ampere :> electricCurrent;
+        enum kelvin :> temperature;
+        enum mole :> amountOfSubstance;
+        enum candela :> luminousIntensity;
+    }
+
+    enum def USCustomaryUnit {
+        enum inch :> length;
+        enum foot :> length;
+        enum yard :> length;
+        enum mile :> length;
+        enum poundMass :> mass;
+        enum ounce :> mass;
+        enum second :> time;
+        enum ampere :> electricCurrent;
+        enum rankine :> temperature;
+        enum fahrenheit :> temperature;
+    }
+
+    part def Unit {
+        attribute unitName : String;
+        attribute unitSymbol : String;
+        attribute quantityKind : QuantityKind;
+    }
+
+    part def UnitConverter {
+        attribute sourceUnit : Unit;
+        attribute targetUnit : Unit;
+        attribute conversionFactor : Real;
+        attribute offset : Real = 0.0;
+    }
+
+    part def UnitSystem {
+        attribute systemName : String;
+        attribute baseUnitNames : String[0..*];
+    }
+
+    part def PhysicalQuantity {
+        attribute value : Real;
+        attribute unit : Unit;
+    }
+
+    part meter : Unit {
+        attribute unitName = "meter";
+        attribute unitSymbol = "m";
+        attribute quantityKind = length;
+    }
+
+    part kilogram : Unit {
+        attribute unitName = "kilogram";
+        attribute unitSymbol = "kg";
+        attribute quantityKind = mass;
+    }
+
+    part second : Unit {
+        attribute unitName = "second";
+        attribute unitSymbol = "s";
+        attribute quantityKind = time;
+    }
+
+    part ampere : Unit {
+        attribute unitName = "ampere";
+        attribute unitSymbol = "A";
+        attribute quantityKind = electricCurrent;
+    }
+
+    part kelvin : Unit {
+        attribute unitName = "kelvin";
+        attribute unitSymbol = "K";
+        attribute quantityKind = temperature;
+    }
+
+    part mole : Unit {
+        attribute unitName = "mole";
+        attribute unitSymbol = "mol";
+        attribute quantityKind = amountOfSubstance;
+    }
+
+    part candela : Unit {
+        attribute unitName = "candela";
+        attribute unitSymbol = "cd";
+        attribute quantityKind = luminousIntensity;
+    }
+
+    part inch : Unit {
+        attribute unitName = "inch";
+        attribute unitSymbol = "in";
+        attribute quantityKind = length;
+    }
+
+    part foot : Unit {
+        attribute unitName = "foot";
+        attribute unitSymbol = "ft";
+        attribute quantityKind = length;
+    }
+
+    part yard : Unit {
+        attribute unitName = "yard";
+        attribute unitSymbol = "yd";
+        attribute quantityKind = length;
+    }
+
+    part mile : Unit {
+        attribute unitName = "mile";
+        attribute unitSymbol = "mi";
+        attribute quantityKind = length;
+    }
+
+    part poundMass : Unit {
+        attribute unitName = "pound";
+        attribute unitSymbol = "lbm";
+        attribute quantityKind = mass;
+    }
+
+    part ounce : Unit {
+        attribute unitName = "ounce";
+        attribute unitSymbol = "oz";
+        attribute quantityKind = mass;
+    }
+
+    part rankine : Unit {
+        attribute unitName = "rankine";
+        attribute unitSymbol = "°R";
+        attribute quantityKind = temperature;
+    }
+
+    part fahrenheit : Unit {
+        attribute unitName = "fahrenheit";
+        attribute unitSymbol = "°F";
+        attribute quantityKind = temperature;
+    }
+
+    part isqSystem : UnitSystem {
+        attribute systemName = "ISQ";
+        attribute baseUnitNames = ("meter", "kilogram", "second", "ampere", "kelvin", "mole", "candela");
+    }
+
+    part usCustomarySystem : UnitSystem {
+        attribute systemName = "USCustomary";
+        attribute baseUnitNames = ("foot", "pound", "second", "ampere", "rankine");
+    }
+
+    part lengthConverter : UnitConverter {
+        attribute sourceUnit = meter;
+        attribute targetUnit = foot;
+        attribute conversionFactor = 3.28084;
+    }
+
+    part massConverter : UnitConverter {
+        attribute sourceUnit = kilogram;
+        attribute targetUnit = poundMass;
+        attribute conversionFactor = 2.20462;
+    }
+
+    part temperatureConverter : UnitConverter {
+        attribute sourceUnit = kelvin;
+        attribute targetUnit = rankine;
+        attribute conversionFactor = 1.8;
+        attribute offset = 0.0;
+    }
+
+    part fahrenheitConverter : UnitConverter {
+        attribute sourceUnit = kelvin;
+        attribute targetUnit = fahrenheit;
+        attribute conversionFactor = 1.8;
+        attribute offset = 459.67;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_04.sysml:61:19: warning (namespace-distinguishability): Member name 'unitName' shadows UnitSystemLibrary::Unit::unitName
+│   61 |         attribute unitName = "meter";
+│      |                   ^^^^^^^^
+└── iteration_04.sysml:38:19: note: Inherited from here
+    └── iteration_04.sysml:60:18: note: Because UnitSystemLibrary::Unit is specialized through FeatureTyping
+iteration_04.sysml:62:19: warning (namespace-distinguishability): Member name 'unitSymbol' shadows UnitSystemLibrary::Unit::unitSymbol
+│   62 |         attribute unitSymbol = "m";
+│      |                   ^^^^^^^^^^
+└── iteration_04.sysml:39:19: note: Inherited from here
+    └── iteration_04.sysml:60:18: note: Because UnitSystemLibrary::Unit is specialized through FeatureTyping
+iteration_04.sysml:63:19: warning (namespace-distinguishability): Member name 'quantityKind' shadows UnitSystemLibrary::Unit::quantityKind
+│   63 |         attribute quantityKind = length;
+│      |                   ^^^^^^^^^^^^
+└── iteration_04.sysml:40:19: note: Inherited from here
+    └── iteration_04.sysml:60:18: note: Because UnitSystemLibrary::Unit is specialized through FeatureTyping
+iteration_04.sysml:67:19: warning (namespace-distinguishability): Member name 'unitName' shadows UnitSystemLibrary::Unit::unitName
+│   67 |         attribute unitName = "kilogram";
+│      |                   ^^^^^^^^
+└── iteration_04.sysml:38:19: note: Inherited from here
+    └── iteration_04.sysml:66:21: note: Because UnitSystemLibrary::Unit is specialized through FeatureTyping
+iteration_04.sysml:68:19: warning (namespace-distinguishability): Member name 'unitSymbol' shadows UnitSystemLibrary::Unit::unitSymbol
+│   68 |         attribute unitSymbol = "kg";
+│      |                   ^^^^^^^^^^
+└── iteration_04.sysml:39:19: note: Inherited from here
+    └── iteration_04.sysml:66:21: note: Because UnitSystemLibrary::Unit is specialized through FeatureTyping
+iteration_04.sysml:69:19: warning (namespace-distinguishability): Member name 'quantityKind' shadows UnitSystemLibrary::Unit::quantityKind
+│   69 |         attribute quantityKind = mass;
+│      |                   ^^^^^^^^^^^^
+└── iteration_04.sysml:40:19: note: Inherited from here
+    └── iteration_04.sysml:66:21: note: Because UnitSystemLibrary::Unit is specialized through FeatureTyping
+iteration_04.sysml:73:19: warning (namespace-distinguishability): Member name 'unitName' shadows UnitSystemLibrary::Unit::unitName
+│   73 |         attribute unitName = "second";
+│      |                   ^^^^^^^^
+└── iteration_04.sysml:38:19: note: Inherited from here
+    └── iteration_04.sysml:72:19: note: Because UnitSystemLibrary::Unit is specialized through FeatureTyping
+iteration_04.sysml:74:19: warning (namespace-distinguishability): Member name 'unitSymbol' shadows UnitSystemLibrary::Unit::unitSymbol
+│   74 |         attribute unitSymbol = "s";
+│      |                   ^^^^^^^^^^
+└── iteration_04.sysml:39:19: note: Inherited from here
+    └── iteration_04.sysml:72:19: note: Because UnitSystemLibrary::Unit is specialized through FeatureTyping
+... (truncated compiler output) ...
+       |                                  ^^^^
+iteration_04.sysml:75:34: error (reference-error): No Feature named 'time' found.
+    75 |         attribute quantityKind = time;
+       |                                  ^^^^
+iteration_04.sysml:81:34: error (reference-error): No Feature named 'electricCurrent' found.
+    81 |         attribute quantityKind = electricCurrent;
+       |                                  ^^^^^^^^^^^^^^^
+iteration_04.sysml:87:34: error (reference-error): No Feature named 'temperature' found.
+    87 |         attribute quantityKind = temperature;
+       |                                  ^^^^^^^^^^^
+iteration_04.sysml:93:34: error (reference-error): No Feature named 'amountOfSubstance' found.
+    93 |         attribute quantityKind = amountOfSubstance;
+       |                                  ^^^^^^^^^^^^^^^^^
+iteration_04.sysml:99:34: error (refere
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

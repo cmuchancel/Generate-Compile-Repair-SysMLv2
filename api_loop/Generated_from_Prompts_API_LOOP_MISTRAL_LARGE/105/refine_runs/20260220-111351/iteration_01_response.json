@@ -1,0 +1,34 @@
+{
+  "id": "a1ff4fbadc9e4d3aac8694e992315d8b",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomotivePowertrainControl {\n    private import ScalarValues::*;\n\n    enum def EngineState {\n        enum OFF;\n        enum STARTING;\n        enum RUNNING;\n        enum STALLING;\n    }\n\n    enum def TorqueTransmissionState {\n        enum IDLE;\n        enum AMPLIFYING;\n        enum TRANSMITTING;\n        enum DISTRIBUTING;\n    }\n\n    part def Engine {\n        attribute state : EngineState = EngineState::OFF;\n        attribute currentTorque : Real = 0.0;\n        port fuelInput : FuelCommand;\n        port torqueOutput : Torque;\n        port stallSignal : StallSignal;\n    }\n\n    part def TorqueAmplifier {\n        attribute amplificationFactor : Real = 2.0;\n        port inputTorque : Torque;\n        port outputTorque : Torque;\n    }\n\n    part def Transmission {\n        port inputTorque : Torque;\n        port outputTorque : Torque;\n    }\n\n    part def Differential {\n        port inputTorque : Torque;\n        port leftWheelTorque : Torque;\n        port rightWheelTorque : Torque;\n    }\n\n    part def PowertrainController {\n        attribute transmissionState : TorqueTransmissionState = TorqueTransmissionState::IDLE;\n        port fuelCommand : FuelCommand;\n        port stallDetection : StallSignal;\n        port engineControl : EngineControl;\n    }\n\n    item def FuelCommand;\n    item def Torque;\n    item def StallSignal;\n    item def EngineControl;\n\n    port def FuelCommand;\n    port def Torque;\n    port def StallSignal;\n    port def EngineControl;\n\n    part powertrainSystem {\n        part engine : Engine;\n        part amplifier : TorqueAmplifier;\n        part transmission : Transmission;\n        part differential : Differential;\n        part controller : PowertrainController;\n\n        connect controller.fuelCommand to engine.fuelInput;\n        connect controller.stallDetection to engine.stallSignal;\n        connect controller.engineControl to engine;\n        connect engine.torqueOutput to amplifier.inputTorque;\n        connect amplifier.outputTorque to transmission.inputTorque;\n        connect transmission.outputTorque to differential.inputTorque;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604032,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 466,
+    "prompt_tokens": 377,
+    "total_tokens": 843,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "9ba1a43aebed44b3a44a78b6f1f84950",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleQualityAnalysis {\n    private import ScalarValues::*;\n\n    enum def QualityAttribute {\n        enum mass;\n        enum durability;\n        enum reliability;\n        enum performance;\n    }\n\n    part def VehicleType;\n    part def EngineType;\n    part def TransmissionType;\n    part def FrontAxleAssemblyType;\n    part def RearAxleAssemblyType;\n    part def QualityAnalysisRequirementType;\n    part def AnalysisUseCaseType;\n    part def AnalysisTaskType;\n    part def AnalysisPlanType;\n\n    part def VehicleType {\n        attribute totalMass : Real;\n        part engine : EngineType;\n        part transmission : TransmissionType;\n        part frontAxle : FrontAxleAssemblyType;\n        part rearAxle : RearAxleAssemblyType;\n    }\n\n    part def EngineType {\n        attribute mass : Real;\n        attribute durability : Real;\n        attribute reliability : Real;\n    }\n\n    part def TransmissionType {\n        attribute mass : Real;\n        attribute durability : Real;\n    }\n\n    part def FrontAxleAssemblyType {\n        attribute mass : Real;\n        attribute reliability : Real;\n    }\n\n    part def RearAxleAssemblyType {\n        attribute mass : Real;\n        attribute reliability : Real;\n    }\n\n    part def QualityAnalysisRequirementType {\n        attribute requirementText : String;\n        attribute targetAttribute : QualityAttribute;\n    }\n\n    part def AnalysisUseCaseType {\n        attribute useCaseName : String;\n        attribute useCaseObjective : String;\n    }\n\n    part def AnalysisTaskType {\n        attribute taskName : String;\n        attribute status : String;\n    }\n\n    part def AnalysisPlanType {\n        attribute planName : String;\n    }\n\n    part vehicle : VehicleType;\n    part engine : EngineType;\n    part transmission : TransmissionType;\n    part frontAxle : FrontAxleAssemblyType;\n    part rearAxle : RearAxleAssemblyType;\n    part qualityRequirement : QualityAnalysisRequirementType;\n    part analysisUseCase : AnalysisUseCaseType;\n    part analysisTask : AnalysisTaskType;\n    part analysisPlan : AnalysisPlanType;\n\n    attribute vehicleTotalMass : Real = vehicle.engine.mass + vehicle.transmission.mass + vehicle.frontAxle.mass + vehicle.rearAxle.mass;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604201,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 459,
+    "prompt_tokens": 1984,
+    "total_tokens": 2443,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

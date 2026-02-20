@@ -1,0 +1,34 @@
+{
+  "id": "e52d456d11a4435a9f480e0974018bea",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage RiskAndFailureManagement {\n    private import ScalarValues::*;\n\n    enum def ProbabilityLevel {\n        enum VERY_LOW\n        enum LOW\n        enum MEDIUM\n        enum HIGH\n        enum VERY_HIGH\n    }\n\n    enum def SeverityLevel {\n        enum NEGLIGIBLE\n        enum MINOR\n        enum MODERATE\n        enum MAJOR\n        enum CATASTROPHIC\n    }\n\n    part def Situation {\n        attribute description : String;\n        attribute causes : Cause[0..*];\n    }\n\n    part def Cause {\n        attribute description : String;\n        attribute probability : ProbabilityLevel;\n        attribute resultingFailures : Failure[0..*];\n    }\n\n    part def Failure {\n        attribute description : String;\n        attribute severity : SeverityLevel;\n    }\n\n    part def RiskScenario {\n        attribute description : String;\n        attribute situations : Situation[0..*];\n        attribute causes : Cause[0..*];\n        attribute failures : Failure[0..*];\n    }\n\n    part system : RiskAndFailureManagement::RiskScenario {\n        part situation1 : Situation;\n        part cause1 : Cause;\n        part failure1 : Failure;\n\n        connect situation1.causes to cause1;\n        connect cause1.resultingFailures to failure1;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603833,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 277,
+    "prompt_tokens": 356,
+    "total_tokens": 633,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

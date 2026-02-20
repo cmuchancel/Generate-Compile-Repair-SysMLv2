@@ -1,0 +1,34 @@
+{
+  "id": "1af5a66d76a94ffb98152a94dc7bb4cb",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage EngineeringMaterialsDatabase {\n    private import ScalarValues::*;\n\n    enum def MaterialType {\n        enum Metal;\n        enum Alloy;\n        enum Polymer;\n        enum Ceramic;\n        enum Composite;\n    }\n\n    part def Material {\n        attribute name : String;\n        attribute materialType : MaterialType;\n        attribute atomicMass : Real;\n        attribute density : Real;\n    }\n\n    part def Composition {\n        attribute constituent : String;\n        attribute massFraction : Real;\n    }\n\n    part def MechanicalProperty {\n        attribute propertyName : String;\n        attribute value : Real;\n        attribute unit : String;\n    }\n\n    part def Metal {\n        attribute baseElement : String;\n    }\n\n    part def Alloy {\n        attribute baseMetal : Metal;\n        part compositions : Composition[*];\n    }\n\n    part def Steel_980 : Alloy {\n        attribute tensileStrengthName : String = \"Tensile Strength\";\n        attribute tensileStrengthValue : Real = 980.0;\n        attribute tensileStrengthUnit : String = \"N/mm\u00b2\";\n\n        part iron : Composition {\n            attribute constituent : String = \"Iron\";\n            attribute massFraction : Real = 0.97;\n        }\n        part carbon : Composition {\n            attribute constituent : String = \"Carbon\";\n            attribute massFraction : Real = 0.002;\n        }\n        part manganese : Composition {\n            attribute constituent : String = \"Manganese\";\n            attribute massFraction : Real = 0.015;\n        }\n    }\n\n    part materialsDatabase {\n        part steel980 : Steel_980;\n        connect steel980.compositions to steel980.iron;\n        connect steel980.compositions to steel980.carbon;\n        connect steel980.compositions to steel980.manganese;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604435,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 383,
+    "prompt_tokens": 1847,
+    "total_tokens": 2230,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 432
+    }
+  }
+}

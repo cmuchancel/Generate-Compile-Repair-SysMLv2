@@ -1,0 +1,34 @@
+{
+  "id": "bcad5a1acd3e4126a904da4ee1067d23",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleSystem {\n    private import ScalarValues::*;\n\n    enum def VehicleStatus {\n        enum parked;\n        enum driving;\n        enum idle;\n    }\n\n    enum def GearSetting {\n        enum park;\n        enum reverse;\n        enum neutral;\n        enum drive;\n        enum low;\n    }\n\n    part def Engine {\n        attribute displacement : Real;\n        attribute horsepower : Real;\n        attribute isRunning : Boolean;\n    }\n\n    part def Person {\n        attribute name : String;\n        attribute age : Integer;\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        attribute status : VehicleStatus = VehicleStatus::parked;\n        attribute gear : GearSetting = GearSetting::park;\n        attribute acceleratorPosition : Real = 0.0;\n        part engine : Engine;\n        part driver : Person;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603314,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 175,
+    "prompt_tokens": 342,
+    "total_tokens": 517,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

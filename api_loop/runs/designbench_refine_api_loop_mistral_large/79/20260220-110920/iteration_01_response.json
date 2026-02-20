@@ -1,0 +1,34 @@
+{
+  "id": "3eb31aad02cf4473b2c1587a3612944b",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleProductLine {\n    private import ScalarValues::*;\n\n    enum def EngineType {\n        enum FourCylinder;\n        enum SixCylinder;\n    }\n\n    enum def CylinderDiameter {\n        enum Small = 70;\n        enum Large = 100;\n    }\n\n    enum def TransmissionType {\n        enum Manual;\n        enum Automatic;\n    }\n\n    part def Engine {\n        attribute type : EngineType;\n        attribute cylinderCount : Integer;\n        attribute cylinderDiameter : CylinderDiameter;\n    }\n\n    part def Transmission {\n        attribute type : TransmissionType;\n    }\n\n    part def Vehicle {\n        part engine : Engine;\n        part transmission : Transmission;\n\n        attribute isValid : Boolean = (\n            (engine.type == EngineType::FourCylinder and transmission.type == TransmissionType::Manual) or\n            (engine.type == EngineType::SixCylinder and transmission.type == TransmissionType::Automatic) or\n            (engine.type == EngineType::FourCylinder and transmission.type == TransmissionType::Automatic)\n        );\n    }\n\n    part fourCylEngine : Engine {\n        type = EngineType::FourCylinder;\n        cylinderCount = 4;\n    }\n\n    part sixCylEngine : Engine {\n        type = EngineType::SixCylinder;\n        cylinderCount = 6;\n    }\n\n    part manualTransmission : Transmission {\n        type = TransmissionType::Manual;\n    }\n\n    part automaticTransmission : Transmission {\n        type = TransmissionType::Automatic;\n    }\n\n    part validVehicle1 : Vehicle {\n        engine = fourCylEngine;\n        transmission = manualTransmission;\n    }\n\n    part validVehicle2 : Vehicle {\n        engine = fourCylEngine;\n        transmission = automaticTransmission;\n    }\n\n    part validVehicle3 : Vehicle {\n        engine = sixCylEngine;\n        transmission = automaticTransmission;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603761,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 392,
+    "prompt_tokens": 412,
+    "total_tokens": 804,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

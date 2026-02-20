@@ -1,0 +1,110 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to support comprehensive transportation scenarios, enabling a driver and up to four passengers to be safely transported from the starting point to the destination. Users first enter the vehicle, after which the driver operates the vehicle under the influence of environmental conditions, and may refuel at a gas station as needed to ensure a smooth journey. Upon arrival at the destination, the driver and passengers can safely exit the vehicle, thereby completing the entire transportation process. The system should ensure that interactions among all participants are simple and convenient, meeting the primary needs of daily transportation.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package TransportationSystem {
+    private import ScalarValues::*;
+
+    enum def VehicleState {
+        parked
+        driving
+        refueling
+        arrived
+    }
+
+    enum def EnvironmentCondition {
+        clear
+        rainy
+        snowy
+        foggy
+    }
+
+    part def Person {
+        attribute role : String;
+    }
+
+    part def Driver specializes Person {
+        attribute licenseValid : Boolean = true;
+    }
+
+    part def Passenger specializes Person {
+    }
+
+    part def Vehicle {
+        attribute state : VehicleState = VehicleState::parked;
+        attribute fuelLevel : Real = 100.0;
+        attribute maxPassengers : Integer = 4;
+        attribute currentPassengers : Integer = 0;
+
+        part driver : Driver;
+        part passengers : Passenger[0..4];
+
+        port def FuelPort;
+        port fuelIn : FuelPort;
+
+        port def ControlPort;
+        port control : ControlPort;
+    }
+
+    part def GasStation {
+        port def FuelDispenserPort;
+        port dispenser : FuelDispenserPort;
+    }
+
+    part def Environment {
+        attribute condition : EnvironmentCondition = EnvironmentCondition::clear;
+    }
+
+    part def TransportationScenario {
+        part vehicle : Vehicle;
+        part gasStation : GasStation;
+        part environment : Environment;
+        part driver : Driver;
+        part passengers : Passenger[0..4];
+
+        connect vehicle.driver to driver;
+        connect vehicle.passengers to passengers;
+        connect vehicle.fuelIn to gasStation.dispenser;
+    }
+
+    item def Fuel;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:5:9: error (parsing-error): Unexpected identifier.
+    5 |         parked
+      |         ^^^^^^
+iteration_01.sysml:6:9: error (parsing-error): Unexpected identifier.
+    6 |         driving
+      |         ^^^^^^^
+iteration_01.sysml:8:9: error (parsing-error): Unexpected identifier, expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    8 |         arrived
+      |         ^^^^^^^
+iteration_01.sysml:13:9: error (parsing-error): Unexpected identifier, expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", "=", ":>", ":", ";", "{", "from", "locale", "about", "language", "for", "[", "ordered", "nonunique", "if", ":=", "default", "REGULAR_COMMENT", "specializes", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "defined", "by", "then", "connect", "of", "accept", "send", "assign", "terminate", "while", "loop", "parallel"].
+    13 |         rainy
+       |         ^^^^^
+iteration_01.sysml:30:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    30 |         attribute state : VehicleState = VehicleState::parked;
+       |                   ^^^^^
+iteration_01.sysml:30:56: error (reference-error): No Feature named 'parked' found.
+    30 |         attribute state : VehicleState = VehicleState::parked;
+       |                                                        ^^^^^^
+iteration_01.sysml:51:76: error (reference-error): No Feature named 'clear' found.
+    51 |         attribute condition : EnvironmentCondition = EnvironmentCondition::clear;
+       |                                                                            ^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

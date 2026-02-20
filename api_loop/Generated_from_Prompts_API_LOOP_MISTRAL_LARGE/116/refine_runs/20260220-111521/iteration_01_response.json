@@ -1,0 +1,34 @@
+{
+  "id": "4127e7b811c5447ab7366e3e7e74708d",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage modular_vehicle_platform {\n    private import ScalarValues::*;\n\n    enum def ComponentVariant {\n        enum basic;\n        enum extended;\n        enum premium;\n    }\n\n    part def Part1;\n    part def Part2;\n    part def Part3 {\n        port p1;\n    }\n    part def Part4;\n    part def Part5 {\n        port p2;\n        attribute variant : ComponentVariant = ComponentVariant::basic;\n    }\n    part def Part6;\n\n    part def SubsystemA {\n        part part1 : Part1;\n        part part2 : Part2;\n        part part3 : Part3;\n        part part4 : Part4;\n    }\n\n    part def SubsystemB {\n        part part5 : Part5;\n        part part6 : Part6;\n    }\n\n    part def VehicleConfigA {\n        part subsystemA : SubsystemA;\n        part subsystemB : SubsystemB;\n        connect subsystemA.part3.p1 to subsystemB.part5.p2;\n    }\n\n    part def VehicleConfigB {\n        part subsystemA : SubsystemA;\n        part subsystemB : SubsystemB;\n        attribute configVariant : ComponentVariant = ComponentVariant::extended;\n        connect subsystemA.part3.p1 to subsystemB.part5.p2;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604122,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 269,
+    "prompt_tokens": 472,
+    "total_tokens": 741,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

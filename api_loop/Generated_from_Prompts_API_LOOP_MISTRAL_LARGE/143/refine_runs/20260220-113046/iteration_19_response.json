@@ -1,0 +1,34 @@
+{
+  "id": "392f2f2d8c4b4046bffd6c0212eb8f75",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage CoreDataTypes {\n    private import ScalarValues::*;\n\n    enum def StatusColor {\n        enum red;\n        enum yellow;\n        enum green;\n    }\n\n    enum def DiameterSize {\n        enum small = \"Small (60 mm)\";\n        enum medium = \"Medium (70 mm)\";\n        enum large = \"Large (80 mm)\";\n    }\n\n    part def UnsignedInteger {\n        attribute value : Integer;\n        constraint {\n            value >= 0\n        }\n    }\n\n    part def UnsignedFloat {\n        attribute value : Real;\n        constraint {\n            value >= 0.0\n        }\n    }\n\n    part def StatusCondition {\n        attribute level : StatusColor;\n        attribute color : StatusColor = level;\n    }\n\n    part def PhysicalDimension {\n        attribute diameter : DiameterSize = DiameterSize::small;\n    }\n\n    part def CoreDataManager {\n        attribute unsignedInt : UnsignedInteger;\n        attribute unsignedFloat : UnsignedFloat;\n        attribute dateTime : Date;\n        attribute stringValue : String;\n        attribute booleanValue : Boolean;\n        attribute status : StatusCondition;\n        attribute dimension : PhysicalDimension;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771605122,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 241,
+    "prompt_tokens": 770,
+    "total_tokens": 1011,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

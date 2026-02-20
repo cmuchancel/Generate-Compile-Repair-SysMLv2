@@ -1,0 +1,34 @@
+{
+  "id": "a95189ea4da840e68c456194047c25a6",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleSafetyCompliance {\n    private import ScalarValues::*;\n\n    enum def SafetyCategory {\n        enum Mandatory;\n        enum Optional;\n    }\n\n    part def Vehicle {\n        part interior : VehicleInterior;\n        part body : VehicleBody;\n        part chassis : VehicleChassis;\n    }\n\n    part def VehicleInterior {\n        attribute seatBelts : SeatBelt[2] = (new SeatBelt, new SeatBelt);\n        attribute driverAirbag : Airbag;\n    }\n\n    part def VehicleBody {\n        attribute bumper : Bumper;\n        attribute keylessEntry : KeylessEntrySystem;\n    }\n\n    part def VehicleChassis {\n        attribute tires : Tire[4] = (new Tire, new Tire, new Tire, new Tire);\n        attribute abs : AntiLockBrakingSystem;\n    }\n\n    part def SeatBelt {\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Mandatory;\n    }\n\n    part def Airbag {\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Optional;\n    }\n\n    part def Bumper {\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Mandatory;\n    }\n\n    part def KeylessEntrySystem {\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Optional;\n    }\n\n    part def Tire {\n        attribute count : Integer = 4;\n    }\n\n    part def AntiLockBrakingSystem {\n        attribute safetyCategory : SafetyCategory = SafetyCategory::Optional;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603832,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 323,
+    "prompt_tokens": 409,
+    "total_tokens": 732,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

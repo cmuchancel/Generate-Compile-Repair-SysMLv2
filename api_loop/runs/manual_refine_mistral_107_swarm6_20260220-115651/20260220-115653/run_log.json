@@ -1,0 +1,65 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T16:56:54.004769Z",
+    "iteration_end": "2026-02-20T16:56:59.583958Z",
+    "iteration_duration_seconds": 5.579121000002488,
+    "sysml_path": "api_loop/runs/manual_refine_mistral_107_swarm6_20260220-115651/20260220-115653/iteration_01.sysml",
+    "prompt_path": "api_loop/runs/manual_refine_mistral_107_swarm6_20260220-115651/20260220-115653/iteration_01_prompt.txt",
+    "response_path": "api_loop/runs/manual_refine_mistral_107_swarm6_20260220-115651/20260220-115653/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:15:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         part frame : VehicleFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:21:14: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         part frame : TrailerFrame;\n       |              \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:32:39: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    32 |     port vehiclePowerPort : PowerPort on vehicle;\n       |                                       \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:33:39: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    33 |     port trailerPowerPort : PowerPort on trailer;\n       |                                       \u001b[38;2;220;080;080m^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 362,
+      "output_tokens": 200,
+      "total_tokens": 562
+    },
+    "tokens_used_total": 562,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T16:56:59.584151Z",
+    "iteration_end": "2026-02-20T16:57:04.509799Z",
+    "iteration_duration_seconds": 4.92671708400303,
+    "sysml_path": "api_loop/runs/manual_refine_mistral_107_swarm6_20260220-115651/20260220-115653/iteration_02.sysml",
+    "prompt_path": "api_loop/runs/manual_refine_mistral_107_swarm6_20260220-115651/20260220-115653/iteration_02_prompt.txt",
+    "response_path": "api_loop/runs/manual_refine_mistral_107_swarm6_20260220-115651/20260220-115653/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:15:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |         attribute frame : VehicleFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:21:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'frame', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    21 |         attribute frame : TrailerFrame;\n       |                   \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_02.sysml:32:10: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'vehicle' shadows VehicleTrailerHitchSystem::vehicle\n\u2502   32 |     port vehicle : PowerPort;\n\u2502      |          \u001b[38;2;204;204;057m^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:25:10: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_02.sysml:33:10: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'trailer' shadows VehicleTrailerHitchSystem::trailer\n\u2502   33 |     port trailer : PowerPort;\n\u2502      |          \u001b[38;2;204;204;057m^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:26:10: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 966,
+      "output_tokens": 185,
+      "total_tokens": 1151
+    },
+    "tokens_used_total": 1713,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T16:57:04.511237Z",
+    "iteration_end": "2026-02-20T16:57:08.430223Z",
+    "iteration_duration_seconds": 3.9190228750085225,
+    "sysml_path": "api_loop/runs/manual_refine_mistral_107_swarm6_20260220-115651/20260220-115653/iteration_03.sysml",
+    "prompt_path": "api_loop/runs/manual_refine_mistral_107_swarm6_20260220-115651/20260220-115653/iteration_03_prompt.txt",
+    "response_path": "api_loop/runs/manual_refine_mistral_107_swarm6_20260220-115651/20260220-115653/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1028,
+      "output_tokens": 195,
+      "total_tokens": 1223
+    },
+    "tokens_used_total": 2936,
+    "provider": "mistral_large",
+    "model": "mistral-large-latest"
+  }
+]

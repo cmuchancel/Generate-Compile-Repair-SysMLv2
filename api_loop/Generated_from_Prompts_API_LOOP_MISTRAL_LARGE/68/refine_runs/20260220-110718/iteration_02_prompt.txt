@@ -1,0 +1,123 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system requires that the total mass of the vehicle (including curb weight and fuel mass) must not exceed the specified maximum mass limit, and the fuel mass must be a positive value. In addition, the engine must be able to generate corresponding torque according to the speed curve, and the torque produced by the engine must be effectively transmitted to the transmission through the clutch interface to ensure that power is smoothly delivered to the vehicle’s drive system.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleSystem {
+    private import ScalarValues::*;
+
+    enum def MassUnit {
+        enum kilogram;
+        enum gram;
+    }
+
+    part def Mass {
+        attribute value : Real;
+        attribute unit : MassUnit = kilogram;
+    }
+
+    part def Engine {
+        attribute speed : Real;
+        attribute torque : Real;
+        port clutchInterface : ClutchPort;
+    }
+
+    part def Clutch {
+        port input : ClutchPort;
+        port output : ClutchPort;
+    }
+
+    part def Transmission {
+        port input : ClutchPort;
+    }
+
+    part def Fuel {
+        attribute mass : Mass;
+    }
+
+    part def Vehicle {
+        attribute curbWeight : Mass;
+        attribute maxMassLimit : Mass;
+        part fuel : Fuel;
+        part engine : Engine;
+        part clutch : Clutch;
+        part transmission : Transmission;
+
+        attribute totalMass : Mass = (curbWeight.value + fuel.mass.value)::Mass;
+
+        constraint maxMassConstraint {
+            totalMass.value <= maxMassLimit.value
+        }
+
+        constraint positiveFuelMass {
+            fuel.mass.value > 0.0
+        }
+    }
+
+    port def ClutchPort;
+
+    connect vehicle.engine.clutchInterface to vehicle.clutch.input;
+    connect vehicle.clutch.output to vehicle.transmission.input;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:41:80: error (parsing-error): Unexpected ';'.
+    41 |         attribute totalMass : Mass = (curbWeight.value + fuel.mass.value)::Mass;
+       |                                                                                ^
+iteration_01.sysml:41:38: error (type-error): ScalarValues::Real does not conform to VehicleSystem::Mass
+    41 |         attribute totalMass : Mass = (curbWeight.value + fuel.mass.value)::Mass;
+       |                                      ^
+iteration_01.sysml:11:37: error (reference-error): No Feature named 'kilogram' found.
+    11 |         attribute unit : MassUnit = kilogram;
+       |                                     ^^^^^^^^
+iteration_01.sysml:54:13: error (reference-error): No Feature named 'vehicle' found.
+    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;
+       |             ^^^^^^^
+iteration_01.sysml:54:21: error (reference-error): No Feature named 'engine' found.
+    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;
+       |                     ^^^^^^
+iteration_01.sysml:54:28: error (reference-error): No Feature named 'clutchInterface' found.
+    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;
+       |                            ^^^^^^^^^^^^^^^
+iteration_01.sysml:54:47: error (reference-error): No Feature named 'vehicle' found.
+    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;
+       |                                               ^^^^^^^
+iteration_01.sysml:54:55: error (reference-error): No Feature named 'clutch' found.
+    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;
+       |                                                       ^^^^^^
+iteration_01.sysml:54:62: error (reference-error): No Feature named 'input' found.
+    54 |     connect vehicle.engine.clutchInterface to vehicle.clutch.input;
+       |                                                              ^^^^^
+iteration_01.sysml:55:13: error (reference-error): No Feature named 'vehicle' found.
+    55 |     connect vehicle.clutch.output to vehicle.transmission.input;
+       |             ^^^^^^^
+iteration_01.sysml:55:21: error (reference-error): No Feature named 'clutch' found.
+    55 |     connect vehicle.clutch.output to vehicle.transmission.input;
+       |                     ^^^^^^
+iteration_01.sysml:55:28: error (reference-error): No Feature named 'output' found.
+    55 |     connect vehicle.clutch.output to vehicle.transmission.input;
+       |                            ^^^^^^
+iteration_01.sysml:55:38: error (reference-error): No Feature named 'vehicle' found.
+    55 |     connect vehicle.clutch.output to vehicle.transmission.input;
+       |                                      ^^^^^^^
+iteration_01.sysml:55:46: error (reference-error): No Feature named 'transmission' found.
+    55 |     connect vehicle.clutch.output to vehicle.transmission.input;
+       |                                              ^^^^^^^^^^^^
+iteration_01.sysml:55:59: error (reference-error): No Feature named 'input' found.
+    55 |     connect vehicle.clutch.output to vehicle.transmission.input;
+       |                                                           ^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

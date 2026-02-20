@@ -1,0 +1,34 @@
+{
+  "id": "7b9a53ced37b4cb4970fac96d997731d",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehicleFuelSystem {\n    private import ScalarValues::*;\n\n    enum def FuelFlowDirection {\n        enum supply;\n        enum return;\n    }\n\n    part def FuelTankAssembly {\n        attribute capacity : Real;\n        attribute currentLevel : Real;\n        attribute fuelTemperature : Real;\n\n        port fuelSupplyPort : FuelPort;\n        port fuelReturnPort : FuelPort;\n    }\n\n    part def Engine {\n        attribute fuelConsumptionRate : Real;\n        attribute fuelTemperature : Real;\n\n        port fuelSupplyPort : FuelPort;\n        port fuelReturnPort : FuelPort;\n    }\n\n    part def FuelLine {\n        attribute flowDirection : FuelFlowDirection;\n        attribute fuelTemperature : Real;\n    }\n\n    port def FuelPort {\n        attribute direction : FuelFlowDirection;\n    }\n\n    item def Fuel {\n        attribute temperature : Real;\n    }\n\n    part vehicleFuelSystem {\n        part fuelTank : FuelTankAssembly;\n        part engine : Engine;\n        part supplyLine : FuelLine;\n        part returnLine : FuelLine;\n\n        supplyLine.flowDirection = FuelFlowDirection::supply;\n        returnLine.flowDirection = FuelFlowDirection::return;\n\n        connect fuelTank.fuelSupplyPort to supplyLine;\n        connect supplyLine to engine.fuelSupplyPort;\n        connect engine.fuelReturnPort to returnLine;\n        connect returnLine to fuelTank.fuelReturnPort;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603341,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 297,
+    "prompt_tokens": 376,
+    "total_tokens": 673,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

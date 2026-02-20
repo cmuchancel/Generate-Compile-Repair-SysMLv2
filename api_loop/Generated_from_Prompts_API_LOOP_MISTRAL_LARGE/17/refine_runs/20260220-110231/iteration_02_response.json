@@ -1,0 +1,34 @@
+{
+  "id": "545e5d4ccfae4a1b9076a0996400be07",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage FuelSystemManagement {\n    private import ScalarValues::*;\n\n    enum def FuelFlowDirection {\n        enum supply;\n        enum returnFlow;\n    }\n\n    part def FuelTankAssembly {\n        attribute capacity : Real;\n        attribute currentFuelLevel : Real;\n        attribute fuelTemperature : Real;\n\n        port fuelSupplyPort : FuelSupplyPort;\n        port fuelReturnPort : FuelReturnPort;\n    }\n\n    part def Engine {\n        attribute fuelConsumptionRate : Real;\n        attribute fuelTemperature : Real;\n\n        port fuelSupplyPort : FuelSupplyPort;\n        port fuelReturnPort : FuelReturnPort;\n    }\n\n    port def FuelSupplyPort {\n        attribute fuelTemperature : Real;\n    }\n\n    port def FuelReturnPort {\n        attribute fuelTemperature : Real;\n    }\n\n    item def Fuel {\n        attribute temperature : Real;\n    }\n\n    part fuelTank : FuelTankAssembly;\n    part engine : Engine;\n\n    connect fuelTank.fuelSupplyPort to engine.fuelSupplyPort;\n    connect engine.fuelReturnPort to fuelTank.fuelReturnPort;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603356,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 230,
+    "prompt_tokens": 760,
+    "total_tokens": 990,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

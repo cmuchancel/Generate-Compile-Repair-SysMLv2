@@ -1,0 +1,34 @@
+{
+  "id": "9813bc0396e348c4b53aae7688c773f1",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage VehiclePowerTransmissionSystem {\n    private import ScalarValues::*;\n\n    enum def ClutchState {\n        engaged\n        disengaged\n    }\n\n    enum def Gear {\n        neutral\n        first\n        second\n        third\n        fourth\n        fifth\n        reverse\n    }\n\n    port def PowerPort {\n        attribute direction : String = \"inout\";\n    }\n\n    port def ControlPort {\n        attribute direction : String = \"in\";\n    }\n\n    port def RoadInterfacePort {\n        attribute direction : String = \"out\";\n    }\n\n    item def Torque {\n        attribute value : Real;\n    }\n\n    item def Speed {\n        attribute value : Real;\n    }\n\n    item def FuelCommand {\n        attribute value : Real;\n    }\n\n    part def Engine {\n        port fuelCommandPort : ControlPort;\n        port powerOutPort : PowerPort;\n        attribute currentTorque : Torque;\n        attribute currentSpeed : Speed;\n    }\n\n    part def Clutch {\n        port powerInPort : PowerPort;\n        port powerOutPort : PowerPort;\n        port controlPort : ControlPort;\n        attribute state : ClutchState = ClutchState::disengaged;\n    }\n\n    part def Transmission {\n        port powerInPort : PowerPort;\n        port powerOutPort : PowerPort;\n        port controlPort : ControlPort;\n        attribute currentGear : Gear = Gear::neutral;\n    }\n\n    part def Driveshaft {\n        port powerInPort : PowerPort;\n        port powerOutPort : PowerPort;\n    }\n\n    part def Differential {\n        port powerInPort : PowerPort;\n        port leftPowerOutPort : PowerPort;\n        port rightPowerOutPort : PowerPort;\n    }\n\n    part def HalfShaft {\n        port powerInPort : PowerPort;\n        port wheelInterfacePort : PowerPort;\n    }\n\n    part def Wheel {\n        port axleInterfacePort : PowerPort;\n        port roadInterfacePort : RoadInterfacePort;\n        attribute radius : Real;\n    }\n\n    part def RearAxleAssembly {\n        part differential : Differential;\n        part leftHalfShaft : HalfShaft;\n        part rightHalfShaft : HalfShaft;\n\n        connect differential.leftPowerOutPort to leftHalfShaft.powerInPort;\n        connect differential.rightPowerOutPort to rightHalfShaft.powerInPort;\n    }\n\n    part vehiclePowerTransmissionSystem {\n        part engine : Engine;\n        part clutch : Clutch;\n        part transmission : Transmission;\n        part driveshaft : Driveshaft;\n        part rearAxle : RearAxleAssembly;\n        part leftRearWheel : Wheel;\n        part rightRearWheel : Wheel;\n\n        connect engine.powerOutPort to clutch.powerInPort;\n        connect clutch.powerOutPort to transmission.powerInPort;\n        connect transmission.powerOutPort to driveshaft.powerInPort;\n        connect driveshaft.powerOutPort to rearAxle.differential.powerInPort;\n        connect rearAxle.leftHalfShaft.wheelInterfacePort to leftRearWheel.axleInterfacePort;\n        connect rearAxle.rightHalfShaft.wheelInterfacePort to rightRearWheel.axleInterfacePort;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604048,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 668,
+    "prompt_tokens": 502,
+    "total_tokens": 1170,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 464
+    }
+  }
+}

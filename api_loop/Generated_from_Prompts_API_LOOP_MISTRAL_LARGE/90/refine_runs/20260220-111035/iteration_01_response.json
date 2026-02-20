@@ -1,0 +1,34 @@
+{
+  "id": "292c1434ae6d478c9ac5047c9490e7ce",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage RiskMetadataModeling {\n    private import ScalarValues::*;\n\n    enum def SeverityLevel {\n        enum LOW;\n        enum MEDIUM;\n        enum HIGH;\n        enum CRITICAL;\n    }\n\n    enum def ProbabilityLevel {\n        enum RARE;\n        enum UNLIKELY;\n        enum POSSIBLE;\n        enum LIKELY;\n        enum CERTAIN;\n    }\n\n    part def Scenario {\n        attribute description : String;\n        attribute causes : Cause[0..*];\n        attribute failures : Failure[0..*];\n        attribute relatedScenarios : Scenario[0..*];\n    }\n\n    part def Cause {\n        attribute description : String;\n        attribute probability : ProbabilityLevel;\n    }\n\n    part def Failure {\n        attribute description : String;\n        attribute severity : SeverityLevel;\n    }\n\n    part def RiskScenario {\n        attribute description : String;\n        attribute scenarios : Scenario[1..*];\n        attribute causes : Cause[0..*];\n        attribute failures : Failure[0..*];\n    }\n\n    part def RiskModel {\n        part scenarios : Scenario[0..*];\n        part causes : Cause[0..*];\n        part failures : Failure[0..*];\n        part riskScenarios : RiskScenario[0..*];\n    }\n\n    part riskModel : RiskModel;\n\n    connect riskModel.scenarios to riskModel.riskScenarios.scenarios;\n    connect riskModel.causes to riskModel.riskScenarios.causes;\n    connect riskModel.failures to riskModel.riskScenarios.failures;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603836,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 336,
+    "prompt_tokens": 395,
+    "total_tokens": 731,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

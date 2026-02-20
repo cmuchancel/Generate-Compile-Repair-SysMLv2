@@ -1,0 +1,34 @@
+{
+  "id": "b1bd13f7445e47a0baf2f41815d2ec6f",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage PhotoWorkflow {\n\n    private import ScalarValues::*;\n\n    enum def FocusQuality {\n        enum WELL_FOCUSED;\n        enum POORLY_FOCUSED;\n    }\n\n    part def Scene {\n        attribute description : String;\n    }\n\n    part def FocusEvaluator {\n        attribute focusQuality : FocusQuality;\n    }\n\n    part def Image {\n        attribute isFocused : Boolean;\n    }\n\n    part def Photograph {\n        attribute filePath : String;\n    }\n\n    part def CameraSystem {\n        part scene : Scene;\n        part focusEvaluator : FocusEvaluator;\n        part image : Image;\n        part photograph : Photograph;\n\n        port def FocusInput;\n        port def FocusOutput;\n        port def ImageInput;\n        port def ImageOutput;\n        port def PhotoOutput;\n\n        port focusIn : FocusInput;\n        port focusOut : FocusOutput;\n        port imageIn : ImageInput;\n        port imageOut : ImageOutput;\n        port photoOut : PhotoOutput;\n    }\n\n    part workflow : CameraSystem;\n\n    connect workflow.focusOut to workflow.focusEvaluator;\n    connect workflow.imageOut to workflow.image;\n    connect workflow.image to workflow.photoOut;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603377,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 247,
+    "prompt_tokens": 358,
+    "total_tokens": 605,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "b4e31d1ec0c3430f8046897dee34f96c",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage UnitSystemLibrary {\n    private import ScalarValues::*;\n\n    enum def QuantityKind {\n        enum length;\n        enum mass;\n        enum time;\n        enum electricCurrent;\n        enum thermodynamicTemperature;\n        enum amountOfSubstance;\n        enum luminousIntensity;\n    }\n\n    enum def ISQUnit {\n        enum meter :> length;\n        enum kilogram :> mass;\n        enum second :> time;\n        enum ampere :> electricCurrent;\n        enum kelvin :> thermodynamicTemperature;\n        enum mole :> amountOfSubstance;\n        enum candela :> luminousIntensity;\n    }\n\n    enum def USCustomaryUnit {\n        enum inch :> length;\n        enum foot :> length;\n        enum yard :> length;\n        enum mile :> length;\n        enum poundMass :> mass;\n        enum ounce :> mass;\n        enum second :> time;\n        enum ampere :> electricCurrent;\n        enum rankine :> thermodynamicTemperature;\n        enum fahrenheit :> thermodynamicTemperature;\n    }\n\n    part def Unit {\n    }\n\n    part def UnitConverter {\n        attribute sourceUnit : Unit;\n        attribute targetUnit : Unit;\n        attribute conversionFactor : Real;\n        attribute offset : Real = 0.0;\n    }\n\n    part def UnitSystem {\n        attribute name : String;\n        attribute baseUnits : Unit[0..*];\n    }\n\n    part def PhysicalQuantity {\n        attribute value : Real;\n        attribute unit : Unit;\n        attribute quantityKind : QuantityKind;\n    }\n\n    part meter : Unit {\n    }\n\n    part kilogram : Unit {\n    }\n\n    part second : Unit {\n    }\n\n    part ampere : Unit {\n    }\n\n    part kelvin : Unit {\n    }\n\n    part mole : Unit {\n    }\n\n    part candela : Unit {\n    }\n\n    part inch : Unit {\n    }\n\n    part foot : Unit {\n    }\n\n    part yard : Unit {\n    }\n\n    part mile : Unit {\n    }\n\n    part poundMass : Unit {\n    }\n\n    part ounce : Unit {\n    }\n\n    part rankine : Unit {\n    }\n\n    part fahrenheit : Unit {\n    }\n\n    part isqSystem : UnitSystem {\n        attribute name = \"ISQ\";\n        attribute baseUnits = (meter, kilogram, second, ampere, kelvin, mole, candela);\n    }\n\n    part usCustomarySystem : UnitSystem {\n        attribute name = \"USCustomary\";\n        attribute baseUnits = (foot, poundMass, second, ampere, rankine);\n    }\n\n    part lengthConverter : UnitConverter {\n        attribute sourceUnit = meter;\n        attribute targetUnit = foot;\n        attribute conversionFactor = 3.28084;\n    }\n\n    part massConverter : UnitConverter {\n        attribute sourceUnit = kilogram;\n        attribute targetUnit = poundMass;\n        attribute conversionFactor = 2.20462;\n    }\n\n    part temperatureConverter : UnitConverter {\n        attribute sourceUnit = kelvin;\n        attribute targetUnit = rankine;\n        attribute conversionFactor = 1.8;\n        attribute offset = 0.0;\n    }\n\n    part fahrenheitConverter : UnitConverter {\n        attribute sourceUnit = kelvin;\n        attribute targetUnit = fahrenheit;\n        attribute conversionFactor = 1.8;\n        attribute offset = 459.67;\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604573,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 698,
+    "prompt_tokens": 2120,
+    "total_tokens": 2818,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 336
+    }
+  }
+}

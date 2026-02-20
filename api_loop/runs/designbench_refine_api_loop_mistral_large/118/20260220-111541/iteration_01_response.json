@@ -1,0 +1,34 @@
+{
+  "id": "708c59e0f7894c36ad9db487f59e9c8d",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```sysml\npackage AutomobileRequirements {\n    private import ScalarValues::*;\n\n    enum def MassGrade {\n        enum GRADE_2000KG;\n        enum GRADE_2500KG;\n    }\n\n    enum def FuelStatus {\n        enum FULL;\n        enum EMPTY;\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        attribute maxMass : Real;\n        attribute massGrade : MassGrade;\n        attribute fuelStatus : FuelStatus;\n        attribute isOverloaded : Boolean = false;\n\n        port driveInterface : DrivePort;\n\n        part engine : Engine;\n        part transmission : Transmission;\n    }\n\n    part def Engine {\n        attribute torqueOutput : Real;\n        port powerOutput : PowerPort;\n    }\n\n    part def Transmission {\n        port powerInput : PowerPort;\n    }\n\n    port def DrivePort;\n    port def PowerPort;\n\n    item def Torque;\n\n    part vehicle2000kg : Vehicle {\n        mass = 2000.0;\n        maxMass = 2000.0;\n        massGrade = MassGrade::GRADE_2000KG;\n        fuelStatus = FuelStatus::FULL;\n    }\n\n    part vehicle2500kg : Vehicle {\n        mass = 2500.0;\n        maxMass = 2500.0;\n        massGrade = MassGrade::GRADE_2500KG;\n        fuelStatus = FuelStatus::EMPTY;\n    }\n\n    connect vehicle2000kg.engine.powerOutput to vehicle2000kg.transmission.powerInput;\n    connect vehicle2000kg.driveInterface to vehicle2000kg.transmission;\n\n    connect vehicle2500kg.engine.powerOutput to vehicle2500kg.transmission.powerInput;\n    connect vehicle2500kg.driveInterface to vehicle2500kg.transmission;\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771604142,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 410,
+    "prompt_tokens": 482,
+    "total_tokens": 892,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}

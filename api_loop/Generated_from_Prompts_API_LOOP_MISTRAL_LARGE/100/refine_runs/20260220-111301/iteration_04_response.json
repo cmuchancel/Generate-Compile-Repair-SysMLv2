@@ -1,0 +1,34 @@
+{
+  "id": "d9ceeadb32fa4bc1ba3fc892a8a86942",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "```\npackage VehicleConfiguration {\n\n    private import ScalarValues::*;\n\n    part def Vehicle {\n        attribute mass : Real = 1750.0;\n        part frontAxle : Axle;\n        part rearAxle : Axle;\n    }\n\n    part def Axle {\n        attribute mass : Real;\n        part tires : Tire[2];\n    }\n\n    part def Tire {\n        attribute mass : Real;\n    }\n\n    part def FrontAxle :> Axle {\n        attribute steeringAngle : Real;\n    }\n\n    part vehicle1 : Vehicle {\n        attribute mass = 2000.0;\n        part frontAxle : FrontAxle {\n            attribute steeringAngle = 30.0;\n        }\n    }\n\n    part vehicle1_c1 {\n        part vehicle :> vehicle1 {\n            part frontAxle : FrontAxle {\n                attribute steeringAngle = 35.0;\n            }\n            part rearAxle : Axle {\n                part tires : Tire[2] {\n                    part [1] { attribute mass = 15.0; }\n                    part [2] { attribute mass = 15.0; }\n                }\n            }\n        }\n    }\n}\n```",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null
+      }
+    }
+  ],
+  "created": 1771603996,
+  "model": "mistral-large-latest",
+  "object": "chat.completion",
+  "service_tier": null,
+  "system_fingerprint": null,
+  "usage": {
+    "completion_tokens": 253,
+    "prompt_tokens": 1950,
+    "total_tokens": 2203,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": {
+      "audio_tokens": null,
+      "cached_tokens": 0
+    }
+  }
+}
