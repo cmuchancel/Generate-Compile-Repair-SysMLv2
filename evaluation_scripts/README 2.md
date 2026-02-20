@@ -3,7 +3,7 @@ Evaluation Scripts
 This folder contains evaluation and analysis scripts that work for both output layouts:
 
 - AI-agent outputs: `ai_agent/Generated_from_Prompts_AI_AGENT`
-- API-loop outputs: `api_loop/Generated_from_Prompts_API_LOOP`
+- API-loop outputs: `api_loop/Generated_from_Prompts_API_LOOP_OPENAI`
 - Dataset defaults: `sysmbench_original_upstream/dataset/sysml/dataset.json`
 
 Scripts
@@ -27,8 +27,8 @@ Examples
   `python evaluation_scripts/run_sysml_gpt41_eval.py --generated-root ai_agent/Generated_from_Prompts_AI_AGENT --reference-root ai_agent/Generated_from_Prompts_AI_AGENT`
 
 - Evaluate API-loop outputs:
-  `python evaluation_scripts/run_sysml_gpt41_eval.py --generated-root api_loop/Generated_from_Prompts_API_LOOP --reference-root api_loop/Generated_from_Prompts_API_LOOP`
+  `python evaluation_scripts/run_sysml_gpt41_eval.py --generated-root api_loop/Generated_from_Prompts_API_LOOP_OPENAI --reference-root api_loop/Generated_from_Prompts_API_LOOP_OPENAI`
 
 - Verify SysML checks (works for both):
   `python evaluation_scripts/verify_final_sysml_checks.py --output-root ai_agent/Generated_from_Prompts_AI_AGENT --venv .venv`
-  `python evaluation_scripts/verify_final_sysml_checks.py --output-root api_loop/Generated_from_Prompts_API_LOOP --venv .venv`
+  `python evaluation_scripts/verify_final_sysml_checks.py --output-root api_loop/Generated_from_Prompts_API_LOOP_OPENAI --venv .venv`

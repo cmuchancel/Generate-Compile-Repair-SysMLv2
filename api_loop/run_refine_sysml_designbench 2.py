@@ -53,7 +53,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--output-root",
         type=Path,
-        default=SCRIPT_DIR / "Generated_from_Prompts_API_LOOP",
+        default=SCRIPT_DIR / "Generated_from_Prompts_API_LOOP_OPENAI",
         help="Evaluation-ready output root.",
     )
     parser.add_argument(

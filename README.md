@@ -22,7 +22,7 @@ This repository is now organized into two workflow folders:
 - `refine_sysml.py`
 - `run_refine_sysml_designbench.py`
 - `nl_prompts/`
-- `Generated_from_Prompts_API_LOOP/`
+- `Generated_from_Prompts_API_LOOP_OPENAI/`
 - `runs/`
 
 ### `sysmbench_original_upstream/`

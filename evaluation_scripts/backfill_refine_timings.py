@@ -45,7 +45,7 @@ def parse_args() -> argparse.Namespace:
 
 def detect_default_output_root() -> Path:
     candidates = [
-        REPO_ROOT / "api_loop" / "Generated_from_Prompts_API_LOOP",
+        REPO_ROOT / "api_loop" / "Generated_from_Prompts_API_LOOP_OPENAI",
         REPO_ROOT / "ai_agent" / "Generated_from_Prompts_AI_AGENT",
     ]
     for path in candidates:

@@ -105,7 +105,7 @@ def parse_args() -> argparse.Namespace:
 def detect_default_generated_root() -> Path:
     candidates = [
         REPO_ROOT / "ai_agent" / "Generated_from_Prompts_AI_AGENT",
-        REPO_ROOT / "api_loop" / "Generated_from_Prompts_API_LOOP",
+        REPO_ROOT / "api_loop" / "Generated_from_Prompts_API_LOOP_OPENAI",
     ]
     for path in candidates:
         if path.exists():
