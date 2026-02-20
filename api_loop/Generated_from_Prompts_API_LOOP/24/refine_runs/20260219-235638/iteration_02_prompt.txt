@@ -1,0 +1,91 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to support users in a workflow for capturing high-quality photographs. Users can select a scene, after which the system first performs focusing on the scene and generates an image that is then evaluated for focus quality. If the image is determined to be well-focused, the system proceeds with the shooting operation, converting the focused image into a photograph and ultimately producing the final photo required by the user. The entire shooting process is automatically linked from scene input to photo output, ensuring that shooting only takes place when the focus is appropriate, thereby improving the clarity and quality of the resulting photographs.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package PhotoWorkflow {
+  private import ScalarValues::*;
+
+  enum def FocusQuality { Good; Bad; }
+
+  item def Scene;
+  item def Image;
+  item def Photograph;
+  item def FocusEvaluation { attribute quality: FocusQuality; }
+
+  port def SceneInPort { item scene: Scene; }
+  port def SceneOutPort { item scene: Scene; }
+  port def ImagePort { item image: Image; }
+  port def EvalPort { item evaluation: FocusEvaluation; }
+  port def PhotoPort { item photo: Photograph; }
+
+  part def SceneSelector {
+    port sceneOut: SceneOutPort;
+  }
+
+  part def FocusAndImage {
+    port sceneIn: SceneInPort;
+    port imageOut: ImagePort;
+  }
+
+  part def FocusEvaluator {
+    port imageIn: ImagePort;
+    port evalOut: EvalPort;
+  }
+
+  part def Shooter {
+    port imageIn: ImagePort;
+    port evalIn: EvalPort;
+    port photoOut: PhotoPort;
+  }
+
+  part def PhotoOutput {
+    port photoIn: PhotoPort;
+  }
+
+  part def CameraSystem {
+    part selector: SceneSelector;
+    part focus: FocusAndImage;
+    part evaluator: FocusEvaluator;
+    part shooter: Shooter;
+    part output: PhotoOutput;
+
+    connect selector.sceneOut to focus.sceneIn;
+    connect focus.imageOut to evaluator.imageIn;
+    connect evaluator.evalOut to shooter.evalIn;
+    connect focus.imageOut to shooter.imageIn;
+    connect shooter.photoOut to output.photoIn;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:11:26: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    11 |   port def SceneInPort { item scene: Scene; }
+       |                          ^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:12:27: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    12 |   port def SceneOutPort { item scene: Scene; }
+       |                           ^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:13:24: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    13 |   port def ImagePort { item image: Image; }
+       |                        ^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:14:23: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    14 |   port def EvalPort { item evaluation: FocusEvaluation; }
+       |                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:15:24: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    15 |   port def PhotoPort { item photo: Photograph; }
+       |                        ^^^^^^^^^^^^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

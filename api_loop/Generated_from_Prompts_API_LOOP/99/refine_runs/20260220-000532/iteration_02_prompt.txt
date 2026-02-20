@@ -1,0 +1,108 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system model describes a vehicle structural architecture, whose core components include the vehicle as a whole, axle assemblies, front/rear axles, and wheels. The vehicle itself possesses an attribute for mass, enabling explicit definition of the total vehicle mass (such as 1750 kg and 2000 kg in the examples). Each vehicle contains front and rear axle assemblies, each comprising specific axle components and two sequentially arranged wheels. The front axle can optionally be configured with a special type that features a steering angle parameter. In certain vehicle configurations, the left and right wheels on both the front and rear axles can be distinctly identified and named, thus supporting the individual recognition and control of each wheel. The entire model is designed to provide a clear and flexible hierarchical combination of components and attribute descriptions for vehicle structural design and configuration, facilitating the needs of vehicle design, assembly, and subsequent maintenance management.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleStructuralArchitecture {
+  private import ScalarValues::*;
+
+  part def Wheel;
+  part def Axle;
+  part def FrontAxle : Axle;
+  part def RearAxle : Axle;
+
+  part def SteerableFrontAxle : FrontAxle {
+    attribute steeringAngle : Real;
+  }
+
+  part def AxleAssembly {
+    part axle : Axle;
+    part leftWheel : Wheel;
+    part rightWheel : Wheel;
+  }
+
+  part def FrontAxleAssembly : AxleAssembly {
+    part axle : FrontAxle;
+  }
+
+  part def RearAxleAssembly : AxleAssembly {
+    part axle : RearAxle;
+  }
+
+  part def SteerableFrontAxleAssembly : FrontAxleAssembly {
+    part axle : SteerableFrontAxle;
+  }
+
+  part def Vehicle {
+    attribute mass : Real;
+    part frontAxleAssembly : FrontAxleAssembly;
+    part rearAxleAssembly : RearAxleAssembly;
+  }
+
+  part def Vehicle1750kg : Vehicle {
+    attribute mass : Real = 1750;
+  }
+
+  part def Vehicle2000kg : Vehicle {
+    attribute mass : Real = 2000;
+  }
+
+  part def VehicleWithSteerableFrontAxle {
+    attribute mass : Real;
+    part frontAxleAssembly : SteerableFrontAxleAssembly;
+    part rearAxleAssembly : RearAxleAssembly;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:6:22: error (parsing-error): Expected a token. Did you forget ';'?
+    6 |   part def FrontAxle : Axle;
+iteration_01.sysml:7:21: error (parsing-error): Expected a token. Did you forget ';'?
+    7 |   part def RearAxle : Axle;
+iteration_01.sysml:9:31: error (parsing-error): Expected a token. Did you forget ';'?
+    9 |   part def SteerableFrontAxle : FrontAxle {
+iteration_01.sysml:19:30: error (parsing-error): Expected a token. Did you forget ';'?
+    19 |   part def FrontAxleAssembly : AxleAssembly {
+iteration_01.sysml:23:29: error (parsing-error): Expected a token. Did you forget ';'?
+    23 |   part def RearAxleAssembly : AxleAssembly {
+iteration_01.sysml:27:39: error (parsing-error): Expected a token. Did you forget ';'?
+    27 |   part def SteerableFrontAxleAssembly : FrontAxleAssembly {
+iteration_01.sysml:37:26: error (parsing-error): Expected a token. Did you forget ';'?
+    37 |   part def Vehicle1750kg : Vehicle {
+iteration_01.sysml:41:26: error (parsing-error): Expected a token. Did you forget ';'?
+    41 |   part def Vehicle2000kg : Vehicle {
+iteration_01.sysml:20:10: warning (namespace-distinguishability): Member name 'axle' shadows VehicleStructuralArchitecture::AxleAssembly::axle
+│   20 |     part axle : FrontAxle;
+│      |          ^^^^
+└── iteration_01.sysml:14:10: note: Inherited from here
+    └── iteration_01.sysml:19:32: note: Because VehicleStructuralArchitecture::AxleAssembly is specialized through FeatureTyping
+iteration_01.sysml:24:10: warning (namespace-distinguishability): Member name 'axle' shadows VehicleStructuralArchitecture::AxleAssembly::axle
+│   24 |     part axle : RearAxle;
+│      |          ^^^^
+└── iteration_01.sysml:14:10: note: Inherited from here
+    └── iteration_01.sysml:23:31: note: Because VehicleStructuralArchitecture::AxleAssembly is specialized through FeatureTyping
+iteration_01.sysml:38:15: warning (namespace-distinguishability): Member name 'mass' shadows VehicleStructuralArchitecture::Vehicle::mass
+│   38 |     attribute mass : Real = 1750;
+│      |               ^^^^
+└── iteration_01.sysml:32:15: note: Inherited from here
+    └── iteration_01.sysml:37:28: note: Because VehicleStructuralArchitecture::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:42:15: warning (namespace-distinguishability): Member name 'mass' shadows VehicleStructuralArchitecture::Vehicle::mass
+│   42 |     attribute mass : Real = 2000;
+│      |               ^^^^
+└── iteration_01.sysml:32:15: note: Inherited from here
+    └── iteration_01.sysml:41:28: note: Because VehicleStructuralArchitecture::Vehicle is specialized through FeatureTyping
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

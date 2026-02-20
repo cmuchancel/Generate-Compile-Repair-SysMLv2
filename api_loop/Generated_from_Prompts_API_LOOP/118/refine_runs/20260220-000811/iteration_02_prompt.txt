@@ -1,0 +1,149 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+            This system is intended to define and manage the primary specifications and performance requirements related to automobiles, covering aspects such as vehicle mass, fuel status, powertrain, and reliability. For example, the system must support the definition and management of vehicles with different mass grades (such as 2000 kg and 2500 kg). Each vehicle should reflect its actual mass and comply with the corresponding maximum mass limitations to prevent overloading. The system must also regulate fuel status, such as requiring some vehicles to meet mass requirements when fully fueled, while others are accepted in an empty-fuel state.  
+
+In terms of the powertrain, vehicles must have power delivery functionality, requiring the engine to output torque and be effectively connected to the transmission via a drive interface to ensure reliable power transfer. For specific models, requirements also include tracking and fulfilling reliability, ensuring that vehicles possess specified performance and durability throughout their lifecycle.  
+
+The entire system is structured to define vehicles, engines, transmissions, and their key interfaces, and decomposes, allocates, and validates each requirement. This supports standardized management and quality control of vehicles throughout the processes of design, testing, and practical application.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package AutomobileSystem {
+  private import ScalarValues::*;
+
+  enum def MassGrade {
+    enum kg2000;
+    enum kg2500;
+  }
+
+  enum def FuelStatus {
+    enum full;
+    enum empty;
+  }
+
+  item def Torque {
+    attribute value : Real;
+  }
+
+  port def DrivePort {
+    item torque : Torque;
+  }
+
+  part def Engine {
+    attribute outputTorque : Real;
+    port driveOut : DrivePort;
+  }
+
+  part def Transmission {
+    attribute inputTorque : Real;
+    port driveIn : DrivePort;
+  }
+
+  part def Powertrain {
+    part engine : Engine;
+    part transmission : Transmission;
+    connect engine.driveOut to transmission.driveIn;
+  }
+
+  part def Vehicle {
+    attribute actualMass : Real;
+    attribute maxMass : Real;
+    attribute massGrade : MassGrade;
+    attribute fuelStatus : FuelStatus;
+    attribute reliabilityLevel : Real;
+    part powertrain : Powertrain;
+  }
+
+  part def AutomobileSpecSystem {
+    part vehicle2000 : Vehicle;
+    part vehicle2500 : Vehicle;
+  }
+
+  part system : AutomobileSpecSystem {
+    part vehicle2000 : Vehicle {
+      actualMass = 1980.0;
+      maxMass = 2000.0;
+      massGrade = MassGrade::kg2000;
+      fuelStatus = FuelStatus::full;
+      reliabilityLevel = 0.98;
+    }
+    part vehicle2500 : Vehicle {
+      actualMass = 2450.0;
+      maxMass = 2500.0;
+      massGrade = MassGrade::kg2500;
+      fuelStatus = FuelStatus::empty;
+      reliabilityLevel = 0.97;
+    }
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:19:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    19 |     item torque : Torque;
+       |     ^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:53:10: warning (namespace-distinguishability): Member name 'vehicle2000' shadows AutomobileSystem::AutomobileSpecSystem::vehicle2000
+│   53 |     part vehicle2000 : Vehicle {
+│      |          ^^^^^^^^^^^
+└── iteration_01.sysml:48:10: note: Inherited from here
+    └── iteration_01.sysml:52:17: note: Because AutomobileSystem::AutomobileSpecSystem is specialized through FeatureTyping
+iteration_01.sysml:54:7: warning (namespace-distinguishability): Member name 'actualMass' shadows AutomobileSystem::Vehicle::actualMass
+│   54 |       actualMass = 1980.0;
+│      |       ^^^^^^^^^^
+└── iteration_01.sysml:39:15: note: Inherited from here
+    └── iteration_01.sysml:53:24: note: Because AutomobileSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:55:7: warning (namespace-distinguishability): Member name 'maxMass' shadows AutomobileSystem::Vehicle::maxMass
+│   55 |       maxMass = 2000.0;
+│      |       ^^^^^^^
+└── iteration_01.sysml:40:15: note: Inherited from here
+    └── iteration_01.sysml:53:24: note: Because AutomobileSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:56:7: warning (namespace-distinguishability): Member name 'massGrade' shadows AutomobileSystem::Vehicle::massGrade
+│   56 |       massGrade = MassGrade::kg2000;
+│      |       ^^^^^^^^^
+└── iteration_01.sysml:41:15: note: Inherited from here
+    └── iteration_01.sysml:53:24: note: Because AutomobileSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:57:7: warning (namespace-distinguishability): Member name 'fuelStatus' shadows AutomobileSystem::Vehicle::fuelStatus
+│   57 |       fuelStatus = FuelStatus::full;
+│      |       ^^^^^^^^^^
+└── iteration_01.sysml:42:15: note: Inherited from here
+    └── iteration_01.sysml:53:24: note: Because AutomobileSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:58:7: warning (namespace-distinguishability): Member name 'reliabilityLevel' shadows AutomobileSystem::Vehicle::reliabilityLevel
+│   58 |       reliabilityLevel = 0.98;
+│      |       ^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:43:15: note: Inherited from here
+    └── iteration_01.sysml:53:24: note: Because AutomobileSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:60:10: warning (namespace-distinguishability): Member name 'vehicle2500' shadows AutomobileSystem::AutomobileSpecSystem::vehicle2500
+│   60 |     part vehicle2500 : Vehicle {
+│      |          ^^^^^^^^^^^
+└── iteration_01.sysml:49:10: note: Inherited from here
+    └── iteration_01.sysml:52:17: note: Because AutomobileSystem::AutomobileSpecSystem is specialized through FeatureTyping
+iteration_01.sysml:61:7: warning (namespace-distinguishability): Member name 'actualMass' shadows AutomobileSystem::Vehicle::actualMass
+│   61 |       actualMass = 2450.0;
+│      |       ^^^^^^^^^^
+└── iteration_01.sysml:39:15: note: Inherited from here
+    └── iteration_01.sysml:60:24: note: Because AutomobileSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:62:7: warning (namespace-distinguishability): Member name 'maxMass' shadows AutomobileSystem::Vehicle::maxMass
+│   62 |       maxMass = 2500.0;
+│      |       ^^^^^^^
+└── iteration_01.sysml:40:15: note: Inherited from here
+    └── iteration_01.sysml:60:24: note: Because AutomobileSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:63:7: warning (namespace-distinguishability): Member name 'massGrade' shadows AutomobileSystem::Vehicle::massGrade
+│   63 |       massGrade = MassGrade::kg2500;
+│      |       ^^^^^^^^^
+└── iteration_01.sysml:41:15: note: Inherited from here
+    └── iteration_01.sysml:60:24: note: Because AutomobileSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:64:7: warning
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,82 @@
+{
+  "id": "resp_0e2e79d4e69bbb9c006997eb300f4c8192b109ff9fa037fca0",
+  "created_at": 1771563824.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0e2e79d4e69bbb9c006997eb30696c81928802b378744a5672",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0e2e79d4e69bbb9c006997eb36dba88192a43619226eb34b7a",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleDynamicsSimulation {\n    private import ScalarValues::*;\n\n    port def InputPort {\n        attribute initialVelocity : Real;\n        attribute initialPosition : Real;\n        attribute acceleration : Real;\n        attribute timeStep : Real;\n    }\n\n    port def OutputPort {\n        attribute outputVelocity : Real;\n        attribute outputPosition : Real;\n    }\n\n    part def ModelCenterTool {\n        port inPort : InputPort;\n        port outPort : OutputPort;\n    }\n\n    part def SimulationSystem {\n        port inPort : InputPort;\n        port outPort : OutputPort;\n        part modelCenter : ModelCenterTool;\n        connect inPort to modelCenter.inPort;\n        connect modelCenter.outPort to outPort;\n    }\n\n    part vehicleDynamicsSimulation : SimulationSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563832.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 345,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 571,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 916
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

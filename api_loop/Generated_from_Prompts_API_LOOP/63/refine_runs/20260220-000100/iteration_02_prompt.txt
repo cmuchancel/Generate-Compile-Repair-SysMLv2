@@ -1,0 +1,72 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to budget and constrain the mass of a vehicle, ensuring that the total mass of the complete vehicle—including major components such as the chassis, engine, and transmission—does not exceed 2,500 kilograms. The system requires the actual mass of each component to be entered and uniformly measured using the international unit of kilograms. It will automatically calculate the sum of the component masses and compare the result with the specified mass limit; if the total mass exceeds the limit, the design requirements are not met. Furthermore, as critical components of the vehicle, the masses of the engine and the transmission must be separately recorded and managed. This ensures that, during the preliminary design stage, vehicle curb weight can be effectively controlled through these constraints, providing a fundamental basis for subsequent performance design and energy consumption optimization.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleMassBudget {
+    private import ScalarValues::*;
+
+    enum def MassUnit {
+        enum kg;
+    }
+
+    part def Component {
+        attribute mass : Real;
+        attribute massUnit : MassUnit = kg;
+    }
+
+    part def Engine : Component;
+    part def Transmission : Component;
+    part def Chassis : Component;
+    part def OtherComponent : Component;
+
+    part def Vehicle {
+        attribute massLimit : Real = 2500;
+        part chassis : Chassis;
+        part engine : Engine;
+        part transmission : Transmission;
+        part other : OtherComponent;
+        attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass + other.mass;
+        attribute withinLimit : Boolean = totalMass <= massLimit;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:13:21: error (parsing-error): Expected a token. Did you forget ';'?
+    13 |     part def Engine : Component;
+iteration_01.sysml:14:27: error (parsing-error): Expected a token. Did you forget ';'?
+    14 |     part def Transmission : Component;
+iteration_01.sysml:15:22: error (parsing-error): Expected a token. Did you forget ';'?
+    15 |     part def Chassis : Component;
+iteration_01.sysml:16:29: error (parsing-error): Expected a token. Did you forget ';'?
+    16 |     part def OtherComponent : Component;
+iteration_01.sysml:10:41: error (reference-error): No Feature named 'kg' found.
+    10 |         attribute massUnit : MassUnit = kg;
+       |                                         ^^
+iteration_01.sysml:24:46: error (reference-error): No Feature named 'mass' found.
+    24 |         attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass + other.mass;
+       |                                              ^^^^
+iteration_01.sysml:24:60: error (reference-error): No Feature named 'mass' found.
+    24 |         attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass + other.mass;
+       |                                                            ^^^^
+iteration_01.sysml:24:80: error (reference-error): No Feature named 'mass' found.
+    24 |         attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass + other.mass;
+       |                                                                                ^^^^
+iteration_01.sysml:24:93: error (reference-error): No Feature named 'mass' found.
+    24 |         attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass + other.mass;
+       |                                                                                             ^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:03:03.141912Z",
+    "iteration_end": "2026-02-20T05:03:24.253584Z",
+    "iteration_duration_seconds": 21.1120491249967,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/81/20260220-000302/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/81/20260220-000302/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/81/20260220-000302/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:15:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    15 |   part def Engine4 : Engine {\n\niteration_01.sysml:22:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    22 |   part def Engine6 : Engine {\n\niteration_01.sysml:33:31: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    33 |   part def ManualTransmission : Transmission { }\n\niteration_01.sysml:35:34: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    35 |   part def AutomaticTransmission : Transmission { }\n\niteration_01.sysml:42:27: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    42 |   part def Vehicle4Manual : Vehicle {\n\niteration_01.sysml:47:25: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    47 |   part def Vehicle6Auto : Vehicle {\n\niteration_01.sysml:43:10: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'engine' shadows AutomotiveConfig::Vehicle::engine\n\u2502   43 |     part engine : Engine4;\n\u2502      |          \u001b[38;2;204;204;057m^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:38:10: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:42:29: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveConfig::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:44:10: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'transmission' shadows AutomotiveConfig::Vehicle::transmission\n\u2502   44 |     part transmission : ManualTransmission;\n\u2502      |          \u001b[38;2;204;204;057m^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:39:10: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:42:29: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveConfig::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:48:10: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'engine' shadows AutomotiveConfig::Vehicle::engine\n\u2502   48 |     part engine : Engine6;\n\u2502      |          \u001b[38;2;204;204;057m^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:38:10: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:47:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveConfig::Vehicle is specialized through FeatureTyping\n\niteration_01.sysml:49:10: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'transmission' shadows AutomotiveConfig::Vehicle::transmission\n\u2502   49 |     part transmission : AutomaticTransmission;\n\u2502      |          \u001b[38;2;204;204;057m^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:39:10: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:47:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because AutomotiveConfig::Vehicle is specialized through FeatureTyping",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 404,
+      "output_tokens": 1176,
+      "total_tokens": 1580
+    },
+    "tokens_used_total": 1580
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:03:24.253643Z",
+    "iteration_end": "2026-02-20T05:03:42.632844Z",
+    "iteration_duration_seconds": 18.379541333000816,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/81/20260220-000302/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/81/20260220-000302/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/81/20260220-000302/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1302,
+      "output_tokens": 1228,
+      "total_tokens": 2530
+    },
+    "tokens_used_total": 4110
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:57:55.251620Z",
+    "iteration_end": "2026-02-20T04:58:06.422311Z",
+    "iteration_duration_seconds": 11.170924792000733,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/39/20260219-235755/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/39/20260219-235755/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/39/20260219-235755/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:24:52: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Off' found.\n    24 |         attribute operatingState: OperatingState = Off;\n       |                                                    \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:25:46: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Unknown' found.\n    25 |         attribute healthState: HealthState = Unknown;\n       |                                              \u001b[38;2;220;080;080m^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 399,
+      "output_tokens": 603,
+      "total_tokens": 1002
+    },
+    "tokens_used_total": 1002
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:58:06.422387Z",
+    "iteration_end": "2026-02-20T04:58:10.809990Z",
+    "iteration_duration_seconds": 4.387762875005137,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/39/20260219-235755/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/39/20260219-235755/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/39/20260219-235755/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 658,
+      "output_tokens": 200,
+      "total_tokens": 858
+    },
+    "tokens_used_total": 1860
+  }
+]

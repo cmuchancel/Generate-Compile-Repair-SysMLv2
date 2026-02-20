@@ -1,0 +1,82 @@
+{
+  "id": "resp_0a476117874d63cf006997e94fbf988195bfc7ff2db5d949ae",
+  "created_at": 1771563343.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0a476117874d63cf006997e9501678819595eb9a3dc5aedf66",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0a476117874d63cf006997e95cce088195ac3736c519994ded",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package WaterSupplyModel {\n    private import ScalarValues::*;\n\n    item def HotWater;\n    item def ColdWater;\n\n    port def HotPort { }\n    port def ColdPort { }\n\n    part def SpigotBank {\n        port hotOut: HotPort;\n        port coldOut: ColdPort;\n    }\n\n    part def Spigot {\n        port hotIn: HotPort;\n        port coldIn: ColdPort;\n        port hotOut: HotPort;\n        port coldOut: ColdPort;\n        connect hotIn to hotOut;\n        connect coldIn to coldOut;\n    }\n\n    part def FaucetInlet {\n        port hotIn: HotPort;\n        port coldIn: ColdPort;\n    }\n\n    part def Faucet {\n        part inlet: FaucetInlet;\n    }\n\n    part def WaterSupplySystem {\n        part bank: SpigotBank;\n        part spigot1: Spigot;\n        part spigot2: Spigot;\n        part faucet1: Faucet;\n        part faucet2: Faucet;\n\n        connect bank.hotOut to spigot1.hotIn;\n        connect bank.coldOut to spigot1.coldIn;\n        connect bank.hotOut to spigot2.hotIn;\n        connect bank.coldOut to spigot2.coldIn;\n\n        connect spigot1.hotOut to faucet1.inlet.hotIn;\n        connect spigot1.coldOut to faucet1.inlet.coldIn;\n\n        connect spigot2.hotOut to faucet2.inlet.hotIn;\n        connect spigot2.coldOut to faucet2.inlet.coldIn;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563360.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 927,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1155,
+    "output_tokens_details": {
+      "reasoning_tokens": 768
+    },
+    "total_tokens": 2082
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

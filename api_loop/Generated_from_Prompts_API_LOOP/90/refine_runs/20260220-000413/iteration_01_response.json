@@ -1,0 +1,82 @@
+{
+  "id": "resp_0dd6055d07bbcd59006997eb4e39d4819e8181be5b6d08c102",
+  "created_at": 1771563854.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0dd6055d07bbcd59006997eb4f4ea8819e93d3e0643aec9776",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0dd6055d07bbcd59006997eb5eb8ec819e97e4c05798fb4497",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package RiskMetadataModel {\n    private import ScalarValues::*;\n\n    enum def SeverityLevel {\n        Low;\n        Medium;\n        High;\n        Critical;\n    }\n\n    enum def FailureCategory {\n        Functional;\n        Safety;\n        Security;\n        Performance;\n        Reliability;\n    }\n\n    part def Cause {\n        attribute name : String;\n        attribute description : String;\n        attribute probability : Real;\n    }\n\n    part def Failure {\n        attribute name : String;\n        attribute description : String;\n        attribute category : FailureCategory;\n        attribute severity : SeverityLevel;\n    }\n\n    part def Scenario {\n        attribute name : String;\n        attribute description : String;\n        part causes : Cause[0..*];\n        part failures : Failure[0..*];\n    }\n\n    part def ScenarioCausalLink {\n        part source : Scenario;\n        part target : Scenario;\n        attribute description : String;\n        attribute propagationProbability : Real;\n    }\n\n    part def RiskScenario {\n        attribute name : String;\n        attribute description : String;\n        part scenarios : Scenario[1..*];\n        part causes : Cause[0..*];\n        part failures : Failure[0..*];\n        part links : ScenarioCausalLink[0..*];\n    }\n\n    part def RiskMetadataRepository {\n        attribute metadataFormat : String;\n        part scenarios : Scenario[0..*];\n        part causes : Cause[0..*];\n        part failures : Failure[0..*];\n        part links : ScenarioCausalLink[0..*];\n        part riskScenarios : RiskScenario[0..*];\n    }\n\n    part repository : RiskMetadataRepository;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563874.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 392,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1368,
+    "output_tokens_details": {
+      "reasoning_tokens": 1024
+    },
+    "total_tokens": 1760
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

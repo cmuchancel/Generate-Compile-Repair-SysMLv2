@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:59:31.967371Z",
+    "iteration_end": "2026-02-20T04:59:51.378508Z",
+    "iteration_duration_seconds": 19.411495084001217,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/54/20260219-235931/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/54/20260219-235931/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/54/20260219-235931/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:9:31: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    9 |   part def CompositeComponent : Component {\n\niteration_01.sysml:14:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    14 |   part def Engine : Component {\n\niteration_01.sysml:18:25: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    18 |   part def Transmission : Component {\n\niteration_01.sysml:22:17: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    22 |   part def Body : Component {\n\niteration_01.sysml:26:18: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    26 |   part def Wheel : Component {\n\niteration_01.sysml:30:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    30 |   part def Vehicle : CompositeComponent {\n\niteration_01.sysml:15:15: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleMassModel::Component::mass\n\u2502   15 |     attribute mass : Real = 150.0;\n\u2502      |               \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:6:15: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:14:21: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleMassModel::Component is specialized through FeatureTyping\n\niteration_01.sysml:19:15: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleMassModel::Component::mass\n\u2502   19 |     attribute mass : Real = 90.0;\n\u2502      |               \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:6:15: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:18:27: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleMassModel::Component is specialized through FeatureTyping\n\niteration_01.sysml:23:15: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleMassModel::Component::mass\n\u2502   23 |     attribute mass : Real = 700.0;\n\u2502      |               \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:6:15: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:22:19: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleMassModel::Component is specialized through FeatureTyping\n\niteration_01.sysml:27:15: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'mass' shadows VehicleMassModel::Component::mass\n\u2502   27 |     attribute mass : Real = 25.0;\n\u2502      |               \u001b[38;2;204;204;057m^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:6:15: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:26:20: \u001b[38;2;255;255;255mnote\u001b[0m: Because VehicleMassModel::Component is specialized through FeatureTyping",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 419,
+      "output_tokens": 1158,
+      "total_tokens": 1577
+    },
+    "tokens_used_total": 1577
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:59:51.378573Z",
+    "iteration_end": "2026-02-20T04:59:59.133252Z",
+    "iteration_duration_seconds": 7.7548910830009845,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/54/20260219-235931/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/54/20260219-235931/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/54/20260219-235931/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1294,
+      "output_tokens": 528,
+      "total_tokens": 1822
+    },
+    "tokens_used_total": 3399
+  }
+]

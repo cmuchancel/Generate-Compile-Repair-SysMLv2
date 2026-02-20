@@ -1,0 +1,82 @@
+{
+  "id": "resp_00f277c66c395bf7006997e9ed82dc81a09f5de81e884e2a8c",
+  "created_at": 1771563501.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_00f277c66c395bf7006997e9edd89481a08f08afcba1f7ebf4",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_00f277c66c395bf7006997e9fc1a8881a09df3f885357a6d1f",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleStartStop\n  private import ScalarValues::*;\n\n  enum def VehicleState {\n    Off;\n    Starting;\n    Started;\n    Shutdown;\n  }\n\n  item def StartSignal;\n  item def BrakeSignal;\n  item def VehicleOnSignal;\n  item def StartControlSignal;\n  item def ShutdownSignal;\n  item def ParkingBrakeSignal;\n  item def PowerSupplySignal;\n\n  port def SignalPort;\n  port def PowerPort;\n\n  part def VehicleController\n    port startControlIn : SignalPort;\n    port powerIn : PowerPort;\n  end;\n\n  part def DriverInterface\n    port startSignalOut : SignalPort;\n    port brakeSignalOut : SignalPort;\n    port vehicleOnSignalOut : SignalPort;\n    port shutdownSignalOut : SignalPort;\n  end;\n\n  part def ParkingBrake\n    port applyCommandIn : SignalPort;\n    attribute applied : Boolean = false;\n  end;\n\n  part def VehiclePower\n    port powerOut : PowerPort;\n    attribute enabled : Boolean = false;\n  end;\n\n  part def StartStopSystem\n    attribute state : VehicleState = Off;\n    port startSignalIn : SignalPort;\n    port brakeSignalIn : SignalPort;\n    port vehicleOnSignalIn : SignalPort;\n    port shutdownSignalIn : SignalPort;\n    port startControlOut : SignalPort;\n    port parkingBrakeApplyOut : SignalPort;\n    port powerSupplyOut : PowerPort;\n  end;\n\n  part def Vehicle\n    part controller : VehicleController;\n    part power : VehiclePower;\n    part parkingBrake : ParkingBrake;\n  end;\n\n  part def VehicleStartStopContext\n    part system : StartStopSystem;\n    part driver : DriverInterface;\n    part vehicle : Vehicle;\n\n    connect driver.startSignalOut to system.startSignalIn;\n    connect driver.brakeSignalOut to system.brakeSignalIn;\n    connect driver.vehicleOnSignalOut to system.vehicleOnSignalIn;\n    connect driver.shutdownSignalOut to system.shutdownSignalIn;\n\n    connect system.startControlOut to vehicle.controller.startControlIn;\n    connect system.powerSupplyOut to vehicle.power.powerOut;\n    connect system.parkingBrakeApplyOut to vehicle.parkingBrake.applyCommandIn;\n    connect vehicle.power.powerOut to vehicle.controller.powerIn;\n  end;\n\nend;",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563521.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 433,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1359,
+    "output_tokens_details": {
+      "reasoning_tokens": 832
+    },
+    "total_tokens": 1792
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

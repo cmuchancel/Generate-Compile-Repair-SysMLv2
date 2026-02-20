@@ -1,0 +1,78 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system shall be capable of managing fuel flow, ensuring that fuel can be delivered from the fuel tank to the engine and supporting fuel return. During operation, the system shall monitor and manage the temperature of the fuel and realize fuel supply and return through fuel interfaces. The fuel tank and the engine shall be connected via standardized fuel interfaces to ensure the reliability and safety of fuel flow.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package FuelSystemModel
+  private import ScalarValues::*;
+
+  item def Fuel;
+
+  port def FuelInterface;
+
+  part def FuelTank {
+    port supply : FuelInterface;
+    port return : FuelInterface;
+  }
+
+  part def Engine {
+    port supply : FuelInterface;
+    port return : FuelInterface;
+  }
+
+  part def FuelSystem {
+    part tank : FuelTank;
+    part engine : Engine;
+    attribute fuelTemperature : Temperature;
+    attribute fuelFlowEnabled : Boolean;
+    connect tank.supply to engine.supply;
+    connect engine.return to tank.return;
+  }
+end package
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:2:3: error (parsing-error): Expected a token. Did you forget ';'?
+    2 |   private import ScalarValues::*;
+iteration_01.sysml:10:10: error (parsing-error): Unexpected 'return', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    10 |     port return : FuelInterface;
+       |          ^^^^^^
+iteration_01.sysml:15:10: error (parsing-error): Unexpected 'return', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    15 |     port return : FuelInterface;
+       |          ^^^^^^
+iteration_01.sysml:24:19: error (parsing-error): Unexpected token '.'.
+    24 |     connect engine.return to tank.return;
+       |                   ^
+iteration_01.sysml:24:20: error (parsing-error): Unexpected 'return', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE_NOTE", "FeatureChaining", ";", "{", ",", "[", "(", ")", "=", "from", "to", "if", "then", "accept", "via", "do"].
+    24 |     connect engine.return to tank.return;
+       |                    ^^^^^^
+iteration_01.sysml:24:34: error (parsing-error): Unexpected token '.'.
+    24 |     connect engine.return to tank.return;
+       |                                  ^
+iteration_01.sysml:24:35: error (parsing-error): Unexpected 'return', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE_NOTE", "FeatureChaining", ";", "{", ",", "[", "(", ")", "=", "from", "to", "if", "then", "accept", "via", "do"].
+    24 |     connect engine.return to tank.return;
+       |                                   ^^^^^^
+iteration_01.sysml:26:12: error (parsing-error): Unexpected EOF. (no source underlining available since segment is out of bounds)
+iteration_01.sysml:24:13: error (feature-chaining-feature-not-one): Feature cannot have only one feature chaining
+    24 |     connect engine.return to tank.return;
+       |             ^^^^^^
+iteration_01.sysml:24:30: error (feature-chaining-feature-not-one): Feature cannot have only one feature chaining
+    24 |     connect engine.return to tank.return;
+       |                              ^^^^
+iteration_01.sysml:21:33: error (reference-error): No Type named 'Temperature' found.
+    21 |     attribute fuelTemperature : Temperature;
+       |                                 ^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

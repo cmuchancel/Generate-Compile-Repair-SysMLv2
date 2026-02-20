@@ -1,0 +1,82 @@
+{
+  "id": "resp_0d451a3155684105006997e9ed772881a3b274e0dcc56184ab",
+  "created_at": 1771563501.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0d451a3155684105006997e9ee9c8c81a3b7a0bd7047b06c78",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0d451a3155684105006997e9f4a2e881a39f265ad170dbbc89",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleHealthSystem\n{\n    private import ScalarValues::*;\n\n    enum def VehicleStatus { normal; degraded; maintenance; }\n\n    item def OverTempWarning;\n\n    port def WarningPort\n    {\n        ref item warning : OverTempWarning;\n    }\n\n    part def VehicleHealthMonitor\n    {\n        attribute currentTemp : Real;\n        attribute maxAllowTemp : Real;\n        attribute status : VehicleStatus = VehicleStatus::normal;\n        attribute maintenanceIntervalHours : Integer;\n        attribute nextMaintenanceDueHours : Integer;\n        attribute maintenanceElapsedHours : Integer;\n        port warningOut : WarningPort;\n    }\n\n    part def VehicleController\n    {\n        port warningIn : WarningPort;\n        attribute receivedWarning : Boolean;\n    }\n\n    part def VehicleSystem\n    {\n        part monitor : VehicleHealthMonitor;\n        part controller : VehicleController;\n        connect monitor.warningOut to controller.warningIn;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563511.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 739,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 452,
+    "output_tokens_details": {
+      "reasoning_tokens": 256
+    },
+    "total_tokens": 1191
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

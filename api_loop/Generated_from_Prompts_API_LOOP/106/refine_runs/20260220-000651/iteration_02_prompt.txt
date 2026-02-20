@@ -1,0 +1,125 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system can achieve integrated management of the vehicle powertrain system according to the driver's fuel input command. When the engine start signal is activated, the system first generates the corresponding engine output torque based on the fuel command, then amplifies and transmits the torque sequentially through the transmission, and subsequently distributes the torque to each wheel, thereby achieving effective management and distribution of the vehicle's output power. When the engine shutdown signal is triggered, the relevant power output process is terminated. This entire process ensures that the vehicle performs automatic control accurately and efficiently in terms of power demand response, torque transmission, and power distribution, thereby enhancing the driving experience and improving energy efficiency.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehiclePowertrainManagement {
+    private import ScalarValues::*;
+
+    item def FuelCommand;
+    item def StartSignal;
+    item def ShutdownSignal;
+    item def Torque;
+
+    enum def EngineState {
+        Off;
+        On;
+    }
+
+    port def FuelCommandPort {
+        item fuelCmd : FuelCommand;
+    }
+
+    port def StartSignalPort {
+        item startSig : StartSignal;
+    }
+
+    port def ShutdownSignalPort {
+        item shutdownSig : ShutdownSignal;
+    }
+
+    port def TorquePort {
+        item torque : Torque;
+    }
+
+    part def DriverInput {
+        port fuelOut : FuelCommandPort;
+        port startOut : StartSignalPort;
+        port shutdownOut : ShutdownSignalPort;
+    }
+
+    part def Engine {
+        port fuelIn : FuelCommandPort;
+        port startIn : StartSignalPort;
+        port shutdownIn : ShutdownSignalPort;
+        port torqueOut : TorquePort;
+        attribute state : EngineState = Off;
+    }
+
+    part def Transmission {
+        port torqueIn : TorquePort;
+        port torqueOut : TorquePort;
+        attribute gearRatio : Real = 1.0;
+    }
+
+    part def TorqueDistributor {
+        port torqueIn : TorquePort;
+        port torqueOutFL : TorquePort;
+        port torqueOutFR : TorquePort;
+        port torqueOutRL : TorquePort;
+        port torqueOutRR : TorquePort;
+    }
+
+    part def Wheel {
+        port torqueIn : TorquePort;
+        attribute wheelTorque : Torque;
+    }
+
+    part def PowertrainSystem {
+        part driver : DriverInput;
+        part engine : Engine;
+        part transmission : Transmission;
+        part distributor : TorqueDistributor;
+        part wheelFL : Wheel;
+        part wheelFR : Wheel;
+        part wheelRL : Wheel;
+        part wheelRR : Wheel;
+
+        connect driver.fuelOut to engine.fuelIn;
+        connect driver.startOut to engine.startIn;
+        connect driver.shutdownOut to engine.shutdownIn;
+        connect engine.torqueOut to transmission.torqueIn;
+        connect transmission.torqueOut to distributor.torqueIn;
+        connect distributor.torqueOutFL to wheelFL.torqueIn;
+        connect distributor.torqueOutFR to wheelFR.torqueIn;
+        connect distributor.torqueOutRL to wheelRL.torqueIn;
+        connect distributor.torqueOutRR to wheelRR.torqueIn;
+    }
+
+    part powertrainSystem : PowertrainSystem;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:41:19: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    41 |         attribute state : EngineState = Off;
+       |                   ^^^^^
+iteration_01.sysml:15:9: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    15 |         item fuelCmd : FuelCommand;
+       |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:19:9: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    19 |         item startSig : StartSignal;
+       |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:23:9: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    23 |         item shutdownSig : ShutdownSignal;
+       |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:27:9: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    27 |         item torque : Torque;
+       |         ^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:41:41: error (reference-error): No Feature named 'Off' found.
+    41 |         attribute state : EngineState = Off;
+       |                                         ^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

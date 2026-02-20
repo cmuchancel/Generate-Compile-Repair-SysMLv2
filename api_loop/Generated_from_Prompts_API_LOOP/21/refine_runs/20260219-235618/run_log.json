@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:56:18.653668Z",
+    "iteration_end": "2026-02-20T04:56:30.820931Z",
+    "iteration_duration_seconds": 12.167483833000006,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/21/20260219-235618/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/21/20260219-235618/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/21/20260219-235618/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:9:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    9 |     item scene : Scene;\n      |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:13:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    13 |     item image : FocusedImage;\n       |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:17:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    17 |     item photo : Photo;\n       |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 325,
+      "output_tokens": 667,
+      "total_tokens": 992
+    },
+    "tokens_used_total": 992
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:56:30.821002Z",
+    "iteration_end": "2026-02-20T04:56:36.523594Z",
+    "iteration_duration_seconds": 5.702743165995344,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/21/20260219-235618/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/21/20260219-235618/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/21/20260219-235618/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 778,
+      "output_tokens": 376,
+      "total_tokens": 1154
+    },
+    "tokens_used_total": 2146
+  }
+]

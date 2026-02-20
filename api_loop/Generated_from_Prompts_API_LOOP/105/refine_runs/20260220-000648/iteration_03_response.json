@@ -1,0 +1,82 @@
+{
+  "id": "resp_0f3d33edecafd1eb006997ec02b80c819694078ae2cfc7d668",
+  "created_at": 1771564034.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0f3d33edecafd1eb006997ec03217c8196893cc432ef01ec8e",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0f3d33edecafd1eb006997ec0864048196ba170921fe062b81",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PowertrainControlLogic {\n    private import ScalarValues::*;\n\n    item def FuelCommand;\n    item def Torque;\n    item def StallSignal;\n    item def StartCommand;\n    item def StopCommand;\n\n    port def FuelCommandPort;\n    port def TorquePort;\n    port def StallSignalPort;\n    port def StartCommandPort;\n    port def StopCommandPort;\n\n    part def Engine {\n        port fuelIn : FuelCommandPort;\n        port startIn : StartCommandPort;\n        port stopIn : StopCommandPort;\n        port stallOut : StallSignalPort;\n        port torqueOut : TorquePort;\n        attribute started : Boolean;\n    }\n\n    part def TorqueAmplifier {\n        port torqueIn : TorquePort;\n        port torqueOut : TorquePort;\n    }\n\n    part def Transmission {\n        port torqueIn : TorquePort;\n        port torqueOut : TorquePort;\n    }\n\n    part def Distribution {\n        port torqueIn : TorquePort;\n        port torqueOut : TorquePort;\n    }\n\n    part def DriveWheels {\n        port torqueIn : TorquePort;\n    }\n\n    part def StallMonitor {\n        port stallIn : StallSignalPort;\n        port stopOut : StopCommandPort;\n    }\n\n    part def PowertrainControlSystem {\n        port fuelCmdIn : FuelCommandPort;\n        port startCmdIn : StartCommandPort;\n        port stopCmdIn : StopCommandPort;\n        port wheelTorqueOut : TorquePort;\n\n        part engine : Engine;\n        part amplifier : TorqueAmplifier;\n        part transmission : Transmission;\n        part distribution : Distribution;\n        part wheels : DriveWheels;\n        part stallMonitor : StallMonitor;\n\n        connect fuelCmdIn to engine.fuelIn;\n        connect startCmdIn to engine.startIn;\n        connect stopCmdIn to engine.stopIn;\n        connect engine.torqueOut to amplifier.torqueIn;\n        connect amplifier.torqueOut to transmission.torqueIn;\n        connect transmission.torqueOut to distribution.torqueIn;\n        connect distribution.torqueOut to wheels.torqueIn;\n        connect distribution.torqueOut to wheelTorqueOut;\n        connect engine.stallOut to stallMonitor.stallIn;\n        connect stallMonitor.stopOut to engine.stopIn;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564044.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1874,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 812,
+    "output_tokens_details": {
+      "reasoning_tokens": 320
+    },
+    "total_tokens": 2686
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

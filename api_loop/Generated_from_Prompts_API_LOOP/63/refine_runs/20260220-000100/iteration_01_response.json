@@ -1,0 +1,82 @@
+{
+  "id": "resp_02fcd26fffa2b2f2006997ea8e3e348193b1e4ce96eb934d69",
+  "created_at": 1771563662.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_02fcd26fffa2b2f2006997ea8e91708193ba31bfa56e8f6af4",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_02fcd26fffa2b2f2006997ea97a6ac8193a4d6ecf134a88934",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleMassBudget {\n    private import ScalarValues::*;\n\n    enum def MassUnit {\n        enum kg;\n    }\n\n    part def Component {\n        attribute mass : Real;\n        attribute massUnit : MassUnit = kg;\n    }\n\n    part def Engine : Component;\n    part def Transmission : Component;\n    part def Chassis : Component;\n    part def OtherComponent : Component;\n\n    part def Vehicle {\n        attribute massLimit : Real = 2500;\n        part chassis : Chassis;\n        part engine : Engine;\n        part transmission : Transmission;\n        part other : OtherComponent;\n        attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass + other.mass;\n        attribute withinLimit : Boolean = totalMass <= massLimit;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563673.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 398,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 667,
+    "output_tokens_details": {
+      "reasoning_tokens": 448
+    },
+    "total_tokens": 1065
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

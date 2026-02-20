@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:55:58.357008Z",
+    "iteration_end": "2026-02-20T04:56:11.085279Z",
+    "iteration_duration_seconds": 12.728479124998557,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/18/20260219-235557/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/18/20260219-235557/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/18/20260219-235557/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:8:55: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier.\n    8 |    enum def ProcessState { Idle, Focusing, Capturing, Done }\n      |                                                       \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:8:60: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}'.\n    8 |    enum def ProcessState { Idle, Focusing, Capturing, Done }\n      |                                                            \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:8:60: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected '}'.\n    8 |    enum def ProcessState { Idle, Focusing, Capturing, Done }\n      |                                                            \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:30:17: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    30 |       attribute state : ProcessState = Idle;\n       |                 \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:36:17: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    36 |       attribute state : ProcessState = Idle;\n       |                 \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:30:40: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Idle' found.\n    30 |       attribute state : ProcessState = Idle;\n       |                                        \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:36:40: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Idle' found.\n    36 |       attribute state : ProcessState = Idle;\n       |                                        \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 337,
+      "output_tokens": 882,
+      "total_tokens": 1219
+    },
+    "tokens_used_total": 1219
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:56:11.085348Z",
+    "iteration_end": "2026-02-20T04:56:17.167274Z",
+    "iteration_duration_seconds": 6.082146458997158,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/18/20260219-235557/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/18/20260219-235557/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/18/20260219-235557/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1159,
+      "output_tokens": 463,
+      "total_tokens": 1622
+    },
+    "tokens_used_total": 2841
+  }
+]

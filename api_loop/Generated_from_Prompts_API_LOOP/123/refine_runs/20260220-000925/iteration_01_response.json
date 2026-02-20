@@ -1,0 +1,82 @@
+{
+  "id": "resp_0f4edb3e4e7dfebb006997ec871bb481968ceb684c5517f46a",
+  "created_at": 1771564167.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0f4edb3e4e7dfebb006997ec881abc819691da0a141935e082",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0f4edb3e4e7dfebb006997ec8ed5c88196a125a2ec13499c9e",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleLongitudinalSimulation {\n  private import ScalarValues::*;\n  \n  item def SegmentData {\n    attribute timeStart : Real;\n    attribute timeEnd : Real;\n    attribute power : Real;\n  }\n  \n  item def SequenceData {\n    attribute value1 : Real;\n    attribute value2 : Real;\n    attribute value3 : Real;\n    attribute value4 : Real;\n    attribute value5 : Real;\n  }\n  \n  part def VehicleInputs {\n    attribute vehicleMass : Real;\n    attribute initialPosition : Real;\n    attribute initialVelocity : Real;\n    attribute timeStep : Real;\n    attribute segment1TimeStart : Real;\n    attribute segment1TimeEnd : Real;\n    attribute segment1Power : Real;\n    attribute segment2TimeStart : Real;\n    attribute segment2TimeEnd : Real;\n    attribute segment2Power : Real;\n    attribute segment3TimeStart : Real;\n    attribute segment3TimeEnd : Real;\n    attribute segment3Power : Real;\n  }\n  \n  part def VehicleOutputs {\n    attribute accelerationSequence1 : Real;\n    attribute accelerationSequence2 : Real;\n    attribute accelerationSequence3 : Real;\n    attribute accelerationSequence4 : Real;\n    attribute accelerationSequence5 : Real;\n    attribute velocitySequence1 : Real;\n    attribute velocitySequence2 : Real;\n    attribute velocitySequence3 : Real;\n    attribute velocitySequence4 : Real;\n    attribute velocitySequence5 : Real;\n    attribute positionSequence1 : Real;\n    attribute positionSequence2 : Real;\n    attribute positionSequence3 : Real;\n    attribute positionSequence4 : Real;\n    attribute positionSequence5 : Real;\n  }\n  \n  part def LongitudinalDynamicsSimulator {\n    part inputs : VehicleInputs;\n    part outputs : VehicleOutputs;\n  }\n  \n  part Simulator : LongitudinalDynamicsSimulator;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564179.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 364,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 618,
+    "output_tokens_details": {
+      "reasoning_tokens": 192
+    },
+    "total_tokens": 982
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

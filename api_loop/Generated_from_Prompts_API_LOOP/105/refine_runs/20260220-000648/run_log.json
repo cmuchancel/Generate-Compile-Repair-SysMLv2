@@ -1,0 +1,59 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:06:49.146009Z",
+    "iteration_end": "2026-02-20T05:07:03.177768Z",
+    "iteration_duration_seconds": 14.031569708000461,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/105/20260220-000648/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/105/20260220-000648/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/105/20260220-000648/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:10:32: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    10 |     port def FuelCommandPort { item FuelCommand; }\n       |                                \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:11:27: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    11 |     port def TorquePort { item Torque; }\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:12:32: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    12 |     port def StallSignalPort { item StallSignal; }\n       |                                \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:13:33: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    13 |     port def StartCommandPort { item StartCommand; }\n       |                                 \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:14:32: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    14 |     port def StopCommandPort { item StopCommand; }\n       |                                \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 375,
+      "output_tokens": 1155,
+      "total_tokens": 1530
+    },
+    "tokens_used_total": 1530
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:07:03.177829Z",
+    "iteration_end": "2026-02-20T05:07:14.087050Z",
+    "iteration_duration_seconds": 10.909436582995113,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/105/20260220-000648/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/105/20260220-000648/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/105/20260220-000648/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:10:37: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ref', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    10 |     port def FuelCommandPort { item ref fc : FuelCommand; }\n       |                                     \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:11:32: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ref', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    11 |     port def TorquePort { item ref tq : Torque; }\n       |                                \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:12:37: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ref', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    12 |     port def StallSignalPort { item ref ss : StallSignal; }\n       |                                     \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:13:38: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ref', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    13 |     port def StartCommandPort { item ref sc : StartCommand; }\n       |                                      \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:14:37: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ref', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    14 |     port def StopCommandPort { item ref stc : StopCommand; }\n       |                                     \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:10:32: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    10 |     port def FuelCommandPort { item ref fc : FuelCommand; }\n       |                                \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:11:27: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    11 |     port def TorquePort { item ref tq : Torque; }\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:12:32: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    12 |     port def StallSignalPort { item ref ss : StallSignal; }\n       |                                \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:13:33: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    13 |     port def StartCommandPort { item ref sc : StartCommand; }\n       |                                 \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:14:32: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    14 |     port def StopCommandPort { item ref stc : StopCommand; }\n       |                                \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1177,
+      "output_tokens": 887,
+      "total_tokens": 2064
+    },
+    "tokens_used_total": 3594
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T05:07:14.087100Z",
+    "iteration_end": "2026-02-20T05:07:24.882245Z",
+    "iteration_duration_seconds": 10.795354875001067,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/105/20260220-000648/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/105/20260220-000648/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/105/20260220-000648/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1874,
+      "output_tokens": 812,
+      "total_tokens": 2686
+    },
+    "tokens_used_total": 6280
+  }
+]

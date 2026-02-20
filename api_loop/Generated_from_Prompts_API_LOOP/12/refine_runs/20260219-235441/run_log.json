@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:54:41.588525Z",
+    "iteration_end": "2026-02-20T04:55:43.127509Z",
+    "iteration_duration_seconds": 61.54003341700445,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/12/20260219-235441/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/12/20260219-235441/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/12/20260219-235441/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:2:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    2 |     private import ScalarValues::*;\n\niteration_01.sysml:56:12: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected EOF. (\u001b[38;2;220;080;080mno source underlining available since segment is out of bounds\u001b[0m)\n\niteration_01.sysml:8:9: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    8 |         item hot: HotWater;\n      |         \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:12:9: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    12 |         item cold: ColdWater;\n       |         \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 373,
+      "output_tokens": 4136,
+      "total_tokens": 4509
+    },
+    "tokens_used_total": 4509
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:55:43.127584Z",
+    "iteration_end": "2026-02-20T04:56:00.719008Z",
+    "iteration_duration_seconds": 17.591788875004568,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/12/20260219-235441/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/12/20260219-235441/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/12/20260219-235441/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 927,
+      "output_tokens": 1155,
+      "total_tokens": 2082
+    },
+    "tokens_used_total": 6591
+  }
+]

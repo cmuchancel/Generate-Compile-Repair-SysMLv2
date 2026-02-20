@@ -1,0 +1,150 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to provide flexible solutions for vehicle product line configuration, capable of automatically matching suitable combinations of engines, transmissions, and wheels based on different performance requirements and user preferences. For example, when high performance is required, the system will configure a 6-cylinder engine, automatic transmission, and wide-rim wheels, ensuring compatibility among these components. For standard performance requirements, a combination of a 4-cylinder engine, manual transmission, and narrow-rim wheels is offered. The system enforces a series of configuration constraints to ensure that each configuration scheme meets vehicle performance and component compatibility requirements, preventing unreasonable combinations. Ultimately, it enables customized vehicles tailored to individual user needs. Additionally, the system supports the selection of multiple vehicle model variants, allowing enterprises to quickly respond to market demands and achieve flexible expansion and management of their product lines.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleProductLineConfiguration {
+  private import ScalarValues::*;
+
+  enum def PerformanceLevel {
+    enum high;
+    enum standard;
+  }
+
+  enum def EngineType {
+    enum sixCylinder;
+    enum fourCylinder;
+  }
+
+  enum def TransmissionType {
+    enum automatic;
+    enum manual;
+  }
+
+  enum def WheelType {
+    enum wideRim;
+    enum narrowRim;
+  }
+
+  enum def VehicleVariantType {
+    enum sedan;
+    enum suv;
+    enum truck;
+  }
+
+  enum def UserPreferenceType {
+    enum performanceFocused;
+    enum balanced;
+    enum economyFocused;
+  }
+
+  part def Engine {
+    attribute engineType : EngineType;
+  }
+
+  part def Transmission {
+    attribute transmissionType : TransmissionType;
+  }
+
+  part def WheelSet {
+    attribute wheelType : WheelType;
+  }
+
+  part def VehicleConfiguration {
+    attribute performanceRequirement : PerformanceLevel;
+    attribute userPreference : UserPreferenceType;
+    attribute variant : VehicleVariantType;
+    part engine : Engine;
+    part transmission : Transmission;
+    part wheels : WheelSet;
+  }
+
+  part def HighPerformanceVariant {
+    attribute performanceRequirement : PerformanceLevel = PerformanceLevel::high;
+    attribute userPreference : UserPreferenceType = UserPreferenceType::performanceFocused;
+    attribute variant : VehicleVariantType;
+    part engine : Engine {
+      attribute engineType : EngineType = EngineType::sixCylinder;
+    }
+    part transmission : Transmission {
+      attribute transmissionType : TransmissionType = TransmissionType::automatic;
+    }
+    part wheels : WheelSet {
+      attribute wheelType : WheelType = WheelType::wideRim;
+    }
+  }
+
+  part def StandardPerformanceVariant {
+    attribute performanceRequirement : PerformanceLevel = PerformanceLevel::standard;
+    attribute userPreference : UserPreferenceType = UserPreferenceType::balanced;
+    attribute variant : VehicleVariantType;
+    part engine : Engine {
+      attribute engineType : EngineType = EngineType::fourCylinder;
+    }
+    part transmission : Transmission {
+      attribute transmissionType : TransmissionType = TransmissionType::manual;
+    }
+    part wheels : WheelSet {
+      attribute wheelType : WheelType = WheelType::narrowRim;
+    }
+  }
+
+  part def VehicleProductLineSystem {
+    part highPerformanceSUV : HighPerformanceVariant {
+      attribute variant : VehicleVariantType = VehicleVariantType::suv;
+    }
+    part highPerformanceSedan : HighPerformanceVariant {
+      attribute variant : VehicleVariantType = VehicleVariantType::sedan;
+    }
+    part standardSedan : StandardPerformanceVariant {
+      attribute variant : VehicleVariantType = VehicleVariantType::sedan;
+    }
+    part standardTruck : StandardPerformanceVariant {
+      attribute variant : VehicleVariantType = VehicleVariantType::truck;
+    }
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:6:10: error (parsing-error): Unexpected 'standard', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", "=", ":=", "default", ";", "{", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    6 |     enum standard;
+      |          ^^^^^^^^
+iteration_01.sysml:51:15: error (parsing-error): Unexpected 'variant', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    51 |     attribute variant : VehicleVariantType;
+       |               ^^^^^^^
+iteration_01.sysml:60:15: error (parsing-error): Unexpected 'variant', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    60 |     attribute variant : VehicleVariantType;
+       |               ^^^^^^^
+iteration_01.sysml:73:75: error (parsing-error): Unexpected token '::'.
+    73 |     attribute performanceRequirement : PerformanceLevel = PerformanceLevel::standard;
+       |                                                                           ^^
+iteration_01.sysml:73:77: error (parsing-error): Unexpected 'standard', expected one of ["SINGLE_LINE_NOTE", "NAME", "MULTILINE_NOTE", ";", "{", "}", ",", "::", "**", "[", "]", "??", "+", "|", "&", "===", "!==", "<=", ">=", "..", "%", "^", "@@", "#", "(", ")", ".?", "->", "from", "to", "*", ".", "if", "?", "else", "implies", "or", "and", "-", "xor", "==", "!=", "<", ">", "/", "hastype", "istype", "@", "as", "meta", "=", "by", "then", "connect", "of", "action", "via", "parallel", "do"].
+    73 |     attribute performanceRequirement : PerformanceLevel = PerformanceLevel::standard;
+       |                                                                             ^^^^^^^^
+iteration_01.sysml:75:15: error (parsing-error): Unexpected 'variant', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    75 |     attribute variant : VehicleVariantType;
+       |               ^^^^^^^
+iteration_01.sysml:89:17: error (parsing-error): Unexpected 'variant', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    89 |       attribute variant : VehicleVariantType = VehicleVariantType::suv;
+       |                 ^^^^^^^
+iteration_01.sysml:92:17: error (parsing-error): Unexpected 'variant', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    92 |       attribute variant : VehicleVariantType = VehicleVariantType::sedan;
+       |                 ^^^^^^^
+iteration_01.sysml:95:17: error (parsing-error): Unexpected 'variant', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    95 |       attribute variant : VehicleVaria
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

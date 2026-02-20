@@ -1,0 +1,82 @@
+{
+  "id": "resp_0b57eb9cf7084957006997ed486d2c81928b89ab957697a8e3",
+  "created_at": 1771564360.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0b57eb9cf7084957006997ed48bdf8819292c15e4e428fde26",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0b57eb9cf7084957006997ed52279c819282041af27fb31939",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package CollectionsSystem {\n   private import ScalarValues::*;\n\n   part def SparePart;\n   part def Person;\n   part def BusinessFunction;\n\n   part def SparePartBag {\n      part elements : SparePart[*];\n   }\n\n   part def IntegerList {\n      attribute items : Integer[*];\n   }\n\n   part def StringSet {\n      attribute items : String[*];\n   }\n\n   part def PersonnelOrderedSet {\n      part items : Person[*];\n   }\n\n   part def PersonSet {\n      part members : Person[*];\n   }\n\n   part def PersonSetList {\n      part sets : PersonSet[*];\n   }\n\n   part def RealArray {\n      attribute values : Real[4];\n   }\n\n   part def CollectionSystem {\n      part sparePartsBag : SparePartBag;\n      part integerList : IntegerList;\n      part stringSet : StringSet;\n      part personnelOrderedSet : PersonnelOrderedSet;\n      part personnelSetList : PersonSetList;\n      part realArray : RealArray;\n      part business : BusinessFunction;\n   }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564372.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1601,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 853,
+    "output_tokens_details": {
+      "reasoning_tokens": 576
+    },
+    "total_tokens": 2454
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

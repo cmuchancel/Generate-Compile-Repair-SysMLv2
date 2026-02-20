@@ -1,0 +1,82 @@
+{
+  "id": "resp_01995f096111529b006997e9b5cc148193b9d06d4710be3bc2",
+  "created_at": 1771563445.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_01995f096111529b006997e9b61dd48193ba43450dfbaa0f02",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_01995f096111529b006997e9c5bc1081939beeba778242d91b",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package CameraWorkflow {\n  private import ScalarValues::*;\n\n  item def Scene;\n  item def Image;\n  item def Picture;\n\n  port def ScenePort {\n    item scene : Scene;\n  }\n\n  port def ImagePort {\n    item image : Image;\n  }\n\n  port def PicturePort {\n    item picture : Picture;\n  }\n\n  port def DisplayPort {\n    item picture : Picture;\n  }\n\n  part def User {\n    port viewPort : ScenePort;\n  }\n\n  part def Focusing {\n    port sceneIn : ScenePort;\n    port imageOut : ImagePort;\n  }\n\n  part def Capturing {\n    port imageIn : ImagePort;\n    port pictureOut : PicturePort;\n  }\n\n  part def Displaying {\n    port pictureIn : PicturePort;\n    port displayPort : DisplayPort;\n  }\n\n  part def CameraSystem {\n    port viewPort : ScenePort;\n    port displayPort : DisplayPort;\n\n    part focusing : Focusing;\n    part capturing : Capturing;\n    part displaying : Displaying;\n\n    connect viewPort to focusing.sceneIn;\n    connect focusing.imageOut to capturing.imageIn;\n    connect capturing.pictureOut to displaying.pictureIn;\n    connect displaying.displayPort to displayPort;\n  }\n\n  part def SystemContext {\n    part user : User;\n    part camera : CameraSystem;\n    connect user.viewPort to camera.viewPort;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563464.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 354,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1382,
+    "output_tokens_details": {
+      "reasoning_tokens": 1088
+    },
+    "total_tokens": 1736
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

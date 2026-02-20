@@ -1,0 +1,82 @@
+{
+  "id": "resp_01ed918e577a44ad006997eabe304c819eae6311ba6db38371",
+  "created_at": 1771563710.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_01ed918e577a44ad006997eabeecbc819eacc70e17f65ecb2d",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_01ed918e577a44ad006997eac404ac819e97fe5fbffaec7021",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSystem {\n   private import ScalarValues::*;\n\n   item def TorqueItem {\n      attribute value : Real;\n   }\n\n   port def ClutchPort {\n      item ref torque : TorqueItem;\n   }\n\n   part def Engine {\n      port clutchOut : ClutchPort;\n      attribute torqueAt1000rpm : Real = 200.0;\n      attribute torqueAt2000rpm : Real = 250.0;\n      attribute torqueAt3000rpm : Real = 300.0;\n   }\n\n   part def Transmission {\n      port clutchIn : ClutchPort;\n   }\n\n   part def Vehicle {\n      attribute emptyMass : Real = 1400.0;\n      attribute fueledMass : Real = 1800.0;\n      part engine : Engine;\n      part transmission : Transmission;\n      connect engine.clutchOut to transmission.clutchIn;\n   }\n\n   part vehicleInstance : Vehicle;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563718.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 623,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 542,
+    "output_tokens_details": {
+      "reasoning_tokens": 320
+    },
+    "total_tokens": 1165
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

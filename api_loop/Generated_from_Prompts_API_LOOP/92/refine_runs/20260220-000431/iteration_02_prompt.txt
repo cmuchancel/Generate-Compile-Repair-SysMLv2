@@ -1,0 +1,217 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system must possess a clear capability for structural decomposition, namely, the ability to explicitly present a top-down hierarchical structure, dividing the system into multiple subsystems and components, and ensuring that the functions and capabilities of each level are fully covered. The interfaces between system components should be well defined, so that each component can be independently understood and analyzed while also collaborating effectively within the overall system. Furthermore, system engineers and parties involved in Independent Verification and Validation (IV&V) must be able to use this structural view to comprehend and verify the system’s integrity and modular design, thereby ensuring that the system's various functional and performance requirements are met.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package SystemArchitecture {
+  private import ScalarValues::*;
+
+  enum def CapabilityKind {
+    enum StructuralControl;
+    enum PowerManagement;
+    enum CommunicationHandling;
+    enum SensingActuation;
+  }
+
+  enum def FunctionKind {
+    enum Monitor;
+    enum Compute;
+    enum Distribute;
+    enum Interface;
+  }
+
+  item def DataPacket;
+  item def PowerFlow;
+  item def ControlSignal;
+  item def StatusReport;
+
+  port def DataPort {
+    item data : DataPacket;
+  }
+
+  port def PowerPort {
+    item power : PowerFlow;
+  }
+
+  port def ControlPort {
+    item control : ControlSignal;
+  }
+
+  port def StatusPort {
+    item status : StatusReport;
+  }
+
+  part def SensorUnit {
+    attribute capability : CapabilityKind = SensingActuation;
+    attribute function : FunctionKind = Monitor;
+    port dataOut : DataPort;
+    port statusOut : StatusPort;
+  }
+
+  part def ActuatorUnit {
+    attribute capability : CapabilityKind = SensingActuation;
+    attribute function : FunctionKind = Interface;
+    port controlIn : ControlPort;
+    port statusOut : StatusPort;
+  }
+
+  part def ControllerUnit {
+    attribute capability : CapabilityKind = StructuralControl;
+    attribute function : FunctionKind = Compute;
+    port dataIn : DataPort;
+    port controlOut : ControlPort;
+    port statusOut : StatusPort;
+  }
+
+  part def ControlSubsystem {
+    attribute capability : CapabilityKind = StructuralControl;
+    attribute function : FunctionKind = Compute;
+    part sensor : SensorUnit;
+    part controller : ControllerUnit;
+    part actuator : ActuatorUnit;
+    port dataIn : DataPort;
+    port statusOut : StatusPort;
+    connect sensor.dataOut to controller.dataIn;
+    connect controller.controlOut to actuator.controlIn;
+    connect controller.statusOut to statusOut;
+    connect dataIn to controller.dataIn;
+  }
+
+  part def PowerSourceUnit {
+    attribute capability : CapabilityKind = PowerManagement;
+    attribute function : FunctionKind = Distribute;
+    port powerOut : PowerPort;
+    port statusOut : StatusPort;
+  }
+
+  part def PowerDistributionUnit {
+    attribute capability : CapabilityKind = PowerManagement;
+    attribute function : FunctionKind = Distribute;
+    port powerIn : PowerPort;
+    port powerOut : PowerPort;
+    port statusOut : StatusPort;
+  }
+
+  part def PowerSubsystem {
+    attribute capability : CapabilityKind = PowerManagement;
+    attribute function : FunctionKind = Distribute;
+    part source : PowerSourceUnit;
+    part distributor : PowerDistributionUnit;
+    port powerOut : PowerPort;
+    port statusOut : StatusPort;
+    connect source.powerOut to distributor.powerIn;
+    connect distributor.powerOut to powerOut;
+    connect distributor.statusOut to statusOut;
+  }
+
+  part def CommunicationUnit {
+    attribute capability : CapabilityKind = CommunicationHandling;
+    attribute function : FunctionKind = Interface;
+    port dataIn : DataPort;
+    port dataOut : DataPort;
+    port statusOut : StatusPort;
+  }
+
+  part def CommunicationSubsystem {
+    attribute capability : CapabilityKind = CommunicationHandling;
+    attribute function : FunctionKind = Interface;
+    part comms : CommunicationUnit;
+    port externalDataIn : DataPort;
+    port internalDataOut : DataPort;
+    port statusOut : StatusPort;
+    connect externalDataIn to comms.dataIn;
+    connect comms.dataOut to internalDataOut;
+    connect comms.statusOut to statusOut;
+  }
+
+  part def System {
+    attribute capability : CapabilityKind = StructuralControl;
+    attribute function : FunctionKind = Interface;
+    part controlSubsystem : ControlSubsystem;
+    part powerSubsystem : PowerSubsystem;
+    part communicationSubsystem : CommunicationSubsystem;
+    port externalDataIn : DataPort;
+    port externalPowerIn : PowerPort;
+    port systemStatusOut : StatusPort;
+    connect externalDataIn to communicationSubsystem.externalDataIn;
+    connect communicationSubsystem.internalDataOut to controlSubsystem.dataIn;
+    connect externalPowerIn to powerSubsystem.source.powerOut;
+    connect powerSubsystem.powerOut to controlSubsystem.actuator.controlIn;
+    connect controlSubsystem.statusOut to systemStatusOut;
+    connect powerSubsystem.statusOut to systemStatusOut;
+    connect communicationSubsystem.statusOut to systemStatusOut;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:24:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    24 |     item data : DataPacket;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:28:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    28 |     item power : PowerFlow;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:32:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    32 |     item control : ControlSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:36:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    36 |     item status : StatusReport;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:40:45: error (reference-error): No Feature named 'SensingActuation' found.
+    40 |     attribute capability : CapabilityKind = SensingActuation;
+       |                                             ^^^^^^^^^^^^^^^^
+iteration_01.sysml:41:41: error (reference-error): No Feature named 'Monitor' found.
+    41 |     attribute function : FunctionKind = Monitor;
+       |                                         ^^^^^^^
+iteration_01.sysml:47:45: error (reference-error): No Feature named 'SensingActuation' found.
+    47 |     attribute capability : CapabilityKind = SensingActuation;
+       |                                             ^^^^^^^^^^^^^^^^
+iteration_01.sysml:48:41: error (reference-error): No Feature named 'Interface' found.
+    48 |     attribute function : FunctionKind = Interface;
+       |                                         ^^^^^^^^^
+iteration_01.sysml:54:45: error (reference-error): No Feature named 'StructuralControl' found.
+    54 |     attribute capability : CapabilityKind = StructuralControl;
+       |                                             ^^^^^^^^^^^^^^^^^
+iteration_01.sysml:55:41: error (reference-error): No Feature named 'Compute' found.
+    55 |     attribute function : FunctionKind = Compute;
+       |                                         ^^^^^^^
+iteration_01.sysml:62:45: error (reference-error): No Feature named 'StructuralControl' found.
+    62 |     attribute capability : CapabilityKind = StructuralControl;
+       |                                             ^^^^^^^^^^^^^^^^^
+iteration_01.sysml:63:41: error (reference-error): No Feature named 'Compute' found.
+    63 |     attribute function : FunctionKind = Compute;
+       |                                         ^^^^^^^
+iteration_01.sysml:76:45: error (reference-error): No Feature named 'PowerManagement' found.
+    76 |     attribute capability : CapabilityKind = PowerManagement;
+       |                                             ^^^^^^^^^^^^^^^
+iteration_01.sysml:77:41: error (reference-error): No Feature named 'Distribute' found.
+    77 |     attribute function : FunctionKind = Distribute;
+       |                                         ^^^^^^^^^^
+iteration_01.sysml:83:45: error (reference-error): No Feature named 'PowerManagement' found.
+    83 |     attribute capability : CapabilityKind = PowerManagement;
+       |                                             ^^^^^^^^^^^^^^^
+iteration_01.sysml:84:41: error (reference-error): No Feature named 'Distribute' found.
+    84 |     attribute function : FunctionKind = Distribute;
+       |                                         ^^^^^^^^^^
+iteration_01.sysml:91:45: error (reference-error): No Feature named 'PowerManagement' found.
+    91 |     attribute capability : CapabilityKind = PowerManagement;
+       |                                             ^^^^^^^^^^^^^^^
+iteration_01.sysml:92:41: error (reference-error): No Feature named 'Distribute' found.
+    92 |     attribute function : FunctionKind = Distribute;
+       |                                         ^^^^^^^^^^
+iteration_01.sysm
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,154 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system requirements are described as follows: This project aims to design and model a typical vehicle power transmission system, mainly including the engine, transmission (gearbox), clutch, driveshaft, rear axle assembly (including differential and left/right half-shafts), wheels, and the interface for interaction with the road surface. The engine receives control signals via a fuel command port and is coupled to the transmission through power and clutch ports. Power is transmitted via the driveshaft to the rear axle assembly. The rear axle assembly includes a differential that connects separately to the left and right half-shafts, delivering power to the rear wheels through interfaces between the shafts and wheels. Each rear wheel is equipped with interfaces to both the rear axle and the road, enabling power output to the ground. The interfaces between the internal components of the system are clearly defined, allowing for flexible combination and hierarchical decomposition at various levels and within major assemblies. This supports port and component binding, redefinition, and multi-level nesting, ensuring clear transmission of power and command flows among the components. The system is designed to be modular and reconfigurable, meeting the needs of vehicle dynamics modeling, simulation, and subsequent optimization design. It enables end users to understand, adjust, and expand the relationships and functions of various vehicle power components with ease.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehiclePowerTransmission {
+    private import ScalarValues::*;
+
+    item def Power;
+    item def Command;
+    item def RoadForce;
+
+    port def PowerPort {}
+    port def CommandPort {}
+    port def RoadPort {}
+
+    part def FuelController {
+        port commandOut : CommandPort;
+    }
+
+    part def Engine {
+        port fuelCmd : CommandPort;
+        port powerOut : PowerPort;
+    }
+
+    part def Clutch {
+        port engineIn : PowerPort;
+        port transOut : PowerPort;
+    }
+
+    part def Transmission {
+        port clutchIn : PowerPort;
+        port powerOut : PowerPort;
+    }
+
+    part def DriveShaft {
+        port in : PowerPort;
+        port out : PowerPort;
+    }
+
+    part def Differential {
+        port in : PowerPort;
+        port outLeft : PowerPort;
+        port outRight : PowerPort;
+    }
+
+    part def HalfShaft {
+        port in : PowerPort;
+        port out : PowerPort;
+    }
+
+    part def RearAxleAssembly {
+        port driveshaftIn : PowerPort;
+        port leftOut : PowerPort;
+        port rightOut : PowerPort;
+
+        part diff : Differential;
+        part leftHalf : HalfShaft;
+        part rightHalf : HalfShaft;
+
+        connect driveshaftIn to diff.in;
+        connect diff.outLeft to leftHalf.in;
+        connect diff.outRight to rightHalf.in;
+        connect leftHalf.out to leftOut;
+        connect rightHalf.out to rightOut;
+    }
+
+    part def Wheel {
+        port axleIn : PowerPort;
+        port roadOut : RoadPort;
+    }
+
+    part def RoadSurface {
+        port leftIn : RoadPort;
+        port rightIn : RoadPort;
+    }
+
+    part def VehiclePowerTransmissionSystem {
+        part controller : FuelController;
+        part engine : Engine;
+        part clutch : Clutch;
+        part transmission : Transmission;
+        part driveshaft : DriveShaft;
+        part rearAxle : RearAxleAssembly;
+        part leftWheel : Wheel;
+        part rightWheel : Wheel;
+        part road : RoadSurface;
+
+        connect controller.commandOut to engine.fuelCmd;
+        connect engine.powerOut to clutch.engineIn;
+        connect clutch.transOut to transmission.clutchIn;
+        connect transmission.powerOut to driveshaft.in;
+        connect driveshaft.out to rearAxle.driveshaftIn;
+        connect rearAxle.leftOut to leftWheel.axleIn;
+        connect rearAxle.rightOut to rightWheel.axleIn;
+        connect leftWheel.roadOut to road.leftIn;
+        connect rightWheel.roadOut to road.rightIn;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:32:14: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    32 |         port in : PowerPort;
+       |              ^^
+iteration_01.sysml:33:14: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    33 |         port out : PowerPort;
+       |              ^^^
+iteration_01.sysml:37:14: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    37 |         port in : PowerPort;
+       |              ^^
+iteration_01.sysml:43:14: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    43 |         port in : PowerPort;
+       |              ^^
+iteration_01.sysml:44:14: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    44 |         port out : PowerPort;
+       |              ^^^
+iteration_01.sysml:56:37: error (parsing-error): Unexpected token '.'.
+    56 |         connect driveshaftIn to diff.in;
+       |                                     ^
+iteration_01.sysml:56:38: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE_NOTE", "FeatureChaining", ";", "{", ",", "[", "(", ")", "=", "from", "to", "if", "then", "accept", "via", "do"].
+    56 |         connect driveshaftIn to diff.in;
+       |                                      ^^
+iteration_01.sysml:57:41: error (parsing-error): Unexpected token '.'.
+    57 |         connect diff.outLeft to leftHalf.in;
+       |                                         ^
+iteration_01.sysml:57:42: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE_NOTE", "FeatureChaining", ";", "{", ",", "[", "(", ")", "=", "from", "to", "if", "then", "accept", "via", "do"].
+    57 |         connect diff.outLeft to leftHalf.in;
+       |                                          ^^
+iteration_01.sysml:58:43: error (parsing-error): Unexpected token '.'.
+    58 |         connect diff.outRight to rightHalf.in;
+       |                                           ^
+iteration_01.sysml:58:44: error (parsing-error): Unexpected 'in', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE_NOTE", "FeatureChaining", ";", "{", ",", "[", "(", ")", "=", "from", "to", "if", "then", "accept", "via", "do"].
+    58 |         connect diff.outRight to rightHalf.in;
+       |                                            ^^
+iteration_01.sysml:59:25: error (parsing-error): Unexpected token '.'.
+    59 |         connect leftHalf.out to leftOut;
+       |                         ^
+iteration_01.sysml:59:26: error (parsing-error): Unexpected 'out', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

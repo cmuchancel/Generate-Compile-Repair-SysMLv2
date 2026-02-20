@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:06:12.126700Z",
+    "iteration_end": "2026-02-20T05:06:41.110693Z",
+    "iteration_duration_seconds": 28.984460916995886,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/103/20260220-000611/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/103/20260220-000611/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/103/20260220-000611/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:7:9: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    7 |         item sig : Signal;\n      |         \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 496,
+      "output_tokens": 1977,
+      "total_tokens": 2473
+    },
+    "tokens_used_total": 2473
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:06:41.110761Z",
+    "iteration_end": "2026-02-20T05:06:48.352825Z",
+    "iteration_duration_seconds": 7.242301000005682,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/103/20260220-000611/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/103/20260220-000611/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/103/20260220-000611/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 947,
+      "output_tokens": 467,
+      "total_tokens": 1414
+    },
+    "tokens_used_total": 3887
+  }
+]

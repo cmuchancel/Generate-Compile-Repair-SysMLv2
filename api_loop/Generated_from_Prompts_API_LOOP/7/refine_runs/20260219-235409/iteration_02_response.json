@@ -1,0 +1,82 @@
+{
+  "id": "resp_0534889b066e6936006997e90a10c48190b8f7a1a75e62d57b",
+  "created_at": 1771563274.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0534889b066e6936006997e90a628c819084934033d614c68f",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0534889b066e6936006997e90f693881908a216050e4432179",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSystem {\n   private import ScalarValues::*;\n\n   part def Cylinder;\n\n   part def Engine;\n\n   part def SmallEngine {\n      part cylinders : Cylinder[4];\n   }\n\n   part def LargeEngine {\n      part cylinders : Cylinder[6];\n   }\n\n   part def Vehicle {\n      part engine : Engine;\n   }\n\n   part def SmallVehicle {\n      part engine : SmallEngine;\n   }\n\n   part def LargeVehicle {\n      part engine : LargeEngine;\n   }\n\n   part smallVehicleInstance : SmallVehicle;\n   part largeVehicleInstance : LargeVehicle;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563280.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 848,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 362,
+    "output_tokens_details": {
+      "reasoning_tokens": 192
+    },
+    "total_tokens": 1210
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

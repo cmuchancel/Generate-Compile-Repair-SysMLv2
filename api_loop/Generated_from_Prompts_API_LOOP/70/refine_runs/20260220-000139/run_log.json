@@ -1,0 +1,59 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:01:39.422806Z",
+    "iteration_end": "2026-02-20T05:01:49.580554Z",
+    "iteration_duration_seconds": 10.157952834000753,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/70/20260220-000139/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/70/20260220-000139/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/70/20260220-000139/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:9:7: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    9 |       item torque : TorqueItem;\n      |       \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 353,
+      "output_tokens": 593,
+      "total_tokens": 946
+    },
+    "tokens_used_total": 946
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:01:49.580630Z",
+    "iteration_end": "2026-02-20T05:01:57.901035Z",
+    "iteration_duration_seconds": 8.320573125005467,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/70/20260220-000139/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/70/20260220-000139/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/70/20260220-000139/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:9:12: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ref', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    9 |       item ref torque : TorqueItem;\n      |            \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:9:7: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    9 |       item ref torque : TorqueItem;\n      |       \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 623,
+      "output_tokens": 542,
+      "total_tokens": 1165
+    },
+    "tokens_used_total": 2111
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T05:01:57.901079Z",
+    "iteration_end": "2026-02-20T05:02:12.847104Z",
+    "iteration_duration_seconds": 14.946323374999338,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/70/20260220-000139/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/70/20260220-000139/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/70/20260220-000139/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 753,
+      "output_tokens": 798,
+      "total_tokens": 1551
+    },
+    "tokens_used_total": 3662
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "id": "resp_0ef55e4257ba8634006997eab2ac2881a0abb705a61959edde",
+  "created_at": 1771563698.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0ef55e4257ba8634006997eab2f15c81a0affe51e0e7187112",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0ef55e4257ba8634006997eacecabc81a0b61f9c53f91fe311",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSystem\n  private import ScalarValues::*;\n  \n  port def TorquePort {\n    attribute torque : Real;\n  }\n  \n  part def Engine {\n    port torqueOut : TorquePort;\n    attribute maxTorque : Real = 300;\n    attribute requiredTorque1000 : Real = 180;\n    attribute deliveredTorque1000 : Real = 180;\n    attribute requiredTorque2000 : Real = 220;\n    attribute deliveredTorque2000 : Real = 220;\n    attribute requiredTorque3000 : Real = 200;\n    attribute deliveredTorque3000 : Real = 200;\n  }\n  \n  part def Transmission {\n    port torqueIn : TorquePort;\n  }\n  \n  part def Clutch {\n    port torqueIn : TorquePort;\n    port torqueOut : TorquePort;\n  }\n  \n  part def FuelTank {\n    attribute fuelMassFull : Real = 100;\n    attribute fuelMassEmpty : Real = 0;\n  }\n  \n  part def Vehicle {\n    attribute dryMass : Real = 1400;\n    attribute fuelMassFull : Real = 100;\n    attribute fuelMassEmpty : Real = 0;\n    attribute totalMassFull : Real = 1500;\n    attribute totalMassEmpty : Real = 1400;\n    attribute maxTotalMassFull : Real = 2000;\n    attribute maxTotalMassEmpty : Real = 1500;\n    part engine : Engine;\n    part clutch : Clutch;\n    part transmission : Transmission;\n    part fuelTank : FuelTank;\n    connect engine.torqueOut to clutch.torqueIn;\n    connect clutch.torqueOut to transmission.torqueIn;\n  }\nend package",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563730.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 394,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 2275,
+    "output_tokens_details": {
+      "reasoning_tokens": 1920
+    },
+    "total_tokens": 2669
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

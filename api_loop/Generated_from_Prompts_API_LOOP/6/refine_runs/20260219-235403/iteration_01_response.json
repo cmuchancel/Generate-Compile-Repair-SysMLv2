@@ -1,0 +1,82 @@
+{
+  "id": "resp_0a631da395d6a7e0006997e8ee10148191a5e2d818ba61f6a4",
+  "created_at": 1771563246.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0a631da395d6a7e0006997e8ee94688191bdf4bcbad6dd695d",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0a631da395d6a7e0006997e8f7eacc8191a85fb266da6803b5",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package ClassificationModel {\n  private import ScalarValues::*;\n\n  enum def InfoLevel {\n    enum Unclassified;\n    enum Confidential;\n    enum Secret;\n  }\n\n  enum def GradeLevel {\n    enum A;\n    enum B;\n    enum C;\n    enum D;\n    enum F;\n  }\n\n  part def InfoClassification {\n    attribute level : InfoLevel;\n    attribute code : String;\n    attribute color : String;\n  }\n\n  part def GradeClassification {\n    attribute level : GradeLevel;\n    attribute points : Real;\n  }\n\n  part def ClassificationSystem {\n    part uncl : InfoClassification {\n      attribute level = InfoLevel::Unclassified;\n      attribute code = \"uncl\";\n      attribute color = \"green\";\n    }\n    part conf : InfoClassification {\n      attribute level = InfoLevel::Confidential;\n      attribute code = \"conf\";\n      attribute color = \"yellow\";\n    }\n    part secr : InfoClassification {\n      attribute level = InfoLevel::Secret;\n      attribute code = \"secr\";\n      attribute color = \"red\";\n    }\n\n    part gradeA : GradeClassification {\n      attribute level = GradeLevel::A;\n      attribute points = 4.0;\n    }\n    part gradeB : GradeClassification {\n      attribute level = GradeLevel::B;\n      attribute points = 3.0;\n    }\n    part gradeC : GradeClassification {\n      attribute level = GradeLevel::C;\n      attribute points = 2.0;\n    }\n    part gradeD : GradeClassification {\n      attribute level = GradeLevel::D;\n      attribute points = 1.0;\n    }\n    part gradeF : GradeClassification {\n      attribute level = GradeLevel::F;\n      attribute points = 0.0;\n    }\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563259.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 430,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1080,
+    "output_tokens_details": {
+      "reasoning_tokens": 704
+    },
+    "total_tokens": 1510
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

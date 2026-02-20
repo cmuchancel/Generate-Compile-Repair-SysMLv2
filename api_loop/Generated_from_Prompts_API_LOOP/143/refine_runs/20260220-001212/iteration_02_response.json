@@ -1,0 +1,82 @@
+{
+  "id": "resp_013d6f8074d7acf9006997ed68ed0481958a0d86760affb8da",
+  "created_at": 1771564392.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_013d6f8074d7acf9006997ed6941b8819593c9039f89445988",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_013d6f8074d7acf9006997ed71d3e88195b4b342531ec1f085",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package SystemDataModel {\n  private import ScalarValues::*;\n\n  item def UnsignedInteger {\n    attribute value : Integer = 0;\n    attribute minValue : Integer = 0;\n  }\n\n  item def UnsignedFloat {\n    attribute value : Real = 0.0;\n    attribute minValue : Real = 0.0;\n  }\n\n  item def DateTimeValue {\n    attribute value : String;\n  }\n\n  item def StringValue {\n    attribute value : String;\n  }\n\n  item def BooleanValue {\n    attribute value : Boolean;\n  }\n\n  enum def StatusLevel {\n    enum critical;\n    enum warning;\n    enum normal;\n  }\n\n  enum def StatusColor {\n    enum red;\n    enum yellow;\n    enum green;\n  }\n\n  part def StatusColorTable {\n    attribute criticalColor : StatusColor = StatusColor::red;\n    attribute warningColor : StatusColor = StatusColor::yellow;\n    attribute normalColor : StatusColor = StatusColor::green;\n  }\n\n  part def StatusDefinition {\n    attribute level : StatusLevel;\n    attribute color : StatusColor;\n  }\n\n  enum def DiameterOption {\n    enum small;\n    enum medium;\n    enum large;\n  }\n\n  item def DiameterOptionValue {\n    attribute option : DiameterOption;\n    attribute diameterMM : Real;\n  }\n\n  item def SmallDiameterValue {\n    attribute option : DiameterOption = DiameterOption::small;\n    attribute diameterMM : Real = 60.0;\n  }\n\n  item def MediumDiameterValue {\n    attribute option : DiameterOption = DiameterOption::medium;\n    attribute diameterMM : Real = 70.0;\n  }\n\n  item def LargeDiameterValue {\n    attribute option : DiameterOption = DiameterOption::large;\n    attribute diameterMM : Real = 80.0;\n  }\n\n  part def DiameterCatalog {\n    part small : SmallDiameterValue;\n    part medium : MediumDiameterValue;\n    part large : LargeDiameterValue;\n  }\n\n  part def DiameterSelection {\n    attribute selectedOption : DiameterOption = DiameterOption::small;\n    attribute selectedDiameterMM : Real = 60.0;\n  }\n\n  part def DataTypeLibrary {\n    part statusColors : StatusColorTable;\n    part diameters : DiameterCatalog;\n    part diameterSelection : DiameterSelection;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564406.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1622,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 968,
+    "output_tokens_details": {
+      "reasoning_tokens": 448
+    },
+    "total_tokens": 2590
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,82 @@
+{
+  "id": "resp_03970b1e8e72670f006997ec28499c8193ad12dc56e971b507",
+  "created_at": 1771564072.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_03970b1e8e72670f006997ec2955ac8193ae12bf56578301a8",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_03970b1e8e72670f006997ec33b2c8819384c8174545f4c9c1",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSystem {\n  private import ScalarValues::*;\n\n  enum def VehicleState {\n    enum Shutdown;\n    enum Starting;\n    enum Normal;\n    enum Degraded;\n    enum Maintenance;\n    enum Fault;\n  }\n\n  item def StartSignal {\n    attribute value : Boolean;\n  }\n\n  item def BrakeSignal {\n    attribute value : Boolean;\n  }\n\n  item def TemperatureSignal {\n    attribute value : Real;\n  }\n\n  item def WarningSignal {\n    attribute value : Boolean;\n  }\n\n  item def StatusSignal {\n    attribute stateValue : VehicleState;\n  }\n\n  part def Vehicle {\n    item startIn : StartSignal;\n    item brakeIn : BrakeSignal;\n    item tempOut : TemperatureSignal;\n    item warnOut : WarningSignal;\n    item statusOut : StatusSignal;\n\n    attribute currentState : VehicleState = VehicleState::Shutdown;\n    attribute fuelLevel : Real;\n    attribute maintenanceIntervalDays : Integer;\n    attribute temperatureThreshold : Real;\n    attribute temperature : Real;\n    attribute brakePressed : Boolean;\n    attribute startRequested : Boolean;\n  }\n\n  part def VehicleController {\n    item startOut : StartSignal;\n    item brakeOut : BrakeSignal;\n    item tempIn : TemperatureSignal;\n    item warnIn : WarningSignal;\n    item statusIn : StatusSignal;\n\n    attribute lastWarning : Boolean;\n    attribute lastState : VehicleState;\n    attribute startCommand : Boolean;\n    attribute brakeCommand : Boolean;\n  }\n\n  part def VehicleSystem {\n    attribute defaultFuelLevel : Real = 50.0;\n    attribute defaultMaintenanceIntervalDays : Integer = 30;\n    attribute defaultTemperatureThreshold : Real = 90.0;\n\n    part vehicle : Vehicle {\n      fuelLevel = defaultFuelLevel;\n      maintenanceIntervalDays = defaultMaintenanceIntervalDays;\n      temperatureThreshold = defaultTemperatureThreshold;\n    }\n\n    part controller : VehicleController;\n\n    connect vehicle.startIn to controller.startOut;\n    connect vehicle.brakeIn to controller.brakeOut;\n    connect vehicle.tempOut to controller.tempIn;\n    connect vehicle.warnOut to controller.warnIn;\n    connect vehicle.statusOut to controller.statusIn;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564088.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1968,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1039,
+    "output_tokens_details": {
+      "reasoning_tokens": 576
+    },
+    "total_tokens": 3007
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

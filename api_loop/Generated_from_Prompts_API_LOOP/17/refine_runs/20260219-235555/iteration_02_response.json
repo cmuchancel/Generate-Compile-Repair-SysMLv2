@@ -1,0 +1,82 @@
+{
+  "id": "resp_0c83717aa9b9fe0b006997e96648ac81918f402cf72b4620a8",
+  "created_at": 1771563366.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0c83717aa9b9fe0b006997e9668eb081918f808853671bf15d",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0c83717aa9b9fe0b006997e96b43448191b7015397ab629143",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package FuelSystemModel {\n  private import ScalarValues::*;\n\n  item def Fuel {\n    attribute temperature : Real;\n  }\n\n  port def FuelPort {\n    item ref fuel : Fuel;\n  }\n\n  part def FuelTankAssembly {\n    port supply : FuelPort;\n    port returnFuel : FuelPort;\n  }\n\n  part def Engine {\n    port supplyIn : FuelPort;\n    port returnOut : FuelPort;\n  }\n\n  part def FuelSystem {\n    part tank : FuelTankAssembly;\n    part engine : Engine;\n\n    connect tank.supply to engine.supplyIn;\n    connect engine.returnOut to tank.returnFuel;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563373.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 887,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 363,
+    "output_tokens_details": {
+      "reasoning_tokens": 192
+    },
+    "total_tokens": 1250
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

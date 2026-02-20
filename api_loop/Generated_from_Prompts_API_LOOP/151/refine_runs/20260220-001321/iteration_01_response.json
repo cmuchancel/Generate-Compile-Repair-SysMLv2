@@ -1,0 +1,82 @@
+{
+  "id": "resp_020548c9e156a4a3006997ed72bd508196be899b3fc22c4cd7",
+  "created_at": 1771564402.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_020548c9e156a4a3006997ed7331a881968aac9fffdfb3ca62",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_020548c9e156a4a3006997ed7c77788196961b52efad627255",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package TransportationService {\n  private import ScalarValues::*;\n\n  enum def VehicleUseStatus {\n    enum idle;\n    enum inUse;\n  }\n\n  part def Environment {\n    attribute roadCondition : String;\n    attribute weather : String;\n  }\n\n  part def Driver {\n    attribute licensed : Boolean;\n    attribute inVehicle : Boolean;\n  }\n\n  part def Passenger {\n    attribute inVehicle : Boolean;\n  }\n\n  part def GasStation {\n    attribute available : Boolean;\n  }\n\n  part def Vehicle {\n    attribute maxFuelCapacity : Real;\n    attribute fuelLevel : Real;\n    attribute fuelLowThreshold : Real = 0.1;\n    attribute seats : Integer = 5;\n  }\n\n  part def TransportationSystem {\n    part vehicle : Vehicle;\n    part driver : Driver;\n    part passengers : Passenger [0..4];\n    part environment : Environment;\n    part gasStation : GasStation;\n    attribute status : VehicleUseStatus = idle;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564414.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 379,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 714,
+    "output_tokens_details": {
+      "reasoning_tokens": 512
+    },
+    "total_tokens": 1093
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

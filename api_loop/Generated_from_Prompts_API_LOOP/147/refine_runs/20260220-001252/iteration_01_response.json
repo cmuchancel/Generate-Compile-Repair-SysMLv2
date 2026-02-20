@@ -1,0 +1,82 @@
+{
+  "id": "resp_0162a702b88b2d5d006997ed5646788194b22277020579bf9f",
+  "created_at": 1771564374.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0162a702b88b2d5d006997ed56ac688194bcac2170674f93f7",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0162a702b88b2d5d006997ed64db2c8194a3a0ac80886e330a",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AlloySystem {\n  private import ScalarValues::*;\n\n  part def Material {\n    attribute name : String;\n    attribute atomicMass : Real;\n  }\n\n  part def Component {\n    part material : Material;\n    attribute massFraction : Real;\n  }\n\n  part def Alloy {\n    part components : Component[2..*];\n    attribute tensileStrength : Real;\n  }\n\n  part iron : Material {\n    attribute name = \"Iron\";\n    attribute atomicMass = 55.845;\n  }\n\n  part carbon : Material {\n    attribute name = \"Carbon\";\n    attribute atomicMass = 12.011;\n  }\n\n  part manganese : Material {\n    attribute name = \"Manganese\";\n    attribute atomicMass = 54.938;\n  }\n\n  part steel980 : Alloy {\n    attribute tensileStrength = 980;\n    part compIron : Component {\n      part material = iron;\n      attribute massFraction = 0.98;\n    }\n    part compCarbon : Component {\n      part material = carbon;\n      attribute massFraction = 0.02;\n    }\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564391.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 467,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1091,
+    "output_tokens_details": {
+      "reasoning_tokens": 832
+    },
+    "total_tokens": 1558
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:01:15.296831Z",
+    "iteration_end": "2026-02-20T05:01:29.535312Z",
+    "iteration_duration_seconds": 14.238715624996985,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/66/20260220-000114/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/66/20260220-000114/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/66/20260220-000114/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:2:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    2 |     private import ScalarValues::*;\n\niteration_01.sysml:42:12: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected EOF. (\u001b[38;2;220;080;080mno source underlining available since segment is out of bounds\u001b[0m)",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 393,
+      "output_tokens": 832,
+      "total_tokens": 1225
+    },
+    "tokens_used_total": 1225
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:01:29.535363Z",
+    "iteration_end": "2026-02-20T05:01:38.690869Z",
+    "iteration_duration_seconds": 9.155691582993313,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/66/20260220-000114/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/66/20260220-000114/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/66/20260220-000114/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 722,
+      "output_tokens": 610,
+      "total_tokens": 1332
+    },
+    "tokens_used_total": 2557
+  }
+]

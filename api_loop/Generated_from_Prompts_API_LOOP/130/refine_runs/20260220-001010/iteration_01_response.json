@@ -1,0 +1,82 @@
+{
+  "id": "resp_0914eb43a88bb6d8006997ecb3f9448190974891e2eb9e2b5f",
+  "created_at": 1771564212.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0914eb43a88bb6d8006997ecb44e9081908e8f913e9b07a319",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0914eb43a88bb6d8006997ecbb0bb4819080f043465330426d",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSafetySecurity {\n  private import ScalarValues::*;\n\n  enum def SafetyClass {\n    enum SafetyCritical;\n    enum SecurityCritical;\n    enum Optional;\n  }\n\n  part def SeatBelt {\n    attribute isMandatory : Boolean = true;\n    attribute safetyClass : SafetyClass = SafetyCritical;\n  }\n\n  part def Airbag {\n    attribute isMandatory : Boolean = false;\n    attribute safetyClass : SafetyClass = SafetyCritical;\n  }\n\n  part def Alarm {\n    attribute isMandatory : Boolean = true;\n    attribute safetyClass : SafetyClass = SecurityCritical;\n  }\n\n  part def Bumper {\n    attribute isMandatory : Boolean = true;\n    attribute safetyClass : SafetyClass = SafetyCritical;\n  }\n\n  part def KeylessEntry {\n    attribute isMandatory : Boolean = true;\n    attribute safetyClass : SafetyClass = SecurityCritical;\n  }\n\n  part def Wheel {\n    attribute isMandatory : Boolean = true;\n    attribute safetyClass : SafetyClass = SafetyCritical;\n  }\n\n  part def ABS {\n    attribute isMandatory : Boolean = false;\n    attribute safetyClass : SafetyClass = SafetyCritical;\n  }\n\n  part def Interior {\n    part seatBelts : SeatBelt[2];\n    part airbag : Airbag;\n    part alarm : Alarm;\n  }\n\n  part def Body {\n    part bumper : Bumper;\n    part keylessEntry : KeylessEntry;\n  }\n\n  part def Chassis {\n    part wheels : Wheel[2];\n    part absSets : ABS[2];\n  }\n\n  part def SafetySecurityManager {\n    attribute classificationEnabled : Boolean = true;\n  }\n\n  part def Vehicle {\n    part interior : Interior;\n    part body : Body;\n    part chassis : Chassis;\n    part manager : SafetySecurityManager;\n  }\n\n  part vehicle : Vehicle;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564223.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 416,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 791,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 1207
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

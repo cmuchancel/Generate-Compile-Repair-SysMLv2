@@ -1,0 +1,82 @@
+{
+  "id": "resp_012bc0426e28753a006997ea47fc3c81a1b9171b6c60729913",
+  "created_at": 1771563592.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_012bc0426e28753a006997ea485fe481a184182265b43b006d",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_012bc0426e28753a006997ea4c8c4c81a1af2abed9c9e2b3b2",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleMassModel {\n  private import ScalarValues::*;\n\n  part def Component {\n    attribute id : Integer;\n    attribute mass : Real;\n  }\n\n  part def CompositeComponent {\n    attribute id : Integer;\n    attribute mass : Real;\n    attribute totalMass : Real;\n    part subcomponents : Component[*];\n  }\n\n  part def Engine {\n    attribute id : Integer;\n    attribute mass : Real = 150.0;\n  }\n\n  part def Transmission {\n    attribute id : Integer;\n    attribute mass : Real = 90.0;\n  }\n\n  part def Body {\n    attribute id : Integer;\n    attribute mass : Real = 700.0;\n  }\n\n  part def Wheel {\n    attribute id : Integer;\n    attribute mass : Real = 25.0;\n  }\n\n  part def Vehicle {\n    attribute id : Integer;\n    attribute mass : Real;\n    attribute totalMass : Real;\n    part engine : Engine;\n    part transmission : Transmission;\n    part body : Body;\n    part wheelFL : Wheel;\n    part wheelFR : Wheel;\n    part wheelRL : Wheel;\n    part wheelRR : Wheel;\n  }\n\n  part vehicle1 : Vehicle;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563599.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1294,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 528,
+    "output_tokens_details": {
+      "reasoning_tokens": 256
+    },
+    "total_tokens": 1822
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

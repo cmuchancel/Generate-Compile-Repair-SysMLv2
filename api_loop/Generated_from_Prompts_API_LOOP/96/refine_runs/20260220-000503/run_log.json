@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:05:04.148813Z",
+    "iteration_end": "2026-02-20T05:05:22.821037Z",
+    "iteration_duration_seconds": 18.672515832993668,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/96/20260220-000503/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/96/20260220-000503/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/96/20260220-000503/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:8:18: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    8 |     part def Car : Automobile;\n\niteration_01.sysml:10:21: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    10 |     item def Torque : TorqueValue;\n\niteration_01.sysml:5:28: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'TorqueValue' found.\n    5 |         attribute torque : TorqueValue;\n      |                            \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:10:23: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'TorqueValue' found.\n    10 |     item def Torque : TorqueValue;\n       |                       \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 352,
+      "output_tokens": 1045,
+      "total_tokens": 1397
+    },
+    "tokens_used_total": 1397
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:05:22.821084Z",
+    "iteration_end": "2026-02-20T05:05:32.338921Z",
+    "iteration_duration_seconds": 9.518031749998045,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/96/20260220-000503/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/96/20260220-000503/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/96/20260220-000503/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 614,
+      "output_tokens": 538,
+      "total_tokens": 1152
+    },
+    "tokens_used_total": 2549
+  }
+]

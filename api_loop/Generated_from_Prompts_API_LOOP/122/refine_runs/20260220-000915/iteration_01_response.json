@@ -1,0 +1,82 @@
+{
+  "id": "resp_020c41c1fbb63c7c006997ec7c77e0819e9ec2b36aadbfa58f",
+  "created_at": 1771564156.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_020c41c1fbb63c7c006997ec7cc08c819eac79af9e808fc58c",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_020c41c1fbb63c7c006997ec837594819e8febc8abfefa8f86",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package FuelEconomyModel {\n  private import ScalarValues::*;\n\n  enum def DrivingCondition {\n    enum urban;\n    enum highway;\n  }\n\n  part def FuelEconomyRequirement {\n    attribute minUrbanMPG : Real = 25.0;\n    attribute minHighwayMPG : Real = 30.0;\n    attribute gallonVolumeCubicInches : Real = 231.0;\n    attribute testLoadPounds : Real = 1000.0;\n  }\n\n  part def VehiclePowertrain {\n    attribute efficiency : Real;\n  }\n\n  part def Vehicle {\n    attribute baseMassPounds : Real;\n    part powertrain : VehiclePowertrain;\n  }\n\n  part def FuelEconomyTest {\n    attribute condition : DrivingCondition;\n    attribute loadPounds : Real;\n    attribute measuredMPG : Real;\n  }\n\n  part def FuelEconomySystem {\n    part vehicle : Vehicle;\n    part requirement : FuelEconomyRequirement;\n    part urbanTest : FuelEconomyTest;\n    part highwayTest : FuelEconomyTest;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564166.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 397,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 607,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 1004
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

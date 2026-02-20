@@ -1,0 +1,82 @@
+{
+  "id": "resp_0cd0f8b961d1819c006997eb9da5388196bea68ee6f879484d",
+  "created_at": 1771563933.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0cd0f8b961d1819c006997eb9df4a48196a8203bd87e4e9466",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0cd0f8b961d1819c006997ebc8dd9c8196a1ff341764685238",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleStructuralArchitecture {\n  private import ScalarValues::*;\n\n  part def Wheel;\n  part def Axle;\n  part def FrontAxle : Axle;\n  part def RearAxle : Axle;\n\n  part def SteerableFrontAxle : FrontAxle {\n    attribute steeringAngle : Real;\n  }\n\n  part def AxleAssembly {\n    part axle : Axle;\n    part leftWheel : Wheel;\n    part rightWheel : Wheel;\n  }\n\n  part def FrontAxleAssembly : AxleAssembly {\n    part axle : FrontAxle;\n  }\n\n  part def RearAxleAssembly : AxleAssembly {\n    part axle : RearAxle;\n  }\n\n  part def SteerableFrontAxleAssembly : FrontAxleAssembly {\n    part axle : SteerableFrontAxle;\n  }\n\n  part def Vehicle {\n    attribute mass : Real;\n    part frontAxleAssembly : FrontAxleAssembly;\n    part rearAxleAssembly : RearAxleAssembly;\n  }\n\n  part def Vehicle1750kg : Vehicle {\n    attribute mass : Real = 1750;\n  }\n\n  part def Vehicle2000kg : Vehicle {\n    attribute mass : Real = 2000;\n  }\n\n  part def VehicleWithSteerableFrontAxle {\n    attribute mass : Real;\n    part frontAxleAssembly : SteerableFrontAxleAssembly;\n    part rearAxleAssembly : RearAxleAssembly;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563980.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 416,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 3183,
+    "output_tokens_details": {
+      "reasoning_tokens": 2880
+    },
+    "total_tokens": 3599
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,82 @@
+{
+  "id": "resp_02f040903d8e09ad006997e99a27648195a5e1cf02f5c24287",
+  "created_at": 1771563418.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_02f040903d8e09ad006997e99ae63881959f2d0ed64bf6f598",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_02f040903d8e09ad006997e9a03f7c81959759a5e6f198625f",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package BatteryChargingControl\n{\n  private import ScalarValues::*;\n  \n  enum def ChargeStatus {\n    enum Charging;\n    enum NotCharging;\n  }\n  \n  item def BatteryLevelSignal {\n    attribute level : Real;\n  }\n  \n  item def ChargeCommand {\n    attribute enable : Boolean;\n  }\n  \n  port def LevelPort {\n    attribute level : Real;\n  }\n  \n  port def CommandPort {\n    attribute enable : Boolean;\n  }\n  \n  part def Battery {\n    attribute capacityPercent : Real;\n    port levelOut : LevelPort;\n  }\n  \n  part def Charger {\n    attribute isEnabled : Boolean;\n    port cmdIn : CommandPort;\n  }\n  \n  part def Controller {\n    attribute targetFullPercent : Real = 100.0;\n    attribute status : ChargeStatus;\n    port levelIn : LevelPort;\n    port cmdOut : CommandPort;\n  }\n  \n  part def BatteryChargingSystem {\n    part battery : Battery;\n    part charger : Charger;\n    part controller : Controller;\n    connect battery.levelOut to controller.levelIn;\n    connect controller.cmdOut to charger.cmdIn;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563426.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 349,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 585,
+    "output_tokens_details": {
+      "reasoning_tokens": 320
+    },
+    "total_tokens": 934
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,82 @@
+{
+  "id": "resp_044872332dd55259006997ed19ea80819e8c42a45c823d3a36",
+  "created_at": 1771564313.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_044872332dd55259006997ed1a3c00819e902180c1ba4ec443",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_044872332dd55259006997ed1a8a10819e84b97bd5628cb528",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AutomotiveModel {\n    private import ScalarValues::*;\n\n    part def Vehicle {\n        attribute mass_kg : Real = 1200;\n        attribute mass_lb : Real = mass_kg * 2.20462;\n        attribute length_m : Real = 4.82;\n        attribute length_ft : Real = length_m * 3.28084;\n        part frontLeftWheel : Wheel;\n        part frontRightWheel : Wheel;\n    }\n\n    part def Wheel {\n        attribute hubDiameter_in : Real = 18;\n        attribute hubDiameter_mm : Real = hubDiameter_in * 25.4;\n        attribute width_mm : Real = 245;\n        attribute width_in : Real = width_mm / 25.4;\n        part tire : Tire;\n        attribute outerDiameter_mm : Real = hubDiameter_mm + 2 * tire.height_mm;\n        attribute outerDiameter_in : Real = outerDiameter_mm / 25.4;\n    }\n\n    part def Tire {\n        attribute height_mm : Real = 0;\n        attribute height_in : Real = height_mm / 25.4;\n    }\n\n    part vehicle : Vehicle;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564316.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 693,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 263,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 956
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,82 @@
+{
+  "id": "resp_0c453b89130597bd006997ec6955b881a1a5a8910028039187",
+  "created_at": 1771564137.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0c453b89130597bd006997ec69becc81a18ec7544dfd4b54e4",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0c453b89130597bd006997ec74de1881a19df9c6de257844b7",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleQualityAnalysis {\n  private import ScalarValues::*;\n\n  enum def QualityStatus {\n    enum GOOD;\n    enum WARNING;\n    enum FAILED;\n  }\n\n  item def QualityData {\n    attribute defectCount : Integer;\n    attribute inspectionScore : Real;\n    attribute status : QualityStatus;\n  }\n\n  part def Engine {\n    attribute mass : Real;\n    attribute quality : QualityData;\n  }\n\n  part def Transmission {\n    attribute mass : Real;\n    attribute quality : QualityData;\n  }\n\n  part def FrontAxleAssembly {\n    attribute mass : Real;\n    attribute quality : QualityData;\n  }\n\n  part def RearAxleAssembly {\n    attribute mass : Real;\n    attribute quality : QualityData;\n  }\n\n  part def Vehicle {\n    part engine : Engine;\n    part transmission : Transmission;\n    part frontAxle : FrontAxleAssembly;\n    part rearAxle : RearAxleAssembly;\n    attribute totalMass : Real = engine.mass + transmission.mass + frontAxle.mass + rearAxle.mass;\n  }\n\n  part def QualityAnalysisRequirement {\n    attribute objectiveText : String;\n    attribute threshold : Real;\n    attribute status : QualityStatus;\n  }\n\n  part def AnalysisUseCase {\n    attribute useCaseName : String;\n    attribute goalText : String;\n  }\n\n  part def AnalysisTask {\n    attribute taskName : String;\n    attribute description : String;\n    attribute owner : String;\n  }\n\n  part def AnalysisPlan {\n    attribute planName : String;\n    part task : AnalysisTask;\n  }\n\n  part def QualityAnalysisSystem {\n    part vehicle : Vehicle;\n    part requirement : QualityAnalysisRequirement;\n    part useCase : AnalysisUseCase;\n    part task : AnalysisTask;\n    part plan : AnalysisPlan;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564152.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1764,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1052,
+    "output_tokens_details": {
+      "reasoning_tokens": 640
+    },
+    "total_tokens": 2816
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

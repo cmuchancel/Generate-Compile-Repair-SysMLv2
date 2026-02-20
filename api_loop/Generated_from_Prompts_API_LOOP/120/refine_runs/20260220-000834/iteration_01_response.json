@@ -1,0 +1,82 @@
+{
+  "id": "resp_03cb5b386d212e58006997ec533f5881a09e7ae77fe93a427b",
+  "created_at": 1771564115.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_03cb5b386d212e58006997ec53ad4481a0b70694be226502b4",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_03cb5b386d212e58006997ec626c8881a08dbae0e90eb82353",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleQualityAnalysis {\n  private import ScalarValues::*;\n\n  enum def QualityStatus {\n    enum GOOD;\n    enum WARNING;\n    enum FAILED;\n  }\n\n  item def QualityData {\n    attribute defectCount : Integer;\n    attribute inspectionScore : Real;\n    attribute status : QualityStatus;\n  }\n\n  part def Component {\n    attribute mass : Real;\n    attribute quality : QualityData;\n  }\n\n  part def Engine : Component;\n\n  part def Transmission : Component;\n\n  part def AxleAssembly : Component;\n\n  part def FrontAxleAssembly : AxleAssembly;\n\n  part def RearAxleAssembly : AxleAssembly;\n\n  part def Vehicle {\n    part engine : Engine;\n    part transmission : Transmission;\n    part frontAxle : FrontAxleAssembly;\n    part rearAxle : RearAxleAssembly;\n    attribute totalMass : Real = engine.mass + transmission.mass + frontAxle.mass + rearAxle.mass;\n  }\n\n  part def QualityAnalysisRequirement {\n    attribute objective : String;\n    attribute threshold : Real;\n    attribute status : QualityStatus;\n  }\n\n  part def AnalysisUseCase {\n    attribute name : String;\n    attribute goal : String;\n  }\n\n  part def AnalysisTask {\n    attribute taskName : String;\n    attribute description : String;\n    attribute owner : String;\n  }\n\n  part def AnalysisPlan {\n    attribute planName : String;\n    part task : AnalysisTask;\n  }\n\n  part def QualityAnalysisSystem {\n    part vehicle : Vehicle;\n    part requirement : QualityAnalysisRequirement;\n    part useCase : AnalysisUseCase;\n    part task : AnalysisTask;\n    part plan : AnalysisPlan;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564136.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 377,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1229,
+    "output_tokens_details": {
+      "reasoning_tokens": 832
+    },
+    "total_tokens": 1606
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

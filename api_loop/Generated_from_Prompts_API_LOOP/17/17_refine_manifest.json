@@ -1,0 +1,50 @@
+{
+  "model_id": 17,
+  "status": "ok",
+  "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/DesignBench/nl_prompts/17/nl.txt",
+  "generated_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/17/17.sysml",
+  "groundtruth_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/17/17_groundtruth.sysml",
+  "run_dir": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555",
+  "archived_run_dir": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/17/refine_runs/20260219-235555",
+  "run_log_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555/run_log.json",
+  "stdout_log": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/17/17_refine_stdout.log",
+  "stderr_log": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/17/17_refine_stderr.log",
+  "iterations_completed": 3,
+  "final_iteration_success": true,
+  "tokens_used_total": 3548,
+  "loop_start_utc": "2026-02-20T04:55:55.358275Z",
+  "loop_end_utc": "2026-02-20T04:56:25.036424Z",
+  "loop_duration_seconds": 29.678662042002543,
+  "iteration_timings": [
+    {
+      "iteration": 1,
+      "iteration_start": "2026-02-20T04:55:55.982002Z",
+      "iteration_end": "2026-02-20T04:56:05.685435Z",
+      "iteration_duration_seconds": 9.703630832998897,
+      "success": false,
+      "return_code": 1,
+      "tokens_used_this_iter_total": 884,
+      "tokens_used_total": 884
+    },
+    {
+      "iteration": 2,
+      "iteration_start": "2026-02-20T04:56:05.685507Z",
+      "iteration_end": "2026-02-20T04:56:13.580218Z",
+      "iteration_duration_seconds": 7.894926624998334,
+      "success": false,
+      "return_code": 1,
+      "tokens_used_this_iter_total": 1250,
+      "tokens_used_total": 2134
+    },
+    {
+      "iteration": 3,
+      "iteration_start": "2026-02-20T04:56:13.580315Z",
+      "iteration_end": "2026-02-20T04:56:24.796482Z",
+      "iteration_duration_seconds": 11.216422290999617,
+      "success": true,
+      "return_code": 0,
+      "tokens_used_this_iter_total": 1414,
+      "tokens_used_total": 3548
+    }
+  ]
+}

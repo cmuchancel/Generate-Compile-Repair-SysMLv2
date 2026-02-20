@@ -1,0 +1,83 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system is required to classify and label each component to meet information security management requirements. Every component must be clearly assigned a security classification level, such as "Unclassified," "Confidential," or "Secret." When a component is marked as "Confidential," the system should be able to recognize and display its corresponding classification attribute, thereby enabling effective differentiation and protection of sensitive information during system operation and document management.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package SecurityModel {
+  private import ScalarValues::*;
+
+  enum def SecurityClassification {
+    enum Unclassified;
+    enum Confidential;
+    enum Secret;
+  }
+
+  part def Component {
+    attribute classification : SecurityClassification;
+  }
+
+  part def UnclassifiedComponent : Component {
+    attribute classification : SecurityClassification = Unclassified;
+  }
+
+  part def ConfidentialComponent : Component {
+    attribute classification : SecurityClassification = Confidential;
+  }
+
+  part def SecretComponent : Component {
+    attribute classification : SecurityClassification = Secret;
+  }
+
+  part def System {
+    part compA : UnclassifiedComponent;
+    part compB : ConfidentialComponent;
+    part compC : SecretComponent;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:14:34: error (parsing-error): Expected a token. Did you forget ';'?
+    14 |   part def UnclassifiedComponent : Component {
+iteration_01.sysml:18:34: error (parsing-error): Expected a token. Did you forget ';'?
+    18 |   part def ConfidentialComponent : Component {
+iteration_01.sysml:22:28: error (parsing-error): Expected a token. Did you forget ';'?
+    22 |   part def SecretComponent : Component {
+iteration_01.sysml:15:15: warning (namespace-distinguishability): Member name 'classification' shadows SecurityModel::Component::classification
+│   15 |     attribute classification : SecurityClassification = Unclassified;
+│      |               ^^^^^^^^^^^^^^
+└── iteration_01.sysml:11:15: note: Inherited from here
+    └── iteration_01.sysml:14:36: note: Because SecurityModel::Component is specialized through FeatureTyping
+iteration_01.sysml:19:15: warning (namespace-distinguishability): Member name 'classification' shadows SecurityModel::Component::classification
+│   19 |     attribute classification : SecurityClassification = Confidential;
+│      |               ^^^^^^^^^^^^^^
+└── iteration_01.sysml:11:15: note: Inherited from here
+    └── iteration_01.sysml:18:36: note: Because SecurityModel::Component is specialized through FeatureTyping
+iteration_01.sysml:23:15: warning (namespace-distinguishability): Member name 'classification' shadows SecurityModel::Component::classification
+│   23 |     attribute classification : SecurityClassification = Secret;
+│      |               ^^^^^^^^^^^^^^
+└── iteration_01.sysml:11:15: note: Inherited from here
+    └── iteration_01.sysml:22:30: note: Because SecurityModel::Component is specialized through FeatureTyping
+iteration_01.sysml:15:57: error (reference-error): No Feature named 'Unclassified' found.
+    15 |     attribute classification : SecurityClassification = Unclassified;
+       |                                                         ^^^^^^^^^^^^
+iteration_01.sysml:19:57: error (reference-error): No Feature named 'Confidential' found.
+    19 |     attribute classification : SecurityClassification = Confidential;
+       |                                                         ^^^^^^^^^^^^
+iteration_01.sysml:23:57: error (reference-error): No Feature named 'Secret' found.
+    23 |     attribute classification : SecurityClassification = Secret;
+       |                                                         ^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

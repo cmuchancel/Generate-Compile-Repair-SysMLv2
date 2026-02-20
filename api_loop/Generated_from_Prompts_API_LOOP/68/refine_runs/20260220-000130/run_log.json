@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:01:30.256066Z",
+    "iteration_end": "2026-02-20T05:01:44.974747Z",
+    "iteration_duration_seconds": 14.718940250000742,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/68/20260220-000130/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/68/20260220-000130/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/68/20260220-000130/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:5:24: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Torque' found.\n    5 |     attribute torque : Torque;\n      |                        \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:6:23: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Speed' found.\n    6 |     attribute speed : Speed;\n      |                       \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:11:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Torque' found.\n    11 |     attribute maxTorque : Torque = 300;\n       |                           \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:12:28: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Speed' found.\n    12 |     attribute ratedSpeed : Speed = 4000;\n       |                            \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:25:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Mass' found.\n    25 |     attribute curbMass : Mass = 1450;\n       |                          \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:26:26: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Mass' found.\n    26 |     attribute fuelMass : Mass = 50;\n       |                          \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:27:27: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Mass' found.\n    27 |     attribute totalMass : Mass = 1500;\n       |                           \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:28:30: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Mass' found.\n    28 |     attribute maxMassLimit : Mass = 2000;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 325,
+      "output_tokens": 832,
+      "total_tokens": 1157
+    },
+    "tokens_used_total": 1157
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:01:44.974814Z",
+    "iteration_end": "2026-02-20T05:01:49.604849Z",
+    "iteration_duration_seconds": 4.630212249998294,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/68/20260220-000130/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/68/20260220-000130/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/68/20260220-000130/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 902,
+      "output_tokens": 238,
+      "total_tokens": 1140
+    },
+    "tokens_used_total": 2297
+  }
+]

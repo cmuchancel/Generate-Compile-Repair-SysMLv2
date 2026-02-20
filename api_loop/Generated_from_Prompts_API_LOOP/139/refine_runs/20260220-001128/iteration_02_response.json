@@ -1,0 +1,82 @@
+{
+  "id": "resp_0b554e5e48f2da68006997ed16667c8190aeb634f19139e6b0",
+  "created_at": 1771564310.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0b554e5e48f2da68006997ed16bb2481909fd955676910737a",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0b554e5e48f2da68006997ed1a0ac881909282df75501271ff",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleModel {\n  private import ScalarValues::*;\n\n  part def Vehicle {\n    attribute mass : Real = 1200;\n    attribute length : Real = 4.82;\n    part wheelAssembly[4] : WheelAssembly;\n  }\n\n  part def WheelAssembly {\n    part wheel : Wheel;\n    part brakeDisc : BrakeDisc;\n    attribute brakeDiscDiameter : Real = brakeDisc.radius * 2;\n    attribute brakeDiscFitsWheel : Boolean = (brakeDiscDiameter < wheel.outerDiameter);\n    attribute brakeDiscFitsRim : Boolean = (brakeDiscDiameter < wheel.rim.diameterMM);\n  }\n\n  part def Wheel {\n    part rim : Rim;\n    part tire : Tire;\n    attribute outerDiameter : Real = rim.diameterMM + 2 * tire.height;\n  }\n\n  part def Rim {\n    attribute diameterInches : Real = 18;\n    attribute diameterMM : Real = 457.2;\n  }\n\n  part def Tire {\n    attribute width : Real = 245;\n    attribute height : Real = 45;\n    attribute treadDepth : Real = 6.0;\n    attribute treadDepthOk : Boolean = (treadDepth >= 3.5);\n  }\n\n  part def BrakeDisc {\n    attribute radius : Real = 95;\n  }\n\n  part vehicle : Vehicle;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564317.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1774,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 483,
+    "output_tokens_details": {
+      "reasoning_tokens": 192
+    },
+    "total_tokens": 2257
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

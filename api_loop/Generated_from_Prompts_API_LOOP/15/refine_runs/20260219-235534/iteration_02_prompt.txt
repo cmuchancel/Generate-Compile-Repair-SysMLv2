@@ -1,0 +1,88 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to describe the basic structure and operating principles of a vehicle fuel system. The vehicle is equipped with a fuel tank assembly and an engine, which are connected through fuel lines to facilitate fuel supply and return. The fuel tank assembly is responsible for supplying fuel to the engine, and after combustion and usage, the engine returns the unused portion of the fuel back to the fuel tank. Throughout the entire fuel flow process, the system can monitor and transmit information on the fuel temperature to ensure operational safety and system efficiency. This fuel system design ensures that the vehicle receives a continuous and stable fuel supply during operation, effectively recycles excess fuel, and optimizes resource utilization.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package FuelSystemModel {
+  private import ScalarValues::*;
+
+  item def Fuel;
+
+  item def TemperatureInfo {
+    attribute value : Real;
+  }
+
+  port def FuelPort {
+    item fuel : Fuel;
+  }
+
+  port def TemperaturePort {
+    item temp : TemperatureInfo;
+  }
+
+  part def FuelTankAssembly {
+    port supply : FuelPort;
+    port return : FuelPort;
+    port tempOut : TemperaturePort;
+  }
+
+  part def Engine {
+    port fuelIn : FuelPort;
+    port fuelReturn : FuelPort;
+    port tempOut : TemperaturePort;
+  }
+
+  part def TemperatureMonitor {
+    port tempIn1 : TemperaturePort;
+    port tempIn2 : TemperaturePort;
+    port tempOut : TemperaturePort;
+  }
+
+  part def VehicleFuelSystem {
+    part tank : FuelTankAssembly;
+    part engine : Engine;
+    part monitor : TemperatureMonitor;
+    port systemTempOut : TemperaturePort;
+
+    connect tank.supply to engine.fuelIn;
+    connect engine.fuelReturn to tank.return;
+    connect tank.tempOut to monitor.tempIn1;
+    connect engine.tempOut to monitor.tempIn2;
+    connect monitor.tempOut to systemTempOut;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:20:10: error (parsing-error): Unexpected 'return', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    20 |     port return : FuelPort;
+       |          ^^^^^^
+iteration_01.sysml:43:38: error (parsing-error): Unexpected token '.'.
+    43 |     connect engine.fuelReturn to tank.return;
+       |                                      ^
+iteration_01.sysml:43:39: error (parsing-error): Unexpected 'return', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE_NOTE", "FeatureChaining", ";", "{", ",", "[", "(", ")", "=", "from", "to", "if", "then", "accept", "via", "do"].
+    43 |     connect engine.fuelReturn to tank.return;
+       |                                       ^^^^^^
+iteration_01.sysml:11:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    11 |     item fuel : Fuel;
+       |     ^^^^^^^^^^^^^^^^^
+iteration_01.sysml:15:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    15 |     item temp : TemperatureInfo;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:43:34: error (feature-chaining-feature-not-one): Feature cannot have only one feature chaining
+    43 |     connect engine.fuelReturn to tank.return;
+       |                                  ^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

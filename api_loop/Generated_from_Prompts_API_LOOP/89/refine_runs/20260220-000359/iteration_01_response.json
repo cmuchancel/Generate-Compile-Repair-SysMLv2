@@ -1,0 +1,82 @@
+{
+  "id": "resp_05d32827306b8d0b006997eb406fb881a187df2e64d6af1dd2",
+  "created_at": 1771563840.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_05d32827306b8d0b006997eb40b7a081a192c3b76e7c63c4e6",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_05d32827306b8d0b006997eb49fa7c81a18822121e2ca752b2",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package RiskManagement\n{\n    private import ScalarValues::*;\n\n    enum def SeverityLevel {\n        Low;\n        Medium;\n        High;\n        Critical;\n    }\n\n    enum def ProbabilityLevel {\n        Rare;\n        Unlikely;\n        Possible;\n        Likely;\n        Certain;\n    }\n\n    item def Situation {\n        attribute description : String;\n    }\n\n    item def Cause {\n        attribute description : String;\n        attribute probability : ProbabilityLevel;\n    }\n\n    item def Failure {\n        attribute description : String;\n        attribute severity : SeverityLevel;\n    }\n\n    part def CausalLink {\n        part fromSituation : Situation;\n        part cause : Cause;\n        part toFailure : Failure;\n    }\n\n    part def RiskScenario {\n        part situation : Situation;\n        part cause : Cause;\n        part failure : Failure;\n        part link : CausalLink;\n    }\n\n    part def RiskModel {\n        part scenario1 : RiskScenario;\n        part scenario2 : RiskScenario;\n\n        connect scenario1.situation to scenario1.link.fromSituation;\n        connect scenario1.cause to scenario1.link.cause;\n        connect scenario1.failure to scenario1.link.toFailure;\n\n        connect scenario2.situation to scenario2.link.fromSituation;\n        connect scenario2.cause to scenario2.link.cause;\n        connect scenario2.failure to scenario2.link.toFailure;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563853.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 353,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 836,
+    "output_tokens_details": {
+      "reasoning_tokens": 512
+    },
+    "total_tokens": 1189
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

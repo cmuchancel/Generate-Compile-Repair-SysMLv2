@@ -1,0 +1,82 @@
+{
+  "id": "resp_0f856f357f38acc6006997e9c0b7ec819eb9321b89454659a0",
+  "created_at": 1771563456.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0f856f357f38acc6006997e9c0fe68819e8cceb5ede8b058dc",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0f856f357f38acc6006997e9c24740819ea48489e6dcbdf4ff",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleStateManagement {\n  private import ScalarValues::*;\n\n  enum def VehicleState {\n    enum off;\n    enum starting;\n    enum on;\n  }\n\n  part def VehicleController {\n    attribute state : VehicleState = off;\n    attribute vehicleStartSignal : Boolean = false;\n    attribute vehiclePowerOnSignal : Boolean = false;\n    attribute vehicleShutdownSignal : Boolean = false;\n  }\n\n  part vehicle : VehicleController;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563459.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 364,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 175,
+    "output_tokens_details": {
+      "reasoning_tokens": 64
+    },
+    "total_tokens": 539
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

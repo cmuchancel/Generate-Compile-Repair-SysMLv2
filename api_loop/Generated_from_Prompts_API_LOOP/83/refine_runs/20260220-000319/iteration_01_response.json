@@ -1,0 +1,82 @@
+{
+  "id": "resp_0312347758c0766b006997eb188ed481969cf8155f72e3449c",
+  "created_at": 1771563800.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0312347758c0766b006997eb18dfe48196b0f673beba1bebf2",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0312347758c0766b006997eb25ddc08196a89056ea338b52f8",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PowertrainModel {\n  private import ScalarValues::*;\n\n  item def Power;\n  item def Torque;\n\n  port def PowerPort {\n    item power : Power;\n  }\n\n  port def TorquePort {\n    item torque : Torque;\n  }\n\n  part def PowerProvider {\n    port powerOut : PowerPort;\n  }\n\n  part def TorqueGenerator {\n    port powerIn : PowerPort;\n    port torqueOut : TorquePort;\n  }\n\n  part def PowerUnit {\n    port powerOut : PowerPort;\n    port torqueOut : TorquePort;\n  }\n\n  part def LogicalLayer {\n    part powerProvider : PowerProvider;\n    part torqueGenerator : TorqueGenerator;\n    connect powerProvider.powerOut to torqueGenerator.powerIn;\n  }\n\n  part def PhysicalLayer {\n    part powerUnit : PowerUnit;\n  }\n\n  part def PowertrainSystem {\n    part logicalLayer : LogicalLayer;\n    part physicalLayer : PhysicalLayer;\n\n    connect logicalLayer.torqueGenerator.torqueOut to physicalLayer.powerUnit.torqueOut;\n    connect logicalLayer.torqueGenerator.powerIn to physicalLayer.powerUnit.powerOut;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563816.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 404,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1037,
+    "output_tokens_details": {
+      "reasoning_tokens": 768
+    },
+    "total_tokens": 1441
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

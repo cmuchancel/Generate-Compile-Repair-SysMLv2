@@ -1,0 +1,66 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is used for vehicle fuel system management and is required to achieve efficient supply and return of fuel. The system consists of two core components: the Fuel Tank Assembly and the Engine. Fuel must flow from the fuel tank to the engine through the fuel supply port, while the engine can also return unused fuel back to the fuel tank. Each fuel interface should provide the current temperature information of the fuel to facilitate subsequent monitoring and regulation. The system should ensure efficient fuel flow and information tracking during both supply and return processes, meeting the requirements for reliability, safety, and monitoring of fuel delivery during normal vehicle operation.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package FuelSystemModel {
+  private import ScalarValues::*;
+
+  item def Fuel {
+    attribute temperature : Real;
+  }
+
+  port def FuelPort {
+    item fuel : Fuel;
+  }
+
+  part def FuelTankAssembly {
+    port supply : FuelPort;
+    port return : FuelPort;
+  }
+
+  part def Engine {
+    port supplyIn : FuelPort;
+    port returnOut : FuelPort;
+  }
+
+  part def FuelSystem {
+    part tank : FuelTankAssembly;
+    part engine : Engine;
+
+    connect tank.supply to engine.supplyIn;
+    connect engine.returnOut to tank.return;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:14:10: error (parsing-error): Unexpected 'return', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    14 |     port return : FuelPort;
+       |          ^^^^^^
+iteration_01.sysml:27:37: error (parsing-error): Unexpected token '.'.
+    27 |     connect engine.returnOut to tank.return;
+       |                                     ^
+iteration_01.sysml:27:38: error (parsing-error): Unexpected 'return', expected one of ["SINGLE_LINE_NOTE", "$", "NAME", "ElementReference", "MULTILINE_NOTE", "FeatureChaining", ";", "{", ",", "[", "(", ")", "=", "from", "to", "if", "then", "accept", "via", "do"].
+    27 |     connect engine.returnOut to tank.return;
+       |                                      ^^^^^^
+iteration_01.sysml:9:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    9 |     item fuel : Fuel;
+      |     ^^^^^^^^^^^^^^^^^
+iteration_01.sysml:27:33: error (feature-chaining-feature-not-one): Feature cannot have only one feature chaining
+    27 |     connect engine.returnOut to tank.return;
+       |                                 ^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

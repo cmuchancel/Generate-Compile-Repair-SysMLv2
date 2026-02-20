@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:05:15.501135Z",
+    "iteration_end": "2026-02-20T05:05:25.684406Z",
+    "iteration_duration_seconds": 10.183446375005587,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/98/20260220-000515/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/98/20260220-000515/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/98/20260220-000515/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:2:3: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    2 |   private import ScalarValues::*;\n\niteration_01.sysml:10:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    10 |     port return : FuelInterface;\n       |          \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:15:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    15 |     port return : FuelInterface;\n       |          \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:24:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    24 |     connect engine.return to tank.return;\n       |                   \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:24:20: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"$\", \"NAME\", \"ElementReference\", \"MULTILINE_NOTE\", \"FeatureChaining\", \";\", \"{\", \",\", \"[\", \"(\", \")\", \"=\", \"from\", \"to\", \"if\", \"then\", \"accept\", \"via\", \"do\"].\n    24 |     connect engine.return to tank.return;\n       |                    \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:24:34: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    24 |     connect engine.return to tank.return;\n       |                                  \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:24:35: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"$\", \"NAME\", \"ElementReference\", \"MULTILINE_NOTE\", \"FeatureChaining\", \";\", \"{\", \",\", \"[\", \"(\", \")\", \"=\", \"from\", \"to\", \"if\", \"then\", \"accept\", \"via\", \"do\"].\n    24 |     connect engine.return to tank.return;\n       |                                   \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:26:12: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected EOF. (\u001b[38;2;220;080;080mno source underlining available since segment is out of bounds\u001b[0m)\n\niteration_01.sysml:24:13: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    24 |     connect engine.return to tank.return;\n       |             \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:24:30: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    24 |     connect engine.return to tank.return;\n       |                              \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:21:33: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Temperature' found.\n    21 |     attribute fuelTemperature : Temperature;\n       |                                 \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 313,
+      "output_tokens": 602,
+      "total_tokens": 915
+    },
+    "tokens_used_total": 915
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:05:25.684448Z",
+    "iteration_end": "2026-02-20T05:05:32.069465Z",
+    "iteration_duration_seconds": 6.385164584004087,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/98/20260220-000515/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/98/20260220-000515/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/98/20260220-000515/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1201,
+      "output_tokens": 387,
+      "total_tokens": 1588
+    },
+    "tokens_used_total": 2503
+  }
+]

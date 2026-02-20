@@ -1,0 +1,60 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to provide vehicles with efficient fuel delivery services. The system includes a storage tank as the initial fuel reservoir, from which fuel is extracted and delivered to vehicles via a fuel pump. Inside the vehicle, there is a fuel tank used to receive and store the delivered fuel, as well as to monitor both the maximum capacity and the current fuel level in real-time. The flow path of the fuel is clear and controllable: it is output from the storage tank, passes through the fuel pump, and ultimately enters the vehicle’s fuel tank, thus realizing end-to-end fuel management—from storage, to delivery, to usage. The system focuses on the transfer and quantity changes of fuel at each stage, ensuring that vehicles can obtain the required fuel in a timely, safe, and accurate manner to meet normal operation needs.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package FuelDeliverySystem {
+   private import ScalarValues::*;
+
+   item def Fuel;
+
+   port def FuelPort {
+      item fuel : Fuel;
+   }
+
+   part def StorageTank {
+      attribute maxCapacity : Real;
+      attribute currentLevel : Real;
+      port outFuel : FuelPort;
+   }
+
+   part def FuelPump {
+      attribute flowRate : Real;
+      port inFuel : FuelPort;
+      port outFuel : FuelPort;
+   }
+
+   part def VehicleFuelTank {
+      attribute maxCapacity : Real;
+      attribute currentLevel : Real;
+      port inFuel : FuelPort;
+   }
+
+   part def FuelDeliverySystem {
+      part storage : StorageTank;
+      part pump : FuelPump;
+      part vehicleTank : VehicleFuelTank;
+      connect storage.outFuel to pump.inFuel;
+      connect pump.outFuel to vehicleTank.inFuel;
+   }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_01.sysml:7:7: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+7 |       item fuel : Fuel;
+  |       ^^^^^^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

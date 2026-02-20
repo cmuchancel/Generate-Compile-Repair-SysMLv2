@@ -1,0 +1,158 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to enable automated modeling of vehicle behavior, primarily comprising two core components: the vehicle and the vehicle controller. The vehicle is capable of autonomously managing its operation and health status under different conditions. Normally, the vehicle only initiates the startup process from the shutdown state when both the brake pedal is pressed and a start signal is received; after meeting these requirements, it completes self-inspection and power supply procedures. The system can sense temperature in real time, and when overheating is detected, it automatically sends a warning signal to the vehicle controller, switches the vehicle status to degraded mode, and ensures safety. Health management also includes regular maintenance and fault recovery mechanisms to ensure timely maintenance and restoration from abnormal states to normal. The vehicle controller receives and processes various control and status signals from the vehicle, enabling automatic control operations such as starting and shutting down. The overall system supports configuration of attributes such as fuel, maintenance intervals, and temperature thresholds, thereby achieving intelligent, safe, and efficient management of vehicle operation processes.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleSystem {
+  private import ScalarValues::*;
+
+  enum def VehicleState {
+    enum Shutdown;
+    enum Starting;
+    enum Normal;
+    enum Degraded;
+    enum Maintenance;
+    enum Fault;
+  }
+
+  item def StartSignal {
+    attribute value : Boolean;
+  }
+
+  item def BrakeSignal {
+    attribute value : Boolean;
+  }
+
+  item def TemperatureSignal {
+    attribute value : Real;
+  }
+
+  item def WarningSignal {
+    attribute value : Boolean;
+  }
+
+  item def StatusSignal {
+    attribute state : VehicleState;
+  }
+
+  port def VehiclePort {
+    item startIn : StartSignal;
+    item brakeIn : BrakeSignal;
+    item tempOut : TemperatureSignal;
+    item warnOut : WarningSignal;
+    item statusOut : StatusSignal;
+  }
+
+  port def ControllerPort {
+    item startOut : StartSignal;
+    item brakeOut : BrakeSignal;
+    item tempIn : TemperatureSignal;
+    item warnIn : WarningSignal;
+    item statusIn : StatusSignal;
+  }
+
+  part def Vehicle {
+    port vPort : VehiclePort;
+    attribute currentState : VehicleState = VehicleState::Shutdown;
+    attribute fuelLevel : Real;
+    attribute maintenanceIntervalDays : Integer;
+    attribute temperatureThreshold : Real;
+    attribute temperature : Real;
+    attribute brakePressed : Boolean;
+    attribute startRequested : Boolean;
+  }
+
+  part def VehicleController {
+    port cPort : ControllerPort;
+    attribute lastWarning : Boolean;
+    attribute lastState : VehicleState;
+    attribute startCommand : Boolean;
+    attribute brakeCommand : Boolean;
+  }
+
+  part def VehicleSystem {
+    attribute defaultFuelLevel : Real = 50.0;
+    attribute defaultMaintenanceIntervalDays : Integer = 30;
+    attribute defaultTemperatureThreshold : Real = 90.0;
+
+    part vehicle : Vehicle {
+      attribute fuelLevel = defaultFuelLevel;
+      attribute maintenanceIntervalDays = defaultMaintenanceIntervalDays;
+      attribute temperatureThreshold = defaultTemperatureThreshold;
+    }
+
+    part controller : VehicleController;
+
+    connect vehicle.vPort.startIn to controller.cPort.startOut;
+    connect vehicle.vPort.brakeIn to controller.cPort.brakeOut;
+    connect vehicle.vPort.tempOut to controller.cPort.tempIn;
+    connect vehicle.vPort.warnOut to controller.cPort.warnIn;
+    connect vehicle.vPort.statusOut to controller.cPort.statusIn;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:30:15: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    30 |     attribute state : VehicleState;
+       |               ^^^^^
+iteration_01.sysml:34:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    34 |     item startIn : StartSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:35:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    35 |     item brakeIn : BrakeSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:36:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    36 |     item tempOut : TemperatureSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:37:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    37 |     item warnOut : WarningSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:38:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    38 |     item statusOut : StatusSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:42:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    42 |     item startOut : StartSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:43:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    43 |     item brakeOut : BrakeSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:44:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    44 |     item tempIn : TemperatureSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:45:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    45 |     item warnIn : WarningSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:46:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    46 |     item statusIn : StatusSignal;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:74:17: warning (namespace-distinguishability): Member name 'fuelLevel' shadows VehicleSystem::Vehicle::fuelLevel
+│   74 |       attribute fuelLevel = defaultFuelLevel;
+│      |                 ^^^^^^^^^
+└── iteration_01.sysml:52:15: note: Inherited from here
+    └── iteration_01.sysml:73:20: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:75:17: warning (namespace-distinguishability): Member name 'maintenanceIntervalDays' shadows VehicleSystem::Vehicle::maintenanceIntervalDays
+│   75 |       attribute maintenanceIntervalDays = defaultMaintenanceIntervalDays;
+│      |                 ^^^^^^^^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:53:15: note: Inherited from here
+    └── iteration_01.sysml:73:20: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:76:17: warning (namespace-distinguishability): Member name 'temperatureThreshold' shadows VehicleSystem::Vehicle::temperatureThreshold
+│   76 |       attribute temperatureThreshold = defaultTemperatureThreshold;
+│      |                 ^^^^^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:54:15: note: Inherited from here
+    └── iteration_01.sysml:73:20: note: Because Vehicle
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

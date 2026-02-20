@@ -1,0 +1,82 @@
+{
+  "id": "resp_0f19c8f39e06be2d006997eb319260819380572d48c3869d60",
+  "created_at": 1771563825.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0f19c8f39e06be2d006997eb31eb348193a7f09ff934635f0d",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0f19c8f39e06be2d006997eb5598ac81939cb7a3b09ac36ac8",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package CarSafetyCompliance {\n   private import ScalarValues::*;\n\n   part def SeatBelt {\n      attribute isSafety : Boolean = true;\n      attribute isMandatory : Boolean = true;\n   }\n\n   part def Airbag {\n      attribute isSafety : Boolean = true;\n      attribute isMandatory : Boolean = false;\n   }\n\n   part def Bumper {\n      attribute isSafety : Boolean = true;\n      attribute isMandatory : Boolean = true;\n   }\n\n   part def KeylessEntry {\n      attribute isSafety : Boolean = false;\n      attribute isMandatory : Boolean = false;\n   }\n\n   part def Wheel {\n      attribute isSafety : Boolean = true;\n      attribute isMandatory : Boolean = true;\n   }\n\n   part def ABS {\n      attribute isSafety : Boolean = true;\n      attribute isMandatory : Boolean = false;\n   }\n\n   part def Car {\n      part seatBelt : SeatBelt [2];\n      part airbag : Airbag [0..1];\n      part bumper : Bumper;\n      part keylessEntry : KeylessEntry [0..1];\n      part wheel : Wheel [2];\n      part abs : ABS [0..1];\n   }\n\n   package SafetyFeatures {\n      part seatBelt : SeatBelt;\n      part airbag : Airbag;\n      part bumper : Bumper;\n      part wheel : Wheel;\n      part abs : ABS;\n   }\n\n   package MandatorySafetyFeatures {\n      part seatBelt : SeatBelt;\n      part bumper : Bumper;\n      part wheel : Wheel;\n   }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563865.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 435,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 2375,
+    "output_tokens_details": {
+      "reasoning_tokens": 2048
+    },
+    "total_tokens": 2810
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

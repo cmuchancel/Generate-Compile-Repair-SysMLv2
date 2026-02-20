@@ -1,0 +1,82 @@
+{
+  "id": "resp_08be88a79f73f6c2006997e95f53148190a521832eed6f175d",
+  "created_at": 1771563359.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_08be88a79f73f6c2006997e95fb2608190b26b4e9fa60f42db",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_08be88a79f73f6c2006997e967c0a881909c6448013e90cdb3",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PhotoAcquisitionSystem {\n   private import ScalarValues::*;\n\n   item def Scene;\n   item def Image;\n   item def Photo;\n\n   enum def ProcessState { Idle, Focusing, Capturing, Done }\n\n   port def SceneSelectionPort {\n      attribute scene : Scene;\n   }\n\n   port def ImagePort {\n      attribute image : Image;\n   }\n\n   port def PhotoPort {\n      attribute photo : Photo;\n   }\n\n   part def User {\n      port selectionOut : SceneSelectionPort;\n      port photoIn : PhotoPort;\n   }\n\n   part def FocusingModule {\n      port sceneIn : SceneSelectionPort;\n      port focusedImageOut : ImagePort;\n      attribute state : ProcessState = Idle;\n   }\n\n   part def CaptureModule {\n      port focusedImageIn : ImagePort;\n      port photoOut : PhotoPort;\n      attribute state : ProcessState = Idle;\n   }\n\n   part def CameraSystem {\n      part focusing : FocusingModule;\n      part capture : CaptureModule;\n      port sceneIn : SceneSelectionPort;\n      port photoOut : PhotoPort;\n      attribute focusedImage : Image;\n      attribute finalPhoto : Photo;\n\n      connect sceneIn to focusing.sceneIn;\n      connect focusing.focusedImageOut to capture.focusedImageIn;\n      connect capture.photoOut to photoOut;\n   }\n\n   part def PhotoService {\n      part user : User;\n      part camera : CameraSystem;\n\n      connect user.selectionOut to camera.sceneIn;\n      connect camera.photoOut to user.photoIn;\n   }\n\n   part system : PhotoService;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563370.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 337,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 882,
+    "output_tokens_details": {
+      "reasoning_tokens": 512
+    },
+    "total_tokens": 1219
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

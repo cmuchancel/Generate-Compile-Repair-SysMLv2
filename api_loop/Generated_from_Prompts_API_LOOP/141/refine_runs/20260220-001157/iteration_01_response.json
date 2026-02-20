@@ -1,0 +1,82 @@
+{
+  "id": "resp_06de3f70660203cc006997ed1e89bc819395e4ee9619322c95",
+  "created_at": 1771564318.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_06de3f70660203cc006997ed1efa9081938204d92de1e0e139",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_06de3f70660203cc006997ed24057c8193b231c765b0e3869c",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package UnitSystemLibrary\n    private import ScalarValues::*;\n    \n    enum def UnitSystemKind { \n        ISQ;\n        USCustomary;\n    }\n    \n    enum def QuantityKind {\n        Length;\n        Mass;\n        Time;\n        Temperature;\n        Area;\n        Volume;\n        Force;\n        Energy;\n        Power;\n        Pressure;\n    }\n    \n    item def Unit {\n        attribute name : String;\n        attribute symbol : String;\n        attribute system : UnitSystemKind;\n        attribute quantity : QuantityKind;\n        attribute toBaseFactor : Real;\n    }\n    \n    item def UnitConversion {\n        attribute fromUnit : String;\n        attribute toUnit : String;\n        attribute factor : Real;\n        attribute offset : Real;\n    }\n    \n    part def UnitCatalog {\n        attribute name : String;\n        part units : Unit[0..*];\n        part conversions : UnitConversion[0..*];\n    }\n    \n    part def UnitLibrary {\n        part catalog : UnitCatalog;\n        attribute version : String;\n    }\n    \n    part def UnitSystemService {\n        part library : UnitLibrary;\n    }\n    \n    part library : UnitLibrary;\n    part service : UnitSystemService;\n    connect library to service.library;\nend package",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564326.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 355,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 609,
+    "output_tokens_details": {
+      "reasoning_tokens": 320
+    },
+    "total_tokens": 964
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

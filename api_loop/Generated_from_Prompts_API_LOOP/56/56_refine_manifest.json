@@ -1,0 +1,40 @@
+{
+  "model_id": 56,
+  "status": "ok",
+  "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/DesignBench/nl_prompts/56/nl.txt",
+  "generated_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/56/56.sysml",
+  "groundtruth_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/56/56_groundtruth.sysml",
+  "run_dir": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/56/20260220-000000",
+  "archived_run_dir": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/56/refine_runs/20260220-000000",
+  "run_log_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/56/20260220-000000/run_log.json",
+  "stdout_log": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/56/56_refine_stdout.log",
+  "stderr_log": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/56/56_refine_stderr.log",
+  "iterations_completed": 2,
+  "final_iteration_success": true,
+  "tokens_used_total": 6574,
+  "loop_start_utc": "2026-02-20T04:59:59.293148Z",
+  "loop_end_utc": "2026-02-20T05:01:24.902454Z",
+  "loop_duration_seconds": 85.6107273749949,
+  "iteration_timings": [
+    {
+      "iteration": 1,
+      "iteration_start": "2026-02-20T05:00:00.809619Z",
+      "iteration_end": "2026-02-20T05:00:41.043966Z",
+      "iteration_duration_seconds": 40.23500458300259,
+      "success": false,
+      "return_code": 1,
+      "tokens_used_this_iter_total": 3045,
+      "tokens_used_total": 3045
+    },
+    {
+      "iteration": 2,
+      "iteration_start": "2026-02-20T05:00:41.044033Z",
+      "iteration_end": "2026-02-20T05:01:24.822306Z",
+      "iteration_duration_seconds": 43.77902495800663,
+      "success": true,
+      "return_code": 0,
+      "tokens_used_this_iter_total": 3529,
+      "tokens_used_total": 6574
+    }
+  ]
+}

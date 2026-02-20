@@ -1,0 +1,44 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system needs to define and describe a vehicle structure, in which each vehicle is composed of multiple components. A vehicle consists of major components such as one engine, one transmission, and four wheels. These components are all subclasses of vehicle components. The overall vehicle structure should reflect the compositional relationships and quantity requirements among the various components—for example, a vehicle must be equipped with exactly four wheels, as well as one engine and one transmission. The system should also support extensibility for both vehicle and component types, in order to accommodate different vehicle configurations and component varieties, thereby better meeting the needs of automotive structure design and management.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleStructure {
+    part def VehicleComponent;
+    part def Engine : VehicleComponent;
+    part def Transmission : VehicleComponent;
+    part def Wheel : VehicleComponent;
+
+    part def Vehicle {
+        part engine : Engine;
+        part transmission : Transmission;
+        part wheels[4] : Wheel;
+    }
+
+    part def Car : Vehicle;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:3:21: error (parsing-error): Expected a token. Did you forget ';'?
+    3 |     part def Engine : VehicleComponent;
+iteration_01.sysml:4:27: error (parsing-error): Expected a token. Did you forget ';'?
+    4 |     part def Transmission : VehicleComponent;
+iteration_01.sysml:5:20: error (parsing-error): Expected a token. Did you forget ';'?
+    5 |     part def Wheel : VehicleComponent;
+iteration_01.sysml:13:18: error (parsing-error): Expected a token. Did you forget ';'?
+    13 |     part def Car : Vehicle;
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

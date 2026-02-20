@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:03:33.591503Z",
+    "iteration_end": "2026-02-20T05:03:53.291552Z",
+    "iteration_duration_seconds": 19.700376583001344,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/85/20260220-000333/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/85/20260220-000333/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/85/20260220-000333/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:11:48: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'safety' found.\n    11 |     attribute functionType : FeatureFunction = safety;\n       |                                                \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:15:48: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'safety' found.\n    15 |     attribute functionType : FeatureFunction = safety;\n       |                                                \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:19:48: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'safety' found.\n    19 |     attribute functionType : FeatureFunction = safety;\n       |                                                \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:23:48: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'security' found.\n    23 |     attribute functionType : FeatureFunction = security;\n       |                                                \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:27:48: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'protection' found.\n    27 |     attribute functionType : FeatureFunction = protection;\n       |                                                \u001b[38;2;220;080;080m^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:31:48: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'safety' found.\n    31 |     attribute functionType : FeatureFunction = safety;\n       |                                                \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:35:48: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'security' found.\n    35 |     attribute functionType : FeatureFunction = security;\n       |                                                \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 408,
+      "output_tokens": 1160,
+      "total_tokens": 1568
+    },
+    "tokens_used_total": 1568
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:03:53.291591Z",
+    "iteration_end": "2026-02-20T05:03:59.076641Z",
+    "iteration_duration_seconds": 5.7851730000038515,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/85/20260220-000333/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/85/20260220-000333/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/85/20260220-000333/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1028,
+      "output_tokens": 401,
+      "total_tokens": 1429
+    },
+    "tokens_used_total": 2997
+  }
+]

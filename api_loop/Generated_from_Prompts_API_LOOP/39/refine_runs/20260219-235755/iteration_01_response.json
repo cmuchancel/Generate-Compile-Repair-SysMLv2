@@ -1,0 +1,82 @@
+{
+  "id": "resp_02f106de17d997c5006997e9d419bc819092cb87e751144289",
+  "created_at": 1771563476.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_02f106de17d997c5006997e9d466e8819084df42d8dbc03768",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_02f106de17d997c5006997e9dc92f88190aded69db8e369750",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PowerManagement {\n    private import ScalarValues::*;\n\n    enum def OperatingState {\n        enum Off;\n        enum Start;\n        enum On;\n    }\n\n    enum def HealthState {\n        enum Unknown;\n        enum Healthy;\n        enum Degraded;\n        enum Fault;\n    }\n\n    port def ControlSignals {\n        attribute startSignal: Boolean;\n        attribute onSignal: Boolean;\n        attribute offSignal: Boolean;\n    }\n\n    part def VehiclePowerManager {\n        attribute operatingState: OperatingState = Off;\n        attribute healthState: HealthState = Unknown;\n        port control: ControlSignals;\n    }\n\n    part def Vehicle {\n        part powerManager: VehiclePowerManager;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563486.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 399,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 603,
+    "output_tokens_details": {
+      "reasoning_tokens": 448
+    },
+    "total_tokens": 1002
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

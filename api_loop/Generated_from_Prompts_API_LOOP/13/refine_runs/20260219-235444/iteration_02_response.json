@@ -1,0 +1,82 @@
+{
+  "id": "resp_02bd7f1784c6b18b006997e948c5c0819ca206f4391e0bbde3",
+  "created_at": 1771563336.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_02bd7f1784c6b18b006997e9490d68819c9af41b334f3a9e73",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_02bd7f1784c6b18b006997e94ff45c819caa8d41d27b3003a2",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package FuelSupplySystem {\n  private import ScalarValues::*;\n\n  item def Fuel;\n  item def Temperature {\n    attribute value : Real;\n  }\n\n  port def FuelPort;\n  port def TemperaturePort;\n\n  part def FuelTank {\n    port supplyOut : FuelPort;\n    port returnIn : FuelPort;\n  }\n\n  part def FuelPump {\n    port inlet : FuelPort;\n    port outlet : FuelPort;\n  }\n\n  part def FuelTemperatureSensor {\n    port tempOut : TemperaturePort;\n  }\n\n  part def FuelTankAssembly {\n    part tank : FuelTank;\n    part pump : FuelPump;\n    part tempSensor : FuelTemperatureSensor;\n    connect tank.supplyOut to pump.inlet;\n  }\n\n  part def ReturnLine {\n    port fromUnits : FuelPort;\n    port toTank : FuelPort;\n  }\n\n  part def FuelSystem {\n    part assembly : FuelTankAssembly;\n    part returnLine : ReturnLine;\n    port supply : FuelPort;\n    port returnIn : FuelPort;\n    port tempOut : TemperaturePort;\n    connect assembly.pump.outlet to supply;\n    connect returnIn to returnLine.fromUnits;\n    connect returnLine.toTank to assembly.tank.returnIn;\n    connect assembly.tempSensor.tempOut to tempOut;\n  }\n\n  part def FuelConsumingUnit {\n    port inFuel : FuelPort;\n    port returnFuel : FuelPort;\n  }\n\n  part def TemperatureMonitor {\n    port tempIn : TemperaturePort;\n  }\n\n  part def Vehicle {\n    part fuelSystem : FuelSystem;\n    part consumers : FuelConsumingUnit;\n    part tempMonitor : TemperatureMonitor;\n    connect fuelSystem.supply to consumers.inFuel;\n    connect consumers.returnFuel to fuelSystem.returnIn;\n    connect fuelSystem.tempOut to tempMonitor.tempIn;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563347.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 907,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 823,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 1730
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

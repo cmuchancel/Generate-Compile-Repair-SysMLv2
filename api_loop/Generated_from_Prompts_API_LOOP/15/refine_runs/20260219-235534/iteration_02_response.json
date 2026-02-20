@@ -1,0 +1,82 @@
+{
+  "id": "resp_0e394f350a89a67a006997e958daac81a3b28fc8c104ea1a0b",
+  "created_at": 1771563352.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0e394f350a89a67a006997e959261481a3ae7cd9ead7b216cd",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0e394f350a89a67a006997e960abbc81a3ba655b0c9ace9e01",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package FuelSystemModel {\n  private import ScalarValues::*;\n\n  item def Fuel;\n\n  item def TemperatureInfo {\n    attribute value : Real;\n  }\n\n  port def FuelPort {\n    ref item fuel : Fuel;\n  }\n\n  port def TemperaturePort {\n    ref item temp : TemperatureInfo;\n  }\n\n  part def FuelTankAssembly {\n    port supply : FuelPort;\n    port returnPort : FuelPort;\n    port tempOut : TemperaturePort;\n  }\n\n  part def Engine {\n    port fuelIn : FuelPort;\n    port fuelReturn : FuelPort;\n    port tempOut : TemperaturePort;\n  }\n\n  part def TemperatureMonitor {\n    port tempIn1 : TemperaturePort;\n    port tempIn2 : TemperaturePort;\n    port tempOut : TemperaturePort;\n  }\n\n  part def VehicleFuelSystem {\n    part tank : FuelTankAssembly;\n    part engine : Engine;\n    part monitor : TemperatureMonitor;\n    port systemTempOut : TemperaturePort;\n\n    connect tank.supply to engine.fuelIn;\n    connect engine.fuelReturn to tank.returnPort;\n    connect tank.tempOut to monitor.tempIn1;\n    connect engine.tempOut to monitor.tempIn2;\n    connect monitor.tempOut to systemTempOut;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563364.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1080,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 693,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 1773
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,82 @@
+{
+  "id": "resp_03374d31df594756006997ed63254481928cbcc7adb479489f",
+  "created_at": 1771564387.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_03374d31df594756006997ed63744c819297934eb55c890854",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_03374d31df594756006997ed6ef84c8192a264d4cf08cfb5b9",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PubSubSystem {\n  private import ScalarValues::*;\n\n  item def Message {\n    attribute topic : String;\n    attribute content : String;\n  }\n\n  item def Topic {\n    attribute name : String;\n  }\n\n  item def Subscription {\n    attribute topic : String;\n  }\n\n  port def PublishPort;\n  port def SubscribePort;\n  port def DeliverPort;\n\n  part def Publisher {\n    attribute publishTopic : String;\n    port publish : PublishPort;\n  }\n\n  part def Subscriber {\n    attribute subscribedTopic : String;\n    port subscribe : SubscribePort;\n    port receive : DeliverPort;\n  }\n\n  part def Server {\n    attribute subscriptionTable : String;\n    port publishIn : PublishPort;\n    port subscribeIn : SubscribePort;\n    port deliverOut : DeliverPort;\n  }\n\n  part def PubSubSystem {\n    part server : Server;\n    part producer1 : Publisher;\n    part consumer1 : Subscriber;\n\n    connect producer1.publish to server.publishIn;\n    connect consumer1.subscribe to server.subscribeIn;\n    connect server.deliverOut to consumer1.receive;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564401.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 385,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1111,
+    "output_tokens_details": {
+      "reasoning_tokens": 832
+    },
+    "total_tokens": 1496
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

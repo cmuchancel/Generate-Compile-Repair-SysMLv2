@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:01:01.120630Z",
+    "iteration_end": "2026-02-20T05:01:14.373047Z",
+    "iteration_duration_seconds": 13.252685542000108,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/63/20260220-000100/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/63/20260220-000100/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/63/20260220-000100/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:13:21: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    13 |     part def Engine : Component;\n\niteration_01.sysml:14:27: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    14 |     part def Transmission : Component;\n\niteration_01.sysml:15:22: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    15 |     part def Chassis : Component;\n\niteration_01.sysml:16:29: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    16 |     part def OtherComponent : Component;\n\niteration_01.sysml:10:41: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'kg' found.\n    10 |         attribute massUnit : MassUnit = kg;\n       |                                         \u001b[38;2;220;080;080m^^\u001b[0m\n\niteration_01.sysml:24:46: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'mass' found.\n    24 |         attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass + other.mass;\n       |                                              \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:24:60: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'mass' found.\n    24 |         attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass + other.mass;\n       |                                                            \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:24:80: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'mass' found.\n    24 |         attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass + other.mass;\n       |                                                                                \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:24:93: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'mass' found.\n    24 |         attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass + other.mass;\n       |                                                                                             \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 398,
+      "output_tokens": 667,
+      "total_tokens": 1065
+    },
+    "tokens_used_total": 1065
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:01:14.373138Z",
+    "iteration_end": "2026-02-20T05:01:29.570751Z",
+    "iteration_duration_seconds": 15.197897165999166,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/63/20260220-000100/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/63/20260220-000100/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/63/20260220-000100/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 991,
+      "output_tokens": 953,
+      "total_tokens": 1944
+    },
+    "tokens_used_total": 3009
+  }
+]

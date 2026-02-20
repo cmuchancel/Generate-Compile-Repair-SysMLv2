@@ -1,0 +1,82 @@
+{
+  "id": "resp_0809081436e123da006997ed4279dc8192bb90c4a3f3560c7b",
+  "created_at": 1771564354.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0809081436e123da006997ed42f3f4819288ed70695c365886",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0809081436e123da006997ed44d71881929fe60be8853e80a1",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PhysicalQuantityLibrary {\n    private import ScalarValues::*;\n\n    enum def BaseQuantityKind {\n        enum length;\n        enum mass;\n        enum time;\n        enum electricCurrent;\n        enum temperature;\n        enum amountOfSubstance;\n        enum luminousIntensity;\n    }\n\n    part def Unit {\n        attribute name : String;\n        attribute symbol : String;\n        attribute quantityKind : BaseQuantityKind;\n        attribute conversionFactorToSI : Real;\n    }\n\n    part def Quantity {\n        attribute value : Real;\n        part unit : Unit;\n    }\n\n    part def UnitExtension {\n        part customUnit : Unit;\n        attribute description : String;\n    }\n\n    part def Meter {\n        attribute name : String = \"meter\";\n        attribute symbol : String = \"m\";\n        attribute quantityKind : BaseQuantityKind = BaseQuantityKind::length;\n        attribute conversionFactorToSI : Real = 1.0;\n    }\n\n    part def Kilogram {\n        attribute name : String = \"kilogram\";\n        attribute symbol : String = \"kg\";\n        attribute quantityKind : BaseQuantityKind = BaseQuantityKind::mass;\n        attribute conversionFactorToSI : Real = 1.0;\n    }\n\n    part def Second {\n        attribute name : String = \"second\";\n        attribute symbol : String = \"s\";\n        attribute quantityKind : BaseQuantityKind = BaseQuantityKind::time;\n        attribute conversionFactorToSI : Real = 1.0;\n    }\n\n    part def Ampere {\n        attribute name : String = \"ampere\";\n        attribute symbol : String = \"A\";\n        attribute quantityKind : BaseQuantityKind = BaseQuantityKind::electricCurrent;\n        attribute conversionFactorToSI : Real = 1.0;\n    }\n\n    part def Kelvin {\n        attribute name : String = \"kelvin\";\n        attribute symbol : String = \"K\";\n        attribute quantityKind : BaseQuantityKind = BaseQuantityKind::temperature;\n        attribute conversionFactorToSI : Real = 1.0;\n    }\n\n    part def Mole {\n        attribute name : String = \"mole\";\n        attribute symbol : String = \"mol\";\n        attribute quantityKind : BaseQuantityKind = BaseQuantityKind::amountOfSubstance;\n        attribute conversionFactorToSI : Real = 1.0;\n    }\n\n    part def Candela {\n        attribute name : String = \"candela\";\n        attribute symbol : String = \"cd\";\n        attribute quantityKind : BaseQuantityKind = BaseQuantityKind::luminousIntensity;\n        attribute conversionFactorToSI : Real = 1.0;\n    }\n\n    part def PhysicalQuantitySystem {\n        part lengthUnit : Unit;\n        part massUnit : Unit;\n        part timeUnit : Unit;\n        part electricCurrentUnit : Unit;\n        part temperatureUnit : Unit;\n        part amountOfSubstanceUnit : Unit;\n        part luminousIntensityUnit : Unit;\n        part quantityData : Quantity;\n        part extension : UnitExtension;\n    }\n\n    part def SIQuantitySystem {\n        part lengthUnit : Meter;\n        part massUnit : Kilogram;\n        part timeUnit : Second;\n        part electricCurrentUnit : Ampere;\n        part temperatureUnit : Kelvin;\n        part amountOfSubstanceUnit : Mole;\n        part luminousIntensityUnit : Candela;\n        part quantityData : Quantity;\n        part extension : UnitExtension;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564365.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1365,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 820,
+    "output_tokens_details": {
+      "reasoning_tokens": 128
+    },
+    "total_tokens": 2185
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

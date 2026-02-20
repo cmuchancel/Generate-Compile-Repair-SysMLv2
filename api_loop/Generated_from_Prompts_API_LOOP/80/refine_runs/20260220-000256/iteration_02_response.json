@@ -1,0 +1,82 @@
+{
+  "id": "resp_03ba8aafde359f31006997eb1fd4cc81a0adec32459b7e4e07",
+  "created_at": 1771563807.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_03ba8aafde359f31006997eb20404c81a0854bac1de91456b9",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_03ba8aafde359f31006997eb214b3c81a0a3d3c0ab8e34216f",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package EngineConfig {\n  private import ScalarValues::*;\n\n  enum def CylinderDiameter { d70; d100; }\n  enum def CylinderCount { four; six; }\n\n  part def Cylinder {\n    attribute diameter : CylinderDiameter;\n  }\n\n  part def ConfigurableEngine {\n    attribute cylinderCount : CylinderCount;\n    attribute cylinderDiameter : CylinderDiameter;\n  }\n\n  part def FourCylinderEngine {\n    part cyl1 : Cylinder;\n    part cyl2 : Cylinder;\n    part cyl3 : Cylinder;\n    part cyl4 : Cylinder;\n    attribute cylinderCount : CylinderCount = CylinderCount::four;\n    attribute cylinderDiameter : CylinderDiameter;\n  }\n\n  part def SixCylinderEngine {\n    part cyl1 : Cylinder;\n    part cyl2 : Cylinder;\n    part cyl3 : Cylinder;\n    part cyl4 : Cylinder;\n    part cyl5 : Cylinder;\n    part cyl6 : Cylinder;\n    attribute cylinderCount : CylinderCount = CylinderCount::six;\n    attribute cylinderDiameter : CylinderDiameter;\n  }\n\n  part configurableEngine : ConfigurableEngine;\n  part fourCylinderEngine : FourCylinderEngine;\n  part sixCylinderEngine : SixCylinderEngine;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563811.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 698,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 304,
+    "output_tokens_details": {
+      "reasoning_tokens": 64
+    },
+    "total_tokens": 1002
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

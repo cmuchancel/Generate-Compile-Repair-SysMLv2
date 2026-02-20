@@ -1,0 +1,82 @@
+{
+  "id": "resp_0f755a2885849395006997ec0efffc8197a9649b891262d192",
+  "created_at": 1771564047.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0f755a2885849395006997ec0f551c81978059b2ab325508ed",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0f755a2885849395006997ec1663108197af044acd4d5fdf87",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package FuelDeliverySystem {\n   private import ScalarValues::*;\n\n   item def Fuel;\n\n   port def FuelPort {\n      item fuel : Fuel;\n   }\n\n   part def StorageTank {\n      attribute maxCapacity : Real;\n      attribute currentLevel : Real;\n      port outFuel : FuelPort;\n   }\n\n   part def FuelPump {\n      attribute flowRate : Real;\n      port inFuel : FuelPort;\n      port outFuel : FuelPort;\n   }\n\n   part def VehicleFuelTank {\n      attribute maxCapacity : Real;\n      attribute currentLevel : Real;\n      port inFuel : FuelPort;\n   }\n\n   part def FuelDeliverySystem {\n      part storage : StorageTank;\n      part pump : FuelPump;\n      part vehicleTank : VehicleFuelTank;\n      connect storage.outFuel to pump.inFuel;\n      connect pump.outFuel to vehicleTank.inFuel;\n   }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564056.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 402,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 576,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 978
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

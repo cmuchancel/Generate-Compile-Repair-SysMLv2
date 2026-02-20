@@ -1,0 +1,82 @@
+{
+  "id": "resp_0b7c0985fe359d6c006997ecd6773881a0af4c596dd7664ef2",
+  "created_at": 1771564246.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0b7c0985fe359d6c006997ecd6cae081a08d6c8dcab335cb9c",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0b7c0985fe359d6c006997ecd9760081a0bdaa0801ee1e0018",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PowerSystem {\n  private import ScalarValues::*;\n\n  item def Torque;\n  item def Power;\n\n  port def TorquePort {\n    ref item torque : Torque;\n  }\n\n  port def PowerPort {\n    ref item power : Power;\n  }\n\n  part def TorqueGenerator {\n    port torqueOut : TorquePort;\n  }\n\n  part def Engine {\n    port torqueOut : TorquePort;\n  }\n\n  part def Powertrain {\n    part engine : Engine;\n    port torqueOut : TorquePort;\n    port powerOut : PowerPort;\n    connect engine.torqueOut to torqueOut;\n  }\n\n  part def PowerTransmissionSystem {\n    part torqueGenerator : TorqueGenerator;\n    part powertrain : Powertrain;\n    port torqueOut : TorquePort;\n    port powerOut : PowerPort;\n    connect torqueGenerator.torqueOut to powertrain.engine.torqueOut;\n    connect powertrain.torqueOut to torqueOut;\n    connect powertrain.powerOut to powerOut;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564251.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 679,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 385,
+    "output_tokens_details": {
+      "reasoning_tokens": 128
+    },
+    "total_tokens": 1064
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,73 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to manage and monitor the maintenance schedule of vehicles. For each vehicle, a specific time for the next maintenance and a fixed maintenance interval will be set, and the maximum allowed temperature will be recorded. The system will automatically determine whether the vehicle has reached the maintenance time. Once the scheduled maintenance time is reached, the vehicle status will switch to "under maintenance." The system requires that the actual maintenance start time must be later than the scheduled maintenance time, and the maintenance must be initiated within 2 seconds after the previous healthy state ends. The duration of the maintenance must not exceed 48 hours. After the maintenance is completed, the vehicle’s next maintenance time will be automatically postponed according to the maintenance interval, and its health status will be restored to normal.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleMaintenance
+  private import ScalarValues::*;
+
+  enum def VehicleStatus {
+    enum normal;
+    enum underMaintenance;
+  }
+
+  part def Vehicle {
+    attribute scheduledMaintenanceTime : Time;
+    attribute maintenanceInterval : Duration;
+    attribute maxAllowedTemperature : Real;
+    attribute maintenanceTimeReached : Boolean;
+    attribute healthStatus : VehicleStatus = normal;
+    attribute actualMaintenanceStartTime : Time;
+    attribute previousHealthyEndTime : Time;
+    attribute maintenanceStartWithin2s : Boolean;
+    attribute maintenanceDuration : Duration;
+    attribute maintenanceDurationWithin48h : Boolean;
+    attribute maintenanceCompleted : Boolean;
+    attribute nextMaintenanceTime : Time;
+  }
+
+  part def MaintenanceSystem {
+    part vehicles : Vehicle[0..*];
+  }
+end package
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:2:3: error (parsing-error): Expected a token. Did you forget ';'?
+    2 |   private import ScalarValues::*;
+iteration_01.sysml:27:12: error (parsing-error): Unexpected EOF. (no source underlining available since segment is out of bounds)
+iteration_01.sysml:10:42: error (reference-error): Expected Type element but found LibraryPackage (Time)
+    10 |     attribute scheduledMaintenanceTime : Time;
+       |                                          ^^^^
+iteration_01.sysml:11:37: error (reference-error): No Type named 'Duration' found.
+    11 |     attribute maintenanceInterval : Duration;
+       |                                     ^^^^^^^^
+iteration_01.sysml:14:46: error (reference-error): No Feature named 'normal' found.
+    14 |     attribute healthStatus : VehicleStatus = normal;
+       |                                              ^^^^^^
+iteration_01.sysml:15:44: error (reference-error): Expected Type element but found LibraryPackage (Time)
+    15 |     attribute actualMaintenanceStartTime : Time;
+       |                                            ^^^^
+iteration_01.sysml:16:40: error (reference-error): Expected Type element but found LibraryPackage (Time)
+    16 |     attribute previousHealthyEndTime : Time;
+       |                                        ^^^^
+iteration_01.sysml:18:37: error (reference-error): No Type named 'Duration' found.
+    18 |     attribute maintenanceDuration : Duration;
+       |                                     ^^^^^^^^
+iteration_01.sysml:21:37: error (reference-error): Expected Type element but found LibraryPackage (Time)
+    21 |     attribute nextMaintenanceTime : Time;
+       |                                     ^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

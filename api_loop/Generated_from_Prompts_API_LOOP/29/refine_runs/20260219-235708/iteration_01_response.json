@@ -1,0 +1,82 @@
+{
+  "id": "resp_0910567714d6d4ab006997e9a613a081a388b4065a5a2ae25a",
+  "created_at": 1771563430.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0910567714d6d4ab006997e9a6719481a3b996c6e0245230fe",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0910567714d6d4ab006997e9c3d48c81a390b7c0fa52f48d54",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package CameraSystemModel {\n  private import ScalarValues::*;\n\n  enum def SceneType {\n    enum portrait;\n    enum landscape;\n    enum night;\n    enum macro;\n    enum other;\n  }\n\n  item def SceneSelection {\n    attribute sceneType : SceneType;\n    attribute confirmed : Boolean = true;\n  }\n\n  port def ScenePort {\n    attribute selection : SceneSelection;\n  }\n\n  item def Image {\n    attribute clear : Boolean = true;\n    attribute realistic : Boolean = true;\n  }\n\n  port def ImagePort {\n    attribute image : Image;\n  }\n\n  item def Photo {\n    attribute image : Image;\n    attribute recorded : Boolean = true;\n  }\n\n  port def PhotoPort {\n    attribute photo : Photo;\n  }\n\n  part def AutofocusSubsystem {\n    attribute autoFocusEnabled : Boolean = true;\n    attribute focusComplete : Boolean = true;\n    port sceneIn : ScenePort;\n    port imageOut : ImagePort;\n  }\n\n  part def ImagingSubsystem {\n    attribute autoImagingEnabled : Boolean = true;\n    attribute captureComplete : Boolean = true;\n    port imageIn : ImagePort;\n    port photoOut : PhotoPort;\n  }\n\n  part def StorageSubsystem {\n    attribute autoSaveEnabled : Boolean = true;\n    attribute savedCount : Integer = 0;\n    port photoIn : PhotoPort;\n  }\n\n  part def UserInterface {\n    attribute userSelectsScene : Boolean = true;\n    port sceneOut : ScenePort;\n  }\n\n  part def CameraSystem {\n    attribute automaticOperation : Boolean = true;\n    part ui : UserInterface;\n    part autofocus : AutofocusSubsystem;\n    part imaging : ImagingSubsystem;\n    part storage : StorageSubsystem;\n    connect ui.sceneOut to autofocus.sceneIn;\n    connect autofocus.imageOut to imaging.imageIn;\n    connect imaging.photoOut to storage.photoIn;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563464.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 360,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 2389,
+    "output_tokens_details": {
+      "reasoning_tokens": 1984
+    },
+    "total_tokens": 2749
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

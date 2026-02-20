@@ -1,0 +1,113 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to implement the functional architecture of an automotive powertrain, including the input of fuel commands, engine start-stop control, and support for power transmission and distribution. Users can control the system’s power output through fuel commands. Once the engine is ignited and started, the system generates engine torque according to the fuel command. The torque is then sequentially amplified from the engine to the transmission, transmitted to the driveshaft, and finally distributed to the left and right wheels, thus enabling control of the vehicle’s driving force. Additionally, users can shut down the engine via a command, triggering the cessation of the system’s powertrain. During engine shutdown, generation and transmission of driving force will likewise be suspended, ensuring safe and intelligent operation of the system.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package PowertrainSystemModel {
+  private import ScalarValues::*;
+
+  item def FuelCommand {
+    attribute level : Real;
+  }
+
+  item def StartStopCommand {
+    attribute start : Boolean;
+    attribute stop : Boolean;
+  }
+
+  item def Torque {
+    attribute value : Real;
+  }
+
+  port def FuelCommandPort {
+    item FuelCommand;
+  }
+
+  port def StartStopPort {
+    item StartStopCommand;
+  }
+
+  port def TorquePort {
+    item Torque;
+  }
+
+  part def DriverControls {
+    port fuelOut : FuelCommandPort;
+    port startStopOut : StartStopPort;
+  }
+
+  part def Engine {
+    port fuelIn : FuelCommandPort;
+    port startStopIn : StartStopPort;
+    port torqueOut : TorquePort;
+  }
+
+  part def Transmission {
+    port torqueIn : TorquePort;
+    port torqueOut : TorquePort;
+  }
+
+  part def Driveshaft {
+    port torqueIn : TorquePort;
+    port torqueOut : TorquePort;
+  }
+
+  part def Differential {
+    port torqueIn : TorquePort;
+    port leftOut : TorquePort;
+    port rightOut : TorquePort;
+  }
+
+  part def Wheel {
+    port torqueIn : TorquePort;
+  }
+
+  part def PowertrainSystem {
+    part driver : DriverControls;
+    part engine : Engine;
+    part transmission : Transmission;
+    part driveshaft : Driveshaft;
+    part differential : Differential;
+    part leftWheel : Wheel;
+    part rightWheel : Wheel;
+
+    connect driver.fuelOut to engine.fuelIn;
+    connect driver.startStopOut to engine.startStopIn;
+    connect engine.torqueOut to transmission.torqueIn;
+    connect transmission.torqueOut to driveshaft.torqueIn;
+    connect driveshaft.torqueOut to differential.torqueIn;
+    connect differential.leftOut to leftWheel.torqueIn;
+    connect differential.rightOut to rightWheel.torqueIn;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:9:15: warning (namespace-distinguishability): Member name 'start' shadows Items::Item::start
+│   9 |     attribute start : Boolean;
+│     |               ^^^^^
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Systems Library/Items.sysml:33:8: note: Inherited from here
+    └── iteration_01.sysml:8:3: note: Because Items::Item is implicitly specialized through Subclassification
+iteration_01.sysml:18:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    18 |     item FuelCommand;
+       |     ^^^^^^^^^^^^^^^^^
+iteration_01.sysml:22:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    22 |     item StartStopCommand;
+       |     ^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:26:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    26 |     item Torque;
+       |     ^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,82 @@
+{
+  "id": "resp_0783b95a5756fbc3006997e8f2d4b48194b27cc0255efeb48a",
+  "created_at": 1771563250.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0783b95a5756fbc3006997e8f33ea4819484b00c91d195caa7",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0783b95a5756fbc3006997e904fcb08194a4c1e96b04af7213",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleModeling {\n  private import ScalarValues::*;\n\n  enum def FuelType {\n    enum Gasoline;\n    enum Diesel;\n    enum Electric;\n    enum Hydrogen;\n  }\n\n  part def Fuel {\n    attribute fuelType : FuelType;\n    attribute description : String;\n  }\n\n  part def Personnel {\n    attribute name : String;\n    attribute personnelId : String;\n  }\n\n  part def Driver {\n    part info : Personnel;\n    attribute licenseId : String;\n  }\n\n  part def QualityAttributes {\n    attribute safetyLevel : String;\n    attribute reliabilityLevel : String;\n  }\n\n  part def FuelTank {\n    part storedFuel : Fuel;\n    attribute capacity : Real;\n  }\n\n  part def Vehicle {\n    attribute model : String;\n    part quality : QualityAttributes;\n    part driver : Driver;\n    part fuelTank : FuelTank;\n  }\n\n  part def DataRepository {\n    part fuelInfo : Fuel;\n    part personnelInfo : Personnel;\n  }\n\n  part def VehicleModelingSystem {\n    part vehicle : Vehicle;\n    part data : DataRepository;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563271.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 339,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1213,
+    "output_tokens_details": {
+      "reasoning_tokens": 960
+    },
+    "total_tokens": 1552
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

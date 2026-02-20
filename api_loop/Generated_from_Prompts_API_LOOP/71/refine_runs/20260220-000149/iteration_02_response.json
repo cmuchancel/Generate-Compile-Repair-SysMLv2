@@ -1,0 +1,82 @@
+{
+  "id": "resp_04b3f4bfc4fb3650006997ead8b39881a1ab1bd9075343d082",
+  "created_at": 1771563736.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_04b3f4bfc4fb3650006997ead9190081a19c4da8f7dc2147e8",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_04b3f4bfc4fb3650006997eae9743081a1b080898b9b1a1edc",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    port def TorquePort {\n        attribute torque : Real;\n        attribute speed : Real;\n    }\n\n    part def Engine {\n        attribute maxTorque : Real = 350;\n        attribute speed1 : Real = 2000;\n        attribute torqueAtSpeed1 : Real = 300;\n        attribute speed2 : Real = 4000;\n        attribute torqueAtSpeed2 : Real = 280;\n        port outTorque : TorquePort;\n    }\n\n    part def Clutch {\n        port inTorque : TorquePort;\n        port outTorque : TorquePort;\n    }\n\n    part def Gearbox {\n        port inTorque : TorquePort;\n    }\n\n    part def FullFuelMass {\n        attribute curbMass : Real = 1400;\n        attribute fuelMass : Real = 500;\n        attribute totalMass : Real = 1900;\n    }\n\n    part def EmptyFuelMass {\n        attribute curbMass : Real = 1400;\n        attribute fuelMass : Real = 0;\n        attribute totalMass : Real = 1400;\n    }\n\n    part def Vehicle {\n        part engine : Engine;\n        part clutch : Clutch;\n        part gearbox : Gearbox;\n\n        part fullFuel : FullFuelMass;\n        part emptyFuel : EmptyFuelMass;\n\n        connect engine.outTorque to clutch.inTorque;\n        connect clutch.outTorque to gearbox.inTorque;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563756.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1828,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1318,
+    "output_tokens_details": {
+      "reasoning_tokens": 960
+    },
+    "total_tokens": 3146
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

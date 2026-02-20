@@ -1,0 +1,82 @@
+{
+  "id": "resp_05d67d75de1afdd1006997ecdcf45081a383bc3a53470ae7bd",
+  "created_at": 1771564252.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_05d67d75de1afdd1006997ecdd990081a3bfa0730a25fc45a1",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_05d67d75de1afdd1006997ece48d7881a3abf1a90977d4be06",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package SecurityModel {\n  private import ScalarValues::*;\n  \n  enum def SecurityClassification {\n    enum Unclassified;\n    enum Confidential;\n    enum Secret;\n  }\n  \n  part def Component {\n    attribute classification : SecurityClassification;\n  }\n  \n  part def UnclassifiedComponent : Component {\n    attribute classification : SecurityClassification = Unclassified;\n  }\n  \n  part def ConfidentialComponent : Component {\n    attribute classification : SecurityClassification = Confidential;\n  }\n  \n  part def SecretComponent : Component {\n    attribute classification : SecurityClassification = Secret;\n  }\n  \n  part def System {\n    part compA : UnclassifiedComponent;\n    part compB : ConfidentialComponent;\n    part compC : SecretComponent;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564261.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 320,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 701,
+    "output_tokens_details": {
+      "reasoning_tokens": 512
+    },
+    "total_tokens": 1021
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

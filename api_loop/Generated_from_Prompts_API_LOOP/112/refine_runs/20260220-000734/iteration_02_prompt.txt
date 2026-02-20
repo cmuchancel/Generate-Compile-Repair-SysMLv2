@@ -1,0 +1,98 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to manage and control the start-up, operation, health monitoring, and related automatic control logic of a vehicle (VehicleA). The vehicle should support multiple operating states, including Off, Starting, Running, and Health Management states. During the start-up process, the vehicle can only transition from the Off state to the Starting state when the brake pedal is pressed and a start signal is received; subsequently, it enters the Running state upon receiving a vehicle-on signal. Once switched to the Running state, the system will automatically perform self-checks, supply power to the vehicle, and automatically apply the parking brake when exiting this state. The system also features self-perception of health, being capable of real-time detection and output of the vehicle’s temperature; when the temperature exceeds a safety threshold, the system will switch the vehicle to a degraded mode and send an over-temperature signal to the controller. The system also supports Maintenance and Degraded states, and can return to the Normal state upon receipt of a restore-to-normal signal. Meanwhile, the vehicle controller has its own operation state management and can switch the vehicle’s main control states in response to start-up and shut-down signals. The design of this system emphasizes automated response, health monitoring, and safety control to ensure that the vehicle operates in a safe, controllable, and maintainable state.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleSystem {
+  private import ScalarValues::*;
+
+  enum def VehicleState {
+    enum Off;
+    enum Starting;
+    enum Running;
+    enum HealthManagement;
+    enum Maintenance;
+    enum Degraded;
+    enum Normal;
+  }
+
+  enum def ControllerState {
+    enum Off;
+    enum Starting;
+    enum Running;
+    enum Shutdown;
+  }
+
+  item def SignalItem {
+    attribute value : Boolean;
+  }
+
+  port def SignalPort {
+    item signal : SignalItem;
+  }
+
+  part def VehicleA {
+    attribute currentState : VehicleState = Off;
+    attribute brakePressed : Boolean;
+    attribute startSignal : Boolean;
+    attribute vehicleOnSignal : Boolean;
+    attribute temperature : Real;
+    attribute tempThreshold : Real = 100.0;
+    attribute overTemp : Boolean;
+    attribute degradedMode : Boolean;
+    attribute restoreNormalSignal : Boolean;
+    attribute parkingBrakeApplied : Boolean;
+    attribute powerSupplied : Boolean;
+    attribute selfCheckCompleted : Boolean;
+
+    port startPort : SignalPort;
+    port shutdownPort : SignalPort;
+    port overTempPort : SignalPort;
+    port restorePort : SignalPort;
+  }
+
+  part def VehicleController {
+    attribute controllerState : ControllerState = Off;
+    attribute startupSignal : Boolean;
+    attribute shutdownSignal : Boolean;
+
+    port startPort : SignalPort;
+    port shutdownPort : SignalPort;
+    port overTempPort : SignalPort;
+    port restorePort : SignalPort;
+  }
+
+  part vehicleA : VehicleA;
+  part controller : VehicleController;
+
+  connect vehicleA.startPort to controller.startPort;
+  connect vehicleA.shutdownPort to controller.shutdownPort;
+  connect vehicleA.overTempPort to controller.overTempPort;
+  connect vehicleA.restorePort to controller.restorePort;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:26:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    26 |     item signal : SignalItem;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:30:45: error (reference-error): No Feature named 'Off' found.
+    30 |     attribute currentState : VehicleState = Off;
+       |                                             ^^^
+iteration_01.sysml:50:51: error (reference-error): No Feature named 'Off' found.
+    50 |     attribute controllerState : ControllerState = Off;
+       |                                                   ^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

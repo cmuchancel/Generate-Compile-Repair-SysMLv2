@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:07:34.806697Z",
+    "iteration_end": "2026-02-20T05:07:49.235271Z",
+    "iteration_duration_seconds": 14.428837583000131,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/112/20260220-000734/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/112/20260220-000734/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/112/20260220-000734/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:26:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    26 |     item signal : SignalItem;\n       |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:30:45: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Off' found.\n    30 |     attribute currentState : VehicleState = Off;\n       |                                             \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_01.sysml:50:51: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Off' found.\n    50 |     attribute controllerState : ControllerState = Off;\n       |                                                   \u001b[38;2;220;080;080m^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 507,
+      "output_tokens": 756,
+      "total_tokens": 1263
+    },
+    "tokens_used_total": 1263
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:07:49.235329Z",
+    "iteration_end": "2026-02-20T05:07:59.020773Z",
+    "iteration_duration_seconds": 9.78565770899877,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/112/20260220-000734/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/112/20260220-000734/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/112/20260220-000734/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1047,
+      "output_tokens": 678,
+      "total_tokens": 1725
+    },
+    "tokens_used_total": 2988
+  }
+]

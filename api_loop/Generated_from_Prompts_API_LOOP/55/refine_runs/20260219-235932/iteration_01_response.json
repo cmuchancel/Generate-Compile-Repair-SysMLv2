@@ -1,0 +1,82 @@
+{
+  "id": "resp_0eba726d20859793006997ea352a1081a08f7f8441935ae2bb",
+  "created_at": 1771563573.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0eba726d20859793006997ea357cfc81a08080ab3b76cc4ba4",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0eba726d20859793006997ea439c0081a08bc376f2f7649cf5",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleMassManagement {\n  private import ScalarValues::*;\n\n  part def Component {\n    attribute serialNumber : String;\n    attribute ownMass : Real;\n    attribute massThreshold : Real;\n    attribute totalMass : Real;\n    part subcomponents : Component[*];\n  }\n\n  part def Engine : Component {\n  }\n\n  part def Transmission : Component {\n  }\n\n  part def Vehicle {\n    attribute vin : String;\n    attribute ownMass : Real;\n    attribute massThreshold : Real;\n    attribute totalMass : Real;\n    part engine : Engine;\n    part transmission : Transmission;\n    part components : Component[*];\n  }\n\n  part vehicle : Vehicle;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563589.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 426,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1186,
+    "output_tokens_details": {
+      "reasoning_tokens": 1024
+    },
+    "total_tokens": 1612
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

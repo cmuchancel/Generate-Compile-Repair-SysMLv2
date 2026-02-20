@@ -1,0 +1,82 @@
+{
+  "id": "resp_0cc11943261d40b0006997ec8dc320819d920e220b6575a505",
+  "created_at": 1771564173.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0cc11943261d40b0006997ec8e6048819d9a955f81e17deeca",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0cc11943261d40b0006997eca07c34819d8414ae1f67500581",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleProductLineConfiguration {\n  private import ScalarValues::*;\n\n  enum def PerformanceLevel {\n    high;\n    standard;\n  }\n\n  enum def EngineType {\n    sixCylinder;\n    fourCylinder;\n  }\n\n  enum def TransmissionType {\n    automatic;\n    manual;\n  }\n\n  enum def WheelType {\n    wideRim;\n    narrowRim;\n  }\n\n  enum def VehicleVariantType {\n    sedan;\n    suv;\n    truck;\n  }\n\n  enum def UserPreferenceType {\n    performanceFocused;\n    balanced;\n    economyFocused;\n  }\n\n  part def Engine {\n    attribute engineType : EngineType;\n  }\n\n  part def Transmission {\n    attribute transmissionType : TransmissionType;\n  }\n\n  part def WheelSet {\n    attribute wheelType : WheelType;\n  }\n\n  part def VehicleConfiguration {\n    attribute performanceRequirement : PerformanceLevel;\n    attribute userPreference : UserPreferenceType;\n    attribute modelVariant : VehicleVariantType;\n    part engine : Engine;\n    part transmission : Transmission;\n    part wheels : WheelSet;\n  }\n\n  part def HighPerformanceVariant {\n    attribute performanceRequirement : PerformanceLevel = high;\n    attribute userPreference : UserPreferenceType = performanceFocused;\n    attribute modelVariant : VehicleVariantType;\n    part engine : Engine {\n      attribute engineType : EngineType = sixCylinder;\n    }\n    part transmission : Transmission {\n      attribute transmissionType : TransmissionType = automatic;\n    }\n    part wheels : WheelSet {\n      attribute wheelType : WheelType = wideRim;\n    }\n  }\n\n  part def StandardPerformanceVariant {\n    attribute performanceRequirement : PerformanceLevel = standard;\n    attribute userPreference : UserPreferenceType = balanced;\n    attribute modelVariant : VehicleVariantType;\n    part engine : Engine {\n      attribute engineType : EngineType = fourCylinder;\n    }\n    part transmission : Transmission {\n      attribute transmissionType : TransmissionType = manual;\n    }\n    part wheels : WheelSet {\n      attribute wheelType : WheelType = narrowRim;\n    }\n  }\n\n  part def VehicleProductLineSystem {\n    part highPerformanceSUV : HighPerformanceVariant {\n      attribute modelVariant : VehicleVariantType = suv;\n    }\n    part highPerformanceSedan : HighPerformanceVariant {\n      attribute modelVariant : VehicleVariantType = sedan;\n    }\n    part standardSedan : StandardPerformanceVariant {\n      attribute modelVariant : VehicleVariantType = sedan;\n    }\n    part standardTruck : StandardPerformanceVariant {\n      attribute modelVariant : VehicleVariantType = truck;\n    }\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564198.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 2143,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1486,
+    "output_tokens_details": {
+      "reasoning_tokens": 960
+    },
+    "total_tokens": 3629
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

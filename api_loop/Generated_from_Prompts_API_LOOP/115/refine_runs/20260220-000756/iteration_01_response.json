@@ -1,0 +1,82 @@
+{
+  "id": "resp_0bab28937fb8a5a3006997ec2dfb84819c8cd323e550a1059e",
+  "created_at": 1771564078.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0bab28937fb8a5a3006997ec2e3cf8819cad1e17df4ca83674",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0bab28937fb8a5a3006997ec68bdc8819ca0ffba9f9dfd6e46",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AutomotiveConfigurationSystem {\n    private import ScalarValues::*;\n\n    enum def SubsystemAChoice { Config1; Config2; }\n    enum def SubsystemBChoice { Config3; Config4; }\n\n    part def Component1;\n    part def Component2;\n    part def Component3;\n    part def Component4;\n    part def Component5;\n    part def Component6;\n\n    part def SubsystemA;\n    part def SubsystemA_Config1 : SubsystemA {\n        part comp1 : Component1;\n        part comp2 : Component2;\n        attribute choice : SubsystemAChoice = SubsystemAChoice::Config1;\n    }\n    part def SubsystemA_Config2 : SubsystemA {\n        part comp2 : Component2;\n        part comp3 : Component3;\n        attribute choice : SubsystemAChoice = SubsystemAChoice::Config2;\n    }\n\n    part def SubsystemB;\n    part def SubsystemB_Config3 : SubsystemB {\n        part comp4 : Component4;\n        part comp5 : Component5;\n        attribute choice : SubsystemBChoice = SubsystemBChoice::Config3;\n    }\n    part def SubsystemB_Config4 : SubsystemB {\n        part comp5 : Component5;\n        part comp6 : Component6;\n        attribute choice : SubsystemBChoice = SubsystemBChoice::Config4;\n    }\n\n    part def Automobile {\n        part subA : SubsystemA;\n        part subB : SubsystemB;\n        attribute subAChoice : SubsystemAChoice;\n        attribute subBChoice : SubsystemBChoice;\n        attribute constraintOk : Boolean = (subAChoice != SubsystemAChoice::Config2) or (subBChoice == SubsystemBChoice::Config3);\n    }\n\n    part def ConfigurationA {\n        part subA : SubsystemA_Config1;\n        part subB : SubsystemB_Config3;\n        attribute subAChoice : SubsystemAChoice = SubsystemAChoice::Config1;\n        attribute subBChoice : SubsystemBChoice = SubsystemBChoice::Config3;\n        attribute constraintOk : Boolean = true;\n    }\n\n    part def ConfigurationB {\n        part subA : SubsystemA_Config2;\n        part subB : SubsystemB_Config3;\n        attribute subAChoice : SubsystemAChoice = SubsystemAChoice::Config2;\n        attribute subBChoice : SubsystemBChoice = SubsystemBChoice::Config3;\n        attribute constraintOk : Boolean = true;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564144.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 528,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 4683,
+    "output_tokens_details": {
+      "reasoning_tokens": 4096
+    },
+    "total_tokens": 5211
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

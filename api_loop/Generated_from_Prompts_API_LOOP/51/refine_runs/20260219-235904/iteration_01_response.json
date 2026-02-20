@@ -1,0 +1,82 @@
+{
+  "id": "resp_0657efadadd6b4e6006997ea19ed2481a183b6e8513c82e747",
+  "created_at": 1771563545.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0657efadadd6b4e6006997ea1a444081a19e917e436f8e25f6",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0657efadadd6b4e6006997ea3046a881a1baf1b0d3deee46ff",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleModel {\n    private import ScalarValues::*;\n\n    enum def GearSetting {\n        enum Park;\n        enum Reverse;\n        enum Neutral;\n        enum Drive;\n    }\n\n    part def OperationalStatus {\n        attribute gearSetting : GearSetting;\n        attribute acceleratorPedalPosition : Real;\n    }\n\n    part def Engine {\n    }\n\n    part def Driver {\n    }\n\n    part def Wheel {\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        attribute isOperational : Boolean;\n        part status : OperationalStatus;\n        part engine : Engine;\n        ref part driver : Driver;\n        part leftFrontWheel : Wheel;\n        part rightFrontWheel : Wheel;\n        part leftRearWheel : Wheel;\n        part rightRearWheel : Wheel;\n    }\n\n    part vehicle_1 : Vehicle {\n        part leftFrontWheel_snapshot1 : Wheel;\n        part rightFrontWheel_snapshot1 : Wheel;\n        part leftFrontWheel_snapshot2 : Wheel;\n        part rightFrontWheel_snapshot2 : Wheel;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563570.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 387,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1539,
+    "output_tokens_details": {
+      "reasoning_tokens": 1280
+    },
+    "total_tokens": 1926
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

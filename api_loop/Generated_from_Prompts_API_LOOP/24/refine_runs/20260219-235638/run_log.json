@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:56:38.966558Z",
+    "iteration_end": "2026-02-20T04:56:55.612018Z",
+    "iteration_duration_seconds": 16.645942540999386,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/24/20260219-235638/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/24/20260219-235638/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/24/20260219-235638/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:11:26: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    11 |   port def SceneInPort { item scene: Scene; }\n       |                          \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:12:27: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    12 |   port def SceneOutPort { item scene: Scene; }\n       |                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:13:24: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    13 |   port def ImagePort { item image: Image; }\n       |                        \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:14:23: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    14 |   port def EvalPort { item evaluation: FocusEvaluation; }\n       |                       \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:15:24: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    15 |   port def PhotoPort { item photo: Photograph; }\n       |                        \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 355,
+      "output_tokens": 1012,
+      "total_tokens": 1367
+    },
+    "tokens_used_total": 1367
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:56:55.612444Z",
+    "iteration_end": "2026-02-20T04:57:07.127083Z",
+    "iteration_duration_seconds": 11.514893250001478,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/24/20260219-235638/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/24/20260219-235638/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/24/20260219-235638/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1010,
+      "output_tokens": 778,
+      "total_tokens": 1788
+    },
+    "tokens_used_total": 3155
+  }
+]

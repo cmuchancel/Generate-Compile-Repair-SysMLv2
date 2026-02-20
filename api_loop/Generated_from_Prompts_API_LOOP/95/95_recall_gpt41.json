@@ -1,0 +1,14 @@
+{
+  "model_id": 95,
+  "evaluation": "recall",
+  "model": "gpt-4.1",
+  "temperature": 0.2,
+  "prompt_file": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/evaluation_scripts/Evaluation_Prompts/sysm-eval-r.txt",
+  "prompt": "Your task is to evaluate the **recall** of a generated system model. You will be given a reference system model and a generated system model. Please perform the following steps:\n\n1. List all atomic modeling claims made by the reference system model. Each atomic claim should correspond to a minimal, meaningful modeling element (e.g., the definition of a part, the declaration of an attribute, the use of types, or structural relations like containment or reference).\n2. For each atomic claim in the reference model, determine whether it is covered by the generated model (i.e., the generated model contains the same or equivalent element).\n3. Summarize the results using the format: Score: <number of covered claims>/<total number of claims in the reference model>\n\nYou should IGNORE formatting or identifier NAMING differences if the structure and semantics match.\n\nInput:\nReference Model:\npackage 'AutomotiveDocumentation' {\n\tdoc /* This is documentation of the owning \n\t     * package.\n\t     */\n\tpart def Automobile {\n\t\tdoc Document1 /* This documentation of Automobile. */\n\t}\n\talias Car for Automobile {\n\t\tdoc /* This is documentation of the alias. */\n\t}\n\talias Torque for ISQ::TorqueValue;\n}\n\nGenerated Model:\npackage AutomobileDocumentManagement {\n  private import ScalarValues::*;\n\n  item def TorqueValue {\n    attribute value : Real;\n    attribute unit : String;\n  }\n\n  item def Document {\n    attribute title : String;\n    attribute content : String;\n  }\n\n  part def Automobile {\n    attribute vin : String;\n    attribute model : String;\n    attribute torque : TorqueValue;\n    attribute description : String;\n  }\n\n  part def Car {\n    attribute aliasName : String = \"Car\";\n    attribute automobile : Automobile;\n    attribute description : String;\n  }\n\n  part def DocumentationLink {\n    attribute document : Document;\n    attribute targetAutomobile : Automobile;\n    attribute targetCar : Car;\n  }\n\n  part def Platform {\n    part automobiles : Automobile[0..*];\n    part cars : Car[0..*];\n    part documents : Document[0..*];\n    part links : DocumentationLink[0..*];\n  }\n}\n\nOutput:",
+  "reference_path": "api_loop/Generated_from_Prompts_API_LOOP/95/95_groundtruth.sysml",
+  "generated_path": "api_loop/Generated_from_Prompts_API_LOOP/95/95.sysml",
+  "response": {
+    "dry_run": true,
+    "response_text": ""
+  }
+}

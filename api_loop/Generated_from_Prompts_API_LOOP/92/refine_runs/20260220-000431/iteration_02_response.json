@@ -1,0 +1,82 @@
+{
+  "id": "resp_0e92e53e0244fecc006997eb74c4b881a09743f9d1e6172875",
+  "created_at": 1771563892.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0e92e53e0244fecc006997eb7537ac81a0bf3b17d5d3064324",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0e92e53e0244fecc006997eb7f2a3c81a0b7bd9bed28a77974",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package SystemArchitecture {\n  private import ScalarValues::*;\n\n  enum def CapabilityKind {\n    enum StructuralControl;\n    enum PowerManagement;\n    enum CommunicationHandling;\n    enum SensingActuation;\n  }\n\n  enum def FunctionKind {\n    enum Monitor;\n    enum Compute;\n    enum Distribute;\n    enum Interface;\n  }\n\n  item def DataPacket;\n  item def PowerFlow;\n  item def ControlSignal;\n  item def StatusReport;\n\n  port def DataPort {\n    ref item data : DataPacket;\n  }\n\n  port def PowerPort {\n    ref item power : PowerFlow;\n  }\n\n  port def ControlPort {\n    ref item control : ControlSignal;\n  }\n\n  port def StatusPort {\n    ref item status : StatusReport;\n  }\n\n  part def SensorUnit {\n    attribute capability : CapabilityKind = CapabilityKind::SensingActuation;\n    attribute function : FunctionKind = FunctionKind::Monitor;\n    port dataOut : DataPort;\n    port statusOut : StatusPort;\n  }\n\n  part def ActuatorUnit {\n    attribute capability : CapabilityKind = CapabilityKind::SensingActuation;\n    attribute function : FunctionKind = FunctionKind::Interface;\n    port controlIn : ControlPort;\n    port powerIn : PowerPort;\n    port statusOut : StatusPort;\n  }\n\n  part def ControllerUnit {\n    attribute capability : CapabilityKind = CapabilityKind::StructuralControl;\n    attribute function : FunctionKind = FunctionKind::Compute;\n    port dataIn : DataPort;\n    port controlOut : ControlPort;\n    port statusOut : StatusPort;\n  }\n\n  part def ControlSubsystem {\n    attribute capability : CapabilityKind = CapabilityKind::StructuralControl;\n    attribute function : FunctionKind = FunctionKind::Compute;\n    part sensor : SensorUnit;\n    part controller : ControllerUnit;\n    part actuator : ActuatorUnit;\n    port dataIn : DataPort;\n    port statusOut : StatusPort;\n    connect sensor.dataOut to controller.dataIn;\n    connect controller.controlOut to actuator.controlIn;\n    connect controller.statusOut to statusOut;\n    connect dataIn to controller.dataIn;\n  }\n\n  part def PowerSourceUnit {\n    attribute capability : CapabilityKind = CapabilityKind::PowerManagement;\n    attribute function : FunctionKind = FunctionKind::Distribute;\n    port powerIn : PowerPort;\n    port powerOut : PowerPort;\n    port statusOut : StatusPort;\n  }\n\n  part def PowerDistributionUnit {\n    attribute capability : CapabilityKind = CapabilityKind::PowerManagement;\n    attribute function : FunctionKind = FunctionKind::Distribute;\n    port powerIn : PowerPort;\n    port powerOut : PowerPort;\n    port statusOut : StatusPort;\n  }\n\n  part def PowerSubsystem {\n    attribute capability : CapabilityKind = CapabilityKind::PowerManagement;\n    attribute function : FunctionKind = FunctionKind::Distribute;\n    part source : PowerSourceUnit;\n    part distributor : PowerDistributionUnit;\n    port powerIn : PowerPort;\n    port powerOut : PowerPort;\n    port statusOut : StatusPort;\n    connect powerIn to source.powerIn;\n    connect source.powerOut to distributor.powerIn;\n    connect distributor.powerOut to powerOut;\n    connect distributor.statusOut to statusOut;\n  }\n\n  part def CommunicationUnit {\n    attribute capability : CapabilityKind = CapabilityKind::CommunicationHandling;\n    attribute function : FunctionKind = FunctionKind::Interface;\n    port dataIn : DataPort;\n    port dataOut : DataPort;\n    port statusOut : StatusPort;\n  }\n\n  part def CommunicationSubsystem {\n    attribute capability : CapabilityKind = CapabilityKind::CommunicationHandling;\n    attribute function : FunctionKind = FunctionKind::Interface;\n    part comms : CommunicationUnit;\n    port externalDataIn : DataPort;\n    port internalDataOut : DataPort;\n    port statusOut : StatusPort;\n    connect externalDataIn to comms.dataIn;\n    connect comms.dataOut to internalDataOut;\n    connect comms.statusOut to statusOut;\n  }\n\n  part def System {\n    attribute capability : CapabilityKind = CapabilityKind::StructuralControl;\n    attribute function : FunctionKind = FunctionKind::Interface;\n    part controlSubsystem : ControlSubsystem;\n    part powerSubsystem : PowerSubsystem;\n    part communicationSubsystem : CommunicationSubsystem;\n    port externalDataIn : DataPort;\n    port externalPowerIn : PowerPort;\n    port systemStatusOut : StatusPort;\n    connect externalDataIn to communicationSubsystem.externalDataIn;\n    connect communicationSubsystem.internalDataOut to controlSubsystem.dataIn;\n    connect externalPowerIn to powerSubsystem.powerIn;\n    connect powerSubsystem.powerOut to controlSubsystem.actuator.powerIn;\n    connect controlSubsystem.statusOut to systemStatusOut;\n    connect powerSubsystem.statusOut to systemStatusOut;\n    connect communicationSubsystem.statusOut to systemStatusOut;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563915.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 2158,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1638,
+    "output_tokens_details": {
+      "reasoning_tokens": 640
+    },
+    "total_tokens": 3796
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

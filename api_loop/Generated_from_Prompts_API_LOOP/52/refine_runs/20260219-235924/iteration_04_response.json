@@ -1,0 +1,82 @@
+{
+  "id": "resp_0947dbf0f01cf468006997ea711cc081a3a3fe401f94246514",
+  "created_at": 1771563633.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0947dbf0f01cf468006997ea7191c081a39092bcb0b91f132a",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0947dbf0f01cf468006997ea93064481a3806d64380c091984",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleComposite {\n  private import ScalarValues::*;\n\n  part def Engine {\n  }\n\n  part def Driver {\n  }\n\n  part def Vehicle {\n    attribute mass : Real;\n    attribute gear : Integer;\n    attribute accelerator : Real;\n  }\n\n  part def VehicleTimeline {\n    part initial : Vehicle;\n    part next : Vehicle;\n  }\n\n  part def CompositeSystem {\n    part vehicle_1 : VehicleTimeline;\n    part engine_1 : Engine;\n    part driver_1 : Driver;\n  }\n\n  part SystemInstance : CompositeSystem {\n    part vehicle_1 : VehicleTimeline {\n      part initial : Vehicle {\n        attribute mass = 2000.0;\n        attribute gear = 0;\n        attribute accelerator = 0.0;\n      }\n      part next : Vehicle {\n        attribute mass = 1500.0;\n        attribute gear = 2;\n        attribute accelerator = 0.5;\n      }\n    }\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563669.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1925,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 2184,
+    "output_tokens_details": {
+      "reasoning_tokens": 1984
+    },
+    "total_tokens": 4109
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

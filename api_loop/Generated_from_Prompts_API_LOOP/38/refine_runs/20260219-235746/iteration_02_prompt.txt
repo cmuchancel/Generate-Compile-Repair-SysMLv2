@@ -1,0 +1,40 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system shall be capable of managing the vehicle’s start-up, operation, and shutdown processes. When the user issues a vehicle start signal while the vehicle is in the shutdown state, the vehicle should enter the start-up state. Upon receiving a vehicle started signal, the system shall set the vehicle status to running. If the user issues a vehicle shutdown signal during operation, the vehicle status shall return to shutdown. The system must accurately respond to the corresponding signals, enabling automatic switching among the three main states—shutdown, start-up, and running—so that the user can conveniently and safely control the vehicle’s start and stop processes.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleStartStop {
+   private import ScalarValues::*;
+   enum def VehicleState {
+      enum shutdown;
+      enum startup;
+      enum running;
+   }
+   part def VehicleControlSystem {
+      attribute vehicleStatus : VehicleState = shutdown;
+      attribute startSignal : Boolean = false;
+      attribute startedSignal : Boolean = false;
+      attribute shutdownSignal : Boolean = false;
+   }
+   part vehicleControlSystem : VehicleControlSystem;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_01.sysml:9:48: error (reference-error): No Feature named 'shutdown' found.
+9 |       attribute vehicleStatus : VehicleState = shutdown;
+  |                                                ^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

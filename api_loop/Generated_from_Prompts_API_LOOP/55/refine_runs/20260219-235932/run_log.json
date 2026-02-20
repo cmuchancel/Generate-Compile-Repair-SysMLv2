@@ -1,0 +1,78 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:59:32.300889Z",
+    "iteration_end": "2026-02-20T04:59:50.172936Z",
+    "iteration_duration_seconds": 17.872359999993932,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:12:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    12 |   part def Engine : Component {\n\niteration_01.sysml:15:25: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    15 |   part def Transmission : Component {",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 426,
+      "output_tokens": 1186,
+      "total_tokens": 1612
+    },
+    "tokens_used_total": 1612
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:59:50.172985Z",
+    "iteration_end": "2026-02-20T04:59:54.043929Z",
+    "iteration_duration_seconds": 3.871044667001115,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:12:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    12 |   part def Engine : Component;\n\niteration_02.sysml:13:25: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    13 |   part def Transmission : Component;",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 689,
+      "output_tokens": 158,
+      "total_tokens": 847
+    },
+    "tokens_used_total": 2459
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T04:59:54.043982Z",
+    "iteration_end": "2026-02-20T05:00:00.821037Z",
+    "iteration_duration_seconds": 6.777221458003623,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_03_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_03.sysml:12:12: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    12 |   part def Engine extends Component {\n       |            \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_03.sysml:12:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    12 |   part def Engine extends Component {\n       |                   \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_03.sysml:15:25: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected identifier, expected one of [\"SINGLE_LINE_NOTE\", \"MULTILINE_NOTE\", \"=\", \":>\", \":\", \";\", \"{\", \"from\", \"locale\", \"about\", \"language\", \"for\", \"[\", \"ordered\", \"nonunique\", \"if\", \":=\", \"default\", \"REGULAR_COMMENT\", \"specializes\", \"subsets\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \"defined\", \"by\", \"then\", \"connect\", \"of\", \"accept\", \"send\", \"assign\", \"terminate\", \"while\", \"loop\", \"parallel\"].\n    15 |   part def Transmission extends Component {\n       |                         \u001b[38;2;220;080;080m^^^^^^^\u001b[0m\n\niteration_03.sysml:12:27: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'Component' shadows VehicleMassManagement::Component\n\u2502   12 |   part def Engine extends Component {\n\u2502      |                           \u001b[38;2;204;204;057m^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_03.sysml:4:12: \u001b[38;2;255;255;255mnote\u001b[0m: First declared here\n\niteration_03.sysml:23:19: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Engine' found.\n    23 |     part engine : Engine;\n       |                   \u001b[38;2;220;080;080m^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 664,
+      "output_tokens": 376,
+      "total_tokens": 1040
+    },
+    "tokens_used_total": 3499
+  },
+  {
+    "iteration": 4,
+    "iteration_start": "2026-02-20T05:00:00.821106Z",
+    "iteration_end": "2026-02-20T05:00:09.344744Z",
+    "iteration_duration_seconds": 8.523830792000808,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_04.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_04_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/55/20260219-235932/iteration_04_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1190,
+      "output_tokens": 465,
+      "total_tokens": 1655
+    },
+    "tokens_used_total": 5154
+  }
+]

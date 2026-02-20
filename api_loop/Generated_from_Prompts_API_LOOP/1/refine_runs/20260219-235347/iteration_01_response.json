@@ -1,0 +1,82 @@
+{
+  "id": "resp_0a6d49fa69a7fe49006997e8dc58488190b4aeb361e2565dd3",
+  "created_at": 1771563228.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0a6d49fa69a7fe49006997e8dcaed481908051c156bf205c62",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0a6d49fa69a7fe49006997e8e80b0c8190ac376069cd335d0d",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSystem {\n  private import ScalarValues::*;\n\n  enum def GearSetting {\n    enum Park;\n    enum Reverse;\n    enum Neutral;\n    enum Drive;\n    enum Low;\n  }\n\n  part def VehicleStatus {\n    attribute gearSetting : GearSetting;\n    attribute acceleratorPedalPosition : Real;\n  }\n\n  part def Engine {\n    attribute engineId : String;\n    attribute engineType : String;\n    attribute ratedPower : Real;\n  }\n\n  part def Driver {\n    attribute driverId : String;\n    attribute name : String;\n    attribute licenseNumber : String;\n  }\n\n  part def Vehicle {\n    attribute vehicleId : String;\n    attribute mass : Real;\n    part status : VehicleStatus;\n    part engine : Engine;\n    part driver : Driver;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563242.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 339,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 822,
+    "output_tokens_details": {
+      "reasoning_tokens": 640
+    },
+    "total_tokens": 1161
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

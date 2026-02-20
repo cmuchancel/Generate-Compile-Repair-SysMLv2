@@ -1,0 +1,82 @@
+{
+  "id": "resp_03bc4675877b0b39006997eaeaa1308193b074f2933a9453ca",
+  "created_at": 1771563754.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_03bc4675877b0b39006997eaeaf4b881938a9c95fbde42a4d7",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_03bc4675877b0b39006997eaf17da48193a1712f3be0639443",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package MassVerificationPackage {\n  private import ScalarValues::*;\n\n  enum def QualificationStatus {\n    enum qualified;\n    enum unqualified;\n  }\n\n  port def MassPort {\n    attribute mass : Real;\n  }\n\n  part def Vehicle {\n    attribute actualMass : Real;\n    attribute status : QualificationStatus;\n    port massPort : MassPort;\n  }\n\n  part def WeighingEquipment {\n    attribute measuredMass : Real;\n    port massPort : MassPort;\n  }\n\n  part def MassVerificationUnit {\n    attribute maxAllowedMass : Real = 2500;\n    port massPort : MassPort;\n    attribute evaluatedStatus : QualificationStatus;\n  }\n\n  part def MassVerificationSystem {\n    part vehicle : Vehicle;\n    part weighingEquipment : WeighingEquipment;\n    part verificationUnit : MassVerificationUnit;\n    connect vehicle.massPort to weighingEquipment.massPort;\n    connect weighingEquipment.massPort to verificationUnit.massPort;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563764.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 393,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 548,
+    "output_tokens_details": {
+      "reasoning_tokens": 320
+    },
+    "total_tokens": 941
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

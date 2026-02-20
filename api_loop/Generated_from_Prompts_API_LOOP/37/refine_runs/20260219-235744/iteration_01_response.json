@@ -1,0 +1,82 @@
+{
+  "id": "resp_00365017d583e353006997e9ca4fe48196846d2c113abcd6eb",
+  "created_at": 1771563466.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_00365017d583e353006997e9caa1008196ada063b00e9ab27b",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_00365017d583e353006997e9dabe6c81969b7ab42196fc4644",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehiclePowerManagement {\n  private import ScalarValues::*;\n\n  enum def PowerState {\n    enum Off;\n    enum StartPhase;\n    enum PoweredOn;\n  }\n\n  port def ControlPort {\n    attribute startCommand : Boolean;\n    attribute startedSignal : Boolean;\n    attribute shutdownCommand : Boolean;\n  }\n\n  port def PowerPort {\n    attribute supplyOn : Boolean;\n  }\n\n  part def User {\n    port controlOut : ControlPort;\n  }\n\n  part def FunctionalUnit {\n    port powerIn : PowerPort;\n    attribute unitName : String;\n  }\n\n  part def VehiclePowerSystem {\n    port controlIn : ControlPort;\n    port powerOut : PowerPort;\n    attribute state : PowerState = Off;\n    attribute selfDiagnosisActive : Boolean = false;\n    attribute parkingBrakeEngaged : Boolean = false;\n    attribute powerSupplyOn : Boolean = false;\n  }\n\n  part def Vehicle {\n    part powerSystem : VehiclePowerSystem;\n    part propulsionUnit : FunctionalUnit;\n    part infotainmentUnit : FunctionalUnit;\n    part safetyUnit : FunctionalUnit;\n\n    connect powerSystem.powerOut to propulsionUnit.powerIn;\n    connect powerSystem.powerOut to infotainmentUnit.powerIn;\n    connect powerSystem.powerOut to safetyUnit.powerIn;\n  }\n\n  part def VehiclePowerManagementSystem {\n    part user : User;\n    part vehicle : Vehicle;\n\n    connect user.controlOut to vehicle.powerSystem.controlIn;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563485.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 394,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1316,
+    "output_tokens_details": {
+      "reasoning_tokens": 960
+    },
+    "total_tokens": 1710
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,100 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to provide complete fuel supply and return management functions for vehicles. The vehicle is equipped with a fuel system composed of a fuel tank assembly, which integrates both the fuel pump and the fuel tank. The fuel pump is responsible for pressurizing fuel from the tank and delivering it to various fuel-consuming units within the vehicle, while allowing unused fuel to return to the tank via the return line. The system must monitor and transmit real-time fuel temperature information to ensure the safety and efficiency of fuel transport. The overall fuel flow path and interface definitions are clearly specified, and both data and fuel flow between components are strictly bound according to the design, thereby achieving reliable fuel supply and effective return management.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package FuelSupplySystem {
+  private import ScalarValues::*;
+
+  item def Fuel;
+  item def Temperature {
+    attribute value : Real;
+  }
+
+  port def FuelPort {
+    item fuel : Fuel;
+  }
+
+  port def TemperaturePort {
+    item temperature : Temperature;
+  }
+
+  part def FuelTank {
+    port supplyOut : FuelPort;
+    port returnIn : FuelPort;
+  }
+
+  part def FuelPump {
+    port inlet : FuelPort;
+    port outlet : FuelPort;
+  }
+
+  part def FuelTemperatureSensor {
+    port tempOut : TemperaturePort;
+  }
+
+  part def FuelTankAssembly {
+    part tank : FuelTank;
+    part pump : FuelPump;
+    part tempSensor : FuelTemperatureSensor;
+    connect tank.supplyOut to pump.inlet;
+  }
+
+  part def ReturnLine {
+    port fromUnits : FuelPort;
+    port toTank : FuelPort;
+  }
+
+  part def FuelSystem {
+    part assembly : FuelTankAssembly;
+    part returnLine : ReturnLine;
+    port supply : FuelPort;
+    port returnIn : FuelPort;
+    port tempOut : TemperaturePort;
+    connect assembly.pump.outlet to supply;
+    connect returnIn to returnLine.fromUnits;
+    connect returnLine.toTank to assembly.tank.returnIn;
+    connect assembly.tempSensor.tempOut to tempOut;
+  }
+
+  part def FuelConsumingUnit {
+    port inFuel : FuelPort;
+    port returnFuel : FuelPort;
+  }
+
+  part def TemperatureMonitor {
+    port tempIn : TemperaturePort;
+  }
+
+  part def Vehicle {
+    part fuelSystem : FuelSystem;
+    part consumers : FuelConsumingUnit;
+    part tempMonitor : TemperatureMonitor;
+    connect fuelSystem.supply to consumers.inFuel;
+    connect consumers.returnFuel to fuelSystem.returnIn;
+    connect fuelSystem.tempOut to tempMonitor.tempIn;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:10:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    10 |     item fuel : Fuel;
+       |     ^^^^^^^^^^^^^^^^^
+iteration_01.sysml:14:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    14 |     item temperature : Temperature;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

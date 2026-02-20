@@ -1,0 +1,82 @@
+{
+  "id": "resp_0f179469d58e68b4006997e912e4f4819c8357c248aae0aca0",
+  "created_at": 1771563282.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0f179469d58e68b4006997e9132c68819cbbff2346750a1590",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0f179469d58e68b4006997e94b6f88819c875e4d9b7148b696",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package WaterSupplyModel\n    private import ScalarValues::*;\n    \n    item def HotWater;\n    item def ColdWater;\n    \n    port def HotPort {\n        item hot: HotWater;\n    }\n    \n    port def ColdPort {\n        item cold: ColdWater;\n    }\n    \n    part def SpigotBank {\n        port hotOut: HotPort;\n        port coldOut: ColdPort;\n    }\n    \n    part def Spigot {\n        port hotIn: HotPort;\n        port coldIn: ColdPort;\n        port hotOut: HotPort;\n        port coldOut: ColdPort;\n        connect hotIn to hotOut;\n        connect coldIn to coldOut;\n    }\n    \n    part def FaucetInlet {\n        port hotIn: HotPort;\n        port coldIn: ColdPort;\n    }\n    \n    part def Faucet {\n        part inlet: FaucetInlet;\n    }\n    \n    part def WaterSupplySystem {\n        part bank: SpigotBank;\n        part spigot1: Spigot;\n        part spigot2: Spigot;\n        part faucet1: Faucet;\n        part faucet2: Faucet;\n        \n        connect bank.hotOut to spigot1.hotIn;\n        connect bank.coldOut to spigot1.coldIn;\n        connect bank.hotOut to spigot2.hotIn;\n        connect bank.coldOut to spigot2.coldIn;\n        \n        connect spigot1.hotOut to faucet1.inlet.hotIn;\n        connect spigot1.coldOut to faucet1.inlet.coldIn;\n        \n        connect spigot2.hotOut to faucet2.inlet.hotIn;\n        connect spigot2.coldOut to faucet2.inlet.coldIn;\n    }\nend package",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563343.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 373,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 4136,
+    "output_tokens_details": {
+      "reasoning_tokens": 3776
+    },
+    "total_tokens": 4509
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

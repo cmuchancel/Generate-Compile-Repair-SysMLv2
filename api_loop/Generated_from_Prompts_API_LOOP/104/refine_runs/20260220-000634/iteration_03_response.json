@@ -1,0 +1,82 @@
+{
+  "id": "resp_027fa40aab2e5859006997ebf975c081968fc529379afe4c45",
+  "created_at": 1771564025.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_027fa40aab2e5859006997ebf9c53881969c91768ffbb977da",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_027fa40aab2e5859006997ebfe873481969e42b2888c89b118",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PowertrainSystemModel {\n  private import ScalarValues::*;\n\n  item def FuelCommand {\n    attribute level : Real;\n  }\n\n  item def StartStopCommand {\n    attribute startCmd : Boolean;\n    attribute stopCmd : Boolean;\n  }\n\n  item def Torque {\n    attribute value : Real;\n  }\n\n  port def FuelCommandPort { }\n  port def StartStopPort { }\n  port def TorquePort { }\n\n  part def DriverControls {\n    port fuelOut : FuelCommandPort;\n    port startStopOut : StartStopPort;\n  }\n\n  part def Engine {\n    port fuelIn : FuelCommandPort;\n    port startStopIn : StartStopPort;\n    port torqueOut : TorquePort;\n  }\n\n  part def Transmission {\n    port torqueIn : TorquePort;\n    port torqueOut : TorquePort;\n  }\n\n  part def Driveshaft {\n    port torqueIn : TorquePort;\n    port torqueOut : TorquePort;\n  }\n\n  part def Differential {\n    port torqueIn : TorquePort;\n    port leftOut : TorquePort;\n    port rightOut : TorquePort;\n  }\n\n  part def Wheel {\n    port torqueIn : TorquePort;\n  }\n\n  part def PowertrainSystem {\n    part driver : DriverControls;\n    part engine : Engine;\n    part transmission : Transmission;\n    part driveshaft : Driveshaft;\n    part differential : Differential;\n    part leftWheel : Wheel;\n    part rightWheel : Wheel;\n\n    connect driver.fuelOut to engine.fuelIn;\n    connect driver.startStopOut to engine.startStopIn;\n    connect engine.torqueOut to transmission.torqueIn;\n    connect transmission.torqueOut to driveshaft.torqueIn;\n    connect driveshaft.torqueOut to differential.torqueIn;\n    connect differential.leftOut to leftWheel.torqueIn;\n    connect differential.rightOut to rightWheel.torqueIn;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564035.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1389,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 641,
+    "output_tokens_details": {
+      "reasoning_tokens": 192
+    },
+    "total_tokens": 2030
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

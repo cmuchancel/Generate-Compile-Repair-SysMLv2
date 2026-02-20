@@ -1,0 +1,82 @@
+{
+  "id": "resp_06fc29b40f5b6a23006997ec2bf61081a3b49f619194b635b2",
+  "created_at": 1771564075.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_06fc29b40f5b6a23006997ec2c4c8881a38dca154c0dfd9e75",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_06fc29b40f5b6a23006997ec3734fc81a38dbfe8b3f53a3868",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AutomobileAssembly {\n  private import ScalarValues::*;\n\n  part def Gearbox;\n  part def Engine;\n\n  part def VehicleWithoutGearboxEngine;\n  part def VehicleWithGearbox {\n    part gearbox : Gearbox;\n  }\n  part def FullyAssembledVehicle {\n    part gearbox : Gearbox;\n    part engine : Engine;\n  }\n\n  port def VehicleWithoutGearboxIn {\n    attribute vehicle : VehicleWithoutGearboxEngine;\n  }\n  port def GearboxIn {\n    attribute gearbox : Gearbox;\n  }\n  port def VehicleWithGearboxIn {\n    attribute vehicle : VehicleWithGearbox;\n  }\n  port def VehicleWithGearboxOut {\n    attribute vehicle : VehicleWithGearbox;\n  }\n  port def EngineIn {\n    attribute engine : Engine;\n  }\n  port def FullyAssembledVehicleOut {\n    attribute vehicle : FullyAssembledVehicle;\n  }\n\n  part def GearboxInstallation {\n    port inVehicle : VehicleWithoutGearboxIn;\n    port inGearbox : GearboxIn;\n    port outVehicle : VehicleWithGearboxOut;\n  }\n\n  part def EngineInstallation {\n    port inVehicle : VehicleWithGearboxIn;\n    port inEngine : EngineIn;\n    port outVehicle : FullyAssembledVehicleOut;\n  }\n\n  part def FinalAssemblyLine {\n    port inVehicle : VehicleWithoutGearboxIn;\n    port inGearbox : GearboxIn;\n    port inEngine : EngineIn;\n    port outVehicle : FullyAssembledVehicleOut;\n\n    part step1 : GearboxInstallation;\n    part step2 : EngineInstallation;\n\n    connect inVehicle to step1.inVehicle;\n    connect inGearbox to step1.inGearbox;\n    connect step1.outVehicle to step2.inVehicle;\n    connect inEngine to step2.inEngine;\n    connect step2.outVehicle to outVehicle;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564090.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 2096,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1275,
+    "output_tokens_details": {
+      "reasoning_tokens": 832
+    },
+    "total_tokens": 3371
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

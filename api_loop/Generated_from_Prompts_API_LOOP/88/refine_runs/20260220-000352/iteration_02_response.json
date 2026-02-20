@@ -1,0 +1,82 @@
+{
+  "id": "resp_0be6abd331ff03d5006997eb59268c8194be32fda32bafa42a",
+  "created_at": 1771563865.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0be6abd331ff03d5006997eb5972088194af1e18ed02a66c6c",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0be6abd331ff03d5006997eb5a51e08194ae5c0e7e62ca2782",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSafetyCompliance {\n  private import ScalarValues::*;\n\n  enum def SafetyRequirement {\n    required;\n    optional;\n  }\n\n  part def SeatBelt {\n    attribute requirementStatus : SafetyRequirement = SafetyRequirement::required;\n  }\n\n  part def Airbag {\n    attribute requirementStatus : SafetyRequirement = SafetyRequirement::optional;\n  }\n\n  part def Bumper {\n    attribute requirementStatus : SafetyRequirement = SafetyRequirement::required;\n  }\n\n  part def KeylessEntry {\n    attribute requirementStatus : SafetyRequirement = SafetyRequirement::optional;\n  }\n\n  part def ABS {\n    attribute requirementStatus : SafetyRequirement = SafetyRequirement::optional;\n  }\n\n  part def Tire {\n  }\n\n  part def VehicleInterior {\n    part seatBelt1 : SeatBelt;\n    part seatBelt2 : SeatBelt;\n    part driverAirbag : Airbag;\n  }\n\n  part def VehicleBody {\n    part bumper : Bumper;\n    part keylessEntrySystem : KeylessEntry;\n  }\n\n  part def ChassisSystem {\n    attribute tireCount : Integer = 4;\n    part tire1 : Tire;\n    part tire2 : Tire;\n    part tire3 : Tire;\n    part tire4 : Tire;\n    part abs : ABS;\n  }\n\n  part def Vehicle {\n    part interior : VehicleInterior;\n    part body : VehicleBody;\n    part chassis : ChassisSystem;\n  }\n\n  part def SafetyCatalog {\n    part seatBelt1 : SeatBelt;\n    part seatBelt2 : SeatBelt;\n    part driverAirbag : Airbag;\n    part bumper : Bumper;\n    part keylessEntrySystem : KeylessEntry;\n    part abs : ABS;\n  }\n\n  part def VehicleSafetyComplianceSystem {\n    part vehicle : Vehicle;\n    part safetyCatalog : SafetyCatalog;\n  }\n\n  part system : VehicleSafetyComplianceSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563870.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1030,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 441,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 1471
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

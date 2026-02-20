@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:12:33.372791Z",
+    "iteration_end": "2026-02-20T05:12:46.586385Z",
+    "iteration_duration_seconds": 13.21386154100037,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/145/20260220-001233/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/145/20260220-001233/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/145/20260220-001233/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:2:5: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    2 |     private import ScalarValues::*;\n\niteration_01.sysml:26:12: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected EOF. (\u001b[38;2;220;080;080mno source underlining available since segment is out of bounds\u001b[0m)\n\niteration_01.sysml:22:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'manufacturerName' shadows Tire::manufacturerName\n\u2502   22 |         attribute manufacturerName = \"Michelin\";\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:11:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:21:28: \u001b[38;2;255;255;255mnote\u001b[0m: Because Tire is specialized through FeatureTyping\n\niteration_01.sysml:23:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'rimDiameterInInches' shadows Tire::rimDiameterInInches\n\u2502   23 |         attribute rimDiameterInInches = 18.0;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:12:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:21:28: \u001b[38;2;255;255;255mnote\u001b[0m: Because Tire is specialized through FeatureTyping\n\niteration_01.sysml:24:19: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'tireWidth' shadows Tire::tireWidth\n\u2502   24 |         attribute tireWidth = 245.0;\n\u2502      |                   \u001b[38;2;204;204;057m^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_01.sysml:13:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:21:28: \u001b[38;2;255;255;255mnote\u001b[0m: Because Tire is specialized through FeatureTyping",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 379,
+      "output_tokens": 629,
+      "total_tokens": 1008
+    },
+    "tokens_used_total": 1008
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:12:46.586486Z",
+    "iteration_end": "2026-02-20T05:13:05.637226Z",
+    "iteration_duration_seconds": 19.05111345899786,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/145/20260220-001233/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/145/20260220-001233/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/145/20260220-001233/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "iteration_02.sysml:22:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'manufacturerName' shadows TireInfo::Tire::manufacturerName\n\u2502   22 |         manufacturerName = \"Michelin\";\n\u2502      |         \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:11:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:21:28: \u001b[38;2;255;255;255mnote\u001b[0m: Because TireInfo::Tire is specialized through FeatureTyping\n\niteration_02.sysml:23:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'rimDiameterInInches' shadows TireInfo::Tire::rimDiameterInInches\n\u2502   23 |         rimDiameterInInches = 18.0;\n\u2502      |         \u001b[38;2;204;204;057m^^^^^^^^^^^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:12:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:21:28: \u001b[38;2;255;255;255mnote\u001b[0m: Because TireInfo::Tire is specialized through FeatureTyping\n\niteration_02.sysml:24:9: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'tireWidth' shadows TireInfo::Tire::tireWidth\n\u2502   24 |         tireWidth = 245.0;\n\u2502      |         \u001b[38;2;204;204;057m^^^^^^^^^\u001b[0m\n\u2514\u2500\u2500 iteration_02.sysml:13:19: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_02.sysml:21:28: \u001b[38;2;255;255;255mnote\u001b[0m: Because TireInfo::Tire is specialized through FeatureTyping",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 923,
+      "output_tokens": 1163,
+      "total_tokens": 2086
+    },
+    "tokens_used_total": 3094
+  }
+]

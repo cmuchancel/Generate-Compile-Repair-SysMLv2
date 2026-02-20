@@ -1,0 +1,82 @@
+{
+  "id": "resp_04db74f8956dd0af006997ec9ef7c4819799b31e194fed2f48",
+  "created_at": 1771564191.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_04db74f8956dd0af006997ec9f51c481979bac8c79cb44f82c",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_04db74f8956dd0af006997ecadb4fc8197b33ecb74da11cbb3",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package LayeredSystem {\n  private import ScalarValues::*;\n\n  port def AppServicePort;\n  port def ServiceDataPort;\n\n  part def ApplicationLayer {\n    port appToService : AppServicePort;\n  }\n\n  part def ServiceLayer {\n    port serviceFromApp : AppServicePort;\n    port serviceToData : ServiceDataPort;\n  }\n\n  part def DataLayer {\n    port dataFromService : ServiceDataPort;\n  }\n\n  part def System {\n    attribute x : Real;\n    attribute y : Real;\n    attribute z : Real = x + y;\n\n    part appLayer : ApplicationLayer;\n    part serviceLayer : ServiceLayer;\n    part dataLayer : DataLayer;\n\n    connect appLayer.appToService to serviceLayer.serviceFromApp;\n    connect serviceLayer.serviceToData to dataLayer.dataFromService;\n  }\n\n  part system : System;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564207.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 333,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 951,
+    "output_tokens_details": {
+      "reasoning_tokens": 768
+    },
+    "total_tokens": 1284
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

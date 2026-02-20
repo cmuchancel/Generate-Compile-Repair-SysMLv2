@@ -1,0 +1,82 @@
+{
+  "id": "resp_08142c857e8cd047006997ed1ed9d481968351ae0d11c5922b",
+  "created_at": 1771564318.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_08142c857e8cd047006997ed1f50a0819685f3b9c3bdf08719",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_08142c857e8cd047006997ed2a661c8196932cd435e858b082",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package HeadlampTiltAdjustment {\n    private import ScalarValues::*;\n    \n    part def HeadlampTiltAdjustmentSystem {\n        attribute tiltAngle : Real;\n        attribute minTiltAngle : Real = 50.0;\n        attribute maxTiltAngle : Real = 80.0;\n        attribute piConst : Real = 3.141592653589793;\n        attribute eConst : Real = 2.718281828459045;\n        attribute withinRange : Boolean = (tiltAngle >= minTiltAngle) and (tiltAngle <= maxTiltAngle);\n    }\n    \n    part headlampTiltAdjustmentSystem : HeadlampTiltAdjustmentSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564331.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 360,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 838,
+    "output_tokens_details": {
+      "reasoning_tokens": 640
+    },
+    "total_tokens": 1198
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

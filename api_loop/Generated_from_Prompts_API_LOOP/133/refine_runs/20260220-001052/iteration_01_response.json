@@ -1,0 +1,82 @@
+{
+  "id": "resp_0f32fb8b2e478c45006997ecdd7ee08195a7d59f666c4b86c3",
+  "created_at": 1771564253.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0f32fb8b2e478c45006997ecddcf8881958eea84d8fbcc811d",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0f32fb8b2e478c45006997eceab71c8195bcef0d26a19d9965",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AutomotiveECU {\n    private import ScalarValues::*;\n\n    item def CANMessage;\n    item def SensorData;\n\n    port def CANPort {\n        item msg: CANMessage;\n    }\n\n    port def SensorPort {\n        item data: SensorData;\n    }\n\n    part def BusIF {\n        port busPort: CANPort;\n        port controllerPort: CANPort;\n    }\n\n    part def VCU {\n        part busIF: BusIF;\n        port canPort: CANPort;\n        port sensorPort: SensorPort;\n        connect canPort to busIF.controllerPort;\n    }\n\n    part def ECU {\n        part busIF: BusIF;\n        port canPort: CANPort;\n        port sensorPort: SensorPort;\n        connect canPort to busIF.controllerPort;\n    }\n\n    part def CANBus {\n        port busPort: CANPort;\n    }\n\n    part def VehicleSystem {\n        part vcu: VCU;\n        part ecu: ECU;\n        part canBus: CANBus;\n\n        connect vcu.busIF.busPort to canBus.busPort;\n        connect ecu.busIF.busPort to canBus.busPort;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564269.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 391,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1020,
+    "output_tokens_details": {
+      "reasoning_tokens": 768
+    },
+    "total_tokens": 1411
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

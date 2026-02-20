@@ -1,0 +1,137 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system requires that the actual mass of the vehicle must not exceed the specified limit, with two specific operating conditions: when the fuel tank is full, the total vehicle mass must not exceed 2000 kg; when the fuel tank is empty, the total vehicle mass must not exceed 1500 kg. In both cases, the sum of the vehicle’s curb mass and the fuel mass is considered as the total vehicle mass for calculation purposes. The system also stipulates that the engine must be capable of generating the specified torque characteristics at various speeds, and that the generated torque must be effectively transmitted to the gearbox through the clutch interface to ensure smooth power delivery. The above requirements ensure that vehicle mass control and power transmission comply with design and safety standards.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleSystem {
+    private import ScalarValues::*;
+
+    item def TorqueItem {
+        attribute magnitude : Real;
+        attribute speed : Real;
+    }
+
+    port def TorquePort {
+        item torque : TorqueItem;
+    }
+
+    part def Engine {
+        attribute maxTorque : Real;
+        attribute speed1 : Real;
+        attribute torqueAtSpeed1 : Real;
+        attribute speed2 : Real;
+        attribute torqueAtSpeed2 : Real;
+        port outTorque : TorquePort;
+    }
+
+    part def Clutch {
+        port inTorque : TorquePort;
+        port outTorque : TorquePort;
+    }
+
+    part def Gearbox {
+        port inTorque : TorquePort;
+    }
+
+    part def VehicleMassCondition {
+        attribute curbMass : Real;
+        attribute fuelMass : Real;
+        attribute totalMass : Real;
+    }
+
+    part def Vehicle {
+        part engine : Engine {
+            attribute maxTorque = 350;
+            attribute speed1 = 2000;
+            attribute torqueAtSpeed1 = 300;
+            attribute speed2 = 4000;
+            attribute torqueAtSpeed2 = 280;
+        }
+        part clutch : Clutch;
+        part gearbox : Gearbox;
+
+        part fullFuel : VehicleMassCondition {
+            attribute curbMass = 1400;
+            attribute fuelMass = 500;
+            attribute totalMass = 1900;
+        }
+
+        part emptyFuel : VehicleMassCondition {
+            attribute curbMass = 1400;
+            attribute fuelMass = 0;
+            attribute totalMass = 1400;
+        }
+
+        connect engine.outTorque to clutch.inTorque;
+        connect clutch.outTorque to gearbox.inTorque;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:10:9: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    10 |         item torque : TorqueItem;
+       |         ^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:39:23: warning (namespace-distinguishability): Member name 'maxTorque' shadows VehicleSystem::Engine::maxTorque
+│   39 |             attribute maxTorque = 350;
+│      |                       ^^^^^^^^^
+└── iteration_01.sysml:14:19: note: Inherited from here
+    └── iteration_01.sysml:38:23: note: Because VehicleSystem::Engine is specialized through FeatureTyping
+iteration_01.sysml:40:23: warning (namespace-distinguishability): Member name 'speed1' shadows VehicleSystem::Engine::speed1
+│   40 |             attribute speed1 = 2000;
+│      |                       ^^^^^^
+└── iteration_01.sysml:15:19: note: Inherited from here
+    └── iteration_01.sysml:38:23: note: Because VehicleSystem::Engine is specialized through FeatureTyping
+iteration_01.sysml:41:23: warning (namespace-distinguishability): Member name 'torqueAtSpeed1' shadows VehicleSystem::Engine::torqueAtSpeed1
+│   41 |             attribute torqueAtSpeed1 = 300;
+│      |                       ^^^^^^^^^^^^^^
+└── iteration_01.sysml:16:19: note: Inherited from here
+    └── iteration_01.sysml:38:23: note: Because VehicleSystem::Engine is specialized through FeatureTyping
+iteration_01.sysml:42:23: warning (namespace-distinguishability): Member name 'speed2' shadows VehicleSystem::Engine::speed2
+│   42 |             attribute speed2 = 4000;
+│      |                       ^^^^^^
+└── iteration_01.sysml:17:19: note: Inherited from here
+    └── iteration_01.sysml:38:23: note: Because VehicleSystem::Engine is specialized through FeatureTyping
+iteration_01.sysml:43:23: warning (namespace-distinguishability): Member name 'torqueAtSpeed2' shadows VehicleSystem::Engine::torqueAtSpeed2
+│   43 |             attribute torqueAtSpeed2 = 280;
+│      |                       ^^^^^^^^^^^^^^
+└── iteration_01.sysml:18:19: note: Inherited from here
+    └── iteration_01.sysml:38:23: note: Because VehicleSystem::Engine is specialized through FeatureTyping
+iteration_01.sysml:49:23: warning (namespace-distinguishability): Member name 'curbMass' shadows VehicleSystem::VehicleMassCondition::curbMass
+│   49 |             attribute curbMass = 1400;
+│      |                       ^^^^^^^^
+└── iteration_01.sysml:32:19: note: Inherited from here
+    └── iteration_01.sysml:48:25: note: Because VehicleSystem::VehicleMassCondition is specialized through FeatureTyping
+iteration_01.sysml:50:23: warning (namespace-distinguishability): Member name 'fuelMass' shadows VehicleSystem::VehicleMassCondition::fuelMass
+│   50 |             attribute fuelMass = 500;
+│      |                       ^^^^^^^^
+└── iteration_01.sysml:33:19: note: Inherited from here
+    └── iteration_01.sysml:48:25: note: Because VehicleSystem::VehicleMassCondition is specialized through FeatureTyping
+iteration_01.sysml:51:23: warning (namespace-distinguishability): Member name 'totalMass' shadows VehicleSystem::VehicleMassCondition::totalMass
+│   51 |             attribute totalMass = 1900;
+│      |                       ^^^^^^^^^
+└── iteration_01.sysml:34:19: note: Inherited from here
+    └── iteration_01.sysml:48:25: note: Because VehicleSystem::VehicleMassCondition is specialized through FeatureTyping
+iteration_01.sysml:55:23: warning (namespace-distinguishability): Member name 'curbMass' shadows VehicleSystem::VehicleMassCondition::curbMass
+│   55 |             attribute curbMass = 1400;
+│      |                       ^^^^^^^^
+└── iteration_01.sysml:32:19: note: Inherited from here
+    └── iteration_01.sysml:54:26: note: Because VehicleSystem::VehicleMassCondition is specialized through FeatureTyping
+iteration_01.sysml:56:23: warning (namespace-distinguishability): Member name 'fuelMass' shadows VehicleSystem::VehicleMassCondition::fuelMass
+│   56 |             attribute fuelMass = 0;
+│      |
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

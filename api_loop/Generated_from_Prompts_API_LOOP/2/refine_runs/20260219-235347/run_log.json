@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:53:47.362644Z",
+    "iteration_end": "2026-02-20T04:54:00.682865Z",
+    "iteration_duration_seconds": 13.320488582998223,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/2/20260219-235347/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/2/20260219-235347/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/2/20260219-235347/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:9:28: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    9 |     part def ManualVehicle : Vehicle {\n\niteration_01.sysml:13:29: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    13 |     part def PoweredVehicle : Vehicle {\n\niteration_01.sysml:17:35: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    17 |     part def ManualPoweredVehicle : ManualVehicle, PoweredVehicle {",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 366,
+      "output_tokens": 643,
+      "total_tokens": 1009
+    },
+    "tokens_used_total": 1009
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:54:00.682948Z",
+    "iteration_end": "2026-02-20T04:54:08.800407Z",
+    "iteration_duration_seconds": 8.117665290999867,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/2/20260219-235347/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/2/20260219-235347/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/2/20260219-235347/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 597,
+      "output_tokens": 341,
+      "total_tokens": 938
+    },
+    "tokens_used_total": 1947
+  }
+]

@@ -1,0 +1,82 @@
+{
+  "id": "resp_05290ddd682bc644006997eaede4ec819f8abd8abd2c03561b",
+  "created_at": 1771563757.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_05290ddd682bc644006997eaee5124819f89645a723e6ac5a2",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_05290ddd682bc644006997eafa94c0819fa376436b0eded2d8",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package TransportationSystem {\n  private import ScalarValues::*;\n\n  enum def DoorState { \n    enum Closed;\n    enum Open;\n  }\n\n  port def DoorPort;\n  port def VehiclePort;\n\n  part def Person {\n    attribute name : String;\n  }\n\n  part def Driver : Person {\n    attribute licensed : Boolean;\n  }\n\n  part def Passenger : Person {\n  }\n\n  part def Seat {\n    attribute occupied : Boolean;\n    attribute comfortLevel : Real;\n  }\n\n  part def Door {\n    port doorPort : DoorPort;\n    attribute state : DoorState;\n  }\n\n  part def Environment {\n    attribute weatherSafe : Boolean;\n    attribute sustainabilityConsidered : Boolean;\n  }\n\n  part def Infrastructure {\n    attribute gasStationCompatible : Boolean;\n  }\n\n  part def VehicleSystem {\n    attribute capacity : Integer = 5;\n    attribute passengerCapacity : Integer = 4;\n    attribute safetyEnabled : Boolean;\n    attribute comfortEnabled : Boolean;\n    attribute easyEntryExit : Boolean;\n    attribute humanCentered : Boolean;\n    attribute supportsTrip : Boolean;\n\n    port vehiclePort : VehiclePort;\n\n    part driver : Driver;\n    part passenger1 : Passenger;\n    part passenger2 : Passenger;\n    part passenger3 : Passenger;\n    part passenger4 : Passenger;\n\n    part driverSeat : Seat;\n    part seat1 : Seat;\n    part seat2 : Seat;\n    part seat3 : Seat;\n    part seat4 : Seat;\n\n    part door1 : Door;\n    part door2 : Door;\n    part door3 : Door;\n    part door4 : Door;\n\n    part environment : Environment;\n    part infrastructure : Infrastructure;\n\n    connect door1.doorPort to vehiclePort;\n    connect door2.doorPort to vehiclePort;\n    connect door3.doorPort to vehiclePort;\n    connect door4.doorPort to vehiclePort;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563775.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 379,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1030,
+    "output_tokens_details": {
+      "reasoning_tokens": 640
+    },
+    "total_tokens": 1409
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

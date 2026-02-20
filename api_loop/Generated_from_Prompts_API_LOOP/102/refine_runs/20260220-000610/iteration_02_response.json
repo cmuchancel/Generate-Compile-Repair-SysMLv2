@@ -1,0 +1,82 @@
+{
+  "id": "resp_07e9fe088dd58f10006997ebdcdbb48192b00f7ebdd66fc141",
+  "created_at": 1771563996.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_07e9fe088dd58f10006997ebdd8a0881929f0d2670c03af03c",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_07e9fe088dd58f10006997ebe4ffec81928923ecfbd6e32cbc",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehiclePowerTransmission {\n    private import ScalarValues::*;\n\n    item def Power;\n    item def Command;\n    item def RoadForce;\n\n    port def PowerPort {}\n    port def CommandPort {}\n    port def RoadPort {}\n\n    part def FuelController {\n        port commandOut : CommandPort;\n    }\n\n    part def Engine {\n        port fuelCmd : CommandPort;\n        port powerOut : PowerPort;\n    }\n\n    part def Clutch {\n        port engineIn : PowerPort;\n        port transOut : PowerPort;\n    }\n\n    part def Transmission {\n        port clutchIn : PowerPort;\n        port powerOut : PowerPort;\n    }\n\n    part def DriveShaft {\n        port inP : PowerPort;\n        port outP : PowerPort;\n    }\n\n    part def Differential {\n        port inP : PowerPort;\n        port outLeft : PowerPort;\n        port outRight : PowerPort;\n    }\n\n    part def HalfShaft {\n        port inP : PowerPort;\n        port outP : PowerPort;\n    }\n\n    part def RearAxleAssembly {\n        port driveshaftIn : PowerPort;\n        port leftOut : PowerPort;\n        port rightOut : PowerPort;\n\n        part diff : Differential;\n        part leftHalf : HalfShaft;\n        part rightHalf : HalfShaft;\n\n        connect driveshaftIn to diff::inP;\n        connect diff::outLeft to leftHalf::inP;\n        connect diff::outRight to rightHalf::inP;\n        connect leftHalf::outP to leftOut;\n        connect rightHalf::outP to rightOut;\n    }\n\n    part def Wheel {\n        port axleIn : PowerPort;\n        port roadOut : RoadPort;\n    }\n\n    part def RoadSurface {\n        port leftIn : RoadPort;\n        port rightIn : RoadPort;\n    }\n\n    part def VehiclePowerTransmissionSystem {\n        part controller : FuelController;\n        part engine : Engine;\n        part clutch : Clutch;\n        part transmission : Transmission;\n        part driveshaft : DriveShaft;\n        part rearAxle : RearAxleAssembly;\n        part leftWheel : Wheel;\n        part rightWheel : Wheel;\n        part road : RoadSurface;\n\n        connect controller::commandOut to engine::fuelCmd;\n        connect engine::powerOut to clutch::engineIn;\n        connect clutch::transOut to transmission::clutchIn;\n        connect transmission::powerOut to driveshaft::inP;\n        connect driveshaft::outP to rearAxle::driveshaftIn;\n        connect rearAxle::leftOut to leftWheel::axleIn;\n        connect rearAxle::rightOut to rightWheel::axleIn;\n        connect leftWheel::roadOut to road::leftIn;\n        connect rightWheel::roadOut to road::rightIn;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564011.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 2209,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 995,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 3204
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

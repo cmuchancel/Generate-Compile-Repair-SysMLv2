@@ -1,0 +1,82 @@
+{
+  "id": "resp_0e61c88904309fa1006997e9ae9a208192b37b2cb7d5e90213",
+  "created_at": 1771563438.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0e61c88904309fa1006997e9aef4a08192a01a94e229049dd5",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0e61c88904309fa1006997e9b52ca08192bf9aee00f94d628a",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSimulation {\n  private import ScalarValues::*;\n  \n  part def VehicleSim {\n    attribute mass : Real;\n    attribute initialPosition : Real;\n    attribute initialVelocity : Real;\n    attribute timeStep : Real;\n  }\n  \n  part def PowerInput {\n    attribute time : Real;\n    attribute power : Real;\n  }\n  \n  part def StepResult {\n    attribute time : Real;\n    attribute inputPower : Real;\n    attribute velocity : Real;\n    attribute position : Real;\n  }\n  \n  part def Trajectory {\n    part step1 : StepResult;\n    part step2 : StepResult;\n    part step3 : StepResult;\n  }\n  \n  part def Simulation {\n    part vehicle : VehicleSim;\n    part input1 : PowerInput;\n    part input2 : PowerInput;\n    part input3 : PowerInput;\n    part trajectory : Trajectory;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563447.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 358,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 565,
+    "output_tokens_details": {
+      "reasoning_tokens": 320
+    },
+    "total_tokens": 923
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

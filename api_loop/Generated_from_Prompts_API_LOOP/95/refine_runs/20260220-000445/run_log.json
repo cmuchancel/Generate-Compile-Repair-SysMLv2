@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:04:46.040566Z",
+    "iteration_end": "2026-02-20T05:04:58.007016Z",
+    "iteration_duration_seconds": 11.966686042003857,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/95/20260220-000445/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/95/20260220-000445/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/95/20260220-000445/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:12:24: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'TorqueValue' found.\n    12 |     attribute torque : TorqueValue;\n       |                        \u001b[38;2;220;080;080m^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 412,
+      "output_tokens": 710,
+      "total_tokens": 1122
+    },
+    "tokens_used_total": 1122
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:04:58.007088Z",
+    "iteration_end": "2026-02-20T05:05:03.451152Z",
+    "iteration_duration_seconds": 5.444184375002806,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/95/20260220-000445/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/95/20260220-000445/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/95/20260220-000445/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 656,
+      "output_tokens": 302,
+      "total_tokens": 958
+    },
+    "tokens_used_total": 2080
+  }
+]

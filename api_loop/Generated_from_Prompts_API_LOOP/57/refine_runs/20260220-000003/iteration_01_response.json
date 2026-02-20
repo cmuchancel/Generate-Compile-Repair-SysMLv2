@@ -1,0 +1,82 @@
+{
+  "id": "resp_04cbce944bce2c60006997ea548d248194b15f7c614c451880",
+  "created_at": 1771563604.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_04cbce944bce2c60006997ea54d63081949c8d12b6b3010f23",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_04cbce944bce2c60006997ea5be5b0819491289ede11caa574",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package MassAggregationSystem {\n    private import ScalarValues::*;\n\n    part def MassComponent {\n        attribute basicMass : Real;\n    }\n\n    part def CompositeMassComponent {\n        attribute basicMass : Real;\n        part subcomponents[*] : MassComponent;\n        attribute totalMass : Real;\n        attribute minMassThreshold : Real;\n        attribute totalMassFiltered : Real;\n    }\n\n    part def MassAggregationManager {\n        part components[*] : MassComponent;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563612.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 415,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 529,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 944
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

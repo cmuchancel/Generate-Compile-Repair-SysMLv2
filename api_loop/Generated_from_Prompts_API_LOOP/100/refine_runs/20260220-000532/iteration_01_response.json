@@ -1,0 +1,82 @@
+{
+  "id": "resp_083cf2dff0ed95f1006997eb9da5988196846351553961ab16",
+  "created_at": 1771563933.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_083cf2dff0ed95f1006997eb9e152081968a36421af346b072",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_083cf2dff0ed95f1006997ebb316688196a6e3a85921584d75",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleConfig {\n    private import ScalarValues::*;\n\n    part def Tire {\n        attribute mass : Real = 20;\n    }\n\n    part def FrontAxle {\n        attribute mass : Real = 300;\n        part leftTire : Tire;\n        part rightTire : Tire;\n    }\n\n    part def RearAxle {\n        attribute mass : Real = 320;\n        part leftTire : Tire;\n        part rightTire : Tire;\n    }\n\n    part def DedicatedFrontAxle specializes FrontAxle {\n        attribute steeringAngle : Real = 0;\n    }\n\n    part def FrontAxle_C1 specializes DedicatedFrontAxle {\n        part tireFL : Tire redefines leftTire;\n        part tireFR : Tire redefines rightTire;\n    }\n\n    part def RearAxle_C1 specializes RearAxle {\n        part tireRL : Tire redefines leftTire;\n        part tireRR : Tire redefines rightTire;\n    }\n\n    part def Vehicle {\n        attribute mass : Real = 1750;\n        part frontAxle : FrontAxle;\n        part rearAxle : RearAxle;\n    }\n\n    part def Vehicle1_C1 specializes Vehicle {\n        attribute mass : Real = 2000;\n        part frontAxle_c1 : FrontAxle_C1 redefines frontAxle;\n        part rearAxle_c1 : RearAxle_C1 redefines rearAxle;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563958.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 442,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1737,
+    "output_tokens_details": {
+      "reasoning_tokens": 1408
+    },
+    "total_tokens": 2179
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

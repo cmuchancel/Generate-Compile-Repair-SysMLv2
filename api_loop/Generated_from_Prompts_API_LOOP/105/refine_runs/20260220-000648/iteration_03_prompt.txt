@@ -1,0 +1,125 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to implement the control logic of an automotive powertrain. Its main functions are as follows: Upon receiving a fuel control command, the system sequentially starts the engine and generates torque according to the predetermined order. The generated torque is then successively amplified, transmitted, and distributed, delivering power stage by stage to the vehicle’s drive wheels to ensure normal driving. When a stall signal is detected, the relevant operational processes will be halted as required. The system supports engine start and shutdown control, as well as the entire power transmission process from fuel commands to actual wheel output torque, ensuring efficient and coordinated power delivery. It provides users with a reliable power response and handling experience.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 2):
+                package PowertrainControlLogic {
+    private import ScalarValues::*;
+
+    item def FuelCommand;
+    item def Torque;
+    item def StallSignal;
+    item def StartCommand;
+    item def StopCommand;
+
+    port def FuelCommandPort { item ref fc : FuelCommand; }
+    port def TorquePort { item ref tq : Torque; }
+    port def StallSignalPort { item ref ss : StallSignal; }
+    port def StartCommandPort { item ref sc : StartCommand; }
+    port def StopCommandPort { item ref stc : StopCommand; }
+
+    part def Engine {
+        port fuelIn : FuelCommandPort;
+        port startIn : StartCommandPort;
+        port stopIn : StopCommandPort;
+        port stallOut : StallSignalPort;
+        port torqueOut : TorquePort;
+        attribute started : Boolean;
+    }
+
+    part def TorqueAmplifier {
+        port torqueIn : TorquePort;
+        port torqueOut : TorquePort;
+    }
+
+    part def Transmission {
+        port torqueIn : TorquePort;
+        port torqueOut : TorquePort;
+    }
+
+    part def Distribution {
+        port torqueIn : TorquePort;
+        port torqueOut : TorquePort;
+    }
+
+    part def DriveWheels {
+        port torqueIn : TorquePort;
+    }
+
+    part def StallMonitor {
+        port stallIn : StallSignalPort;
+        port stopOut : StopCommandPort;
+    }
+
+    part def PowertrainControlSystem {
+        port fuelCmdIn : FuelCommandPort;
+        port startCmdIn : StartCommandPort;
+        port stopCmdIn : StopCommandPort;
+        port wheelTorqueOut : TorquePort;
+
+        part engine : Engine;
+        part amplifier : TorqueAmplifier;
+        part transmission : Transmission;
+        part distribution : Distribution;
+        part wheels : DriveWheels;
+        part stallMonitor : StallMonitor;
+
+        connect fuelCmdIn to engine.fuelIn;
+        connect startCmdIn to engine.startIn;
+        connect stopCmdIn to engine.stopIn;
+        connect engine.torqueOut to amplifier.torqueIn;
+        connect amplifier.torqueOut to transmission.torqueIn;
+        connect transmission.torqueOut to distribution.torqueIn;
+        connect distribution.torqueOut to wheels.torqueIn;
+        connect distribution.torqueOut to wheelTorqueOut;
+        connect engine.stallOut to stallMonitor.stallIn;
+        connect stallMonitor.stopOut to engine.stopIn;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_02.sysml:10:37: error (parsing-error): Unexpected 'ref', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    10 |     port def FuelCommandPort { item ref fc : FuelCommand; }
+       |                                     ^^^
+iteration_02.sysml:11:32: error (parsing-error): Unexpected 'ref', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    11 |     port def TorquePort { item ref tq : Torque; }
+       |                                ^^^
+iteration_02.sysml:12:37: error (parsing-error): Unexpected 'ref', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    12 |     port def StallSignalPort { item ref ss : StallSignal; }
+       |                                     ^^^
+iteration_02.sysml:13:38: error (parsing-error): Unexpected 'ref', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    13 |     port def StartCommandPort { item ref sc : StartCommand; }
+       |                                      ^^^
+iteration_02.sysml:14:37: error (parsing-error): Unexpected 'ref', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    14 |     port def StopCommandPort { item ref stc : StopCommand; }
+       |                                     ^^^
+iteration_02.sysml:10:32: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    10 |     port def FuelCommandPort { item ref fc : FuelCommand; }
+       |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_02.sysml:11:27: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    11 |     port def TorquePort { item ref tq : Torque; }
+       |                           ^^^^^^^^^^^^^^^^^^^^^
+iteration_02.sysml:12:32: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    12 |     port def StallSignalPort { item ref ss : StallSignal; }
+       |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_02.sysml:13:33: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    13 |     port def StartCommandPort { item ref sc : StartCommand; }
+       |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_02.sysml:14:32: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    14 |     port def StopCommandPort { item ref stc : StopCommand; }
+       |                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

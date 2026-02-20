@@ -1,0 +1,82 @@
+{
+  "id": "resp_017f157892e35fda006997e9ec180081978c044c34c4e34eee",
+  "created_at": 1771563500.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_017f157892e35fda006997e9ec79208197b9a9c2217d85a8b9",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_017f157892e35fda006997e9f70d7c8197b393400bc6754761",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package TimedServer {\n  private import ScalarValues::*;\n\n  enum def ServerState {\n    enum off;\n    enum waiting;\n    enum response;\n  }\n\n  enum def CommandType {\n    enum start;\n    enum request;\n  }\n\n  item def RequestMessage {\n    attribute cmd : CommandType;\n  }\n\n  part def LocalClock {\n    attribute currentTimeSeconds : Real;\n    attribute daySeconds : Real = 86400.0;\n  }\n\n  port def RequestPort {\n    attribute lastMessage : RequestMessage;\n  }\n\n  part def Server {\n    attribute state : ServerState = off;\n    attribute responseDelaySeconds : Real = 300.0;\n    attribute dailyOffTimeSeconds : Real = 43140.0;\n    part clock : LocalClock;\n    port requestPort : RequestPort;\n  }\n\n  part def System {\n    part server : Server;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563512.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 394,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 967,
+    "output_tokens_details": {
+      "reasoning_tokens": 768
+    },
+    "total_tokens": 1361
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

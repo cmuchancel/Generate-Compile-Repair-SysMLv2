@@ -1,0 +1,107 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system is designed to provide end users with a convenient and efficient mode of transportation. It is capable of supporting a driver and up to four passengers sharing a vehicle, enabling them to travel safely and comfortably from the starting point to the destination. Users can freely enter and exit the vehicle, and the system should ensure that this process is simple and smooth. In addition, the system should fully consider and integrate surrounding environmental factors to ensure the safety and sustainability of the entire journey, while also being compatible with related infrastructure such as gas stations. The system’s operation should be centered on human needs, with a focus on ride experience and various conveniences, assisting passengers and drivers in smoothly completing all kinds of daily transportation tasks.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package TransportationSystem {
+  private import ScalarValues::*;
+
+  enum def DoorState { 
+    enum Closed;
+    enum Open;
+  }
+
+  port def DoorPort;
+  port def VehiclePort;
+
+  part def Person {
+    attribute name : String;
+  }
+
+  part def Driver : Person {
+    attribute licensed : Boolean;
+  }
+
+  part def Passenger : Person {
+  }
+
+  part def Seat {
+    attribute occupied : Boolean;
+    attribute comfortLevel : Real;
+  }
+
+  part def Door {
+    port doorPort : DoorPort;
+    attribute state : DoorState;
+  }
+
+  part def Environment {
+    attribute weatherSafe : Boolean;
+    attribute sustainabilityConsidered : Boolean;
+  }
+
+  part def Infrastructure {
+    attribute gasStationCompatible : Boolean;
+  }
+
+  part def VehicleSystem {
+    attribute capacity : Integer = 5;
+    attribute passengerCapacity : Integer = 4;
+    attribute safetyEnabled : Boolean;
+    attribute comfortEnabled : Boolean;
+    attribute easyEntryExit : Boolean;
+    attribute humanCentered : Boolean;
+    attribute supportsTrip : Boolean;
+
+    port vehiclePort : VehiclePort;
+
+    part driver : Driver;
+    part passenger1 : Passenger;
+    part passenger2 : Passenger;
+    part passenger3 : Passenger;
+    part passenger4 : Passenger;
+
+    part driverSeat : Seat;
+    part seat1 : Seat;
+    part seat2 : Seat;
+    part seat3 : Seat;
+    part seat4 : Seat;
+
+    part door1 : Door;
+    part door2 : Door;
+    part door3 : Door;
+    part door4 : Door;
+
+    part environment : Environment;
+    part infrastructure : Infrastructure;
+
+    connect door1.doorPort to vehiclePort;
+    connect door2.doorPort to vehiclePort;
+    connect door3.doorPort to vehiclePort;
+    connect door4.doorPort to vehiclePort;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:16:19: error (parsing-error): Expected a token. Did you forget ';'?
+    16 |   part def Driver : Person {
+iteration_01.sysml:20:22: error (parsing-error): Expected a token. Did you forget ';'?
+    20 |   part def Passenger : Person {
+iteration_01.sysml:30:15: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    30 |     attribute state : DoorState;
+       |               ^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

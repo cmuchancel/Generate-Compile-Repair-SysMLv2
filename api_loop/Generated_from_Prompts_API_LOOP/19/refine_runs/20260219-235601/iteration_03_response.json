@@ -1,0 +1,82 @@
+{
+  "id": "resp_02776c2a312d367b006997e979af8c819c85e305ba1017243c",
+  "created_at": 1771563385.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_02776c2a312d367b006997e97a5328819ca3b7feefe411cc64",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_02776c2a312d367b006997e9836454819c99406b94f86781d4",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PhotographyWorkflow {\n  private import ScalarValues::*;\n\n  enum def WorkflowStep {\n    enum Selecting;\n    enum Focusing;\n    enum Shooting;\n    enum Completed;\n  }\n\n  item def Scene;\n  item def FocusedImage;\n  item def FinalPhoto;\n\n  port def ScenePort;\n  port def FocusedImagePort;\n  port def PhotoPort;\n\n  part def SceneSelector {\n    port outScene : ScenePort;\n  }\n\n  part def FocusingModule {\n    port inScene : ScenePort;\n    port outFocused : FocusedImagePort;\n    attribute autoFocusEnabled : Boolean = true;\n  }\n\n  part def ShootingModule {\n    port inFocused : FocusedImagePort;\n    port outPhoto : PhotoPort;\n  }\n\n  part def CameraSystem {\n    part selector : SceneSelector;\n    part focusing : FocusingModule;\n    part shooting : ShootingModule;\n    port outPhoto : PhotoPort;\n    attribute currentStep : WorkflowStep = WorkflowStep::Selecting;\n\n    connect selector.outScene to focusing.inScene;\n    connect focusing.outFocused to shooting.inFocused;\n    connect shooting.outPhoto to outPhoto;\n  }\n\n  part system : CameraSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563398.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1221,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 896,
+    "output_tokens_details": {
+      "reasoning_tokens": 640
+    },
+    "total_tokens": 2117
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

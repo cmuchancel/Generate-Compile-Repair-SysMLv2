@@ -1,0 +1,82 @@
+{
+  "id": "resp_058c5bc63f34307c006997eb018c188195a05ab4c46e07dc7d",
+  "created_at": 1771563777.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_058c5bc63f34307c006997eb01e18081959539833a82312548",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_058c5bc63f34307c006997eb1cd72881959b67655928a293bb",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package EngineConfig {\n  private import ScalarValues::*;\n\n  enum def CylinderDiameter { d70; d100; }\n  enum def CylinderCount { four; six; }\n\n  part def Cylinder {\n    attribute diameter : CylinderDiameter;\n  }\n\n  part def ConfigurableEngine {\n    attribute cylinderCount : CylinderCount;\n    attribute cylinderDiameter : CylinderDiameter;\n  }\n\n  part def FourCylinderEngine {\n    part cyl1 : Cylinder;\n    part cyl2 : Cylinder;\n    part cyl3 : Cylinder;\n    part cyl4 : Cylinder;\n    attribute cylinderCount : CylinderCount = four;\n    attribute cylinderDiameter : CylinderDiameter;\n  }\n\n  part def SixCylinderEngine {\n    part cyl1 : Cylinder;\n    part cyl2 : Cylinder;\n    part cyl3 : Cylinder;\n    part cyl4 : Cylinder;\n    part cyl5 : Cylinder;\n    part cyl6 : Cylinder;\n    attribute cylinderCount : CylinderCount = six;\n    attribute cylinderDiameter : CylinderDiameter;\n  }\n\n  part configurableEngine : ConfigurableEngine;\n  part fourCylinderEngine : FourCylinderEngine;\n  part sixCylinderEngine : SixCylinderEngine;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563807.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 349,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1986,
+    "output_tokens_details": {
+      "reasoning_tokens": 1728
+    },
+    "total_tokens": 2335
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

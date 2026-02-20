@@ -1,0 +1,82 @@
+{
+  "id": "resp_018632e715b10a59006997ecc811cc819791699b9e6440f8d4",
+  "created_at": 1771564232.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_018632e715b10a59006997ecc86bc08197ab97914760b15fb5",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_018632e715b10a59006997ecd8786081978badffa4ff87ec6f",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSafetySecurityModel {\n  private import ScalarValues::*;\n\n  part def AlarmSystem {\n    attribute securityFeature : Boolean = true;\n  }\n\n  part def SeatBelt {\n    attribute safetyFeature : Boolean = true;\n  }\n\n  part def FrontRowSeat {\n  }\n\n  part def DriverAirbag {\n    attribute safetyFeature : Boolean = true;\n  }\n\n  part def VehicleBody {\n  }\n\n  part def Bumper {\n    attribute safetyFeature : Boolean = true;\n  }\n\n  part def KeylessEntrySystem {\n    attribute securityFeature : Boolean = true;\n  }\n\n  part def Interior {\n    part alarmSystem : AlarmSystem;\n    part seatBelts : SeatBelt;\n    part frontRowSeats : FrontRowSeat;\n    part driverAirbag : DriverAirbag;\n  }\n\n  part def BodyAssembly {\n    part vehicleBody : VehicleBody;\n    part bumper : Bumper;\n    part keylessEntrySystem : KeylessEntrySystem;\n  }\n\n  part def VehicleSafetySecuritySystem {\n    part interior : Interior;\n    part bodyAssembly : BodyAssembly;\n    attribute safetyIntegrated : Boolean = true;\n    attribute securityIntegrated : Boolean = true;\n  }\n\n  part vehicleSystem : VehicleSafetySecuritySystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564251.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 379,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1306,
+    "output_tokens_details": {
+      "reasoning_tokens": 1024
+    },
+    "total_tokens": 1685
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

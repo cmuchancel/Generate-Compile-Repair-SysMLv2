@@ -1,0 +1,70 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system mainly includes two types of vehicles: small vehicles and large vehicles. Each type is equipped with an engine, and each engine consists of several cylinders. The engine of a small vehicle has 4 cylinders, while the engine of a large vehicle has 6 cylinders. Each cylinder, as a fundamental component of the engine, plays a key role in the engine's normal operation and the vehicle’s power output. This design supports engine configurations with 4 to 6 cylinders to meet the performance requirements of different vehicle types.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleSystem {
+   private import ScalarValues::*;
+
+   part def Cylinder;
+
+   part def Engine;
+
+   part def SmallEngine : Engine {
+      part cylinders : Cylinder[4];
+   }
+
+   part def LargeEngine : Engine {
+      part cylinders : Cylinder[6];
+   }
+
+   part def Vehicle {
+      part engine : Engine;
+   }
+
+   part def SmallVehicle : Vehicle {
+      part engine : SmallEngine;
+   }
+
+   part def LargeVehicle : Vehicle {
+      part engine : LargeEngine;
+   }
+
+   part smallVehicleInstance : SmallVehicle;
+   part largeVehicleInstance : LargeVehicle;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:8:25: error (parsing-error): Expected a token. Did you forget ';'?
+    8 |    part def SmallEngine : Engine {
+iteration_01.sysml:12:25: error (parsing-error): Expected a token. Did you forget ';'?
+    12 |    part def LargeEngine : Engine {
+iteration_01.sysml:20:26: error (parsing-error): Expected a token. Did you forget ';'?
+    20 |    part def SmallVehicle : Vehicle {
+iteration_01.sysml:24:26: error (parsing-error): Expected a token. Did you forget ';'?
+    24 |    part def LargeVehicle : Vehicle {
+iteration_01.sysml:21:12: warning (namespace-distinguishability): Member name 'engine' shadows VehicleSystem::Vehicle::engine
+│   21 |       part engine : SmallEngine;
+│      |            ^^^^^^
+└── iteration_01.sysml:17:12: note: Inherited from here
+    └── iteration_01.sysml:20:28: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+iteration_01.sysml:25:12: warning (namespace-distinguishability): Member name 'engine' shadows VehicleSystem::Vehicle::engine
+│   25 |       part engine : LargeEngine;
+│      |            ^^^^^^
+└── iteration_01.sysml:17:12: note: Inherited from here
+    └── iteration_01.sysml:24:28: note: Because VehicleSystem::Vehicle is specialized through FeatureTyping
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

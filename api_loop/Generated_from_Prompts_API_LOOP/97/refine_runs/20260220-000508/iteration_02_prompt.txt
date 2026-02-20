@@ -1,0 +1,107 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system involves the definition of vehicles, including basic vehicles, engines, and the configuration of engine cylinders. In standard vehicles, each engine contains 4 to 6 cylinders. For small vehicles, the engine is required to contain only 4 cylinders; for large vehicles, the engine needs to be equipped with 6 cylinders. The system should automatically select and configure the appropriate number of engine cylinders according to the vehicle size to meet the practical application requirements of different types of vehicles.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleModel {
+  private import ScalarValues::*;
+
+  enum def VehicleSize { small; standard; large; }
+
+  part def Engine {
+    attribute cylinderCount : Integer;
+  }
+
+  part def Engine4 : Engine {
+    attribute cylinderCount : Integer = 4;
+  }
+
+  part def Engine6 : Engine {
+    attribute cylinderCount : Integer = 6;
+  }
+
+  part def Vehicle {
+    attribute size : VehicleSize;
+    part engine : Engine;
+  }
+
+  part def SmallVehicle : Vehicle {
+    attribute size : VehicleSize = VehicleSize::small;
+    part engine : Engine4;
+  }
+
+  part def LargeVehicle : Vehicle {
+    attribute size : VehicleSize = VehicleSize::large;
+    part engine : Engine6;
+  }
+
+  part def StandardVehicle4 : Vehicle {
+    attribute size : VehicleSize = VehicleSize::standard;
+    part engine : Engine4;
+  }
+
+  part def StandardVehicle6 : Vehicle {
+    attribute size : VehicleSize = VehicleSize::standard;
+    part engine : Engine6;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:4:33: error (parsing-error): Unexpected 'standard', expected one of ["SINGLE_LINE_NOTE", "MULTILINE_NOTE", ";", "{", "}", "[", "<", "@", "#", ":=", "REGULAR_COMMENT", "::>", "=>", ":>>", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "ordered", "nonunique", "metadata", "=", "default", "NAME", ":>", "subsets", "references", "crosses", "redefines", ":", "defined", "enum"].
+    4 |   enum def VehicleSize { small; standard; large; }
+      |                                 ^^^^^^^^
+iteration_01.sysml:10:20: error (parsing-error): Expected a token. Did you forget ';'?
+    10 |   part def Engine4 : Engine {
+iteration_01.sysml:14:20: error (parsing-error): Expected a token. Did you forget ';'?
+    14 |   part def Engine6 : Engine {
+iteration_01.sysml:23:25: error (parsing-error): Expected a token. Did you forget ';'?
+    23 |   part def SmallVehicle : Vehicle {
+iteration_01.sysml:28:25: error (parsing-error): Expected a token. Did you forget ';'?
+    28 |   part def LargeVehicle : Vehicle {
+iteration_01.sysml:33:29: error (parsing-error): Expected a token. Did you forget ';'?
+    33 |   part def StandardVehicle4 : Vehicle {
+iteration_01.sysml:34:47: error (parsing-error): Unexpected token '::'.
+    34 |     attribute size : VehicleSize = VehicleSize::standard;
+       |                                               ^^
+iteration_01.sysml:34:49: error (parsing-error): Unexpected 'standard', expected one of ["SINGLE_LINE_NOTE", "NAME", "MULTILINE_NOTE", ";", "{", "}", ",", "::", "**", "[", "]", "??", "+", "|", "&", "===", "!==", "<=", ">=", "..", "%", "^", "@@", "#", "(", ")", ".?", "->", "from", "to", "*", ".", "if", "?", "else", "implies", "or", "and", "-", "xor", "==", "!=", "<", ">", "/", "hastype", "istype", "@", "as", "meta", "=", "by", "then", "connect", "of", "action", "via", "parallel", "do"].
+    34 |     attribute size : VehicleSize = VehicleSize::standard;
+       |                                                 ^^^^^^^^
+iteration_01.sysml:38:29: error (parsing-error): Expected a token. Did you forget ';'?
+    38 |   part def StandardVehicle6 : Vehicle {
+iteration_01.sysml:39:47: error (parsing-error): Unexpected token '::'.
+    39 |     attribute size : VehicleSize = VehicleSize::standard;
+       |                                               ^^
+iteration_01.sysml:39:49: error (parsing-error): Unexpected 'standard', expected one of ["SINGLE_LINE_NOTE", "NAME", "MULTILINE_NOTE", ";", "{", "}", ",", "::", "**", "[", "]", "??", "+", "|", "&", "===", "!==", "<=", ">=", "..", "%", "^", "@@", "#", "(", ")", ".?", "->", "from", "to", "*", ".", "if", "?", "else", "implies", "or", "and", "-", "xor", "==", "!=", "<", ">", "/", "hastype", "istype", "@", "as", "meta", "=", "by", "then", "connect", "of", "action", "via", "parallel", "do"].
+    39 |     attribute size : VehicleSize = VehicleSize::standard;
+       |                                                 ^^^^^^^^
+iteration_01.sysml:11:15: warning (namespace-distinguishability): Member name 'cylinderCount' shadows VehicleModel::Engine::cylinderCount
+│   11 |     attribute cylinderCount : Integer = 4;
+│      |               ^^^^^^^^^^^^^
+└── iteration_01.sysml:7:15: note: Inherited from here
+    └── iteration_01.sysml:10:22: note: Because VehicleModel::Engine is specialized through FeatureTyping
+iteration_01.sysml:15:15: warning (namespace-distinguishability): Member name 'cylinderCount' shadows VehicleModel::Engine::cylinderCount
+│   15 |     attribute cylinderCount : Integer = 6;
+│      |               ^^^^^^^^^^^^^
+└── iteration_01.sysml:7:15: note: Inherited from here
+    └── iteration_01.sysml:14:22: note: Because VehicleModel::Engine is specialized through FeatureTyping
+iteration_01.sysml:24:15: warning (namespace-distinguishability): Member name 'size' shadows VehicleModel::Vehicle::size
+│   24 |     attribute size : VehicleSize = VehicleSize::small;
+│      |               ^^^^
+... (truncated compiler output) ...
+│   25 |
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

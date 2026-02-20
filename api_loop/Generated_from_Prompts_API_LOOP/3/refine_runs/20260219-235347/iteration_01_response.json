@@ -1,0 +1,82 @@
+{
+  "id": "resp_073ef60d1791dfd1006997e8dd1c1481a2b221d7a2b958d420",
+  "created_at": 1771563229.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_073ef60d1791dfd1006997e8ddb36481a29b233d9282a2dd6a",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_073ef60d1791dfd1006997e8e5f77c81a28d9a6c471eb48f98",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleStructure {\n    part def VehicleComponent;\n    part def Engine : VehicleComponent;\n    part def Transmission : VehicleComponent;\n    part def Wheel : VehicleComponent;\n\n    part def Vehicle {\n        part engine : Engine;\n        part transmission : Transmission;\n        part wheels[4] : Wheel;\n    }\n\n    part def Car : Vehicle;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563238.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 362,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 589,
+    "output_tokens_details": {
+      "reasoning_tokens": 512
+    },
+    "total_tokens": 951
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

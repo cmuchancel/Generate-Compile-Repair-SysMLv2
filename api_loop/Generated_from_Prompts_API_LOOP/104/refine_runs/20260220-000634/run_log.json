@@ -1,0 +1,59 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:06:34.999253Z",
+    "iteration_end": "2026-02-20T05:06:53.416921Z",
+    "iteration_duration_seconds": 18.417996083000617,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/104/20260220-000634/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/104/20260220-000634/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/104/20260220-000634/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:9:15: \u001b[38;2;204;204;057mwarning\u001b[0m (namespace-distinguishability): Member name 'start' shadows Items::Item::start\n\u2502   9 |     attribute start : Boolean;\n\u2502     |               \u001b[38;2;204;204;057m^^^^^\u001b[0m\n\u2514\u2500\u2500 /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Systems Library/Items.sysml:33:8: \u001b[38;2;255;255;255mnote\u001b[0m: Inherited from here\n    \u2514\u2500\u2500 iteration_01.sysml:8:3: \u001b[38;2;255;255;255mnote\u001b[0m: Because Items::Item is implicitly specialized through Subclassification\n\niteration_01.sysml:18:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    18 |     item FuelCommand;\n       |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:22:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    22 |     item StartStopCommand;\n       |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:26:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    26 |     item Torque;\n       |     \u001b[38;2;220;080;080m^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 391,
+      "output_tokens": 1226,
+      "total_tokens": 1617
+    },
+    "tokens_used_total": 1617
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:06:53.416981Z",
+    "iteration_end": "2026-02-20T05:07:04.827634Z",
+    "iteration_duration_seconds": 11.410887124999135,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/104/20260220-000634/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/104/20260220-000634/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/104/20260220-000634/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:18:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ref', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    18 |     item ref fuelCmd : FuelCommand;\n       |          \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:22:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ref', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    22 |     item ref startStopCmd : StartStopCommand;\n       |          \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:26:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ref', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    26 |     item ref torque : Torque;\n       |          \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:18:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    18 |     item ref fuelCmd : FuelCommand;\n       |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:22:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    22 |     item ref startStopCmd : StartStopCommand;\n       |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_02.sysml:26:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    26 |     item ref torque : Torque;\n       |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 1110,
+      "output_tokens": 762,
+      "total_tokens": 1872
+    },
+    "tokens_used_total": 3489
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T05:07:04.827699Z",
+    "iteration_end": "2026-02-20T05:07:15.545396Z",
+    "iteration_duration_seconds": 10.717906916994252,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/104/20260220-000634/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/104/20260220-000634/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/104/20260220-000634/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1389,
+      "output_tokens": 641,
+      "total_tokens": 2030
+    },
+    "tokens_used_total": 5519
+  }
+]

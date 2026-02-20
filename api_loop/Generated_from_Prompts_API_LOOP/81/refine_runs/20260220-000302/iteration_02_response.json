@@ -1,0 +1,82 @@
+{
+  "id": "resp_04ccf58249e7a0eb006997eb1cddc881a28b15d1145ab2f613",
+  "created_at": 1771563804.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_04ccf58249e7a0eb006997eb1d3b8c81a2a8de005bb51f30dd",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_04ccf58249e7a0eb006997eb2c7eb481a2bc83b19cfd8b3572",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AutomotiveConfig {\n  private import ScalarValues::*;\n\n  enum def DiameterSpec {\n    enum D70;\n    enum D100;\n  }\n\n  part def Cylinder {\n    attribute diameter : DiameterSpec;\n  }\n\n  part def Engine { }\n\n  part def Engine4 specializes Engine {\n    part cyl1 : Cylinder;\n    part cyl2 : Cylinder;\n    part cyl3 : Cylinder;\n    part cyl4 : Cylinder;\n  }\n\n  part def Engine6 specializes Engine {\n    part cyl1 : Cylinder;\n    part cyl2 : Cylinder;\n    part cyl3 : Cylinder;\n    part cyl4 : Cylinder;\n    part cyl5 : Cylinder;\n    part cyl6 : Cylinder;\n  }\n\n  part def Transmission { }\n\n  part def ManualTransmission specializes Transmission { }\n\n  part def AutomaticTransmission specializes Transmission { }\n\n  part def Vehicle {\n    part engine : Engine;\n    part transmission : Transmission;\n  }\n\n  part def Vehicle4Manual {\n    part engine : Engine4;\n    part transmission : ManualTransmission;\n  }\n\n  part def Vehicle6Auto {\n    part engine : Engine6;\n    part transmission : AutomaticTransmission;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563822.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1302,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1228,
+    "output_tokens_details": {
+      "reasoning_tokens": 960
+    },
+    "total_tokens": 2530
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

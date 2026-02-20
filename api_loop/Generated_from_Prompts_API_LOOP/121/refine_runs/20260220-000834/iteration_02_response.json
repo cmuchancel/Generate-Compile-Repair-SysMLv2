@@ -1,0 +1,82 @@
+{
+  "id": "resp_04530f556e2353cb006997ec757c1c81969d4a61ff135db931",
+  "created_at": 1771564149.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_04530f556e2353cb006997ec7621348196a4ea1b86e9f04014",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_04530f556e2353cb006997ec9b98888196a2752e465e2732b5",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PowertrainConfig\n{\n  private import ScalarValues::*;\n\n  enum def EngineType\n  {\n    fourCylinder;\n    sixCylinder;\n    eightCylinder;\n  }\n\n  part def Cylinder\n  {\n    attribute displacement : Real;\n    attribute mass : Real;\n  }\n\n  part def Piston\n  {\n    attribute mass : Real;\n    attribute material : String;\n  }\n\n  part def ConnectingRod\n  {\n    attribute mass : Real;\n    attribute length : Real;\n  }\n\n  part def Crankshaft\n  {\n    attribute mass : Real;\n    attribute stroke : Real;\n  }\n\n  part def Engine\n  {\n    attribute engineType : EngineType;\n    attribute cylinderCount : Integer;\n    attribute totalPower : Real;\n    attribute mass : Real;\n    attribute efficiency : Real;\n    attribute reliability : Real;\n    attribute cost : Real;\n\n    part cylinder : Cylinder;\n    part piston : Piston;\n    part connectingRod : ConnectingRod;\n    part crankshaft : Crankshaft;\n  }\n\n  part def PerformanceData\n  {\n    attribute power : Real;\n    attribute mass : Real;\n    attribute efficiency : Real;\n    attribute reliability : Real;\n    attribute cost : Real;\n  }\n\n  part def EvaluationModel\n  {\n    attribute powerWeight : Real;\n    attribute massWeight : Real;\n    attribute efficiencyWeight : Real;\n    attribute reliabilityWeight : Real;\n    attribute costWeight : Real;\n  }\n\n  part def Recommendation\n  {\n    attribute recommendedEngineType : EngineType;\n    attribute recommendedEngineId : String;\n    attribute rationale : String;\n    attribute transparencyNote : String;\n    attribute isOptimal : Boolean;\n  }\n\n  part def EngineScheme\n  {\n    attribute schemeId : String;\n    attribute schemeEngineType : EngineType;\n    attribute schemeCylinderCount : Integer;\n    part engine : Engine;\n    part performance : PerformanceData;\n    attribute score : Real;\n    attribute isFeasible : Boolean;\n  }\n\n  part def TradeOffAnalysis\n  {\n    attribute methodName : String;\n    attribute optimalScore : Real;\n    part evaluationModel : EvaluationModel;\n    part recommendation : Recommendation;\n  }\n\n  part def PowertrainConfigurationSystem\n  {\n    attribute userRequest : String;\n    attribute selectedEngineType : EngineType;\n\n    part tradeOff : TradeOffAnalysis;\n    part schemeFour : EngineScheme;\n    part schemeSix : EngineScheme;\n    part schemeEight : EngineScheme;\n  }\n\n  part powertrainSystem : PowertrainConfigurationSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564193.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 2131,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 3286,
+    "output_tokens_details": {
+      "reasoning_tokens": 2752
+    },
+    "total_tokens": 5417
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

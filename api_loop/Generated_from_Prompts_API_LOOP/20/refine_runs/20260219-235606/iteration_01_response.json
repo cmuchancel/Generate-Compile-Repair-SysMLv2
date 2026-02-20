@@ -1,0 +1,82 @@
+{
+  "id": "resp_0da629358dc61776006997e967ca70819f8f3517f9ce6a30dc",
+  "created_at": 1771563367.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0da629358dc61776006997e96887b8819fbc118564af39b55d",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0da629358dc61776006997e97d759c819f8b518ee64b55b57c",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PhotographyWorkflow {\n  private import ScalarValues::*;\n\n  item def Scene;\n  item def Image;\n  item def Photograph;\n\n  port def ScenePort {\n    item scene : Scene;\n  }\n\n  port def ImagePort {\n    item image : Image;\n  }\n\n  port def PhotoPort {\n    item photo : Photograph;\n  }\n\n  part def User {\n    port sceneSelection : ScenePort;\n    port photoIn : PhotoPort;\n  }\n\n  part def FocusingProcess {\n    port sceneIn : ScenePort;\n    port imageOut : ImagePort;\n    attribute focused : Boolean = true;\n  }\n\n  part def ShootingProcess {\n    port imageIn : ImagePort;\n    port photoOut : PhotoPort;\n    attribute shot : Boolean = true;\n  }\n\n  part def WorkflowSystem {\n    part focusing : FocusingProcess;\n    part shooting : ShootingProcess;\n    port sceneIn : ScenePort;\n    port photoOut : PhotoPort;\n    attribute automaticWorkflow : Boolean = true;\n    connect sceneIn to focusing.sceneIn;\n    connect focusing.imageOut to shooting.imageIn;\n    connect shooting.photoOut to photoOut;\n  }\n\n  part def PhotographyWorkflow {\n    part user : User;\n    part system : WorkflowSystem;\n    connect user.sceneSelection to system.sceneIn;\n    connect system.photoOut to user.photoIn;\n  }\n\n  part workflow : PhotographyWorkflow;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563392.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 336,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1501,
+    "output_tokens_details": {
+      "reasoning_tokens": 1152
+    },
+    "total_tokens": 1837
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

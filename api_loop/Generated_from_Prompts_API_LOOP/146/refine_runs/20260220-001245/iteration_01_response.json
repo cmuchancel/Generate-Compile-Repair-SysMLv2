@@ -1,0 +1,82 @@
+{
+  "id": "resp_08f79883b8d7ec9c006997ed4ee97481939e83932a0dcc32fb",
+  "created_at": 1771564366.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_08f79883b8d7ec9c006997ed4f4ddc8193a881c0401125d209",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_08f79883b8d7ec9c006997ed588e2c81938573a1d679b6814c",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package TrajectorySampling {\n    private import ScalarValues::*;\n\n    item def Vector3 {\n        attribute x_m : Real;\n        attribute y_m : Real;\n        attribute z_m : Real;\n    }\n\n    item def TrajectorySample {\n        attribute time_s : Real;\n        attribute position : Vector3;\n        attribute velocity : Vector3;\n    }\n\n    part def TrajectoryRecorder {\n        attribute liftoffUTC : String;\n        attribute liftoffTimeZero_s : Real = 0.0;\n        attribute samples : TrajectorySample[*];\n    }\n\n    part def SpacecraftTrajectorySystem {\n        part recorder : TrajectoryRecorder;\n    }\n\n    part system : SpacecraftTrajectorySystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564378.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 424,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 730,
+    "output_tokens_details": {
+      "reasoning_tokens": 576
+    },
+    "total_tokens": 1154
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

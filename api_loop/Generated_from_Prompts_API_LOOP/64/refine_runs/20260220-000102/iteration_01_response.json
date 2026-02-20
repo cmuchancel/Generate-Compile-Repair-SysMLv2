@@ -1,0 +1,82 @@
+{
+  "id": "resp_0b7bcce3c8a3e84c006997ea901cfc8195886385c039d7b555",
+  "created_at": 1771563664.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0b7bcce3c8a3e84c006997ea907a88819595a44e33329edf50",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0b7bcce3c8a3e84c006997ea98acb481959fcb14f153adf7da",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleMassCompliance {\n  private import ScalarValues::*;\n\n  part def Chassis {\n    attribute mass : Real;\n  }\n\n  part def Engine {\n    attribute mass : Real;\n  }\n\n  part def Transmission {\n    attribute mass : Real;\n  }\n\n  part def Vehicle {\n    part chassis : Chassis;\n    part engine : Engine;\n    part transmission : Transmission;\n    attribute maxMass : Real = 2500.0;\n    attribute totalMass : Real;\n    attribute compliant : Boolean;\n  }\n\n  part def MassComplianceSystem {\n    part vehicle : Vehicle;\n  }\n\n  part massComplianceSystem : MassComplianceSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563674.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 385,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 704,
+    "output_tokens_details": {
+      "reasoning_tokens": 512
+    },
+    "total_tokens": 1089
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

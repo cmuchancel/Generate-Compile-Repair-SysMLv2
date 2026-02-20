@@ -1,0 +1,54 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system requires the definition of an automotive component model, which includes a vehicle and its front wheels. The vehicle has a mass of 1200 kilograms and a length of 4.82 meters. Each vehicle is equipped with a pair of left and right front wheels. For each wheel, the hub diameter must be specified as 18 inches and the width as 245 millimeters, with the outer diameter of the wheel determined by both the hub diameter and the tire height. In addition, each wheel must be fitted with a tire. All dimensions and units must support both International System of Units (SI) and United States customary units (Imperial) conversions. This model aims to provide fundamental data structures for the standardized design and simulation of automotive parts.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 2):
+                package AutomotiveModel {
+    import ScalarValues::*;
+
+    part def Vehicle {
+        attribute mass_kg : Real = 1200;
+        attribute mass_lb : Real = mass_kg * 2.20462;
+        attribute length_m : Real = 4.82;
+        attribute length_ft : Real = length_m * 3.28084;
+        part frontLeftWheel : Wheel;
+        part frontRightWheel : Wheel;
+    }
+
+    part def Wheel {
+        attribute hubDiameter_in : Real = 18;
+        attribute hubDiameter_mm : Real = hubDiameter_in * 25.4;
+        attribute width_mm : Real = 245;
+        attribute width_in : Real = width_mm / 25.4;
+        part tire : Tire;
+        attribute outerDiameter_mm : Real = hubDiameter_mm + 2 * tire.height_mm;
+        attribute outerDiameter_in : Real = outerDiameter_mm / 25.4;
+    }
+
+    part def Tire {
+        attribute height_mm : Real = 0;
+        attribute height_in : Real = height_mm / 25.4;
+    }
+
+    part vehicle : Vehicle;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_02.sysml:2:5: error (import-explicit-visibility): Imports must have explicit visibility.
+2 |     import ScalarValues::*;
+  |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

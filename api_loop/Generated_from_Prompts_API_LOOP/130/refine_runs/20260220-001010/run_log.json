@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:10:11.015158Z",
+    "iteration_end": "2026-02-20T05:10:23.519212Z",
+    "iteration_duration_seconds": 12.504266165997251,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/130/20260220-001010/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/130/20260220-001010/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/130/20260220-001010/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:12:43: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'SafetyCritical' found.\n    12 |     attribute safetyClass : SafetyClass = SafetyCritical;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:17:43: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'SafetyCritical' found.\n    17 |     attribute safetyClass : SafetyClass = SafetyCritical;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:22:43: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'SecurityCritical' found.\n    22 |     attribute safetyClass : SafetyClass = SecurityCritical;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:27:43: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'SafetyCritical' found.\n    27 |     attribute safetyClass : SafetyClass = SafetyCritical;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:32:43: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'SecurityCritical' found.\n    32 |     attribute safetyClass : SafetyClass = SecurityCritical;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:37:43: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'SafetyCritical' found.\n    37 |     attribute safetyClass : SafetyClass = SafetyCritical;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:42:43: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'SafetyCritical' found.\n    42 |     attribute safetyClass : SafetyClass = SafetyCritical;\n       |                                           \u001b[38;2;220;080;080m^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 416,
+      "output_tokens": 791,
+      "total_tokens": 1207
+    },
+    "tokens_used_total": 1207
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:10:23.519265Z",
+    "iteration_end": "2026-02-20T05:10:30.224549Z",
+    "iteration_duration_seconds": 6.705436874995939,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/130/20260220-001010/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/130/20260220-001010/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/130/20260220-001010/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 1151,
+      "output_tokens": 503,
+      "total_tokens": 1654
+    },
+    "tokens_used_total": 2861
+  }
+]

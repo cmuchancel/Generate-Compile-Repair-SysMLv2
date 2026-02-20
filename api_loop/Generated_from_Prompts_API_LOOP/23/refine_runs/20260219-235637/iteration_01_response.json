@@ -1,0 +1,82 @@
+{
+  "id": "resp_08e5cad88aa7b2ed006997e9876a54819589df12ac35d9b8df",
+  "created_at": 1771563399.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_08e5cad88aa7b2ed006997e987beb48195b7d42d50bd894831",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_08e5cad88aa7b2ed006997e99457008195bfdbbd13f8e6b68a",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PhotographyWorkflow {\n  private import ScalarValues::*;\n\n  enum def FocusState {\n    enum clear;\n    enum unclear;\n  }\n\n  item def Scene;\n  item def Photo;\n\n  port def ScenePort {\n    attribute scene : Scene;\n  }\n\n  port def FocusStatusPort {\n    attribute status : FocusState;\n  }\n\n  port def PhotoPort {\n    attribute photo : Photo;\n  }\n\n  part def SceneSelector {\n    port sceneOut : ScenePort;\n  }\n\n  part def FocusUnit {\n    attribute autoFocus : Boolean = true;\n    port sceneIn : ScenePort;\n    port focusStatusOut : FocusStatusPort;\n  }\n\n  part def PhotoShooter {\n    attribute oneClick : Boolean = true;\n    port sceneIn : ScenePort;\n    port focusIn : FocusStatusPort;\n    port photoOut : PhotoPort;\n  }\n\n  part def PhotographySystem {\n    part selector : SceneSelector;\n    part focus : FocusUnit;\n    part shooter : PhotoShooter;\n\n    port photoOut : PhotoPort;\n\n    connect selector.sceneOut to focus.sceneIn;\n    connect selector.sceneOut to shooter.sceneIn;\n    connect focus.focusStatusOut to shooter.focusIn;\n    connect shooter.photoOut to photoOut;\n  }\n\n  part system : PhotographySystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563415.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 333,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 887,
+    "output_tokens_details": {
+      "reasoning_tokens": 576
+    },
+    "total_tokens": 1220
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,47 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to model various types of vehicles. Vehicles are mainly divided into two categories: manually operated vehicles and powered vehicles. Manually operated vehicles are driven by personnel, with each vehicle corresponding to a single driver; powered vehicles are equipped with engines as their source of power. In addition, certain vehicles are both manually operated and equipped with engines, and are classified as manually operated powered vehicles. The system also includes two entities, Personnel and Engine, which are used to describe drivers and power devices of vehicles, respectively. Through this model, the relationships among personnel, vehicles, and their power devices in various vehicle types can be fully represented.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package Vehicles {
+    private import ScalarValues::*;
+
+    part def Personnel;
+    part def Engine;
+
+    part def Vehicle;
+
+    part def ManualVehicle : Vehicle {
+        part driver : Personnel[1];
+    }
+
+    part def PoweredVehicle : Vehicle {
+        part engine : Engine[1];
+    }
+
+    part def ManualPoweredVehicle : ManualVehicle, PoweredVehicle {
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:9:28: error (parsing-error): Expected a token. Did you forget ';'?
+    9 |     part def ManualVehicle : Vehicle {
+iteration_01.sysml:13:29: error (parsing-error): Expected a token. Did you forget ';'?
+    13 |     part def PoweredVehicle : Vehicle {
+iteration_01.sysml:17:35: error (parsing-error): Expected a token. Did you forget ';'?
+    17 |     part def ManualPoweredVehicle : ManualVehicle, PoweredVehicle {
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

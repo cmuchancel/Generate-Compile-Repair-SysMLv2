@@ -1,0 +1,60 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to implement power management for vehicles. The vehicle has multiple operating states, including Off, Start, and On. Under normal circumstances, the vehicle remains in the Off state. The user can switch the vehicle from the Off state to the Start state by issuing a start signal. Once the startup is complete and the vehicle receives an On signal, it transitions to the On state. While in the On state, the user can switch the vehicle back to the Off state by issuing an off signal. The system must ensure that the vehicle’s operating state can be switched accurately and promptly in accordance with the various control signals issued by the user, thus meeting the power management needs during daily use. Meanwhile, the system also reserves functionality for health state management to allow for future expansion of vehicle health monitoring capabilities.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package PowerManagement {
+    private import ScalarValues::*;
+
+    enum def OperatingState {
+        enum Off;
+        enum Start;
+        enum On;
+    }
+
+    enum def HealthState {
+        enum Unknown;
+        enum Healthy;
+        enum Degraded;
+        enum Fault;
+    }
+
+    port def ControlSignals {
+        attribute startSignal: Boolean;
+        attribute onSignal: Boolean;
+        attribute offSignal: Boolean;
+    }
+
+    part def VehiclePowerManager {
+        attribute operatingState: OperatingState = Off;
+        attribute healthState: HealthState = Unknown;
+        port control: ControlSignals;
+    }
+
+    part def Vehicle {
+        part powerManager: VehiclePowerManager;
+    }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:24:52: error (reference-error): No Feature named 'Off' found.
+    24 |         attribute operatingState: OperatingState = Off;
+       |                                                    ^^^
+iteration_01.sysml:25:46: error (reference-error): No Feature named 'Unknown' found.
+    25 |         attribute healthState: HealthState = Unknown;
+       |                                              ^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

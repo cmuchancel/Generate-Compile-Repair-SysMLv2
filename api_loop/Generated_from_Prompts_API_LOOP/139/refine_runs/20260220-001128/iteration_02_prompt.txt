@@ -1,0 +1,98 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is used for modeling the structural and functional constraints of automotive components, where a car comprises several wheels and related parts. The vehicle has a total mass of 1200 kilograms and a length of 4.82 meters, and is equipped with multiple wheel assemblies. Each wheel assembly consists of a set of tires and the corresponding brake disc. A single wheel is composed of a rim and a tire, with the rim diameter being 18 inches, tire width 245 millimeters, and tire height 45 millimeters, based on which the outer diameter is calculated. The default tread depth of the tire is 6.0 millimeters, and it must not be less than 3.5 millimeters to comply with road safety regulations. The brake disc assembly installed on each wheel assembly has a radius of 95 millimeters, and the system requires that the brake disc diameter (i.e., twice the radius) of each wheel assembly must be less than the outer diameter of the corresponding wheel, ensuring proper installation and safety clearance between components. The system also enforces related constraints to ensure that all wheel assemblies meet the fitment requirements between the brake disc and rim, thereby safeguarding overall safety and performance.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleModel {
+  private import ScalarValues::*;
+
+  part def Vehicle {
+    attribute mass : Real = 1200[kg];
+    attribute length : Real = 4.82[m];
+    part wheelAssembly[4] : WheelAssembly;
+  }
+
+  part def WheelAssembly {
+    part wheel : Wheel;
+    part brakeDisc : BrakeDisc;
+    attribute brakeDiscDiameter : Real = brakeDisc.radius * 2;
+    attribute brakeDiscFitsWheel : Boolean = (brakeDiscDiameter < wheel.outerDiameter);
+    attribute brakeDiscFitsRim : Boolean = (brakeDiscDiameter < wheel.rim.diameterMM);
+  }
+
+  part def Wheel {
+    part rim : Rim;
+    part tire : Tire;
+    attribute outerDiameter : Real = rim.diameterMM + 2 * tire.height;
+  }
+
+  part def Rim {
+    attribute diameterInches : Real = 18[in];
+    attribute diameterMM : Real = 457.2[mm];
+  }
+
+  part def Tire {
+    attribute width : Real = 245[mm];
+    attribute height : Real = 45[mm];
+    attribute treadDepth : Real = 6.0[mm];
+    attribute treadDepthOk : Boolean = (treadDepth >= 3.5[mm]);
+  }
+
+  part def BrakeDisc {
+    attribute radius : Real = 95[mm];
+  }
+
+  part vehicle : Vehicle;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:26:15: error (parsing-error): Unexpected identifier, expected one of ["NAME", ";", "{", "all", "*", "if", "+", "-", "~", "not", "hastype", "istype", "@", "as", "(", "null", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", "$", "Feature", "FeatureChaining", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "OperatorExpression", "ParameterMembership", "Feature", "FeatureValue", "ParameterMembership", "Feature", "FeatureValue", "MetadataAccessExpression", "OperatorExpression", "FeatureValue", "Feature", "ParameterMembership", "FeatureValue", "Feature", "ParameterMembership", "OperatorExpression", "IndexExpression", "OperatorExpression", "ParameterMembership", "Feature", "FeatureValue", "FeatureChainExpression", "CollectExpression", "SelectExpression", "InvocationExpression", "OwningMembership", "NullExpression", "FeatureReferenceExpression", "Membership", "MetadataAccessExpression", "Membership", "InvocationExpression", "ConstructorExpression", "Membership", "FeatureReferenceExpression", "FeatureMembership", "Expression", "LiteralBoolean", "LiteralString", "LiteralInteger", "LiteralRational", "LiteralInfinity", "ElementReference"].
+    26 |     attribute diameterMM : Real = 457.2[mm];
+       |               ^^^^^^^^^^
+iteration_01.sysml:26:28: error (parsing-error): Unexpected identifier.
+    26 |     attribute diameterMM : Real = 457.2[mm];
+       |                            ^^^^
+iteration_01.sysml:26:44: error (parsing-error): Expected a token. Did you forget ']'?
+    26 |     attribute diameterMM : Real = 457.2[mm];
+iteration_01.sysml:5:29: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   5 |     attribute mass : Real = 1200[kg];
+│     |                             ^^^^^^^^
+└── iteration_01.sysml:5:34: note: (orphan <placeholder Feature>) does not conform to MeasurementReferences::MeasurementUnit
+iteration_01.sysml:6:31: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   6 |     attribute length : Real = 4.82[m];
+│     |                               ^^^^^^^
+└── iteration_01.sysml:6:36: note: (orphan <placeholder Feature>) does not conform to MeasurementReferences::MeasurementUnit
+iteration_01.sysml:25:39: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   25 |     attribute diameterInches : Real = 18[in];
+│      |                                       ^^^^^^^
+│   26 |     attribute diameterMM : Real = 457.2[mm];
+│      |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:26:15: note: Quantities::TensorQuantityValue does not conform to MeasurementReferences::MeasurementUnit
+iteration_01.sysml:25:45: error (parameter-membership-owning-type): A parameter may only be owned by a behavior, step, or constructor expression return parameter
+    25 |     attribute diameterInches : Real = 18[in];
+       |                                             ^
+iteration_01.sysml:26:15: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   26 |     attribute diameterMM : Real = 457.2[mm];
+│      |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+└── iteration_01.sysml:26:41: note: (orphan <placeholder Feature>) does not conform to MeasurementReferences::MeasurementUnit
+iteration_01.sysml:30:30: error (quantity-operator-expression): Invalid quantity expression, expected a measurement unit as the second argument
+│   30 |     attribute width : Real = 245[mm];
+│      |                              ^^^^^^^
+└── iteration_01.sysml:30:34: note: (orphan <placeholder Feature>) does not conform to MeasurementReferences::MeasurementUnit
+iteration_01.sysml:31:31: error (quantity-operator-expression): Invalid quantity expression, expec
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,82 @@
+{
+  "id": "resp_054551b37468a473006997ebc5258c81a381eee13369b9b04c",
+  "created_at": 1771563973.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_054551b37468a473006997ebc57a6481a3ac8edc1c9463e876",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_054551b37468a473006997ebdd572481a3a3ae09e3d0d20cdc",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package ArchitectureModel {\n    private import ScalarValues::*;\n\n    item def Signal;\n\n    port def SigPort {\n        item sig : Signal;\n    }\n\n    part def C1 {\n        port pb : SigPort;\n    }\n\n    part def C2 {\n        port pc : SigPort;\n    }\n\n    part def C3 {\n        port pd : SigPort;\n    }\n\n    part def C4 {\n    }\n\n    part def B11 {\n        part c1 : C1;\n        part c2 : C2;\n        port pe : SigPort;\n\n        connect c1.pb to c2.pc;\n        connect pe to c1.pb;\n    }\n\n    part def B12 {\n        part c3 : C3;\n        part c4 : C4;\n        port pf : SigPort;\n\n        connect pf to c3.pd;\n    }\n\n    part def A11 {\n        part b11 : B11;\n        part b12 : B12;\n\n        connect b11.pe to b12.pf;\n    }\n\n    part def B21 {\n        part c1 : C1;\n        part c2 : C2;\n        port p21 : SigPort;\n\n        connect c1.pb to c2.pc;\n        connect p21 to c1.pb;\n    }\n\n    part def B22 {\n        part c3 : C3;\n        part c4 : C4;\n        port p22 : SigPort;\n\n        connect p22 to c3.pd;\n    }\n\n    part def A21 {\n        part b21 : B21;\n        part b22 : B22;\n\n        connect b21.p21 to b22.p22;\n    }\n\n    part def System {\n        part a11 : A11;\n        part a21 : A21;\n    }\n\n    part system : System;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564001.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 496,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1977,
+    "output_tokens_details": {
+      "reasoning_tokens": 1600
+    },
+    "total_tokens": 2473
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

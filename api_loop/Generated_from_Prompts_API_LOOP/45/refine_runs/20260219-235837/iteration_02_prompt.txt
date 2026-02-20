@@ -1,0 +1,92 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to implement the cruise control function for vehicles. The driver can send a set speed command to the cruise controller through operation. After receiving the set speed, the cruise controller acquires the real-time vehicle speed information from the speedometer. Subsequently, the cruise controller generates a corresponding throttle control command based on the difference between the actual vehicle speed and the set speed, and sends this command to the engine system to adjust the vehicle's power output, thereby achieving automatic control of the vehicle speed. The entire process realizes the automatic response to the driver's intent, improving driving comfort and safety.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package CruiseControlSystem {
+   private import ScalarValues::*;
+
+   item def SetSpeedCommand {
+      attribute setSpeed : Real;
+   }
+
+   item def VehicleSpeed {
+      attribute speed : Real;
+   }
+
+   item def ThrottleCommand {
+      attribute throttle : Real;
+   }
+
+   port def SetSpeedPort {
+      item SetSpeedCommand;
+   }
+
+   port def SpeedPort {
+      item VehicleSpeed;
+   }
+
+   port def ThrottlePort {
+      item ThrottleCommand;
+   }
+
+   part def Driver {
+      port setSpeedOut : SetSpeedPort;
+   }
+
+   part def Speedometer {
+      port speedOut : SpeedPort;
+   }
+
+   part def EngineSystem {
+      port throttleIn : ThrottlePort;
+   }
+
+   part def CruiseController {
+      port setSpeedIn : SetSpeedPort;
+      port speedIn : SpeedPort;
+      port throttleOut : ThrottlePort;
+      attribute targetSpeed : Real;
+      attribute currentSpeed : Real;
+      attribute controlThrottle : Real;
+   }
+
+   part def CruiseControlSystem {
+      part driver : Driver;
+      part speedometer : Speedometer;
+      part engine : EngineSystem;
+      part controller : CruiseController;
+
+      connect driver.setSpeedOut to controller.setSpeedIn;
+      connect speedometer.speedOut to controller.speedIn;
+      connect controller.throttleOut to engine.throttleIn;
+   }
+
+   part system : CruiseControlSystem;
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:17:7: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    17 |       item SetSpeedCommand;
+       |       ^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:21:7: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    21 |       item VehicleSpeed;
+       |       ^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:25:7: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    25 |       item ThrottleCommand;
+       |       ^^^^^^^^^^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

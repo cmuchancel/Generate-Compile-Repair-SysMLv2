@@ -1,0 +1,82 @@
+{
+  "id": "resp_0eed0cbe99c31507006997e98c7b9481a0b0abc46e06103a3b",
+  "created_at": 1771563404.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0eed0cbe99c31507006997e98cd28481a0bd73608ed4c91250",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0eed0cbe99c31507006997e99e9ce081a085a69d9f7795bf18",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AutomaticBrakingControl\n{\n    private import ScalarValues::*;\n\n    enum def KeyPosition { Off; Start; Run; }\n    enum def RoadAdhesion { Low; Medium; High; }\n    enum def BrakeStatus { Released; Pressed; }\n\n    port def BrakePressurePort { attribute pressure: Real; attribute status: BrakeStatus; }\n    port def TractionPort { attribute adhesion: RoadAdhesion; }\n    port def ControlPort { attribute targetPressure: Real; attribute modulationFrequency: Real; attribute active: Boolean; }\n    port def ActuatorPort { attribute appliedPressure: Real; }\n\n    part def BrakePedalSensor\n    {\n        port outPressure: BrakePressurePort;\n        attribute brakePressure: Real;\n        attribute brakeStatus: BrakeStatus;\n    }\n\n    part def TractionSensor\n    {\n        port outTraction: TractionPort;\n        attribute adhesion: RoadAdhesion;\n    }\n\n    part def BrakeController\n    {\n        port inPressure: BrakePressurePort;\n        port inTraction: TractionPort;\n        port outControl: ControlPort;\n        attribute targetPressure: Real;\n        attribute modulationFrequency: Real;\n        attribute active: Boolean;\n        attribute monitoring: Boolean;\n    }\n\n    part def BrakeActuator\n    {\n        port inControl: ControlPort;\n        port outApplied: ActuatorPort;\n        attribute appliedPressure: Real;\n    }\n\n    part def AutomaticBrakingSystem\n    {\n        attribute keyPosition: KeyPosition;\n        attribute active: Boolean;\n        attribute monitoring: Boolean;\n        attribute automaticallyActivated: Boolean;\n        part pedalSensor: BrakePedalSensor;\n        part tractionSensor: TractionSensor;\n        part controller: BrakeController;\n        part actuator: BrakeActuator;\n        connect pedalSensor.outPressure to controller.inPressure;\n        connect tractionSensor.outTraction to controller.inTraction;\n        connect controller.outControl to actuator.inControl;\n    }\n\n    part def Vehicle\n    {\n        attribute keyPosition: KeyPosition;\n        attribute brakePedalPressed: Boolean;\n        part brakingSystem: AutomaticBrakingSystem;\n    }\n\n    part vehicle: Vehicle;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563427.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 373,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1723,
+    "output_tokens_details": {
+      "reasoning_tokens": 1216
+    },
+    "total_tokens": 2096
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

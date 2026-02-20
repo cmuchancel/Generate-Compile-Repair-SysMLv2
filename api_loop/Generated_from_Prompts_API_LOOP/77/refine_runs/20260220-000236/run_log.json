@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:02:37.028712Z",
+    "iteration_end": "2026-02-20T05:02:55.014851Z",
+    "iteration_duration_seconds": 17.9864523330034,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/77/20260220-000236/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/77/20260220-000236/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/77/20260220-000236/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:16:19: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    16 |   part def Driver : Person {\n\niteration_01.sysml:20:22: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    20 |   part def Passenger : Person {\n\niteration_01.sysml:30:15: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    30 |     attribute state : DoorState;\n       |               \u001b[38;2;220;080;080m^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 379,
+      "output_tokens": 1030,
+      "total_tokens": 1409
+    },
+    "tokens_used_total": 1409
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:02:55.014901Z",
+    "iteration_end": "2026-02-20T05:03:02.556968Z",
+    "iteration_duration_seconds": 7.542230874998495,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/77/20260220-000236/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/77/20260220-000236/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/77/20260220-000236/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 993,
+      "output_tokens": 503,
+      "total_tokens": 1496
+    },
+    "tokens_used_total": 2905
+  }
+]

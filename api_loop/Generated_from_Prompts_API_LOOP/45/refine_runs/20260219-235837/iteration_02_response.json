@@ -1,0 +1,82 @@
+{
+  "id": "resp_0aebc39b20a8b390006997ea104064819484fb439e68864835",
+  "created_at": 1771563536.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0aebc39b20a8b390006997ea108cec81949437dd79ba279fbe",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0aebc39b20a8b390006997ea1440cc819496715ae65c516916",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package CruiseControlSystem {\n   private import ScalarValues::*;\n\n   item def SetSpeedCommand {\n      attribute setSpeed : Real;\n   }\n\n   item def VehicleSpeed {\n      attribute speed : Real;\n   }\n\n   item def ThrottleCommand {\n      attribute throttle : Real;\n   }\n\n   port def SetSpeedPort {\n      ref item setSpeed : SetSpeedCommand;\n   }\n\n   port def SpeedPort {\n      ref item speed : VehicleSpeed;\n   }\n\n   port def ThrottlePort {\n      ref item throttle : ThrottleCommand;\n   }\n\n   part def Driver {\n      port setSpeedOut : SetSpeedPort;\n   }\n\n   part def Speedometer {\n      port speedOut : SpeedPort;\n   }\n\n   part def EngineSystem {\n      port throttleIn : ThrottlePort;\n   }\n\n   part def CruiseController {\n      port setSpeedIn : SetSpeedPort;\n      port speedIn : SpeedPort;\n      port throttleOut : ThrottlePort;\n      attribute targetSpeed : Real;\n      attribute currentSpeed : Real;\n      attribute controlThrottle : Real;\n   }\n\n   part def CruiseControlSystem {\n      part driver : Driver;\n      part speedometer : Speedometer;\n      part engine : EngineSystem;\n      part controller : CruiseController;\n\n      connect driver.setSpeedOut to controller.setSpeedIn;\n      connect speedometer.speedOut to controller.speedIn;\n      connect controller.throttleOut to engine.throttleIn;\n   }\n\n   part system : CruiseControlSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563543.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 836,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 529,
+    "output_tokens_details": {
+      "reasoning_tokens": 192
+    },
+    "total_tokens": 1365
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

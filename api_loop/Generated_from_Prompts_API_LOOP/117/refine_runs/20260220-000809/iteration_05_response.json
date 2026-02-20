@@ -1,0 +1,82 @@
+{
+  "id": "resp_022284368fa874f2006997eccd52088193b5cfb1a509272bdb",
+  "created_at": 1771564237.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_022284368fa874f2006997eccdceb4819390902e29809e9e25",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_022284368fa874f2006997ecd43c84819383cf196ec825cbbe",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleProductLineConfiguration {\n  private import ScalarValues::*;\n\n  enum def PerformanceLevel {\n    enum highPerf;\n    enum standardPerf;\n  }\n\n  enum def EngineType {\n    enum sixCylinder;\n    enum fourCylinder;\n  }\n\n  enum def TransmissionType {\n    enum automatic;\n    enum manual;\n  }\n\n  enum def WheelType {\n    enum wideRim;\n    enum narrowRim;\n  }\n\n  enum def VehicleVariantType {\n    enum sedan;\n    enum suv;\n    enum truck;\n  }\n\n  enum def UserPreferenceType {\n    enum performanceFocused;\n    enum balanced;\n    enum economyFocused;\n  }\n\n  part def Engine {\n    attribute engineType : EngineType;\n  }\n\n  part def Transmission {\n    attribute transmissionType : TransmissionType;\n  }\n\n  part def WheelSet {\n    attribute wheelType : WheelType;\n  }\n\n  part def SixCylinderEngine specializes Engine {\n    attribute engineType : EngineType = EngineType::sixCylinder;\n  }\n\n  part def FourCylinderEngine specializes Engine {\n    attribute engineType : EngineType = EngineType::fourCylinder;\n  }\n\n  part def AutomaticTransmission specializes Transmission {\n    attribute transmissionType : TransmissionType = TransmissionType::automatic;\n  }\n\n  part def ManualTransmission specializes Transmission {\n    attribute transmissionType : TransmissionType = TransmissionType::manual;\n  }\n\n  part def WideRimWheelSet specializes WheelSet {\n    attribute wheelType : WheelType = WheelType::wideRim;\n  }\n\n  part def NarrowRimWheelSet specializes WheelSet {\n    attribute wheelType : WheelType = WheelType::narrowRim;\n  }\n\n  part def VehicleConfiguration {\n    attribute performanceRequirement : PerformanceLevel;\n    attribute userPreference : UserPreferenceType;\n    attribute modelVariant : VehicleVariantType;\n    part engine : Engine;\n    part transmission : Transmission;\n    part wheels : WheelSet;\n  }\n\n  part def HighPerformanceVariant specializes VehicleConfiguration {\n    attribute performanceRequirement : PerformanceLevel = PerformanceLevel::highPerf;\n    attribute userPreference : UserPreferenceType = UserPreferenceType::performanceFocused;\n    part engine : SixCylinderEngine;\n    part transmission : AutomaticTransmission;\n    part wheels : WideRimWheelSet;\n  }\n\n  part def StandardPerformanceVariant specializes VehicleConfiguration {\n    attribute performanceRequirement : PerformanceLevel = PerformanceLevel::standardPerf;\n    attribute userPreference : UserPreferenceType = UserPreferenceType::balanced;\n    part engine : FourCylinderEngine;\n    part transmission : ManualTransmission;\n    part wheels : NarrowRimWheelSet;\n  }\n\n  part def HighPerformanceSUV specializes HighPerformanceVariant {\n    attribute modelVariant : VehicleVariantType = VehicleVariantType::suv;\n  }\n\n  part def HighPerformanceSedan specializes HighPerformanceVariant {\n    attribute modelVariant : VehicleVariantType = VehicleVariantType::sedan;\n  }\n\n  part def StandardSedan specializes StandardPerformanceVariant {\n    attribute modelVariant : VehicleVariantType = VehicleVariantType::sedan;\n  }\n\n  part def StandardTruck specializes StandardPerformanceVariant {\n    attribute modelVariant : VehicleVariantType = VehicleVariantType::truck;\n  }\n\n  part def VehicleProductLineSystem {\n    part highPerformanceSUV : HighPerformanceSUV;\n    part highPerformanceSedan : HighPerformanceSedan;\n    part standardSedan : StandardSedan;\n    part standardTruck : StandardTruck;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564253.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 2148,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1094,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 3242
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

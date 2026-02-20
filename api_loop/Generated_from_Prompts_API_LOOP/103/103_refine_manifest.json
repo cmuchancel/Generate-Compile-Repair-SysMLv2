@@ -1,0 +1,40 @@
+{
+  "model_id": 103,
+  "status": "ok",
+  "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/DesignBench/nl_prompts/103/nl.txt",
+  "generated_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/103/103.sysml",
+  "groundtruth_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/103/103_groundtruth.sysml",
+  "run_dir": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/103/20260220-000611",
+  "archived_run_dir": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/103/refine_runs/20260220-000611",
+  "run_log_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/103/20260220-000611/run_log.json",
+  "stdout_log": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/103/103_refine_stdout.log",
+  "stderr_log": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP/103/103_refine_stderr.log",
+  "iterations_completed": 2,
+  "final_iteration_success": true,
+  "tokens_used_total": 3887,
+  "loop_start_utc": "2026-02-20T05:06:11.473716Z",
+  "loop_end_utc": "2026-02-20T05:06:48.447405Z",
+  "loop_duration_seconds": 36.974319125001784,
+  "iteration_timings": [
+    {
+      "iteration": 1,
+      "iteration_start": "2026-02-20T05:06:12.126700Z",
+      "iteration_end": "2026-02-20T05:06:41.110693Z",
+      "iteration_duration_seconds": 28.984460916995886,
+      "success": false,
+      "return_code": 1,
+      "tokens_used_this_iter_total": 2473,
+      "tokens_used_total": 2473
+    },
+    {
+      "iteration": 2,
+      "iteration_start": "2026-02-20T05:06:41.110761Z",
+      "iteration_end": "2026-02-20T05:06:48.352825Z",
+      "iteration_duration_seconds": 7.242301000005682,
+      "success": true,
+      "return_code": 0,
+      "tokens_used_this_iter_total": 1414,
+      "tokens_used_total": 3887
+    }
+  ]
+}

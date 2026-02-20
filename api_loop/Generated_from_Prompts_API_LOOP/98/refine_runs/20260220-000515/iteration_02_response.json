@@ -1,0 +1,82 @@
+{
+  "id": "resp_08c316e0c5cfb04c006997eb964f48819099e529af5c6e3147",
+  "created_at": 1771563926.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_08c316e0c5cfb04c006997eb96c6a48190a8a4db4488fac202",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_08c316e0c5cfb04c006997eb9ad54c81909b73012063e5490c",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package FuelSystemModel {\n  private import ScalarValues::*;\n\n  item def Fuel;\n\n  port def FuelInterface;\n\n  part def FuelTank {\n    port supply : FuelInterface;\n    port returnPort : FuelInterface;\n  }\n\n  part def Engine {\n    port supply : FuelInterface;\n    port returnPort : FuelInterface;\n  }\n\n  part def FuelSystem {\n    part tank : FuelTank;\n    part engine : Engine;\n    attribute fuelTemperature : Real;\n    attribute fuelFlowEnabled : Boolean;\n    connect tank.supply to engine.supply;\n    connect engine.returnPort to tank.returnPort;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563932.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1201,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 387,
+    "output_tokens_details": {
+      "reasoning_tokens": 256
+    },
+    "total_tokens": 1588
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

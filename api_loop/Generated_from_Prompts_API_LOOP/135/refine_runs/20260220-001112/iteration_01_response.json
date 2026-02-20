@@ -1,0 +1,82 @@
+{
+  "id": "resp_0e8ad7b7879e864d006997ecf1bff881938d57bd8461729c19",
+  "created_at": 1771564273.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0e8ad7b7879e864d006997ecf205888193baad01d5fb28272f",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0e8ad7b7879e864d006997ecfa2888819397a04c79a38816a3",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package ScientificConstants {\n  private import ScalarValues::*;\n\n  part def ConstantSet {\n    attribute pi : Real = 3.14159265358979323846;\n    attribute e : Real = 2.71828182845904523536;\n    attribute speedOfLight_m_per_s : Real = 299792458.0;\n    attribute fineStructureConstant : Real = 0.00729735256930000000;\n    attribute electronToProtonMassRatio : Real = 0.00054461702148600000;\n    attribute standardGravity_m_per_s2 : Real = 9.80665;\n    attribute amplifierGain_ModelX : Real = 12.5;\n  }\n\n  part systemConstants : ConstantSet;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564283.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 405,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 528,
+    "output_tokens_details": {
+      "reasoning_tokens": 320
+    },
+    "total_tokens": 933
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

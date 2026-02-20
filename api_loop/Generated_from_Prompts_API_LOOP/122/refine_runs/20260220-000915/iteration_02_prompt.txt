@@ -1,0 +1,62 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to ensure that vehicle fuel economy meets relevant regulatory and performance requirements. Under urban driving conditions, the vehicle’s range per gallon must not be less than 25 miles; under highway conditions, it must not be less than 30 miles. Fuel economy is measured in "miles per gallon," based on the US customary gallon (231 cubic inches). Fuel economy tests are conducted with the vehicle assuming an additional load of 1,000 pounds, under standard urban and highway driving scenarios respectively. The measured fuel economy must meet the minimum requirements stated above. The system models and analyzes key parameters such as vehicle powertrain, load, and operating conditions, supporting fuel consumption assessment under various conditions to ensure that the designed vehicle can achieve the regulatory fuel economy targets for both urban and highway scenarios.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package FuelEconomyModel {
+  private import ScalarValues::*;
+
+  enum def DrivingCondition {
+    enum urban;
+    enum highway;
+  }
+
+  part def FuelEconomyRequirement {
+    attribute minUrbanMPG : Real = 25.0;
+    attribute minHighwayMPG : Real = 30.0;
+    attribute gallonVolumeCubicInches : Real = 231.0;
+    attribute testLoadPounds : Real = 1000.0;
+  }
+
+  part def VehiclePowertrain {
+    attribute efficiency : Real;
+  }
+
+  part def Vehicle {
+    attribute baseMassPounds : Real;
+    part powertrain : VehiclePowertrain;
+  }
+
+  part def FuelEconomyTest {
+    attribute condition : DrivingCondition;
+    attribute loadPounds : Real;
+    attribute measuredMPG : Real;
+  }
+
+  part def FuelEconomySystem {
+    part vehicle : Vehicle;
+    part requirement : FuelEconomyRequirement;
+    part urbanTest : FuelEconomyTest;
+    part highwayTest : FuelEconomyTest;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+            iteration_01.sysml:33:5: error (parsing-error): Unexpected 'part', expected one of ["end", "NAME", ";", "{", "}", "dependency", "locale", "comment", "doc", "rep", "language", "private", "protected", "public", "alias", "for", "import", "all", "*", "[", "abstract", "in", "inout", "out", "derived", "end", "ordered", "nonunique", "if", "else", "+", "-", "<", "~", "not", "hastype", "istype", "@", "as", "#", "(", "null", "metadata", "new", "true", "false", "SINGLE_LINE_NOTE", "MULTILINE_NOTE", "REGULAR_COMMENT", "DECIMAL_VALUE", "REAL_VALUE", "STRING_VALUE", ":>", "subsets", "::>", "references", "=>", "crosses", ":>>", "redefines", "$", ":", "defined", "standard", "library", "package", "filter", "variation", "variant", "constant", "ref", "attribute", "enum", "occurrence", "individual", "timeslice", "snapshot", "event", "then", "item", "part", "port", "connection", "connect", "binding", "bind", "succession", "first", "flow", "message", "interface", "allocation", "allocate", "action", "perform", "merge", "decide", "join", "fork", "accept", "send", "assign", "terminate", "while", "loop", "state", "entry", "do", "exit", "exhibit", "transition", "calc", "return", "constraint", "assert", "requirement", "subject", "assume", "require", "frame", "concern", "actor", "stakeholder", "satisfy", "case", "objective", "analysis", "verification", "verify", "use", "include", "view", "render", "rendering", "expose", "viewpoint"].
+33 |     part requirement : FuelEconomyRequirement;
+   |     ^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

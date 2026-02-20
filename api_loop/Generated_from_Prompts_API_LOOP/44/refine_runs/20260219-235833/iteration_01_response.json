@@ -1,0 +1,82 @@
+{
+  "id": "resp_05b06575e13ed098006997e9faf7dc81a282767ebd7cb44ace",
+  "created_at": 1771563514.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_05b06575e13ed098006997e9fb497081a288bfe3fb1c1871e6",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_05b06575e13ed098006997ea0537c081a28e24634af3d9ab75",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package CruiseControlSystemModel {\n   private import ScalarValues::*;\n\n   item def SetSpeedCommand;\n   item def SpeedValue;\n   item def FuelControlCommand;\n\n   port def SetSpeedCmdPort {\n      attribute cmd : SetSpeedCommand;\n   }\n\n   port def SpeedValuePort {\n      attribute speed : SpeedValue;\n   }\n\n   port def FuelControlCmdPort {\n      attribute fuelCmd : FuelControlCommand;\n   }\n\n   part def Driver {\n      port setSpeedOut : SetSpeedCmdPort;\n   }\n\n   part def CruiseController {\n      port setSpeedIn : SetSpeedCmdPort;\n      port speedIn : SpeedValuePort;\n      port fuelOut : FuelControlCmdPort;\n      attribute desiredSpeed : Real;\n   }\n\n   part def Speedometer {\n      port speedIn : SpeedValuePort;\n      port speedOut : SpeedValuePort;\n      attribute currentSpeed : Real;\n   }\n\n   part def Engine {\n      port fuelIn : FuelControlCmdPort;\n   }\n\n   part def Vehicle {\n      port speedOut : SpeedValuePort;\n      attribute actualSpeed : Real;\n   }\n\n   part def CruiseControlSystem {\n      part driver : Driver;\n      part controller : CruiseController;\n      part speedometer : Speedometer;\n      part engine : Engine;\n      part vehicle : Vehicle;\n\n      connect driver.setSpeedOut to controller.setSpeedIn;\n      connect vehicle.speedOut to speedometer.speedIn;\n      connect speedometer.speedOut to controller.speedIn;\n      connect controller.fuelOut to engine.fuelIn;\n   }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563528.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 389,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 951,
+    "output_tokens_details": {
+      "reasoning_tokens": 576
+    },
+    "total_tokens": 1340
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

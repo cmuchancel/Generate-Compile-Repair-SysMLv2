@@ -1,0 +1,82 @@
+{
+  "id": "resp_0cd879d8a14a3e0f006997e93ba820819daeaa66421b873712",
+  "created_at": 1771563323.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0cd879d8a14a3e0f006997e93c344c819dbecccbfc8043fbfd",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0cd879d8a14a3e0f006997e93f5244819d8e0a70fe32d22d13",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package FuelManagement {\n   private import ScalarValues::*;\n\n   item def FuelFlow {\n      attribute rate : Real;\n   }\n\n   item def TemperatureInfo {\n      attribute temperature : Real;\n   }\n\n   item def FlowStatus {\n      attribute supplyRate : Real;\n      attribute returnRate : Real;\n      attribute temperature : Real;\n   }\n\n   port def FuelSupplyPort {\n      attribute flow : FuelFlow;\n   }\n\n   port def FuelReturnPort {\n      attribute flow : FuelFlow;\n   }\n\n   port def TemperaturePort {\n      attribute temp : TemperatureInfo;\n   }\n\n   port def StatusPort {\n      attribute status : FlowStatus;\n   }\n\n   part def FuelTankAssembly {\n      port supplyOut : FuelSupplyPort;\n      port returnIn : FuelReturnPort;\n      port temperature : TemperaturePort;\n      port statusOut : StatusPort;\n      attribute currentSupplyRate : Real;\n      attribute currentReturnRate : Real;\n      attribute currentTemperature : Real;\n   }\n\n   part def Engine {\n      port fuelIn : FuelSupplyPort;\n      port returnOut : FuelReturnPort;\n      port temperature : TemperaturePort;\n   }\n\n   part def FuelManagementSystem {\n      part tank : FuelTankAssembly;\n      part engine : Engine;\n      port statusOut : StatusPort;\n\n      connect tank.supplyOut to engine.fuelIn;\n      connect engine.returnOut to tank.returnIn;\n      connect tank.temperature to engine.temperature;\n      connect tank.statusOut to statusOut;\n   }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563330.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1749,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 440,
+    "output_tokens_details": {
+      "reasoning_tokens": 128
+    },
+    "total_tokens": 2189
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

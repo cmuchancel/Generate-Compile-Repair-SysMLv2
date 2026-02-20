@@ -1,0 +1,82 @@
+{
+  "id": "resp_0b5e5e3a1e8df541006997ea7af064819f83cfa4255b1fd209",
+  "created_at": 1771563642.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0b5e5e3a1e8df541006997ea7b4888819f9d15c807c0dbb6b3",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0b5e5e3a1e8df541006997ea7d1ecc819fb105f6b3c3ad8136",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleDynamicsSimulation {\n  private import ScalarValues::*;\n\n  part def VehicleParameters {\n    attribute mass : Real;\n    attribute wheelPower : Real;\n    attribute dragCoefficient : Real;\n    attribute rollingResistanceCoefficient : Real;\n    attribute frontalArea : Real;\n  }\n\n  part def InitialConditions {\n    attribute initialSpeed : Real;\n    attribute initialPosition : Real;\n  }\n\n  part def Environment {\n    attribute airDensity : Real;\n    attribute gravity : Real;\n  }\n\n  part def VehicleState {\n    attribute time : Real;\n    attribute speed : Real;\n    attribute position : Real;\n    attribute acceleration : Real;\n    attribute displacement : Real;\n  }\n\n  part def SimulationControl {\n    attribute timeStep : Real;\n    attribute totalTime : Real;\n  }\n\n  part def VehicleDynamicsSystem {\n    part parameters : VehicleParameters;\n    part initial : InitialConditions;\n    part environment : Environment;\n    part vehicleState : VehicleState;\n    part control : SimulationControl;\n\n    attribute computedDragForce : Real;\n    attribute computedRollingResistanceForce : Real;\n    attribute computedNetForce : Real;\n    attribute computedAcceleration : Real;\n  }\n\n  part system : VehicleDynamicsSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563647.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1102,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 348,
+    "output_tokens_details": {
+      "reasoning_tokens": 64
+    },
+    "total_tokens": 1450
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

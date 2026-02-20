@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:01:25.482963Z",
+    "iteration_end": "2026-02-20T05:01:43.955612Z",
+    "iteration_duration_seconds": 18.472967790999974,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/67/20260220-000125/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/67/20260220-000125/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/67/20260220-000125/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:2:3: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Expected a token. Did you forget ';'?\n    2 |   private import ScalarValues::*;\n\niteration_01.sysml:27:12: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected EOF. (\u001b[38;2;220;080;080mno source underlining available since segment is out of bounds\u001b[0m)\n\niteration_01.sysml:10:42: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Type element but found LibraryPackage (Time)\n    10 |     attribute scheduledMaintenanceTime : Time;\n       |                                          \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:11:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Duration' found.\n    11 |     attribute maintenanceInterval : Duration;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:14:46: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'normal' found.\n    14 |     attribute healthStatus : VehicleStatus = normal;\n       |                                              \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:15:44: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Type element but found LibraryPackage (Time)\n    15 |     attribute actualMaintenanceStartTime : Time;\n       |                                            \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:16:40: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Type element but found LibraryPackage (Time)\n    16 |     attribute previousHealthyEndTime : Time;\n       |                                        \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:18:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Type named 'Duration' found.\n    18 |     attribute maintenanceDuration : Duration;\n       |                                     \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m\n\niteration_01.sysml:21:37: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): Expected Type element but found LibraryPackage (Time)\n    21 |     attribute nextMaintenanceTime : Time;\n       |                                     \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 392,
+      "output_tokens": 1143,
+      "total_tokens": 1535
+    },
+    "tokens_used_total": 1535
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:01:43.955660Z",
+    "iteration_end": "2026-02-20T05:01:48.924525Z",
+    "iteration_duration_seconds": 4.968975625000894,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/67/20260220-000125/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/67/20260220-000125/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/67/20260220-000125/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 957,
+      "output_tokens": 329,
+      "total_tokens": 1286
+    },
+    "tokens_used_total": 2821
+  }
+]

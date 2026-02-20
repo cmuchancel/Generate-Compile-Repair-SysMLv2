@@ -1,0 +1,82 @@
+{
+  "id": "resp_03180ae21a253532006997ebcd38e08192b1c4f2b539344bf0",
+  "created_at": 1771563981.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_03180ae21a253532006997ebcd8e4c8192a960d1d5bd77f127",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_03180ae21a253532006997ebd71e448192a4d27f5f8708b0d3",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleStructuralArchitecture {\n  private import ScalarValues::*;\n\n  part def Wheel;\n  part def Axle;\n  part def FrontAxle specializes Axle;\n  part def RearAxle specializes Axle;\n\n  part def SteerableFrontAxle specializes FrontAxle {\n    attribute steeringAngle : Real;\n  }\n\n  part def AxleAssembly {\n    part axle : Axle;\n    part leftWheel : Wheel;\n    part rightWheel : Wheel;\n  }\n\n  part def FrontAxleAssembly specializes AxleAssembly {\n    part axle : FrontAxle;\n  }\n\n  part def RearAxleAssembly specializes AxleAssembly {\n    part axle : RearAxle;\n  }\n\n  part def SteerableFrontAxleAssembly specializes FrontAxleAssembly {\n    part axle : SteerableFrontAxle;\n  }\n\n  part def Vehicle {\n    attribute mass : Real;\n    part frontAxleAssembly : FrontAxleAssembly;\n    part rearAxleAssembly : RearAxleAssembly;\n  }\n\n  part def Vehicle1750kg specializes Vehicle {\n    attribute mass : Real = 1750;\n  }\n\n  part def Vehicle2000kg specializes Vehicle {\n    attribute mass : Real = 2000;\n  }\n\n  part def VehicleWithSteerableFrontAxle {\n    attribute mass : Real;\n    part frontAxleAssembly : SteerableFrontAxleAssembly;\n    part rearAxleAssembly : RearAxleAssembly;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563994.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1503,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 869,
+    "output_tokens_details": {
+      "reasoning_tokens": 512
+    },
+    "total_tokens": 2372
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

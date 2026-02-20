@@ -1,0 +1,82 @@
+{
+  "id": "resp_081b6c0a0cd1345f006997ea5b03248193a5aee28ad92e8d6c",
+  "created_at": 1771563611.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_081b6c0a0cd1345f006997ea5b57588193973aabbd2cf4f37a",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_081b6c0a0cd1345f006997ea893f6881938e01ad1b2f87a9bb",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleDynamicsModel {\n  private import ScalarValues::*;\n\n  port def DynamicsParameters {\n    attribute wheelPower : Real;\n    attribute dragCoefficient : Real;\n    attribute frictionCoefficient : Real;\n    attribute mass : Real;\n    attribute speed : Real;\n    attribute time : Real;\n    attribute initialSpeed : Real;\n    attribute availablePower : Real;\n    attribute effectivePower : Real;\n    attribute acceleration : Real;\n    attribute calculatedSpeed : Real;\n    attribute displacement : Real;\n    attribute position : Real;\n  }\n\n  part def PowerCalculator {\n    port io : DynamicsParameters;\n  }\n\n  part def AccelerationCalculator {\n    port io : DynamicsParameters;\n  }\n\n  part def SpeedCalculator {\n    port io : DynamicsParameters;\n  }\n\n  part def DisplacementCalculator {\n    port io : DynamicsParameters;\n  }\n\n  part def VehicleDynamicsSystem {\n    port input : DynamicsParameters;\n    port output : DynamicsParameters;\n    part powerCalc : PowerCalculator;\n    part accelCalc : AccelerationCalculator;\n    part speedCalc : SpeedCalculator;\n    part dispCalc : DisplacementCalculator;\n    connect input to powerCalc.io;\n    connect powerCalc.io to accelCalc.io;\n    connect accelCalc.io to speedCalc.io;\n    connect speedCalc.io to dispCalc.io;\n    connect dispCalc.io to output;\n  }\n\n  part vehicleDynamics : VehicleDynamicsSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563660.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 411,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 3111,
+    "output_tokens_details": {
+      "reasoning_tokens": 2816
+    },
+    "total_tokens": 3522
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

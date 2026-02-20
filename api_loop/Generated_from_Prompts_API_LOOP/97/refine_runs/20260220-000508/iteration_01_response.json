@@ -1,0 +1,82 @@
+{
+  "id": "resp_09d780404ad9860a006997eb85eda88193b5f860514a185707",
+  "created_at": 1771563909.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_09d780404ad9860a006997eb883b4c81939df1c326699e41f2",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_09d780404ad9860a006997eb9db1008193b2fef3d97b941286",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleModel {\n  private import ScalarValues::*;\n\n  enum def VehicleSize { small; standard; large; }\n\n  part def Engine {\n    attribute cylinderCount : Integer;\n  }\n\n  part def Engine4 : Engine {\n    attribute cylinderCount : Integer = 4;\n  }\n\n  part def Engine6 : Engine {\n    attribute cylinderCount : Integer = 6;\n  }\n\n  part def Vehicle {\n    attribute size : VehicleSize;\n    part engine : Engine;\n  }\n\n  part def SmallVehicle : Vehicle {\n    attribute size : VehicleSize = VehicleSize::small;\n    part engine : Engine4;\n  }\n\n  part def LargeVehicle : Vehicle {\n    attribute size : VehicleSize = VehicleSize::large;\n    part engine : Engine6;\n  }\n\n  part def StandardVehicle4 : Vehicle {\n    attribute size : VehicleSize = VehicleSize::standard;\n    part engine : Engine4;\n  }\n\n  part def StandardVehicle6 : Vehicle {\n    attribute size : VehicleSize = VehicleSize::standard;\n    part engine : Engine6;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563937.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 333,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1477,
+    "output_tokens_details": {
+      "reasoning_tokens": 1216
+    },
+    "total_tokens": 1810
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

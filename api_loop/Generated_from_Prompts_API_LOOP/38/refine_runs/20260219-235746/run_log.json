@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:57:46.641677Z",
+    "iteration_end": "2026-02-20T04:58:04.984828Z",
+    "iteration_duration_seconds": 18.343650708004134,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/38/20260219-235746/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/38/20260219-235746/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/38/20260219-235746/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:9:48: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'shutdown' found.\n    9 |       attribute vehicleStatus : VehicleState = shutdown;\n      |                                                \u001b[38;2;220;080;080m^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 363,
+      "output_tokens": 1214,
+      "total_tokens": 1577
+    },
+    "tokens_used_total": 1577
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:58:04.985065Z",
+    "iteration_end": "2026-02-20T04:58:10.756042Z",
+    "iteration_duration_seconds": 5.771188209000684,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/38/20260219-235746/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/38/20260219-235746/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/38/20260219-235746/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 529,
+      "output_tokens": 150,
+      "total_tokens": 679
+    },
+    "tokens_used_total": 2256
+  }
+]

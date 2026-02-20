@@ -1,0 +1,82 @@
+{
+  "id": "resp_04e427058686c338006997ecfdc2f0819dae8ca6f5e9f1a519",
+  "created_at": 1771564285.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_04e427058686c338006997ecfe3cf4819d81c5f141dc8d9904",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_04e427058686c338006997ed167da0819d8fb7f741383ab960",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PowertrainConfiguration\n  private import ScalarValues::*;\n\n  enum def EngineType {\n    FourCylinder;\n    SixCylinder;\n  }\n\n  enum def TransmissionType {\n    Manual;\n    Automatic;\n  }\n\n  part def Engine {\n    attribute type : EngineType;\n  }\n\n  part def FourCylinderEngine : Engine {\n    attribute type : EngineType = FourCylinder;\n  }\n\n  part def SixCylinderEngine : Engine {\n    attribute type : EngineType = SixCylinder;\n  }\n\n  part def Transmission {\n    attribute type : TransmissionType;\n  }\n\n  part def ManualTransmission : Transmission {\n    attribute type : TransmissionType = Manual;\n  }\n\n  part def AutomaticTransmission : Transmission {\n    attribute type : TransmissionType = Automatic;\n  }\n\n  part def Vehicle {\n    attribute highPerformance : Boolean;\n    part engine : Engine;\n    part transmission : Transmission;\n  }\n\n  part def FourCylinderManualVehicle : Vehicle {\n    attribute highPerformance : Boolean = false;\n    part engine : FourCylinderEngine;\n    part transmission : ManualTransmission;\n  }\n\n  part def SixCylinderAutomaticVehicle : Vehicle {\n    attribute highPerformance : Boolean = true;\n    part engine : SixCylinderEngine;\n    part transmission : AutomaticTransmission;\n  }\n\n  part standardVehicle : FourCylinderManualVehicle;\n  part highPerformanceVehicle : SixCylinderAutomaticVehicle;\nend package",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564313.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 368,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1844,
+    "output_tokens_details": {
+      "reasoning_tokens": 1536
+    },
+    "total_tokens": 2212
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

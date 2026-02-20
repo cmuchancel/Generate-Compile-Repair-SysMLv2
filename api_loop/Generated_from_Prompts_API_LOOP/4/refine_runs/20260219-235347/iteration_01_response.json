@@ -1,0 +1,82 @@
+{
+  "id": "resp_00ae519dc6099c71006997e8dc57ec8191b9b11221c9cd1f46",
+  "created_at": 1771563228.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_00ae519dc6099c71006997e8dc98e08191a65a5bf9315784ce",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_00ae519dc6099c71006997e8e530648191a1fca16a60fcd326",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    part def Cylinder;\n\n    part def Engine {\n        part cylinders : Cylinder;\n        attribute cylinderCount : Integer;\n    }\n\n    part def SmallEngine specializes Engine {\n        attribute cylinderCount : Integer = 4;\n    }\n\n    part def LargeEngine specializes Engine {\n        attribute cylinderCount : Integer = 6;\n    }\n\n    part def Vehicle {\n        part engine : Engine;\n    }\n\n    part def SmallVehicle specializes Vehicle {\n        part engine : SmallEngine;\n    }\n\n    part def LargeVehicle specializes Vehicle {\n        part engine : LargeEngine;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563238.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 371,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 720,
+    "output_tokens_details": {
+      "reasoning_tokens": 576
+    },
+    "total_tokens": 1091
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,82 @@
+{
+  "id": "resp_0422f44d0c8fdfc7006997e9d56be4819392b83df8368d7f5b",
+  "created_at": 1771563477.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0422f44d0c8fdfc7006997e9d5df508193b7c2b47ece71f963",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0422f44d0c8fdfc7006997e9d6b32c8193a5575dbfa6efa2ba",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleStateManagement {\n    private import ScalarValues::*;\n    enum def VehicleState {\n        enum off;\n        enum starting;\n        enum on;\n    }\n    enum def VehicleControlSignal {\n        enum VehicleStartSignal;\n        enum VehicleOnSignal;\n        enum VehicleOffSignal;\n    }\n    port def ControlSignalPort {\n        attribute signal : VehicleControlSignal;\n    }\n    part def VehicleStatusManager {\n        attribute currentState : VehicleState = VehicleState::off;\n        attribute lastSignal : VehicleControlSignal;\n        port controlIn : ControlSignalPort;\n    }\n    part vehicleSystem : VehicleStatusManager;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563480.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 592,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 186,
+    "output_tokens_details": {
+      "reasoning_tokens": 0
+    },
+    "total_tokens": 778
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

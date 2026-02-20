@@ -1,0 +1,82 @@
+{
+  "id": "resp_0efa0e785b2482c0006997ea17df58819c948e87ad551a9a9e",
+  "created_at": 1771563543.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0efa0e785b2482c0006997ea18536c819c847b39e689db9f9b",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0efa0e785b2482c0006997ea257fd4819ca7bbab18c3346213",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package CruiseControl {\n    private import ScalarValues::*;\n\n    item def SetSpeed {\n        attribute value : Real;\n    }\n\n    item def ActualSpeed {\n        attribute value : Real;\n    }\n\n    item def FuelCommand {\n        attribute value : Real;\n    }\n\n    port def SetSpeedOutPort {\n        out item setSpeed : SetSpeed;\n    }\n\n    port def SetSpeedInPort {\n        in item setSpeed : SetSpeed;\n    }\n\n    port def ActualSpeedOutPort {\n        out item actualSpeed : ActualSpeed;\n    }\n\n    port def ActualSpeedInPort {\n        in item actualSpeed : ActualSpeed;\n    }\n\n    port def FuelCommandOutPort {\n        out item fuelCommand : FuelCommand;\n    }\n\n    port def FuelCommandInPort {\n        in item fuelCommand : FuelCommand;\n    }\n\n    part def DriverInterface {\n        port setSpeedOut : SetSpeedOutPort;\n    }\n\n    part def CruiseController {\n        port setSpeedIn : SetSpeedInPort;\n        port actualSpeedIn : ActualSpeedInPort;\n        port fuelCommandOut : FuelCommandOutPort;\n    }\n\n    part def SpeedSensor {\n        port actualSpeedOut : ActualSpeedOutPort;\n    }\n\n    part def Engine {\n        port fuelCommandIn : FuelCommandInPort;\n    }\n\n    part def CruiseControlSystem {\n        part driverInterface : DriverInterface;\n        part controller : CruiseController;\n        part speedSensor : SpeedSensor;\n        part engine : Engine;\n\n        connect driverInterface.setSpeedOut to controller.setSpeedIn;\n        connect speedSensor.actualSpeedOut to controller.actualSpeedIn;\n        connect controller.fuelCommandOut to engine.fuelCommandIn;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563561.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 437,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1170,
+    "output_tokens_details": {
+      "reasoning_tokens": 768
+    },
+    "total_tokens": 1607
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

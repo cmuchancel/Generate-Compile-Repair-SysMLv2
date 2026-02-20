@@ -1,0 +1,82 @@
+{
+  "id": "resp_0f1e55c3e77283f0006997eb7d1e74819c992798d77f0efa6d",
+  "created_at": 1771563901.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0f1e55c3e77283f0006997eb7d8718819c9a613b50716fdcf6",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0f1e55c3e77283f0006997eb82c3a8819c8e73702985231ca0",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AutomotiveDomain {\n    private import ScalarValues::*;\n\n    // \u626d\u77e9 (Torque) \u662f\u6c7d\u8f66\u76f8\u5173\u7684\u91cd\u8981\u7269\u7406\u91cf\uff0c\u7528\u4e8e\u6807\u51c6\u5316\u8868\u8fbe\u52a8\u529b\u7279\u6027\n    item def Torque {\n        // \u6570\u503c\u4ee5\u6807\u51c6\u5b9e\u6570\u8868\u793a\uff0c\u5355\u4f4d\u53ef\u7531\u5916\u90e8\u7ea6\u5b9a\u4e3a N\u00b7m\n        attribute value : Real;\n    }\n\n    // \u6c7d\u8f66 (Car) \u662f\u672c\u6a21\u578b\u7684\u6838\u5fc3\u7ec4\u4ef6\uff0c\u7528\u4e8e\u63cf\u8ff0\u6c7d\u8f66\u9886\u57df\u7684\u57fa\u7840\u6982\u5ff5\n    part def Automobile {\n        // \u5173\u8054\u6c7d\u8f66\u7684\u626d\u77e9\u7269\u7406\u91cf\uff0c\u4f53\u73b0\u52a8\u529b\u7279\u6027\n        attribute torque : Torque;\n    }\n\n    // Car \u662f \u201c\u6c7d\u8f66\u201d \u7684\u82f1\u6587\u522b\u540d\uff0c\u4fbf\u4e8e\u8de8\u8bed\u8a00\u4ea4\u6d41\u4e0e\u4f7f\u7528\n    part def Car :> Automobile;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563908.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1047,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 385,
+    "output_tokens_details": {
+      "reasoning_tokens": 192
+    },
+    "total_tokens": 1432
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

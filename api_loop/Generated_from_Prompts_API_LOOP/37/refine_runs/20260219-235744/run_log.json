@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:57:45.404391Z",
+    "iteration_end": "2026-02-20T04:58:06.251420Z",
+    "iteration_duration_seconds": 20.84736483299639,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/37/20260219-235744/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/37/20260219-235744/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/37/20260219-235744/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:32:15: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'state', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    32 |     attribute state : PowerState = Off;\n       |               \u001b[38;2;220;080;080m^^^^^\u001b[0m\n\niteration_01.sysml:32:36: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'Off' found.\n    32 |     attribute state : PowerState = Off;\n       |                                    \u001b[38;2;220;080;080m^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 394,
+      "output_tokens": 1316,
+      "total_tokens": 1710
+    },
+    "tokens_used_total": 1710
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:58:06.251671Z",
+    "iteration_end": "2026-02-20T04:58:15.477412Z",
+    "iteration_duration_seconds": 9.226066415998503,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/37/20260219-235744/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/37/20260219-235744/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/37/20260219-235744/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 890,
+      "output_tokens": 405,
+      "total_tokens": 1295
+    },
+    "tokens_used_total": 3005
+  }
+]

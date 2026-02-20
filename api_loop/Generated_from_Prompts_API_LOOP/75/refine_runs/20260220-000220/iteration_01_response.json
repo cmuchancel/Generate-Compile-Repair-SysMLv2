@@ -1,0 +1,82 @@
+{
+  "id": "resp_0f7f0b4e08686f03006997eadd3ba88192bb0c98f22bf43115",
+  "created_at": 1771563741.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0f7f0b4e08686f03006997eadedc7481928a4ff85f07bc5dbe",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0f7f0b4e08686f03006997eaed6b0c819289a7a25791db223f",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleQualityModel {\n    private import ScalarValues::*;\n\n    enum def EvaluationResultEnum {\n        enum Qualified;\n        enum Unqualified;\n    }\n\n    item def WeightData {\n        attribute value : Real;\n    }\n\n    item def ProcessedWeightData {\n        attribute value : Real;\n    }\n\n    part def Vehicle {\n        attribute curbWeight : Real;\n    }\n\n    part def DataCollection {\n        port outWeight : WeightData;\n    }\n\n    part def DataProcessing {\n        port inWeight : WeightData;\n        port outProcessed : ProcessedWeightData;\n    }\n\n    part def Evaluation {\n        port inProcessed : ProcessedWeightData;\n        attribute maxCurbWeight : Real = 2500;\n        attribute result : EvaluationResultEnum;\n    }\n\n    part def QualityCheckSystem {\n        part vehicle : Vehicle;\n        part collector : DataCollection;\n        part processor : DataProcessing;\n        part evaluator : Evaluation;\n\n        connect collector.outWeight to processor.inWeight;\n        connect processor.outProcessed to evaluator.inProcessed;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563759.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 353,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1181,
+    "output_tokens_details": {
+      "reasoning_tokens": 960
+    },
+    "total_tokens": 1534
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

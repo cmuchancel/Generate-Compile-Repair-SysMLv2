@@ -1,0 +1,82 @@
+{
+  "id": "resp_0c008e8ea94777d0006997eca548088190bbc5e4426f432bc1",
+  "created_at": 1771564197.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0c008e8ea94777d0006997eca5b074819094d29711f6890f72",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0c008e8ea94777d0006997ecab3d2481909bc6fe4e94a14faa",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSafetySecurityModel {\n  private import ScalarValues::*;\n\n  enum def FeatureType { safety; security; }\n  enum def SafetyLevel { mandatory; optional; notApplicable; }\n  enum def ViewType { tree; table; }\n\n  part def VehicleComponent {\n    attribute featureType : FeatureType;\n    attribute safetyLevel : SafetyLevel;\n  }\n\n  part def SeatBelt {\n    attribute featureType : FeatureType = FeatureType::safety;\n    attribute safetyLevel : SafetyLevel = SafetyLevel::mandatory;\n  }\n\n  part def Bumper {\n    attribute featureType : FeatureType = FeatureType::safety;\n    attribute safetyLevel : SafetyLevel = SafetyLevel::mandatory;\n  }\n\n  part def Airbag {\n    attribute featureType : FeatureType = FeatureType::safety;\n    attribute safetyLevel : SafetyLevel = SafetyLevel::optional;\n  }\n\n  part def AntiLockBrakingSystem {\n    attribute featureType : FeatureType = FeatureType::safety;\n    attribute safetyLevel : SafetyLevel = SafetyLevel::optional;\n  }\n\n  part def AlarmDevice {\n    attribute featureType : FeatureType = FeatureType::security;\n    attribute safetyLevel : SafetyLevel = SafetyLevel::notApplicable;\n  }\n\n  part def KeylessEntrySystem {\n    attribute featureType : FeatureType = FeatureType::security;\n    attribute safetyLevel : SafetyLevel = SafetyLevel::notApplicable;\n  }\n\n  part def Vehicle {\n    part seatBelt : SeatBelt;\n    part bumper : Bumper;\n    part airbag : Airbag;\n    part abs : AntiLockBrakingSystem;\n    part alarm : AlarmDevice;\n    part keylessEntry : KeylessEntrySystem;\n  }\n\n  part def Filter {\n    attribute filterType : FeatureType;\n  }\n\n  part def SafetyFilter {\n    attribute filterType : FeatureType = FeatureType::safety;\n  }\n\n  part def SecurityFilter {\n    attribute filterType : FeatureType = FeatureType::security;\n  }\n\n  part def Visualization {\n    attribute viewType : ViewType;\n  }\n\n  part def TreeView {\n    attribute viewType : ViewType = ViewType::tree;\n  }\n\n  part def TableView {\n    attribute viewType : ViewType = ViewType::table;\n  }\n\n  part def SafetySecurityManagementSystem {\n    part vehicle : Vehicle;\n    part safetyFilter : SafetyFilter;\n    part securityFilter : SecurityFilter;\n    part treeView : TreeView;\n    part tableView : TableView;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564209.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 2047,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 847,
+    "output_tokens_details": {
+      "reasoning_tokens": 320
+    },
+    "total_tokens": 2894
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

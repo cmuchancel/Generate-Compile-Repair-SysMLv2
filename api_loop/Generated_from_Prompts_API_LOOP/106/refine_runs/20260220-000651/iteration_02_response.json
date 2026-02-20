@@ -1,0 +1,82 @@
+{
+  "id": "resp_055c76b66274899b006997ec05371081a091035decfd17e480",
+  "created_at": 1771564037.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_055c76b66274899b006997ec058d0881a09dc776359a7fab08",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_055c76b66274899b006997ec0df78c81a082f2a562703233ce",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehiclePowertrainManagement {\n    private import ScalarValues::*;\n\n    item def FuelCommand;\n    item def StartSignal;\n    item def ShutdownSignal;\n    item def Torque;\n\n    enum def EngineState {\n        Off;\n        On;\n    }\n\n    port def FuelCommandPort;\n    port def StartSignalPort;\n    port def ShutdownSignalPort;\n    port def TorquePort;\n\n    part def DriverInput {\n        port fuelOut : FuelCommandPort;\n        port startOut : StartSignalPort;\n        port shutdownOut : ShutdownSignalPort;\n    }\n\n    part def Engine {\n        port fuelIn : FuelCommandPort;\n        port startIn : StartSignalPort;\n        port shutdownIn : ShutdownSignalPort;\n        port torqueOut : TorquePort;\n        attribute engineState : EngineState;\n    }\n\n    part def Transmission {\n        port torqueIn : TorquePort;\n        port torqueOut : TorquePort;\n        attribute gearRatio : Real = 1.0;\n    }\n\n    part def TorqueDistributor {\n        port torqueIn : TorquePort;\n        port torqueOutFL : TorquePort;\n        port torqueOutFR : TorquePort;\n        port torqueOutRL : TorquePort;\n        port torqueOutRR : TorquePort;\n    }\n\n    part def Wheel {\n        port torqueIn : TorquePort;\n    }\n\n    part def PowertrainSystem {\n        part driver : DriverInput;\n        part engine : Engine;\n        part transmission : Transmission;\n        part distributor : TorqueDistributor;\n        part wheelFL : Wheel;\n        part wheelFR : Wheel;\n        part wheelRL : Wheel;\n        part wheelRR : Wheel;\n\n        connect driver.fuelOut to engine.fuelIn;\n        connect driver.startOut to engine.startIn;\n        connect driver.shutdownOut to engine.shutdownIn;\n        connect engine.torqueOut to transmission.torqueIn;\n        connect transmission.torqueOut to distributor.torqueIn;\n        connect distributor.torqueOutFL to wheelFL.torqueIn;\n        connect distributor.torqueOutFR to wheelFR.torqueIn;\n        connect distributor.torqueOutRL to wheelRL.torqueIn;\n        connect distributor.torqueOutRR to wheelRR.torqueIn;\n    }\n\n    part powertrainSystem : PowertrainSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564050.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1291,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 952,
+    "output_tokens_details": {
+      "reasoning_tokens": 448
+    },
+    "total_tokens": 2243
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

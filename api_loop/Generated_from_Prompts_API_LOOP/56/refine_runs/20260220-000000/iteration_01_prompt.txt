@@ -1,0 +1,16 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is used for the quality aggregation management of objects with mass attributes. Each object has a basic mass attribute (simpleMass) and a total mass attribute (totalMass). For the most basic object (simpleThing), its total mass is equal to its own basic mass. For a composite object (compositeThing), it can contain several subcomponents, each of which is an object with mass. Its total mass is the sum of its own basic mass and the total mass of all its subcomponents. The system can automatically calculate and aggregate the mass of components at all levels of the composite, achieving hierarchical management and statistics of mass.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+Return only the updated SysMLv2 model.

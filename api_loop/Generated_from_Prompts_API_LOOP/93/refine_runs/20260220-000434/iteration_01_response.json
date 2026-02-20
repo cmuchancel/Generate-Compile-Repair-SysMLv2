@@ -1,0 +1,82 @@
+{
+  "id": "resp_01e5b9e13761ccd5006997eb63b370819791bd783930da14b7",
+  "created_at": 1771563875.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_01e5b9e13761ccd5006997eb64036c81979e5a50f35b4dd172",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_01e5b9e13761ccd5006997ebd061408197ab89003faafe1d20",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AutomotiveSystemModel\n  private import ScalarValues::*;\n\n  enum def SafetyStatus\n    enum Mandatory;\n    enum Optional;\n\n  port def GenericPort;\n\n  part def Component\n    port ifc : GenericPort;\n\n  part def SafetyComponent : Component\n    attribute isSafety : Boolean = true;\n\n  part def NonSafetyComponent : Component\n    attribute isSafety : Boolean = false;\n\n  part def SeatBelt : SafetyComponent\n    attribute safetyStatus : SafetyStatus = SafetyStatus::Mandatory;\n\n  part def Bumper : SafetyComponent\n    attribute safetyStatus : SafetyStatus = SafetyStatus::Mandatory;\n\n  part def DriverAirbag : SafetyComponent\n    attribute safetyStatus : SafetyStatus = SafetyStatus::Optional;\n\n  part def ABS : SafetyComponent\n    attribute safetyStatus : SafetyStatus = SafetyStatus::Optional;\n\n  part def Engine : NonSafetyComponent;\n  part def Transmission : NonSafetyComponent;\n  part def Battery : NonSafetyComponent;\n  part def Alternator : NonSafetyComponent;\n  part def HeadUnit : NonSafetyComponent;\n  part def Speakers : NonSafetyComponent;\n  part def Chassis : NonSafetyComponent;\n  part def Doors : NonSafetyComponent;\n  part def BaseBrakes : NonSafetyComponent;\n\n  part def BodySubsystem : NonSafetyComponent\n    part bumper : Bumper;\n    part chassis : Chassis;\n    part doors : Doors;\n\n  part def RestraintSubsystem : NonSafetyComponent\n    part seatBelt : SeatBelt;\n    part driverAirbag : DriverAirbag;\n\n  part def BrakingSubsystem : NonSafetyComponent\n    part baseBrakes : BaseBrakes;\n    part abs : ABS;\n\n  part def PowertrainSubsystem : NonSafetyComponent\n    part engine : Engine;\n    part transmission : Transmission;\n\n  part def ElectricalSubsystem : NonSafetyComponent\n    part battery : Battery;\n    part alternator : Alternator;\n\n  part def InfotainmentSubsystem : NonSafetyComponent\n    part headUnit : HeadUnit;\n    part speakers : Speakers;\n\n  part def AutomotiveSystem : NonSafetyComponent\n    part body : BodySubsystem;\n    part restraint : RestraintSubsystem;\n    part braking : BrakingSubsystem;\n    part powertrain : PowertrainSubsystem;\n    part electrical : ElectricalSubsystem;\n    part infotainment : InfotainmentSubsystem;\n\n  part def SystemTreeView : NonSafetyComponent\n    part root : AutomotiveSystem;\n\n  part def SafetyComponentsTable : NonSafetyComponent\n    part seatBeltEntry : SeatBelt;\n    part bumperEntry : Bumper;\n    part driverAirbagEntry : DriverAirbag;\n    part absEntry : ABS;\n\n  part def NonSafetyComponentsTable : NonSafetyComponent\n    part automotiveSystemEntry : AutomotiveSystem;\n    part bodySubsystemEntry : BodySubsystem;\n    part restraintSubsystemEntry : RestraintSubsystem;\n    part brakingSubsystemEntry : BrakingSubsystem;\n    part powertrainSubsystemEntry : PowertrainSubsystem;\n    part electricalSubsystemEntry : ElectricalSubsystem;\n    part infotainmentSubsystemEntry : InfotainmentSubsystem;\n    part engineEntry : Engine;\n    part transmissionEntry : Transmission;\n    part batteryEntry : Battery;\n    part alternatorEntry : Alternator;\n    part headUnitEntry : HeadUnit;\n    part speakersEntry : Speakers;\n    part chassisEntry : Chassis;\n    part doorsEntry : Doors;\n    part baseBrakesEntry : BaseBrakes;\n\n  part def SystemViews : NonSafetyComponent\n    part treeView : SystemTreeView;\n    part safetyTable : SafetyComponentsTable;\n    part nonSafetyTable : NonSafetyComponentsTable;\n\n  part automotiveSystem : AutomotiveSystem;\n  part views : SystemViews;",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563993.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 472,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 8380,
+    "output_tokens_details": {
+      "reasoning_tokens": 7616
+    },
+    "total_tokens": 8852
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

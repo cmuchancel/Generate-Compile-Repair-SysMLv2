@@ -1,0 +1,82 @@
+{
+  "id": "resp_02b3491a51393838006997eb65e774819d9022cae34a051521",
+  "created_at": 1771563877.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_02b3491a51393838006997eb666268819daadbe7320c431ff0",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_02b3491a51393838006997eb67a494819db3d2adbb70bb5b63",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package BatteryRiskSystem {\n    private import ScalarValues::*;\n\n    enum def SeverityLevel {\n        LOW;\n        MEDIUM;\n        HIGH;\n        CRITICAL;\n    }\n\n    enum def BatteryState {\n        NORMAL;\n        LOW_BATTERY;\n        SHUTDOWN;\n    }\n\n    enum def RiskType {\n        NONE;\n        BATTERY_AGING_TO_LOW_LEVEL;\n        LOW_BATTERY;\n        DEVICE_SHUTDOWN;\n    }\n\n    item def BatteryStatus {\n        attribute level : Real;\n        attribute minThreshold : Real;\n        attribute agingProbability : Real;\n    }\n\n    part def Battery {\n        attribute level : Real;\n        attribute minThreshold : Real;\n        attribute agingProbability : Real;\n        attribute batteryState : BatteryState;\n    }\n\n    part def RiskAssessment {\n        attribute riskIdentified : Boolean;\n        attribute riskType : RiskType;\n        attribute severity : SeverityLevel;\n        attribute lowBatteryState : Boolean;\n        attribute prolongedLowBattery : Boolean;\n        attribute deviceShutdown : Boolean;\n    }\n\n    part def EquipmentSystem {\n        part battery : Battery;\n        part assessment : RiskAssessment;\n        attribute monitorEnabled : Boolean;\n        attribute criticalFunctionInterrupted : Boolean;\n    }\n\n    part equipment : EquipmentSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563882.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 841,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 348,
+    "output_tokens_details": {
+      "reasoning_tokens": 64
+    },
+    "total_tokens": 1189
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

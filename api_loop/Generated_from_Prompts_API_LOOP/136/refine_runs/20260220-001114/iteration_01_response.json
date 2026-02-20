@@ -1,0 +1,82 @@
+{
+  "id": "resp_04322def12ed3f3c006997ecf3eed0819482ea57d8c49ca292",
+  "created_at": 1771564275.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_04322def12ed3f3c006997ecf45d0c8194b03e4d384360b449",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_04322def12ed3f3c006997ecfa923881949c1ce3766c216d40",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AutomotiveTires {\n   private import ScalarValues::*;\n   \n   part def Tire {\n      attribute manufacturer : String;\n      attribute rimDiameter : Real;\n      attribute width : Integer;\n   }\n   \n   part MichelinFrenchTire : Tire {\n      attribute manufacturer : String = \"Michelin\";\n      attribute rimDiameter : Real = 18.0;\n      attribute width : Integer = 245;\n   }\n   \n   part BridgestoneTire : Tire {\n      attribute manufacturer : String = \"Bridgestone\";\n      attribute rimDiameter : Real = 17.0;\n      attribute width : Integer = 225;\n   }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564284.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 387,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 563,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 950
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

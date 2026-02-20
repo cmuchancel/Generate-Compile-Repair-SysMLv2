@@ -1,0 +1,82 @@
+{
+  "id": "resp_0c9b062d1ce4291f006997ebf7ff5c819f9a869cd5a0752156",
+  "created_at": 1771564024.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0c9b062d1ce4291f006997ebf848dc819f93d0e241b41c9ca9",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0c9b062d1ce4291f006997ec0921f0819fb0037a239fedfe40",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package TrailerHitchingSystem {\n  private import ScalarValues::*;\n  enum def ConnectionState {\n    enum Connected;\n    enum Disconnected;\n  }\n  port def PowerPort {\n  }\n  part def Frame {\n  }\n  part def HitchBall {\n    port powerPort : PowerPort;\n  }\n  part def TrailerCoupler {\n    port powerPort : PowerPort;\n  }\n  part def Vehicle {\n    part vehicleFrame : Frame;\n    part hitchBall : HitchBall;\n  }\n  part def Trailer {\n    part trailerFrame : Frame;\n    part trailerCoupler : TrailerCoupler;\n  }\n  part def HitchingSystem {\n    part vehicle : Vehicle;\n    part trailer : Trailer;\n    attribute connectionState : ConnectionState = ConnectionState::Disconnected;\n    connect vehicle.hitchBall.powerPort to trailer.trailerCoupler.powerPort;\n  }\n  part system : HitchingSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564043.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 358,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1222,
+    "output_tokens_details": {
+      "reasoning_tokens": 1024
+    },
+    "total_tokens": 1580
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

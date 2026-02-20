@@ -1,0 +1,82 @@
+{
+  "id": "resp_025fb5a56ad262f1006997ed372fac81919bac9d71f0d9782b",
+  "created_at": 1771564343.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_025fb5a56ad262f1006997ed3775f481919578f9c9fbb0cc9c",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_025fb5a56ad262f1006997ed45bdcc819198766c6c667952a2",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package CollectionsSystem {\n   private import ScalarValues::*;\n   part def SparePart;\n   part def Person;\n   part def BusinessFunction;\n   part def CollectionSystem {\n      attribute sparePartsBag : Bag<SparePart>;\n      attribute integerList : List<Integer>;\n      attribute stringSet : Set<String>;\n      attribute personnelOrderedSet : OrderedSet<Person>;\n      attribute personnelSetList : List<Set<Person>>;\n      attribute realArray : Real[4];\n      part business : BusinessFunction;\n   }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564359.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 417,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 664,
+    "output_tokens_details": {
+      "reasoning_tokens": 512
+    },
+    "total_tokens": 1081
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

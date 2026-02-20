@@ -1,0 +1,82 @@
+{
+  "id": "resp_05a8647cda8c1041006997e9a63f54819285bd8da6345f7522",
+  "created_at": 1771563430.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_05a8647cda8c1041006997e9a690448192a70b29a4843f4ff6",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_05a8647cda8c1041006997e9affb84819282e765f3c9bd9f4b",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package CameraShootingProcess {\n  private import ScalarValues::*;\n\n  enum def SceneType { Auto; Portrait; Landscape; Night; }\n\n  item def SceneSelection;\n  item def FocusedScene;\n  item def RawImage;\n  item def FinalPhoto;\n\n  port def ScenePort;\n  port def FocusPort;\n  port def ImagePort;\n\n  part def UserInterface {\n    port selectOut : ScenePort;\n  }\n\n  part def SceneSelector {\n    attribute selectedScene : SceneType;\n    port selectIn : ScenePort;\n    port sceneOut : ScenePort;\n  }\n\n  part def AutoFocus {\n    attribute autoFocusEnabled : Boolean = true;\n    port sceneIn : ScenePort;\n    port focusedOut : FocusPort;\n  }\n\n  part def ImageGenerator {\n    attribute autoGenerateEnabled : Boolean = true;\n    port focusedIn : FocusPort;\n    port imageOut : ImagePort;\n  }\n\n  part def ImagingModule {\n    attribute autoCaptureEnabled : Boolean = true;\n    port imageIn : ImagePort;\n    port photoOut : ImagePort;\n  }\n\n  part def CameraSystem {\n    part ui : UserInterface;\n    part selector : SceneSelector;\n    part af : AutoFocus;\n    part generator : ImageGenerator;\n    part imager : ImagingModule;\n\n    port photoOut : ImagePort;\n\n    connect ui.selectOut to selector.selectIn;\n    connect selector.sceneOut to af.sceneIn;\n    connect af.focusedOut to generator.focusedIn;\n    connect generator.imageOut to imager.imageIn;\n    connect imager.photoOut to photoOut;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563443.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 364,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 919,
+    "output_tokens_details": {
+      "reasoning_tokens": 576
+    },
+    "total_tokens": 1283
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

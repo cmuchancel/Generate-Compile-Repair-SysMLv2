@@ -1,0 +1,82 @@
+{
+  "id": "resp_0a0cbe5337977a58006997eb6eea548190be5df05a19e68767",
+  "created_at": 1771563886.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0a0cbe5337977a58006997eb6f40fc8190b51b232992adb09d",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0a0cbe5337977a58006997eb7805b881909daee28aa18d0a56",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package AutomobileDocumentManagement {\n  private import ScalarValues::*;\n\n  item def Document {\n    attribute title : String;\n    attribute content : String;\n  }\n\n  part def Automobile {\n    attribute vin : String;\n    attribute model : String;\n    attribute torque : TorqueValue;\n    attribute description : String;\n  }\n\n  part def Car {\n    attribute aliasName : String = \"Car\";\n    attribute automobile : Automobile;\n    attribute description : String;\n  }\n\n  part def DocumentationLink {\n    attribute document : Document;\n    attribute targetAutomobile : Automobile;\n    attribute targetCar : Car;\n  }\n\n  part def Platform {\n    part automobiles : Automobile[0..*];\n    part cars : Car[0..*];\n    part documents : Document[0..*];\n    part links : DocumentationLink[0..*];\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563898.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 412,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 710,
+    "output_tokens_details": {
+      "reasoning_tokens": 512
+    },
+    "total_tokens": 1122
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

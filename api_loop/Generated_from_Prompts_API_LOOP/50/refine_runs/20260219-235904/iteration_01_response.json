@@ -1,0 +1,82 @@
+{
+  "id": "resp_0a27652891bb0029006997ea19e2b08193901c79f5f63ecd9e",
+  "created_at": 1771563545.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0a27652891bb0029006997ea1a304881938c28887ff85c8823",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0a27652891bb0029006997ea2fc93c8193be0780421f95d170",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleLifecyclePkg {\n  private import ScalarValues::*;\n\n  part def VehicleLifecycleSystem {\n    part vehicle : Vehicle;\n  }\n\n  part def Vehicle {\n    attribute vin : String;\n    part assembly : AssemblyStage;\n    part delivery : DeliveryStage;\n    part ownerships : OwnershipRecord[0..*];\n    part drivingOperations : DrivingOperation[0..*];\n    part scrapping : ScrappingInfo;\n  }\n\n  part def AssemblyStage {\n    attribute assemblyDate : String;\n    attribute assemblyPlant : String;\n  }\n\n  part def DeliveryStage {\n    attribute deliveryDate : String;\n    attribute deliveryLocation : String;\n    part deliveredToOwner : Owner;\n  }\n\n  part def OwnershipRecord {\n    attribute ownershipId : String;\n    part owner : Owner;\n    attribute startDate : String;\n    attribute endDate : String;\n  }\n\n  part def Owner {\n    attribute ownerId : String;\n    attribute ownerName : String;\n    attribute ownerContact : String;\n  }\n\n  part def Driver {\n    attribute driverId : String;\n    attribute driverName : String;\n    attribute licenseNumber : String;\n  }\n\n  part def DrivingOperation {\n    attribute operationId : String;\n    attribute operationDate : String;\n    attribute distance : Real;\n    part driver : Driver;\n  }\n\n  part def ScrappingInfo {\n    attribute scrappingDate : String;\n    attribute deregistrationId : String;\n    attribute scrappingLocation : String;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563571.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 406,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1536,
+    "output_tokens_details": {
+      "reasoning_tokens": 1216
+    },
+    "total_tokens": 1942
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

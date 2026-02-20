@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:02:56.498941Z",
+    "iteration_end": "2026-02-20T05:03:27.219625Z",
+    "iteration_duration_seconds": 30.721214040997438,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/80/20260220-000256/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/80/20260220-000256/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/80/20260220-000256/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:21:47: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'four' found.\n    21 |     attribute cylinderCount : CylinderCount = four;\n       |                                               \u001b[38;2;220;080;080m^^^^\u001b[0m\n\niteration_01.sysml:32:47: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'six' found.\n    32 |     attribute cylinderCount : CylinderCount = six;\n       |                                               \u001b[38;2;220;080;080m^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 349,
+      "output_tokens": 1986,
+      "total_tokens": 2335
+    },
+    "tokens_used_total": 2335
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:03:27.219682Z",
+    "iteration_end": "2026-02-20T05:03:31.739382Z",
+    "iteration_duration_seconds": 4.519803415998467,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/80/20260220-000256/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/80/20260220-000256/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/80/20260220-000256/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 698,
+      "output_tokens": 304,
+      "total_tokens": 1002
+    },
+    "tokens_used_total": 3337
+  }
+]

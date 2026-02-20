@@ -1,0 +1,82 @@
+{
+  "id": "resp_0f67e8ec0bddfa51006997eb0d951881a388073382911a778d",
+  "created_at": 1771563789.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0f67e8ec0bddfa51006997eb0df59081a38f8996d51766eb44",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0f67e8ec0bddfa51006997eb220e7c81a3a8dd6bc1abf2c169",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package SystemModel {\n  private import ScalarValues::*;\n\n  item def MessageFormat {\n    attribute header : String;\n    attribute payload : String;\n  }\n\n  item def DataFormat {\n    attribute schema : String;\n    attribute encoding : String;\n  }\n\n  part def SoftwareDesign {\n    part messageFormat : MessageFormat;\n    part dataFormat : DataFormat;\n    attribute processingFunction : String;\n    attribute transmissionFunction : String;\n    attribute storageFunction : String;\n  }\n\n  part def ComputerSubsystem {\n    part software : SoftwareDesign;\n    attribute functionsIntegrated : Boolean = true;\n  }\n\n  part def StorageSubsystem {\n    part messageFormat : MessageFormat;\n    part dataFormat : DataFormat;\n    attribute compatibleWithFormats : Boolean = true;\n  }\n\n  part def SystemAssembly {\n    part computer : ComputerSubsystem;\n    part storage : StorageSubsystem;\n    attribute efficient : Boolean = true;\n    attribute reliable : Boolean = true;\n    attribute compliant : Boolean = true;\n    connect computer.software.messageFormat to storage.messageFormat;\n    connect computer.software.dataFormat to storage.dataFormat;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563812.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 357,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1414,
+    "output_tokens_details": {
+      "reasoning_tokens": 1152
+    },
+    "total_tokens": 1771
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,73 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system imposes the following requirements on the vehicle and its key components: With a full fuel tank, the vehicle’s total mass must not exceed 2000 kg, while with an empty fuel tank, the total mass must not exceed 1500 kg. This ensures that the sum of the vehicle’s dry mass and fuel mass meets the maximum allowable mass under different operating conditions. Additionally, the engine must be capable of transmitting its generated torque to the transmission via the clutch interface, and the engine is required to deliver the necessary torque according to the speed-torque curve (see Table 1). Overall, the system aims to regulate vehicle mass control, as well as the interface and performance of the powertrain, thereby ensuring the safety of vehicle design and the effectiveness of power transmission.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleSystem
+  private import ScalarValues::*;
+
+  port def TorquePort {
+    attribute torque : Real;
+  }
+
+  part def Engine {
+    port torqueOut : TorquePort;
+    attribute maxTorque : Real = 300;
+    attribute requiredTorque1000 : Real = 180;
+    attribute deliveredTorque1000 : Real = 180;
+    attribute requiredTorque2000 : Real = 220;
+    attribute deliveredTorque2000 : Real = 220;
+    attribute requiredTorque3000 : Real = 200;
+    attribute deliveredTorque3000 : Real = 200;
+  }
+
+  part def Transmission {
+    port torqueIn : TorquePort;
+  }
+
+  part def Clutch {
+    port torqueIn : TorquePort;
+    port torqueOut : TorquePort;
+  }
+
+  part def FuelTank {
+    attribute fuelMassFull : Real = 100;
+    attribute fuelMassEmpty : Real = 0;
+  }
+
+  part def Vehicle {
+    attribute dryMass : Real = 1400;
+    attribute fuelMassFull : Real = 100;
+    attribute fuelMassEmpty : Real = 0;
+    attribute totalMassFull : Real = 1500;
+    attribute totalMassEmpty : Real = 1400;
+    attribute maxTotalMassFull : Real = 2000;
+    attribute maxTotalMassEmpty : Real = 1500;
+    part engine : Engine;
+    part clutch : Clutch;
+    part transmission : Transmission;
+    part fuelTank : FuelTank;
+    connect engine.torqueOut to clutch.torqueIn;
+    connect clutch.torqueOut to transmission.torqueIn;
+  }
+end package
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:2:3: error (parsing-error): Expected a token. Did you forget ';'?
+    2 |   private import ScalarValues::*;
+iteration_01.sysml:48:12: error (parsing-error): Unexpected EOF. (no source underlining available since segment is out of bounds)
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

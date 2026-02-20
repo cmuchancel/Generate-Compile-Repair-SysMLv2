@@ -1,0 +1,82 @@
+{
+  "id": "resp_08492fef1f398b28006997ea104d58819e84eac8c8d35865d4",
+  "created_at": 1771563536.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_08492fef1f398b28006997ea1093bc819eaeed37cd1f547f87",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_08492fef1f398b28006997ea133870819e8de0c470f61d552b",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package CruiseControlSystem {\n    private import ScalarValues::*;\n\n    item def SpeedCommand {\n        attribute targetSpeed : Real;\n    }\n\n    item def SpeedValue {\n        attribute speed : Real;\n    }\n\n    item def ThrottleCommand {\n        attribute throttle : Real;\n    }\n\n    port def SetSpeedOutPort {\n        ref item speedCommand : SpeedCommand;\n    }\n\n    port def SetSpeedInPort {\n        ref item speedCommand : SpeedCommand;\n    }\n\n    port def SpeedOutPort {\n        ref item speedValue : SpeedValue;\n    }\n\n    port def SpeedInPort {\n        ref item speedValue : SpeedValue;\n    }\n\n    port def ThrottleOutPort {\n        ref item throttleCommand : ThrottleCommand;\n    }\n\n    port def ThrottleInPort {\n        ref item throttleCommand : ThrottleCommand;\n    }\n\n    part def Driver {\n        port setSpeedOut : SetSpeedOutPort;\n        attribute desiredSpeed : Real;\n    }\n\n    part def CruiseController {\n        port setSpeedIn : SetSpeedInPort;\n        port speedIn : SpeedInPort;\n        port throttleOut : ThrottleOutPort;\n        attribute setSpeed : Real;\n        attribute currentSpeed : Real;\n        attribute speedError : Real;\n    }\n\n    part def Speedometer {\n        port speedIn : SpeedInPort;\n        port speedOut : SpeedOutPort;\n        attribute measuredSpeed : Real;\n    }\n\n    part def Engine {\n        port throttleIn : ThrottleInPort;\n        port speedOut : SpeedOutPort;\n        attribute outputSpeed : Real;\n    }\n\n    part def CruiseControlSystem {\n        part driver : Driver;\n        part controller : CruiseController;\n        part speedometer : Speedometer;\n        part engine : Engine;\n\n        connect driver.setSpeedOut to controller.setSpeedIn;\n        connect speedometer.speedOut to controller.speedIn;\n        connect controller.throttleOut to engine.throttleIn;\n        connect engine.speedOut to speedometer.speedIn;\n    }\n\n    part system : CruiseControlSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563543.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1176,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 596,
+    "output_tokens_details": {
+      "reasoning_tokens": 128
+    },
+    "total_tokens": 1772
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

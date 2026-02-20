@@ -1,0 +1,82 @@
+{
+  "id": "resp_0b90ac87805f4b91006997eabf1b6c8193a6bc9614cbc87725",
+  "created_at": 1771563711.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0b90ac87805f4b91006997eabfd5488193ac70235da178b130",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0b90ac87805f4b91006997ead428c88193be798884d9b06deb",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    item def TorqueItem {\n        attribute magnitude : Real;\n        attribute speed : Real;\n    }\n\n    port def TorquePort {\n        item torque : TorqueItem;\n    }\n\n    part def Engine {\n        attribute maxTorque : Real;\n        attribute speed1 : Real;\n        attribute torqueAtSpeed1 : Real;\n        attribute speed2 : Real;\n        attribute torqueAtSpeed2 : Real;\n        port outTorque : TorquePort;\n    }\n\n    part def Clutch {\n        port inTorque : TorquePort;\n        port outTorque : TorquePort;\n    }\n\n    part def Gearbox {\n        port inTorque : TorquePort;\n    }\n\n    part def VehicleMassCondition {\n        attribute curbMass : Real;\n        attribute fuelMass : Real;\n        attribute totalMass : Real;\n    }\n\n    part def Vehicle {\n        part engine : Engine {\n            attribute maxTorque = 350;\n            attribute speed1 = 2000;\n            attribute torqueAtSpeed1 = 300;\n            attribute speed2 = 4000;\n            attribute torqueAtSpeed2 = 280;\n        }\n        part clutch : Clutch;\n        part gearbox : Gearbox;\n\n        part fullFuel : VehicleMassCondition {\n            attribute curbMass = 1400;\n            attribute fuelMass = 500;\n            attribute totalMass = 1900;\n        }\n\n        part emptyFuel : VehicleMassCondition {\n            attribute curbMass = 1400;\n            attribute fuelMass = 0;\n            attribute totalMass = 1400;\n        }\n\n        connect engine.outTorque to clutch.inTorque;\n        connect clutch.outTorque to gearbox.inTorque;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563736.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 524,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 1397,
+    "output_tokens_details": {
+      "reasoning_tokens": 1152
+    },
+    "total_tokens": 1921
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,191 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to provide flexible solutions for vehicle product line configuration, capable of automatically matching suitable combinations of engines, transmissions, and wheels based on different performance requirements and user preferences. For example, when high performance is required, the system will configure a 6-cylinder engine, automatic transmission, and wide-rim wheels, ensuring compatibility among these components. For standard performance requirements, a combination of a 4-cylinder engine, manual transmission, and narrow-rim wheels is offered. The system enforces a series of configuration constraints to ensure that each configuration scheme meets vehicle performance and component compatibility requirements, preventing unreasonable combinations. Ultimately, it enables customized vehicles tailored to individual user needs. Additionally, the system supports the selection of multiple vehicle model variants, allowing enterprises to quickly respond to market demands and achieve flexible expansion and management of their product lines.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 4):
+                package VehicleProductLineConfiguration {
+  private import ScalarValues::*;
+
+  enum def PerformanceLevel {
+    enum highPerf;
+    enum standardPerf;
+  }
+
+  enum def EngineType {
+    enum sixCylinder;
+    enum fourCylinder;
+  }
+
+  enum def TransmissionType {
+    enum automatic;
+    enum manual;
+  }
+
+  enum def WheelType {
+    enum wideRim;
+    enum narrowRim;
+  }
+
+  enum def VehicleVariantType {
+    enum sedan;
+    enum suv;
+    enum truck;
+  }
+
+  enum def UserPreferenceType {
+    enum performanceFocused;
+    enum balanced;
+    enum economyFocused;
+  }
+
+  part def Engine {
+    attribute engineType : EngineType;
+  }
+
+  part def Transmission {
+    attribute transmissionType : TransmissionType;
+  }
+
+  part def WheelSet {
+    attribute wheelType : WheelType;
+  }
+
+  part def SixCylinderEngine : Engine {
+    attribute engineType : EngineType = EngineType::sixCylinder;
+  }
+
+  part def FourCylinderEngine : Engine {
+    attribute engineType : EngineType = EngineType::fourCylinder;
+  }
+
+  part def AutomaticTransmission : Transmission {
+    attribute transmissionType : TransmissionType = TransmissionType::automatic;
+  }
+
+  part def ManualTransmission : Transmission {
+    attribute transmissionType : TransmissionType = TransmissionType::manual;
+  }
+
+  part def WideRimWheelSet : WheelSet {
+    attribute wheelType : WheelType = WheelType::wideRim;
+  }
+
+  part def NarrowRimWheelSet : WheelSet {
+    attribute wheelType : WheelType = WheelType::narrowRim;
+  }
+
+  part def VehicleConfiguration {
+    attribute performanceRequirement : PerformanceLevel;
+    attribute userPreference : UserPreferenceType;
+    attribute modelVariant : VehicleVariantType;
+    part engine : Engine;
+    part transmission : Transmission;
+    part wheels : WheelSet;
+  }
+
+  part def HighPerformanceVariant : VehicleConfiguration {
+    attribute performanceRequirement : PerformanceLevel = PerformanceLevel::highPerf;
+    attribute userPreference : UserPreferenceType = UserPreferenceType::performanceFocused;
+    part engine : SixCylinderEngine;
+    part transmission : AutomaticTransmission;
+    part wheels : WideRimWheelSet;
+  }
+
+  part def StandardPerformanceVariant : VehicleConfiguration {
+    attribute performanceRequirement : PerformanceLevel = PerformanceLevel::standardPerf;
+    attribute userPreference : UserPreferenceType = UserPreferenceType::balanced;
+    part engine : FourCylinderEngine;
+    part transmission : ManualTransmission;
+    part wheels : NarrowRimWheelSet;
+  }
+
+  part def HighPerformanceSUV : HighPerformanceVariant {
+    attribute modelVariant : VehicleVariantType = VehicleVariantType::suv;
+  }
+
+  part def HighPerformanceSedan : HighPerformanceVariant {
+    attribute modelVariant : VehicleVariantType = VehicleVariantType::sedan;
+  }
+
+  part def StandardSedan : StandardPerformanceVariant {
+    attribute modelVariant : VehicleVariantType = VehicleVariantType::sedan;
+  }
+
+  part def StandardTruck : StandardPerformanceVariant {
+    attribute modelVariant : VehicleVariantType = VehicleVariantType::truck;
+  }
+
+  part def VehicleProductLineSystem {
+    part highPerformanceSUV : HighPerformanceSUV;
+    part highPerformanceSedan : HighPerformanceSedan;
+    part standardSedan : StandardSedan;
+    part standardTruck : StandardTruck;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_04.sysml:48:30: error (parsing-error): Expected a token. Did you forget ';'?
+    48 |   part def SixCylinderEngine : Engine {
+iteration_04.sysml:52:31: error (parsing-error): Expected a token. Did you forget ';'?
+    52 |   part def FourCylinderEngine : Engine {
+iteration_04.sysml:56:34: error (parsing-error): Expected a token. Did you forget ';'?
+    56 |   part def AutomaticTransmission : Transmission {
+iteration_04.sysml:60:31: error (parsing-error): Expected a token. Did you forget ';'?
+    60 |   part def ManualTransmission : Transmission {
+iteration_04.sysml:64:28: error (parsing-error): Expected a token. Did you forget ';'?
+    64 |   part def WideRimWheelSet : WheelSet {
+iteration_04.sysml:68:30: error (parsing-error): Expected a token. Did you forget ';'?
+    68 |   part def NarrowRimWheelSet : WheelSet {
+iteration_04.sysml:81:35: error (parsing-error): Expected a token. Did you forget ';'?
+    81 |   part def HighPerformanceVariant : VehicleConfiguration {
+iteration_04.sysml:89:39: error (parsing-error): Expected a token. Did you forget ';'?
+    89 |   part def StandardPerformanceVariant : VehicleConfiguration {
+iteration_04.sysml:97:31: error (parsing-error): Expected a token. Did you forget ';'?
+    97 |   part def HighPerformanceSUV : HighPerformanceVariant {
+iteration_04.sysml:101:33: error (parsing-error): Expected a token. Did you forget ';'?
+    101 |   part def HighPerformanceSedan : HighPerformanceVariant {
+iteration_04.sysml:105:26: error (parsing-error): Expected a token. Did you forget ';'?
+    105 |   part def StandardSedan : StandardPerformanceVariant {
+iteration_04.sysml:109:26: error (parsing-error): Expected a token. Did you forget ';'?
+    109 |   part def StandardTruck : StandardPerformanceVariant {
+iteration_04.sysml:49:15: warning (namespace-distinguishability): Member name 'engineType' shadows VehicleProductLineConfiguration::Engine::engineType
+│   49 |     attribute engineType : EngineType = EngineType::sixCylinder;
+│      |               ^^^^^^^^^^
+└── iteration_04.sysml:37:15: note: Inherited from here
+    └── iteration_04.sysml:48:32: note: Because VehicleProductLineConfiguration::Engine is specialized through FeatureTyping
+iteration_04.sysml:53:15: warning (namespace-distinguishability): Member name 'engineType' shadows VehicleProductLineConfiguration::Engine::engineType
+│   53 |     attribute engineType : EngineType = EngineType::fourCylinder;
+│      |               ^^^^^^^^^^
+└── iteration_04.sysml:37:15: note: Inherited from here
+    └── iteration_04.sysml:52:33: note: Because VehicleProductLineConfiguration::Engine is specialized through FeatureTyping
+iteration_04.sysml:57:15: warning (namespace-distinguishability): Member name 'transmissionType' shadows VehicleProductLineConfiguration::Transmission::transmissionType
+│   57 |     attribute transmissionType : TransmissionType = TransmissionType::automatic;
+│      |               ^^^^^^^^^^^^^^^^
+└── iteration_04.sysml:41:15: note: Inherited from here
+    └── iteration_04.sysml:56:36: note: Because VehicleProductLineConfiguration::Transmission is specialized through FeatureTyping
+iteration_04.sysml:61:15: warning (namespace-distinguishability): Member name 'transmissionType' shadows VehicleProductLineConfiguration::Transmission::transmissionType
+... (truncated compiler output) ...
+iteration_04.sysml:84:10: warning (namespace-distinguishability): Member name 'engine' shadows VehicleProductLineConfiguration::VehicleConfiguration::engine
+│   84 |     part engine : SixCylinderEngine;
+│      |          ^^^^^^
+└── iteration_04.sysml:76:10: note: Inherited from here
+    └── iteration_04.sysml:81:37: note: Because VehicleProductLineConfiguration::VehicleConfiguration is specialized through FeatureTyping
+iteration_04.sysml:85:10: warning (namespace-distinguishability): Member name 'transmission' shadows VehicleProductLineConfiguration::VehicleConfiguration::transmission
+│   85 |     part transmission : AutomaticTransmission;
+│      |
+... (truncated compiler output) ...
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

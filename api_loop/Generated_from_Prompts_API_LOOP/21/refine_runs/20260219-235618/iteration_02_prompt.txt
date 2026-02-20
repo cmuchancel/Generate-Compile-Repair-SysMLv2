@@ -1,0 +1,82 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is designed to automate the photography process. Users only need to provide a shooting scene, and the system will first perform focus processing on the scene to generate an image suitable for shooting. It will then convert the image into a photograph through a shooting operation. The entire process is seamlessly integrated, requiring no in-depth user intervention in focusing or shooting details. This simplifies the photography workflow, helping users obtain the final photograph easily and efficiently.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package PhotographyAutomation {
+  private import ScalarValues::*;
+
+  item def Scene;
+  item def FocusedImage;
+  item def Photo;
+
+  port def ScenePort {
+    item scene : Scene;
+  }
+
+  port def FocusedImagePort {
+    item image : FocusedImage;
+  }
+
+  port def PhotoPort {
+    item photo : Photo;
+  }
+
+  part def User {
+    port sceneOut : ScenePort;
+    port photoIn : PhotoPort;
+  }
+
+  part def FocusProcessor {
+    port sceneIn : ScenePort;
+    port imageOut : FocusedImagePort;
+  }
+
+  part def ShootingOperator {
+    port imageIn : FocusedImagePort;
+    port photoOut : PhotoPort;
+  }
+
+  part def PhotographySystem {
+    port sceneIn : ScenePort;
+    port photoOut : PhotoPort;
+    part focus : FocusProcessor;
+    part shoot : ShootingOperator;
+    connect sceneIn to focus.sceneIn;
+    connect focus.imageOut to shoot.imageIn;
+    connect shoot.photoOut to photoOut;
+  }
+
+  part def PhotographyEnvironment {
+    part user : User;
+    part system : PhotographySystem;
+    connect user.sceneOut to system.sceneIn;
+    connect system.photoOut to user.photoIn;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:9:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    9 |     item scene : Scene;
+      |     ^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:13:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    13 |     item image : FocusedImage;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:17:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    17 |     item photo : Photo;
+       |     ^^^^^^^^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

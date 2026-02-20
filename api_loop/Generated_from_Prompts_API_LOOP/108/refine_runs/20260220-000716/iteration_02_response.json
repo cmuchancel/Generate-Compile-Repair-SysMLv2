@@ -1,0 +1,82 @@
+{
+  "id": "resp_049fe6540742d025006997ec1569bc8190b7a084c83f4918d2",
+  "created_at": 1771564053.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_049fe6540742d025006997ec15c4588190bf747836a1c65a4a",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_049fe6540742d025006997ec1a20b0819089b1567a28bc6694",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package HitchingSystemModel {\n    private import ScalarValues::*;\n\n    enum def ConnectionStatus {\n        enum CONNECTED;\n        enum DISCONNECTED;\n    }\n\n    port def HitchPort;\n\n    part def TowBall {\n        port hitchPort: HitchPort;\n    }\n\n    part def Coupler {\n        port hitchPort: HitchPort;\n    }\n\n    part def Chassis {\n        part towBall: TowBall;\n    }\n\n    part def TrailerFrame {\n        part coupler: Coupler;\n    }\n\n    part def Vehicle {\n        part chassis: Chassis;\n    }\n\n    part def Trailer {\n        part trailerFrame: TrailerFrame;\n    }\n\n    part def HitchingSystem {\n        part vehicle: Vehicle;\n        part trailer: Trailer;\n        attribute status: ConnectionStatus = ConnectionStatus::DISCONNECTED;\n        connect vehicle.chassis.towBall.hitchPort to trailer.trailerFrame.coupler.hitchPort;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564060.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1034,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 447,
+    "output_tokens_details": {
+      "reasoning_tokens": 192
+    },
+    "total_tokens": 1481
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

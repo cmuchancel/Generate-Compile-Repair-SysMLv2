@@ -1,0 +1,82 @@
+{
+  "id": "resp_0275b2fe24db417c006997ead697c08194b6900ae2293f0899",
+  "created_at": 1771563734.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0275b2fe24db417c006997ead6e9508194958f6e13718da0cd",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0275b2fe24db417c006997eaf888208194aa8b6f71cfe5368e",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleFuelEconomySimulation {\n  private import ScalarValues::*;\n\n  enum def DrivingScenarioType {\n    enum urban;\n    enum highway;\n  }\n\n  item def VehicleParamData {\n    attribute curbWeight : Real;\n    attribute load : Real;\n    attribute wheelDiameter : Real;\n    attribute transmissionEfficiency : Real;\n    attribute frontalArea : Real;\n    attribute dragCoefficient : Real;\n  }\n\n  item def DrivingScenarioData {\n    attribute scenarioType : DrivingScenarioType;\n    attribute distanceKm : Real;\n    attribute averageSpeedKph : Real;\n    attribute speedVariation : Real;\n  }\n\n  item def DynamicsData {\n    attribute requiredWheelPower : Real;\n    attribute acceleration : Real;\n    attribute energyConsumption : Real;\n  }\n\n  item def EngineDemandData {\n    attribute enginePowerDemand : Real;\n  }\n\n  item def FuelEconomyData {\n    attribute fuelConsumedLiters : Real;\n    attribute fuelEconomyMPG : Real;\n    attribute fuelEconomyLper100km : Real;\n    attribute meetsRequirement : Boolean;\n  }\n\n  port def VehicleParamPort {\n    attribute data : VehicleParamData;\n  }\n\n  port def ScenarioPort {\n    attribute data : DrivingScenarioData;\n  }\n\n  port def DynamicsPort {\n    attribute data : DynamicsData;\n  }\n\n  port def EngineDemandPort {\n    attribute data : EngineDemandData;\n  }\n\n  port def FuelEconomyPort {\n    attribute data : FuelEconomyData;\n  }\n\n  part def VehicleParameters {\n    attribute curbWeight : Real;\n    attribute load : Real;\n    attribute wheelDiameter : Real;\n    attribute transmissionEfficiency : Real;\n    attribute frontalArea : Real;\n    attribute dragCoefficient : Real;\n    port paramsOut : VehicleParamPort;\n  }\n\n  part def DrivingScenario {\n    attribute scenarioType : DrivingScenarioType;\n    attribute distanceKm : Real;\n    attribute averageSpeedKph : Real;\n    attribute speedVariation : Real;\n    port scenarioOut : ScenarioPort;\n  }\n\n  part def DynamicsAnalysis {\n    attribute requiredWheelPower : Real;\n    attribute acceleration : Real;\n    attribute energyConsumption : Real;\n    port paramsIn : VehicleParamPort;\n    port scenarioIn : ScenarioPort;\n    port dynamicsOut : DynamicsPort;\n  }\n\n  part def EngineDemandAnalysis {\n    attribute enginePowerDemand : Real;\n    port dynamicsIn : DynamicsPort;\n    port engineOut : EngineDemandPort;\n  }\n\n  part def FuelConsumptionAnalysis {\n    attribute fuelConsumedLiters : Real;\n    attribute fuelEconomyMPG : Real;\n    attribute fuelEconomyLper100km : Real;\n    attribute requiredMPG : Real = 30;\n    attribute meetsRequirement : Boolean;\n    port engineIn : EngineDemandPort;\n    port fuelOut : FuelEconomyPort;\n  }\n\n  part def FuelEconomySimulationSystem {\n    part vehicle : VehicleParameters;\n    part scenario : DrivingScenario;\n    part dynamics : DynamicsAnalysis;\n    part engine : EngineDemandAnalysis;\n    part fuel : FuelConsumptionAnalysis;\n\n    connect vehicle.paramsOut to dynamics.paramsIn;\n    connect scenario.scenarioOut to dynamics.scenarioIn;\n    connect dynamics.dynamicsOut to engine.dynamicsIn;\n    connect engine.engineOut to fuel.engineIn;\n  }\n\n  part system : FuelEconomySimulationSystem;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563775.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 385,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 2925,
+    "output_tokens_details": {
+      "reasoning_tokens": 2240
+    },
+    "total_tokens": 3310
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

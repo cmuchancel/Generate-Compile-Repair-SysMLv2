@@ -1,0 +1,60 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+This system is used to control the vehicle’s start-stop process. The vehicle is initially in the off state. Upon receiving a "start signal," it enters the start process. During startup, the system will only respond to the "power-on signal" after detecting that the brake pedal has been depressed, and will simultaneously send a start signal to the controller. Once the vehicle enters the operating state, it will automatically perform a self-check and continuously supply power to the vehicle. When a "stop signal" is received, the process returns the vehicle to the off state. Upon leaving the operating state, the parking brake will be automatically applied to ensure parking safety. The overall system is designed to ensure the safety and reliability of the vehicle’s start-stop process, as well as coordinated control with the controller.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package VehicleStartStopSystemPkg {
+  private import ScalarValues::*;
+
+  enum def VehicleState {
+    off;
+    starting;
+    operating;
+  }
+
+  item def Signal;
+
+  part def Controller {
+    attribute controllerReady : Boolean = true;
+  }
+
+  part def StartStopSystem {
+    attribute state : VehicleState = off;
+    attribute brakePedalDepressed : Boolean = false;
+    attribute startSignal : Boolean = false;
+    attribute powerOnSignal : Boolean = false;
+    attribute stopSignal : Boolean = false;
+    attribute selfCheckComplete : Boolean = false;
+    attribute powerSupplyOn : Boolean = false;
+    attribute parkingBrakeApplied : Boolean = true;
+    attribute startSignalToController : Boolean = false;
+    part controller : Controller;
+  }
+
+  part def Vehicle {
+    part startStop : StartStopSystem;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:17:15: error (parsing-error): Unexpected 'state', expected one of ["SINGLE_LINE_NOTE", "NAME", "[", "ordered", "nonunique", "<", "::>", "references", "=>", "crosses", ":>>", "redefines", ":", "defined", ";", "{", "=", ":=", "default", "def", "MULTILINE_NOTE", ":>", "subsets", "MultiplicityRange", "OwningMembership", "FeatureValue"].
+    17 |     attribute state : VehicleState = off;
+       |               ^^^^^
+iteration_01.sysml:17:38: error (reference-error): No Feature named 'off' found.
+    17 |     attribute state : VehicleState = off;
+       |                                      ^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

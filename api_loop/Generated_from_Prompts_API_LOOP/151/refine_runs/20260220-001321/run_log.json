@@ -1,0 +1,40 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T05:13:21.908271Z",
+    "iteration_end": "2026-02-20T05:13:34.502551Z",
+    "iteration_duration_seconds": 12.59450504200504,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/151/20260220-001321/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/151/20260220-001321/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/151/20260220-001321/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:40:43: \u001b[38;2;220;080;080merror\u001b[0m (reference-error): No Feature named 'idle' found.\n    40 |     attribute status : VehicleUseStatus = idle;\n       |                                           \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 379,
+      "output_tokens": 714,
+      "total_tokens": 1093
+    },
+    "tokens_used_total": 1093
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T05:13:34.502602Z",
+    "iteration_end": "2026-02-20T05:13:38.187468Z",
+    "iteration_duration_seconds": 3.6849539590039058,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/151/20260220-001321/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/151/20260220-001321/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/151/20260220-001321/iteration_02_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 651,
+      "output_tokens": 238,
+      "total_tokens": 889
+    },
+    "tokens_used_total": 1982
+  }
+]

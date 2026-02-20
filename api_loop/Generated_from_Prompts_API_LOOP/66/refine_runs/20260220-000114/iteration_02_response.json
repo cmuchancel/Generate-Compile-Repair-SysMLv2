@@ -1,0 +1,82 @@
+{
+  "id": "resp_0789e0c66052dfd8006997eaaa2a04819cba68ffc69764846a",
+  "created_at": 1771563690.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0789e0c66052dfd8006997eaaa80bc819cab504c4aa176b01e",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0789e0c66052dfd8006997eab034d4819ca0073090e7bde247",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSystem {\n    private import ScalarValues::*;\n\n    part def Chassis {\n        attribute mass : Real;\n    }\n\n    part def Engine {\n        attribute mass : Real;\n    }\n\n    part def Transmission {\n        attribute mass : Real;\n    }\n\n    part def Vehicle {\n        part chassis : Chassis;\n        part engine : Engine;\n        part transmission : Transmission;\n\n        attribute totalMass : Real = chassis.mass + engine.mass + transmission.mass;\n        attribute maxTotalMass : Real = 2500;\n        attribute massOk : Boolean = totalMass <= maxTotalMass;\n    }\n\n    part def DynamicsModel {\n        attribute initialVelocity : Real;\n        attribute finalVelocity : Real;\n        attribute mass : Real;\n        attribute force : Real;\n        attribute time : Real;\n\n        attribute deltaVelocity : Real = finalVelocity - initialVelocity;\n        attribute massPositive : Boolean = mass > 0;\n        attribute forceRelationOk : Boolean = force == mass * deltaVelocity / time;\n    }\n\n    part def VehicleSystemModel {\n        part vehicle : Vehicle;\n        part dynamics : DynamicsModel;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563698.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 722,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 610,
+    "output_tokens_details": {
+      "reasoning_tokens": 320
+    },
+    "total_tokens": 1332
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,67 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system must be capable of transmitting and outputting power, and logically should have the ability to provide power as well as generate torque. The system should include a torque generator component responsible for generating torque. At the physical level, the system must include a powertrain, which should contain an engine responsible for the actual execution of torque generation. The function of the system’s torque generator should be able to be mapped and implemented onto the engine within the powertrain, achieving effective correspondence and allocation between logical functions and physical implementation.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package PowerSystem {
+  private import ScalarValues::*;
+
+  item def Torque;
+  item def Power;
+
+  port def TorquePort {
+    item torque : Torque;
+  }
+
+  port def PowerPort {
+    item power : Power;
+  }
+
+  part def TorqueGenerator {
+    port torqueOut : TorquePort;
+  }
+
+  part def Engine {
+    port torqueOut : TorquePort;
+  }
+
+  part def Powertrain {
+    part engine : Engine;
+    port torqueOut : TorquePort;
+    port powerOut : PowerPort;
+    connect engine.torqueOut to torqueOut;
+  }
+
+  part def PowerTransmissionSystem {
+    part torqueGenerator : TorqueGenerator;
+    part powertrain : Powertrain;
+    port torqueOut : TorquePort;
+    port powerOut : PowerPort;
+    connect torqueGenerator.torqueOut to powertrain.engine.torqueOut;
+    connect powertrain.torqueOut to torqueOut;
+    connect powertrain.powerOut to powerOut;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:8:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    8 |     item torque : Torque;
+      |     ^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:12:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    12 |     item power : Power;
+       |     ^^^^^^^^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

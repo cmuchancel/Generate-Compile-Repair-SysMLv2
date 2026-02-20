@@ -1,0 +1,82 @@
+{
+  "id": "resp_0b881c9a2784ae54006997ecdf3180819e94398107755c1a0a",
+  "created_at": 1771564255.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0b881c9a2784ae54006997ecdfc3b8819e97be3f5f9a28e2a5",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0b881c9a2784ae54006997ece639e0819e8f54a049aebe4232",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package BloodGlucoseMeterSystem\n  private import ScalarValues::*\n\n  enum def BatteryStatus { \n    enum OK;\n    enum LOW;\n    enum DEPLETED;\n  }\n\n  enum def MeasurementStatus { \n    enum NORMAL;\n    enum ABNORMAL;\n  }\n\n  port def StatusPort {\n    attribute status : BatteryStatus;\n  }\n\n  port def MeasurementPort {\n    attribute status : MeasurementStatus;\n  }\n\n  port def AlarmPort {\n    attribute alarmActive : Boolean;\n  }\n\n  part def BatteryMonitor {\n    port statusOut : StatusPort;\n    attribute autoDetect : Boolean = true;\n  }\n\n  part def AlarmSystem {\n    port statusIn : StatusPort;\n    port alarmOut : AlarmPort;\n    attribute alertUser : Boolean = true;\n  }\n\n  part def GlucoseMeasurement {\n    port measurementOut : MeasurementPort;\n    attribute measurementFunction : Boolean = true;\n  }\n\n  part def EmergencyResponse {\n    port measurementIn : MeasurementPort;\n    port alarmIn : AlarmPort;\n    attribute responseReady : Boolean = true;\n  }\n\n  part def Management {\n    attribute approvedRequirements : Boolean = true;\n    attribute keyRiskManaged : Boolean = true;\n  }\n\n  part def System {\n    part batteryMonitor : BatteryMonitor;\n    part alarmSystem : AlarmSystem;\n    part glucoseMeasurement : GlucoseMeasurement;\n    part emergencyResponse : EmergencyResponse;\n    part management : Management;\n\n    connect batteryMonitor.statusOut to alarmSystem.statusIn;\n    connect glucoseMeasurement.measurementOut to emergencyResponse.measurementIn;\n    connect alarmSystem.alarmOut to emergencyResponse.alarmIn;\n  }\nend package",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564265.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 385,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 827,
+    "output_tokens_details": {
+      "reasoning_tokens": 448
+    },
+    "total_tokens": 1212
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

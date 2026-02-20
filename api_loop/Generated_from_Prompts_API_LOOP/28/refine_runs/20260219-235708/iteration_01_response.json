@@ -1,0 +1,82 @@
+{
+  "id": "resp_08659ceeb99c0e16006997e9a62fb0819098face2bb8e33f65",
+  "created_at": 1771563430.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_08659ceeb99c0e16006997e9a6bd20819091ea6d2bc8592e23",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_08659ceeb99c0e16006997e9ad89dc81909769fb2a0ae23592",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package BatteryChargingSystem {\n    private import ScalarValues::*;\n\n    port def LevelPort {\n        attribute level : Real;\n    }\n\n    port def ControlPort {\n        attribute charging : Boolean;\n    }\n\n    part def Battery {\n        attribute level : Real;\n        attribute charging : Boolean;\n        port levelPort : LevelPort;\n        port controlPort : ControlPort;\n    }\n\n    part def ChargerController {\n        attribute targetLevel : Real = 100.0;\n        attribute autoStop : Boolean = true;\n        port levelPort : LevelPort;\n        port controlPort : ControlPort;\n    }\n\n    part def ChargingSystem {\n        part battery : Battery;\n        part controller : ChargerController;\n        connect battery.levelPort to controller.levelPort;\n        connect controller.controlPort to battery.controlPort;\n    }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563439.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 342,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 572,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 914
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

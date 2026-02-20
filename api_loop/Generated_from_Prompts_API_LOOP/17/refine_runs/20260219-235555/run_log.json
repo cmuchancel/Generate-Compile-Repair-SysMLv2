@@ -1,0 +1,59 @@
+[
+  {
+    "iteration": 1,
+    "iteration_start": "2026-02-20T04:55:55.982002Z",
+    "iteration_end": "2026-02-20T04:56:05.685435Z",
+    "iteration_duration_seconds": 9.703630832998897,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555/iteration_01.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555/iteration_01_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555/iteration_01_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_01.sysml:14:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    14 |     port return : FuelPort;\n       |          \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:27:37: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected token '.'.\n    27 |     connect engine.returnOut to tank.return;\n       |                                     \u001b[38;2;220;080;080m^\u001b[0m\n\niteration_01.sysml:27:38: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'return', expected one of [\"SINGLE_LINE_NOTE\", \"$\", \"NAME\", \"ElementReference\", \"MULTILINE_NOTE\", \"FeatureChaining\", \";\", \"{\", \",\", \"[\", \"(\", \")\", \"=\", \"from\", \"to\", \"if\", \"then\", \"accept\", \"via\", \"do\"].\n    27 |     connect engine.returnOut to tank.return;\n       |                                      \u001b[38;2;220;080;080m^^^^^^\u001b[0m\n\niteration_01.sysml:9:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    9 |     item fuel : Fuel;\n      |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^\u001b[0m\n\niteration_01.sysml:27:33: \u001b[38;2;220;080;080merror\u001b[0m (feature-chaining-feature-not-one): Feature cannot have only one feature chaining\n    27 |     connect engine.returnOut to tank.return;\n       |                                 \u001b[38;2;220;080;080m^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 359,
+      "output_tokens": 525,
+      "total_tokens": 884
+    },
+    "tokens_used_total": 884
+  },
+  {
+    "iteration": 2,
+    "iteration_start": "2026-02-20T04:56:05.685507Z",
+    "iteration_end": "2026-02-20T04:56:13.580218Z",
+    "iteration_duration_seconds": 7.894926624998334,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555/iteration_02.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555/iteration_02_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555/iteration_02_response.json",
+    "success": false,
+    "compiler_stdout": "",
+    "compiler_stderr": "iteration_02.sysml:9:10: \u001b[38;2;220;080;080merror\u001b[0m (parsing-error): Unexpected 'ref', expected one of [\"SINGLE_LINE_NOTE\", \"NAME\", \"[\", \"ordered\", \"nonunique\", \"<\", \"::>\", \"references\", \"=>\", \"crosses\", \":>>\", \"redefines\", \":\", \"defined\", \";\", \"{\", \"=\", \":=\", \"default\", \"def\", \"MULTILINE_NOTE\", \":>\", \"subsets\", \"MultiplicityRange\", \"OwningMembership\", \"FeatureValue\"].\n    9 |     item ref fuel : Fuel;\n      |          \u001b[38;2;220;080;080m^^^\u001b[0m\n\niteration_02.sysml:9:5: \u001b[38;2;220;080;080merror\u001b[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential\n    9 |     item ref fuel : Fuel;\n      |     \u001b[38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^\u001b[0m",
+    "return_code": 1,
+    "tokens_used_this_iter": {
+      "input_tokens": 887,
+      "output_tokens": 363,
+      "total_tokens": 1250
+    },
+    "tokens_used_total": 2134
+  },
+  {
+    "iteration": 3,
+    "iteration_start": "2026-02-20T04:56:13.580315Z",
+    "iteration_end": "2026-02-20T04:56:24.796482Z",
+    "iteration_duration_seconds": 11.216422290999617,
+    "sysml_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555/iteration_03.sysml",
+    "prompt_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555/iteration_03_prompt.txt",
+    "response_path": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/runs/designbench_refine_api_loop/17/20260219-235555/iteration_03_response.json",
+    "success": true,
+    "compiler_stdout": "Checks passed!",
+    "compiler_stderr": "",
+    "return_code": 0,
+    "tokens_used_this_iter": {
+      "input_tokens": 703,
+      "output_tokens": 711,
+      "total_tokens": 1414
+    },
+    "tokens_used_total": 3548
+  }
+]

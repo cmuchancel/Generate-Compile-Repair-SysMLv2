@@ -1,0 +1,82 @@
+{
+  "id": "resp_00b75fb34b5c7da2006997ea4bbf9c8190a45d884daea43700",
+  "created_at": 1771563595.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_00b75fb34b5c7da2006997ea4c0af8819099881cc339bc250f",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_00b75fb34b5c7da2006997ea4f9d0481909591d55712bcc153",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleModel {\n  private import ScalarValues::*;\n\n  enum def GearPosition {\n    enum Neutral;\n    enum Second;\n  }\n\n  part def Driver;\n\n  part def Engine;\n\n  part def VehicleState {\n    attribute mass : Real;\n    attribute gear : GearPosition;\n    attribute throttle : Real;\n    part driver : Driver;\n  }\n\n  part def Vehicle {\n    attribute mass : Real;\n    attribute gear : GearPosition;\n    attribute throttle : Real;\n    part engine : Engine;\n    part currentDriver : Driver;\n    part state1 : VehicleState;\n    part state2 : VehicleState;\n  }\n\n  part Alice : Driver;\n  part Bob : Driver;\n\n  part MyVehicle : Vehicle {\n    attribute mass = 2000;\n    attribute gear = GearPosition::Neutral;\n    attribute throttle = 0;\n    part engine;\n    part currentDriver : Driver = Alice;\n    part state1 : VehicleState {\n      attribute mass = 2000;\n      attribute gear = GearPosition::Neutral;\n      attribute throttle = 0;\n      part driver : Driver = Alice;\n    }\n    part state2 : VehicleState {\n      attribute mass = 1500;\n      attribute gear = GearPosition::Second;\n      attribute throttle = 0.5;\n      part driver : Driver = Bob;\n    }\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563602.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1894,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 517,
+    "output_tokens_details": {
+      "reasoning_tokens": 192
+    },
+    "total_tokens": 2411
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

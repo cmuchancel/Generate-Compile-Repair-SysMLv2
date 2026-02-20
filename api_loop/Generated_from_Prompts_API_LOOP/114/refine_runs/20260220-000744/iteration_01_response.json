@@ -1,0 +1,82 @@
+{
+  "id": "resp_07728741610a343f006997ec2153d48196bd3ab63c41494775",
+  "created_at": 1771564065.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_07728741610a343f006997ec2232748196bd78f11531705b0d",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_07728741610a343f006997ec28307c8196a7f933336113a00e",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleRoadSimulation {\n    private import ScalarValues::*;\n\n    enum def VehiclePowerState {\n        enum On;\n        enum Off;\n    }\n\n    part def Vehicle {\n        attribute mass : Real;\n        attribute position : Real;\n        attribute velocity : Real;\n        attribute acceleration : Real;\n        attribute powerState : VehiclePowerState;\n    }\n\n    part def Road {\n        attribute slopeAngle : Real;\n        attribute frictionCoefficient : Real;\n    }\n\n    part def Snapshot {\n        attribute time : Real;\n        attribute vehicleMass : Real;\n        attribute vehiclePosition : Real;\n        attribute vehicleVelocity : Real;\n        attribute vehicleAcceleration : Real;\n        attribute vehiclePowerState : VehiclePowerState;\n        attribute roadSlopeAngle : Real;\n        attribute roadFrictionCoefficient : Real;\n    }\n\n    part def Simulation {\n        attribute startTime : Real;\n        attribute endTime : Real;\n        attribute snapshotCount : Integer;\n        part vehicle : Vehicle;\n        part road : Road;\n        part startSnapshot : Snapshot;\n        part midSnapshot : Snapshot;\n        part endSnapshot : Snapshot;\n    }\n\n    part systemSimulation : Simulation;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564075.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 378,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 628,
+    "output_tokens_details": {
+      "reasoning_tokens": 384
+    },
+    "total_tokens": 1006
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

@@ -1,0 +1,82 @@
+{
+  "id": "resp_0d02a8df6348d4bb006997ed69f204819cb3b3dd7da59f37c6",
+  "created_at": 1771564393.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0d02a8df6348d4bb006997ed6a72d0819cb013519e35287ca8",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0d02a8df6348d4bb006997ed717708819c91e3e5938ed58a47",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package PubSubModel {\n  private import ScalarValues::*;\n  enum def TopicEnum {\n    enum TopicA;\n    enum TopicB;\n    enum TopicC;\n  }\n  item def Message {\n    attribute topic : TopicEnum;\n    attribute payload : String;\n  }\n  item def Subscription {\n    attribute topic : TopicEnum;\n    attribute consumerId : String;\n  }\n  port def PublishPort {\n  }\n  port def SubscribePort {\n  }\n  port def DeliverPort {\n  }\n  part def Producer {\n    port publish : PublishPort;\n  }\n  part def Consumer {\n    port subscribe : SubscribePort;\n    port receive : DeliverPort;\n  }\n  part def Server {\n    port fromProducers : PublishPort;\n    port fromConsumers : SubscribePort;\n    port toConsumers : DeliverPort;\n  }\n  part PubSubSystem {\n    part producer : Producer;\n    part consumer : Consumer;\n    part server : Server;\n    connect producer.publish to server.fromProducers;\n    connect consumer.subscribe to server.fromConsumers;\n    connect server.toConsumers to consumer.receive;\n  }\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564403.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 373,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 677,
+    "output_tokens_details": {
+      "reasoning_tokens": 448
+    },
+    "total_tokens": 1050
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

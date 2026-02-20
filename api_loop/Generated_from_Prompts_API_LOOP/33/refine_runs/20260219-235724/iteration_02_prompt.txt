@@ -1,0 +1,96 @@
+You are generating SysML v2 text in a compile-fix loop.
+
+REQUIREMENTS:
+The system is designed to implement a camera information processing workflow. When a user selects a scene through the camera’s viewfinder (viewPort), the system first focuses on the scene to obtain an image (Image). This image is then captured to generate a photograph (Picture). After the photograph is generated, the system displays it on the screen via the display port (displayPort). The user does not need to be concerned with specific technical details during operation and only needs to complete scene selection and shooting. The system will automatically handle the processes of focusing, capturing, and displaying the photograph.
+
+Goal: output a SysML v2 model that validates and satisfies the requirements.
+
+Rules: output only SysML text with no prose or markdown; prioritize fixing validator errors first; if a previous candidate is provided, apply minimal edits and preserve valid parts.
+
+Use a conservative subset that is robust with syside: `package`, `private import ScalarValues::*`, `enum def` with `enum` members, `part def`, `part`, `attribute`, `port def`, `port`, `item def`, and `connect A to B;`.
+
+Prefer simple declarations: `attribute name : Type;` or `attribute name : Type = Value;`. Keep a single package and minimal structure.
+
+Avoid constructs that frequently fail validation: `block`, `property`, `enumeration`, `signal def`, `event def`, `state machine`, `stateMachine`, `transition def`, `operation def`, `precondition`, `postcondition`, `when`, `connect A -> B`, and quoted pseudo-code constraints.
+
+PREVIOUS ATTEMPT (iteration 1):
+                package CameraWorkflow {
+  private import ScalarValues::*;
+
+  item def Scene;
+  item def Image;
+  item def Picture;
+
+  port def ScenePort {
+    item scene : Scene;
+  }
+
+  port def ImagePort {
+    item image : Image;
+  }
+
+  port def PicturePort {
+    item picture : Picture;
+  }
+
+  port def DisplayPort {
+    item picture : Picture;
+  }
+
+  part def User {
+    port viewPort : ScenePort;
+  }
+
+  part def Focusing {
+    port sceneIn : ScenePort;
+    port imageOut : ImagePort;
+  }
+
+  part def Capturing {
+    port imageIn : ImagePort;
+    port pictureOut : PicturePort;
+  }
+
+  part def Displaying {
+    port pictureIn : PicturePort;
+    port displayPort : DisplayPort;
+  }
+
+  part def CameraSystem {
+    port viewPort : ScenePort;
+    port displayPort : DisplayPort;
+
+    part focusing : Focusing;
+    part capturing : Capturing;
+    part displaying : Displaying;
+
+    connect viewPort to focusing.sceneIn;
+    connect focusing.imageOut to capturing.imageIn;
+    connect capturing.pictureOut to displaying.pictureIn;
+    connect displaying.displayPort to displayPort;
+  }
+
+  part def SystemContext {
+    part user : User;
+    part camera : CameraSystem;
+    connect user.viewPort to camera.viewPort;
+  }
+}
+
+SYSIDE COMPILER FEEDBACK TO ADDRESS:
+                iteration_01.sysml:9:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    9 |     item scene : Scene;
+      |     ^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:13:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    13 |     item image : Image;
+       |     ^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:17:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    17 |     item picture : Picture;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^
+iteration_01.sysml:21:5: error (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    21 |     item picture : Picture;
+       |     ^^^^^^^^^^^^^^^^^^^^^^^
+
+Revise the earlier model to resolve the diagnostics without undoing correct structure.
+
+Return only the updated SysMLv2 model.

@@ -1,0 +1,82 @@
+{
+  "id": "resp_088a128b23ca1d7c006997ec25d9008191846a4b9571c5d0ae",
+  "created_at": 1771564069.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_088a128b23ca1d7c006997ec263bb08191b3839f9da78bad5c",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_088a128b23ca1d7c006997ec2b59248191b22d8edb1a633156",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package VehicleSystem {\n  private import ScalarValues::*;\n\n  enum def VehicleState {\n    enum Off;\n    enum Starting;\n    enum Running;\n    enum HealthManagement;\n    enum Maintenance;\n    enum Degraded;\n    enum Normal;\n  }\n\n  enum def ControllerState {\n    enum Off;\n    enum Starting;\n    enum Running;\n    enum Shutdown;\n  }\n\n  item def SignalItem {\n    attribute value : Boolean;\n  }\n\n  port def SignalPort {\n  }\n\n  part def VehicleA {\n    attribute currentState : VehicleState = VehicleState::Off;\n    attribute brakePressed : Boolean;\n    attribute startSignal : Boolean;\n    attribute vehicleOnSignal : Boolean;\n    attribute temperature : Real;\n    attribute tempThreshold : Real = 100.0;\n    attribute overTemp : Boolean;\n    attribute degradedMode : Boolean;\n    attribute restoreNormalSignal : Boolean;\n    attribute parkingBrakeApplied : Boolean;\n    attribute powerSupplied : Boolean;\n    attribute selfCheckCompleted : Boolean;\n\n    port startPort : SignalPort;\n    port shutdownPort : SignalPort;\n    port overTempPort : SignalPort;\n    port restorePort : SignalPort;\n  }\n\n  part def VehicleController {\n    attribute controllerState : ControllerState = ControllerState::Off;\n    attribute startupSignal : Boolean;\n    attribute shutdownSignal : Boolean;\n\n    port startPort : SignalPort;\n    port shutdownPort : SignalPort;\n    port overTempPort : SignalPort;\n    port restorePort : SignalPort;\n  }\n\n  part vehicleA : VehicleA;\n  part controller : VehicleController;\n\n  connect vehicleA.startPort to controller.startPort;\n  connect vehicleA.shutdownPort to controller.shutdownPort;\n  connect vehicleA.overTempPort to controller.overTempPort;\n  connect vehicleA.restorePort to controller.restorePort;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771564079.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 1047,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 678,
+    "output_tokens_details": {
+      "reasoning_tokens": 256
+    },
+    "total_tokens": 1725
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}

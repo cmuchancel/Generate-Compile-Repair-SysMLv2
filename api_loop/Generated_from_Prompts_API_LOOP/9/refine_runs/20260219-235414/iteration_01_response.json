@@ -1,0 +1,82 @@
+{
+  "id": "resp_0b36eaa2a7f083b6006997e8f83bd0819eb31bb04ab0fc1ea9",
+  "created_at": 1771563256.0,
+  "error": null,
+  "incomplete_details": null,
+  "instructions": null,
+  "metadata": {},
+  "model": "gpt-5.2-codex",
+  "object": "response",
+  "output": [
+    {
+      "id": "rs_0b36eaa2a7f083b6006997e8f890a0819eb0836418b35c125f",
+      "summary": [],
+      "type": "reasoning",
+      "content": null,
+      "encrypted_content": null,
+      "status": null
+    },
+    {
+      "id": "msg_0b36eaa2a7f083b6006997e91b9e44819e87f29d02e4c40fae",
+      "content": [
+        {
+          "annotations": [],
+          "text": "package WheelAssemblyModel {\n  private import ScalarValues::*;\n\n  part def WheelBearingUnit { }\n  part def Bead { }\n  part def Tire {\n    part bead1 : Bead;\n    part bead2 : Bead;\n  }\n  part def Bolt { }\n  part def BoltMountingHole { }\n  part def ThreadedHole { }\n  part def Rim {\n    part boltMountingHole1 : BoltMountingHole;\n    part boltMountingHole2 : BoltMountingHole;\n  }\n  part def Hub {\n    part threadedHole1 : ThreadedHole;\n    part threadedHole2 : ThreadedHole;\n  }\n\n  part def WheelAssembly {\n    part bearingUnit : WheelBearingUnit;\n    part hub : Hub;\n    part rimA : Rim;\n    part rimB : Rim;\n    part tire : Tire;\n    part bolt1 : Bolt;\n    part bolt2 : Bolt;\n\n    connect bearingUnit to hub;\n    connect tire.bead1 to rimA;\n    connect tire.bead2 to rimB;\n    connect rimA.boltMountingHole1 to bolt1;\n    connect hub.threadedHole1 to bolt1;\n    connect rimA.boltMountingHole2 to bolt2;\n    connect hub.threadedHole2 to bolt2;\n  }\n\n  part wheelAssembly : WheelAssembly;\n}",
+          "type": "output_text",
+          "logprobs": []
+        }
+      ],
+      "role": "assistant",
+      "status": "completed",
+      "type": "message"
+    }
+  ],
+  "parallel_tool_calls": true,
+  "temperature": 1.0,
+  "tool_choice": "auto",
+  "tools": [],
+  "top_p": 0.98,
+  "background": false,
+  "completed_at": 1771563294.0,
+  "conversation": null,
+  "max_output_tokens": null,
+  "max_tool_calls": null,
+  "previous_response_id": null,
+  "prompt": null,
+  "prompt_cache_key": null,
+  "prompt_cache_retention": null,
+  "reasoning": {
+    "effort": "medium",
+    "generate_summary": null,
+    "summary": null
+  },
+  "safety_identifier": null,
+  "service_tier": "default",
+  "status": "completed",
+  "text": {
+    "format": {
+      "type": "text"
+    },
+    "verbosity": "medium"
+  },
+  "top_logprobs": 0,
+  "truncation": "disabled",
+  "usage": {
+    "input_tokens": 387,
+    "input_tokens_details": {
+      "cached_tokens": 0
+    },
+    "output_tokens": 2564,
+    "output_tokens_details": {
+      "reasoning_tokens": 2240
+    },
+    "total_tokens": 2951
+  },
+  "user": null,
+  "billing": {
+    "payer": "developer"
+  },
+  "frequency_penalty": 0.0,
+  "presence_penalty": 0.0,
+  "store": true
+}
