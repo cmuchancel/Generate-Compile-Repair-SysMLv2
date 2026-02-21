@@ -1,0 +1,59 @@
+\section{Methodology}
+
+\subsection{Evaluation Scope and Dataset}
+This campaign evaluates only \emph{syntactic correctness} under deterministic compiler checking. We use SysMBench~\cite{jin2025sysmbench} prompt IDs 1--151 and analyze four provider/model runs available in this repository: OpenAI Codex 5.2 (\texttt{gpt-5.2-codex})~\cite{openaiGPT52Codex2026}, Anthropic Sonnet 4.6 (\texttt{claude-sonnet-4-6})~\cite{anthropicSonnet46API2026}, DeepSeek Reasoner (\texttt{deepseek-reasoner})~\cite{deepseekReasonerAPI2026}, and Mistral Large (\texttt{mistral-large-latest})~\cite{mistralLargeLatestDocs2026}. This yields 604 prompt-level trials (151 prompts $\times$ 4 models).
+
+All claims in this section and the Results section are limited to compiler-level compilability. We do not report or claim semantic adequacy, behavioral fidelity, or design quality.
+
+\subsection{Baseline and Pipeline Definitions}
+For each prompt/model trial we define two outcomes from the same generate--compile--repair trajectory:
+\begin{enumerate}
+    \item \textbf{Baseline (single-shot):} compilation status at iteration 1 only.
+    \item \textbf{Pipeline (compiler-in-the-loop):} compilation status of the final iteration after iterative repair.
+\end{enumerate}
+
+The iterative loop is compiler-gated: the model proposes SysMLv2 text, the SysIDE checker (\texttt{syside check}) returns diagnostics, and the next iteration is conditioned on those diagnostics until success or stopping cap.
+
+\subsection{Compiler Oracle and Stopping Rule}
+The verifier is the SysIDE SysMLv2 compiler/checker~\cite{sensmetry2024syside}. A prompt is marked successful only when a run reaches zero compiler errors (successful compile signal in run logs/manifests). For each prompt we use the persisted run selected by its \texttt{<id>\_refine\_manifest.json}; associated per-iteration logs are read from the referenced \texttt{run\_log.json}.
+
+\subsection{Extracted Metrics}
+We extract deterministic prompt-level and iteration-level metrics from raw artifacts.
+
+Prompt-level metrics include:
+\texttt{first\_shot\_pass}, \texttt{eventual\_pass}, \texttt{iterations\_run}, \texttt{iterations\_to\_success}, \texttt{unresolved\_within\_cap}, first/final error counts, cumulative error volume, recovery indicator (failed first shot then passed), runtime, and token totals when available.
+
+Iteration-level metrics include:
+\texttt{pass\_at\_iteration}, \texttt{error\_count}, \texttt{error\_families\_json}, iteration runtime, and iteration token usage when available.
+
+Compiler error families are parsed directly from diagnostics using the pattern \texttt{error (<family>):}. Warning families are tracked separately and do not affect success/failure labels.
+
+\subsection{Statistical Analysis}
+Let $n$ be prompt count in a group (model-specific or pooled). We report:
+\begin{enumerate}
+    \item First-shot pass rate, first-shot fail rate, eventual pass rate, unresolved rate.
+    \item Absolute gain (percentage-point improvement): eventual pass minus first-shot pass.
+    \item Relative gain: $(p_{\mathrm{final}} - p_{\mathrm{first}}) / p_{\mathrm{first}}$.
+    \item Iterations-to-success distribution (mean, median, standard deviation, quantiles, maximum).
+    \item Wilson 95\% confidence intervals for key proportions.
+    \item Bootstrap 95\% confidence interval for mean iterations-to-success (fixed seed 20260220; 10{,}000 resamples).
+    \item Paired baseline-vs-pipeline significance via McNemar test.
+\end{enumerate}
+
+All statistics are deterministic given the same artifacts and random seed.
+
+\subsection{Reproducibility Pipeline}
+Reproducible analytics are implemented in:
+\begin{itemize}
+    \item \texttt{paper/results/scripts/extract\_syntax\_metrics.py}
+    \item \texttt{paper/results/scripts/compute\_syntax\_stats.py}
+    \item \texttt{paper/results/scripts/make\_syntax\_tables.py}
+    \item \texttt{paper/results/scripts/make\_syntax\_figures.py}
+    \item \texttt{paper/results/scripts/run\_syntax\_campaign.sh}
+\end{itemize}
+
+A single command,
+\begin{quote}
+\texttt{bash paper/results/scripts/run\_syntax\_campaign.sh}
+\end{quote}
+regenerates all CSV outputs, tables, and figures, then performs a hash-stability determinism check on key statistics files.

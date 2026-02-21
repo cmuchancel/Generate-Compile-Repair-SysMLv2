@@ -1,0 +1,46 @@
+example,parse_ok,compile_ok,antlr_returncode,syside_returncode,antlr_errors,syside_errors
+01_missing_import_namespace.sysml,True,False,0,1,,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/01_missing_import_namespace.sysml
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/01_missing_import_namespace.sysml:7:18: error (reference-error): No Namespace named 'MissingPkg01' found.
+    7 |   private import MissingPkg01::*;
+      |                  ^^^^^^^^^^^^"
+02_missing_port_type.sysml,True,False,0,1,,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/02_missing_port_type.sysml
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/02_missing_port_type.sysml:8:23: error (reference-error): No Type named 'MissingPortType02' found.
+    8 |     port controlPort: MissingPortType02;
+      |                       ^^^^^^^^^^^^^^^^^"
+03_missing_attribute_type.sysml,True,False,0,1,,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/03_missing_attribute_type.sysml
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/03_missing_attribute_type.sysml:8:31: error (reference-error): No Type named 'MissingVoltageType03' found.
+    8 |     attribute nominalVoltage: MissingVoltageType03;
+      |                               ^^^^^^^^^^^^^^^^^^^^"
+04_missing_specialization_base.sysml,True,False,0,1,,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/04_missing_specialization_base.sysml
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/04_missing_specialization_base.sysml:7:21: error (reference-error): No Classifier named 'MissingBaseMotor04' found.
+    7 |   part def Motor :> MissingBaseMotor04 {
+      |                     ^^^^^^^^^^^^^^^^^^"
+05_attribute_definition_nonreferential_feature.sysml,True,False,0,1,,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/05_attribute_definition_nonreferential_feature.sysml
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/05_attribute_definition_nonreferential_feature.sysml:8:12: warning (namespace-distinguishability): Member name 'start' shadows Parts::Part::start
+│   8 |     action start : MissingBehaviorType05;
+│     |            ^^^^^
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Systems Library/Parts.sysml:28:8: note: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/05_attribute_definition_nonreferential_feature.sysml:7:3: note: Because Parts::Part is implicitly specialized through Subclassification
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/05_attribute_definition_nonreferential_feature.sysml:8:20: error (reference-error): No Type named 'MissingBehaviorType05' found.
+    8 |     action start : MissingBehaviorType05;
+      |                    ^^^^^^^^^^^^^^^^^^^^^"
+06_invocation_not_behavior.sysml,True,False,0,1,,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/06_invocation_not_behavior.sysml
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/06_invocation_not_behavior.sysml:13:17: error (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    13 |       then send Show() via displayPort;
+       |                 ^^^^"
+07_missing_feature_in_expression.sysml,True,False,0,1,,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/07_missing_feature_in_expression.sysml
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/07_missing_feature_in_expression.sysml:13:68: error (reference-error): No Feature named 'height' found.
+    13 |     attribute outerDiameter: LengthValue = (hubDiameter + 2 * tire.height);
+       |                                                                    ^^^^^^"
+08_missing_root_qualified_namespace.sysml,True,False,0,1,,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/08_missing_root_qualified_namespace.sysml
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/08_missing_root_qualified_namespace.sysml:8:20: error (reference-error): No Namespace named 'NoSuchRoot08' found.
+    8 |     port comms: $::NoSuchRoot08::BusType;
+      |                    ^^^^^^^^^^^^"
+09_redefine_missing_feature.sysml,True,False,0,1,,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/09_redefine_missing_feature.sysml
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/09_redefine_missing_feature.sysml:12:19: error (reference-error): No Feature named 'missing' found.
+    12 |     attribute :>> missing = 1;
+       |                   ^^^^^^^"
+10_missing_namespace_in_type_use.sysml,True,False,0,1,,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/10_missing_namespace_in_type_use.sysml
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/experiments/antlr_vs_syside/examples/mismatch_10_distinct/10_missing_namespace_in_type_use.sysml:8:17: error (reference-error): No Namespace named 'MissingNS10' found.
+    8 |     part wheel: MissingNS10::Wheel;
+      |                 ^^^^^^^^^^^"

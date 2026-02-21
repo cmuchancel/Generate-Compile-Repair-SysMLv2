@@ -1,0 +1,37 @@
+\section{Results}
+
+\subsection{Overall Compiler-Gated Syntactic Outcomes}
+Across all 604 prompt-level trials (151 prompts for each of four models), first-shot compilation succeeded for 309/604 cases (51.16\%; 95\% Wilson CI: 47.18--55.13\%). Under compiler-in-the-loop refinement, eventual compilation succeeded for 604/604 cases (100.00\%; 95\% Wilson CI: 99.37--100.00\%). The absolute gain from baseline single-shot to final pipeline output was 48.84 percentage points (relative gain 95.47\%), with zero unresolved prompts.
+
+A paired baseline-vs-pipeline test showed a strong shift toward success (McNemar: $b=0$, $c=295$, $p=1.10\times10^{-65}$), indicating that improvements were driven by first-shot failures that were recovered by iterative repair.
+
+\input{results/tables/table_overall_compile_outcomes}
+
+\subsection{Per-Model Syntactic Reliability}
+All models reached 151/151 eventual compilation under the compiler-gated loop, but first-shot pass rates differed substantially. Anthropic Sonnet 4.6 had the highest first-shot pass rate (82.78\%), while OpenAI (41.72\%), DeepSeek Reasoner (41.06\%), and Mistral Large (39.07\%) showed similar first-shot behavior and correspondingly larger iterative gains.
+
+\input{results/tables/table_model_comparison}
+
+\subsection{Iteration and Recovery Dynamics}
+Iterations-to-success over all successful runs had mean 1.733, median 1, and maximum 11 (bootstrap 95\% CI for mean: 1.654--1.816). The distribution was concentrated in early iterations: 309 cases succeeded at iteration 1, 201 at iteration 2, and 60 at iteration 3; only two cases required more than five iterations.
+
+Among first-shot failures, recovery was complete: 295/295 (100\%) failed-first-shot cases eventually compiled. For this recovery subset, mean iterations-to-success was 2.502 (median 2, max 11).
+
+\input{results/tables/table_iteration_distribution}
+
+\subsection{Compiler Error Taxonomy}
+At first iteration, the dominant error families were \texttt{parsing-error} (1142), \texttt{reference-error} (559), and \texttt{port-definition-owned-usages-not-composite} (82). Across all iterations, the same families remained dominant, with cumulative counts 1658, 794, and 97 respectively.
+
+\input{results/tables/table_error_taxonomy_top}
+
+\subsection{Prompt-Level Difficulty and Diagnostic Burden}
+Error burden was heterogeneous across prompts. The largest pooled cumulative error volumes were observed for prompt IDs 93 (133), 9 (88), 139 (81), and 144 (80), indicating a long-tail of syntactically difficult cases even under eventual convergence.
+
+\input{results/tables/table_hardest_prompts}
+
+\subsection{Runtime and Token Sensitivity (Secondary)}
+Runtime and token data, where available in artifacts, indicate substantial efficiency differences by model despite identical syntactic endpoints. Mean wall-time ranged from 12.97~s (Mistral Large) to 90.45~s (DeepSeek Reasoner), and mean total tokens ranged from 1795.24 to 5938.80 per prompt.
+
+These are secondary operational diagnostics and are not used as primary efficacy claims in this paper.
+
+\input{results/tables/table_runtime_token_cost_summary}

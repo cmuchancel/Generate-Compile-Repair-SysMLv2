@@ -1,0 +1,57 @@
+{
+  "repo_root": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop",
+  "api_loop_root": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop",
+  "model_roots": [
+    {
+      "model_root": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC",
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6",
+      "missing_manifests": [],
+      "invalid_manifests": [],
+      "missing_run_logs": [],
+      "invalid_run_logs": [],
+      "processed_prompts": 151
+    },
+    {
+      "model_root": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER",
+      "provider": "deepseek_reasoner",
+      "model": "deepseek-reasoner",
+      "missing_manifests": [],
+      "invalid_manifests": [],
+      "missing_run_logs": [],
+      "invalid_run_logs": [],
+      "processed_prompts": 151
+    },
+    {
+      "model_root": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE",
+      "provider": "mistral_large",
+      "model": "mistral-large-latest",
+      "missing_manifests": [],
+      "invalid_manifests": [],
+      "missing_run_logs": [],
+      "invalid_run_logs": [],
+      "processed_prompts": 151
+    },
+    {
+      "model_root": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI",
+      "provider": "openai",
+      "model": "openai",
+      "missing_manifests": [],
+      "invalid_manifests": [],
+      "missing_run_logs": [],
+      "invalid_run_logs": [],
+      "processed_prompts": 151
+    }
+  ],
+  "assumptions": [
+    "One selected run per prompt is identified by <id>_refine_manifest.json when present.",
+    "Error counts are derived from compiler text lines matching 'error (<family>):'.",
+    "Warnings are recorded separately and do not affect pass/fail metrics.",
+    "Costs are left null unless explicit pricing metadata is provided (none detected)."
+  ],
+  "git_commit": "63865d39731fc72ac556b5b3ba822e228134bf29",
+  "outputs": {
+    "prompt_level_csv": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/paper/results/data/prompt_level_syntax_metrics.csv",
+    "iteration_level_csv": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/paper/results/data/iteration_level_syntax_metrics.csv"
+  }
+}

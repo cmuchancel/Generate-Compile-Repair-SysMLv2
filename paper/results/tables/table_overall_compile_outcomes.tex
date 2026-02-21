@@ -1,0 +1,24 @@
+\begin{table}[H]
+\centering
+\caption{Overall compiler-gated outcomes for single-shot baseline vs iterative pipeline.}
+\label{tab:overall_compile}
+\begin{tabular}{ll}
+\toprule
+Metric & Value \\
+\midrule
+Prompts & 604 \\
+First-shot pass & 309 (51.16\%) \\
+First-shot fail & 295 (48.84\%) \\
+Eventual pass (pipeline) & 604 (100.00\%) \\
+Absolute gain & 48.84\% \\
+Relative gain over first-shot & 95.47\% \\
+Unresolved & 0 (0.00\%) \\
+Recovered after first-shot failure & 295 \\
+First-shot pass 95\% Wilson CI & [47.18\%, 55.13\%] \\
+Eventual pass 95\% Wilson CI & [99.37\%, 100.00\%] \\
+Mean iterations-to-success & 1.727 \\
+Mean iterations 95\% bootstrap CI & [1.652, 1.806] \\
+\bottomrule
+\end{tabular}
+
+\end{table}
