@@ -1,15 +1,17 @@
 \begin{table}[H]
 \centering
-\caption{Per-model syntactic reliability summary.}
+\caption{Per-model production-validation outcomes.}
 \label{tab:model_comparison}
-\begin{tabular}{llllllllll}
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrr}
 \toprule
-Provider & Model & N & First-shot pass & Eventual pass & Gain (pp) & Unresolved & Mean iters & Median iters & Max iters \\
+Model & Single-shot pass & Pipeline pass & Gap (pp) \\
 \midrule
-anthropic & claude-sonnet-4-6 & 151 & 82.78\% & 100.00\% & 17.22\% & 0.00\% & 1.225 & 1.000 & 7.000 \\
-deepseek_reasoner & deepseek-reasoner & 151 & 41.06\% & 100.00\% & 58.94\% & 0.00\% & 1.974 & 2.000 & 8.000 \\
-mistral_large & mistral-large-latest & 151 & 39.07\% & 100.00\% & 60.93\% & 0.00\% & 1.980 & 2.000 & 5.000 \\
-openai & openai & 151 & 41.72\% & 100.00\% & 58.28\% & 0.00\% & 1.728 & 2.000 & 5.000 \\
+Claude Sonnet 4.6 & 82.78\% & 100.00\% & 17.22 \\
+DeepSeek Reasoner & 41.06\% & 100.00\% & 58.94 \\
+Mistral Large & 39.07\% & 100.00\% & 60.93 \\
+OpenAI Codex 5.2 & 41.72\% & 100.00\% & 58.28 \\
 \bottomrule
 \end{tabular}
 

@@ -426,6 +426,45 @@ def main() -> None:
     savefig(p)
     catalog.append((p.name, "Runtime vs token scatter", "Cost/runtime scaling"))
 
+    # 26. Per-model cumulative acceptance vs repair cycles
+    conv = prompt_df.dropna(subset=["iterations_to_success"]).copy()
+    if len(conv) > 0:
+        max_k = max(int(conv["iterations_to_success"].max() - 1), 8)
+        label_map = {
+            ("anthropic", "claude-sonnet-4-6"): "Anthropic Sonnet 4.6",
+            ("openai", "openai"): "OpenAI Codex 5.2",
+            ("deepseek_reasoner", "deepseek-reasoner"): "DeepSeek Reasoner",
+            ("mistral_large", "mistral-large-latest"): "Mistral Large",
+        }
+        rows = []
+        for (provider, model), sub in conv.groupby(["provider", "model"], dropna=False):
+            disp = label_map.get((str(provider), str(model)), f"{provider}/{model}")
+            for k in range(max_k + 1):
+                acc = (sub["iterations_to_success"] <= (k + 1)).mean() * 100.0
+                rows.append({"label": disp, "k": k, "acceptance": acc})
+        conv_plot = pd.DataFrame(rows)
+        plt.figure(figsize=(10, 6))
+        sns.lineplot(
+            data=conv_plot,
+            x="k",
+            y="acceptance",
+            hue="label",
+            marker="o",
+            linewidth=2.2,
+        )
+        plt.xlabel("Repair cycles (k)")
+        plt.ylabel("Cumulative acceptance (%)")
+        plt.ylim(0, 102)
+        plt.xlim(0, max_k)
+        plt.title("Per-Model Cumulative Acceptance vs Repair Cycles")
+        plt.legend(title="")
+        p = figures_dir / "26_cumulative_acceptance_by_repair_cycles_by_model.png"
+        savefig(p)
+    else:
+        p = figures_dir / "26_cumulative_acceptance_by_repair_cycles_by_model.png"
+        fig_placeholder(p, "Per-Model Cumulative Acceptance", "Convergence inputs unavailable.")
+    catalog.append((p.name, "Per-model cumulative acceptance by repair cycles", "Backend convergence overlay"))
+
     # Figure catalog markdown
     lines = [
         "# Figure Catalog",

@@ -27,3 +27,4 @@
 | `23_warning_vs_error_scatter.png` | Warning-vs-error scatter | Diagnostic only |
 | `24_prompt_difficulty_rank_curves_by_model.png` | Prompt difficulty rank curves | Tail difficulty behavior |
 | `25_runtime_vs_tokens_scatter.png` | Runtime vs token scatter | Cost/runtime scaling |
+| `26_cumulative_acceptance_by_repair_cycles_by_model.png` | Per-model cumulative acceptance by repair cycles | Backend convergence overlay |

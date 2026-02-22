@@ -11,25 +11,45 @@ We evaluated 10 intentionally distinct SysMLv2 examples in \texttt{examples/mism
 
 Results were unambiguous: all 10/10 examples passed ANTLR parsing, while 0/10 were accepted by production validation (10/10 mismatch cases). Validator diagnostics were dominated by unresolved-reference failures (9/10, \texttt{reference-error}), with one invocation-typing failure (1/10, \texttt{invocation-expression-instantiated-type}). This pattern directly illustrates that context-free syntax conformance is necessary but not sufficient for operational model acceptance in production modeling environments.
 
-\begin{table*}[t]
+\subsection*{Concrete Example}
+The following example is grammar-parseable but fails production validation:
+\begin{quote}
+\small\ttfamily
+package Demo07 \{\\
+\ \ part def Wheel \{\\
+\ \ \ \ attribute hubDiameter: LengthValue;\\
+\ \ \ \ part tire \{ attribute width: LengthValue; \}\\
+\ \ \ \ attribute outerDiameter: LengthValue = (hubDiameter + 2 * tire.height);\\
+\ \ \}\\
+\}
+\end{quote}
+
+ANTLR parsing accepts the structure. Production validation rejects it with:
+\begin{quote}
+\small\ttfamily
+error (reference-error): No Feature named 'height' found.
+\end{quote}
+
+\begin{table}[H]
 \centering
 \caption{Ten-case auxiliary demonstration: all examples parse under ANTLR, none pass production validation.}
 \label{tab:antlr_vs_syside_10cases}
-\begin{tabular}{p{0.17\textwidth} p{0.37\textwidth} p{0.16\textwidth} p{0.16\textwidth}}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.09\columnwidth} p{0.51\columnwidth} p{0.14\columnwidth} p{0.20\columnwidth}}
 \toprule
-\textbf{Example ID} & \textbf{Injected Condition} & \textbf{ANTLR Parse} & \textbf{Production Validation} \\
+\textbf{ID} & \textbf{Injected Condition} & \textbf{ANTLR} & \textbf{SysIDE} \\
 \midrule
-01 & Missing imported namespace & Pass & Fail (\texttt{reference-error}) \\
-02 & Missing port type & Pass & Fail (\texttt{reference-error}) \\
-03 & Missing attribute type & Pass & Fail (\texttt{reference-error}) \\
-04 & Missing specialization base & Pass & Fail (\texttt{reference-error}) \\
-05 & Action typed by undefined behavior type & Pass & Fail (\texttt{reference-error}) \\
-06 & Invocation target is not a behavior & Pass & Fail (\texttt{invocation-expression-instantiated-type}) \\
-07 & Missing referenced feature in expression & Pass & Fail (\texttt{reference-error}) \\
-08 & Missing root-qualified namespace & Pass & Fail (\texttt{reference-error}) \\
-09 & Redefinition of missing feature & Pass & Fail (\texttt{reference-error}) \\
-10 & Missing namespace in type use & Pass & Fail (\texttt{reference-error}) \\
+01 & Missing imported namespace & Pass & Fail (reference) \\
+02 & Missing port type & Pass & Fail (reference) \\
+03 & Missing attribute type & Pass & Fail (reference) \\
+04 & Missing specialization base & Pass & Fail (reference) \\
+05 & Action typed by undefined behavior type & Pass & Fail (reference) \\
+06 & Invocation target is not a behavior & Pass & Fail (invocation) \\
+07 & Missing referenced feature in expression & Pass & Fail (reference) \\
+08 & Missing root-qualified namespace & Pass & Fail (reference) \\
+09 & Redefinition of missing feature & Pass & Fail (reference) \\
+10 & Missing namespace in type use & Pass & Fail (reference) \\
 \bottomrule
 \end{tabular}
-\end{table*}
-
+\end{table}

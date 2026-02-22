@@ -1,0 +1,550 @@
+provider,prompt_id,manifest_path,run_dir,first_iteration_path,antlr_ok,syside_ok,paired_label,antlr_exit_code,syside_exit_code,resolve_error,antlr_output,syside_output
+Generated_from_Prompts_API_LOOP_ANTHROPIC,63,api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/63/63_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/63/refine_runs/20260220-091735,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/63/refine_runs/20260220-091735/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/63/refine_runs/20260220-091735/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/63/refine_runs/20260220-091735/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/63/refine_runs/20260220-091735/iteration_01.sysml:24:23: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'actualMass' shadows VehicleMassBudget::Chassis::actualMass
+│   24 |             attribute actualMass : Real = 800.0;
+│      |                       [38;2;204;204;057m^^^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/63/refine_runs/20260220-091735/iteration_01.sysml:7:19: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/63/refine_runs/20260220-091735/iteration_01.sysml:23:24: [38;2;255;255;255mnote[0m: Because VehicleMassBudget::Chassis is specialized through FeatureTyping
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop"
+Generated_from_Prompts_API_LOOP_ANTHROPIC,100,api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/100/100_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/100/refine_runs/20260220-092307,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/100/refine_runs/20260220-092307/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/100/refine_runs/20260220-092307/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/100/refine_runs/20260220-092307/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/100/refine_runs/20260220-092307/iteration_01.sysml:27:28: [38;2;220;080;080merror[0m (feature-value-overriding): Cannot override a binding feature value
+│   27 |         attribute :>> mass = 1750;
+│      |                            [38;2;220;080;080m^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/100/refine_runs/20260220-092307/iteration_01.sysml:21:31: [38;2;255;255;255mnote[0m: Redefined binding feature value here
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/100/refine_runs/20260220-092307/iteration_01.sysml:45:28: [38;2;220;080;080merror[0m (feature-value-overriding): Cannot override a binding feature value
+│   45 |         attribute :>> mass = 2000;
+│      |                            [38;2;220;080;080m^^^^^^["
+Generated_from_Prompts_API_LOOP_ANTHROPIC,124,api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/124/124_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/124/refine_runs/20260220-092707,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/124/refine_runs/20260220-092707/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/124/refine_runs/20260220-092707/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/124/refine_runs/20260220-092707/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/124/refine_runs/20260220-092707/iteration_01.sysml:38:34: [38;2;220;080;080merror[0m (feature-value-overriding): Cannot override a binding feature value
+│   38 |         attribute redefines mass = 2500.0;
+│      |                                  [38;2;220;080;080m^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/124/refine_runs/20260220-092707/iteration_01.sysml:32:31: [38;2;255;255;255mnote[0m: Redefined binding feature value here
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/124/refine_runs/20260220-092707/iteration_01.sysml:40:38: [38;2;220;080;080merror[0m (feature-value-overriding): Cannot override a binding feature value
+│   40 |             attribute redefines mass = 150.0;
+│      |                            "
+Generated_from_Prompts_API_LOOP_ANTHROPIC,137,api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/137/137_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/137/refine_runs/20260220-094037,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/137/refine_runs/20260220-094037/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/137/refine_runs/20260220-094037/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/137/refine_runs/20260220-094037/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/137/refine_runs/20260220-094037/iteration_01.sysml:35:37: [38;2;220;080;080merror[0m (feature-value-overriding): Cannot override a binding feature value
+│   35 |         attribute redefines mass_kg = 1200.0;
+│      |                                     [38;2;220;080;080m^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/137/refine_runs/20260220-094037/iteration_01.sysml:27:34: [38;2;255;255;255mnote[0m: Redefined binding feature value here
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/137/refine_runs/20260220-094037/iteration_01.sysml:36:38: [38;2;220;080;080merror[0m (feature-value-overriding): Cannot override a binding feature value
+│   36 |         attribute redefines length_m = 4.82;
+│      |                       "
+Generated_from_Prompts_API_LOOP_ANTHROPIC,146,api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/146/146_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/146/refine_runs/20260220-094132,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/146/refine_runs/20260220-094132/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/146/refine_runs/20260220-094132/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/146/refine_runs/20260220-094132/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/146/refine_runs/20260220-094132/iteration_01.sysml:64:14: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'recorder' shadows TrajectoryRecordingSystem::SpacecraftAscentSystem::recorder
+│   64 |         part recorder : AscentTrajectoryRecorder {
+│      |              [38;2;204;204;057m^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/146/refine_runs/20260220-094132/iteration_01.sysml:60:14: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC/146/refine_runs/20260220-094132/iteration_01.sysml:63:25: [38;2;255;255;255mnote[0m: Because TrajectoryRecordingSystem::SpacecraftAscentSystem is specialized through FeatureTyping
+
+/Users/chancelavoie/Desktop/"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,55,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/55/55_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/55/refine_runs/20260220-101830,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/55/refine_runs/20260220-101830/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/55/refine_runs/20260220-101830/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/55/refine_runs/20260220-101830/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/55/refine_runs/20260220-101830/iteration_01.sysml:26:17: [38;2;220;080;080merror[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    26 |                 sum(components->select(c|c.mass >= massThreshold).mass) +
+       |                 [38;2;220;080;080m^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/55/refine_runs/20260220-101830/iteration_01.sysml:26:33: [38;2;220;080;080merror[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    26 |                 sum(components->select(c|c.mass >= massThreshold).mass) +
+       |                                 [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desk"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,56,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/56/56_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/56/refine_runs/20260220-101842,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/56/refine_runs/20260220-101842/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/56/refine_runs/20260220-101842/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/56/refine_runs/20260220-101842/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/56/refine_runs/20260220-101842/iteration_01.sysml:10:19: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'simpleMass' shadows MassAggregation::Thing::simpleMass
+│   10 |         attribute simpleMass : Real = 0;
+│      |                   [38;2;204;204;057m^^^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/56/refine_runs/20260220-101842/iteration_01.sysml:5:19: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/56/refine_runs/20260220-101842/iteration_01.sysml:9:29: [38;2;255;255;255mnote[0m: Because MassAggregation::Thing is specialized through Subclassification
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_C"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,85,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/85/85_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/85/refine_runs/20260220-103041,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/85/refine_runs/20260220-103041/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/85/refine_runs/20260220-103041/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/85/refine_runs/20260220-103041/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/85/refine_runs/20260220-103041/iteration_01.sysml:23:36: [38;2;220;080;080merror[0m (reference-error): No Type named 'string' found.
+    23 |         attribute safetyFunction : string = ""occupant restraint"";
+       |                                    [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/85/refine_runs/20260220-103041/iteration_01.sysml:24:38: [38;2;220;080;080merror[0m (reference-error): No Type named 'string' found.
+    24 |         attribute securityFunction : string = ""none"";
+       |                                      [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/85/refine_runs/20260220-103041/iteration_01.sysml:28:36: [38;2;2"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,100,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/100/100_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/100/refine_runs/20260220-103438,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/100/refine_runs/20260220-103438/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/100/refine_runs/20260220-103438/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/100/refine_runs/20260220-103438/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/100/refine_runs/20260220-103438/iteration_01.sysml:25:19: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'mass' shadows VehicleVariants::Vehicle::mass
+│   25 |         attribute mass : kg = 2000;
+│      |                   [38;2;204;204;057m^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/100/refine_runs/20260220-103438/iteration_01.sysml:19:19: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/100/refine_runs/20260220-103438/iteration_01.sysml:24:29: [38;2;255;255;255mnote[0m: Because VehicleVariants::Vehicle is specialized through Subclassification
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Lo"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,115,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/115/115_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/115/refine_runs/20260220-103721,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/115/refine_runs/20260220-103721/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/115/refine_runs/20260220-103721/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/115/refine_runs/20260220-103721/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/115/refine_runs/20260220-103721/iteration_01.sysml:38:18: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'subsystemA' shadows AutomotiveConfiguration::Automobile::subsystemA
+│   38 |             part subsystemA :> SubsystemA_Config1;
+│      |                  [38;2;204;204;057m^^^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/115/refine_runs/20260220-103721/iteration_01.sysml:32:14: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/115/refine_runs/20260220-103721/iteration_01.sysml:37:27: [38;2;255;255;255mnote[0m: Because AutomotiveConfiguration::Automobile is specialized through FeatureTyping
+
+/Users/chancel"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,129,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/129/129_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/129/refine_runs/20260220-104616,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/129/refine_runs/20260220-104616/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/129/refine_runs/20260220-104616/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/129/refine_runs/20260220-104616/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/129/refine_runs/20260220-104616/iteration_01.sysml:16:53: [38;2;220;080;080merror[0m (reference-error): No Feature named 'Safety' found.
+    16 |         attribute functionalArea : FunctionalArea = Safety;
+       |                                                     [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/129/refine_runs/20260220-104616/iteration_01.sysml:21:53: [38;2;220;080;080merror[0m (reference-error): No Feature named 'Safety' found.
+    21 |         attribute functionalArea : FunctionalArea = Safety;
+       |                                                     [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/129/refine_runs/20260220"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,130,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/130/130_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/130/refine_runs/20260220-104222,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/130/refine_runs/20260220-104222/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/130/refine_runs/20260220-104222/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/130/refine_runs/20260220-104222/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/130/refine_runs/20260220-104222/iteration_01.sysml:10:53: [38;2;220;080;080merror[0m (reference-error): No Feature named 'Safety' found.
+    10 |         attribute classification : Classification = Safety;
+       |                                                     [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/130/refine_runs/20260220-104222/iteration_01.sysml:15:53: [38;2;220;080;080merror[0m (reference-error): No Feature named 'Safety' found.
+    15 |         attribute classification : Classification = Safety;
+       |                                                     [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/130/refine_runs/20260220"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,136,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/136/136_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/136/refine_runs/20260220-104255,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/136/refine_runs/20260220-104255/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/136/refine_runs/20260220-104255/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/136/refine_runs/20260220-104255/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/136/refine_runs/20260220-104255/iteration_01.sysml:11:19: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'manufacturer' shadows AutomotiveComponents::Tire::manufacturer
+│   11 |         attribute manufacturer = ""Michelin"";
+│      |                   [38;2;204;204;057m^^^^^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/136/refine_runs/20260220-104255/iteration_01.sysml:5:19: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/136/refine_runs/20260220-104255/iteration_01.sysml:10:30: [38;2;255;255;255mnote[0m: Because AutomotiveComponents::Tire is specialized through FeatureTyping
+
+/Users/chancelavoie/Desktop/AI_A"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,141,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/141/141_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/141/refine_runs/20260220-104423,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/141/refine_runs/20260220-104423/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/141/refine_runs/20260220-104423/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/141/refine_runs/20260220-104423/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/141/refine_runs/20260220-104423/iteration_01.sysml:75:14: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'lengthUnitConverter' shadows UnitSystemLibrary::LengthConverter::lengthUnitConverter
+│   75 |         part lengthUnitConverter : UnitConverter {
+│      |              [38;2;204;204;057m^^^^^^^^^^^^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/141/refine_runs/20260220-104423/iteration_01.sysml:55:14: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/141/refine_runs/20260220-104423/iteration_01.sysml:74:23: [38;2;255;255;255mnote[0m: Because UnitSystemLibrary::LengthConverter is specialized through FeatureT"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,146,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/146/146_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/146/refine_runs/20260220-104746,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/146/refine_runs/20260220-104746/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/146/refine_runs/20260220-104746/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/146/refine_runs/20260220-104746/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/146/refine_runs/20260220-104746/iteration_01.sysml:32:24: [38;2;220;080;080merror[0m (reference-error): Expected Feature element but found PortDefinition (AscentTrajectorySystem::Spacecraft::statePort)
+    32 |     connect spacecraft.statePort to trajectorySampler;
+       |                        [38;2;220;080;080m^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER,150,api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/150/150_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/150/refine_runs/20260220-104929,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/150/refine_runs/20260220-104929/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/150/refine_runs/20260220-104929/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/150/refine_runs/20260220-104929/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/150/refine_runs/20260220-104929/iteration_01.sysml:5:27: [38;2;220;080;080merror[0m (reference-error): No Type named 'string' found.
+    5 |         attribute topic : string;
+      |                           [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/150/refine_runs/20260220-104929/iteration_01.sysml:9:27: [38;2;220;080;080merror[0m (reference-error): No Type named 'string' found.
+    9 |         attribute topic : string;
+      |                           [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER/150/refine_runs/20260220-104929/iteration_01.sysml:10:29: [38;2;220;080;080merror[0m (reference-error): No Type named 'string' found.
+    "
+Generated_from_Prompts_API_LOOP_MISTRAL_LARGE,18,api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/18/18_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/18/refine_runs/20260220-110233,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/18/refine_runs/20260220-110233/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/18/refine_runs/20260220-110233/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/18/refine_runs/20260220-110233/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/18/refine_runs/20260220-110233/iteration_01.sysml:42:20: [38;2;220;080;080merror[0m (reference-error): Expected Feature element but found PartDefinition (PhotoCaptureSystem::Camera)
+    42 |     part system :> Camera {
+       |                    [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/18/refine_runs/20260220-110233/iteration_01.sysml:47:50: [38;2;220;080;080merror[0m (reference-error): No Feature named 'captureRequest' found.
+    47 |     connect system.user.sceneSelection to system.captureRequest;
+       |                                                  [38;2;220;080;080m^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/18/refine_runs/20260220-110233/iteration_01."
+Generated_from_Prompts_API_LOOP_MISTRAL_LARGE,19,api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/19/19_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/19/refine_runs/20260220-110238,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/19/refine_runs/20260220-110238/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/19/refine_runs/20260220-110238/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/19/refine_runs/20260220-110238/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/19/refine_runs/20260220-110238/iteration_01.sysml:25:26: [38;2;220;080;080merror[0m (reference-error): No Type named 'Blob' found.
+    25 |         attribute data : Blob;
+       |                          [38;2;220;080;080m^^^^[0m"
+Generated_from_Prompts_API_LOOP_MISTRAL_LARGE,21,api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/21/21_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/21/refine_runs/20260220-110243,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/21/refine_runs/20260220-110243/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/21/refine_runs/20260220-110243/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/21/refine_runs/20260220-110243/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/21/refine_runs/20260220-110243/iteration_01.sysml:35:20: [38;2;220;080;080merror[0m (reference-error): Expected Feature element but found PartDefinition (AutomatedPhotographySystem::FocusProcessor)
+    35 |     part system :> FocusProcessor, Shooter {
+       |                    [38;2;220;080;080m^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/21/refine_runs/20260220-110243/iteration_01.sysml:35:36: [38;2;220;080;080merror[0m (reference-error): Expected Feature element but found PartDefinition (AutomatedPhotographySystem::Shooter)
+    35 |     part system :> FocusProcessor, Shooter {
+       |                                    [38;2;220;080;080m^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_MISTRAL_LARGE,50,api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/50/50_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/50/refine_runs/20260220-110601,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/50/refine_runs/20260220-110601/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/50/refine_runs/20260220-110601/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/50/refine_runs/20260220-110601/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/50/refine_runs/20260220-110601/iteration_01.sysml:13:34: [38;2;220;080;080merror[0m (reference-error): No Type named 'Date' found.
+    13 |         attribute assemblyDate : Date;
+       |                                  [38;2;220;080;080m^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/50/refine_runs/20260220-110601/iteration_01.sysml:14:34: [38;2;220;080;080merror[0m (reference-error): No Type named 'Date' found.
+    14 |         attribute deliveryDate : Date;
+       |                                  [38;2;220;080;080m^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/50/refine_runs/20260220-110601/iteration_01.sysml:15:35: [38;2;220;080;080merror[0m (reference-error): No Type named 'Date' found.
+    "
+Generated_from_Prompts_API_LOOP_MISTRAL_LARGE,56,api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/56/56_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/56/refine_runs/20260220-110622,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/56/refine_runs/20260220-110622/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/56/refine_runs/20260220-110622/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/56/refine_runs/20260220-110622/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/56/refine_runs/20260220-110622/iteration_01.sysml:11:76: [38;2;220;080;080merror[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    11 |         attribute totalMass : Real = simpleMass + subcomponents.totalMass->sum();
+       |                                                                            [38;2;220;080;080m^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/56/refine_runs/20260220-110622/iteration_01.sysml:12:9: [38;2;220;080;080merror[0m (subsetting-uniqueness-conformance): Subsetting feature cannot be nonunique if subsetted feature is unique
+│   12 |         part subcomponents : simpleThing[*] nonunique;
+│      |         [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_MISTRAL_LARGE,85,api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/85/85_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/85/refine_runs/20260220-111010,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/85/refine_runs/20260220-111010/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/85/refine_runs/20260220-111010/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/85/refine_runs/20260220-111010/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/85/refine_runs/20260220-111010/iteration_01.sysml:21:40: [38;2;220;080;080merror[0m (feature-reference-expression-referent-is-feature): Referent must be a feature but is PartDefinition
+    21 |         part seatBelts : SeatBelt[2] = SeatBelt;
+       |                                        [38;2;220;080;080m^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/85/refine_runs/20260220-111010/iteration_01.sysml:22:42: [38;2;220;080;080merror[0m (feature-reference-expression-referent-is-feature): Referent must be a feature but is PartDefinition
+    22 |         part frontSeats : FrontSeat[2] = FrontSeat;
+       |                                          [38;2;220;080;080m^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LO"
+Generated_from_Prompts_API_LOOP_MISTRAL_LARGE,86,api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/86/86_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/86/refine_runs/20260220-111019,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/86/refine_runs/20260220-111019/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/86/refine_runs/20260220-111019/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/86/refine_runs/20260220-111019/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/86/refine_runs/20260220-111019/iteration_01.sysml:43:19: [38;2;220;080;080merror[0m (reference-error): Expected Type element but found Package (VehicleDynamicsSimulation)
+    43 |     part system : VehicleDynamicsSimulation {
+       |                   [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_MISTRAL_LARGE,100,api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/100/100_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/100/refine_runs/20260220-111301,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/100/refine_runs/20260220-111301/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/100/refine_runs/20260220-111301/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/100/refine_runs/20260220-111301/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/100/refine_runs/20260220-111301/iteration_01.sysml:25:9: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'mass' shadows VehicleConfiguration::Vehicle::mass
+│   25 |         mass = 2000.0;
+│      |         [38;2;204;204;057m^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/100/refine_runs/20260220-111301/iteration_01.sysml:6:19: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/100/refine_runs/20260220-111301/iteration_01.sysml:24:21: [38;2;255;255;255mnote[0m: Because VehicleConfiguration::Vehicle is specialized through FeatureTyping
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_"
+Generated_from_Prompts_API_LOOP_MISTRAL_LARGE,148,api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/148/148_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/148/refine_runs/20260220-112043,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/148/refine_runs/20260220-112043/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/148/refine_runs/20260220-112043/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/148/refine_runs/20260220-112043/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/148/refine_runs/20260220-112043/iteration_01.sysml:41:13: [38;2;220;080;080merror[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    41 |             Composition(
+       |             [38;2;220;080;080m^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/148/refine_runs/20260220-112043/iteration_01.sysml:45:13: [38;2;220;080;080merror[0m (invocation-expression-instantiated-type): Invocation expression must invoke a `Behavior` or a feature typed by a single `Behavior`
+    45 |             Composition(
+       |             [38;2;220;080;080m^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE/148/refine_runs/2026"
+Generated_from_Prompts_API_LOOP_OPENAI,13,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/13/13_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/13/refine_runs/20260219-235444,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/13/refine_runs/20260219-235444/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/13/refine_runs/20260219-235444/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/13/refine_runs/20260219-235444/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/13/refine_runs/20260219-235444/iteration_01.sysml:10:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    10 |     item fuel : Fuel;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/13/refine_runs/20260219-235444/iteration_01.sysml:14:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    14 |     item temperature : Temperature;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,19,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/19/19_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/19/refine_runs/20260219-235601,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/19/refine_runs/20260219-235601/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/19/refine_runs/20260219-235601/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/19/refine_runs/20260219-235601/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/19/refine_runs/20260219-235601/iteration_01.sysml:16:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    16 |     item scene : Scene;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/19/refine_runs/20260219-235601/iteration_01.sysml:20:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    20 |     item focused : FocusedImage;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/19/refine_runs/20260219-235601/iteration_01.sysml:24:5: [38;2;220;"
+Generated_from_Prompts_API_LOOP_OPENAI,20,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/20/20_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/20/refine_runs/20260219-235606,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/20/refine_runs/20260219-235606/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/20/refine_runs/20260219-235606/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/20/refine_runs/20260219-235606/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/20/refine_runs/20260219-235606/iteration_01.sysml:9:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    9 |     item scene : Scene;
+      |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/20/refine_runs/20260219-235606/iteration_01.sysml:13:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    13 |     item image : Image;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/20/refine_runs/20260219-235606/iteration_01.sysml:17:5: [38;2;220;080;080merror[0m (po"
+Generated_from_Prompts_API_LOOP_OPENAI,21,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/21/21_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/21/refine_runs/20260219-235618,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/21/refine_runs/20260219-235618/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/21/refine_runs/20260219-235618/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/21/refine_runs/20260219-235618/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/21/refine_runs/20260219-235618/iteration_01.sysml:9:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    9 |     item scene : Scene;
+      |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/21/refine_runs/20260219-235618/iteration_01.sysml:13:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    13 |     item image : FocusedImage;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/21/refine_runs/20260219-235618/iteration_01.sysml:17:5: [38;2;220;080;080"
+Generated_from_Prompts_API_LOOP_OPENAI,24,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/24/24_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/24/refine_runs/20260219-235638,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/24/refine_runs/20260219-235638/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/24/refine_runs/20260219-235638/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/24/refine_runs/20260219-235638/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/24/refine_runs/20260219-235638/iteration_01.sysml:11:26: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    11 |   port def SceneInPort { item scene: Scene; }
+       |                          [38;2;220;080;080m^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/24/refine_runs/20260219-235638/iteration_01.sysml:12:27: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    12 |   port def SceneOutPort { item scene: Scene; }
+       |                           [38;2;220;080;080m^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPEN"
+Generated_from_Prompts_API_LOOP_OPENAI,33,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/33/33_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/33/refine_runs/20260219-235724,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/33/refine_runs/20260219-235724/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/33/refine_runs/20260219-235724/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/33/refine_runs/20260219-235724/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/33/refine_runs/20260219-235724/iteration_01.sysml:9:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    9 |     item scene : Scene;
+      |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/33/refine_runs/20260219-235724/iteration_01.sysml:13:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    13 |     item image : Image;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/33/refine_runs/20260219-235724/iteration_01.sysml:17:5: [38;2;220;080;080merror[0m (po"
+Generated_from_Prompts_API_LOOP_OPENAI,34,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/34/34_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/34/refine_runs/20260219-235727,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/34/refine_runs/20260219-235727/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/34/refine_runs/20260219-235727/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/34/refine_runs/20260219-235727/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/34/refine_runs/20260219-235727/iteration_01.sysml:14:39: [38;2;220;080;080merror[0m (reference-error): No Feature named 'NotReady' found.
+    14 |     attribute status : SensorStatus = NotReady;
+       |                                       [38;2;220;080;080m^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,36,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/36/36_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/36/refine_runs/20260219-235744,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/36/refine_runs/20260219-235744/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/36/refine_runs/20260219-235744/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/36/refine_runs/20260219-235744/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/36/refine_runs/20260219-235744/iteration_01.sysml:17:49: [38;2;220;080;080merror[0m (reference-error): No Feature named 'off' found.
+    17 |         attribute currentState : VehicleState = off;
+       |                                                 [38;2;220;080;080m^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,38,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/38/38_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/38/refine_runs/20260219-235746,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/38/refine_runs/20260219-235746/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/38/refine_runs/20260219-235746/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/38/refine_runs/20260219-235746/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/38/refine_runs/20260219-235746/iteration_01.sysml:9:48: [38;2;220;080;080merror[0m (reference-error): No Feature named 'shutdown' found.
+    9 |       attribute vehicleStatus : VehicleState = shutdown;
+      |                                                [38;2;220;080;080m^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,39,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/39/39_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/39/refine_runs/20260219-235755,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/39/refine_runs/20260219-235755/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/39/refine_runs/20260219-235755/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/39/refine_runs/20260219-235755/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/39/refine_runs/20260219-235755/iteration_01.sysml:24:52: [38;2;220;080;080merror[0m (reference-error): No Feature named 'Off' found.
+    24 |         attribute operatingState: OperatingState = Off;
+       |                                                    [38;2;220;080;080m^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/39/refine_runs/20260219-235755/iteration_01.sysml:25:46: [38;2;220;080;080merror[0m (reference-error): No Feature named 'Unknown' found.
+    25 |         attribute healthState: HealthState = Unknown;
+       |                                              [38;2;220;080;080m^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,40,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/40/40_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/40/refine_runs/20260219-235804,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/40/refine_runs/20260219-235804/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/40/refine_runs/20260219-235804/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/40/refine_runs/20260219-235804/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/40/refine_runs/20260219-235804/iteration_01.sysml:11:9: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    11 |         item warning : OverTempWarning;
+       |         [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/40/refine_runs/20260219-235804/iteration_01.sysml:18:44: [38;2;220;080;080merror[0m (reference-error): No Feature named 'normal' found.
+    18 |         attribute status : VehicleStatus = normal;
+       |                                            [38;2;220;080;080m^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,45,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/45/45_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/45/refine_runs/20260219-235837,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/45/refine_runs/20260219-235837/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/45/refine_runs/20260219-235837/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/45/refine_runs/20260219-235837/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/45/refine_runs/20260219-235837/iteration_01.sysml:17:7: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    17 |       item SetSpeedCommand;
+       |       [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/45/refine_runs/20260219-235837/iteration_01.sysml:21:7: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    21 |       item VehicleSpeed;
+       |       [38;2;220;080;080m^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/45/refine_runs/20260219-235837/iteration_01.sysml:25:7: [38;2;220;080;080m"
+Generated_from_Prompts_API_LOOP_OPENAI,46,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/46/46_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/46/refine_runs/20260219-235838,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/46/refine_runs/20260219-235838/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/46/refine_runs/20260219-235838/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/46/refine_runs/20260219-235838/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/46/refine_runs/20260219-235838/iteration_01.sysml:17:9: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    17 |         item speedCommand : SpeedCommand;
+       |         [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/46/refine_runs/20260219-235838/iteration_01.sysml:21:9: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    21 |         item speedCommand : SpeedCommand;
+       |         [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/46/refine_run"
+Generated_from_Prompts_API_LOOP_OPENAI,56,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/56/56_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/56/refine_runs/20260220-000000,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/56/refine_runs/20260220-000000/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/56/refine_runs/20260220-000000/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/56/refine_runs/20260220-000000/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/56/refine_runs/20260220-000000/iteration_01.sysml:8:15: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'totalMass' shadows MassAggregation::ObjectWithMass::totalMass
+│   8 |     attribute totalMass : Real = simpleMass;
+│     |               [38;2;204;204;057m^^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/56/refine_runs/20260220-000000/iteration_01.sysml:5:15: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/56/refine_runs/20260220-000000/iteration_01.sysml:7:36: [38;2;255;255;255mnote[0m: Because MassAggregation::ObjectWithMass is specialized through Subclassification
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generat"
+Generated_from_Prompts_API_LOOP_OPENAI,68,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/68/68_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/68/refine_runs/20260220-000130,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/68/refine_runs/20260220-000130/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/68/refine_runs/20260220-000130/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/68/refine_runs/20260220-000130/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/68/refine_runs/20260220-000130/iteration_01.sysml:5:24: [38;2;220;080;080merror[0m (reference-error): No Type named 'Torque' found.
+    5 |     attribute torque : Torque;
+      |                        [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/68/refine_runs/20260220-000130/iteration_01.sysml:6:23: [38;2;220;080;080merror[0m (reference-error): No Type named 'Speed' found.
+    6 |     attribute speed : Speed;
+      |                       [38;2;220;080;080m^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/68/refine_runs/20260220-000130/iteration_01.sysml:11:27: [38;2;220;080;080merror[0m (reference-error): No Type named 'Torque' found.
+    11 |     attribute maxTorque : Torque = 300;
+       |            "
+Generated_from_Prompts_API_LOOP_OPENAI,70,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/70/70_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/70/refine_runs/20260220-000139,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/70/refine_runs/20260220-000139/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/70/refine_runs/20260220-000139/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/70/refine_runs/20260220-000139/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/70/refine_runs/20260220-000139/iteration_01.sysml:9:7: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    9 |       item torque : TorqueItem;
+      |       [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,71,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/71/71_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/71/refine_runs/20260220-000149,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/71/refine_runs/20260220-000149/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/71/refine_runs/20260220-000149/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/71/refine_runs/20260220-000149/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/71/refine_runs/20260220-000149/iteration_01.sysml:10:9: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    10 |         item torque : TorqueItem;
+       |         [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/71/refine_runs/20260220-000149/iteration_01.sysml:39:23: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'maxTorque' shadows VehicleSystem::Engine::maxTorque
+│   39 |             attribute maxTorque = 350;
+│      |                       [38;2;204;204;057m^^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/71/refine_runs/20260220-000149/iteration_01.sysml:14:19:"
+Generated_from_Prompts_API_LOOP_OPENAI,80,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/80/80_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/80/refine_runs/20260220-000256,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/80/refine_runs/20260220-000256/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/80/refine_runs/20260220-000256/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/80/refine_runs/20260220-000256/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/80/refine_runs/20260220-000256/iteration_01.sysml:21:47: [38;2;220;080;080merror[0m (reference-error): No Feature named 'four' found.
+    21 |     attribute cylinderCount : CylinderCount = four;
+       |                                               [38;2;220;080;080m^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/80/refine_runs/20260220-000256/iteration_01.sysml:32:47: [38;2;220;080;080merror[0m (reference-error): No Feature named 'six' found.
+    32 |     attribute cylinderCount : CylinderCount = six;
+       |                                               [38;2;220;080;080m^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,83,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/83/83_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/83/refine_runs/20260220-000319,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/83/refine_runs/20260220-000319/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/83/refine_runs/20260220-000319/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/83/refine_runs/20260220-000319/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/83/refine_runs/20260220-000319/iteration_01.sysml:8:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    8 |     item power : Power;
+      |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/83/refine_runs/20260220-000319/iteration_01.sysml:12:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    12 |     item torque : Torque;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,85,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/85/85_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/85/refine_runs/20260220-000333,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/85/refine_runs/20260220-000333/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/85/refine_runs/20260220-000333/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/85/refine_runs/20260220-000333/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/85/refine_runs/20260220-000333/iteration_01.sysml:11:48: [38;2;220;080;080merror[0m (reference-error): No Feature named 'safety' found.
+    11 |     attribute functionType : FeatureFunction = safety;
+       |                                                [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/85/refine_runs/20260220-000333/iteration_01.sysml:15:48: [38;2;220;080;080merror[0m (reference-error): No Feature named 'safety' found.
+    15 |     attribute functionType : FeatureFunction = safety;
+       |                                                [38;2;220;080;080m^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/85/refine_runs/20260220-000333/iteration_01.sysml:19:48: [38;2;220;080;080merror[0m (refe"
+Generated_from_Prompts_API_LOOP_OPENAI,88,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/88/88_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/88/refine_runs/20260220-000352,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/88/refine_runs/20260220-000352/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/88/refine_runs/20260220-000352/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/88/refine_runs/20260220-000352/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/88/refine_runs/20260220-000352/iteration_01.sysml:10:55: [38;2;220;080;080merror[0m (reference-error): No Feature named 'required' found.
+    10 |     attribute requirementStatus : SafetyRequirement = required;
+       |                                                       [38;2;220;080;080m^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/88/refine_runs/20260220-000352/iteration_01.sysml:14:55: [38;2;220;080;080merror[0m (reference-error): No Feature named 'optional' found.
+    14 |     attribute requirementStatus : SafetyRequirement = optional;
+       |                                                       [38;2;220;080;080m^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/88/refine_runs/20260220-000352/iteration_01.sysml:1"
+Generated_from_Prompts_API_LOOP_OPENAI,92,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/92/92_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/92/refine_runs/20260220-000431,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/92/refine_runs/20260220-000431/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/92/refine_runs/20260220-000431/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/92/refine_runs/20260220-000431/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/92/refine_runs/20260220-000431/iteration_01.sysml:24:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    24 |     item data : DataPacket;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/92/refine_runs/20260220-000431/iteration_01.sysml:28:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    28 |     item power : PowerFlow;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/92/refine_runs/20260220-000431/iteration_01.sysml:32:5: [38;2;220;08"
+Generated_from_Prompts_API_LOOP_OPENAI,95,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/95/95_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/95/refine_runs/20260220-000445,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/95/refine_runs/20260220-000445/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/95/refine_runs/20260220-000445/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/95/refine_runs/20260220-000445/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/95/refine_runs/20260220-000445/iteration_01.sysml:12:24: [38;2;220;080;080merror[0m (reference-error): No Type named 'TorqueValue' found.
+    12 |     attribute torque : TorqueValue;
+       |                        [38;2;220;080;080m^^^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,103,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/103/103_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/103/refine_runs/20260220-000611,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/103/refine_runs/20260220-000611/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/103/refine_runs/20260220-000611/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/103/refine_runs/20260220-000611/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/103/refine_runs/20260220-000611/iteration_01.sysml:7:9: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    7 |         item sig : Signal;
+      |         [38;2;220;080;080m^^^^^^^^^^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,104,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/104/104_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/104/refine_runs/20260220-000634,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/104/refine_runs/20260220-000634/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/104/refine_runs/20260220-000634/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/104/refine_runs/20260220-000634/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/104/refine_runs/20260220-000634/iteration_01.sysml:9:15: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'start' shadows Items::Item::start
+│   9 |     attribute start : Boolean;
+│     |               [38;2;204;204;057m^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/.venv/lib/python3.13/site-packages/syside/sysml.library/Systems Library/Items.sysml:33:8: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/104/refine_runs/20260220-000634/iteration_01.sysml:8:3: [38;2;255;255;255mnote[0m: Because Items::Item is implicitly specialized through Subclassification
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/104/refine_runs/20260220-000634/ite"
+Generated_from_Prompts_API_LOOP_OPENAI,105,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/105/105_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/105/refine_runs/20260220-000648,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/105/refine_runs/20260220-000648/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/105/refine_runs/20260220-000648/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/105/refine_runs/20260220-000648/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/105/refine_runs/20260220-000648/iteration_01.sysml:10:32: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    10 |     port def FuelCommandPort { item FuelCommand; }
+       |                                [38;2;220;080;080m^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/105/refine_runs/20260220-000648/iteration_01.sysml:11:27: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    11 |     port def TorquePort { item Torque; }
+       |                           [38;2;220;080;080m^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPE"
+Generated_from_Prompts_API_LOOP_OPENAI,110,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/110/110_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/110/refine_runs/20260220-000725,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/110/refine_runs/20260220-000725/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/110/refine_runs/20260220-000725/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/110/refine_runs/20260220-000725/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/110/refine_runs/20260220-000725/iteration_01.sysml:7:7: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    7 |       item fuel : Fuel;
+      |       [38;2;220;080;080m^^^^^^^^^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,112,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/112/112_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/112/refine_runs/20260220-000734,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/112/refine_runs/20260220-000734/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/112/refine_runs/20260220-000734/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/112/refine_runs/20260220-000734/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/112/refine_runs/20260220-000734/iteration_01.sysml:26:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    26 |     item signal : SignalItem;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/112/refine_runs/20260220-000734/iteration_01.sysml:30:45: [38;2;220;080;080merror[0m (reference-error): No Feature named 'Off' found.
+    30 |     attribute currentState : VehicleState = Off;
+       |                                             [38;2;220;080;080m^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/112/refine_runs/20260220-000734/iteration_01.sysml:50:51: [38;2;220;080;080merror[0m ("
+Generated_from_Prompts_API_LOOP_OPENAI,118,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/118/118_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/118/refine_runs/20260220-000811,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/118/refine_runs/20260220-000811/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/118/refine_runs/20260220-000811/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/118/refine_runs/20260220-000811/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/118/refine_runs/20260220-000811/iteration_01.sysml:19:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    19 |     item torque : Torque;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/118/refine_runs/20260220-000811/iteration_01.sysml:53:10: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'vehicle2000' shadows AutomobileSystem::AutomobileSpecSystem::vehicle2000
+│   53 |     part vehicle2000 : Vehicle {
+│      |          [38;2;204;204;057m^^^^^^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/118/refine_runs/20260220-000811/iteration_01.sysml:48:10: [38;2;"
+Generated_from_Prompts_API_LOOP_OPENAI,128,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/128/128_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/128/refine_runs/20260220-001002,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/128/refine_runs/20260220-001002/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/128/refine_runs/20260220-001002/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/128/refine_runs/20260220-001002/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/128/refine_runs/20260220-001002/iteration_01.sysml:8:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    8 |     item torque : Torque;
+      |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/128/refine_runs/20260220-001002/iteration_01.sysml:12:5: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    12 |     item power : Power;
+       |     [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,130,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/130/130_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/130/refine_runs/20260220-001010,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/130/refine_runs/20260220-001010/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/130/refine_runs/20260220-001010/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/130/refine_runs/20260220-001010/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/130/refine_runs/20260220-001010/iteration_01.sysml:12:43: [38;2;220;080;080merror[0m (reference-error): No Feature named 'SafetyCritical' found.
+    12 |     attribute safetyClass : SafetyClass = SafetyCritical;
+       |                                           [38;2;220;080;080m^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/130/refine_runs/20260220-001010/iteration_01.sysml:17:43: [38;2;220;080;080merror[0m (reference-error): No Feature named 'SafetyCritical' found.
+    17 |     attribute safetyClass : SafetyClass = SafetyCritical;
+       |                                           [38;2;220;080;080m^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/130/refine_runs/20260220-001010/iteration_01.sysml:22:43: ["
+Generated_from_Prompts_API_LOOP_OPENAI,133,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/133/133_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/133/refine_runs/20260220-001052,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/133/refine_runs/20260220-001052/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/133/refine_runs/20260220-001052/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/133/refine_runs/20260220-001052/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/133/refine_runs/20260220-001052/iteration_01.sysml:8:9: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    8 |         item msg: CANMessage;
+      |         [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^[0m
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/133/refine_runs/20260220-001052/iteration_01.sysml:12:9: [38;2;220;080;080merror[0m (port-definition-owned-usages-not-composite): Owned usages of a port definition other than ports must be referential
+    12 |         item data: SensorData;
+       |         [38;2;220;080;080m^^^^^^^^^^^^^^^^^^^^^^[0m"
+Generated_from_Prompts_API_LOOP_OPENAI,140,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/140/140_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/140/refine_runs/20260220-001136,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/140/refine_runs/20260220-001136/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/140/refine_runs/20260220-001136/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/140/refine_runs/20260220-001136/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/140/refine_runs/20260220-001136/iteration_01.sysml:32:19: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'name' shadows PhysicalQuantityLibrary::Unit::name
+│   32 |         attribute name : String = ""meter"";
+│      |                   [38;2;204;204;057m^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/140/refine_runs/20260220-001136/iteration_01.sysml:15:19: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/140/refine_runs/20260220-001136/iteration_01.sysml:31:32: [38;2;255;255;255mnote[0m: Because PhysicalQuantityLibrary::Unit is specialized through Subclassification
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_"
+Generated_from_Prompts_API_LOOP_OPENAI,143,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/143/143_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/143/refine_runs/20260220-001212,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/143/refine_runs/20260220-001212/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/143/refine_runs/20260220-001212/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/143/refine_runs/20260220-001212/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/143/refine_runs/20260220-001212/iteration_01.sysml:62:17: [38;2;204;204;057mwarning[0m (namespace-distinguishability): Member name 'option' shadows SystemDataModel::DiameterOptionValue::option
+│   62 |       attribute option : DiameterOption = DiameterOption::small;
+│      |                 [38;2;204;204;057m^^^^^^[0m
+└── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/143/refine_runs/20260220-001212/iteration_01.sysml:56:15: [38;2;255;255;255mnote[0m: Inherited from here
+    └── /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/143/refine_runs/20260220-001212/iteration_01.sysml:61:18: [38;2;255;255;255mnote[0m: Because SystemDataModel::DiameterOptionValue is specialized through FeatureTyping
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compi"
+Generated_from_Prompts_API_LOOP_OPENAI,151,api_loop/Generated_from_Prompts_API_LOOP_OPENAI/151/151_refine_manifest.json,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/151/refine_runs/20260220-001321,/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/151/refine_runs/20260220-001321/iteration_01.sysml,True,False,antlr_only_pass,0,1,,ANTLR_PARSE_PASS[hamr_full] /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/151/refine_runs/20260220-001321/iteration_01.sysml,"SYSIDE_COMPILE_FAIL /Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/151/refine_runs/20260220-001321/iteration_01.sysml
+
+/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI/151/refine_runs/20260220-001321/iteration_01.sysml:40:43: [38;2;220;080;080merror[0m (reference-error): No Feature named 'idle' found.
+    40 |     attribute status : VehicleUseStatus = idle;
+       |                                           [38;2;220;080;080m^^^^[0m"

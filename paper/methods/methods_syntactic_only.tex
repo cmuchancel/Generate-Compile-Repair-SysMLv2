@@ -35,19 +35,46 @@ SysMBench provides paired natural-language prompts and ground-truth SysMLv2 mode
 
 To assess model-agnostic behavior of the same controller, we run four model configurations: OpenAI Codex 5.2 (\texttt{gpt-5.2-codex})~\cite{openaiGPT52Codex2026}, Anthropic Sonnet 4.6 (\texttt{claude-sonnet-4-6})~\cite{anthropicSonnet46API2026}, DeepSeek Reasoner (\texttt{deepseek-reasoner})~\cite{deepseekReasonerAPI2026}, and Mistral Large (\texttt{mistral-large-latest})~\cite{mistralLargeLatestDocs2026}. This yields 604 prompt-level cases (151 prompts $\times$ 4 models).
 
-From saved run records, we extract first-shot and eventual pass/fail outcomes, iterations run, iterations to success, unresolved-within-cap status, first/final error counts, cumulative error counts, per-iteration runtime, and token usage. Error families are grouped from validator diagnostics (for example, parsing and reference errors), while warnings are tracked separately and do not change pass/fail labels.
+From saved run records, we extract single-shot and pipeline pass/fail outcomes, iterations run, iterations to success, first/final error counts, cumulative error counts, per-iteration runtime, and token usage. Error families are grouped from validator diagnostics (for example, parsing and reference errors), while warnings are tracked separately and do not change pass/fail labels.
 
-\subsection{Endpoints and Statistical Analysis}
-The primary endpoint is production validation acceptance. We report first-shot pass rate, eventual pass rate, unresolved rate, absolute gain (percentage-point difference between eventual and first-shot pass rates), and relative gain:
+\subsection{Endpoints}
+The primary endpoint is production validation acceptance. For each analysis slice (overall and per-model), we report:
+\begin{enumerate}
+    \item single-shot pass rate (iteration 1 only),
+    \item pipeline pass rate (final iteration of the validator-gated loop).
+\end{enumerate}
+
+Secondary diagnostics include iterations-to-success, first-iteration and cumulative error counts, and validator error-family frequencies. These secondary diagnostics are used for characterization, not for primary efficacy claims.
+
+\subsection{Convergence Metrics and Rate Characterization}
+To characterize how quickly the loop approaches acceptance, we index progress by repair cycles. Let $k=0$ denote the initial single-shot generation (no validator feedback), and let $k\geq 1$ denote $k$ rounds of generate--validate--repair. Let $A_k$ denote cumulative production-validation acceptance after repair cycle $k$.
+
+We define residual failure mass as
 \[
-\frac{p_{\mathrm{final}} - p_{\mathrm{first}}}{p_{\mathrm{first}}}.
+R_k = 1 - A_k,
 \]
+where $R_k$ is the fraction of prompt--model cases not yet accepted at repair cycle $k$. We then define an empirical contraction ratio
+\[
+\rho_k = \frac{R_{k+1}}{R_k}.
+\]
+When $0 < \rho_k < 1$, residual failure shrinks from one cycle to the next; when $\rho_k$ is approximately stable across $k$, the observed trajectory suggests contraction-like behavior, with approximately multiplicative reduction in the early repair regime under standard contraction-style analyses in iterative methods~\cite{banach1922operations,varga2009matrix,nocedal2006numerical,he2016averageConvergenceRate}.
+In finite empirical campaigns, we estimate contraction behavior from early-to-mid cycles, before residual mass becomes very small; terminal transitions are excluded from rate estimation because finite-sample tail effects can produce unstable ratios near the finite-sample resolution.
+This characterization is descriptive of observed finite-sample behavior and does not assert formal convergence guarantees.
 
-Because baseline and pipeline outcomes are paired binary observations on the same prompt--model unit, we test differences with McNemar's test using discordant counts $(b,c)$~\cite{mcnemar1947samplingError}. We use the exact two-sided variant when $b+c\leq 25$ and the continuity-corrected asymptotic variant otherwise, following matched-pairs guidance~\cite{fagerland2013mcnemar}.
+We also report time-to-threshold acceptance
+\[
+T_{\varepsilon} = \min\{k : A_k \ge 1-\varepsilon\},
+\]
+with explicit reporting of $T_{90}$, $T_{95}$, and $T_{99}$. This follows standard iteration-to-threshold (iteration-to-$\varepsilon$) complexity summaries in optimization~\cite{polyak1987introductionOptimization}. These metrics provide an interpretable rate summary complementary to endpoint pass rates.
 
-We summarize iterations-to-success with mean, median, standard deviation, quantiles, and maximum. Proportion confidence intervals are Wilson 95\% score intervals~\cite{wilson1927probableInference}. Uncertainty in mean iterations-to-success is estimated with a bootstrap 95\% confidence interval (10{,}000 resamples; fixed seed 20260220). These choices align with significance-focused reporting in recent LLM evaluation studies~\cite{cheng2026systemPrompts,lee2025clinicalTrialLlm,wind2025radiologyQa,roberts2024grab}.
+This framing follows empirical convergence-rate characterizations used in iterative optimization and search, including multiplicative (geometric-style) interpretations of residual reduction~\cite{he2016averageConvergenceRate}, while remaining descriptive rather than proving formal convergence guarantees. It is also consistent with iterative verifier-feedback refinement in code generation, where deterministic diagnostics guide successive corrections toward acceptance~\cite{wang2022compilable,grubisic2024compiler}.
 
-All claims are limited to syntactic production-validation acceptance. We do not infer semantic adequacy, behavioral correctness, or design quality from these outcomes.
+\subsection{Statistical Analysis}
+For convergence reliability, we model each prompt--model case as a Bernoulli success if it reaches eventual production-validator acceptance (zero SysIDE errors) within the allowed loop. Let $p$ denote convergence probability for prompts drawn from the SysMBench-style benchmark distribution under the same controller, validator, and backend configuration. Because the validator-gated loop is monotonic---accepted cases terminate immediately---regression transitions (single-shot pass $\rightarrow$ pipeline fail) are structurally excluded. Improvement is therefore quantified descriptively rather than via symmetric paired hypothesis tests.
+
+We report an exact 95\% Clopper--Pearson lower confidence bound for $p$~\cite{clopper1934confidenceLimits}; in the all-success case this is $p_L=(\alpha/2)^{1/n}$ with $\alpha=0.05$. We also report the complementary one-sided 95\% binomial upper confidence bound on failure probability $q=1-p$. In the zero-failure case, this bound is obtained by solving $(1-q)^n=0.05$, yielding $q_U=1-0.05^{1/n}$. For large $n$, this expression is well approximated by $q_U\approx-\ln(0.05)/n\approx 3/n$.
+
+These reliability bounds are intentionally scoped to SysMBench-style prompt distributions under the evaluated configuration and are reported numerically in Results. They are not treated as universal guarantees over arbitrary natural-language inputs.
 
 \subsection{Reproducibility}
 All code, run artifacts, and analysis outputs used in this study are stored in the project repository~\cite{sysmbenchCompilerLoopRepo2026}. The repository includes the scripts required to regenerate campaign statistics, tables, and figures.

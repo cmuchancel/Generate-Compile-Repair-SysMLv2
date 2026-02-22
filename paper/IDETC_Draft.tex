@@ -110,11 +110,19 @@
 
 \documentclass[colorlinks,upint,subscriptcorrection,varvw,hyphenate,balance]{asmeconf} % pdftex
 \usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
 \usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
 \usepackage{placeins}
 \usepackage{float}
 
 %\documentclass[colorlinks,upint,subscriptcorrection,varvw,balance,loadscripts,german,vietamese]{asmeconf} % lualatex
+
+% Avoid aggressive vertical stretching between paragraphs/figures.
+\raggedbottom
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
 
 %%%%%  pdf metadata  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -260,17 +268,32 @@ In contrast, our work applies validator-in-the-loop refinement to SysMLv2, a new
 \input{results/results_syntactic_only}
 
 \section{Discussion}
-We discuss why deterministic validator diagnostics provide an effective supervision signal for new, sparsely represented languages like SysMLv2, and the resulting trade-offs in runtime and number of iterations.
+The core empirical result is that production-validator gating closes a large reliability gap left by single-shot generation. In our setting, single-shot acceptance is only 51.16\% overall, while the same prompt--model cases reach 100.00\% pipeline acceptance under iterative validator feedback. This matters operationally because MBSE artifacts are only useful when accepted by the modeling environment; parser-passing but non-accepted artifacts cannot be reliably rendered, inspected, and used in downstream engineering workflows.
+
+The per-model pattern is also informative. First-pass behavior differs substantially across models, but all models converge to full acceptance under the same loop structure and validator oracle. This supports the central design claim that deterministic validator feedback functions as a model-agnostic control signal: the loop does not depend on one provider having unusually favorable priors for SysMLv2 syntax. In practical terms, this suggests teams can treat validator-in-the-loop orchestration as infrastructure, then swap model backends based on cost, latency, or governance constraints rather than purely on first-shot syntax performance.
+
+Secondary diagnostics help explain why this loop is effective. Early failures are concentrated in a small set of recurring error families (especially parsing and reference resolution), which are precisely the kinds of issues that deterministic diagnostics localize well. Because these errors are machine-detectable and location-specific, they are amenable to iterative repair without requiring weight updates or task-specific fine-tuning. The observed convergence profile, with most cases resolving in early iterations, further indicates that many failures are shallow syntactic/structural defects rather than irrecoverable generation breakdowns.
+
+From a systems perspective, the observed residual-failure decay mirrors contraction behavior studied in fixed-point iteration~\cite{banach1922operations,he2015averageConvergenceRate}. The measured trajectory is empirically consistent with a contraction-like regime in which each validator-guided cycle maps the current failure set to a smaller one. Unlike stochastic self-refinement loops, the deterministic validator oracle yields stable reduction in failure mass across successive cycles. Deterministic diagnostics provide structured error localization and prevent drift in the update direction. This positions production validation as a control operator over generation dynamics rather than merely a syntactic filter. The result is rapid movement toward the acceptance set under repeated repair cycles without observed oscillatory behavior.
+
+This study has clear boundaries. First, all primary claims are syntactic and operational: we evaluate acceptance under a production validator, not semantic adequacy of architecture, behavior, or requirements fidelity. Second, results are reported for one benchmark suite (SysMBench prompt set) and one production validator backend; broader external validity across domains and validation ecosystems remains to be measured. Third, although we include an auxiliary ANTLR-versus-production demonstration to justify the oracle choice, that demonstration is diagnostic rather than a substitute for large-scale cross-tool studies.
+
+Within those bounds, the practical implication is straightforward: if the goal is deployable NL-to-SysMLv2 generation, acceptance under production validation is the correct reliability target, and validator-in-the-loop refinement is an effective mechanism for reaching it.
 
 \section{Conclusion}
-We present a reproducible pathway for reliable natural-language to SysMLv2 translation by embedding deterministic production-validator feedback into LLM generation, thereby guaranteeing syntactically valid, production-validator--accepted output by construction.
+This paper presents a validator-driven pathway for reliable natural-language--to--SysMLv2 generation. We instantiate a generate--validate--repair loop with a production validator oracle and evaluate it on all 151 SysMBench prompts across four model backends (604 prompt-level cases). The result is a large and consistent improvement in syntactic reliability: 51.16\% single-shot acceptance versus 100.00\% pipeline acceptance, with complete recovery of single-shot failures in this campaign.
+The campaign also releases an open-source dataset of all 604 generated outputs with associated validation traces for reproducible follow-on analysis~\cite{sysmbenchCompilerLoopRepo2026}.
 
-\appendix
-\input{appendix/antlr_vs_syside_appendix}
+Our contribution is therefore operational rather than architectural: we show that deterministic production-validator feedback can convert plausible-but-unusable outputs into production-validator--accepted artifacts at benchmark scale, without model retraining. The claim is intentionally scoped to syntactic acceptance under the chosen validator. Semantic correctness, architectural quality, and downstream engineering fitness remain open evaluation axes.
+
+Future work should extend this foundation along three directions: (i) cross-validator replication to test portability across production modeling environments, (ii) semantic and task-level evaluation layered on top of syntactic acceptance, and (iii) optimization of iteration policies for lower runtime and token cost while preserving reliability.
 
 \section*{Acknowledgments}
 
 \bibliographystyle{asmeconf}
 \bibliography{references}
+
+\appendix
+\input{appendix/antlr_vs_syside_appendix}
 
 \end{document}

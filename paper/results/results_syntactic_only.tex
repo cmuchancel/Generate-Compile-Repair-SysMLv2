@@ -1,30 +1,79 @@
 \section{Results}
 
-\subsection{Overall Production-Validation-Gated Syntactic Outcomes}
-Across all 604 prompt-level trials (151 prompts for each of four models), first-shot production validation succeeded for 309/604 cases (51.16\%; 95\% Wilson CI: 47.18--55.13\%). Under validator-in-the-loop refinement, eventual production validation succeeded for 604/604 cases (100.00\%; 95\% Wilson CI: 99.37--100.00\%). The absolute gain from baseline single-shot to final pipeline output was 48.84 percentage points (relative gain 95.47\%), with zero unresolved prompts.
+\subsection{Primary Outcome: Production Validation Acceptance}
+Across all 604 prompt-level trials (151 prompts for each of four models), single-shot production validation succeeded for 309/604 cases (51.16\%). Under validator-in-the-loop refinement, pipeline production validation succeeded for 604/604 cases (100.00\%).
 
-A paired baseline-vs-pipeline test showed a strong shift toward success (McNemar: $b=0$, $c=295$, $p=1.10\times10^{-65}$), indicating that improvements were driven by first-shot failures that were recovered by iterative repair.
+\begin{figure}[H]
+\centering
+% Figure 2 options (pick one):
+% \input{results/figures/01_overall_option_b_dumbbell}
+% \input{results/figures/01_overall_option_c_stacked_gain}
+\input{results/figures/01_overall_option_a_horizontal}
+\caption{Overall single-shot vs final pipeline production-validation acceptance across all 604 prompt-level cases.}
+\label{fig:overall_baseline_vs_pipeline}
+\end{figure}
 
+\subsection{Per-Model Reliability}
+All models reached 151/151 eventual production validation under the validator-gated loop, but single-shot pass rates differed substantially. Figure~\ref{fig:by_model_baseline_vs_pipeline} provides the per-model comparison with exact acceptance values annotated on the bars.
 
-\subsection{Per-Model Syntactic Reliability}
-All models reached 151/151 eventual production validation under the validator-gated loop, but first-shot pass rates differed substantially. Anthropic Sonnet 4.6 had the highest first-shot pass rate (82.78\%), while OpenAI (41.72\%), DeepSeek Reasoner (41.06\%), and Mistral Large (39.07\%) showed similar first-shot behavior and correspondingly larger iterative gains.
+\begin{figure}[H]
+\centering
+\input{results/figures/02_baseline_vs_pipeline_compile_rate_by_model}
+\caption{Per-model single-shot vs final pipeline production-validation acceptance.}
+\label{fig:by_model_baseline_vs_pipeline}
+\end{figure}
 
+Anthropic Sonnet 4.6 had the highest single-shot pass rate (82.78\%), while OpenAI (41.72\%), DeepSeek Reasoner (41.06\%), and Mistral Large (39.07\%) showed worse single-shot behavior and larger single-shot-to-pipeline gaps.
 
-\subsection{Iteration and Recovery Dynamics}
-Iterations-to-success over all successful runs had mean 1.733, median 1, and maximum 11 (bootstrap 95\% CI for mean: 1.654--1.816). The distribution was concentrated in early iterations: 309 cases succeeded at iteration 1, 201 at iteration 2, and 60 at iteration 3; only two cases required more than five iterations.
+\subsection{Statistical Significance}
+For overall proportions, single-shot pass rate was 51.16\% (95\% Wilson CI: 47.18--55.13\%), and pipeline pass rate was 100.00\% (95\% Wilson CI: 99.37--100.00\%).
 
-Among first-shot failures, recovery was complete: 295/295 (100\%) failed-first-shot cases eventually passed production validation. For this recovery subset, mean iterations-to-success was 2.502 (median 2, max 11).
+Because baseline and pipeline outcomes are paired on the same prompt--model cases, we used McNemar's test. The observed discordant counts were $b=0$ (baseline success $\rightarrow$ pipeline failure) and $c=295$ (baseline failure $\rightarrow$ pipeline success), giving $p=1.10\times10^{-65}$. This confirms that the observed improvement is statistically significant and driven by recovered single-shot failures.
 
+Convergence reliability was evaluated on the full set of 604 prompt--model cases (151 prompts across 4 backends), with observed eventual acceptance in all 604/604 cases. Using the exact Clopper--Pearson bound for the all-success case, the 95\% lower confidence bound is $p_L=(0.025)^{1/604}\approx 0.9939$ (99.39\%)~\cite{clopper1934confidenceLimits}. Thus, with 95\% confidence, convergence probability is at least 99.39\% for SysMBench-style prompts under the evaluated controller, validator, and backend configuration.
 
-\subsection{Production Validator Error Taxonomy}
-At first iteration, the dominant error families were \texttt{parsing-error} (1142), \texttt{reference-error} (559), and \texttt{port-definition-owned-usages-not-composite} (82). Across all iterations, the same families remained dominant, with cumulative counts 1658, 794, and 97 respectively.
+Equivalently, for failure probability $q=1-p$, the rule-of-three gives $q\leq 3/604\approx 0.00497$ (0.497\%)~\cite{hanley1983zeroNumerators}. At the 95\% level, this corresponds to an upper bound of approximately 0.5\% on non-convergence under the same scope.
 
+These bounds are intentionally scoped and do not claim universal convergence for arbitrary natural-language inputs. However, because convergence is driven by deterministic validator diagnostics, accepted cases terminate immediately, and repairs are guided by structured feedback rather than prompt memorization, the observed reliability is consistent with a structural property of the validator-in-the-loop control mechanism on this benchmark distribution.
 
-\subsection{Prompt-Level Difficulty and Diagnostic Burden}
-Error burden was heterogeneous across prompts. The largest pooled cumulative error volumes were observed for prompt IDs 93 (133), 9 (88), 139 (81), and 144 (80), indicating a long-tail of syntactically difficult cases even under eventual convergence.
+\subsection{Convergence Behavior}
+Convergence is indexed by repair cycles: $k=0$ denotes the initial single-shot generation (no validator feedback), and $k\geq 1$ denotes validator-guided repair cycles; acceptance corresponds to zero-error output under the production validator.
 
+Figure~\ref{fig:cumulative_convergence} first presents the pooled convergence trajectory across all prompt-level cases.
 
-\subsection{Runtime and Token Sensitivity (Secondary)}
-Runtime and token data, where available in artifacts, indicate substantial efficiency differences by model despite identical syntactic endpoints. Mean wall-time ranged from 12.97~s (Mistral Large) to 90.45~s (DeepSeek Reasoner), and mean total tokens ranged from 1795.24 to 5938.80 per prompt.
+\begin{figure}[H]
+\centering
+\input{results/figures/03_cumulative_acceptance_by_iteration}
+\caption{Cumulative production-validation acceptance versus repair cycles ($k$). $k=0$ denotes initial single-shot generation; $k\geq 1$ denotes validator-guided repair cycles. Acceptance corresponds to zero-error output under the production validator.}
+\label{fig:cumulative_convergence}
+\end{figure}
 
-These are secondary operational diagnostics and are not used as primary efficacy claims in this paper.
+The pooled curve shows a large first-step jump from $k=0$ to $k=1$, followed by rapid compression by $k=2$ and then a short tail. Table~\ref{tab:convergence_behavior} provides the exact counts and percentages underlying Figure~\ref{fig:cumulative_convergence}: acceptance increases from 51.16\% at $k=0$ to 84.44\% at $k=1$, reaches 94.37\% by $k=2$, and reaches 99.67\% by $k=4$. Only two cases remain in the grouped $k=5$--$8$ tail (0.33\%), where cumulative acceptance reaches 100.00\%. Consistent with this front-loaded pattern, iterations-to-acceptance are summarized by mean 1.727, median 1, IQR 1--2, and maximum 8.
+
+\input{results/tables/table_convergence_behavior}
+
+\noindent\textbf{Rate Characterization.} To quantify the observed convergence shape, we report an empirical contraction analysis of residual failure mass. Under contraction-style iteration analysis, let residual failure mass be $R_k = 1 - A_k$. The observed residual sequence is $R_0=0.4884$, $R_1=0.1556$, $R_2=0.0563$, $R_3=0.0182$, and $R_4=0.0033$. Using early cycles, the empirical contraction ratios are $\rho_0 \approx 0.1556/0.4884 \approx 0.32$, $\rho_1 \approx 0.0563/0.1556 \approx 0.36$, and $\rho_2 \approx 0.0182/0.0563 \approx 0.32$. These values cluster around an average early-cycle contraction factor of approximately 0.33 (computed as the arithmetic mean of $\rho_0$--$\rho_2$). Tail transitions are excluded from contraction-rate estimation because ratios become unstable when residual mass is near the finite-sample resolution. These early-cycle ratios cluster in a narrow band, suggesting an approximately multiplicative (``contraction-like'') reduction pattern in the initial repair regime. In practical terms, early cycles remove roughly two-thirds of the remaining failures per cycle (in the observed early regime).
+
+Complementing the contraction estimate, time-to-threshold metrics quantify convergence speed. The observed thresholds are $T_{90}=2$, $T_{95}=3$, and $T_{99}=4$. These values characterize how rapidly validator-guided refinement approaches the acceptance set in repair-cycle space.
+
+To assess whether this pooled behavior is shared across backends, Figure~\ref{fig:cumulative_convergence_by_model} overlays per-model cumulative acceptance trajectories.
+
+\begin{figure}[H]
+\centering
+\input{results/figures/04_cumulative_acceptance_by_model_overlay}
+\caption{Per-model cumulative production-validation acceptance versus repair cycles ($k$).}
+\label{fig:cumulative_convergence_by_model}
+\end{figure}
+
+Figure~\ref{fig:cumulative_convergence_by_model} shows that single-shot starting points differ across models, but the trajectories compress rapidly once validator-guided repair begins. Despite different initial acceptance levels, all curves move quickly toward full acceptance within a small number of repair cycles. This pattern supports the model-agnostic control-signal interpretation: deterministic validator diagnostics drive the dominant convergence dynamics across backends.
+
+\subsection{Error Family Distribution}
+First-iteration failures were concentrated in a small number of recurring validator error families. Pooled across models, first-iteration diagnostics contained 2,209 errors, dominated by \texttt{parsing-error} and \texttt{reference-error}, which together account for 89.09\% of first-iteration errors. This concentration indicates that most initial failures are structural or reference-resolution issues rather than diffuse long-tail failure modes.
+
+\input{results/tables/table_error_family_distribution_top5}
+
+\subsection{Secondary Diagnostics}
+Secondary diagnostics are consistent with the primary outcome but are not the focus of this paper. Recovery among single-shot failures was complete (295/295). Prompt-level difficulty showed a long tail, with a few high-burden cases requiring substantially more repair than typical prompts. Runtime and token usage also varied by model despite identical pipeline pass outcomes.
+
+\subsection{Open-Source Dataset Release}
+This campaign releases an open-source dataset of 604 generated SysMLv2 outputs (151 prompts $\times$ 4 model backends), together with run-level records, iteration histories, and validator diagnostics in the project repository~\cite{sysmbenchCompilerLoopRepo2026}. This provides a reproducible, inspectable benchmark-scale corpus for follow-on syntactic-reliability studies.
