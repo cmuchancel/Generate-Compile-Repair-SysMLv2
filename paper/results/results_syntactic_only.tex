@@ -25,17 +25,6 @@ All models reached 151/151 eventual production validation under the validator-ga
 
 Anthropic Sonnet 4.6 had the highest single-shot pass rate (82.78\%), while OpenAI (41.72\%), DeepSeek Reasoner (41.06\%), and Mistral Large (39.07\%) showed worse single-shot behavior and larger single-shot-to-pipeline gaps.
 
-\subsection{Statistical Significance}
-For overall proportions, single-shot pass rate was 51.16\% (95\% Wilson CI: 47.18--55.13\%), and pipeline pass rate was 100.00\% (95\% Wilson CI: 99.37--100.00\%).
-
-Because baseline and pipeline outcomes are paired on the same prompt--model cases, we used McNemar's test. The observed discordant counts were $b=0$ (baseline success $\rightarrow$ pipeline failure) and $c=295$ (baseline failure $\rightarrow$ pipeline success), giving $p=1.10\times10^{-65}$. This confirms that the observed improvement is statistically significant and driven by recovered single-shot failures.
-
-Convergence reliability was evaluated on the full set of 604 prompt--model cases (151 prompts across 4 backends), with observed eventual acceptance in all 604/604 cases. Using the exact Clopper--Pearson bound for the all-success case, the 95\% lower confidence bound is $p_L=(0.025)^{1/604}\approx 0.9939$ (99.39\%)~\cite{clopper1934confidenceLimits}. Thus, with 95\% confidence, convergence probability is at least 99.39\% for SysMBench-style prompts under the evaluated controller, validator, and backend configuration.
-
-Equivalently, for failure probability $q=1-p$, the rule-of-three gives $q\leq 3/604\approx 0.00497$ (0.497\%)~\cite{hanley1983zeroNumerators}. At the 95\% level, this corresponds to an upper bound of approximately 0.5\% on non-convergence under the same scope.
-
-These bounds are intentionally scoped and do not claim universal convergence for arbitrary natural-language inputs. However, because convergence is driven by deterministic validator diagnostics, accepted cases terminate immediately, and repairs are guided by structured feedback rather than prompt memorization, the observed reliability is consistent with a structural property of the validator-in-the-loop control mechanism on this benchmark distribution.
-
 \subsection{Convergence Behavior}
 Convergence is indexed by repair cycles: $k=0$ denotes the initial single-shot generation (no validator feedback), and $k\geq 1$ denotes validator-guided repair cycles; acceptance corresponds to zero-error output under the production validator.
 
@@ -67,13 +56,37 @@ To assess whether this pooled behavior is shared across backends, Figure~\ref{fi
 
 Figure~\ref{fig:cumulative_convergence_by_model} shows that single-shot starting points differ across models, but the trajectories compress rapidly once validator-guided repair begins. Despite different initial acceptance levels, all curves move quickly toward full acceptance within a small number of repair cycles. This pattern supports the model-agnostic control-signal interpretation: deterministic validator diagnostics drive the dominant convergence dynamics across backends.
 
-\subsection{Error Family Distribution}
-First-iteration failures were concentrated in a small number of recurring validator error families. Pooled across models, first-iteration diagnostics contained 2,209 errors, dominated by \texttt{parsing-error} and \texttt{reference-error}, which together account for 89.09\% of first-iteration errors. This concentration indicates that most initial failures are structural or reference-resolution issues rather than diffuse long-tail failure modes.
+\subsection{Statistical Reliability}
+This subsection reports realized values for the convergence-reliability analysis defined in Section~3.6. Across the full campaign, $n=604$ prompt--model cases were evaluated, and eventual production-validation acceptance was observed in all cases ($x=604$, failures $=0$). Single-shot pass rate was 51.16\% (309/604), while pipeline pass rate was 100.00\% (604/604).
 
-\input{results/tables/table_error_family_distribution_top5}
+Under the Bernoulli convergence model, the exact 95\% Clopper--Pearson lower confidence bound for convergence probability $p$ in the all-success case is $p_L=(\alpha/2)^{1/n}$ with $\alpha=0.05$ and $n=604$, giving $p_L=(0.025)^{1/604}\approx 0.9939$ (99.39\%)~\cite{clopper1934confidenceLimits}. Therefore, with 95\% confidence, convergence probability is at least 99.39\% for SysMBench-style prompts under the evaluated controller, validator, and backend configuration.
 
-\subsection{Secondary Diagnostics}
-Secondary diagnostics are consistent with the primary outcome but are not the focus of this paper. Recovery among single-shot failures was complete (295/295). Prompt-level difficulty showed a long tail, with a few high-burden cases requiring substantially more repair than typical prompts. Runtime and token usage also varied by model despite identical pipeline pass outcomes.
+For failure probability $q=1-p$, the complementary one-sided 95\% binomial upper bound is obtained from $(1-q)^n=0.05$. Substituting $n=604$ gives $q_U=1-0.05^{1/604}\approx 0.00495$ (0.495\%). The large-$n$ approximation gives $q_U\approx-\ln(0.05)/604\approx 0.00496\approx 3/604$.
+
+These reliability bounds are intentionally scoped to SysMBench-style prompt distributions under the evaluated configuration and do not claim universal convergence over arbitrary natural-language inputs. Because the validator-gated loop is monotonic (accepted cases terminate immediately) and repairs are guided by deterministic diagnostics, the observed reliability is consistent with a structural property of validator-in-the-loop control on this benchmark distribution.
+
+\subsection{Grammar Validity vs Production Validity and Error Burden}
+Beyond aggregate reliability, practical MBSE usability requires production validation acceptance in a modeling environment, not only grammar parsability. To quantify this operational gap, we compared first-iteration ANTLR parsing outcomes against first-iteration production validation outcomes for all 604 prompt--model cases.
+
+\begin{table}[H]
+\centering
+\caption{First-iteration contingency between grammar parsing (ANTLR) and production validation acceptance (SysIDE), $n=604$.}
+\label{tab:antlr_vs_production_contingency}
+\begin{tabular}{lrrr}
+\toprule
+ & \multicolumn{1}{c}{SysIDE pass} & \multicolumn{1}{c}{SysIDE fail} & \multicolumn{1}{c}{Total} \\
+\midrule
+ANTLR pass & 309 & 60  & 369 \\
+ANTLR fail & 0   & 235 & 235 \\
+\midrule
+Total      & 309 & 295 & 604 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The first-iteration grammar pass rate was 369/604 (61.09\%), while the first-iteration production pass rate was 309/604 (51.16\%). Grammar-only passes occurred in 60 cases. This corresponds to 60/369 = 16.26\% of grammar-valid outputs and 60/604 = 9.93\% of all outputs. Grammar-level parsing overestimates production usability by 16.26\% among parseable artifacts. No cases were observed with production pass and grammar fail (0/604). Thus, grammar validity is strictly necessary but not sufficient for production-validation acceptance under the evaluated configuration.
+
+First-iteration validator diagnostics totaled 2,209 errors, giving a mean of 2,209/604 = 3.66 errors per generated model, indicating that first-iteration outputs frequently contain multiple structural defects rather than isolated formatting errors. Restricting to failing first-iteration cases (295), the mean burden was 2,209/295 = 7.49 errors per failing model. Error burden was concentrated in \texttt{parsing-error} (1,144; 51.79\%) and \texttt{reference-error} (824; 37.30\%), which together account for 89.09\% of first-iteration errors. These results indicate that validator-gated repair is addressing multi-error structural artifacts and that grammar-level parsing alone would have admitted non-usable models into downstream workflows.
 
 \subsection{Open-Source Dataset Release}
 This campaign releases an open-source dataset of 604 generated SysMLv2 outputs (151 prompts $\times$ 4 model backends), together with run-level records, iteration histories, and validator diagnostics in the project repository~\cite{sysmbenchCompilerLoopRepo2026}. This provides a reproducible, inspectable benchmark-scale corpus for follow-on syntactic-reliability studies.

@@ -5,7 +5,7 @@ This study evaluates one question: for the same prompt and the same model, does 
 
 The experimental unit is one prompt--model pair. For each unit, we evaluate two paired conditions taken from the same run trajectory:
 \begin{enumerate}
-    \item \textbf{Baseline (single-shot):} production validation outcome at iteration 1 only.
+    \item \textbf{Baseline (single-shot):} production validation outcome for the initial candidate ($k=0$).
     \item \textbf{Pipeline (iterative):} production validation outcome at the final available iteration after iterative repair.
 \end{enumerate}
 
@@ -30,23 +30,29 @@ where $f(\cdot)$ is the model revision operator conditioned on validator feedbac
 The production validator oracle is SysIDE validation (\texttt{syside check})~\cite{sensmetry2024syside}. A run is successful and terminates only when zero validation errors are reported.
 This oracle choice is additionally supported by an auxiliary ten-case demonstration in the repository showing ANTLR parser pass with production-validation failure, i.e., grammar conformity without operational acceptability~\cite{antlrVsSysideDemo2026}.
 
-\subsection{Dataset, Model Coverage, and Outcome Extraction}
+\subsection{Dataset and Outcome Extraction}
 SysMBench provides paired natural-language prompts and ground-truth SysMLv2 models for benchmark evaluation~\cite{jin2025sysmbench}. In this study, we use the curated natural-language prompt set (IDs 1--151) as generation inputs because it was designed to stress SysMLv2 LLM generation across diverse modeling patterns.
 
 To assess model-agnostic behavior of the same controller, we run four model configurations: OpenAI Codex 5.2 (\texttt{gpt-5.2-codex})~\cite{openaiGPT52Codex2026}, Anthropic Sonnet 4.6 (\texttt{claude-sonnet-4-6})~\cite{anthropicSonnet46API2026}, DeepSeek Reasoner (\texttt{deepseek-reasoner})~\cite{deepseekReasonerAPI2026}, and Mistral Large (\texttt{mistral-large-latest})~\cite{mistralLargeLatestDocs2026}. This yields 604 prompt-level cases (151 prompts $\times$ 4 models).
 
-From saved run records, we extract single-shot and pipeline pass/fail outcomes, iterations run, iterations to success, first/final error counts, cumulative error counts, per-iteration runtime, and token usage. Error families are grouped from validator diagnostics (for example, parsing and reference errors), while warnings are tracked separately and do not change pass/fail labels.
+From saved run records, we extract single-shot and pipeline pass/fail outcomes, iterations run, iterations to success, first/final error counts, cumulative error counts, per-iteration runtime, and token usage. For grammar-versus-production analysis, we also extract single-shot ANTLR parse pass/fail and single-shot SysIDE pass/fail from the same initial candidate artifacts for all 604 prompt--model cases. Error families are grouped from validator diagnostics (for example, parsing and reference errors), while warnings are tracked separately and do not change pass/fail labels.
 
-\subsection{Endpoints}
-The primary endpoint is production validation acceptance. For each analysis slice (overall and per-model), we report:
+\subsection{Evaluation Metrics}
+\subsubsection{Production Validation Acceptance}
+The primary evaluation metrics are production validation acceptance rates. For each analysis slice (overall and per-model), we report:
 \begin{enumerate}
-    \item single-shot pass rate (iteration 1 only),
+    \item single-shot pass rate (initial candidate, $k=0$),
     \item pipeline pass rate (final iteration of the validator-gated loop).
 \end{enumerate}
 
-Secondary diagnostics include iterations-to-success, first-iteration and cumulative error counts, and validator error-family frequencies. These secondary diagnostics are used for characterization, not for primary efficacy claims.
+Secondary diagnostics include iterations-to-success, first-iteration and cumulative error counts, and validator error-family frequencies.
 
-\subsection{Convergence Metrics and Rate Characterization}
+\subsubsection{Grammar vs Production Validity}
+To quantify the operational gap between grammar-level validity and production-validator acceptance, we compare ANTLR and SysIDE outcomes on the same single-shot artifact from each case. This comparison is performed on the initial candidate ($k=0$ in repair-cycle indexing).
+
+Grammar validity is defined as ANTLR parse success using the ANTLR-based SysML parser integrated in the repository. Production validity is defined as SysIDE acceptance (zero SysIDE errors) under \texttt{syside check}. For each case, we record binary pass/fail outcomes for both checks and construct a $2\times2$ contingency table (ANTLR pass/fail $\times$ SysIDE pass/fail).
+
+\subsubsection{Convergence Metrics}
 To characterize how quickly the loop approaches acceptance, we index progress by repair cycles. Let $k=0$ denote the initial single-shot generation (no validator feedback), and let $k\geq 1$ denote $k$ rounds of generate--validate--repair. Let $A_k$ denote cumulative production-validation acceptance after repair cycle $k$.
 
 We define residual failure mass as
@@ -65,11 +71,11 @@ We also report time-to-threshold acceptance
 \[
 T_{\varepsilon} = \min\{k : A_k \ge 1-\varepsilon\},
 \]
-with explicit reporting of $T_{90}$, $T_{95}$, and $T_{99}$. This follows standard iteration-to-threshold (iteration-to-$\varepsilon$) complexity summaries in optimization~\cite{polyak1987introductionOptimization}. These metrics provide an interpretable rate summary complementary to endpoint pass rates.
+with explicit reporting of $T_{90}$, $T_{95}$, and $T_{99}$. This follows standard iteration-to-threshold (iteration-to-$\varepsilon$) complexity summaries in optimization~\cite{polyak1987introductionOptimization}. These metrics provide an interpretable rate summary complementary to pass-rate metrics.
 
 This framing follows empirical convergence-rate characterizations used in iterative optimization and search, including multiplicative (geometric-style) interpretations of residual reduction~\cite{he2016averageConvergenceRate}, while remaining descriptive rather than proving formal convergence guarantees. It is also consistent with iterative verifier-feedback refinement in code generation, where deterministic diagnostics guide successive corrections toward acceptance~\cite{wang2022compilable,grubisic2024compiler}.
 
-\subsection{Statistical Analysis}
+\subsection{Statistical Reliability Analysis}
 For convergence reliability, we model each prompt--model case as a Bernoulli success if it reaches eventual production-validator acceptance (zero SysIDE errors) within the allowed loop. Let $p$ denote convergence probability for prompts drawn from the SysMBench-style benchmark distribution under the same controller, validator, and backend configuration. Because the validator-gated loop is monotonic---accepted cases terminate immediately---regression transitions (single-shot pass $\rightarrow$ pipeline fail) are structurally excluded. Improvement is therefore quantified descriptively rather than via symmetric paired hypothesis tests.
 
 We report an exact 95\% Clopper--Pearson lower confidence bound for $p$~\cite{clopper1934confidenceLimits}; in the all-success case this is $p_L=(\alpha/2)^{1/n}$ with $\alpha=0.05$. We also report the complementary one-sided 95\% binomial upper confidence bound on failure probability $q=1-p$. In the zero-failure case, this bound is obtained by solving $(1-q)^n=0.05$, yielding $q_U=1-0.05^{1/n}$. For large $n$, this expression is well approximated by $q_U\approx-\ln(0.05)/n\approx 3/n$.
