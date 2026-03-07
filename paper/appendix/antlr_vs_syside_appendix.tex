@@ -5,7 +5,7 @@ To support the design choice of using production validation (rather than grammar
 
 We evaluated 10 intentionally distinct SysMLv2 examples in \texttt{examples/mismatch\_10\_distinct/}. Each file was designed to remain grammar-parseable while violating a model-wide constraint typically enforced by a production validator. The evaluation pipeline was:
 \begin{enumerate}
-    \item ANTLR parse check (third-party SysML parser integration in the repository).
+    \item ANTLR parse check using the HAMR SysML v2 ANTLR4 parser (generated grammar derived from the SysML v2 Pilot Implementation)~\cite{hamrSysmlParser2026,sysmlV2PilotImplementation2026}.
     \item Production validation check using SysIDE.
 \end{enumerate}
 

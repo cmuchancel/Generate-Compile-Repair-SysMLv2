@@ -1,0 +1,110 @@
+<mxfile host="app.diagrams.net" modified="2026-02-24T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="pipeline-demo-circuit-slide" name="Pipeline Demo Circuit Slide">
+    <mxGraphModel dx="2200" dy="1260" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Pipeline Demo: Battery Charging Circuit (Run Prompt -> Parts-Selected Outputs)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=22;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="30" y="20" width="1300" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="note_loop" value="&lt;b&gt;Implicit rule:&lt;/b&gt; every SysML authoring node runs compiler-in-the-loop (generate -> validate -> repair -> retry)." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=middle;spacing=8;fillColor=#fff2cc;strokeColor=#d6b656;dashed=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="500" y="70" width="920" height="42" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="prompt" value="&lt;b&gt;Pipeline Demo Prompt (Battery Charging, Case 28)&lt;/b&gt;&lt;br&gt;&lt;br&gt;This system implements continuous monitoring and control during battery charging.&lt;br&gt;- Monitor battery level percentage continuously&lt;br&gt;- If battery level &lt; 100%, continue charging&lt;br&gt;- If battery level &gt;= 100%, terminate charging automatically&lt;br&gt;- Fully automated operation (no manual intervention)&lt;br&gt;- Ensure safe full charge and prevent overcharging" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="30" y="120" width="430" height="760" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s1" value="&lt;b&gt;1) SysML Coding Bot (Looped)&lt;/b&gt;&lt;br&gt;Create formal requirement model from prompt" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="500" y="150" width="250" height="95" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s2" value="&lt;b&gt;2) Agent Brainstorms 3 Concepts&lt;/b&gt;&lt;br&gt;A/B/C candidate charger architectures" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="790" y="150" width="270" height="95" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="wA" value="&lt;b&gt;3A) Worker A (Looped)&lt;/b&gt;&lt;br&gt;Build SysML for Concept A&lt;br&gt;Optimize mid-level requirements&lt;br&gt;Run parts picker" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="160" width="300" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="wB" value="&lt;b&gt;3B) Worker B (Looped)&lt;/b&gt;&lt;br&gt;Build SysML for Concept B&lt;br&gt;Optimize mid-level requirements&lt;br&gt;Run parts picker" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="320" width="300" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="wC" value="&lt;b&gt;3C) Worker C (Looped)&lt;/b&gt;&lt;br&gt;Build SysML for Concept C&lt;br&gt;Optimize mid-level requirements&lt;br&gt;Run parts picker" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="480" width="300" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="checker" value="&lt;b&gt;4) Constraint Checker&lt;/b&gt;&lt;br&gt;Verify selected parts satisfy prompt constraints for each design" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="650" width="300" height="100" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="decision" value="&lt;b&gt;All pass?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1420" y="665" width="130" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="outputs" value="&lt;b&gt;Final Outputs (Slide Deliverable)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1580" y="120" width="320" height="760" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="outA" value="&lt;b&gt;Design A: Discrete CC/CV Buck&lt;/b&gt;&lt;br&gt;Picked parts:&lt;br&gt;- LM2596 buck regulator&lt;br&gt;- 33uH inductor&lt;br&gt;- SS54 Schottky diode&lt;br&gt;- 0.05 ohm current shunt&lt;br&gt;- NTC thermistor + 2.5A fuse" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="175" width="280" height="155" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="outB" value="&lt;b&gt;Design B: Smart Charger Controller&lt;/b&gt;&lt;br&gt;Picked parts:&lt;br&gt;- BQ24650 charger controller&lt;br&gt;- Dual N-MOSFET power stage&lt;br&gt;- 10mOhm sense resistor&lt;br&gt;- NTC thermistor cutoff&lt;br&gt;- TVS diode + resettable fuse" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="345" width="280" height="155" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="outC" value="&lt;b&gt;Design C: Module + BMS Stack&lt;/b&gt;&lt;br&gt;Picked parts:&lt;br&gt;- CC/CV charger module&lt;br&gt;- 4S BMS balancing board&lt;br&gt;- Reverse-polarity MOSFET&lt;br&gt;- Temperature sensor&lt;br&gt;- Relay cutoff stage" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#ffffff;strokeColor=#82b366;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="515" width="280" height="145" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="finalselect" value="&lt;b&gt;Selected baseline for demo:&lt;/b&gt; Design B&lt;br&gt;Reason: strongest safety/control margin with clear automated stop logic.&lt;br&gt;&lt;br&gt;&lt;b&gt;Delivered assets:&lt;/b&gt;&lt;br&gt;- 3 parts-assigned SysML design candidates&lt;br&gt;- constraint compliance matrix&lt;br&gt;- selected baseline recommendation" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=6;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1600" y="680" width="280" height="180" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" edge="1" source="prompt" target="s1" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" edge="1" source="s1" target="s2" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3a" value="Concept A" edge="1" source="s2" target="wA" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3b" value="Concept B" edge="1" source="s2" target="wB" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3c" value="Concept C" edge="1" source="s2" target="wC" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4a" edge="1" source="wA" target="checker" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4b" edge="1" source="wB" target="checker" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4c" edge="1" source="wC" target="checker" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" edge="1" source="checker" target="decision" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="Yes" edge="1" source="decision" target="outputs" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="No: iterate failed lane(s)" edge="1" source="decision" target="wB" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;dashed=1;strokeColor=#b85450;fontColor=#b85450;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1480" y="860"/>
+              <mxPoint x="1230" y="860"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

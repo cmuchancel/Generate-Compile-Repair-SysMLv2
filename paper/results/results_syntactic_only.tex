@@ -66,27 +66,44 @@ For failure probability $q=1-p$, the complementary one-sided 95\% binomial upper
 These reliability bounds are intentionally scoped to SysMBench-style prompt distributions under the evaluated configuration and do not claim universal convergence over arbitrary natural-language inputs. Because the validator-gated loop is monotonic (accepted cases terminate immediately) and repairs are guided by deterministic diagnostics, the observed reliability is consistent with a structural property of validator-in-the-loop control on this benchmark distribution.
 
 \subsection{Grammar Validity vs Production Validity and Error Burden}
-Beyond aggregate reliability, practical MBSE usability requires production validation acceptance in a modeling environment, not only grammar parsability. To quantify this operational gap, we compared first-iteration ANTLR parsing outcomes against first-iteration production validation outcomes for all 604 prompt--model cases.
+Beyond aggregate reliability, practical MBSE usability requires production validation acceptance in a modeling environment, not only grammar parsability. To quantify this operational gap, we compared ANTLR parsing outcomes against production validation outcomes on the initial candidate ($k=0$) for all 604 prompt--model cases.
 
-\begin{table}[H]
+\begin{figure}[H]
 \centering
-\caption{First-iteration contingency between grammar parsing (ANTLR) and production validation acceptance (SysIDE), $n=604$.}
-\label{tab:antlr_vs_production_contingency}
-\begin{tabular}{lrrr}
-\toprule
- & \multicolumn{1}{c}{SysIDE pass} & \multicolumn{1}{c}{SysIDE fail} & \multicolumn{1}{c}{Total} \\
-\midrule
-ANTLR pass & 309 & 60  & 369 \\
-ANTLR fail & 0   & 235 & 235 \\
-\midrule
-Total      & 309 & 295 & 604 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{tikzpicture}[x=1.5cm,y=1.5cm]
+\draw[line width=0.65pt] (0,0) rectangle (2,2);
+\draw[line width=0.65pt] (1,0) -- (1,2);
+\draw[line width=0.65pt] (0,1) -- (2,1);
 
-The first-iteration grammar pass rate was 369/604 (61.09\%), while the first-iteration production pass rate was 309/604 (51.16\%). Grammar-only passes occurred in 60 cases. This corresponds to 60/369 = 16.26\% of grammar-valid outputs and 60/604 = 9.93\% of all outputs. Grammar-level parsing overestimates production usability by 16.26\% among parseable artifacts. No cases were observed with production pass and grammar fail (0/604). Thus, grammar validity is strictly necessary but not sufficient for production-validation acceptance under the evaluated configuration.
+% Axis labels and definitions
+\node[font=\small\bfseries] at (1.0,2.50) {SysIDE};
+\node[font=\footnotesize] at (0.5,2.24) {Fail};
+\node[font=\footnotesize] at (1.5,2.24) {Pass};
 
-First-iteration validator diagnostics totaled 2,209 errors, giving a mean of 2,209/604 = 3.66 errors per generated model, indicating that first-iteration outputs frequently contain multiple structural defects rather than isolated formatting errors. Restricting to failing first-iteration cases (295), the mean burden was 2,209/295 = 7.49 errors per failing model. Error burden was concentrated in \texttt{parsing-error} (1,144; 51.79\%) and \texttt{reference-error} (824; 37.30\%), which together account for 89.09\% of first-iteration errors. These results indicate that validator-gated repair is addressing multi-error structural artifacts and that grammar-level parsing alone would have admitted non-usable models into downstream workflows.
+\node[font=\small\bfseries, rotate=90] at (-0.78,1.0) {ANTLR};
+\node[font=\footnotesize, align=right] at (-0.24,1.5) {Fail};
+\node[font=\footnotesize, align=right] at (-0.24,0.5) {Pass};
+
+% Cell values (top row: ANTLR fail, bottom row: ANTLR pass)
+\node[font=\Large] at (0.5,1.5) {235};
+\node[font=\Large] at (1.5,1.5) {0};
+\node[font=\Large] at (0.5,0.5) {\textbf{60}};
+\node[font=\Large] at (1.5,0.5) {309};
+
+\end{tikzpicture}
+\caption{Initial-candidate grammar (ANTLR) vs production validation (SysIDE), $n=604$. The operational-gap cell (ANTLR pass, SysIDE fail) contains 60 cases.}
+\label{fig:antlr_vs_production_flow}
+\end{figure}
+
+The initial-candidate grammar pass rate was 369/604 (61.09\%), while the initial-candidate production pass rate was 309/604 (51.16\%). Grammar-only passes occurred in 60 cases. This corresponds to 60/369 = 16.26\% of grammar-valid outputs and 60/604 = 9.93\% of all outputs. Grammar-level parsing overestimates production usability by 16.26\% among parseable artifacts. No cases were observed with production pass and grammar fail (0/604). Thus, grammar validity is strictly necessary but not sufficient for production-validation acceptance under the evaluated configuration.
+
+Initial-candidate validator diagnostics totaled 2,209 errors, giving a mean of 2,209/604 = 3.66 errors per generated model, indicating that initial-candidate outputs frequently contain multiple structural defects rather than isolated formatting errors. Restricting to failing initial-candidate cases (295), the mean burden was 2,209/295 = 7.49 errors per failing model. Error burden was concentrated in \texttt{parsing-error} (1,144; 51.79\%) and \texttt{reference-error} (824; 37.30\%), which together account for 89.09\% of initial-candidate errors. These results indicate that validator-gated repair is addressing multi-error structural artifacts and that grammar-level parsing alone would have admitted non-usable models into downstream workflows.
 
 \subsection{Open-Source Dataset Release}
-This campaign releases an open-source dataset of 604 generated SysMLv2 outputs (151 prompts $\times$ 4 model backends), together with run-level records, iteration histories, and validator diagnostics in the project repository~\cite{sysmbenchCompilerLoopRepo2026}. This provides a reproducible, inspectable benchmark-scale corpus for follow-on syntactic-reliability studies.
+The released corpus is trajectory-level rather than endpoint-only. It spans the full SysMBench prompt set (151 prompts) across four model backends, yielding 604 prompt--model cases. For these cases, we retain all validator-gated refinement steps, producing 1,043 stored iteration artifacts in total. Each iteration includes the generated SysML text and the associated production-validator diagnostics, so the release preserves full correction trajectories instead of only baseline and final states.
+
+At artifact level, we define positive examples as iterations that pass production validation and negative examples as iterations that fail production validation. Under this definition, the release contains 604 positive artifacts and 439 negative artifacts. For a data-sparse target language with limited publicly available production-accepted corpora, 604 positive artifacts constitute a substantial positive-example resource. Because there is one trajectory per prompt--model case, the 439 negatives are the repair transitions beyond the first artifact in each trajectory; they are intermediate correction states, not additional benchmark instances.
+
+The negative subset carries substantial structural burden. Across all iteration artifacts, validator diagnostics record 3,232 error instances. Conditioning on failing artifacts only, the mean burden is 7.36 errors and the median is 4.00 errors, with a maximum of 267 errors in a single artifact. Trajectory depth is also nontrivial: the maximum observed depth is 8 iterations, and the mean iterations per case is 1.73. These statistics indicate that the failing states are typically multi-error structural configurations rather than isolated formatting defects.
+
+As a research asset, this trajectory-level release supports analyses that are not accessible from endpoint-only datasets. Full stepwise traces enable quantitative study of repair-policy behavior, convergence modeling under deterministic validator feedback, and intermediate-state learning or ranking methods that operate over evolving candidate states. Since runtime and token metadata are retained at iteration and trajectory levels, the same artifacts also support cost--reliability tradeoff analyses under a common production-validation criterion.

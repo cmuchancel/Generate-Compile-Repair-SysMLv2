@@ -28,7 +28,7 @@ where $f(\cdot)$ is the model revision operator conditioned on validator feedbac
 \end{figure}
 
 The production validator oracle is SysIDE validation (\texttt{syside check})~\cite{sensmetry2024syside}. A run is successful and terminates only when zero validation errors are reported.
-This oracle choice is additionally supported by an auxiliary ten-case demonstration in the repository showing ANTLR parser pass with production-validation failure, i.e., grammar conformity without operational acceptability~\cite{antlrVsSysideDemo2026}.
+This oracle choice is additionally supported by an auxiliary ten-case demonstration in the repository showing pass under the HAMR SysML v2 ANTLR4 parser with production-validation failure, i.e., grammar conformity without operational acceptability~\cite{antlrVsSysideDemo2026,hamrSysmlParser2026,sysmlV2PilotImplementation2026}.
 
 \subsection{Dataset and Outcome Extraction}
 SysMBench provides paired natural-language prompts and ground-truth SysMLv2 models for benchmark evaluation~\cite{jin2025sysmbench}. In this study, we use the curated natural-language prompt set (IDs 1--151) as generation inputs because it was designed to stress SysMLv2 LLM generation across diverse modeling patterns.
@@ -50,7 +50,7 @@ Secondary diagnostics include iterations-to-success, first-iteration and cumulat
 \subsubsection{Grammar vs Production Validity}
 To quantify the operational gap between grammar-level validity and production-validator acceptance, we compare ANTLR and SysIDE outcomes on the same single-shot artifact from each case. This comparison is performed on the initial candidate ($k=0$ in repair-cycle indexing).
 
-Grammar validity is defined as ANTLR parse success using the ANTLR-based SysML parser integrated in the repository. Production validity is defined as SysIDE acceptance (zero SysIDE errors) under \texttt{syside check}. For each case, we record binary pass/fail outcomes for both checks and construct a $2\times2$ contingency table (ANTLR pass/fail $\times$ SysIDE pass/fail).
+Grammar validity is defined as ANTLR parse success using the HAMR SysML v2 ANTLR4 parser, which provides a generated grammar and Java parser/lexer derived from the SysML v2 Pilot Implementation~\cite{hamrSysmlParser2026,sysmlV2PilotImplementation2026}. This ANTLR check is used only as a representative context-free grammar (CFG) parsability test and does not enforce production model-wide constraints. Production validity is defined as SysIDE acceptance (zero SysIDE errors) under \texttt{syside check}. For each case, we record binary pass/fail outcomes for both checks and construct a $2\times2$ contingency table (ANTLR pass/fail $\times$ SysIDE pass/fail).
 
 \subsubsection{Convergence Metrics}
 To characterize how quickly the loop approaches acceptance, we index progress by repair cycles. Let $k=0$ denote the initial single-shot generation (no validator feedback), and let $k\geq 1$ denote $k$ rounds of generate--validate--repair. Let $A_k$ denote cumulative production-validation acceptance after repair cycle $k$.

@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net" modified="2026-02-24T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="pipeline-demo" name="Pipeline Demo">
+    <mxGraphModel dx="2360" dy="1260" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Pipeline Demo: Compiler-in-the-Loop + Deliverables" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontSize=26;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="900" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s1" value="&lt;b&gt;1) NL Prompt Ingest&lt;/b&gt;&lt;br&gt;Deliverable:&lt;br&gt;api_loop/nl_prompts/[id]/nl.txt" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="110" width="260" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s2" value="&lt;b&gt;2) Candidate Generation (M_t)&lt;/b&gt;&lt;br&gt;Deliverables:&lt;br&gt;iteration_XX_prompt.txt&lt;br&gt;iteration_XX_response.json&lt;br&gt;iteration_XX.sysml" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="360" y="95" width="300" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s3" value="&lt;b&gt;3) SysIDE Validation&lt;/b&gt;&lt;br&gt;Deliverables:&lt;br&gt;compiler diagnostics in run_log.json&lt;br&gt;[id]_refine_stdout.log&lt;br&gt;[id]_refine_stderr.log" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="700" y="95" width="320" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d1" value="&lt;b&gt;4) Compiler&#xa;errors present?&lt;/b&gt;" style="rhombus;whiteSpace=wrap;html=1;align=center;verticalAlign=middle;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="115" width="190" height="110" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s5" value="&lt;b&gt;5) Repair Prompt + Regenerate (M_t+1)&lt;/b&gt;&lt;br&gt;Deliverable:&lt;br&gt;updated prompt with diagnostics + prior model" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="300" width="320" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s6" value="&lt;b&gt;6) Finalize Case Output&lt;/b&gt;&lt;br&gt;Deliverables:&lt;br&gt;[id].sysml&lt;br&gt;[id]_refine_manifest.json&lt;br&gt;run_meta.json" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1290" y="95" width="280" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s7" value="&lt;b&gt;7) Precision/Recall Eval (GPT-4.1)&lt;/b&gt;&lt;br&gt;Deliverables:&lt;br&gt;[id]_precision_gpt41.json&lt;br&gt;[id]_recall_gpt41.json" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1610" y="95" width="300" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s8" value="&lt;b&gt;8) Aggregate Metrics&lt;/b&gt;&lt;br&gt;Deliverables:&lt;br&gt;gpt41_summary_*.json&lt;br&gt;domain_result.json&lt;br&gt;grammar_result.json&lt;br&gt;difficult_result.json" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1950" y="90" width="330" height="160" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="s9" value="&lt;b&gt;9) Campaign Reporting&lt;/b&gt;&lt;br&gt;Deliverables:&lt;br&gt;paper/results/data/*.csv + *.json&lt;br&gt;paper/results/tables/*.tex&lt;br&gt;paper/results/figures/*" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=8;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="2320" y="95" width="320" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" edge="1" source="s1" target="s2" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e2" edge="1" source="s2" target="s3" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e3" edge="1" source="s3" target="d1" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e4" value="Yes" edge="1" source="d1" target="s5" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;verticalAlign=bottom;align=left;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e5" value="Repair + Retry" edge="1" source="s5" target="s2" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;dashed=1;strokeColor=#b85450;verticalAlign=bottom;align=center;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="860" y="460"/>
+              <mxPoint x="860" y="180"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="e6" value="No" edge="1" source="d1" target="s6" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;verticalAlign=bottom;align=center;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e7" edge="1" source="s6" target="s7" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e8" edge="1" source="s7" target="s8" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e9" edge="1" source="s8" target="s9" parent="1" style="endArrow=block;endFill=1;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

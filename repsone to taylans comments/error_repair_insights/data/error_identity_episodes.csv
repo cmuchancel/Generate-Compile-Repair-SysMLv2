@@ -1,0 +1,503 @@
+provider,model_label,prompt_id,family,start_iteration,end_iteration_with_family,iterations_with_family,additional_iterations_to_repair,unique_exact_signatures,unique_template_signatures,has_exact_recurrence,has_template_recurrence,adjacent_exact_overlap,adjacent_template_overlap,start_end_exact_overlap,start_end_template_overlap,persistence_mode
+anthropic,Anthropic Claude Sonnet 4.6,35,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,48,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,48,connector-related-features,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,48,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,52,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,63,feature-value-overriding,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,68,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,74,parsing-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+anthropic,Anthropic Claude Sonnet 4.6,77,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,91,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,94,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,95,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,96,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,100,feature-value-overriding,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,102,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,104,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,107,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,109,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,114,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,116,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,120,parsing-error,1,2,2,2,2,1,True,True,True,True,True,True,same_exact_error_recurs
+anthropic,Anthropic Claude Sonnet 4.6,121,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,121,parsing-error,3,6,4,4,4,3,True,True,True,True,True,True,same_exact_error_recurs
+anthropic,Anthropic Claude Sonnet 4.6,121,reference-error,1,1,1,1,27,2,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,121,reference-error,5,5,1,1,23,2,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,121,internal-error,2,3,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+anthropic,Anthropic Claude Sonnet 4.6,134,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,137,feature-value-overriding,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,141,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,146,type-error,1,1,1,1,10,10,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,146,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+anthropic,Anthropic Claude Sonnet 4.6,147,parsing-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,1,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,1,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,5,parsing-error,1,2,2,2,3,2,False,True,False,True,False,True,same_error_template_recurs
+deepseek_reasoner,DeepSeek Reasoner,5,reference-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,6,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,6,reference-error,1,3,3,3,10,2,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,9,parsing-error,1,1,1,1,8,4,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,9,feature-crossing-specialization,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,9,reference-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,10,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,11,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,11,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,14,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,14,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,15,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,15,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,16,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,16,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,17,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,17,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,18,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,21,parsing-error,1,2,2,2,4,3,False,False,False,False,False,False,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,27,parsing-error,1,2,2,2,4,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,30,parsing-error,1,2,2,2,5,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,32,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,32,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,34,parsing-error,1,4,4,4,11,5,True,True,False,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,34,parameter-membership-owning-type,4,4,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,34,attribute-usage-features,4,4,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,34,reference-error,4,4,1,1,6,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,35,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,36,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,38,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,39,parsing-error,1,1,1,1,4,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,39,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,41,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,41,reference-error,1,2,2,2,2,2,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,43,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,43,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,44,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,46,parsing-error,1,3,3,3,4,2,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,46,connector-related-features,1,3,3,3,1,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,46,feature-chaining-feature-not-one,1,3,3,3,1,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,47,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,47,connector-related-features,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,47,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,48,parsing-error,1,3,3,3,3,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,48,connector-related-features,1,3,3,3,1,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,48,reference-error,1,3,3,3,1,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,51,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,51,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,52,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,52,feature-reference-expression-referent-is-feature,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,53,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,53,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,55,invocation-expression-instantiated-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,55,reference-error,1,1,1,1,6,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,56,invocation-expression-instantiated-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,56,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,58,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,69,parsing-error,1,2,2,2,6,3,False,True,False,True,False,True,same_error_template_recurs
+deepseek_reasoner,DeepSeek Reasoner,69,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,70,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,70,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,73,parsing-error,1,3,3,3,6,3,False,True,False,True,False,False,same_error_template_recurs
+deepseek_reasoner,DeepSeek Reasoner,74,parsing-error,1,3,3,3,3,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,76,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,77,parsing-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,77,reference-error,1,1,1,1,10,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,78,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,79,parsing-error,1,2,2,2,5,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,80,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,80,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,81,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,85,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,87,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,87,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,88,parsing-error,1,2,2,2,4,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,88,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,88,type-error,1,2,2,2,2,2,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,88,reference-error,1,1,1,1,6,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,89,parsing-error,1,4,4,4,8,4,True,True,True,True,False,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,90,parsing-error,1,1,1,1,4,3,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,90,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,91,parsing-error,1,2,2,2,3,2,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,92,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,93,parsing-error,1,2,2,2,10,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,93,reference-error,1,3,3,3,4,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,94,parsing-error,1,2,2,2,6,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,94,reference-error,1,2,2,2,3,2,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,95,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,95,reference-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,96,parsing-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,96,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,96,class-specialization,3,3,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,97,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,97,reference-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,100,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,104,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,105,parsing-error,1,3,3,3,6,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,106,parsing-error,1,2,2,2,3,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,107,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,108,parsing-error,1,3,3,3,1,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,108,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,109,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,112,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,113,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,113,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,114,parsing-error,1,2,2,2,3,2,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,115,reference-error,1,1,1,1,3,3,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,116,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,119,parsing-error,1,3,3,3,3,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,121,parsing-error,1,2,2,2,4,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,121,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,122,parsing-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,122,reference-error,1,1,1,1,6,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,124,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,125,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,125,reference-error,1,2,2,2,3,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,129,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,129,parsing-error,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,130,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,132,parsing-error,1,2,2,2,3,2,False,True,False,True,False,True,same_error_template_recurs
+deepseek_reasoner,DeepSeek Reasoner,132,feature-reference-expression-referent-is-feature,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,134,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,134,reference-error,1,1,1,1,4,4,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,135,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,136,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,136,parsing-error,2,4,3,3,1,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,137,parsing-error,1,2,2,2,3,2,False,True,False,True,False,True,same_error_template_recurs
+deepseek_reasoner,DeepSeek Reasoner,137,reference-error,1,3,3,3,9,2,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,137,invocation-expression-instantiated-type,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,137,quantity-operator-expression,3,3,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,138,parsing-error,1,2,2,2,3,3,False,False,False,False,False,False,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,138,reference-error,1,2,2,2,2,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,139,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,139,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,140,parsing-error,1,2,2,2,3,3,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,140,reference-error,1,2,2,2,6,1,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,141,reference-error,1,2,2,2,5,2,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,141,parsing-error,3,3,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,142,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,143,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,143,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,144,parsing-error,1,7,7,7,14,5,True,True,True,True,True,True,same_exact_error_recurs
+deepseek_reasoner,DeepSeek Reasoner,144,reference-error,1,1,1,1,4,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,144,reference-error,7,7,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,146,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,147,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,149,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+deepseek_reasoner,DeepSeek Reasoner,149,reference-error,1,2,2,2,3,1,False,True,False,True,False,True,same_error_template_recurs
+deepseek_reasoner,DeepSeek Reasoner,150,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,4,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,7,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,9,parsing-error,1,4,4,4,8,4,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,9,feature-crossing-specialization,1,4,4,4,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,9,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,9,reference-error,4,4,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,10,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,11,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,13,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,13,feature-reference-expression-referent-is-feature,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,14,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,14,reference-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,15,parsing-error,1,1,1,1,4,3,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,15,feature-reference-expression-referent-is-feature,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,16,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,17,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,18,reference-error,1,1,1,1,4,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,19,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,21,reference-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,23,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,23,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,27,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,28,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,31,parsing-error,1,2,2,2,2,2,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,31,reference-error,1,2,2,2,6,2,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,34,parsing-error,1,1,1,1,7,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,34,type-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,34,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,35,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,36,parsing-error,1,3,3,3,4,2,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,36,reference-error,1,4,4,4,7,7,True,True,True,True,False,False,same_exact_error_recurs
+mistral_large,Mistral Large,36,feature-chaining-feature-not-one,3,3,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,38,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,41,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,42,parsing-error,1,4,4,4,3,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,42,reference-error,3,3,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,47,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,48,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,49,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,49,reference-error,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,50,reference-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,51,parsing-error,1,3,3,3,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,51,reference-error,1,4,4,4,3,3,True,True,True,True,False,False,same_exact_error_recurs
+mistral_large,Mistral Large,51,type-error,2,2,1,1,3,3,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,51,type-error,4,4,1,1,3,3,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,52,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,52,reference-error,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,54,parsing-error,1,3,3,3,7,3,True,True,False,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,55,parsing-error,1,3,3,3,5,3,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,55,reference-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,56,invocation-expression-instantiated-type,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,56,subsetting-uniqueness-conformance,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,56,reference-error,1,3,3,3,3,2,True,True,True,True,False,False,same_exact_error_recurs
+mistral_large,Mistral Large,56,parsing-error,3,3,1,1,3,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,57,parsing-error,1,2,2,2,7,3,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,57,parameter-membership-owning-type,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,57,feature-reference-expression-referent-is-feature,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,59,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,59,reference-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,60,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,60,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,62,parsing-error,1,2,2,2,3,3,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,62,reference-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,63,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,64,parsing-error,1,2,2,2,3,3,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,64,reference-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,65,parsing-error,1,4,4,4,11,4,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,65,reference-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,65,parameter-membership-owning-type,3,3,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,66,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,68,parsing-error,1,2,2,2,4,4,False,False,False,False,False,False,family_only_churn
+mistral_large,Mistral Large,68,parameter-membership-owning-type,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,70,parsing-error,1,3,3,3,6,3,True,True,True,True,False,True,same_exact_error_recurs
+mistral_large,Mistral Large,70,type-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,70,cross-subsetting-crossing-feature,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,70,feature-owned-cross-subsetting,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,70,reference-error,1,2,2,2,4,2,False,False,False,False,False,False,family_only_churn
+mistral_large,Mistral Large,74,parsing-error,1,3,3,3,12,5,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,74,invocation-expression-instantiated-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,74,invocation-expression-instantiated-type,3,3,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,74,reference-error,1,3,3,3,11,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,77,parsing-error,1,1,1,1,4,3,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,77,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,78,parsing-error,1,2,2,2,3,3,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,78,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,80,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,82,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,82,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,85,feature-reference-expression-referent-is-feature,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,86,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,88,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,88,reference-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,89,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,93,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,94,parsing-error,1,2,2,2,11,5,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,94,reference-error,1,2,2,2,5,4,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,96,parsing-error,1,2,2,2,4,2,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,96,reference-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,97,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,97,parameter-membership-owning-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,98,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,99,parsing-error,1,2,2,2,5,3,False,True,False,True,False,True,same_error_template_recurs
+mistral_large,Mistral Large,99,reference-error,1,2,2,2,12,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,99,type-error,2,2,1,1,4,4,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,100,part-usage-part-definition,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,100,part-usage-part-definition,3,3,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,100,reference-error,2,3,2,2,5,3,False,False,False,False,False,False,family_only_churn
+mistral_large,Mistral Large,100,feature-value-overriding,3,3,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,102,parsing-error,1,2,2,2,4,3,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,102,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,104,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,105,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,108,parsing-error,1,2,2,2,4,3,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,108,reference-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,110,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,112,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,113,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,114,parsing-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,116,parsing-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,117,parsing-error,1,1,1,1,4,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,117,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,117,reference-error,1,1,1,1,6,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,120,parsing-error,1,3,3,3,5,4,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,121,parsing-error,1,3,3,3,14,6,True,True,True,True,False,True,same_exact_error_recurs
+mistral_large,Mistral Large,121,invocation-expression-instantiated-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,121,feature-chaining-feature-not-one,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,121,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,121,reference-error,3,3,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,122,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,123,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,123,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,124,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,124,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,126,parsing-error,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,126,reference-error,2,2,1,1,2,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,127,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,129,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,129,reference-error,2,2,1,1,3,3,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,133,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,134,parsing-error,1,2,2,2,3,3,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,134,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,135,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,138,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,138,parameter-membership-owning-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,138,invocation-expression-instantiated-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,139,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,139,reference-error,1,2,2,2,10,2,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,141,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,142,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,143,parsing-error,1,1,1,1,5,3,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,143,reference-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,144,parsing-error,1,2,2,2,4,3,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,144,reference-error,1,2,2,2,4,1,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,145,parsing-error,1,2,2,2,3,3,False,False,False,False,False,False,family_only_churn
+mistral_large,Mistral Large,145,quantity-operator-expression,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,145,type-error,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,146,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,146,type-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,146,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,147,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,147,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,148,invocation-expression-instantiated-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,148,reference-error,1,3,3,3,3,2,True,True,True,True,False,False,same_exact_error_recurs
+mistral_large,Mistral Large,148,parsing-error,2,3,2,2,3,2,False,False,False,False,False,False,family_only_churn
+mistral_large,Mistral Large,148,type-error,2,3,2,2,2,2,False,False,False,False,False,False,family_only_churn
+mistral_large,Mistral Large,149,parsing-error,1,1,1,1,3,3,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,149,parameter-membership-owning-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,149,attribute-usage-features,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,149,reference-error,1,2,2,2,11,5,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,150,parsing-error,1,1,1,1,3,3,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,150,type-error,1,1,1,1,4,4,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,150,quantity-operator-expression,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,150,invocation-expression-instantiated-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+mistral_large,Mistral Large,151,parsing-error,1,2,2,2,5,2,True,True,True,True,True,True,same_exact_error_recurs
+mistral_large,Mistral Large,151,reference-error,1,2,2,2,3,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,2,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,3,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,7,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,10,parsing-error,1,2,2,2,2,1,False,True,False,True,False,True,same_error_template_recurs
+openai,OpenAI,10,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,12,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,12,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,13,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,14,parsing-error,1,1,1,1,5,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,14,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,15,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,15,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,15,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,17,parsing-error,1,2,2,2,4,2,False,True,False,True,False,True,same_error_template_recurs
+openai,OpenAI,17,port-definition-owned-usages-not-composite,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,17,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,18,parsing-error,1,1,1,1,3,3,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,18,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,19,port-definition-owned-usages-not-composite,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,19,parsing-error,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,20,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,21,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,24,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,25,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,25,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,33,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,34,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,35,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,35,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,36,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,37,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,37,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,38,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,39,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,40,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,40,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,41,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,41,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,42,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,42,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,43,parsing-error,1,2,2,2,4,4,False,False,False,False,False,False,family_only_churn
+openai,OpenAI,43,reference-error,1,1,1,1,20,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,45,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,46,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,52,parsing-error,1,3,3,3,4,3,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,52,import-explicit-visibility,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,53,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,53,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,54,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,55,parsing-error,1,3,3,3,2,2,True,True,True,True,False,False,same_exact_error_recurs
+openai,OpenAI,55,reference-error,3,3,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,56,invocation-expression-instantiated-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,56,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,60,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,63,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,63,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,66,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,67,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,67,reference-error,1,1,1,1,3,3,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,68,reference-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,69,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,70,port-definition-owned-usages-not-composite,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,70,parsing-error,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,71,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,77,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,80,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,81,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,83,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,85,reference-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,88,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,91,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,92,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,92,reference-error,1,1,1,1,8,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,93,parsing-error,1,2,2,2,3,3,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,93,type-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,93,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,94,parsing-error,1,1,1,1,4,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,95,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,96,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,96,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,97,parsing-error,1,1,1,1,4,3,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,97,feature-reference-expression-referent-is-feature,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,97,reference-error,2,2,1,1,3,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,98,parsing-error,1,1,1,1,5,4,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,98,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,98,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,99,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,102,parsing-error,1,1,1,1,5,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,102,feature-chaining-feature-not-one,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,103,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,104,port-definition-owned-usages-not-composite,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,104,parsing-error,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,105,port-definition-owned-usages-not-composite,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,105,parsing-error,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,106,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,106,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,106,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,108,parsing-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,108,reference-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,110,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,111,parsing-error,1,1,1,1,3,3,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,111,reference-error,1,1,1,1,4,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,112,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,112,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,113,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,113,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,115,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,117,parsing-error,1,2,2,2,7,4,False,True,False,True,False,True,same_error_template_recurs
+openai,OpenAI,117,parsing-error,4,4,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,117,feature-reference-expression-referent-is-feature,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,117,parameter-membership-owning-type,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,117,reference-error,2,3,2,2,14,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,118,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,120,parsing-error,1,2,2,2,3,2,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,120,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,121,parsing-error,1,1,1,1,4,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,122,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,125,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,128,port-definition-owned-usages-not-composite,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,130,reference-error,1,1,1,1,2,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,132,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,132,reference-error,1,1,1,1,3,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,133,port-definition-owned-usages-not-composite,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,133,parsing-error,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,134,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,137,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,137,import-explicit-visibility,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,138,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,138,reference-error,1,2,2,2,4,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,138,import-explicit-visibility,2,2,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,139,parsing-error,1,1,1,1,3,3,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,139,quantity-operator-expression,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,139,parameter-membership-owning-type,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,139,reference-error,1,1,1,1,4,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,140,reference-error,1,2,2,2,7,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,141,parsing-error,1,2,2,2,10,5,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,141,feature-chaining-feature-not-one,1,2,2,2,1,1,True,True,True,True,True,True,same_exact_error_recurs
+openai,OpenAI,143,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,144,parsing-error,1,1,1,1,3,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,144,reference-error,1,1,1,1,4,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,145,parsing-error,1,1,1,1,2,2,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,148,parsing-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn
+openai,OpenAI,151,reference-error,1,1,1,1,1,1,False,False,False,False,True,True,family_only_churn

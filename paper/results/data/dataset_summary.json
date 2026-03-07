@@ -1,0 +1,64 @@
+{
+  "artifact_level_outcomes": {
+    "negative_artifacts": 439,
+    "positive_artifacts": 604,
+    "positive_to_negative_ratio": 1.3758542141230068,
+    "repair_transitions_total": 439
+  },
+  "artifact_source": {
+    "api_loop_root": "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop",
+    "model_roots": [
+      "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_OPENAI",
+      "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_ANTHROPIC",
+      "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_DEEPSEEK_REASONER",
+      "/Users/chancelavoie/Desktop/AI_AGENT_Benchmarking_Compiler_in_Loop/api_loop/Generated_from_Prompts_API_LOOP_MISTRAL_LARGE"
+    ],
+    "prompt_id_max": 151,
+    "prompt_id_min": 1
+  },
+  "initial_candidate_checks": {
+    "cases_with_initial_error_count_eq0": 310,
+    "cases_with_initial_error_count_gt0": 294,
+    "initial_error_total": 2209,
+    "initial_failing_cases": 295,
+    "mean_initial_error_count_per_failing_case": 7.488135593220339
+  },
+  "invalid_case_count": 0,
+  "invalid_cases": [],
+  "notes": [
+    "Error counts are parsed from validator diagnostics using lines that match 'error (<family>):'.",
+    "Initial candidate corresponds to k=0 and is stored as iteration_01.sysml.",
+    "Positive artifacts are run-log steps with success=true; negative artifacts have success=false."
+  ],
+  "release_scope": {
+    "model_backends": 4,
+    "prompt_model_cases": 604,
+    "prompts": 151
+  },
+  "storage_presence": {
+    "final_accepted_artifacts_stored": 604,
+    "initial_candidate_artifacts_stored": 604,
+    "iteration_artifacts_stored": 1043,
+    "iteration_artifacts_total": 1043,
+    "iteration_runtime_metadata_present": 1043,
+    "iteration_token_metadata_present": 1043,
+    "trajectory_runtime_metadata_present": 604,
+    "trajectory_token_metadata_present": 604
+  },
+  "trajectory_depth": {
+    "max_iterations_observed": 8.0,
+    "mean_iterations_per_trajectory": 1.7268211920529801,
+    "mean_iterations_to_acceptance": 1.7268211920529801,
+    "median_iterations_per_trajectory": 1.0,
+    "median_iterations_to_acceptance": 1.0
+  },
+  "validator_error_burden": {
+    "failing_artifact_error_max": 267.0,
+    "failing_artifact_error_mean": 7.362186788154897,
+    "failing_artifact_error_median": 4.0,
+    "failing_artifact_error_min": 0.0,
+    "max_errors_single_artifact": 267.0,
+    "total_validator_errors_all_artifacts": 3232,
+    "total_validator_errors_failing_artifacts": 3232
+  }
+}
