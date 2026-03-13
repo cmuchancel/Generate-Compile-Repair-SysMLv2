@@ -1,0 +1,437 @@
+% !TEX encoding = UTF-8 Unicode
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%
+%%  This file is asmeconf-template.tex, a LaTeX template to format ASME Conference papers according to
+%%  the requirements on ASME's conference web pagess, and including hypertext support for the pdf.
+%%
+%%  This file is version 1.45 dated 2025/11/10
+%%  
+%%  As of version 1.11, this template defaults to ASME's newer conference guidelines first posted July 2019.
+%% 			Those guidelines changed the author block formatting to be inline. 
+%%			If you prefer the traditional grid format, use the class option [grid].
+%%			Nomenclature now follows the abstract, and the abstract text is set in italics.
+%%
+%%  Author: John H. Lienhard, V
+%%          Department of Mechanical Engineering
+%%          Massachusetts Institute of Technology
+%%          Cambridge, MA 02139-4307 USA
+%%
+%%  Class options include:
+%%
+%%          * An option to use the traditional grid arrangement of author names, [grid].  
+%%			*	 With this option, line breaks (\\) may be inserted into the address as needed. 
+%%			*	 Author names that include commas should be enclosed in braces, e.g.,  {Joseph L. Smith, Jr.}.  
+%%			*	 Authors may be grouped above a single affiliation using braces, e.g., {Henry Tudor, Catherine Parr}.
+%%
+%%          * An option to balance the heights of columns on the last page, [balance]. 
+%%
+%%          * An option to include line numbers, [lineno]. You must *run twice* for proper placement of the line numbers. 
+%%			*	 The lineno package does not number titles, footnotes, captions, or tables.
+%%          *    This option will disable balancing column height on final page if that option has been invoked.
+%%          *    The lineno package won't always number the lines preceding displayed math in a paragraph because
+%%          *    paragraph has not ended.  See that package's documentation for macros to address this problem, or
+%%          *    just leave a blank line above the displayed equation while you are editing and then remove the 
+%%          *    blank line along with [lineno] option when you move to your final version.
+%%
+%%			* An option not to use a boldface font for caption text, [unboldcaption]
+%%
+%%          * Options to: 	omit the ASME copyright footer, [nofoot]; 
+%%			*				use government employee copyright notice,      [govt];
+%%			*				use government contractor copyright notice,    [contractor];
+%%			*				use copyright notice for some gov't employees, [somegovt];
+%%			*				omit the conference headers on the titlepage,  [nohead]
+%%
+%%			* Option to use LuaLaTeX **without** unicode-math and fontspec, [nofontspec]
+%%
+%%          * Math options from M. Sharpe's newtxmath package: upright integrals [upint]; 
+%%          *    [varvw] for a v and w that are better distinguished from Greek nu; and also 
+%%          *    [subscriptcorrection, smallerops, varg, frenchmath, varbb, cmbraces, slantedGreek,...] 
+%%			* 	 See newtx documentation for descriptions (at CTAN: https://www.ctan.org/pkg/newtx, v1.744 or higher is best).
+%%			*	 newtx is not loaded with lualatex unless the [nofontspec] option is used.
+%%
+%%          * An option to allow hyphenation of the typewriter font [hyphenate], from the inconsolata package (pdfTeX only).
+%%          *    Hyphenation is normally suppressed for a typewriter (monospaced) font because those are often used for code.
+%%			*	 To replace the default variable word spacing by monospacing, use the option [mono].
+%%			*	 To get a zero without a slash, use [var0]
+%%
+%%			* PDF/A compliance:  Since 2022, LaTeX has included support for PDF/A, through the \DocumentMetadata{..} command.
+%%
+%%          * Options (used by the babel package) to include passages in languages other than English (e.g., a translation 
+%%			*    of the abstract).  See Appendix C for details.
+%%			*    	pdftex: Appropriate scripts will be loaded if you call the class options [greek], [russian], or [vietnamese].
+%%			*    
+%%			*    	lualatex: Language support is most extensive when running LuaLaTeX, which automatically loads fontspec.
+%%			*		Non-Latin scripts require the [loadscripts] option, see Appendix C. 
+%%			*	 	Be aware that you might need to install additional fonts for some languages.
+%%			 
+%%  The use of commands defined or modified by the asmeconf class is illustrated throughout this file. In particular, 
+%%  ASME requires capitalized section headings, and as a result some care is needed when using macros in section headings,
+%%  as also illustrated below.
+%%
+%%  Use an **up-to-date and complete** installation of LaTeX, such as TeX Live 2025 or later. 
+%%		LaTeX formats earlier than 2022 are not fully supported.
+%%
+ %=========================================================
+%% 
+%% LICENSE: 
+%%
+%% Copyright (c) 2025 John H. Lienhard
+%%
+%% Offered under the MIT license: https://ctan.org/license/mit 
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+%%  RECOMMENDED pdf management code.
+%%  This code was added to the LaTeX kernel in June 2022.
+%% 		See https://www.latex-project.org/news/latex2e-news/ltnews35.pdf
+%%  If you have problems with these lines, you can comment them out or, better, update your LaTeX format.
+
+\DocumentMetadata{
+	lang		= eng-US, 	% default
+	pdfstandard	= A-3u,		% A-2b, A-2u, A-3b, A-3u. Check that your figures also meet the standard you choose.
+	pdfversion	= 1.7, 		% an older version of PDF, but very widely supported
+%	pdfversion  = 2.0, 		% default for LaTeX. Version 2.0 supports tagged PDF.
+%	pdfstandard = { ua-2 , a-4f }, % run with lualatex and use a very recent LaTeX format (e.g., 2025/11/01)
+%	tagging 	= on, 		% for producing tagged pdf
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% CLASS OPTIONS are described above. Change the options given below to meet your needs.
+%% 
+%%	 	NB: Remove the [colorlinks] option before *final* submission to ASME, to get black text for printing,
+%%			but keep that option for electronic use.
+%%
+%%		NB: If you are not using the language options, * remove * them (together with Appendices C and D).
+%%			Greek, cyrillic languages, and vietnamese if used, must be named as \documentclass options under pdftex.
+%%			Spanish, german, and many others, if used, do not need to be named when the babel package is dated 2024 or later.
+%%
+%%		NB: the mathalfa option was dropped in v1.41; load the mathalpha package in your preamble instead.
+
+\documentclass[colorlinks,upint,subscriptcorrection,varvw,hyphenate,balance]{asmeconf} % pdftex
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric}
+\usepackage{dblfloatfix}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage{listings}
+
+%\documentclass[colorlinks,upint,subscriptcorrection,varvw,balance,loadscripts,german,vietamese]{asmeconf} % lualatex
+
+% Avoid aggressive vertical stretching between paragraphs/figures.
+\raggedbottom
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+
+%%%%%  pdf metadata  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{%
+	pdfauthor={John H. Lienhard},									  % <=== change to YOUR name
+	pdftitle={ASME Conference Paper LaTeX Template},                  % <=== change to YOUR pdf file title
+	pdfkeywords={ASME conference paper, LaTeX template, BibTeX style},% <=== change to YOUR pdf keywords
+	pdfsubject = {Describes the asmeconf LaTeX template},			  % <=== change to YOUR subject
+%	pdfurl={https://ctan.org/pkg/asmeconf},% may delete
+%	pdflicenseurl={https://ctan.org/pkg/asmeconf},% may delete
+}
+% If an author name or the title include a comma, enclosed it in braces, e.g., pdfauthor{John Forbes Nash{,} Jr.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\allowdisplaybreaks % from amsmath package, allows multiline equations to break across pages (delete if not wanted)
+					% using \\* instead of \\ will prevent specific lines from being pagebreaks.
+
+% logos used in this document
+\newcommand*\pdfTeX{pdf\TeX}    
+\newcommand*\LuaLaTeX{Lua\LaTeX}
+\newcommand*\BibTeX{Bib\TeX}
+
+\begin{document}
+
+% Change these fields to the right content for your conference.
+% You can comment these out if for some reason you don't want a header.
+% Use title case for the conference name (first letters capitalized), not all capitals
+
+\ConfName{Proceedings of the ASME 2026\linebreak International Design Engineering Technical Conferences \&\linebreak Computers and Information in Engineering Conference}
+\ConfAcronym{IDETC-CIE 2026}
+\ConfDate{August 23--26, 2026}
+\ConfCity{Houston, TX, USA}
+\PaperNo{DETC2026-XXXX}
+
+% Units of measure (e.g., cm) and other specialty lowercase terms in the title should be 
+%   enclosed in \NoCaseChange{...} to maintain lower case type.
+%   The rest of the title will automatically be set in all capital letters.
+%
+%	\title{Place Title Here: Place Subtitle After Colon} 
+
+\title{Natural-Language to SysMLv2 Translation via Validator-Driven Iterative Refinement} % <=== replace with YOUR title
+ 
+%   Put author names into the order you want. Use the same order for affiliations.
+%   \affil{#} tags the author's affiliation to the address in \SetAffiliation{#}.
+%   No space between last name and \affil{#}, separate names with commas.
+%
+%	For a sole author or a single affiliation for all authors, {#} may be left empty, i.e. \affil{} and \SetAffiliation{} (but not with [grid] option!)
+%
+%   \CorrespondingAuthor{email} follows that author's affiliation, no spaces before or after 
+%   If multiple corresponding authors, put both email addresses in the same command and place after both authors.
+%
+%   \JointFirstAuthor, if applicable, follows the affiliation of the relevant authors, no spaces.
+
+\SetAuthors{%
+    Chance LaVoie\affil{1},
+    Eladio Andujar Lugo\affil{1},
+    Taylan G. Topcu\affil{2},
+    Levent Burak Kara\affil{1}\CorrespondingAuthor{lkara@andrew.cmu.edu}
+}
+
+\SetAffiliation{1}{Department of Mechanical Engineering, Carnegie Mellon University, Pittsburgh, PA 15213 USA}
+\SetAffiliation{2}{Grado Department of Industrial and Systems Engineering, Virginia Tech, Blacksburg, VA 24061 USA}
+%   Note: You can force a line break in the address using \\ 
+
+%	To switch from inline author names to gridded names, use the [grid] option.
+
+\maketitle
+
+%%% Use this footnote for tracking various versions of your draft. Change text to suit your own needs. 
+%%% \date{..} calls the same command. 
+
+%%% Change the following to your keywords.  Keywords are automatically printed at the end of the abstract.
+%%% This command MUST COME BEFORE the end of the abstract.
+%%% If you don't want keywords, leave the argument of \keywords{} empty (or use the abstract* environment)
+
+\keywords{Systems Engineering, Design Automation, AI/KBS, Software Agents/Systems, Design Representation}
+
+%%%%%  End of fields to be completed. Now write your paper. %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%  ABSTRACT  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% Abstract should be 200 words or less
+\begin{abstract}
+
+Model-Based Systems Engineering (MBSE) relies on formal SysMLv2 models as primary technical artifacts for representing requirements, structure, and behavior across the system lifecycle. With the standardization of SysMLv2 as a textual language, there is growing interest in translating natural-language engineering descriptions directly into executable models. However, for practical deployment, generated models must be accepted by industrial modeling environments, not merely satisfy context-free grammar constraints.
+This paper presents a validator-driven framework for reliable natural-language–to–SysMLv2 translation that enforces production-level acceptance as a termination condition. The proposed system embeds a production SysMLv2 validator within a generate–validate–repair loop. Each candidate model is evaluated using a production compiler, and deterministic diagnostics are incorporated into subsequent revisions until zero validation errors are achieved. By using the production validator as the correctness oracle, the framework targets operational deployability rather than grammar plausibility alone.
+We evaluate the approach on the full SysMBench prompt set comprising 151 prompts across four large language model backends, yielding 604 prompt–model cases. Single-shot generation achieves 51.16\% production-validation acceptance, whereas validator-guided refinement achieves 100.00\% acceptance across all cases. Convergence is rapid, with most recoverable failures resolved within a small number of repair cycles.
+By elevating production validation from a post-processing check to a control mechanism within generation, this work converts probabilistic text outputs into validator-accepted SysMLv2 artifacts suitable for loading, visualization, and downstream engineering use. To support reproducibility and further research, we release a trajectory-level corpus of all refinement traces.
+
+
+% Large language models (LLMs) cannot reliably generate production-ready SysMLv2 models from natural language. Although prior systems improve grammar-level validity using parser-based constraints, grammar conformance alone does not guarantee acceptance in industrial modeling environments, where model-wide constraints are enforced by production validators. This unreliability prevents direct deployment of NL-to-SysMLv2 generation in real MBSE workflows.
+
+% We address this barrier by elevating production validation itself to the correctness oracle. We instantiate a validator-driven generate--validate--repair loop in which each candidate model is evaluated by a production SysMLv2 validator and iteratively refined from deterministic diagnostics until zero-error acceptance. Rather than optimizing grammar plausibility, the system enforces operational deployability as a termination invariant.
+
+% We evaluate this framework on the full SysMBench prompt set (151 prompts) across four model backends (604 prompt--model cases). Single-shot generation achieves 51.16\% production-validation acceptance, whereas validator-guided refinement achieves 100.00\% acceptance across all cases. Convergence is rapid, with most recoverable failures resolved within a small number of repair cycles.
+
+% By using the production modeling tool as the oracle, this work converts plausible LLM output into validator-accepted SysML artifacts suitable for loading, visualization, and downstream engineering use. We release a trajectory-level corpus of all refinement traces to support further research on reliability, repair dynamics, and deployment-scale NL-to-MBSE systems.
+\end{abstract}
+
+%%%%%%%%%  BODY OF PAPER %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Introduction}
+
+
+Model-Based Systems Engineering (MBSE) replaces document-centric workflows with model-centric engineering, where formal artifacts represent requirements, structure, behavior, and verification intent across the system lifecycle~\cite{estefan2008mbse,madni2018mbse}. By elevating the model to the primary technical authority, MBSE reduces cross-document reconciliation effort and improves traceability under change~\cite{madni2018mbse,incoseSEVision2035}. SysMLv2 strengthens this transition by standardizing a formal language with complementary textual and graphical representations and machine-readable artifacts under the Object Management Group~\cite{omgSysMLv2Spec2024}. In practice, engineers can author the same model textually, render it visually, and exchange it across tools with reduced ambiguity. Because SysMLv2 is formal and textual, model construction is inherently scriptable. This scriptability creates an opportunity to translate natural-language engineering descriptions directly into executable SysMLv2 artifacts. However, for such translation to be useful in practice, generated models must be accepted by industrial modeling environments, not merely resemble well-formed text.
+
+Recent advances in large language models (LLMs) suggest that automated generation can meaningfully accelerate engineering workflows. In software engineering, controlled and field studies report substantial productivity gains from LLM-assisted generation, including 55.8\% faster task completion, 26.08\% higher weekly completed tasks in enterprise randomized deployments, and measurable increases in pull-request throughput~\cite{peng2023copilot,cui2025highSkilled,demirer2024fieldCopilot}. These results motivate analogous integration in MBSE, where automating low-value authoring steps could increase modeling speed and allow teams to focus on architectural and verification reasoning. 
+
+\textbf{Current State in MBSE:} Despite this opportunity, LLMs do not reliably produce production-validator-accepted\footnote{Production-validator-accepted: accepted by the production SysMLv2 validator with zero reported errors, indicating tool-level operational usability rather than grammar validity alone.} SysMLv2 models in single-shot generation. In response to this shortcoming, recent work has proposed structured pipelines for natural-language--to--SysMLv2 generation~\cite{bouamra2025systemp,cibrian2025sysmlagent}. SysTemp employs a template-first multi-agent design in which a template generator constructs a structured skeleton and a parser agent iteratively corrects syntax using grammar feedback~\cite{bouamra2025systemp}. Cibrián et al.\ organize generation as an agentic loop with a retrieval-augmented context engine and ANTLR-based grammar validation as the primary syntax gate~\cite{cibrian2025sysmlagent}. In parallel, SysMBench establishes a benchmark for evaluating natural-language--to--SysML generation quality, especially with respect to semantic alignment~\cite{jin2025sysmbench}. Collectively, these efforts demonstrate that grammar-conforming SysMLv2 can be produced from natural language.
+
+\textbf{Limits of Grammar-Level Validation:} Despite this progress, grammar-level validity does not guarantee operational usability. Context-free grammar parsing ensures correct token ordering, balanced delimiters, and production-rule-compliant declarations. Industrial validators enforce additional model-wide constraints, including name resolution, type consistency, ownership rules, multiplicity constraints, and cross-reference integrity. A model that passes ANTLR parsing can still fail production validation and therefore remain unusable for visualization, simulation, or downstream analysis. In an auxiliary repository demonstration, highlighted in Appendix A, we show ten distinct examples that pass SysML ANTLR parsing yet fail production validation~\cite{sysmbenchCompilerLoopRepo2026}. The gap is therefore not grammar feasibility, but reliable generation of production-validator--accepted SysMLv2 from arbitrary natural-language prompts.
+
+\textbf{Proposed advance:}
+In this work, we present a validator-driven framework for natural-language--to--SysMLv2 generation that requires every generated model to pass a production validator before it is considered complete. We place a production SysMLv2 validator, SysIDE~\cite{sensmetry2024syside}, inside a generate--validate--refine loop. Given a natural-language prompt, the system produces a full textual SysMLv2 model and immediately checks it using the production validator. The reported diagnostics, such as unresolved references, typing errors, and ownership violations, are then used to revise the model. We repeat this process until the validator reports zero errors.
+
+This approach follows the general idea of oracle-guided refinement from formal methods and inductive synthesis~\cite{clarke2000cegar,solarlezama2008thesis,jha2010ogis,alur2013sygus}, and is similar in spirit to compiler-feedback-driven code generation~\cite{wang2022compilable,grubisic2024compiler}. The difference here is that the oracle is a production modeling tool rather than a grammar parser. As a result, the loop enforces the same model-wide checks that an engineer would encounter when loading the model into an industrial environment.
+
+We evaluate the framework on the full SysMBench prompt set of 151 prompts across four model backends, yielding 604 prompt--model cases. In single-shot generation, 51.16\% of the initial models pass production validation. With validator-guided refinement, all 604 cases reach zero-error acceptance, with most resolving in only a few repair cycles. These results show that production-validator feedback provides a reliable signal for correcting generated SysMLv2 models and makes direct integration into MBSE workflows feasible.
+
+% \textbf{Proposed advance:} In this work, we present a validator-driven framework for natural-language--to--SysMLv2 generation that enforces production acceptance as the convergence criterion. We embed a production SysMLv2 validator, SysIDE~\cite{sensmetry2024syside}, inside a generate--validate--refine loop. At each iteration, the system generates a complete SysMLv2 candidate, evaluates it using the production validator, and conditions the next revision on deterministic diagnostics until zero validation errors are achieved. This design follows established oracle-guided refinement paradigms from formal methods and inductive synthesis~\cite{clarke2000cegar,solarlezama2008thesis,jha2010ogis,alur2013sygus} and aligns with compiler-feedback-driven code generation~\cite{wang2022compilable,grubisic2024compiler}. By elevating production validation from a post-processing check to a control operator within generation, our framework transforms plausible SysML text into deployable modeling artifacts suitable for loading, rendering, and downstream verification workflows.
+
+Our main contributions are:
+\begin{enumerate}
+    \item A validator-in-the-loop architecture for natural-language--to--SysMLv2 translation that enforces production-validator acceptance as a termination invariant.
+    \item A benchmark-scale empirical study across the full SysMBench prompt set and four model backends that quantifies the gap between grammar validity and production acceptance.
+    \item A trajectory-level corpus of validator-guided refinement traces that enables future research on reliability, repair dynamics, and deployment-scale NL-to-MBSE systems.
+\end{enumerate}
+
+% Model-Based Systems Engineering (MBSE) replaces document-centric workflows with model-centric engineering, where formal artifacts carry requirements, structure, behavior, and verification intent across the lifecycle~\cite{estefan2007mbseSurvey,madni2018mbse,incoseMbseInitiative2025,sebokMBSE2025}. By making the model the primary technical source, MBSE reduces cross-document reconciliation overhead and improves traceability under change~\cite{madni2018mbse,incoseSEVision2035}.
+
+% SysMLv2 strengthens this transition by standardizing a formal language with complementary textual and graphical representations and machine-readable artifacts under OMG~\cite{omgSysMLv2Spec2024,omgSysMLv2About2025,omgSysMLv2FinalAdoption2025}. In practice, the same model can be authored as text, rendered visually, and exchanged across tools with less ambiguity. Because SysMLv2 is formal and textual, model construction is scriptable.
+
+% This scriptability, combined with the recent rise of LLMs in engineering practice, creates a concrete opportunity for automated SysMLv2 modeling workflows. LLM-based pipelines can generate candidate models directly from natural-language inputs.
+
+% Software engineering provides encouraging precedent: controlled and field studies report substantial productivity gains from LLM-assisted generation, including 55.8\% faster task completion, 26.08\% higher weekly completed tasks in enterprise randomized deployments, and measurable increases in pull-request throughput~\cite{peng2023copilot,cui2025highSkilled,demirer2024fieldCopilot}. These results suggest that integrating generation into everyday tool use can materially accelerate engineering iteration.
+
+% The analogous opportunity in MBSE is to automate low-value model authoring steps while increasing modeling velocity. If natural-language prompts can be converted into \emph{production-validator--accepted} SysMLv2, teams can spend less effort on syntax correction and more effort on architecture and verification reasoning.
+
+% Despite this opportunity, large language models do not reliably generate production-validator--accepted SysMLv2 in single-shot settings. SysMLv2 is newly standardized, sparsely represented in public training corpora, and subject to strict industrial validation rules that enforce model-wide constraints beyond surface syntax. As a result, single-shot NL-to-SysMLv2 generation frequently produces artifacts that appear structurally plausible yet fail production validation.
+
+% In response to this unreliability, recent SysMLv2 generation systems have moved beyond one-shot prompting toward structured generation workflows~\cite{bouamra2025systemp,cibrian2025sysmlagent}. SysTemp uses a template-first multi-agent design centered on a \textit{TemplateGeneratorAgent} and a \textit{ParserAgent}. A Jinja2-based template tool first builds a structured SysMLv2 skeleton, then a writer agent fills in content while parser feedback guides iterative correction~\cite{bouamra2025systemp}. By contrast, the 2025 \emph{Computers in Industry} framework organizes generation as an agentic loop with a RAG-based context engine and a validation engine, with ANTLR-based grammar validation as the syntax gate~\cite{cibrian2025sysmlagent}. In that framework, the context engine retrieves semantically similar natural-language prompt and SysML file pairs and exposes them to the LLM as context~\cite{cibrian2025sysmlagent}. Both approaches rely on context-free grammar (CFG) parsing as the primary basis for syntactic validation and as the primary acceptance metric.
+
+% In parallel, SysMBench has established a common benchmark for evaluating natural-language--to--SysML generation quality, especially on semantic alignment criteria~\cite{jin2025sysmbench}. Read together, the current state of the art suggests that generating SysMLv2 from natural language that passes grammar-parser checks is feasible.
+
+% Grammar parsability guarantees structural conformance to SysMLv2 context-free syntax: valid token ordering, balanced delimiters, and production-rule-compliant declarations. It does \emph{not} guarantee production validation acceptance, because industrial validators enforce additional model-wide constraints such as name resolution, type consistency, ownership/composition rules, multiplicity constraints, and cross-reference integrity. Therefore, parser-passing outputs provide no assurance that they will be accepted by a production modeling environment for downstream use, including visualization, semantic validation, simulation, and optimization. Without acceptance under a full industrial validator, such models remain unusable in practice. In an auxiliary repository demonstration, we show ten distinct cases that pass SysML ANTLR parsing but fail production validation, empirically reinforcing this distinction~\cite{antlrVsSysideDemo2026}. The critical gap is reliable generation of \emph{production-validator--accepted} SysMLv2 from arbitrary natural-language prompts.
+
+% To close this gap, we instantiate a generate--verify--refine workflow in which candidate SysMLv2 models are iteratively evaluated against a production validation backend and revised until acceptance. In domains where large corpora of production-validator--verified artifacts are limited or the language and validation ecosystem continue to evolve, validator-in-the-loop refinement provides a practical mechanism for improving correctness without requiring model weight updates. This paradigm is not novel in itself. It draws from established traditions in formal methods and inductive synthesis, where candidate artifacts are proposed, evaluated by an external oracle, and corrected using deterministic feedback from that oracle~\cite{clarke2000cegar,solarlezama2008thesis,jha2010ogis,alur2013sygus}. Our contribution is to operationalize this verification-driven pattern for natural-language--to--SysMLv2 generation under industry-facing acceptance criteria.
+
+% Related work in code generation has already demonstrated the technical value of iterative verifier-in-the-loop refinement. Wang et al.\ show that deterministic compiler diagnostics can be used as structured correction signals in multi-stage neural code generation, improving acceptance of generated programs under executable checks~\cite{wang2022compilable}. Grubi{\v{s}}i{\'c} et al.\ similarly use compiler feedback to iteratively refine LLM outputs, treating validator responses as an explicit control signal for subsequent generations~\cite{grubisic2024compiler}. Taken together, these works establish the core mechanism we rely on: generate a candidate, evaluate it with a deterministic backend, feed diagnostics back into the next iteration, and repeat until the validator reports no remaining errors.
+
+% We apply this principle directly to MBSE. Our framework places a production SysMLv2 syntax validator, SysIDE~\cite{sensmetry2024syside}, in the loop as a deterministic oracle, and generation proceeds until zero-error acceptance is achieved under that validator. At convergence, the resulting model is production-ready and operational within the modeling environment---loadable, renderable, analyzable, and suitable for downstream verification workflows. By elevating production-validator acceptance to the convergence criterion, SysMLv2 generation moves from syntactic plausibility to deployable modeling infrastructure, establishing a practical foundation for Copilot-like support in MBSE workflows.
+
+\section{Related Work}
+
+Our review focuses on three areas that intersect in this study: (1) natural-language--to--SysML model generation within MBSE, (2) grammar-constrained and structured synthesis methods for large language models, and (3) verifier- and tool-guided refinement loops for generated artifacts. These bodies of work collectively demonstrate the feasibility of structured model synthesis from natural language and the benefits of deterministic feedback, while also highlighting open questions regarding deployment-level acceptance in industrial modeling environments.
+
+\subsection{Natural-Language to SysML Model Generation}
+
+Recent research has explored the use of large language models to generate SysML and SysMLv2 artifacts directly from natural-language requirements. SysTemp~\cite{bouamra2025systemp} introduces a template-driven, multi-agent pipeline in which a structured model skeleton is first constructed and then refined through parser-guided correction. Cibri{\'a}n et al.~\cite{cibrian2025sysmlagent} propose an agent-based architecture that combines retrieval-augmented generation with ANTLR-based grammar validation to improve syntactic correctness. These systems demonstrate that structured prompting and iterative repair can substantially improve parser-level validity for SysMLv2 text.
+
+Additional studies examine LLM behavior in SysML-related tasks more broadly. Wang et al.~\cite{wang2025sysmlbehaviorllmempirical} report empirical findings on the generation of SysML behavioral models and identify common inconsistencies and hallucinations in model structure. Other work investigates LLM-assisted interaction with SysMLv2 artifacts in engineering settings~\cite{dehart2024sysml_llm} and describes workflows in which generative AI is used to build and query MBSE models\textbf{CITATION?}~\cite{symam24138generativeaimbsemodels}. These contributions reflect a growing interest in integrating LLMs into model-centric engineering practice.
+
+Earlier efforts relied on restricted natural-language subsets, rule-based extraction, or diagram-level heuristics to translate requirements into SysML models~\cite{li2021restrictednlsysmlmodels,kbs2022nlpsystemsengineeringsysml,mistry2024texttomodeltransformationsysml}. While effective in constrained settings, these approaches often required controlled vocabularies or domain-specific grammars. More recent work explores LLM-assisted semantic alignment and model integration across SysMLv2 artifacts~\cite{anonymous2025semanticalignmentsysmlv2,hendricks2025texttomodel_sysml}. Collectively, this literature establishes the technical feasibility of NL-to-SysML pipelines, but most evaluations emphasize grammar conformity or diagram-level correctness rather than production-tool acceptance. Our work complements these efforts by examining acceptance under a production validation backend as the primary reliability criterion.
+
+\subsection{Grammar-Constrained and Structured Synthesis}
+
+Grammar-constrained decoding and template-based generation have emerged as practical strategies for improving structural correctness in LLM outputs. Grammar-constrained decoding methods restrict token sequences to context-free grammars, thereby enforcing well-formed structural patterns without requiring model retraining~\cite{geng2023gcd,park2024grammaraligneddecoding,frontiers2024gcdie}. These approaches reduce malformed outputs and improve syntactic validity across a range of structured generation tasks.
+
+Template-driven methods further guide generation by providing predefined structural scaffolds or repair templates\textbf{CITATION?}~\cite{huang2025_template_guided_program_repair}. In SysML contexts, template-first pipelines such as SysTemp~\cite{bouamra2025systemp} use structured model outlines to stabilize generation. Such methods are particularly useful for newly standardized or low-data languages.
+
+While grammar and template constraints effectively address token-level validity, they do not necessarily enforce model-wide consistency or tool-specific constraints. Production modeling environments typically impose additional checks related to reference resolution, typing consistency, and cross-model integrity. As a result, grammar-level correctness represents an important but partial notion of validity. Our approach builds on structured synthesis methods while shifting the acceptance criterion from parser conformity to production-tool validation.
+
+\subsection{Verifier- and Tool-Guided Refinement}
+
+Iterative refinement using deterministic feedback has a long history in formal methods and program synthesis. Counterexample-guided abstraction refinement and oracle-guided synthesis frameworks use external checkers to iteratively improve candidate artifacts~\cite{clarke2000cegar,jha2010ogis,alur2013sygus}. In the context of large language models, Wang et al.~\cite{wang2022compilable} and Grubi{\v{s}}i{\'c} et al.~\cite{grubisic2024compiler} demonstrate that compiler diagnostics can serve as structured correction signals for generated code. Subsequent work extends this paradigm to test-driven and verifier-driven loops~\cite{ravi2025llmloop,sevenhuijsen2024vecogen,morvalho2025cegisprogramrepair,namin2024vermcts}.
+
+Across these domains, a consistent pattern emerges: candidate artifacts are generated, evaluated by a deterministic backend, and revised until the backend reports success. In software engineering, the oracle is typically a compiler, test suite, or formal verifier. Our work instantiates this refinement pattern in the context of SysMLv2 MBSE, where the oracle is a production modeling tool. By aligning the termination condition with the same validation mechanism used in industrial environments, we extend verifier-guided refinement to model-based systems engineering and examine its effect at benchmark scale.
+
+% \section{Related Work}
+
+% Prior work relevant to our study spans SysMLv2 generation, grammar-constrained synthesis, and verifier-guided refinement. The common thread is iterative error correction, but methods differ in the validation oracle used to accept or reject generated artifacts.
+
+% \subsection{LLM-Based SysML v2 Model Generation}
+% Recent systems show that structured prompting and agent decomposition improve SysMLv2 generation from natural language. SysTemp~\cite{bouamra2025systemp} combines template construction and parser-guided repair in a multi-agent pipeline; syntactic acceptance is determined by CFG-level parsing. Cibri{\'a}n et al.~\cite{cibrian2025sysmlagent} use an agentic architecture with a RAG-based context engine and an ANTLR-based validation engine, again using grammar parsing as the primary syntax gate. These methods establish feasibility of parser-level acceptance and iterative repair, but their acceptance criterion remains grammar conformance rather than production-validator acceptance. As a result, parser-valid artifacts can still be rejected in production modeling environments.
+
+% \subsection{Grammar-Constrained and Template-Based Structured Synthesis}
+% Template-first generation and grammar-constrained decoding reduce token-level invalidity by forcing outputs toward well-formed CFG structure~\cite{bouamra2025systemp,cibrian2025sysmlagent}. This is effective for enforcing declarations, delimiters, and keyword ordering, and it is a meaningful baseline for low-data languages. However, CFG acceptance does not enforce model-wide checks such as reference resolution, typing consistency, ownership constraints, or cross-model integrity. For MBSE deployment, grammar validity is therefore necessary but insufficient: artifacts must also pass production validation before they are operational in modeling environments.
+
+% \subsection{Validator-in-the-Loop and Verifier-Guided Generation}
+% Verifier-guided refinement is established in code generation: Wang et al.~\cite{wang2022compilable} and Grubi{\v{s}}i{\'c} et al.~\cite{grubisic2024compiler} show that deterministic diagnostics can drive iterative correction of generated programs. These studies motivate our control structure but are centered on software-language ecosystems with mature corpora and different acceptance targets. In SysMLv2 MBSE, the deployment criterion is production-validation acceptance in modeling environments, not parser pass rate alone.
+
+% Across these lines of work, our approach differs by elevating production-validator acceptance to a termination invariant and evaluating this criterion at benchmark scale (151 prompts across four backends).
+
+
+\input{methods/methods_syntactic_only}
+
+\input{results/results_syntactic_only}
+
+\section{Discussion}
+
+\textbf{Production Validation:} By placing a production validator inside the generation loop, we address a practical barrier to using natural-language--to--SysMLv2 generation in real MBSE workflows. Rather than producing text that appears structurally plausible, we require that every generated model satisfy the same production checks needed to load and use it in an industrial modeling environment. Across 604 prompt--model cases, validator-guided refinement increases production-validation acceptance from 51.16\% in single-shot generation to 100.00\%. In doing so, we remove the primary syntactic obstacle to integrating LLM-assisted modeling into existing toolchains.
+
+\textbf{Reliability Mechanism:} Shifting from single-shot generation to validator-guided refinement also changes where reliability is enforced. In the single-shot setting, acceptance depends on whether the language model happens to produce a structurally correct artifact on its first attempt. In the validator-guided setting, we instead rely on a deterministic backend that evaluates and reports concrete modeling errors. At each iteration, we check the candidate model, revise it based on explicit diagnostics, and re-evaluate it until no validation errors remain. Because we apply the same production validator across all runs, acceptance becomes largely independent of backend-specific first-pass behavior. Model providers may differ in cost and latency, but we enforce production acceptance through a shared validation layer.
+
+\textbf{Deployment Implications:} From a deployment perspective, we believe this distinction is critical. In typical MBSE environments, engineers must load, render, and validate models before using them for visualization, simulation, or verification. Without validator guidance, generated models are usable only when they happen to meet these constraints. With validator guidance, we enforce usability as part of the generation process itself. This allows us to incorporate LLM-assisted modeling into day-to-day engineering practice while maintaining bounded operational risk. In this setting, engineers can spend less time correcting structural syntax errors and more time reasoning about architecture, requirements, and verification intent.
+
+\textbf{Convergence Dynamics:} The observed convergence behavior further supports this interpretation. Deterministic diagnostics provide stable correction signals, and we find that most recoverable failures resolve within a small number of repair cycles ($T_{90}=2$, $T_{95}=3$, $T_{99}=4$). Initial candidates often contain multiple structural errors, yet the loop typically resolves these issues in only a few iterations. These results suggest that the refinement process corrects shallow but compound structural inconsistencies rather than exhibiting unstable or oscillatory dynamics.
+
+\textbf{Scope Limits:} We emphasize that the scope of these results is intentionally limited. By enforcing production validation, we guarantee structural and operational compatibility with a modeling tool, but we do not guarantee that the resulting model faithfully represents the intended system or satisfies its requirements. We do not evaluate semantic correctness, behavioral adequacy, or trace completeness in this study. In addition, we bound our empirical findings to the SysMBench prompt distribution and to a single production validator backend.
+
+Within these bounds, we view validator-driven refinement as a foundational reliability layer for AI-assisted MBSE. Once we guarantee structural acceptance, we can introduce additional mechanisms such as semantic validation, cross-view consistency analysis, simulation-based checks, and requirement trace evaluation. By establishing production-validator acceptance as a stable baseline, we create a controlled starting point for building higher-level assurances on top of syntactic convergence.
+
+% \section{Discussion}
+% The central contribution is infrastructural: using the production validator as the generation oracle makes NL-to-SysMLv2 operationally deployable rather than merely plausible. Under this architecture, candidate text is transformed into production-acceptable model artifacts before handoff to engineering tools. Quantitatively, this shift moves acceptance from 51.16\% single-shot to 100.00\% final pipeline acceptance across the same 604 prompt--model cases, removing the primary syntactic barrier to direct MBSE workflow integration.
+
+% This is a systems-level design move, not just iterative repair. Production validation is elevated from a post-processing check to a control operator inside generation itself. Reliability is therefore enforced at the workflow level through oracle-gated refinement, rather than left to backend-specific first-pass behavior alone. In practice, this decouples deployment reliability from model-provider choice: backend differences remain important for cost, latency, and governance, but acceptance control is implemented in the surrounding orchestration layer.
+
+% The deployment consequence is concrete. Without oracle gating, NL-to-SysMLv2 output is probabilistically usable; with validator gating, it becomes conditionally deployable under explicit acceptance criteria. This allows MBSE environments to integrate LLM generation with bounded operational risk and supports Copilot-like modeling workflows in which analysts spend less time on structural syntax repair and more time on architecture, requirements reflection, and verification intent.
+
+% Convergence behavior supports this interpretation without requiring stronger claims. Deterministic diagnostics provide stable correction signals, and most recoverable failures resolve in few cycles ($T_{90}=2$, $T_{95}=3$, $T_{99}=4$). Together with the observed first-failure error burden, this suggests the loop is typically resolving shallow but multi-error structural defects.
+
+% Scope boundaries are clear. These results establish syntactic and operational reliability under production validation; they do not establish semantic correctness, architectural adequacy, or requirement satisfaction. Production-validation acceptance is necessary for deployability but not sufficient for engineering quality, and external validity remains bounded to one benchmark prompt distribution and one production validator backend.
+
+% Within those bounds, validator-driven reliability can be treated as the first layer of an assurance stack for AI-enabled MBSE. This layer can support future agentic workflows that add higher-level guarantees for semantics, architecture, and traceability on top of enforced syntactic convergence.
+
+\section{Conclusion}
+
+Our results indicate that single-shot LLM generation does not reliably produce SysMLv2 models that pass production validation, and this limits the direct use of natural-language--to--SysMLv2 pipelines in real MBSE workflows. In this work, we address this limitation by placing the production validator inside the generation loop. We generate a candidate model, run it through a production SysMLv2 validator, and revise it based on the reported diagnostics until the validator reports zero errors. In doing so, we treat production acceptance as the stopping condition of the generate--validate--repair process. Unlike grammar-level approaches that rely on parser checks alone, our method requires acceptance by an industrial modeling tool.
+
+Across the full SysMBench prompt set of 151 prompts and four model backends, yielding 604 prompt--model cases, this approach increases production-validation acceptance from 51.16\% in single-shot generation to 100.00\% after validator-guided refinement. Most failures resolve within a small number of repair cycles.
+
+From a practical standpoint, this work provides a reliability layer between LLM-generated text and MBSE tools. Instead of relying on a single pass of generation, we use deterministic validator feedback to drive correction until the model can be loaded and used in a production environment. This approach does not require retraining model weights and remains agnostic to the underlying language model. To support further research, we release the full trajectory-level data from the campaign, comprising 1,043 iteration artifacts with associated validation traces and run metadata~\cite{sysmbenchCompilerLoopRepo2026}.
+
+Our results are intentionally scoped to syntactic and operational acceptance under a production validator. Passing validation is necessary for deployment, but it does not guarantee semantic correctness or architectural adequacy. Future work should examine cross-validator replication, semantic alignment with requirements, and task-level evaluation of behavioral correctness. We view production-validator enforcement as a first step toward reliable NL-to-MBSE integration, not the final step.
+
+
+% Single-shot LLM generation does not reliably produce production-validator--accepted SysMLv2, and that unreliability blocks direct deployment of NL-to-SysMLv2 generation in operational MBSE workflows. This work addresses that gap by elevating production validation from a post-hoc check to the control oracle in generation itself: production-validator acceptance is enforced as the termination invariant of the generate--validate--repair process. Relative to grammar-level approaches, this shift targets deployability in production modeling environments rather than parser acceptance alone.
+
+% At benchmark scale (151 SysMBench prompts across four model backends, 604 prompt--model cases), this architecture increases acceptance from 51.16\% in single-shot generation to 100.00\% under validator-gated refinement.
+
+% The practical contribution is an infrastructure reliability layer between LLM outputs and MBSE tools. It enables safer integration of NL-to-SysMLv2 generation in production environments by converting probabilistic text proposals into conditionally deployable model artifacts under explicit validator gating, without retraining model weights. To support reproducible follow-on work, we release the full trajectory-level campaign data (1,043 iteration artifacts) with validation traces and run metadata~\cite{sysmbenchCompilerLoopRepo2026}.
+
+% These claims remain intentionally scoped: production-validator enforcement establishes syntactic and operational reliability, which is necessary but not sufficient for engineering quality. The next assurance layers are cross-validator replication, semantic validation, and task-level evaluation of requirements fidelity, behavioral correctness, and architectural adequacy. In that stack, production-validator enforcement is the first reliability layer, not the final one.
+
+\section{Limitations and Future Work}
+
+While the proposed validator-in-the-loop framework achieves
+production-validation acceptance across all benchmark cases,
+several limitations remain.
+
+First, our study focuses exclusively on syntactic and production-level
+validation. Passing a production validator ensures that a model can
+be loaded, rendered, and processed by downstream tools, but it does
+not guarantee semantic correctness, architectural adequacy, or
+requirements fidelity. A model may satisfy all name resolution,
+typing, and ownership constraints while still misrepresenting the
+intended system behavior. Extending the framework to incorporate
+requirement-level checks, trace consistency, and behavior validation
+is an important next step.
+
+Second, our experiments rely on a single production validator,
+SysIDE. Although SysIDE reflects industrial validation behavior,
+different toolchains may enforce additional constraints or differ in
+diagnostic reporting. Cross-validator replication would strengthen
+the generality of the approach and help characterize how validator
+differences affect repair trajectories and convergence behavior.
+
+Third, the empirical results are scoped to the SysMBench prompt
+distribution. While the benchmark spans 151 prompts and multiple
+model backends, it does not capture the full variability of industrial
+natural-language specifications, including noisy, incomplete, or
+internally inconsistent requirements. Evaluating robustness under
+longer and less structured inputs would provide further insight into
+deployment readiness.
+
+Fourth, although convergence is observed empirically in all 604
+prompt--model cases, we do not provide a formal guarantee of
+convergence. The observed contraction-like behavior in early repair
+cycles suggests stable dynamics under deterministic diagnostics,
+but a theoretical analysis of convergence conditions and potential
+failure modes remains open.
+
+Finally, we do not quantify cost--reliability tradeoffs in detail.
+Validator-guided refinement introduces additional model calls and
+runtime overhead. A systematic study of iteration counts, token
+usage, and latency under varying prompt complexity would clarify
+the practical operating envelope of the approach.
+
+Future work will focus on three directions. First, we will extend the
+validator-in-the-loop paradigm to incorporate semantic and
+simulation-based checks, moving from syntactic acceptance to
+task-level correctness. Second, we will investigate cross-validator
+evaluation to assess toolchain sensitivity and strengthen claims of
+deployment robustness. Third, we will explore adaptive repair
+strategies that prioritize high-impact diagnostics to reduce iteration
+count and cost. Together, these efforts aim to build a layered
+assurance framework for reliable natural-language--to--MBSE
+generation.
+
+\bibliographystyle{asmeconf}
+\bibliography{references}
+
+\appendix
+\input{appendix/antlr_vs_syside_appendix}
+\input{appendix/appendix_additions/appendix_additions_input}
+
+\end{document}

@@ -1,0 +1,44 @@
+\definecolor{sonnetColor}{RGB}{31,119,180}
+\definecolor{openaiColor}{RGB}{255,127,14}
+\definecolor{deepseekColor}{RGB}{44,160,44}
+\definecolor{mistralColor}{RGB}{214,39,40}
+\begin{tikzpicture}
+\begin{axis}[
+    width=\columnwidth,
+    height=0.64\columnwidth,
+    xmin=0,
+    xmax=7,
+    ymin=0,
+    ymax=102,
+    xlabel={Repair Cycles (k)},
+    ylabel={Cumulative Acceptance (\%)},
+    xtick={0,1,2,3,4,5,6,7},
+    ymajorgrids=true,
+    xmajorgrids=false,
+    grid style={dashed,gray!30},
+    axis lines*=left,
+    tick label style={font=\footnotesize},
+    label style={font=\footnotesize},
+    legend style={
+        draw=none,
+        font=\footnotesize,
+        at={(0.5,1.02)},
+        anchor=south,
+        legend columns=2
+    },
+]
+\addplot+[sonnetColor, very thick, mark=*] coordinates {
+    (0,82.78) (1,97.35) (2,99.34) (3,99.34) (4,99.34) (5,99.34) (6,100.00) (7,100.00)
+};
+\addplot+[openaiColor, very thick, mark=square*] coordinates {
+    (0,41.72) (1,88.08) (2,98.01) (3,99.34) (4,100.00) (5,100.00) (6,100.00) (7,100.00)
+};
+\addplot+[deepseekColor, very thick, mark=triangle*] coordinates {
+    (0,41.06) (1,76.82) (2,89.40) (3,97.35) (4,99.34) (5,99.34) (6,99.34) (7,100.00)
+};
+\addplot+[mistralColor, very thick, mark=diamond*] coordinates {
+    (0,39.07) (1,75.50) (2,90.73) (3,96.69) (4,100.00) (5,100.00) (6,100.00) (7,100.00)
+};
+\legend{Anthropic Sonnet 4.6,OpenAI Codex 5.2,DeepSeek Reasoner,Mistral Large}
+\end{axis}
+\end{tikzpicture}

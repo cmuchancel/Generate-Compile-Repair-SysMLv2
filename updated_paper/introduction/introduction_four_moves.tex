@@ -1,0 +1,14 @@
+\section{Introduction}
+
+\textbf{Move 1: Motivation (Why this matters).}
+Model-Based Systems Engineering (MBSE) depends on machine-checkable models, not informal descriptions. With SysMLv2, this requirement becomes stricter because models are textual and compiler-validated artifacts inside engineering workflows~\cite{omgSysMLv2Spec2024}. For natural-language--to--SysMLv2 generation, output is only operationally useful if it compiles: non-compilable text cannot reliably support downstream model inspection, tooling, or analysis. The practical problem is therefore not whether generated SysMLv2 text looks plausible, but whether it passes deterministic compiler checks.
+
+\textbf{Move 2: State of the art (What current methods do).}
+Recent approaches use large language models (LLMs) to generate SysMLv2 from natural language, often with iterative repair and structured generation scaffolds~\cite{bouamra2025systemp,cibrian2025sysmlagent}. In parallel, compiler-feedback loops have improved compilability in general code-generation settings~\cite{wang2022compilable,grubisic2024compiler}. These directions establish two useful ideas: (i) iterative refinement is stronger than one-shot generation, and (ii) deterministic verifier feedback can guide repairs.
+
+\textbf{Move 3: Gap (What is still missing).}
+Despite this progress, benchmark-scale evidence for \emph{syntactic reliability under a real SysMLv2 compiler oracle} remains limited. Prior SysMLv2 studies often center grammar-level validity, smaller prompt sets, or non-uniform evaluation settings~\cite{bouamra2025systemp,cibrian2025sysmlagent}. What is missing is a direct, prompt-matched comparison between single-shot generation (iteration 1 only) and compiler-in-the-loop final outputs, evaluated across the full SysMBench set (IDs 1--151) with compilation as the only endpoint~\cite{jin2025sysmbench}.
+
+\textbf{Move 4: Our response (What we do and how it fills the gap).}
+This paper studies one claim axis only: syntactic compilability. We evaluate a generate--compile--repair pipeline that uses \texttt{syside check} as the deterministic oracle~\cite{sensmetry2024syside} and compare it against a matched single-shot baseline on the same prompts. The experiment spans all 151 SysMBench prompts across four model configurations (604 total trials). We report first-shot pass rate, eventual pass rate, unresolved rate, iterations-to-success, and compiler error dynamics. Under this setup, first-shot compilation is 51.16\% while final compiler-gated output reaches 100.00\%, showing that deterministic compiler feedback closes a large recoverable syntactic error surface left by one-shot generation.
+

@@ -1,0 +1,63 @@
+\definecolor{promptCardBg}{RGB}{248,247,243}
+\definecolor{promptAccentOne}{RGB}{69,97,140}
+\definecolor{promptAccentTwo}{RGB}{44,138,100}
+\definecolor{promptAccentThree}{RGB}{196,106,28}
+\definecolor{promptMetaText}{RGB}{92,99,108}
+
+\begin{tikzpicture}
+\tikzset{
+    promptcard/.style={
+        draw=black!16,
+        fill=promptCardBg,
+        rounded corners=6pt,
+        line width=0.45pt,
+        align=left,
+        inner xsep=7pt,
+        inner ysep=7pt,
+        anchor=north west
+    }
+}
+
+\node[promptcard] (p1) at (0,0) {%
+    \begin{minipage}[t][52mm][t]{0.274\textwidth}
+    \raggedright
+    {\footnotesize\bfseries\textcolor{promptAccentOne}{Compact Workflow Prompt}}\hfill
+    {\footnotesize\color{promptMetaText}Prompt 85}\par
+    \vspace{1pt}
+    {\scriptsize\itshape\color{promptMetaText}Photography Technique}\par
+    \vspace{3pt}
+    {\fontsize{6.8}{8.2}\selectfont
+    The system is designed to implement a camera information processing workflow. When a user selects a scene through the camera's viewfinder (viewPort), the system first focuses on the scene to obtain an image (Image). This image is then captured to generate a photograph (Picture). After the photograph is generated, the system displays it on the screen via the display port (displayPort).\par}
+    \end{minipage}
+};
+
+\node[promptcard, right=3.4mm of p1] (p2) {%
+    \begin{minipage}[t][52mm][t]{0.274\textwidth}
+    \raggedright
+    {\footnotesize\bfseries\textcolor{promptAccentTwo}{Spatiotemporal Simulation Prompt}}\hfill
+    {\footnotesize\color{promptMetaText}Prompt 26}\par
+    \vspace{1pt}
+    {\scriptsize\itshape\color{promptMetaText}Vehicle Traffic}\par
+    \vspace{3pt}
+    {\fontsize{6.8}{8.2}\selectfont
+    This system is designed for spatiotemporal simulation of the dynamic behavior of vehicles on roads at different moments. Users can define parameters such as the vehicle's mass, position, velocity, and acceleration, and, combined with the road's slope (angle) and surface friction coefficient, depict the state of the vehicle and the road at specific time points. The system supports snapshot recording at multiple moments within the simulation time series, enabling tracking of the vehicle's state transitions from start-up (on state), through the driving process, to shutdown (off state).\par}
+    \end{minipage}
+};
+
+\node[promptcard, right=3.4mm of p2] (p3) {%
+    \begin{minipage}[t][52mm][t]{0.274\textwidth}
+    \raggedright
+    {\footnotesize\bfseries\textcolor{promptAccentThree}{Safety-Critical Monitoring Prompt}}\hfill
+    {\footnotesize\color{promptMetaText}Prompt 48}\par
+    \vspace{1pt}
+    {\scriptsize\itshape\color{promptMetaText}Medical Health}\par
+    \vspace{3pt}
+    {\fontsize{6.8}{8.2}\selectfont
+    This system is designed to ensure high reliability and safety of the blood glucose meter during use. When the battery is depleted or cannot be charged, the system should be able to automatically detect the battery status and promptly alert the user to prevent failure to measure blood glucose levels due to battery issues, as well as potential treatment delays resulting from such failures. To prevent the aforementioned failure scenarios, the system requires the implementation of preventive measures for battery status, and it must have appropriate alarm and emergency response mechanisms in case of abnormalities in the blood glucose measurement function.\par}
+    \end{minipage}
+};
+
+\draw[promptAccentOne, line width=1.7pt] ([xshift=5pt,yshift=-5pt]p1.north west) -- ([xshift=-5pt,yshift=-5pt]p1.north east);
+\draw[promptAccentTwo, line width=1.7pt] ([xshift=5pt,yshift=-5pt]p2.north west) -- ([xshift=-5pt,yshift=-5pt]p2.north east);
+\draw[promptAccentThree, line width=1.7pt] ([xshift=5pt,yshift=-5pt]p3.north west) -- ([xshift=-5pt,yshift=-5pt]p3.north east);
+\end{tikzpicture}

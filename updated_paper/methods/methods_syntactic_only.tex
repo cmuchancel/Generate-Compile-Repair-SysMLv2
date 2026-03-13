@@ -1,0 +1,139 @@
+\section{Methodology}
+
+
+In this section, we describe the experimental design and the validator-in-the-loop procedure used to evaluate natural-language--to--SysMLv2 generation. We first define the paired study setup, and then detail the iterative generation and validation workflow.
+
+\subsection{Study Objective and Paired Design}
+
+Our goal is to evaluate whether placing a production validator inside the generation loop improves reliability relative to single-shot generation. Specifically, we ask: for the same natural-language prompt and the same language model, does iterative validator-guided refinement increase the rate of production validation acceptance? In this study, we focus strictly on syntactic and production-level validation.
+
+The experimental unit is a single prompt--model pair. For each pair, we compare two conditions obtained from the same generation trajectory:
+\begin{enumerate}
+    \item \textbf{Baseline (single-shot):} the production-validation outcome of the initial model produced by the language model ($k=0$).
+    \item \textbf{Pipeline (iterative):} the production-validation outcome after applying validator-guided repair until termination.
+\end{enumerate}
+
+Because both outcomes are derived from the same prompt and the same model instance, this paired design isolates the effect of iterative validator feedback. Prompt content and model identity remain fixed, and only the presence or absence of validator-driven refinement differs between conditions.
+
+\subsection{Validator-in-the-Loop Generation Procedure}
+
+We implement a generate--validate--repair workflow for natural-language--to--SysMLv2 translation. Given a prompt, the language model produces a complete textual SysMLv2 candidate. We then evaluate this candidate using a production validator. If validation errors are reported, we pass the deterministic diagnostics back to the model and request a revised candidate. This process continues until the validator reports zero errors.
+
+Let $P$ denote the natural-language prompt, $M_t$ the SysMLv2 model generated at iteration $t$, and $V(\cdot)$ the production validator. The update at each iteration can be written as
+\[
+M_{t+1} = f\!\left(P, M_t, V(M_t)\right),
+\]
+where $f(\cdot)$ represents the model call conditioned on the prompt, the previous candidate, and the validator diagnostics. In practice, $V(M_t)$ returns structured error messages that identify unresolved references, typing inconsistencies, ownership violations, and other model-wide constraint failures. These diagnostics guide the subsequent revision.
+
+\setcounter{figure}{1}
+\begin{figure*}[!b]
+\centering
+\input{methods/figures/prompt_showcase_cards}
+\caption{Representative SysMBench prompt excerpts illustrating the variety and structure of the benchmark inputs. The examples show a compact workflow prompt (Prompt 85), a spatiotemporal vehicle-simulation prompt (Prompt 26), and a safety-critical monitoring prompt (Prompt 48).}
+\label{fig:prompt_showcase}
+\end{figure*}
+\setcounter{figure}{0}
+
+
+
+We use SysIDE (\texttt{syside check}) as the production validation oracle~\cite{sensmetry2024syside}. A run terminates only when the validator reports zero errors. This choice is motivated by the distinction between grammar-level parsing and production acceptance. In an auxiliary ten-case study included in our repository and appendix, we demonstrate that models can pass the HAMR SysML v2 ANTLR4 parser while still failing production validation, illustrating that grammar conformity alone does not ensure operational usability~\cite{sysmbenchCompilerLoopRepo2026,hamrSysmlParser2026,sysmlV2PilotImplementation2026}. By using the production validator as the acceptance criterion, we align the loop with the same checks encountered in an industrial modeling environment.
+
+\begin{figure}[H]
+\centering
+\resizebox{\columnwidth}{!}{\input{gcr_loop}}
+\caption{Validator-in-the-loop generate--validate--repair workflow. The prompt remains fixed for each case, and each revision is driven by deterministic validator diagnostics.}
+\label{fig:gcr_loop_methods}
+\end{figure}
+\setcounter{figure}{2}
+
+
+% \subsection{Study Objective and Paired Design}
+% This study evaluates one question: for the same prompt and the same model, does validator-in-the-loop refinement increase production validation acceptance relative to single-shot generation? The scope is strictly syntactic.
+
+% The experimental unit is one prompt--model pair. For each unit, we evaluate two paired conditions taken from the same run trajectory:
+% \begin{enumerate}
+%     \item \textbf{Baseline (single-shot):} production validation outcome for the initial candidate ($k=0$).
+%     \item \textbf{Pipeline (iterative):} production validation outcome at the final available iteration after iterative repair.
+% \end{enumerate}
+
+% Because both outcomes are taken from the same prompt--model run, this design isolates the effect of iterative validator feedback while holding prompt content and model identity fixed.
+
+% \subsection{Validator-in-the-Loop Generation Procedure}
+% Our controller follows a generate--validate--repair workflow for natural-language--to--SysMLv2 generation. At each iteration, the model proposes a complete SysMLv2 candidate, the production validator returns deterministic diagnostics, and the next model call is conditioned on those diagnostics.
+
+% Let $P$ denote the natural-language prompt, $M_t$ the generated candidate at iteration $t$, and $V(\cdot)$ the production validator. The update is
+% \[
+% M_{t+1} = f\!\left(P, M_t, V(M_t)\right),
+% \]
+% where $f(\cdot)$ is the model revision operator conditioned on validator feedback.
+
+% \begin{figure}[H]
+% \centering
+% \resizebox{\columnwidth}{!}{\input{gcr_loop}}
+% \caption{Validator-in-the-loop generate--validate--repair workflow. The prompt is fixed per case, and each revision is driven by deterministic validator diagnostics.}
+% \label{fig:gcr_loop_methods}
+% \end{figure}
+
+% The production validator oracle is SysIDE validation (\texttt{syside check})~\cite{sensmetry2024syside}. A run is successful and terminates only when zero validation errors are reported.
+% This oracle choice is additionally supported by an auxiliary ten-case demonstration in the repository showing pass under the HAMR SysML v2 ANTLR4 parser with production-validation failure, i.e., grammar conformity without operational acceptability~\cite{antlrVsSysideDemo2026,hamrSysmlParser2026,sysmlV2PilotImplementation2026}.
+
+\subsection{Dataset and Outcome Extraction}
+SysMBench provides paired natural-language prompts and ground-truth SysMLv2 models for benchmark evaluation~\cite{jin2025sysmbench}. In this study, we use the curated natural-language prompt set (IDs 1--151) as generation inputs because it was designed to stress SysMLv2 LLM generation across diverse modeling patterns.
+
+To demonstrate the variety and structure of the SysMBench prompts, Figure~\ref{fig:prompt_showcase} shows three representative prompt excerpts demonstrating a compact photography workflow specification, a spatiotemporal vehicle traffic simulation prompt, and a safety-critical medical health monitoring prompt.
+
+To assess model-agnostic behavior of the same controller, we run four model configurations: OpenAI Codex 5.2 (\texttt{gpt-5.2-codex})~\cite{openaiGPT52Codex2026}, Anthropic Sonnet 4.6 (\texttt{claude-sonnet-4-6})~\cite{anthropicSonnet46API2026}, DeepSeek Reasoner (\texttt{deepseek-reasoner})~\cite{deepseekReasonerAPI2026}, and Mistral Large (\texttt{mistral-large-latest})~\cite{mistralLargeLatestDocs2026}. This yields 604 prompt-level cases (151 prompts $\times$ 4 models).
+
+From saved run records, we extract single-shot and pipeline pass/fail outcomes, iterations run, iterations to success, first/final error counts, cumulative error counts, per-iteration runtime, and token usage. For grammar-versus-production analysis, we also extract single-shot ANTLR parse pass/fail and single-shot SysIDE pass/fail from the same initial candidate artifacts for all 604 prompt--model cases. Error families are grouped from validator diagnostics (for example, parsing and reference errors), while warnings are tracked separately and do not change pass/fail labels.
+
+\subsection{Evaluation Metrics}
+\subsubsection{Production Validation Acceptance}
+The primary evaluation metrics are production validation acceptance rates. For each analysis slice (overall and per-model), we report:
+\begin{enumerate}
+    \item single-shot pass rate (initial candidate, $k=0$),
+    \item pipeline pass rate (final iteration of the validator-gated loop).
+\end{enumerate}
+\textbf{We also report iterations-to-success, defined as the number of repair cycles required for a prompt–model case to reach production-validator acceptance.}
+
+
+\subsubsection{Grammar vs Production Validity}
+To quantify the operational gap between grammar-level validity and production-validator acceptance, we compare ANTLR and SysIDE outcomes on the same single-shot artifact from each case. This comparison is performed on the initial candidate ($k=0$ in repair-cycle indexing).
+
+Grammar validity is defined as ANTLR parse success using the HAMR SysML v2 ANTLR4 parser, which provides a generated grammar and Java parser/lexer derived from the SysML v2 Pilot Implementation~\cite{hamrSysmlParser2026,sysmlV2PilotImplementation2026}. This ANTLR check is used only as a representative context-free grammar (CFG) parsability test and does not enforce production model-wide constraints. Production validity is defined as SysIDE acceptance (zero SysIDE errors) under \texttt{syside check}. For each case, we record binary pass/fail outcomes for both checks and construct a $2\times2$ contingency table (ANTLR pass/fail $\times$ SysIDE pass/fail).
+
+\subsubsection{Convergence Metrics}
+To characterize how quickly the loop approaches acceptance, we index progress by repair cycles. Let $k=0$ denote the initial single-shot generation (no validator feedback), and let $k\geq 1$ denote $k$ rounds of generate--validate--repair. Let $A_k$ denote cumulative production-validation acceptance after repair cycle $k$.
+
+We define residual failure mass as
+\[
+R_k = 1 - A_k,
+\]
+where $R_k$ is the fraction of prompt--model cases not yet accepted at repair cycle $k$. We then define an empirical contraction ratio
+\[
+\rho_k = \frac{R_{k+1}}{R_k}.
+\]
+When $0 < \rho_k < 1$, residual failure shrinks from one cycle to the next; when $\rho_k$ is approximately stable across $k$, the observed trajectory suggests contraction-like behavior, with approximately multiplicative reduction in the early repair regime under standard contraction-style analyses in iterative methods~\cite{banach1922operations,nocedal2006numerical,he2016averageConvergenceRate}.
+In finite empirical campaigns, we estimate contraction behavior from early-to-mid cycles, before residual mass becomes very small; terminal transitions are excluded from rate estimation because finite-sample tail effects can produce unstable ratios near the finite-sample resolution.
+This characterization is descriptive of observed finite-sample behavior and does not assert formal convergence guarantees.
+
+We also report time-to-threshold acceptance
+\[
+T_{\varepsilon} = \min\{k : A_k \ge 1-\varepsilon\},
+\]
+with explicit reporting of $T_{90}$, $T_{95}$, and $T_{99}$. This follows standard iteration-to-threshold (iteration-to-$\varepsilon$) complexity summaries in optimization~\cite{polyak1987introductionOptimization}. These metrics provide an interpretable rate summary complementary to pass-rate metrics.
+
+This framing follows empirical convergence-rate characterizations used in iterative optimization and search, including multiplicative (geometric-style) interpretations of residual reduction~\cite{he2016averageConvergenceRate}, while remaining descriptive rather than proving formal convergence guarantees. It is also consistent with iterative verifier-feedback refinement in code generation, where deterministic diagnostics guide successive corrections toward acceptance~\cite{wang2022compilable,grubisic2024compiler}.
+
+\subsection{Statistical Reliability Analysis}
+For convergence reliability, we model each prompt--model case as a Bernoulli success if it reaches eventual production-validator acceptance (zero SysIDE errors) within the allowed loop. Let $p$ denote convergence probability for prompts drawn from the SysMBench-style benchmark distribution under the same controller, validator, and backend configuration. Because the validator-gated loop is monotonic and accepted cases terminate immediately, regression transitions (single-shot pass $\rightarrow$ pipeline fail) are structurally excluded. Improvement is therefore quantified descriptively rather than via symmetric paired hypothesis tests.
+
+
+We report an exact 95\% Clopper--Pearson lower confidence bound for $p$~\cite{clopper1934confidenceLimits}; in the all-success case this is $p_L=(\alpha/2)^{1/n}$ with $\alpha=0.05$. We also report the complementary one-sided 95\% binomial upper confidence bound on failure probability $q=1-p$. In the zero-failure case, this bound is obtained by solving $(1-q)^n=0.05$, yielding $q_U=1-0.05^{1/n}$. For large $n$, this expression is well approximated by $q_U\approx-\ln(0.05)/n\approx 3/n$.
+
+These reliability bounds are intentionally scoped to SysMBench-style prompt distributions under the evaluated configuration and are reported numerically in Section~\ref{sec:results}. They are not treated as universal guarantees over arbitrary natural-language inputs.
+
+\subsection{Extended Analyses}
+\textbf{In addition to the primary evaluation metrics described above, we conduct several supplementary analyses to better understand repair behavior within the validator-guided generation loop. These analyses are presented in Appendix~B and Appendix~C. Specifically, we examine relationships between iterations-to-success and generated output length as well as SysMBench benchmark difficulty labels (Appendix~B). We also analyze persistent validator errors across repair iterations to characterize cases in which the language model fails to resolve a reported error despite attempting repair (Appendix~C). These analyses provide additional insight into repair dynamics and factors influencing convergence behavior.}
+
+\subsection{Reproducibility}
+All code, run artifacts, and analysis outputs used in this study are stored in the project repository~\cite{sysmbenchCompilerLoopRepo2026}. The repository includes the scripts required to regenerate campaign statistics, tables, and figures.

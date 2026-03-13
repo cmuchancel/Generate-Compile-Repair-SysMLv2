@@ -1,0 +1,55 @@
+\section{Auxiliary Demonstration: Grammar Parsability vs. Production Validation}
+\label{appendix:antlr_vs_syside}
+
+To support the design choice of using production validation (rather than grammar parsing alone) as the acceptance oracle, we ran an auxiliary demonstration included in the repository~\cite{sysmbenchCompilerLoopRepo2026}. This demonstration is not a second primary experiment; it is a construct-validity check showing that parser acceptance and production acceptance are distinct outcomes.
+
+We evaluated 10 intentionally distinct SysMLv2 examples in \texttt{examples/mismatch\_10\_distinct/}. Each file was designed to remain grammar-parseable while violating a model-wide constraint typically enforced by a production validator. The evaluation pipeline was:
+\begin{enumerate}
+    \item ANTLR parse check using the HAMR SysML v2 ANTLR4 parser (generated grammar derived from the SysML v2 Pilot Implementation)~\cite{hamrSysmlParser2026,sysmlV2PilotImplementation2026}.
+    \item Production validation check using SysIDE.
+\end{enumerate}
+
+Results were unambiguous: all 10/10 examples passed ANTLR parsing, while 0/10 were accepted by production validation (10/10 mismatch cases). Validator diagnostics were dominated by unresolved-reference failures (9/10, \texttt{reference-error}), with one invocation-typing failure (1/10, \texttt{invocation-expression-instantiated-type}). This pattern directly illustrates that context-free syntax conformance is necessary but not sufficient for operational model acceptance in production modeling environments.
+
+\subsection*{Concrete Example}
+The following example is grammar-parseable but fails production validation:
+\begin{quote}
+\small\ttfamily
+package Demo07 \{\\
+\ \ part def Wheel \{\\
+\ \ \ \ attribute hubDiameter: LengthValue;\\
+\ \ \ \ part tire \{ attribute width: LengthValue; \}\\
+\ \ \ \ attribute outerDiameter: LengthValue = (hubDiameter + 2 * tire.height);\\
+\ \ \}\\
+\}
+\end{quote}
+
+ANTLR parsing accepts the structure. Production validation rejects it with:
+\begin{quote}
+\small\ttfamily
+error (reference-error): No Feature named 'height' found.
+\end{quote}
+
+\begin{table}[H]
+\centering
+\caption{Ten-case auxiliary demonstration: all examples parse under ANTLR, none pass production validation.}
+\label{tab:antlr_vs_syside_10cases}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{p{0.09\columnwidth} p{0.51\columnwidth} p{0.14\columnwidth} p{0.20\columnwidth}}
+\toprule
+\textbf{ID} & \textbf{Injected Condition} & \textbf{ANTLR} & \textbf{SysIDE} \\
+\midrule
+01 & Missing imported namespace & Pass & Fail (reference) \\
+02 & Missing port type & Pass & Fail (reference) \\
+03 & Missing attribute type & Pass & Fail (reference) \\
+04 & Missing specialization base & Pass & Fail (reference) \\
+05 & Action typed by undefined behavior type & Pass & Fail (reference) \\
+06 & Invocation target is not a behavior & Pass & Fail (invocation) \\
+07 & Missing referenced feature in expression & Pass & Fail (reference) \\
+08 & Missing root-qualified namespace & Pass & Fail (reference) \\
+09 & Redefinition of missing feature & Pass & Fail (reference) \\
+10 & Missing namespace in type use & Pass & Fail (reference) \\
+\bottomrule
+\end{tabular}
+\end{table}
